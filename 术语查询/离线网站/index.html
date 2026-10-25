@@ -136,7 +136,11 @@ footer a{color:var(--brand);text-decoration:none}
 <script id="payload" type="application/json">{}</script>
 <script>
 (async function(){
-  const PAYLOAD = await fetch('payload.json').then(r => { if(!r.ok) throw new Error('术语数据加载失败'); return r.json(); });
+  const resultEl = document.getElementById('result');
+  resultEl.innerHTML = '<div class="empty">正在加载术语数据…</div>';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+  const PAYLOAD = await fetch('payload.json?ver=ef8462f', {cache:'no-store', signal:controller.signal}).then(r => { if(!r.ok) throw new Error('术语数据加载失败（HTTP '+r.status+'）'); return r.json(); }).finally(() => clearTimeout(timeout));
   const SRC_LABEL = PAYLOAD.src_label;
   const $ = id => document.getElementById(id);
 
@@ -330,7 +334,12 @@ footer a{color:var(--brand);text-decoration:none}
     if(ev.key==='Escape'){ qEl.value=''; render(); qEl.blur(); }
   });
   render();
-})();
+})().catch(err => {
+  const box = document.getElementById('result');
+  if (box) box.innerHTML = '<div class="empty">术语数据加载失败，请刷新页面重试。<br><small>'+String(err && err.message || err).replace(/[&<>]/g, '')+'</small></div>';
+  const total = document.getElementById('total');
+  if (total) total.textContent = '加载失败';
+});
 </script>
 </body>
 </html>

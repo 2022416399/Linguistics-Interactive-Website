@@ -1,0 +1,3904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>汉语语法名家论著写作技法深度解剖</title>
+<style>
+/* ============================================================
+   配色：护眼米白 + 柔绿基调（浅色主题 / 诊断笔记风）
+   ============================================================ */
+:root{
+  --paper:#F6F7F1;          /* 全页米白底 */
+  --paper-warm:#FBF8EF;     /* 更暖一点的米色 */
+  --ink:#25302B;            /* 主文字：墨绿黑 */
+  --ink-2:#46544D;          /* 次文字 */
+  --ink-3:#7A857E;          /* 弱文字 */
+  --line:#DDE3D6;           /* 细线 */
+  --line-2:#C8D2C0;
+
+  --green:#4E7A5B;          /* 主柔绿 */
+  --green-d:#3A6B4A;        /* 深柔绿 */
+  --green-l:#EDF3EA;        /* 浅柔绿底 */
+  --green-ll:#F3F7F0;
+
+  --quote-bg:#FCF6E3;       /* 原文栏：浅黄 */
+  --quote-line:#E8D9A8;
+  --note-bg:#FFFFFF;        /* 点评栏：留白 */
+  --note-line:#E2E8DC;
+  --tpl-bg:#EAF2F6;         /* 模板栏：浅蓝 */
+  --tpl-line:#BFD6E2;
+
+  --warn:#A9743F;           /* 提醒 / 注意：暖褐 */
+  --star:#B0563F;           /* 反例 / 星号：赭红 */
+  --plus:#3A6B4A;           /* 正例：柔绿 */
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; padding:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Songti SC","SimSun","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+  font-size:16px; line-height:1.95;
+  -webkit-font-smoothing:antialiased;
+}
+/* 衬线正文 + 无衬线小字（标签、导航） */
+.sans{font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans CJK SC",sans-serif;}
+
+/* ---------- 布局 ---------- */
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px 120px;}
+
+/* ---------- 封面 ---------- */
+.cover{
+  border-bottom:3px double var(--line-2);
+  padding:70px 0 40px; margin-bottom:36px;
+  background:linear-gradient(180deg,var(--paper-warm) 0%,rgba(251,248,239,0) 100%);
+}
+.cover .kicker{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  letter-spacing:.32em; font-size:12.5px; color:var(--green);
+  text-transform:uppercase; margin-bottom:20px;
+}
+.cover h1{
+  font-size:40px; line-height:1.42; margin:0 0 8px; letter-spacing:.04em;
+  font-weight:700; color:#1D2A23;
+}
+.cover .sub{
+  font-size:19px; color:var(--ink-2); margin:14px 0 26px; line-height:1.8;
+  max-width:800px;
+}
+.cover .meta{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:13px; color:var(--ink-3); line-height:2;
+  border-top:1px solid var(--line); padding-top:18px; max-width:800px;
+}
+.cover .meta b{color:var(--green-d); font-weight:600;}
+
+/* ---------- 顶栏悬浮导航 ---------- */
+.topbar{
+  position:sticky; top:0; z-index:60;
+  background:rgba(246,247,241,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.topbar .inner{
+  max-width:1180px; margin:0 auto; padding:9px 28px;
+  display:flex; flex-wrap:wrap; gap:6px 4px; align-items:center;
+}
+.topbar a{
+  font-size:12.5px; color:var(--ink-2); text-decoration:none;
+  padding:4px 9px; border-radius:4px; white-space:nowrap;
+  border:1px solid transparent;
+}
+.topbar a:hover{background:var(--green-l); color:var(--green-d); border-color:var(--line-2);}
+.topbar .sep{color:var(--line-2); font-size:11px; padding:0 2px;}
+
+/* ---------- 标题层级 ---------- */
+h2{
+  font-size:27px; margin:74px 0 6px; padding-bottom:12px;
+  border-bottom:2px solid var(--green-l);
+  color:#1D2A23; letter-spacing:.02em; scroll-margin-top:70px;
+}
+h2 .num{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  display:inline-block; font-size:15px; color:#fff; background:var(--green);
+  padding:1px 10px; border-radius:3px; margin-right:12px; vertical-align:3px;
+  letter-spacing:.06em;
+}
+h3{
+  font-size:21px; margin:44px 0 10px; color:var(--green-d);
+  padding-left:14px; border-left:5px solid var(--green);
+  scroll-margin-top:70px; letter-spacing:.02em;
+}
+h4{
+  font-size:17.5px; margin:30px 0 8px; color:#2C3A32;
+  font-weight:700; scroll-margin-top:70px;
+}
+h4 .lv{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:12px; color:var(--green-d); background:var(--green-l);
+  border:1px solid var(--line-2); border-radius:3px;
+  padding:0 6px; margin-right:8px; vertical-align:2px;
+}
+h5{
+  font-size:16px; margin:22px 0 6px; color:#37453D; font-weight:700;
+  padding-left:10px; border-left:2px solid var(--line-2);
+  scroll-margin-top:70px;
+}
+
+/* ---------- 段落与行内 ---------- */
+p{margin:10px 0; text-align:justify;}
+.lead{font-size:17px; color:var(--ink-2);}
+ul,ol{margin:10px 0; padding-left:26px;}
+li{margin:5px 0;}
+b,strong{color:#1D2A23; font-weight:700;}
+em{font-style:normal; background:linear-gradient(transparent 62%, #D9EAD5 62%); padding:0 1px;}
+a.ref{color:var(--green-d); text-decoration:none; border-bottom:1px dotted var(--green);}
+a.ref:hover{background:var(--green-l);}
+
+/* ---------- 三栏解剖模块 ---------- */
+.tri{
+  margin:20px 0 30px; border:1px solid var(--note-line);
+  border-radius:6px; overflow:hidden; background:#fff;
+  box-shadow:0 1px 3px rgba(60,80,65,.05);
+}
+.tri .tri-head{
+  display:flex; align-items:center; gap:10px;
+  background:var(--green-ll); border-bottom:1px solid var(--line);
+  padding:8px 14px;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:13px; color:var(--green-d); font-weight:600;
+  letter-spacing:.03em;
+}
+.tri .tri-head .tagline{
+  margin-left:auto; font-weight:400; color:var(--ink-3); font-size:11.5px;
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.tag{
+  display:inline-block; font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:11px; line-height:1.7; padding:0 7px; border-radius:10px;
+  background:var(--green-l); color:var(--green-d); border:1px solid var(--line-2);
+  white-space:nowrap;
+}
+.tag.t-quote{background:var(--quote-bg); color:#8A6D22; border-color:var(--quote-line);}
+.tag.t-note{background:#F3F4F1; color:var(--ink-2); border-color:var(--note-line);}
+.tag.t-tpl{background:var(--tpl-bg); color:#356780; border-color:var(--tpl-line);}
+.tag.t-star{background:#FAEDE7; color:var(--star); border-color:#E8C9BB;}
+.tag.t-plus{background:var(--green-l); color:var(--green-d); border-color:var(--line-2);}
+
+/* 来源层级标注：原文自述 / 文本可证 */
+.src-tag{
+  display:inline-block; font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:10.5px; line-height:1.65; padding:0 6px; border-radius:3px;
+  white-space:nowrap; vertical-align:1.5px; letter-spacing:.02em; font-weight:600;
+}
+.src-self{background:#E8F0E5; color:#33603F; border:1px solid #C2D6BC;}
+.src-infer{background:#F2F0E8; color:#7A6A3C; border:1px dashed #D6CBA4;}
+
+/* 理据层小节：独立于三栏模块之外的"深读"区 */
+.deep{
+  margin:22px 0 30px; border:1px solid #D9D3BC; border-radius:6px;
+  background:#FDFCF7; overflow:hidden;
+}
+.deep .deep-head{
+  background:linear-gradient(90deg,#F4F1E4,#FAF8F0);
+  border-bottom:1px solid #E2DCC6; padding:10px 16px;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:13.5px; font-weight:700; color:#6B5A2E; letter-spacing:.03em;
+  display:flex; align-items:center; gap:9px; flex-wrap:wrap;
+}
+.deep .deep-head .dh-sub{margin-left:auto; font-weight:400; font-size:11.5px; color:#9A8B62;}
+.deep .deep-body{padding:4px 18px 14px;}
+.deep h6{
+  font-size:14.5px; margin:16px 0 5px; color:#5C4E28; font-weight:700;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  padding-left:9px; border-left:3px solid #C9BC8E; letter-spacing:.02em;
+}
+.deep p{font-size:15px; margin:7px 0; color:var(--ink-2);}
+.deep ul,.deep ol{font-size:15px; margin:7px 0;}
+.deep table{font-size:13.5px;}
+.deep .gap-note{
+  margin:14px 0 10px; padding:9px 14px; border-left:3px solid #C9BC8E;
+  background:#F7F5EC; font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:13px; color:#7A6A3C; font-style:normal;
+}
+
+/* 空缺登记表中的占位符 */
+.void{color:#B0A88E; font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:15px; letter-spacing:.1em;}
+
+
+.lane{padding:13px 18px; border-top:1px solid var(--note-line); position:relative;}
+.lane:first-of-type{border-top:none;}
+.lane .lane-label{
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:12px; font-weight:700; letter-spacing:.08em;
+  display:flex; align-items:center; gap:7px; margin-bottom:7px; color:var(--ink-3);
+}
+.lane .lane-label .ic{font-size:13px;}
+.lane-quote{background:var(--quote-bg);}
+.lane-quote .lane-label{color:#8A6D22;}
+.lane-quote .lane-label .ic{color:#B08A2E;}
+.lane-note{background:var(--note-bg);}
+.lane-note .lane-label{color:var(--ink-2);}
+.lane-note .lane-label .ic{color:var(--green);}
+.lane-tpl{background:var(--tpl-bg);}
+.lane-tpl .lane-label{color:#356780;}
+.lane-tpl .lane-label .ic{color:#3E86A8;}
+
+/* 原文引文样式 */
+blockquote{
+  margin:8px 0; padding:10px 16px;
+  border-left:4px solid var(--quote-line);
+  background:rgba(255,255,255,.55);
+  font-size:15.5px; color:#3E3A2C; line-height:1.9;
+}
+blockquote.tpl{
+  border-left-color:var(--tpl-line); background:rgba(255,255,255,.65);
+  color:#2C4A58; font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:14.5px; line-height:1.85;
+}
+blockquote .src{
+  display:block; margin-top:6px; font-size:12px; color:var(--ink-3);
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.star{color:var(--star); font-weight:700;}
+.plus{color:var(--plus); font-weight:700;}
+
+/* ---------- 表格 ---------- */
+.tbl-wrap{overflow-x:auto; margin:16px 0 24px; border:1px solid var(--line); border-radius:5px; background:#fff;}
+table{border-collapse:collapse; width:100%; font-size:14px; line-height:1.75;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;}
+caption{
+  caption-side:top; text-align:left; padding:10px 14px 8px;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:13.5px; font-weight:700; color:var(--green-d);
+  background:var(--green-ll); border-bottom:1px solid var(--line);
+}
+caption .cap-n{color:var(--ink-3); font-weight:400; margin-right:8px;}
+th{
+  background:#F1F4EC; color:#2C3A32; font-weight:700; text-align:left;
+  padding:9px 12px; border-bottom:1.5px solid var(--line-2);
+  border-right:1px solid var(--line); font-size:13px; letter-spacing:.02em;
+  vertical-align:top;
+}
+td{padding:9px 12px; border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; color:var(--ink-2);}
+th:last-child, td:last-child{border-right:none;}
+tbody tr:nth-child(even){background:#FBFCF9;}
+tbody tr:hover{background:var(--green-ll);}
+td.c{text-align:center;}
+td .k{color:#1D2A23; font-weight:600;}
+
+/* ---------- 图表（CSS 流程条 / 层级图） ---------- */
+.fig{margin:20px 0 26px; padding:16px 18px; background:#fff;
+  border:1px solid var(--line); border-radius:6px;}
+.fig .fig-cap{font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:12.5px; color:var(--ink-3); margin-bottom:12px; letter-spacing:.02em;}
+.fig .fig-cap b{color:var(--green-d);}
+.chain{display:flex; flex-wrap:wrap; align-items:stretch; gap:8px;}
+.chain .node{
+  flex:1 1 150px; min-width:130px; background:var(--green-ll);
+  border:1px solid var(--line-2); border-radius:5px; padding:9px 12px;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:13px;
+  color:#2C3A32; line-height:1.65;
+}
+.chain .node .nt{display:block; font-weight:700; color:var(--green-d); margin-bottom:3px; font-size:12.5px;}
+.chain .arrow{align-self:center; color:var(--green); font-size:18px; padding:0 1px;}
+.chain .node.alt{background:var(--quote-bg); border-color:var(--quote-line);}
+.chain .node.alt .nt{color:#8A6D22;}
+.chain .node.blue{background:var(--tpl-bg); border-color:var(--tpl-line);}
+.chain .node.blue .nt{color:#356780;}
+.chain.vert{flex-direction:column;}
+.chain.vert .arrow{align-self:flex-start; transform:rotate(90deg); padding:0; margin-left:22px;}
+
+/* 树形层级 */
+.tree{font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:13.5px; line-height:2.0; color:var(--ink-2);}
+.tree .lv1{color:#1D2A23; font-weight:700;}
+.tree .lv2{margin-left:24px;}
+.tree .lv3{margin-left:48px;}
+.tree .lv4{margin-left:72px; color:var(--ink-3);}
+.tree .br{color:var(--line-2); font-family:monospace;}
+
+/* ---------- 提示条 ---------- */
+.note-bar{
+  margin:18px 0; padding:12px 16px; border-radius:5px;
+  background:var(--green-ll); border-left:4px solid var(--green);
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:14px;
+  color:var(--ink-2); line-height:1.85;
+}
+.note-bar .nb-title{font-weight:700; color:var(--green-d); margin-right:6px;}
+.note-bar.warn{background:#FBF3E6; border-left-color:var(--warn);}
+.note-bar.warn .nb-title{color:var(--warn);}
+.note-bar.blue{background:#EFF5F8; border-left-color:#3E86A8;}
+.note-bar.blue .nb-title{color:#356780;}
+
+/* ---------- 索引 ---------- */
+.index-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:14px; margin:18px 0;}
+.index-card{background:#fff; border:1px solid var(--line); border-radius:6px; padding:14px 16px;}
+.index-card h5{margin:0 0 8px; border:none; padding:0; font-size:15px; color:var(--green-d);}
+.index-card ul{padding-left:20px; margin:6px 0; font-size:13.5px;}
+.index-card li{margin:3px 0; font-family:"PingFang SC","Microsoft YaHei",sans-serif;}
+.index-card a{color:var(--ink-2); text-decoration:none; border-bottom:1px dotted var(--line-2);}
+.index-card a:hover{color:var(--green-d); background:var(--green-l);}
+
+/* 回到顶部 */
+.totop{
+  position:fixed; right:22px; bottom:26px; z-index:70;
+  background:var(--green); color:#fff; border:none; border-radius:50%;
+  width:42px; height:42px; cursor:pointer; font-size:17px;
+  box-shadow:0 3px 10px rgba(60,90,70,.28); opacity:.9;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif;
+}
+.totop:hover{background:var(--green-d); opacity:1;}
+
+/* 进度条 */
+.progress{position:fixed; top:0; left:0; height:3px; background:var(--green); z-index:100; width:0;}
+
+hr.sep{border:none; border-top:1px dashed var(--line-2); margin:52px 0;}
+
+/* 篇首名家卡 */
+.master{
+  margin:34px 0 8px; padding:16px 20px; border-radius:6px;
+  background:linear-gradient(135deg,var(--green-ll),#fff);
+  border:1px solid var(--line-2);
+}
+.master .mname{font-size:19px; font-weight:700; color:#1D2A23; letter-spacing:.03em;}
+.master .mname .yr{font-family:"PingFang SC","Microsoft YaHei",sans-serif; font-size:13px; color:var(--green-d); font-weight:400; margin-left:10px;}
+.master .mdesc{font-size:14.5px; color:var(--ink-2); margin-top:6px; line-height:1.85;}
+.master .mdesc b{color:var(--green-d);}
+
+@media (max-width:760px){
+  .cover h1{font-size:28px;}
+  body{font-size:15px;}
+  .wrap{padding:0 16px 90px;}
+  .topbar .inner{padding:8px 16px;}
+  h2{font-size:22px;}
+  h3{font-size:18px;}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ==================== 顶栏导航 ==================== -->
+<nav class="topbar">
+  <div class="inner">
+    <a href="#s0">▍导读</a>
+    <a href="#s1">一·朱德熙</a><span class="sep">|</span>
+    <a href="#s2">二·邢福义</a><span class="sep">|</span>
+    <a href="#s3">三·吴为善</a><span class="sep">|</span>
+    <a href="#s4">四·陆俭明</a><span class="sep">|</span>
+    <a href="#s5">五·胡裕树张斌</a><span class="sep">|</span>
+    <a href="#s6">▍工序横比</a><span class="sep">|</span>
+    <a href="#s7">▍迁移清单</a><span class="sep">|</span>
+    <a href="#s8">▍索引</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ==================== 封面 ==================== -->
+<header class="cover" id="top">
+  <div class="kicker">Construction Grammar · Distributional Analysis · Writing Craft</div>
+  <h1>汉语语法名家论著<br>写作技法深度解剖</h1>
+  <p class="sub">
+    五篇现代汉语语法经典论著的结构动作拆解 —— 从<em>选题、命题、谋篇</em>到<em>材料剪裁、例证安排、段际缝合</em>，
+    逐段还原名家如何把语言事实转化为形式鉴别式，并完成从描写到解释的论证闭环。
+  </p>
+  <div class="meta">
+    <b>解剖对象</b>：朱德熙《现代汉语形容词研究》（1956）｜邢福义《说"NP了"句式》（1984）｜
+    吴为善、夏芳芳《"A不到哪里去"的构式解析、话语功能及其成因》（2011）｜
+    陆俭明《关于汉语词类的划分》（1994）｜胡裕树、张斌《现代汉语动词的次范畴》（1982）<br>
+    <b>体例</b>：三栏并置 · 原文引证 → 解剖点评 → 可迁移模板；先按篇目纵排，后按写作工序横比<br>
+    <b>用途</b>：自学精读 · 复习检索 · 论文写作技法迁移
+  </div>
+</header>
+
+<!-- ==================== 导读 ==================== -->
+<section id="s0">
+<h2><span class="num">导读</span>怎样使用这份文档</h2>
+
+<p class="lead">
+这份文档不做"观点摘要"，做的是<em>结构动作的还原</em>。名家论文值得学的不只是结论，
+更是那些"把材料变成论证"的动作：从哪里切进问题、给对象划什么边界、用哪一组对立体把隐性规律逼出水面、
+段与段如何接榫、反例出现时怎样离析而不伤及主规则。
+</p>
+
+<h3>0.1 三栏体例说明</h3>
+<p>全文每一处解剖都以一个"三栏模块"呈现，颜色即功能区分：</p>
+
+<div class="tri">
+  <div class="tri-head">▍三栏模块的结构 <span class="tagline"><span class="tag t-quote">原文</span><span class="tag t-note">点评</span><span class="tag t-tpl">模板</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>第一栏 · 原文引证</div>
+    <p>直接引出名家原句（浅黄底），标明出自哪一节。让"技法"始终锚定在"原话"上，避免把评论读成了脱离文本的空谈。</p>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>第二栏 · 解剖点评</div>
+    <p>拆解这一动作的<strong>功能</strong>：它解决了什么问题？为什么放在这个位置？换一种写法会损失什么？</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>第三栏 · 可迁移模板</div>
+    <p>把动作抽象为可填空的句式骨架，用 <span class="sans">{X}</span> 表示你自己论文的变量。这是可以直接搬进你稿子的部分。</p>
+  </div>
+</div>
+
+<h3>0.2 四级层级与动作标签</h3>
+<p>文档严格按<strong>「一、〔1、〕（1）①」</strong>四级缩进展开，逐层细化。正文中的彩色标签表示"动作类型"，可据此在<a class="ref" href="#s8">动作标签索引</a>里反查：</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 0-1</span>动作标签速查</caption>
+<thead><tr><th style="width:120px">标签</th><th style="width:200px">含义</th><th>典型表现</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">#切入点</span></td><td>选什么问题、从哪里破题</td><td>反常事实、理论盲区、学术史症结</td></tr>
+<tr><td><span class="tag">#界定</span></td><td>划定对象边界、操作性定义</td><td>"本文只讨论……"、"排除……"</td></tr>
+<tr><td><span class="tag">#命题</span></td><td>提出核心论断 / 假说 / 范畴命名</td><td>"本题的假设是……"、"构成一个语法范畴"</td></tr>
+<tr><td><span class="tag">#对立体</span></td><td>最小对立体、合法度断裂测试</td><td>合法式 vs. <span class="star">*</span>不合法式</td></tr>
+<tr><td><span class="tag">#框架</span></td><td>设立功能框架 / 测试槽位</td><td>"动＋实词"、"动词 AB→A…B"</td></tr>
+<tr><td><span class="tag">#排雷</span></td><td>预先封堵反例（构词法、语用省略等）</td><td>脚注排除、语句前置声明</td></tr>
+<tr><td><span class="tag">#剪裁</span></td><td>材料降噪、例证梯度排布</td><td>极简词例打底＋文学书证加压</td></tr>
+<tr><td><span class="tag">#离析</span></td><td>反例的定性处置</td><td>兼类离析、凝固格式、例外个别说明</td></tr>
+<tr><td><span class="tag">#承继</span></td><td>段际承接、跨章回溯呼应</td><td>"上文讨论定语时曾经说明……"</td></tr>
+<tr><td><span class="tag">#升华</span></td><td>由个案推向通则 / 理论范畴</td><td>认知域投射、人类认知普遍规律</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>0.3 两种读法</h3>
+<div class="index-grid">
+  <div class="index-card">
+    <h5>⤓ 纵读（感受）</h5>
+    <p style="font-size:13.5px;margin:0 0 6px;color:var(--ink-2)">从<a class="ref" href="#s1">第一章</a>顺读到<a class="ref" href="#s5">第五章</a>，跟着单篇文章走一遍完整运思。适合第一次学习，用"沉浸"培养对名家笔法的感受度。</p>
+  </div>
+  <div class="index-card">
+    <h5>⤢ 横读（迁移）</h5>
+    <p style="font-size:13.5px;margin:0 0 6px;color:var(--ink-2)">从<a class="ref" href="#s6">工序横比章</a>切入，再跳到<a class="ref" href="#s7">迁移清单</a>。适合写作时按需查阅：我要写引言了，先看五家引言怎么起。</p>
+  </div>
+</div>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 一点方法提醒</span>
+  读名家论文，"同意"或"不同意"都不是重点；重点是问：<strong>这个论点，换成我来写，我会怎么组材料？作者多做了哪一步，使结论变得不可动摇？</strong> 下文每一处点评都在追这一问。
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ==================== 五家范式总览 ==================== -->
+<section id="overview">
+<h2><span class="num">总览</span>五家范式与一句话技法</h2>
+
+<p class="lead">
+五篇论著的年代跨度近六十年（1956→2011），恰好串起现代汉语语法学从<em>结构描写</em>走向<em>认知解释</em>的范式演进。
+先看全景，再逐篇细读。
+</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 0-2</span>五家论著范式总览</caption>
+<thead>
+<tr>
+<th style="width:104px">学者</th><th style="width:210px">论著 / 年代</th><th style="width:120px">范式类型</th>
+<th style="width:190px">核心命题</th><th>一句话写作技法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="k">朱德熙</td>
+<td>《现代汉语形容词研究》<br><span style="color:var(--ink-3);font-size:12px">1956</span></td>
+<td>结构主义分布论<br>（分类描写）</td>
+<td>性质与状态的对立构成一个语法范畴——<b>性状范畴</b></td>
+<td>抓住"词义相同而分布断裂"的反常，横向铺开<b>定／状／谓／补</b>四大槽位逐一排查。</td>
+</tr>
+<tr>
+<td class="k">邢福义</td>
+<td>《说"NP了"句式》<br><span style="color:var(--ink-3);font-size:12px">1984</span></td>
+<td>小句个案研究<br>（小格式做大文章）</td>
+<td>"NP了"具<b>推移性</b>，是自足的非主谓句，无否定形式</td>
+<td>以"大姑娘了"三字口语起步，用<b>删除测试</b>在第一段就锁定核心变量"了"。</td>
+</tr>
+<tr>
+<td class="k">吴为善<br>夏芳芳</td>
+<td>《"A不到哪里去"的构式解析、话语功能及其成因》<br><span style="color:var(--ink-3);font-size:12px">2011</span></td>
+<td>认知构式语法<br>（历时＋共时）</td>
+<td>构式义虚化导致<b>重新分析</b>，"不到哪里去"成为复合程度量补语</td>
+<td>用<b>语料库历时溯源</b>排出空间→数量→性状的认知域承继链，把一个小熟语做成理论样板。</td>
+</tr>
+<tr>
+<td class="k">陆俭明</td>
+<td>《关于汉语词类的划分》<br><span style="color:var(--ink-3);font-size:12px">1994</span></td>
+<td>理论辨析<br>（方法论建构）</td>
+<td>划分词类唯一本质依据是<b>语法功能</b>，逐层二分得十五类</td>
+<td>先<b>穷尽排查</b>三条旧依据逐一证伪，再用 14 步淘汰流水线把四万词一刀刀切开。</td>
+</tr>
+<tr>
+<td class="k">胡裕树<br>张斌</td>
+<td>《现代汉语动词的次范畴》<br><span style="color:var(--ink-3);font-size:12px">1982</span></td>
+<td>结构主义<br>（次范畴分类）</td>
+<td>动词须借<b>功能框架</b>在静态词组中逐层二分</td>
+<td>把"能不能带宾语"操作化为标准输入输出流程，单层唯一标准、级联二分。</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 0-1</b>　五家"问题来源"的两条路径</div>
+  <div class="chain">
+    <div class="node alt" style="flex:1 1 100%;">
+      <span class="nt">路径一 · 经验事实反常驱动</span>
+      朱德熙（词义同而分布裂）｜ 邢福义（体词带动态虚词的反常）｜ 吴为善（表层语义冲突的凝固熟语）
+    </div>
+    <div class="node" style="flex:1 1 100%;">
+      <span class="nt">路径二 · 学术史 / 方法论反思驱动</span>
+      陆俭明（检讨印欧语理论移植的盲区）｜ 胡裕树·张斌（用操作主义认识论规范发现程序）
+    </div>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍观察</span>
+  路径一的三家，破题动作都极短——第一句话就把"反常"摆出来；路径二的两家，破题则先做一场"学术史清算"。
+  两种起法没有高下，但决定了全文的<strong>第一章怎么排、文献怎么用</strong>：前者引证多用于"加压"，后者引证多用于"证伪"。
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     第一篇 · 朱德熙
+     ============================================================ -->
+<section id="s1">
+<h2><span class="num">一</span>朱德熙《现代汉语形容词研究》</h2>
+
+<div class="master">
+  <div class="mname">朱德熙<span class="yr">1956 · 《语言研究》</span></div>
+  <div class="mdesc">
+    范式：<b>结构主义分布论</b>。全文以"简单形式（甲类）"与"复杂形式（乙类）"的语法功能对立为纲，
+    横向铺开<b>定语—状语—谓语—补语</b>四大槽位逐一排查，最终把这一形式对立提升为汉语独立的语法范畴——<b>性状范畴</b>。
+    这篇文章的写作示范价值在于：<b>如何用一组贯穿全篇的对立变项，把几十页的零散观察组织成一张论证网。</b>
+  </div>
+</div>
+
+<h3 id="s1-1">1.1 引言动作：以"分布断裂"破题</h3>
+
+<h4><span class="lv">（1）</span>开篇即锁定全文总题</h4>
+
+<h5>① 一句话交代主旨，拒绝背景铺陈</h5>
+<div class="tri">
+  <div class="tri-head">▍开篇总题 <span class="tagline"><span class="tag">#切入点</span><span class="tag t-quote">原文</span><span class="tag t-note">点评</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §0.1</div>
+    <blockquote>
+      "本文拟说明现代汉语里形容词的简单形式和它的复杂形式在语法功能上的区别。"
+      <span class="src">—— 全文第一句</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>注意这句的结构：<strong>"本文拟说明……的区别"</strong>——它同时锁定了三件事：
+    <b>对象</b>（形容词的简单形式与复杂形式）、<b>角度</b>（语法功能）、<b>任务</b>（说明区别）。
+    全文此后几十页，无非是把这一句话逐槽位展开。这种"一句话立总纲"的写法，代价是对问题必须有十足把握；
+    收益是读者从第二句起就知道该盯住什么。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "本文拟说明现代汉语里 <span class="sans">{X}</span> 和它的 <span class="sans">{Y}</span> 在 <span class="sans">{Z}</span> 上的区别。"
+      <span class="src">例：本文拟说明"单音节动词"和"双音节动词"在"能否带小句宾语"上的区别。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h5>② 把"反常"摆在最前面——词义同、分布裂</h5>
+<p>朱德熙破题的力量来自一个矛盾：<b>"红"与"红红的／通红／很红"基本词汇意义相同，造句表现却截然断裂。</b>这正是<a class="ref" href="#overview">路径一</a>的典型起法。</p>
+
+<div class="tri">
+  <div class="tri-head">▍核心矛盾的呈现 <span class="tagline"><span class="tag">#切入点</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §0.2</div>
+    <blockquote>
+      "一个甲类成分（红）和一个跟它相对应的乙类成分（红红的、红通通的、通红、很红）的区别，
+      不在基本的词汇意义上，而在抽象的、概括的意义上，即前者表示的是性质，后者表示的是这种性质的状况或情态。"
+      <span class="src">—— §0.2 核心论断</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这一步做了两个动作，值得分开看：</p>
+    <ul>
+      <li><strong>先排除一个解释</strong>：用否定式"<b>不在</b>基本的词汇意义上"，把读者最容易想到的"词义差异"先关掉；</li>
+      <li><strong>再给一个解释</strong>：用"<b>而在</b>抽象的、概括的意义上"引入新层次，并当场把它命名为"性质 vs. 状况／情态"。</li>
+    </ul>
+    <p>"不在……而在……"这一对句法，是学术论文中最经济的"排除＋立论"装置。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{A}</span> 与 <span class="sans">{B}</span> 的区别，不在 <span class="sans">{常见的错误归因}</span> 上，而在 <span class="sans">{本文的理论层次}</span> 上，即前者表示的是 <span class="sans">{P}</span>，后者表示的是 <span class="sans">{Q}</span>。"
+      <span class="src">作用：一句话同时完成"排除旧解 + 给出新解 + 命名新解"。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>划定对象边界与"预先排雷"</h4>
+
+<h5>① 用列举法给"甲类／乙类"下操作性定义</h5>
+<div class="tri">
+  <div class="tri-head">▍对象界定 <span class="tagline"><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §0.1</div>
+    <blockquote>
+      <b>甲类成分（简单形式）</b>：单音节形容词（大、红、多、快、好）和一般的双音节形容词（干净、大方、胡涂、规矩、伟大）。<br>
+      <b>乙类成分（复杂形式）</b>：重叠式（xx／xxyy／x 里 xy）、带后加成分（黑乎乎、傻里呱唧）、带前加成分（雪白、通红）以及由程度副词修饰构成的词组（很大、挺好）。
+      <span class="src">—— 用"枚举＋举例"完成操作性定义</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这里的写法特征是：<strong>不给抽象定义，只给可辨认的清点清单</strong>。
+    对读者而言，这比"简单形式指……"的空定义有用得多——你能立刻拿清单去对照语料。
+    这种"操作性定义优先"的做法，在你写实证论文的"研究对象"一节时可原样搬用。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "本文所谓 <span class="sans">{A类}</span>，包括 <span class="sans">{①… ②… ③…}</span>；所谓 <span class="sans">{B类}</span>，包括 <span class="sans">{①… ②… ③…}</span>。"<br>
+      "下列成分不在本文讨论范围之内：<span class="sans">{……}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h5>② "预先排雷"：把反例在登场前就请出场</h5>
+<div class="tri">
+  <div class="tri-head">▍排除构词法干扰 <span class="tagline"><span class="tag">#排雷</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 第 5 页脚注① / 第 18 页</div>
+    <blockquote>
+      "这种解释在构词法里不适用，因为有'黑墨''酸醋''咸盐'一类复合词。"<br><br>
+      "凡明显的凝固格式（清唱、大考、小看、红烧、白炖）都没有列入。"
+      <span class="src">—— 一处放脚注，一处放正文</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最"低成本、高收益"的一步。朱德熙要主张"甲类不作状语"，
+    而"白炖、红烧"这类格式表面上正是单音形容词修饰动词——若不先切割，
+    后文将处处被纠缠。他的处置是：<strong>把"构词法产物"与"自由造句规则"两个平面在进入论证前就分开</strong>，
+    此后所有结论只对后者负责。</p>
+    <p>更值得注意的是<strong>位置安排</strong>：能一句话说清的就放脚注，涉及关键判断的（凝固格式）就放正文。
+    脚注不是"边角料"，而是"排雷区"。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "本文只讨论 <span class="sans">{自由造句规则}</span>，凡属 <span class="sans">{构词法产物／凝固格式／语用省略}</span> 的，均不在讨论之列。"<br>
+      <span class="src">提示：这句话若放正文，就写成"凡……都没有列入"（强声明）；若只影响局部，就放脚注（弱声明）。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>亮出统领全篇的理论假说</h4>
+<div class="tri">
+  <div class="tri-head">▍范畴命名 <span class="tagline"><span class="tag">#命题</span><span class="tag">#升华</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §0.2</div>
+    <blockquote>
+      "从意念上看，甲类成分表示的是单纯的属性，乙类成分表示的属性都跟一种量的观念或是说话的人对于这种属性的主观估价作用发生联系。"
+      <span class="src">—— 抽象概括意义的正面表述</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>作者在进入主体分析<strong>之前</strong>先把理论判断亮出来，而不是留到最后揭晓。
+    这样做的好处是：后面每一节的句法测试都不再是"罗列现象"，而是"为这个假说补充证据"——
+    读者始终知道每一步在为什么服务。<strong>先立假说、后铺证据</strong>，是长篇论证保持方向感的关键。</p>
+    <p>此外，"量的观念""主观估价作用"这两个提法，早已埋下第 5 节讨论重叠式感情色彩的伏笔。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "我们主张这样来解释这个现象：在现代汉语里，<span class="sans">{P}</span> 与 <span class="sans">{Q}</span> 两种概念的区别构成一个语法范畴——<span class="sans">{N}</span> 范畴。<span class="sans">{A}</span> 与 <span class="sans">{B}</span> 两类成分正是表示这个语法范畴内部两种对立概念的语法形式。"
+      <span class="src">来源：本文 §0.2 原文句式。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s1-2">1.2 主体动作：四大槽位的横向排查</h3>
+
+<h4><span class="lv">（1）</span>篇章骨架：主体章节＝句子成分槽位</h4>
+<p>这是朱德熙谋篇上最清晰的一步：<strong>把"章节标题"直接做成"句法槽位表"</strong>。</p>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 1-1</b>　《现代汉语形容词研究》主体章节＝四大句法槽位（另加第 5 节感情色彩）</div>
+  <div class="chain">
+    <div class="node"><span class="nt">§1 定语</span>限制 vs. 描写<br>第 5—16 页 · 8 小节</div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">§2 状语</span>甲类排斥 / 乙类常任<br>第 16—24 页 · 4 小节</div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">§3 谓语</span>分类区别 vs. 情态估价<br>第 24—30 页 · 5 小节</div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">§4 补语</span>单纯性质 vs. 状态完成<br>第 30—32 页 · 2 小节</div>
+    <div class="arrow">→</div>
+    <div class="node blue"><span class="nt">§5 重叠式感情色彩</span>由句法推出主观情态<br>第 32—37 页</div>
+  </div>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍节内推进程序 <span class="tagline"><span class="tag">#框架</span><span class="tag">#承继</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>每一节的内部都走同一条流水线，近乎"统一工序"：</p>
+    <ol>
+      <li><b>列出合法与不合法对立体</b> →</li>
+      <li><b>施加虚词与槽位测试</b> →</li>
+      <li><b>揭示深层语义特征</b> →</li>
+      <li><b>离析例外与兼类</b></li>
+    </ol>
+    <p>固定程序的最大价值是<strong>可预期</strong>：读者读到第三节时已能预判作者的下一步，
+    阅读负担大幅降低，注意力全部留给证据本身。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      节内四步：<br>
+      「先摆合法与不合法两式 → 施加 <span class="sans">{虚词／槽位／变换}</span> 测试 → 揭示 <span class="sans">{深层语义特征}</span> → 离析 <span class="sans">{例外}</span>」
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>最小对立体：让隐性规律"现形"</h4>
+<p>朱德熙在第 7—8 页一口气排布数十组对立体，控制单一变量，逼出搭配规律。下表把散落的例子整理成矩阵：</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 1-1</span>甲₁式（单音甲类直接修饰）vs. 乙式（乙类复杂形式修饰）</caption>
+<thead><tr><th style="width:120px">语义概念</th><th style="width:150px">甲₁式 <span class="tag t-plus">正</span></th><th style="width:130px">反例 <span class="tag t-star">*</span></th><th style="width:160px">乙式 <span class="tag t-plus">正</span></th><th>朱德熙的结论</th></tr></thead>
+<tbody>
+<tr><td>具体事物</td><td>白纸</td><td><span class="star">*白手</span></td><td>雪白的手</td><td>甲₁式拒斥修饰具象个体，呈强凝固性</td></tr>
+<tr><td>抽象事物</td><td>—</td><td><span class="star">*深书</span></td><td>很深的书</td><td>甲类不可直接修饰抽象个体，乙式自由</td></tr>
+<tr><td>价值日用</td><td>—</td><td><span class="star">*贵手绢儿</span></td><td>挺贵的手绢儿</td><td>甲₁式缺乏分类功能时不能成立</td></tr>
+<tr><td>触感部位</td><td>—</td><td><span class="star">*凉脸</span></td><td>冰凉的脸</td><td>状态描写只能由乙类承担</td></tr>
+<tr><td>性质学问</td><td>—</td><td><span class="star">*老实学问</span></td><td>老老实实的学问</td><td>甲类与中心语存在严格选择限制</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 读表提醒</span>
+  表中"甲₁式"与"乙式"的对照，本质是<strong>把同一个概念分别用两种形式去修饰同一个中心语</strong>，
+  从而把变量的作用孤立出来。这就是"最小对立体"的定义性操作——<strong>只改一个东西，看结果变不变</strong>。
+</div>
+
+<h5>① 用"数量形容词"做压力测试</h5>
+<div class="tri">
+  <div class="tri-head">▍特殊词项检验 <span class="tagline"><span class="tag">#对立体</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §1.1</div>
+    <blockquote>
+      <span class="star">*多人</span> ／ <span class="plus">很多人</span>　　<span class="star">*少钱</span> ／ <span class="plus">很少的钱</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>"多／少"之所以被单独拎出来，是因为它们<strong>只表数量、不表分类性质</strong>，
+    因此绝对排斥进入甲₁式，只能强制进入乙类。用一对极简词项去顶撞假说，
+    看假说会不会被顶破——这是<strong>"压力测试"式论证</strong>：不是为了举例，而是为了试刀。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      选取一个"极端词项"检验通例：<br>
+      "如果 <span class="sans">{通例}</span> 成立，那么连 <span class="sans">{最不典型的词项}</span> 也应受其约束。检验结果：<span class="star">*…</span>／<span class="plus">…</span>，可见 <span class="sans">{通例}</span> 得到强化。"
+    </blockquote>
+  </div>
+</div>
+
+<h5>② 语序移位检验：同一组词，换个位置就不合法</h5>
+<div class="tri">
+  <div class="tri-head">▍移位测试 <span class="tagline"><span class="tag">#框架</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §1.2</div>
+    <blockquote>
+      甲类只能后置于数量词：<span class="plus">一朵红花儿</span> 成立，而 <span class="star">*红（的）一朵花儿</span> 不成立；<br>
+      乙类前后皆可：<span class="plus">一朵鲜红的花儿</span> 与 <span class="plus">鲜红的一朵花儿</span> 均合法。
+      <span class="src">—— 数量词充当"区分器"</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这里的写作动作是<strong>借第三方成分（数量词）把差异逼出来</strong>。
+    单看"白的纸"与"雪白的纸"差异不明显，一旦加入数量词并挪动语序，两类成分的差别立刻显形。</p>
+    <p>接着作者给出了解释——不是停在打星号上：</p>
+    <blockquote>
+      "由甲类成分充任的定语是限制性的，因此中心语所指的必须是具有一定的外延的类名……如果中心语所指的不是类名，而是个别的、特殊的事物，那就不能在它前面加限制性定语。"
+    </blockquote>
+    <p>数量词使中心语<strong>特指化</strong>为个体，个体不可能再被分类，于是排斥限制性的甲类、只接受描写性的乙类。
+    <strong>从"打星号"走到"给机制"</strong>，这一步是描写升格为解释的分水岭。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "在 <span class="sans">{A}</span> 中的 <span class="sans">{X类}</span> 只能出现在 <span class="sans">{位置甲}</span>（<span class="plus">合法例</span>），
+      不能出现在 <span class="sans">{位置乙}</span>（<span class="star">*不合法例</span>）；而 <span class="sans">{Y类}</span> 则两处皆可。<br>
+      其内在制约在于：<span class="sans">{Y类}</span>具有<span class="sans">{功能称谓}</span>，而<span class="sans">{X类}</span>具有<span class="sans">{功能称谓}</span>，故……"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>"的"字性质的五项测试</h4>
+<div class="tri">
+  <div class="tri-head">▍五条平行测试槽 <span class="tagline"><span class="tag">#框架</span><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §1.4　甲₂式（白的纸）vs. 乙式（雪白的纸）</div>
+    <blockquote>
+      ① 能否加数量词／指代词：<span class="plus">一个大的</span> ／ <span class="star">*一个大大的</span><br>
+      ② 作谓语是否依赖系词：<span class="plus">这个是大的</span>（须系词） ／ <span class="plus">脸上红红的</span>（不需系词）<br>
+      ③ 能否受副词修饰：甲的 ✗ ／ <span class="plus">脸上永远红扑扑的</span> ✓<br>
+      ④ 能否充任补语：甲的 ✗ ／ <span class="plus">炖得嫩嫩的、答应得好好的</span> ✓<br>
+      ⑤ 能否修饰动词：甲的 ✗ ／ <span class="plus">重重地给我一拳、冷冷地说</span> ✓
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>五项测试不是随意堆叠，而是一套<strong>相互独立的平行证据</strong>。
+    单项可能有争议，五项同向就极难反驳。这种"多槽位同向验证"的排布，
+    在写法上有一个要点：<strong>格式必须完全统一</strong>（都用"能否……：例A／例B"），
+    让读者能横着读出一条证据链，而不是被参差的表述打断。</p>
+    <p>测试完毕才下结论：甲类之后的"的"具有<strong>体词化作用</strong>，乙类之后的"的"是<strong>形容词词尾</strong>。
+    先测后断，顺序不可倒置。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "为确定 <span class="sans">{X}</span> 的性质，我们设定以下 <span class="sans">{n}</span> 项平行测试：<br>
+      ① 能否 <span class="sans">{…}</span>　② 能否 <span class="sans">{…}</span>　③ 能否 <span class="sans">{…}</span>……<br>
+      测试结果一致指向：<span class="sans">{结论}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s1-3">1.3 材料的剪裁与反例处置</h3>
+
+<h4><span class="lv">（1）</span>文学书证的"骨干化"剪裁</h4>
+<div class="tri">
+  <div class="tri-head">▍例证降噪 <span class="tagline"><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 文学例句均经精简</div>
+    <blockquote>
+      引曹禺《雷雨》："您行行好，您再重重地给我一拳"；<br>
+      引《红楼梦》："端端正正坐在那里"。
+      <span class="src">—— 引老舍、鲁迅、曹禺、《红楼梦》、《新儿女英雄传》，均注明版本出处</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>名家引用文学语句，从不是为了"显得典雅"，而是<strong>为了提供可验证的语感锚点</strong>。
+    因此剪裁原则是：<strong>只留足以呈现语法关系的最小结构</strong>，删去一切与论题无关的文学修饰。
+    同时，凡关键分析处均注明文献来源（如"《人民文学》54.9.61""《毛泽东选集》686页"），
+    使语料兼具口语真实性与书面语权威性。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      引用原则：<b>剪到只剩主谓宾</b>，能证明语法关系即止；<b>出处必注</b>，注明作者、篇名、页码。<br>
+      "例如：<span class="sans">『精简后的例句』</span>（<span class="sans">{作者}《{篇名}》{页码}</span>）"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>反例处置的两大绝招</h4>
+
+<h5>① 兼类离析法：析出同形副词</h5>
+<div class="tri">
+  <div class="tri-head">▍反例离析 <span class="tagline"><span class="tag">#离析</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §2.3</div>
+    <blockquote>
+      "白₁和白₂的意义和造句功能都不相同，应该算两个词：白₁是形容词，白₂是副词……从以上的分析看来，
+      单音形容词作状语的格式里头有许多是凝固格式，有些虽然是自由格式，但其中的形容词早已丧失了形容词的身分，变成副词了。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>面对"白跑、直哭、老打架、光说不练"这批表面破例，
+    作者<strong>没有妥协修改通例</strong>，而是先建对立矩阵证明其"意义与功能均已断裂"，
+    再立为兼类词。下表即该矩阵的整理：</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{A₁}</span> 和 <span class="sans">{A₂}</span> 的意义和造句功能都不相同，应该算两个词：<span class="sans">{A₁}</span> 是 <span class="sans">{类₁}</span>，
+      <span class="sans">{A₂}</span> 是 <span class="sans">{类₂}</span>。能作 <span class="sans">{某用法}</span> 的 <span class="sans">{A}</span>，在语法性质上实际上已经转化为 <span class="sans">{类₂}</span>。"
+      <span class="src">来源：本文 §2.3 原文句式。要点：先证"意义断裂＋功能断裂"，再下兼类判断。</span>
+    </blockquote>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 1-2</span>兼类离析矩阵（据 §2.3 整理）</caption>
+<thead><tr><th style="width:64px">词项</th><th style="width:170px">形容词用法（定／谓·表属性）</th><th style="width:180px">副词用法（状·表方式／情态）</th><th>离析判定理由</th></tr></thead>
+<tbody>
+<tr><td class="k">白</td><td>白纸（颜色）</td><td>白跑、白担心（徒劳）</td><td>意义断裂、功能互斥 → 立"白₁（形）／白₂（副）"</td></tr>
+<tr><td class="k">直</td><td>直心眼儿（笔直）</td><td>直哭、直挺挺站着（持续／径直）</td><td>空间属性虚化为时间情态副词</td></tr>
+<tr><td class="k">光</td><td>光脚（裸露）</td><td>光说不练（仅仅／只）</td><td>词义完全转化为范围副词</td></tr>
+<tr><td class="k">老</td><td>老干部（年长）</td><td>老打架（总是／经常）</td><td>转化为频率副词</td></tr>
+<tr><td class="k">硬</td><td>硬功夫（坚硬）</td><td>硬拉住（勉强／坚决）</td><td>转化为情态方式副词</td></tr>
+</tbody>
+</table>
+</div>
+
+<h5>② 凝固格式与历时新词："把反例移到规则之外"</h5>
+<div class="tri">
+  <div class="tri-head">▍词汇化与历时说明 <span class="tagline"><span class="tag">#离析</span><span class="tag">#排雷</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §2.1</div>
+    <blockquote>
+      同义词替换测试：<span class="star">*轻搁、*重揍、*高嚷、*紧拿</span> —— 证明"轻放、重打、高喊、紧握"后接成分受死板限制，<b>不具类推能产性</b>，属凝固格式。<br><br>
+      对"完全、容易、干脆、仔细、公开、正式"等可作状语的双音形容词，
+      明确说明"这一类形容词里头，大部分是历史比较短的新词"。
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>两种"移出规则外"的手法，机制不同却同向：</p>
+    <ul>
+      <li><b>能产性测试</b>：换同义词就不成立 → 说明不是自由格式，而是整体凝固的词汇单位；</li>
+      <li><b>时代归属</b>：把不守规矩的一批归为"历史较短的新词" → 说明它们不属于汉语原生构式系统。</li>
+    </ul>
+    <p>关键在于：<strong>反例不是被忽略，而是被准确定位</strong>。作者从不装作反例不存在。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      「能产性测试」"这类格式不能类推：把 <span class="sans">{X}</span> 换成同义成分 <span class="sans">{X′}</span>，<span class="star">*…</span> 即不成立，可见其非自由造句格式。"<br>
+      「时代定位」"这一类 <span class="sans">{X}</span> 大部分是 <span class="sans">{某时期}</span> 才出现的 <span class="sans">{新词／外来格式}</span>，不影响 <span class="sans">{原生系统}</span> 的核心规律。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>过渡现象如实描摹：不给双音形容词"削足适履"</h4>
+<div class="tri">
+  <div class="tri-head">▍范畴的连续统 <span class="tagline"><span class="tag">#剪裁</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §1.8</div>
+    <blockquote>
+      "单音形容词是典型的甲类成分，双音形容词一般都带有乙类成分的某些性质……在现代书面语里，
+      双音形容词加上'地'（或写作'的'）之后可以自由地作状语。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最见"学品"的一处。作者完全可以只讲单音、把双音含糊带过，
+    让规则显得更加整齐；但他选择<strong>如实指出双音形容词的过渡性质</strong>——
+    作定语时偏描写（"伟大的毛泽东、聪明的孙中山"），
+    却<strong>不能像乙类那样自由作谓语和补语</strong>。</p>
+    <p>写法上的启示是：<strong>承认连续统，比宣称铁律更可信</strong>。
+    一个能说清"例外为什么是例外"的规则，胜过一个把所有事实都硬塞进去的规则。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{典型成员}</span> 是典型的 <span class="sans">{A类}</span>；<span class="sans">{过渡成员}</span> 一般都带有 <span class="sans">{B类}</span> 的某些性质，
+      表现为 <span class="sans">{表现一}</span>，但在 <span class="sans">{表现二}</span> 上仍受限制。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s1-4">1.4 机制归因与升华：从句法推出主观情态</h3>
+
+<div class="tri">
+  <div class="tri-head">▍槽位对感情色彩的反转调控 <span class="tagline"><span class="tag">#升华</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §5.4</div>
+    <blockquote>
+      "'大大的眼睛''黑黑的皮肤''高高的鼻子'不是说大、黑、高已臻极致，而是说恰到好处。"
+      <span class="src">—— 重叠式的感情色彩随句法位置发生反转</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>第 5 节是全篇的"出海口"：前四节的调查都在讲"哪类成分能进哪个槽位"，
+    到这里作者反过来问——<strong>同一个成分进了不同槽位，意义会不会变？</strong> 答案是有系统地变：</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "同一个 <span class="sans">{形式}</span> 出现在不同句法位置时，其 <span class="sans">{主观量／感情色彩}</span> 会随之发生反转：<br>
+      位于 <span class="sans">{槽位甲}</span> 时表 <span class="sans">{义甲}</span>；位于 <span class="sans">{槽位乙}</span> 时表 <span class="sans">{义乙}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 1-2</b>　重叠式感情色彩随句法槽位反转（据 §5.3—5.4）</div>
+  <div class="chain">
+    <div class="node" style="flex:0 0 100%; background:#F6F7F1; border-style:dashed;"><span class="nt">形容词完全重叠式</span>（如"重重、短短、红红"）</div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">位于状语／补语</span>主观量<b>加重</b>、强化<br><span style="font-size:12px;color:var(--ink-3)">重重地打、走得远远的</span></div>
+    <div class="arrow">／</div>
+    <div class="node alt"><span class="nt">位于定语／谓语</span>主观量<b>轻微</b>、小称爱称<br><span style="font-size:12px;color:var(--ink-3)">短短的头发、大大的眼睛</span></div>
+  </div>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍消极词汇的重叠阻断 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §5.5</div>
+    <blockquote>
+      贬义词通常不能重叠：<span class="star">*丑丑的、*臭臭的、*坏坏的</span><br>
+      若因修辞必须重叠，须置于特定语境中消除贬义，转为怜爱的小称义：
+      <span class="plus">"脏脏的小脸，怪惹人爱的"、"这豆腐臭臭的，挺有味儿"</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这里用的是<strong>从反面证成</strong>：重叠式自带"爱抚、亲热"的语用色彩，
+    与贬义词汇语义冲突，故被阻断；只有在语境消解了贬义后，重叠才被允许。
+    <strong>一个反例方向，反过来加固了正面结论</strong>——这是收尾处最经济的手法。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "这类 <span class="sans">{形式}</span> 通常不能与 <span class="sans">{某类词}</span> 同现（<span class="star">*…</span>），
+      因为 <span class="sans">{形式}</span> 自带 <span class="sans">{语用色彩甲}</span>，与 <span class="sans">{某类词}</span> 的 <span class="sans">{语义色彩乙}</span> 冲突；
+      若在 <span class="sans">{特殊语境}</span> 中色彩被消解，则同现即可成立（<span class="plus">…</span>），从反面印证了上述制约。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍本篇技法一句话</span>
+  <strong>用一个贯穿全篇的对立变项（甲／乙），横向铺开全部相关槽位，节节复现同一道工序；反例一律"离析而不妥协"。</strong>
+</div>
+
+<!-- ---------- 理据层 ---------- -->
+<h3 id="s1-5">1.5 深读：理论、例证与结论的咬合</h3>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 本节体例</span>
+  本节只依据原文自身可核验的内容展开。每处标注分两级：
+  <span class="src-tag src-self">原文自述</span>＝作者在文中明确说出；
+  <span class="src-tag src-infer">文本可证</span>＝作者未直说，但能从该文自身的论证操作中直接看出。
+  <strong>不引入原文之外的学术史判断。</strong>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍理论依据 <span class="dh-sub">本篇材料偏薄：全文未自标任何理论名目</span></div>
+  <div class="deep-body">
+    <h6>① 原文明确交代的，只有"排除什么"</h6>
+    <p>通篇检索，作者<strong>没有</strong>点名任何理论流派、任何前人论著、任何方法论术语（"分布""变换""结构主义"等一律未出现）。
+    唯一一处接近理论立场表述的，是对传统做法的否定：</p>
+    <blockquote>
+      "传统语法受印欧语影响，往往把形容词看成均质的一类，认为形容词天然可以作定语或谓语。"
+      <span class="src">—— 这是全文唯一一处指向"他人的做法"的表述 <span class="src-tag src-self">原文自述</span></span>
+    </blockquote>
+    <p class="gap-note">⚠ 注意：原文此处<strong>未点名</strong>是哪一部著作、哪一位学者，也未使用"印欧语眼光""理论移植"等后来常见的提法。这是本文与 <a class="ref" href="#s4-1">陆俭明篇</a> 在"如何谈理论"上的最大差别。</p>
+
+    <h6>② 方法取向只能从操作中看出</h6>
+    <p>作者虽不自标方法名，但其全部论证靠"<strong>控制变量、以合法度对立逼出分布限制</strong>"推进——这是从文本操作可证的方法取向：</p>
+    <ul>
+      <li>通篇以"<span class="plus">正例</span>／<span class="star">*反例</span>"成对排布作为基本论证单位（§1.3 一口气排数十组）；<span class="src-tag src-infer">文本可证</span></li>
+      <li>以"能否进入某一槽位"作为分类依据，而非以意义描述分类（§1 定语／§2 状语／§3 谓语／§4 补语）；<span class="src-tag src-infer">文本可证</span></li>
+      <li>对"的"字性质的判定，完全由五项可观察的句法行为测试得出（§1.4）。<span class="src-tag src-infer">文本可证</span></li>
+    </ul>
+    <p class="gap-note">⚠ 边界：上述三点是<strong>对本文操作方式的描述</strong>，不等于说作者隶属于某一流派。原文没有这层自述，本文档也不作此判断。</p>
+  </div>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 空缺登记</span>
+  本篇<strong>不设"学术对话"节</strong>：全文未点名任何具体前人、未引用任何论著以作商榷，
+  也未出现"某某认为……实则不然"这类对话句式。作者与前人的关系，只体现为一句笼统的"传统语法受印欧语影响"。<br>
+  该空缺已登记于 <a class="ref" href="#s6-6">§6.6 跨篇对照表</a>。
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍例证与理论的咬合 <span class="dh-sub">本文最强的部分</span></div>
+  <div class="deep-body">
+    <h6>① 例证不是"支撑"，而是"塑形"</h6>
+    <p>本文的例证承担的功能，超出一般意义的"佐证"——它<strong>直接生产规则</strong>。链条是这样的：</p>
+    <ol>
+      <li><b>先立一个总对立</b>（甲类／乙类）作为理论骨架；</li>
+      <li><b>再让每一组对立体去"试"这个骨架</b>——凡不合者，不是丢掉，而是追问"为什么不合"；</li>
+      <li><b>由"为什么不合"反推出一条具体限制</b>，从而把总对立填实。</li>
+    </ol>
+    <p>以最典型的一例走一遍：对立体是 <span class="star">*白手</span> ／ <span class="plus">雪白的手</span>，
+    作者没有停在打星号，而是问：为什么甲类不能修饰"手"？答案是——</p>
+    <blockquote>
+      "由甲类成分充任的定语是限制性的，因此中心语所指的必须是具有一定的外延的类名……如果中心语所指的不是类名，而是个别的、特殊的事物，那就不能在它前面加限制性定语。"
+    </blockquote>
+    <p>于是"限制性／描写性"这一对理论概念，不是被<strong>先声明</strong>的，而是被<strong>例证逼出来</strong>的。
+    这就是例证与理论的咬合方式：<strong>理论提供对立框架，例证提供限制内容，二者互为填充。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 大量例证的"同一格式"是刻意的</h6>
+    <p>§1.4 的五项测试（能否加数量词／是否依赖系词／能否受副词修饰／能否作补语／能否修饰动词），
+    格式完全统一。这种一致性让五条例证<strong>可以横着读成一条证据链</strong>，而不是五个孤立观察。
+    <strong>例证的排列形式本身，就是论证力的一部分。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 反例的处置也服务于理论</h6>
+    <p>"白跑""直哭"这一类表面反例，若简单剔除，会留下"规则有漏洞"的印象。
+    作者的处理是：<strong>给它们一个新的身份</strong>（兼类副词白₂、直₂），
+    使主规则（甲类不作状语）在形式上完好无损。反例因此从"威胁"变成了"理论精度的证明"。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍分类如何映射结论 <span class="dh-sub">让结论"看得见"的排布法</span></div>
+  <div class="deep-body">
+    <h6>① 分类的维度＝结论的维度</h6>
+    <p>本文最值得学的一点：<strong>结论不是最后才出现的，而是被拆成分类维度、提前贯穿到目录里</strong>。</p>
+    <p>原文的结论是"甲、乙两类在语法功能上全面对立"。怎么证明"全面"？
+    作者的解法是把句法功能<strong>摊开成四个槽位</strong>，让每一槽位成为一章：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 1-1</span>分类维度与结论的对应关系</caption>
+    <thead><tr><th style="width:120px">槽位（分类维度）</th><th style="width:200px">该槽位测出的对立</th><th>它对总结论的贡献</th></tr></thead>
+    <tbody>
+    <tr><td class="k">§1 定语</td><td>甲类＝限制性限定；乙类＝描写性限定</td><td>证明"限制 vs. 描写"的对立（第一块砖）</td></tr>
+    <tr><td class="k">§2 状语</td><td>甲类一般排斥；乙类经常担任</td><td>证明对立不止于定语位置（第二块砖）</td></tr>
+    <tr><td class="k">§3 谓语</td><td>甲类带"的"表分类区别；乙类直接表情态估价</td><td>证明对立延伸到谓语位置（第三块砖）</td></tr>
+    <tr><td class="k">§4 补语</td><td>甲类表单纯性质；乙类兼表状态完成</td><td>补齐全部分布（第四块砖）</td></tr>
+    <tr><td class="k">§5 重叠式感情色彩</td><td>同一形式在不同槽位主观量反转</td><td>由"分布对立"推进到"意义调控"</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>四个槽位各测一次，四次结果同向，于是"<strong>全面对立</strong>"这个结论就<strong>不是断言，而是统计式的事实</strong>。
+    分类在这里的作用是：<strong>把一个需要"证明"的结论，转化为四个可以被分别检验的子问题。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 节内工序固定，是为了让"同向"看得清</h6>
+    <p>每一节内部都走同一道工序（列对立体 → 施测试 → 揭语义 → 离析例外）。
+    这一固定程序的意义不只是"好读"，更在于：<strong>四节结果可比、可累加</strong>。
+    若各节写法不同，读者就无法确认"四次测的是同一件事"。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 结尾不换轨</h6>
+    <p>§5 讨论重叠式感情色彩，看似另起话题，实则仍在同一逻辑链上：
+    前四节证明"两类在分布上对立"，§5 证明"同类的意义随分布位置而变"——
+    两者共同支撑"<strong>形式与意义相互制约</strong>"这一格局。结论与分类维度自始至终是同一套坐标系。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     第二篇 · 邢福义
+     ============================================================ -->
+<section id="s2">
+<h2><span class="num">二</span>邢福义《说"NP了"句式》</h2>
+
+<div class="master">
+  <div class="mname">邢福义<span class="yr">1984 · 《语文研究》</span></div>
+  <div class="mdesc">
+    范式：<b>小句个案研究</b>。全文只盯住"名词／名词短语 + 了"这一个三字口语格式，
+    却依次剥离出<b>复句关联、语义推移性、自足非主谓句、否定阻断</b>四层规则。
+    写作示范价值在于：<b>如何把一个小题目做成大文章的完整路线图——代号化、删减测试、还原隐去成分、反例证伪、句型定性。</b>
+  </div>
+</div>
+
+<h3 id="s2-1">2.1 引言动作：代号化 + 十秒聚焦</h3>
+
+<h4><span class="lv">（1）</span>开宗明义，省略一切学科背景</h4>
+<div class="tri">
+  <div class="tri-head">▍格式代号破题 <span class="tagline"><span class="tag">#切入点</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 开篇第一段</div>
+    <blockquote>
+      "一个名词或名词短语，带上'了'，可以成为一个分句，跟别的分句合成复句。
+      NP 代表名词和名词短语，S 代表跟'NP了'连用的分句，可以列出两个基本格式：
+      Ⅰ　NP了，S。　Ⅱ　S，NP了。
+      格式Ⅰ，'NP了'充当前分句；格式Ⅱ，'NP了'充当后分句。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>开篇三件事，一气完成：<strong>给对象代号（NP）、给环境代号（S）、列出两个镜像格式</strong>。
+    读者在头十秒内就被安置在一个只有两个槽位的极小棋盘前。</p>
+    <p>注意这里<strong>没有一句现代汉语体貌系统的综述</strong>。
+    邢福义的选题策略是"<strong>以小见大</strong>"：越是小格式，越需要一个干净的代号系统，
+    否则读者的注意力会被术语淹没。这恰恰是"小题目能否做大"的关键——
+    <strong>题目小不等于格局小，取决于你能不能把它接到大问题上</strong>。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "一个 <span class="sans">{成分甲}</span>，带上 <span class="sans">{标记}</span>，可以成为一个 <span class="sans">{句法单位}</span>，跟别的分句合成复句。
+      <span class="sans">{X}</span> 代表……，<span class="sans">{Y}</span> 代表……，可以列出两个基本格式：Ⅰ <span class="sans">{…}</span>；Ⅱ <span class="sans">{…}</span>。"
+      <span class="src">来源：本文开篇原文句式。要点：先立代号，再列格式，最后交代各格式的功能分工。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>对称例证铺设基础事实</h4>
+<div class="tri">
+  <div class="tri-head">▍极简用例排布 <span class="tagline"><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 紧跟代号之后</div>
+    <blockquote>
+      格式Ⅰ：① <span class="plus">大姑娘了，要注意整洁。</span>　② <span class="plus">大姑娘了，一件象样的衣服也没有。</span><br>
+      格式Ⅱ：③ <span class="plus">要注意整洁，大姑娘了。</span>　④ <span class="plus">一件象样的衣服也没有，大姑娘了。</span>　⑤ <span class="plus">转眼春妞已有十八岁，大姑娘了。</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>五例的排列不是随意的：<strong>前两例属格式Ⅰ、后三例属格式Ⅱ</strong>，
+    而且用的都是同一个"大姑娘了"——<strong>中心成分不变，只换位置与搭配</strong>，
+    读者一眼就能看出格式差别。</p>
+    <p>"对称例证"是小格式论文的标准起手式：<strong>用同一批材料覆盖所有待考察的格式</strong>，
+    使事实基础最小化而覆盖面最大化。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      例证排布原则：<b>同一核心成分，轮换格式位置</b>，每个格式至少两例，正例优先、反例紧随。<br>
+      "格式Ⅰ：<span class="plus">{例1}</span>　<span class="plus">{例2}</span>；格式Ⅱ：<span class="plus">{例3}</span>　<span class="plus">{例4}</span>"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>核心变量锁定：删除测试</h4>
+<div class="tri">
+  <div class="tri-head">▍删减测试 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 紧接五例之后</div>
+    <blockquote>
+      "'NP了'成为分句的关键是助词'了'。如果不用'了'，NP 和 S 就不构成复句，或者连起来说站不住。如：<br>
+      ⑥ <span class="star">*大姑娘，要注意整洁。</span>　⑦ <span class="star">*大姑娘，一件象样的衣服也没有。</span><br>
+      ⑧ <span class="star">*要注意整洁，大姑娘。</span>　⑨ <span class="star">*一件象样的衣服也没有，大姑娘。</span>"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最漂亮的一步，值得逐层拆开看：</p>
+    <ul>
+      <li><b>只动一个成分</b>：把"了"拿掉，其余一字不改；</li>
+      <li><b>结果全面崩坏</b>：四例均不成立或不再是原来的句子；</li>
+      <li><b>推论直取核心</b>：体词性成分（NP）本身不能作小句谓头，正是"了"赋予它陈述性与成句性。</li>
+    </ul>
+    <p>写作上的要害是：<strong>在第一段就用一个测试把全篇的核心变量锁死</strong>。
+    此后所有讨论都围绕"了"与 NP 的互动展开，读者的注意力被一次性收束。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "'<span class="sans">{格式}</span>' 成为 <span class="sans">{句法单位}</span> 的关键是 <span class="sans">{成分}</span>。
+      如果不用 <span class="sans">{成分}</span>，<span class="sans">{X}</span> 和 <span class="sans">{Y}</span> 就不构成 <span class="sans">{关系}</span>，或者连起来说站不住。<br>
+      如：<span class="star">*…</span>"
+      <span class="src">来源：本文原文句式。适用于任何"某虚词／某标记是关键"的论证。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s2-2">2.2 主体动作：槽位倒置与复句关系统查</h3>
+
+<h4><span class="lv">（1）</span>五种逻辑语义关系的对立矩阵</h4>
+<p>邢福义把"NP了"在复句中的功能系统排查一遍，排成一个五格矩阵。这是"小格式做大文章"的关键扩容动作——<strong>把句法格式接到复句逻辑类型上</strong>。</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 2-1</span>"NP了"在复句中的五种逻辑语义关系</caption>
+<thead><tr><th style="width:120px">句式类型</th><th style="width:110px">线性语序</th><th style="width:230px">典型例句</th><th>逻辑语义关系说明</th></tr></thead>
+<tbody>
+<tr><td class="k">顺向因果式</td><td>NP了，S</td><td>大姑娘了，要注意整洁</td><td>前分句陈述前提原因，后分句推导行为结果</td></tr>
+<tr><td class="k">顺向转折式</td><td>NP了，S</td><td>别看二十几的人了，却爱脸红</td><td>前分句设定义务预期，后分句出现逆向事实</td></tr>
+<tr><td class="k">倒置因果式</td><td>S，NP了</td><td>要注意整洁，大姑娘了</td><td>先行点明结论／要求，后置分句作原因补释</td></tr>
+<tr><td class="k">倒置转折式</td><td>S，NP了</td><td>说话跟穿开裆裤的孩子差不离，四十多岁的人了</td><td>逆向事实前置，后置"NP了"形成强烈讽刺反差</td></tr>
+<tr><td class="k">归结按注式</td><td>S，NP了</td><td>同学六年，同厂十一年，十七年的朋友了</td><td>前置分句铺陈事实，后置分句进行量化归结与按注</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 2-1</b>　"NP了"的位置与复句关系：一条镜像轴</div>
+  <div class="chain">
+    <div class="node"><span class="nt">格式Ⅰ：NP了，S</span>前分句<br><b>因果式</b>（→推导）<br><b>转折式</b>（→逆反）</div>
+    <div class="arrow">⟷</div>
+    <div class="node alt"><span class="nt">格式Ⅱ：S，NP了</span>后分句<br><b>因果式</b>（←补释）<br><b>转折式</b>（←反差）<br><b>按注式</b>（←归结）</div>
+  </div>
+  <div style="margin-top:10px;font-size:13.5px;color:var(--ink-2);font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
+    要点：<b>关系类型（因果／转折）与语序（前／后）交叉配列</b>，一个"位置×关系"的二维网格就把看似零散的口语句式收拾干净。
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>引入"都"与"嘛"做主观量检验</h4>
+<div class="tri">
+  <div class="tri-head">▍虚词共现测试 <span class="tagline"><span class="tag">#框架</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §2</div>
+    <blockquote>
+      "不管是因果式还是转折式，'NP了'后边都可以加'嘛'，借以表示情况明显。如：'大姑娘了嘛，要注意整洁。'"<br><br>
+      "按说也可以用'已经NP了'，但口语中常说'都NP了'。看这几个例子：
+      ⑩ <span class="plus">都老大不小的人了，还跟个孩子一样。</span>
+      ⑪ <span class="plus">都什么年代了，还在搞什么边设计、边施工、边准备投产……</span>"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是一次"由形式反推主观性"的操作：<strong>能加"嘛"、能说成"都NP了"</strong>，
+    形式上就证明了该句式内含"说话人认为情况理应显豁、甚至超出一般预期"的主观情态。</p>
+    <p>写法上的价值在于：<strong>当你需要论证一种"主观意义"时，不要直接说"这句话有主观色彩"</strong>，
+    而要去找一个<strong>可以共现的虚词</strong>当证据。可共现＝可验证。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "不管是 <span class="sans">{关系甲}</span> 还是 <span class="sans">{关系乙}</span>，'<span class="sans">{格式}</span>' 后边都可以加 <span class="sans">{虚词}</span>，借以表示 <span class="sans">{主观义}</span>。如：'<span class="sans">{例句}</span>'"<br>
+      "按说也可以用 <span class="sans">{形式甲}</span>，但口语中常说 <span class="sans">{形式乙}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>隐去成分的还原测试</h4>
+<div class="tri">
+  <div class="tri-head">▍"隐去 S"假说 <span class="tagline"><span class="tag">#承继</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §2</div>
+    <blockquote>
+      "'NP了'有时单独出现，实际上是隐去了 S……'NP了'和隐去的 S 之间有因果关系或转折关系。
+      例如：'老同学，老朋友了。'后边显然隐去了'当然认识'……'老兵啦'等于'老兵了啊'，后边隐去了'当然会用'……
+      假说一位教师看学生作文，发现错别字连篇，摇头叹道：'咳，高中生了！'后边显然隐去了'还写这么多的错别字'，
+      在这种情况下，'NP了'和隐去的 S 之间便是转折关系了。"<br><br>
+      "第二，'NP了'是个感叹句，隐含着对某一事实的评价和赞叹……⑫ <span class="plus">中学生了！</span>（=中学生了，真不错！／真了不起！）
+      ⑬ <span class="plus">大干部了！</span>（=大干部了，真有出息！／提升得真快！）"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>面对"NP了"单独成句这种表面上的"反例"，邢福义没有否定它，而是提出<strong>"隐去 S"假说</strong>并当场还原。
+    假说＋还原两步走完：</p>
+    <ul>
+      <li><b>因果／转折型</b>：隐去的是可领会的后续分句（"当然认识""还写这么多的错别字"）；</li>
+      <li><b>评价型</b>：隐去的是评价性分句（"真不错！""真有出息！"）。</li>
+    </ul>
+    <p>这一操作把看似零散的口语感叹，<strong>统一收拢到"复句因果／转折框架"之内</strong>，保住了全文理论闭环。
+    写作启示：<strong>假说是理论的黏合剂；没有假说，孤立事实只能并列，不能被"解释"。</strong></p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "'<span class="sans">{格式}</span>' 有时单独出现，实际上是隐去了 <span class="sans">{被删成分}</span>。
+      第一，只说 '<span class="sans">{格式}</span>'，<span class="sans">{被删成分}</span> 没有说出但可以领会，二者之间有 <span class="sans">{关系}</span> 关系。<br>
+      第二，'<span class="sans">{格式}</span>' 是个 <span class="sans">{句类}</span>，隐含着 <span class="sans">{补充义}</span>，作用相当于 <span class="sans">{完整形式}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s2-3">2.3 核心语义特征："推移性"与两组反例证伪</h3>
+
+<div class="tri">
+  <div class="tri-head">▍充要条件提炼 <span class="tagline"><span class="tag">#命题</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §3</div>
+    <blockquote>
+      "能进入'NP了'句式的 NP 具有<b>推移性</b>。它所表示的概念，是由相对的概念推移而来的，原来并非如此。"
+      <span class="src">—— 全文最核心的一句定义</span>
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>从成百上千个名词中，只提炼出<strong>一个</strong>准入参项，并给它一个精确的名字。
+    注意这个定义的两个组成部分：<strong>"由相对概念推移而来"</strong>（来源）＋<strong>"原来并非如此"</strong>（历史性）。
+    两句合起来，就是一个可以拿去做测试的操作性标准。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "能进入 '<span class="sans">{格式}</span>' 的 <span class="sans">{成分}</span> 具有 <span class="sans">{特征名}</span>。
+      它所表示的概念，是由相对的概念 <span class="sans">{演变方式}</span> 而来的，原来并非如此。"
+      <span class="src">要点：给特征取一个"名"，这个名此后就是全文的抓手。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>三类推移实体的层级归纳</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 2-2</span>能进入"NP了"的三类推移实体</caption>
+<thead><tr><th style="width:150px">推移类型</th><th style="width:330px">推移方向</th><th>典型例句</th></tr></thead>
+<tbody>
+<tr><td class="k">性质变移</td><td>由小到大、由新到老、由低级到高级、由存现到消失</td><td>"大姑娘了"（小姑娘→大姑娘）｜"老兵了"（新兵→老兵）｜"中学生了"（小学生→中学生）</td></tr>
+<tr><td class="k">关系状态跃迁</td><td>由一种关系状态进入另一种关系状态</td><td>"夫妻了，还分那么清干什么？"（非夫妻→夫妻）｜"老夫老妻了，还讲这个？"</td></tr>
+<tr><td class="k">时点时段的推移</td><td>时间标尺上的自然推进</td><td>"八十年代了"｜"暑假了"｜"这么多年了"</td></tr>
+</tbody>
+</table>
+</div>
+<p class="lead">归纳完正面证据后，作者立刻转向反面证伪——<strong>这才是"推移性"从假说变成铁律的地方</strong>。</p>
+
+<h4><span class="lv">（2）</span>两组著名的最小对立体</h4>
+<div class="tri">
+  <div class="tri-head">▍反例证伪 · 第一组：可计量 vs. 不可计量 <span class="tagline"><span class="tag">#对立体</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §3</div>
+    <blockquote>
+      <span class="plus">㉑ 百把斤的猪了，哪能随便卖出去？</span><br>
+      <span class="star">㉒ *猪了，哪能随便卖出去？</span><br><br>
+      "'百把斤的猪'是由'不到百把斤的猪'变来的，有推移性，因此能说成'百把斤的猪了'；
+      '猪'不是由别的什么东西变成的，没有推移性，因此不能说成'*猪了'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>全部变量只有一个——<strong>中心语从"猪"换成"百把斤的猪"</strong>。
+    合法与不合法之间，隔着的就是"有没有变移历程"。作者的解释句用的是标准双段式：</p>
+    <p style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;font-size:14px;background:var(--green-ll);padding:8px 12px;border-radius:4px;">
+      「<b>A</b> 是由 <b>非A</b> 变来的，<b>有</b>推移性，因此能说成 A…… ；<b>B</b> 不是由别的什么变来的，<b>没有</b>推移性，因此不能说成 B……」
+    </p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "'<span class="sans">{A}</span>' 是由 '<span class="sans">{非A}</span>' 变来的，有 <span class="sans">{特征}</span>，因此能说成 '<span class="sans">{A + 格式}</span>'；<br>
+      '<span class="sans">{B}</span>' 不是由别的什么东西变成的，没有 <span class="sans">{特征}</span>，因此不能说成 '<span class="sans">{B + 格式}</span>'。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍反例证伪 · 第二组：时间矢量的单向性 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#升华</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §3</div>
+    <blockquote>
+      <span class="plus">㉓ 大孩子了，对大人要有礼貌。</span><br>
+      <span class="star">㉔ *小孩子了，对大人要有礼貌。</span><br><br>
+      "'大孩子'跟'小孩子'相对，并且是由'小孩子'变来的，因此能说成'大孩子了'；
+      '小孩子'跟'大孩子'相对，但不是由'大孩子'变来的，因此不能说成'*小孩子了'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这一组比上一组更锐利：两组词<strong>互相相对</strong>，差别只在<strong>推移方向</strong>。
+    第一组比的是"有没有历程"，第二组比的是"历程朝哪个方向"。</p>
+    <p>结论因而从"推移性"深化为<strong>具有时间矢量的推移性</strong>——
+    语言的形式不只受词性制约，还受制于人类认知世界时<strong>不可逆的时间经验</strong>。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{A}</span> 跟 <span class="sans">{B}</span> 相对，<b>并且是由</b> <span class="sans">{B}</span> 变来的，因此能说成 <span class="sans">{A + 格式}</span>；<br>
+      <span class="sans">{B}</span> 跟 <span class="sans">{A}</span> 相对，<b>但不是由</b> <span class="sans">{A}</span> 变来的，因此不能说成 <span class="sans">{B + 格式}</span>。"
+      <span class="src">这是"两组相对词＋方向差异"的经典句式，凡涉及单向演变的论题都可套用。</span>
+    </blockquote>
+  </div>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 2-2</b>　推移性的方向测试（单向不可逆）</div>
+  <div class="chain">
+    <div class="node alt"><span class="nt">起点概念</span>小孩子／不到百把斤</div>
+    <div class="arrow">→ 顺向自然推移 · 含变移量 →</div>
+    <div class="node"><span class="nt">目标概念</span>大孩子／百把斤的猪</div>
+    <div class="arrow">＋助词"了" →</div>
+    <div class="node blue"><span class="nt">合法成句</span><span class="plus">大孩子了</span>｜<span class="plus">百把斤的猪了</span></div>
+  </div>
+  <div style="margin-top:10px;font-size:13.5px;color:var(--star);font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
+    ✗ 逆向不可退移：<span class="star">*小孩子了</span>、<span class="star">*猪了</span> —— 缺乏变移历程，格式不成立
+  </div>
+</div>
+
+<h3 id="s2-4">2.4 句型定性：非主谓句与否定阻断</h3>
+
+<div class="tri">
+  <div class="tri-head">▍句型归属 <span class="tagline"><span class="tag">#命题</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4</div>
+    <blockquote>
+      "本文所说的'NP了'句式，是非主谓句句式。'NP了'具有自足性，不需补上主语，也不能直接补上主语。
+      要补主语，只能说成：［主语］是NP了。这是主谓句式，中间必须用'是'。
+      例如：单说'老夫老妻了'，本身自足，意思明显，是非主谓句；改成主谓句，就得说成'我们是老夫老妻了'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>句型学归宿用一句话划定，而且<strong>用"能不能补主语"来测试</strong>：
+    能直接补 → 主谓句；须加"是"才能补 → 说明原式本身自足，属非主谓句。
+    这是"<strong>用变换测试给句型定性</strong>"的标准动作。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "本文所说的 '<span class="sans">{格式}</span>' 句式，是 <span class="sans">{句型类别}</span> 句式。
+      '<span class="sans">{格式}</span>' 具有自足性，不需补上 <span class="sans">{成分}</span>，也不能直接补上 <span class="sans">{成分}</span>。
+      要补 <span class="sans">{成分}</span>，只能说成 <span class="sans">{变换形式}</span>，这是 <span class="sans">{另一种句型}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>化解表层假象："天啥时候了"</h4>
+<div class="tri">
+  <div class="tri-head">▍例外离析 <span class="tagline"><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4</div>
+    <blockquote>
+      "有个例外，就是有的'NP了'前边可以直接补上主语'天'，但这个主语并非实指……
+      '天'可以不用。'啥时候了'和'天啥时候了'同'下雨了'和'天下雨了'情况相似。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>面对看似致命的反例，作者用<strong>类比离析</strong>化解：
+    "天"在此并非实指主语，而是环境成分，正如"下雨了"里的"天"。
+    既承认了例外存在，又不让它动摇"NP了本质是非主谓句"的判断。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "有个例外，就是有的 '<span class="sans">{格式}</span>' 前边可以直接补上 <span class="sans">{成分}</span>，
+      但这个 <span class="sans">{成分}</span> 并非实指……它可不用。'<span class="sans">{例A}</span>' 和 '<span class="sans">{例B}</span>' 同 '<span class="sans">{类比例}</span>' 情况相似。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>否定阻断测试：全文的收口</h4>
+<div class="tri">
+  <div class="tri-head">▍否定形式缺失 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4</div>
+    <blockquote>
+      "'NP了'不能直接采用否定形式。如果要用否定形式表达跟'NP了'同义的内容，
+      就得将 NP 换成表示相对概念的 NP，并且得说成：［主语］不是NP了。这是主谓句式，'NP了'前边加'不是'。<br>
+      比较：㉖ <span class="plus">大人了，还这么爱哭！</span>　㉗ <span class="plus">不是小孩子了，还这么爱哭！</span>"<br><br>
+      "'［主语］不是NP了'实际上是'［主语］是NP了'的否定形式，因此，作为一种句式，'NP了'实际上没有否定形式。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最"巧"的一步，也是绝佳的收尾动作。逻辑链条是：</p>
+    <ol>
+      <li>"NP了"内部<strong>加不进"不"</strong> → 不能直接否定；</li>
+      <li>要表达相对意义，得<strong>换用反义 NP ＋ "不是X了"</strong> → 而这已是主谓句；</li>
+      <li>于是"'不是NP了'"其实是"'是NP了'"的否定 → <strong>"NP了"本身没有否定形式</strong>。</li>
+    </ol>
+    <p>一个"缺失"（没有否定形式），反而成了最硬的证据：
+    <strong>句法形态的单向性</strong>，从反面坐实了它作为独立非主谓构式的性质。
+    这正是"<strong>用不存在的形式证明存在的性质</strong>"——<a class="ref" href="#s3-2">吴为善篇</a>的肯定形式空缺论证，与此同源。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "'<span class="sans">{格式}</span>' 不能直接采用否定形式。如果要用否定形式表达跟 '<span class="sans">{格式}</span>' 同义的内容，
+      就得将 <span class="sans">{成分}</span> 换成表示相对概念的 <span class="sans">{成分'}</span>，
+      并且得说成 '<span class="sans">{变换式}</span>'，而这是 <span class="sans">{另一种句型}</span>。
+      因此，作为一种句式，'<span class="sans">{格式}</span>' 实际上没有否定形式。"
+      <span class="src">适用于任何"某构式在极性上不对称"的论证。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s2-5">2.5 机制归因与升华</h3>
+
+<div class="tri">
+  <div class="tri-head">▍形式描写 → 主观视角 <span class="tagline"><span class="tag">#升华</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>结尾处作者完成了一次跃升：<strong>"NP了"不只是罗列一个客观时间点或身份</strong>，
+    而是说话人把某一客观变移<strong>截取</strong>出来，作为规约、要求、责备或赞叹的<strong>情态基底</strong>。</p>
+    <p>"大姑娘了"之所以能导出"要注意整洁"或"一件像样的衣服也没有"，
+    是因为说话人心中存在着"人到了大姑娘阶段应当如何"的<strong>社会认知图式</strong>。</p>
+    <p>换言之：<strong>普通名词一旦带上"了"，其静态实体属性被压制、动态临界状态被突显</strong>——
+    以动统静，短语成句。全文由此从"句法描写"升格为"主观认知解释"。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（结语写法）</div>
+    <blockquote class="tpl">
+      "<span class="sans">{格式}</span> 绝不仅仅是在 <span class="sans">{客观功能}</span>，而是说话人将 <span class="sans">{客观事实}</span> 截取出来，
+      作为 <span class="sans">{情态类别}</span> 的基底。其背后是 <span class="sans">{社会／认知图式}</span>。
+      这也生动展现了现代汉语 <span class="sans">{宏观特质}</span> 的深层特质。"
+      <span class="src">要点：结语不重复正文结论，而是把结论接到"人"和"认知"上去。</span>
+    </blockquote>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍本篇技法一句话</span>
+  <strong>给格式立代号 → 用删除测试在第一段锁死核心变量 → 建立"位置×关系"矩阵扩容 → 提炼唯一语义参项并用两组对照反例证伪 → 最后用"否定形式的缺失"收口。</strong>
+</div>
+
+<!-- ---------- 理据层 ---------- -->
+<h3 id="s2-6">2.6 深读：例证与结论的咬合</h3>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 本节体例</span>
+  只依据原文自身可核验的内容展开。<span class="src-tag src-self">原文自述</span>＝作者明确说出；
+  <span class="src-tag src-infer">文本可证</span>＝作者未直说，但可从该文论证操作直接看出。<strong>不引入原文之外的学术史判断。</strong>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 空缺登记（两处）</span>
+  本篇<strong>不设"理论依据"节</strong>：全文未出现任何理论流派名、方法论术语或理论著作引用。
+  它<strong>也不设"学术对话"节</strong>：全文未点名任何前人，未引任何论著作商榷，未出现"某某认为……实则不然"式句式。<br>
+  换句话说——<strong>这篇论文从头到尾只做一件事：拿"大姑娘了"这个三字口语反复做测试。</strong>
+  该空缺已登记于 <a class="ref" href="#s6-6">§6.6 跨篇对照表</a>。
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍例证如何逼出规则 <span class="dh-sub">全文只靠"摆例子"推进，但每一步都在收紧</span></div>
+  <div class="deep-body">
+    <h6>① 例证的四种用法，逐级加力</h6>
+    <p>这篇论文的例证用法极为纯粹：<strong>不给理论，只给对比</strong>。而四个阶段的例证，用法各不相同：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 2-1</span>例证的四种功能及其递进</caption>
+    <thead><tr><th style="width:110px">阶段</th><th style="width:170px">例证形态</th><th style="width:230px">例证在做什么</th><th>逼出的结论</th></tr></thead>
+    <tbody>
+    <tr><td class="k">开篇</td><td>五组"大姑娘了"正例，前二后三</td><td><b>铺事实</b>：同一核心成分，轮换格式位置</td><td>该格式有两个镜像位置</td></tr>
+    <tr><td class="k">紧接</td><td>去"了"的四组 <span class="star">*反例</span></td><td><b>做删除</b>：只动一个成分</td><td>"了"是成句的关键变量</td></tr>
+    <tr><td class="k">§2</td><td>加"嘛"、加"都"的共现例</td><td><b>加标记</b>：试探可共现的成分</td><td>句式内含"情况明显"的主观义</td></tr>
+    <tr><td class="k">§3</td><td>两组对照（猪／百把斤的猪；大孩子／小孩子）</td><td><b>做证伪</b>：只改"有无变移历程"与"变移方向"</td><td>"推移性"是准入的充要条件</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>值得注意的是：<strong>作者从未陈述方法论，但例证的使用方式是层层升级的</strong>——
+    从"列举"到"删除"到"共现"到"对照证伪"，每一级都比上一级更有力。
+    这构成了一条隐性的方法论，只是它藏在例子的排布里，不写在文字上。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 关键例证被反复使用</h6>
+    <p>"大姑娘了"这一个例子，在开篇（作正例）、§2（加"嘛"、加"都"）、§4（作对照"大人了"）处反复出现。
+    <strong>同一个例子在全文不同环节承担不同论题</strong>，既省材料，又让读者始终踩着熟悉的地面。
+    这是短篇论文最经济的材料策略。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 例证的"最小差"原则</h6>
+    <p>§3 那两组对立，堪称本文例证法的极致：</p>
+    <ul>
+      <li>"猪"／"百把斤的猪"——差别只在<strong>有没有计量修饰</strong>；</li>
+      <li>"大孩子"／"小孩子"——两者互相相对，差别只在<strong>变移方向</strong>。</li>
+    </ul>
+    <p>两组对立的差别都已被压到最小，因而<strong>任何结果差异都只能归因于那一个被控制的变量</strong>。
+    这正是从文本操作可证的严格性所在。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍分类如何映射结论 <span class="dh-sub">从"两格"到"五格"再到"无格"</span></div>
+  <div class="deep-body">
+    <h6>① 分类不是目的，是"结论的载体"</h6>
+    <p>本文有三处分类，每一处都恰好承载一个结论，且<strong>分类的精细度随论证深入而提升</strong>：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 2-2</span>三处分类与三个结论的对应</caption>
+    <thead><tr><th style="width:130px">分类</th><th style="width:200px">分类依据</th><th>它承载的结论</th></tr></thead>
+    <tbody>
+    <tr><td class="k">格式Ⅰ／格式Ⅱ</td><td>位置（前分句／后分句）</td><td>该格式有两个镜像分布</td></tr>
+    <tr><td class="k">五种复句关系</td><td>位置 × 逻辑关系（因果／转折／按注）</td><td>该格式的语义功能由"位置＋关系"共同决定</td></tr>
+    <tr><td class="k">三类推移实体</td><td>推移的类型（性质／关系／时间）</td><td>"推移性"可概括为一条统一的语义参项</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>三处分类的层次很清楚：<b>格式分类 → 功能分类 → 语义分类</b>，
+    恰是全文递进的三个阶段。<strong>分类的每一次升级，都对应结论往前推进一步。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 最后用"无分类"收口</h6>
+    <p>全文最妙的一步在 §4：证明"NP了"<strong>没有否定形式</strong>。
+    前文的做法都是"分类"（分两格、分五式、分三类），而这一步用的是<strong>反面的空缺</strong>：
+    找不到一个可以成立的否定式。</p>
+    <p>于是结论链条完成闭合——<strong>正因为无法分类出否定形式，该格式的自足性才被从反面坐实</strong>。
+    "不存在的东西"成了最有力的证据。这是从文本可证的收口设计。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 结语不切换坐标系</h6>
+    <p>结语谈"说话人的社会认知图式""以动统静"，看似跳到了认知层面，
+    但它<strong>仍在回答同一个问题</strong>：为什么"NP了"能自足成句、能被用来规约与责备。
+    回答是：因为它截取的是"变移"，而变移背后是社会认知。<strong>坐标系没有换，只是焦点拉远了。</strong><span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     第三篇 · 吴为善、夏芳芳
+     ============================================================ -->
+<section id="s3">
+<h2><span class="num">三</span>吴为善、夏芳芳《"A不到哪里去"的构式解析、话语功能及其成因》</h2>
+
+<div class="master">
+  <div class="mname">吴为善　夏芳芳<span class="yr">2011 · 《语言教学与研究》</span></div>
+  <div class="mdesc">
+    范式：<b>认知构式语法（历时＋共时）</b>。以一个日常口语熟语" A 不到哪里去"为入口，
+    依次做<b>构式界定 → 话语功能分析 → 复句整合还原 → 语料库历时溯源 → 认知域承继链 → 句法重新分析</b>。
+    写作示范价值在于：<b>如何把一个小熟语做成理论样板——材料多重、层次递进、最后落到"人类认知普遍规律"。</b>
+  </div>
+</div>
+
+<h3 id="s3-1">3.1 引言动作：从"字面语义冲突"立构式</h3>
+
+<div class="tri">
+  <div class="tri-head">▍构式资格的论证 <span class="tagline"><span class="tag">#切入点</span><span class="tag">#命题</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §1</div>
+    <blockquote>
+      "从语义上分析，'不到哪里去'表达的是空间义，与性质形容词难以搭配，因此整个结构表达的意义显然不能从其构成成分直接推导出来。
+      可见，'A不到哪里去'是现代汉语中的一个典型'构式'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文的"立宪"一步。构式语法的入场券是<strong>"整体义不可从成分推导"</strong>，
+    因此作者必须先证明这一条，才有资格叫它"构式"。论证只用了两句：</p>
+    <ul>
+      <li><b>摆冲突</b>："不到哪里去"表空间义，A 却是性质形容词——两者本不相容；</li>
+      <li><b>下判断</b>：既然搭在一起且意义能懂，那意义必然不能字面相加而得 → 是构式。</li>
+    </ul>
+    <p>写法启示：<strong>使用一个理论术语之前，必须先完成该术语的"资格论证"</strong>。
+    不能上来就说"这是一个构式"，要先把"为什么只能是构式"讲清楚。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "从语义上分析，'<span class="sans">{成分甲}</span>' 表达的是 <span class="sans">{义甲}</span>，与 <span class="sans">{成分乙}</span> 难以搭配，
+      因此整个结构表达的意义显然不能从其构成成分直接推导出来。可见，'<span class="sans">{格式}</span>' 是现代汉语中的一个典型的 <span class="sans">{理论术语}</span>。"
+      <span class="src">可用作任何"某理论术语的资格论证"的骨架。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>把句法、语义、话语功能"三维捆绑"</h4>
+<div class="tri">
+  <div class="tri-head">▍研究格局的搭建 <span class="tagline"><span class="tag">#界定</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>作者锁定该格式的核心语义是——<strong>说话人对某种性状程度进行主观评述与有界限定</strong>，
+    随即把<strong>句法形式、语义量幅、篇章话语功能</strong>三线捆绑，奠定"形式—功能—认知"三维互证的研究格局。</p>
+    <p>这是当代构式研究的标准框架。放到你的论文里，这一步的作用是：<strong>在引言里就把"本文从哪几个层面看这个问题"讲明白</strong>，
+    后文各节便可分头推进而不会散架。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（研究格局句）</div>
+    <blockquote class="tpl">
+      "本文紧扣该格式表达 '<span class="sans">{核心语义}</span>' 这一功能，将 <span class="sans">{句法形式}</span>、<span class="sans">{语义量幅}</span> 与 <span class="sans">{篇章／话语功能}</span> 紧密捆绑，
+      奠定了'<span class="sans">{维度一}</span>—<span class="sans">{维度二}</span>—<span class="sans">{维度三}</span>'三维互证的研究格局。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s3-2">3.2 主体动作（一）：复句整合与还原</h3>
+
+<h4><span class="lv">（1）</span>从常规用例出发，做"还原与截取"</h4>
+<div class="tri">
+  <div class="tri-head">▍非原型复句整合假说 <span class="tagline"><span class="tag">#承继</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §3.1</div>
+    <blockquote>
+      <span class="plus">（10）（因为）她是大干部的老婆，文化自然低不到哪里去。</span>（《邓一光文选》）<br>
+      <span class="plus">（11）要是一个人能说出自己的缺点，便坏不到哪里去。</span>（岑凯伦《蜜糖儿》）
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>先摆出以因果／条件连词引导的"常规"用例，作为靶子。紧接着才是真正精彩的部分——<strong>还原</strong>：</p>
+    <blockquote>
+      "例（12b）中'近来阳光灿烂，天气还算暖和'是一个因果关系的复句，'要说冷，也冷不到哪里去'是一个转折关系的复句，
+      两者分别截取前一个分句和后一个分句，就可以构成'近来阳光灿烂，冷不到哪里去'，与例（12a）的表述相似。
+      可见例（12a）是一个整合了的因果复句。"
+      <span class="src">—— §3.1</span>
+    </blockquote>
+    <p>论证的结构是"<strong>拆—取—合</strong>"：把两个原型复句拆开，各取一半，合成一个目标句式，
+    从而证明目标句式其实是两者的<strong>压缩与信息重组</strong>。这是"<strong>用还原法证明整合性</strong>"的教科书级动作。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "从 '<span class="sans">{格式}</span>' 的话语功能分析，我们注意到这类 <span class="sans">{关系甲}</span> 复句不具有原型性，
+      它们是 <span class="sans">{关系甲}</span> 复句与 <span class="sans">{关系乙}</span> 复句整合的结果。<br>
+      请比较下列句子：<span class="sans">{原型例A}</span>｜<span class="sans">{原型例B}</span>。两者分别截取前一个分句和后一个分句，就可以构成 <span class="sans">{目标例}</span>……可见 <span class="sans">{目标例}</span> 是一个整合了的 <span class="sans">{关系甲}</span> 复句。"
+      <span class="src">来源：本文 §3.1 原文句式。"拆两个原型 → 各取一半 → 合成目标"是还原论证的固定三步。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>差比紧缩与同现成分固化</h4>
+<div class="tri">
+  <div class="tri-head">▍紧缩测试与"次话题" <span class="tagline"><span class="tag">#框架</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §3.2—3.3</div>
+    <blockquote>
+      <span class="plus">（21）科学研究证明，在某些领域，人比猴子聪明不到哪里去。</span>（新华社）<br>
+      <span class="plus">（22）昨天买了个西瓜，有点生，比黄瓜甜不到哪去。</span>（《新民晚报》）<br><br>
+      <span class="plus">（23）在大城市，校际间房子设备差距并不大，差也差不到哪里去。</span>（《人民日报》）<br>
+      <span class="plus">（24）其实，多也多不到哪里去，有时候只多了巴掌大的一点。</span>（陆文夫《人之窝》）
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>两小步，各解决一个问题：</p>
+    <ul>
+      <li><b>加"比＋NP"</b>：表达功能不变，却把一个复句<strong>紧缩</strong>为单句。作者还顺带揭示其内在的常理预设——
+      "猴子是聪明的，那么人理应更聪明"，而"聪明不到哪里去"直接<strong>打破预期阶梯</strong>，使反预期评述更鲜明；</li>
+      <li><b>扩展为"A也A不到哪里去"</b>：作者从篇章语法角度提炼规律——前置重复的 A 具有<strong>"次话题"性质</strong>，
+      上承前文语境、下启构式评判，起"话语挂钩"作用。</li>
+    </ul>
+    <p>写法启示：<strong>发现一个扩展形式，不要只记录它的样子，要给它一个句法／篇章的身份</strong>（这里是"次话题"）。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "添加 <span class="sans">{成分}</span> 后，表达功能未变，却使一个复句紧缩为一个单句，显得更简洁。"<br>
+      "构式扩展为 '<span class="sans">{扩展式}</span>'，其中前项重复出现的 <span class="sans">{成分}</span> 具有明显的'<span class="sans">{句法身份}</span>'性质，
+      起到上承前文语境、下启构式评判的话语挂钩作用。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s3-3">3.3 主体动作（二）：能性结构与极性不对称</h3>
+
+<div class="tri">
+  <div class="tri-head">▍肯定形式空缺 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4.1</div>
+    <blockquote>
+      "'V不到哪里去'可以分析为'V不到／哪里去'。前段'V不到'是否定能性述补结构，但没有平行的肯定格式'<span class="star">*V得到</span>'。"<br><br>
+      "肯定形式'能V＋到哪里去'一般不说，只有在表示反问的语境中才有可能出现，是一种有标记形式。例如：<br>
+      <span class="plus">（29）掌柜的阴沉着脸问：'这大半天跑到哪里去了？'瑞生陪着笑脸说：'我能跑到哪里去呀？就在附近转悠着……我跑不到哪里去的。'</span>（《现当代小说选》）"<br><br>
+      "依据反问句的特点，'能跑到哪里去？'还是表示'跑不到哪里去'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>与<a class="ref" href="#s2-4">邢福义篇</a>的否定阻断测试同源，但<b>论证方向相反</b>：
+    邢福义是从"<strong>没有否定形式</strong>"推论句式性质；
+    吴为善是从"<strong>肯定形式系统性缺失</strong>"推论构式的否定倾向与主观封闭性。</p>
+    <p>关键是最后一步的<strong>语用转写</strong>：肯定形式只出现在反问中，而反问句的语用特征就是"否定"，
+    因此肯定形式实质上仍表否定 → 该构式具有<strong>固定的否定倾向</strong>。
+    这一步把"形态上的空缺"翻译成了"意义上的必然"。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "'<span class="sans">{形式A}</span>' 可以分析为 '<span class="sans">{切分方式}</span>'。前段是否定 <span class="sans">{结构类型}</span>，但没有平行的肯定格式 '<span class="star">*{肯定式}</span>'。"<br>
+      "肯定形式 '<span class="sans">{肯定式}</span>' 一般不说，只有在 <span class="sans">{特殊语境}</span> 中才有可能出现，是一种有标记形式。<br>
+      依据 <span class="sans">{语用特征}</span>，'<span class="sans">{反问例}</span>' 还是表示 '<span class="sans">{否定义}</span>'，从而坐实该构式具有 <span class="sans">{极性倾向}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s3-4">3.4 语料库历时溯源与认知域承继链</h3>
+
+<h4><span class="lv">（1）</span>把最早书证"钉"在清末民国</h4>
+<div class="tri">
+  <div class="tri-head">▍历时检索 <span class="tagline"><span class="tag">#剪裁</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4.1</div>
+    <blockquote>
+      <span class="plus">（30）忽然听得庄内众声说道：'寻寻，走也走不到哪里去！'</span>……（清小说《海国春秋》）<br>
+      <span class="plus">（31）千里之外，举目无亲……她就使要偷药而逃，亦逃不到哪里去。</span>……（民国小说《上古秘史》）<br>
+      <span class="plus">（32）……那帖木真身上带着刑具，料想跑不到哪里去。</span>……（民国小说《元代宫廷艳史》）<br><br>
+      共搜得 11 条，核心动词高度聚拢于空间位移动词："走、逃、跑"。
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这里示范了"<strong>穷尽式检索＋量化汇报</strong>"的写法：<strong>给出条数（11 条）、给出来源（具体书目）、给出词项分布（走、逃、跑）</strong>。
+    三项齐备，读者才能判断这个结论是"抽样印象"还是"系统观察"。</p>
+    <p>接着，作者为这个原初形态<strong>命名</strong>为"<strong>A 式</strong>"，并概括其核心语义特征——
+    圈定"<strong>有限空间量</strong>"。命名之后，它就可以参与后面的承继链条了。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "通过对 <span class="sans">{某语料库}</span> 检索系统的搜索，事实证明上述推断是合理的。'<span class="sans">{格式}</span>' 作为一种口语表达式，
+      最早的文献记录可以追溯到 <span class="sans">{时代／文献}</span>。共搜到 <span class="sans">{n}</span> 条，其中动词主要是 <span class="sans">{甲、乙、丙}</span> 三个 <span class="sans">{类别}</span> 动词。"
+      <span class="src">来源：本文 §4.1 原文句式。要点：条数＋来源＋分布，三者缺一不可。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>三段式承继链：空间→数量→性状</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 3-1</span>构式内部动词的虚化梯度（据 §4.2）</caption>
+<thead>
+<tr><th style="width:70px">构式</th><th style="width:220px">内部核心成分性质</th><th style="width:180px">典型代表词</th><th style="width:250px">权威书证语料</th><th>映射的认知域与量范畴</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="k">A 式</td><td>V 表示物理空间位移</td><td>走、逃、跑、飞、逛、搬</td>
+<td>"寻寻，<b>走也走不到哪里去</b>！"（《海国春秋》）<br>"那只鸟已经受伤了，<b>飞不到哪里去</b>。"（《新民晚报》）</td>
+<td>空间域 → <b>有限空间量</b></td>
+</tr>
+<tr>
+<td class="k">B 式</td><td>V 的涉事论元具有可计量特征（钱财、物价、指数）</td><td>输、赢、赚、亏、涨、跌</td>
+<td>"赌个小钱……<b>赢也赢不到哪里去，输也输不到哪里去</b>。"（三十年代小说）<br>"买的股票就是<b>涨也涨不到哪里去的</b>。"（茅盾《子夜》）</td>
+<td>数量域 → <b>有限物量</b></td>
+</tr>
+<tr>
+<td class="k">C 式</td><td>V 动作性弱化，凸显行为状态与性状关联</td><td>赖、变</td>
+<td>"等到生米煮成熟饭，他老人家也<b>赖不到哪里去了</b>。"（柏杨）<br>"仍旧<b>变不到哪里去</b>。"（周作人《汉文学的传统》）</td>
+<td>性状域 → <b>有限程度量</b></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍"临界状态"的描写 <span class="tagline"><span class="tag">#剪裁</span><span class="tag">#升华</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4.2　论"赖""变"</div>
+    <blockquote>
+      "不表示具体动作，但与某种行为或状态相关，动作性弱化了，凸显了状态特征……
+      不表示确定的性状，但却圈定了一个有限的量幅范围，蕴含了'有限程度量'。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最见笔力的一句描写。"<strong>不表示 X，但……；不表示 Y，但……</strong>"——
+    用两组"否定＋转折"，精准勾住动词向形容词过渡的<strong>临界状态</strong>。</p>
+    <p>过渡现象最难点在于它会"两头都不像"。作者的处理是：<strong>先说它不是什么（排除），再说它带来了什么（承担）</strong>。
+    这个句式在写"中间状态""过渡性质"时极为好用。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "这些 <span class="sans">{成分}</span> 不表示 <span class="sans">{特征甲}</span>，但与 <span class="sans">{相关范畴}</span> 相关，<span class="sans">{特征甲}</span> 弱化了，凸显了 <span class="sans">{特征乙}</span>……
+      不表示确定的 <span class="sans">{特征乙}</span>，但却圈定了一个有限的量幅范围，蕴含了'<span class="sans">{新范畴}</span>'。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 3-1</b>　三构式承继链：认知域与量范畴的双轴演进（据 §4.3）</div>
+  <div class="chain">
+    <div class="node"><span class="nt">A 式</span>V（位移）＋不到哪里去<br><span style="font-size:12px;color:var(--ink-3)">空间域 · 空间量</span></div>
+    <div class="arrow">—隐喻投射→</div>
+    <div class="node alt"><span class="nt">B 式</span>V（计量）＋不到哪里去<br><span style="font-size:12px;color:#8A6D22">数量域 · 物量</span></div>
+    <div class="arrow">—状态凸显→</div>
+    <div class="node blue"><span class="nt">C 式</span>V（凸显状态）＋不到哪里去<br><span style="font-size:12px;color:#356780">性状域 · 程度量</span></div>
+    <div class="arrow">—顺势替换→</div>
+    <div class="node" style="background:#EAF2F6;"><span class="nt">"A不到哪里去"构式</span>形容词 A 填入槽位</div>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>把链条接到"人类认知普遍规律"</h4>
+<div class="tri">
+  <div class="tri-head">▍认知连通性论证 <span class="tagline"><span class="tag">#升华</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4.3</div>
+    <blockquote>
+      "三个构式的承继关系主要依赖于相关认知域的隐喻映射，内在的连通性在'量范畴'的轴上得到实现……
+      从构式语义来分析，A 式'空间量'是很具体的，而 C 式的'程度量'是很抽象的，B 式的'物量'介于两者之间……
+      从'具体'到'抽象'是人类认知的普遍规律，语法化研究的大量成果证实了这一点。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>结尾一段完成三级跳：<strong>个案 → 认知域 → 普遍规律</strong>。
+    注意"<b>语法化研究的大量成果证实了这一点</b>"这句——它把本文的发现<strong>嵌进已有研究的共识之中</strong>，
+    既借力又回馈。这是结语提升格局的标准做法：<strong>不要只说"我发现了什么"，还要说"我的发现印证／补充／修正了什么通例"。</strong></p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "综上所述，我们得出了一个该构式的承继关系系列：<span class="sans">{甲 → 乙 → 丙}</span>。
+      三个构式的承继关系主要依赖于相关认知域的隐喻映射，内在的连通性在'<span class="sans">{某范畴}</span>'的轴上得到实现：
+      <span class="sans">{甲}</span> 是很具体的，而 <span class="sans">{丙}</span> 是很抽象的，<span class="sans">{乙}</span> 介于两者之间……
+      从'具体'到'抽象'是人类认知的普遍规律。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s3-5">3.5 收口：句法重新分析</h3>
+
+<div class="tri">
+  <div class="tri-head">▍Reanalysis：切分边界的移动 <span class="tagline"><span class="tag">#命题</span><span class="tag">#升华</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §4.3</div>
+    <blockquote>
+      "构式语义的逐渐虚化，会导致结构的重新分析。如'赖不到哪里去'，句法上分析为'赖不到／哪里去'是没有意义的，
+      更合理的切分也许是'赖／不到哪里去'。"<br><br>
+      "其中'赖'是核心成分，'不到哪里去'意义融合了，表示'达不到某种很高的程度'，属于后置的有限程度量补语。
+      'A不到哪里去'这个构式就是 C 式的顺理成章的延续。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文的论证闭环，也是全文最"有分量"的一步。作者把切分线从<strong>「V不到／哪里去」</strong>
+    移到<strong>「V／不到哪里去」</strong>，于是"不到哪里去"由虚指趋向成分升格为<strong>后置复合程度量补语</strong>。</p>
+    <p>闭环的意义是：<strong>形容词 A 为何能直接取代动词 V 进入该格式，这个历史难题迎刃而解</strong>——
+    因为 V 的位置早已弱化为"核心谓词"，只需一个弱化动作性、凸显状态性的成分，
+    而形容词恰好就是最合适的人选。</p>
+    <p>写法启示：<strong>全篇的每一层分析，最后都要能"接上"一个更大的问题</strong>。
+    此处的"更大的问题"就是：构式如何反向压制并吸纳新成分填入槽位。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "构式语义的逐渐虚化，会导致结构的重新分析。如 '<span class="sans">{例句}</span>'，
+      句法上分析为 '<span class="sans">{旧切分}</span>' 是没有意义的，更合理的切分也许是 '<span class="sans">{新切分}</span>'。<br>
+      其中 <span class="sans">{X}</span> 是核心成分，'<span class="sans">{Y}</span>' 意义融合了，表示 '<span class="sans">{新义}</span>'，
+      属于后置的 <span class="sans">{成分性质}</span>。'<span class="sans">{格式}</span>' 这个构式就是 <span class="sans">{前式}</span> 的顺理成章的延续。"
+      <span class="src">来源：本文 §4.3 原文句式。</span>
+    </blockquote>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍本篇技法一句话</span>
+  <strong>先争"构式"资格 → 用还原法证明复句整合 → 用语料库历时溯源排出承继链 → 用重新分析收口，并把个案接到"具体到抽象"的认知普遍规律上。</strong>
+</div>
+
+<!-- ---------- 理据层 ---------- -->
+<h3 id="s3-6">3.6 深读：理论、例证与结论的咬合</h3>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 本节体例</span>
+  只依据原文自身可核验的内容展开。<span class="src-tag src-self">原文自述</span>＝作者明确说出；
+  <span class="src-tag src-infer">文本可证</span>＝作者未直说，但可从该文论证操作直接看出。<strong>不引入原文之外的学术史判断。</strong>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍理论依据 <span class="dh-sub">本篇明确交代的比前两篇多</span></div>
+  <div class="deep-body">
+    <h6>① 原文点名的理论工具</h6>
+    <ul>
+      <li><b>构式语法（Construction Grammar）</b>：原文使用"构式"这一术语，并以"整体意义不能从其构成成分直接推导出来"作为判定标准。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>语料库检索</b>：原文明确使用"北京大学现代汉语语料库（CCL）"，报告"共搜得 11 条"，并列出具体书目。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>重新分析（Reanalysis）</b>：原文以"构式语义的逐渐虚化，会导致结构的重新分析"作为核心推导工具。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>隐喻映射与认知域</b>：原文以"认知域的隐喻映射"解释三构式承继关系，并提及"人类认知的普遍规律"。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>主观性与主观化</b>：原文表述为"说话人主观评述""对主观性的强烈编码能力"。<span class="src-tag src-self">原文自述</span></li>
+    </ul>
+    <p class="gap-note">说明：原文使用这些理论术语，但<strong>未标注其出处文献</strong>（未出现某学者某著作的引证）。因此本文档只登记"作者用了什么工具"，不判断其理论渊源。</p>
+
+    <h6>② 理论是如何被"用于论证"的</h6>
+    <p>关键在于：本文不是先讲一遍构式语法，再用它套例子。恰恰相反——</p>
+    <ol>
+      <li><b>先用语义冲突换资格</b>：证明"整体义不可推导"，才取得使用"构式"一词的资格（§1）；</li>
+      <li><b>再用历时材料填内容</b>：用 CCL 检出最早书证与词项分布，为承继链提供事实骨架（§4.1—4.2）；</li>
+      <li><b>最后用理论收束</b>：以"重新分析"把切分边界一移，整个历史难题豁然解开（§4.3）。</li>
+    </ol>
+    <p>换句话说，理论在本文中的位置是<strong>两头：头是入场券，尾是钥匙</strong>，中段则完全交给材料。
+    这种"理论包住材料"的用法，比"理论夹在中间"更难写，但说服力更强。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 空缺登记</span>
+  本篇<strong>不设"学术对话"节</strong>：全文未点名任何具体学者、未引任何论著以作商榷，
+  也未出现"某说认为……本文则以为"这类直接对话句式。理论术语虽有，但均以工具身份出现，而非论辩对手。<br>
+  该空缺已登记于 <a class="ref" href="#s6-6">§6.6 跨篇对照表</a>。
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍例证与理论的咬合 <span class="dh-sub">三种材料，三重功能</span></div>
+  <div class="deep-body">
+    <h6>① 三类材料各有专职</h6>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 3-1</span>三种材料的分工</caption>
+    <thead><tr><th style="width:130px">材料类型</th><th style="width:180px">来源</th><th style="width:250px">它在论证中做什么</th><th>服务哪一环结论</th></tr></thead>
+    <tbody>
+    <tr><td class="k">现代文学与新闻例句</td><td>《邓一光文选》、岑凯伦、新华社、《人民日报》、陆文夫、《读者》等</td><td>提供<b>共时分布</b>事实，供测试扩展形式与共现成分</td><td>话语功能与紧缩机制</td></tr>
+    <tr><td class="k">历史白话文献</td><td>清《海国春秋》、民国《上古秘史》《元代宫廷艳史》、茅盾《子夜》、柏杨、周作人</td><td>提供<b>历时序列</b>，使动词虚化的三个阶段各有书证</td><td>承继链（A 式→B 式→C 式）</td></tr>
+    <tr><td class="k">语料库检索统计</td><td>北京大学 CCL</td><td>提供<b>穷尽性与词项分布</b>（11 条，集中在"走、逃、跑"）</td><td>原型形态的确定</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>三类材料不是混着用，而是<strong>各管一段</strong>：共时材料管"现在能怎么用"，历时材料管"怎么变成现在这样"，检索统计管"这个说法有多可靠"。
+    <strong>材料的分层，对应着论证的分层。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 例证的"展示"功能：一个例子引出一种机制</h6>
+    <p>看 §3.2 如何用例子推进：</p>
+    <blockquote>
+      （21）……人比猴子聪明不到哪里去。（22）……比黄瓜甜不到哪去。
+    </blockquote>
+    <p>作者引入这两例，不是为了"多举一个例子"，而是为了让<strong>"比＋NP"这个新成分登场</strong>——
+    而它的登场又立即带来两项发现：<b>① 复句紧缩为单句；② 预设了一条"预期阶梯"</b>。
+    一个例子带出两个机制。<strong>例证在这里是"探针"，不是"证据"。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 理论的最后一击靠"切分线"完成</h6>
+    <p>§4.3 的论证完全依赖一次切分的改变：</p>
+    <p style="text-align:center;font-family:'PingFang SC','Microsoft YaHei',sans-serif;font-size:14.5px;background:var(--green-ll);padding:10px;border-radius:5px;">
+      「V不到／哪里去」　→　「V／不到哪里去」
+    </p>
+    <p>切分线一移，"不到哪里去"由虚指趋向成分升格为<strong>后置复合程度量补语</strong>，
+    于是"形容词 A 为何能替代动词 V"这个历史难题当场解开。
+    <strong>一个形式操作，解决了通篇材料堆积起来的问题</strong>——这是理论与例证咬合的最高形态：
+    理论不但解释材料，还<strong>重新切分了材料</strong>。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍分类如何映射结论 <span class="dh-sub">三式分类＝一条演化结论</span></div>
+  <div class="deep-body">
+    <h6>① 分类本身就是结论</h6>
+    <p>本文的核心分类是 A 式／B 式／C 式。这三式不是中性的标签，而是<strong>一个演化序列</strong>：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 3-2</span>三式分类与结论的对应</caption>
+    <thead><tr><th style="width:70px">分类</th><th style="width:180px">分类依据（动词性质）</th><th style="width:150px">映射的认知域</th><th>它在结论链条中的位置</th></tr></thead>
+    <tbody>
+    <tr><td class="k">A 式</td><td>V 表物理空间位移</td><td>空间域 · 空间量</td><td>起点：原型形态，语义最具体</td></tr>
+    <tr><td class="k">B 式</td><td>V 涉事论元可计量</td><td>数量域 · 物量</td><td>中段：抽象化的一步，介于具体与抽象之间</td></tr>
+    <tr><td class="k">C 式</td><td>V 动作性弱化、凸显状态</td><td>性状域 · 程度量</td><td>终点：最抽象，是"形容词 A"进入的跳板</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>关键设计在于：<strong>分类的两个维度（认知域、量范畴）是平行推进的</strong>——
+    空间→数量→性状，同时是空间量→物量→程度量。
+    两个维度同向变化，于是"<strong>从具体到抽象</strong>"这一结论就不是外加的评价，而是<strong>分类本身的顺序读出来的</strong>。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 分类的顺序是有意的</h6>
+    <p>若把三式打乱排列（如先讲 C 式），结论就散了。
+    作者严格按"空间→数量→性状"排，使读者在读到 §4.3 小结时，
+    <strong>自然得出演化结论，而不需要作者去宣布</strong>。这是"让分类说话"的写法。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 结论的最后一环仍由分类提供</h6>
+    <p>结语把三式接到"人类认知的普遍规律"时，用的是同一组分类：
+    "<span class="sans">A 式'空间量'是很具体的，而 C 式的'程度量'是很抽象的，B 式的'物量'介于两者之间</span>"。
+    可见<strong>从分类到结论，从头到尾没有换过坐标系</strong>——
+    分类是本文的骨架，结论只是骨架的命名。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     第四篇 · 陆俭明
+     ============================================================ -->
+<section id="s4">
+<h2><span class="num">四</span>陆俭明《关于汉语词类的划分》</h2>
+
+<div class="master">
+  <div class="mname">陆俭明<span class="yr">1994 · 词类问题论争</span></div>
+  <div class="mdesc">
+    范式：<b>理论辨析与方法论建构</b>。全文站在学术史高度，
+    依次做<b>症结检讨 → 依据排查（逐一证伪）→ 唯一依据确立 → 概念精确化 → 14 步二分淘汰流水线 → 兼类与例外处置</b>。
+    写作示范价值在于：<b>如何在"半个多世纪的老大难问题"上开出一篇有战略格局的论文——不纠缠个案，直取行业认识盲区。</b>
+  </div>
+</div>
+
+<h3 id="s4-1">4.1 引言动作：以学术史清算破题</h3>
+
+<div class="tri">
+  <div class="tri-head">▍学术史检讨 <span class="tagline"><span class="tag">#切入点</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §一（第 185 页）</div>
+    <blockquote>
+      "汉语词类问题始终是汉语语法研究中一个老大难的问题。问题的症结在于：
+      （一）我们有关划分词类的理论、思想是来自印欧语的，这并不适合于汉语，而我们一味用这种理论思想来看待汉语词类问题，
+      以致于大家对划分汉语词类的依据一直缺乏明确、一致的认识。"<br><br>
+      "（二）汉语词类问题语法学界进行过两次大的讨论，这说明大家对这个问题还是很重视的，
+      但是大家一直在理论上打转转，很少有人作踏踏实实的实证研究工作。如果我们能面对几万个词，一个词一个词地研究一下，
+      就有可能获得有关汉语词类的新认识，可是以往没能这样做。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>破题方式是<strong>「一上来就下诊断」</strong>：不听具体分歧，直指全行业的认识盲区，且诊断分两条：</p>
+    <ul>
+      <li><b>症结之一（理论）</b>：理论移植不当——用印欧语的思想套汉语；</li>
+      <li><b>症结之二（方法）</b>：长期"空对空"——只在理论里打转，不做穷尽实证。</li>
+    </ul>
+    <p>紧接着亮出国家"七五"重点项目"<strong>对四万个词逐个进行研究</strong>"的工程背景——
+    <strong>诊断之后立刻出示药方与弹药</strong>。这使全文的实证基础在第一段就落地了。</p>
+    <p>启示：<strong>理论型论文的引言，主任务是"重新定义问题"</strong>——
+    把大家争了几十年的"答案之争"，改写为一个"依据与程序之问"。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{问题}</span> 始终是 <span class="sans">{学科}</span> 研究中一个老大难的问题。问题的症结在于：<br>
+      （一）我们有关 <span class="sans">{问题}</span> 的理论、思想是来自 <span class="sans">{外来来源}</span> 的，这并不适合于 <span class="sans">{本土事实}</span>，
+      而我们一味用这种理论思想来看待 <span class="sans">{本土事实}</span>，以致于大家对 <span class="sans">{关键依据}</span> 一直缺乏明确、一致的认识。<br>
+      （二）大家一直在理论上打转转，很少有人作踏踏实实的实证研究工作。"
+      <span class="src">来源：本文 §一 原文句式。适用于"学科长期争论未决"类论题。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s4-2">4.2 主体动作（一）：三条依据的逐一排查</h3>
+
+<div class="tri">
+  <div class="tri-head">▍穷尽排查法 <span class="tagline"><span class="tag">#对立体</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §二（第 186—187 页）</div>
+    <blockquote>
+      "关于划分词类的依据，以往提到过以下三方面：（一）依据词的意义；（二）依据词的形态；（三）依据词的语法功能。"<br><br>
+      <b>排除"意义"</b>："如果按词汇意义给词分类，只能获得概念的类，不能获得语法研究和语法教学中所需要的词类……
+      语法意义太复杂，有不同层面的语法意义，我们很难把握住……总之，'根据词的意义划分词类是行不通的'。"<br><br>
+      <b>排除"形态"</b>："依据词的形态给词分类，对于像印欧语那样有形态的语言来说，是可行的。
+      但汉语缺乏严格意义的形态标志和形态变化，所以这条依据虽好，但就汉语来说，用不上。"<br><br>
+      <b>确立"功能"</b>："对汉语来说，比较现实的是根据词的语法功能来划分词类。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是典型的"<strong>列举—逐一排查—留存唯一</strong>"结构。三个被排查项的处理手法各不相同，值得分清：</p>
+    <ul>
+      <li><b>"意义"被彻底证伪</b>：理由是"只能获得概念的类"（用途错位）＋"不同层面难以把握"（技术上不可行）；</li>
+      <li><b>"形态"被有条件排除</b>：先承认它在印欧语里"可行"，再说汉语"用不上"——
+      <strong>不是批倒它，而是说它对本语言不适用</strong>。这比笼统批判更稳重；</li>
+      <li><b>"功能"被留存</b>：以"比较现实"作结，语气克制，却已是唯一出口。</li>
+    </ul>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "关于 <span class="sans">{论题}</span>，以往提到过以下 <span class="sans">{n}</span> 方面：<span class="sans">{甲}</span>；<span class="sans">{乙}</span>；<span class="sans">{丙}</span>。<br>
+      <b>排除甲</b>："如果按 <span class="sans">{甲}</span> 分类，只能获得 <span class="sans">{不合适的产物}</span>，不能获得 <span class="sans">{所需产物}</span>……总之，'根据 <span class="sans">{甲}</span> 划分 <span class="sans">{对象}</span> 是行不通的'。"<br>
+      <b>排除乙</b>："依据 <span class="sans">{乙}</span> 来分类，对于 <span class="sans">{适用的语言类型}</span> 来说，是可行的。但 <span class="sans">{本语言}</span> 缺乏 <span class="sans">{某条件}</span>，所以这条依据虽好，但就 <span class="sans">{本语言}</span> 来说，用不上。"<br>
+      <b>留存丙</b>："对 <span class="sans">{本语言}</span> 来说，比较现实的是根据 <span class="sans">{丙}</span> 来划分。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>四条理论支撑：不给"常识"，只给"论证"</h4>
+<div class="tri">
+  <div class="tri-head">▍唯一依据的理论闭环 <span class="tagline"><span class="tag">#命题</span><span class="tag">#升华</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>确立"语法功能"为唯一依据时，作者<strong>没有停在常识表述上</strong>，而是从现代语言学理论给出四条支撑。
+    这个"四路合围"的写法特别值得学：</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（四路合围）</div>
+    <blockquote class="tpl">
+      「<b>从目的看</b>」……是为了说明 <span class="sans">{上位任务}</span>，而 <span class="sans">{本文主张}</span> 是 <span class="sans">{上位任务}</span> 的基础；<br>
+      「<b>从结构主义看</b>」组合关系构成 <span class="sans">{句法结构}</span>，聚合关系构成 <span class="sans">{类别}</span>，<span class="sans">{类别}</span> 就是聚合关系的产物；<br>
+      「<b>从本质看</b>」"<span class="sans">{表面现象}</span> 不过是 <span class="sans">{本文主张}</span> 的标志"；<br>
+      「<b>从映射看</b>」按 <span class="sans">{本文主张}</span> 划分出的类别，在深层 <span class="sans">{某层面}</span> 意义上具备天然共同点。
+    </blockquote>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 4-1</span>四条支撑的论证角度（据 §二）</caption>
+<thead><tr><th style="width:120px">角度</th><th style="width:280px">论证要点</th><th>它挡住了什么反驳</th></tr></thead>
+<tbody>
+<tr><td class="k">从目的看</td><td>划分词类是为了说明词类序列如何组织语句，功能是组织语句的基础</td><td>挡"分类只是为分类而分类"的质疑</td></tr>
+<tr><td class="k">从结构主义看</td><td>组合关系构成句法结构，聚合关系构成词类，词类就是聚合关系的产物</td><td>为功能标准提供理论出身</td></tr>
+<tr><td class="k">从形态本质看</td><td>"形态不过是功能的标志"，形态分类实质上依然是功能分类</td><td>堵住"形态派"的最后退路</td></tr>
+<tr><td class="k">从意义映射看</td><td>功能划分出的词类在深层语法意义上具备天然共同点</td><td>回应"功能分类割裂意义"的担忧</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="s4-3">4.3 主体动作（二）：概念精确化与标准辩证</h3>
+
+<div class="tri">
+  <div class="tri-head">▍"语法性质"vs."语法特点" <span class="tagline"><span class="tag">#界定</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §三（五）（第 191 页）</div>
+    <blockquote>
+      "某类词的<b>语法性质</b>是指该类词所具有的语法功能的总和，包括能有什么样的语法功能和不能有什么样的语法功能，
+      包含着该类词所特有的语法功能和该类词跟其他类词所共有的语法功能。"<br><br>
+      "而某类词的<b>语法特点</b>则是指该类词所具有、他类词所不具有的语法功能。
+      例如形容词，它所具有的语法性质是：+主语，+宾语，+谓语，+定语，+状语，+补语，+不~，+很~，+~补语，-~~宾语……
+      而它所具的语法特点是：［+很~~，-~宾语］。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这一对概念区分，是全文方法论的枢纽。写法上有三处可学：</p>
+    <ul>
+      <li><b>先给严格的操作性定义</b>，不用举例代替定义；</li>
+      <li><b>特别强调负向特征</b>——"<strong>不能有什么功能</strong>"与"<strong>能有什么功能</strong>"同等重要。
+      很多研究只列能做什么，结果分类不严；</li>
+      <li><b>用矩阵符号表示</b>（<span class="sans">+主语、+很~、-~宾语</span>），把模糊的词类描写转化为<strong>形式特征集</strong>，
+      可直接比较、可直接检验。</li>
+    </ul>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "某类 <span class="sans">{对象}</span> 的 <b>语法性质</b> 是指它具有的 <span class="sans">{功能}</span> 总和，包括<strong>能</strong>有什么样的功能和<strong>不能</strong>有什么样的功能。"<br>
+      "而某类 <span class="sans">{对象}</span> 的 <b>语法特点</b> 则是指该类所具有、他类所不具有的 <span class="sans">{功能}</span>。例如 <span class="sans">{X类}</span> 的语法特点是：［<span class="sans">+…，-…</span>］。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>破除一个流行误区</h4>
+<div class="tri">
+  <div class="tri-head">▍标准不必等同语法特点 <span class="tagline"><span class="tag">#命题</span><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §三（五）</div>
+    <blockquote>
+      "其实不一定如此。由于词类是分层划分的，所以划类所选取的标准可以从某类词的语法特点中选取，
+      也可以不从语法特点中选取，只从一般语法性质中选取。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>先立一个流行误区（"标准必须等同语法特点"），再用"<strong>其实不一定如此</strong>"一句推翻，
+    随后以名词划类为例做实证拆解：</p>
+    <ul>
+      <li><b>形容词</b>的划类标准取自其"语法特点"（<span class="sans">+很~，-~宾语</span>）；</li>
+      <li><b>名词</b>的划类标准则取自"一般语法性质"——因为现代汉语中动词、形容词百分之九十左右也能作主宾语，
+      <strong>主宾语是共性而非个性</strong>；但在下一层级结合"能否受数词修饰"，依然能有效分立名词。</li>
+    </ul>
+    <p>启示：<strong>反驳一个流行看法时，必须给出反例的"具体运算过程"</strong>，否则只是换个说法。
+    "以名词划类为例"这一句，就是让抽象论断落地的那颗压舱石。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "学界普遍存在一个逻辑误区：误以为 <span class="sans">{流行看法}</span>。其实不一定如此。
+      由于 <span class="sans">{对象的层次性}</span>，<span class="sans">{标准}</span> 可以从 <span class="sans">{A}</span> 中选取，也可以只从 <span class="sans">{B}</span> 中选取。"<br>
+      "以 <span class="sans">{某类}</span> 为例：确定其划类标准是从 <span class="sans">{A}</span> 中选取的；而 <span class="sans">{另一类}</span> 则是从 <span class="sans">{B}</span> 中选取的，因为……"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>单一标准与多重标准的辩证</h4>
+<div class="tri">
+  <div class="tri-head">▍援引前人 + 补加约束 <span class="tagline"><span class="tag">#承继</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §三（六）</div>
+    <blockquote>
+      "吕叔湘先生指出，'单一标准当然最好，但是往往找不着理想的标准'；'找不着这种理想的标准，就不得不采用多重标准'。"<br><br>
+      陆俭明补充的关键约束：所选取的多重标准<b>必须有某种共性</b>——即多重标准必须统一建立在"语法功能"这一基底轴线上，
+      严禁将意义标准与功能标准任意掺杂。
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这段引用的用法非常典型，值得单独学：<strong>不是为了"显得有依据"，而是为了"接住一个已有论断并往前推进一步"</strong>。</p>
+    <ul>
+      <li>吕叔湘给的是"<strong>现实妥协</strong>"：找不到理想标准，只好用多重标准；</li>
+      <li>陆俭明补的是"<strong>安全阀</strong>"：多重标准必须有共性，否则分类将失去同一性基础。</li>
+    </ul>
+    <p>这样一来，引用就从"点缀"变成了"<strong>论证链条上的一个环节</strong>"。
+    判断引用是否合格，标准就是：<strong>删掉这段引文，你的推论会不会断？</strong></p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{前人}</span>先生指出，'<span class="sans">{原有论断}</span>'。"<br>
+      "需要补充的是，使用多重标准绝非信马由缰，<b>所选取的多重标准必须有某种共性</b>，即必须统一建立在 '<span class="sans">{基底轴线}</span>' 之上，
+      严禁将 <span class="sans">{异质标准甲}</span> 与 <span class="sans">{异质标准乙}</span> 任意掺杂。"
+      <span class="src">"引前人论断 + 补一条约束"，是让引用承担论证功能的最经济写法。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s4-4">4.4 主体动作（三）：14 步二分淘汰流水线</h3>
+
+<p class="lead">陆俭明把四万词置入一套<strong>条件测试漏斗</strong>，每一步只用单一语法功能实施二分。这是全文最"形式化"、也最见工程气魄的部分。</p>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 4-1</b>　十四步二分淘汰流水线（据 §四，第 193—194 页）</div>
+  <div class="chain vert">
+    <div class="node" style="background:#F6F7F1;border-style:dashed;"><span class="nt">全部词（四万词）</span>起点</div>
+    <div class="arrow">↓</div>
+    <div class="node"><span class="nt">步骤 1</span>按【能否与别的词结合】→ <span class="star">−叹词</span> / <span class="plus">+非叹词</span></div>
+    <div class="arrow">↓ 非叹词</div>
+    <div class="node"><span class="nt">步骤 2</span>按【能否作句法成分】→ <span class="star">−非成分词₁</span> / <span class="plus">+成分词₁</span></div>
+    <div class="arrow">↓ 非成分词₁（虚词线）</div>
+    <div class="node alt"><span class="nt">步骤 3—5</span>按【连接功能】→ 连词；按【"~+成分词"作状语】→ 介词；按【是否只能处于停顿前】→ 语气词 / 助词</div>
+    <div class="arrow">↓ 成分词₁（实词线）</div>
+    <div class="node"><span class="nt">步骤 6—8</span>按【拟声】→ 拟声词；按【指代】→ 代词；按【计数】→ 数词</div>
+    <div class="arrow">↓ 成分词₄</div>
+    <div class="node"><span class="nt">步骤 9</span>按【受"不／很"修饰、带宾补、加"所"、受介词结构修饰】→ 动形词 / 成分词₅</div>
+    <div class="arrow">↓ 动形词</div>
+    <div class="node blue"><span class="nt">步骤 10</span>按【能否受"很"修饰】【能否带宾语】→ <span class="plus">［+很，−宾］形容词</span> / <span class="plus">［−很，+宾］动词</span></div>
+    <div class="arrow">↓ 成分词₅、₆、₇</div>
+    <div class="node alt"><span class="nt">步骤 11—14</span>按【能否作补语】→ 状态词；按【能否作中心语】→ 量名词 → 名词 / 量词；按【作定语（加"的"）／作状语】→ 区别词 / 副词</div>
+  </div>
+  <div style="margin-top:12px;font-size:13.5px;color:var(--ink-2);font-family:'PingFang SC','Microsoft YaHei',sans-serif;">
+    终局：从粗线条的"实／虚二分"，精细化为涵括<b>区别词、状态词、语气词</b>在内的 <b>15 个完备类别</b>。
+  </div>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍流水线的写作要点 <span class="tagline"><span class="tag">#框架</span><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这种"算法式"呈现，写法上有三条硬规矩，值得直接照搬：</p>
+    <ol>
+      <li><b>条件唯一</b>：每一步只用一个功能问一个"是／否"，绝不并发；</li>
+      <li><b>正负分明</b>：每一支的标签都写明"＋什么／−什么"，不给"大概属于"的模糊区；</li>
+      <li><b>次序不可逆</b>：步骤号连排，读者可以逐步复核——这正是"可复现性"在语言学里的体现。</li>
+    </ol>
+    <p>启示：<strong>凡涉及"分类程序"的章节，最佳呈现形式是流程图＋步骤清单</strong>，
+    而不是大段散文。散文容易让读者在"层级关系"上迷路；流水线不会。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（分类程序写法）</div>
+    <blockquote class="tpl">
+      「步骤 <span class="sans">n</span>」<span class="sans">{上位类}</span> → 按【<span class="sans">{唯一功能}</span>】→ <span class="star">−{排除项}</span> / <span class="plus">+{留存项}</span><br>
+      <span class="src">要求：① 每步一功能；② 正负标签齐全；③ 步骤编排不可逆，可被逐步复核。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s4-5">4.5 兼类界定与例外处置</h3>
+
+<div class="tri">
+  <div class="tri-head">▍同一性原则 <span class="tagline"><span class="tag">#界定</span><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §五（一）（第 195 页）</div>
+    <blockquote>
+      "考虑词的兼类问题一定要注意同一性原则。我们只把同音同义而分属不同词类的词看作兼类词；
+      如果同音不同义而分属不同词类，这种词我们不看作兼类词，看作两个不同的词。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是给"兼类"设的一道<strong>防泛化堤坝</strong>。汉语词类划分最容易失控的地方就是"兼类"，
+    因为凡有跨类用法就说兼类，等于取消了分类。作者用"<strong>同音＋同义</strong>"双重条件把它管住，
+    从而彻底划清了"<strong>语法上的兼类</strong>"与"<strong>词汇学上的多义／同音</strong>"的界限。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "考虑 <span class="sans">{X}</span> 问题一定要注意同一性原则。我们只把 <span class="sans">{条件甲}</span> 而 <span class="sans">{条件乙}</span> 的 <span class="sans">{对象}</span> 看作 <span class="sans">{类别甲}</span>；
+      如果 <span class="sans">{不满足条件之一}</span>，这种 <span class="sans">{对象}</span> 我们不看作 <span class="sans">{类别甲}</span>，看作两个不同的 <span class="sans">{类别乙}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 4-2</span>兼类词 vs. 同音词：最小对立体实证（据 §五）</caption>
+<thead><tr><th style="width:80px">词项</th><th style="width:200px">句法环境与槽位</th><th style="width:110px">归属类别</th><th style="width:130px">词汇语义关系</th><th>最终定性</th></tr></thead>
+<tbody>
+<tr><td class="k">自动</td><td>自动雨伞（作定语）</td><td>区别词</td><td>意义完全相同</td><td><b>兼类词</b>：符合"同音同义"同一性原则</td></tr>
+<tr><td class="k">自动</td><td>自动打开（作状语）</td><td>副词</td><td>意义完全相同</td><td><b>兼类词</b>：一身兼两职</td></tr>
+<tr><td class="k">锁</td><td>锁门（带宾语、表动作）</td><td>动词</td><td>表示动作行为</td><td><b>同音词</b>：立为两个独立词项（动词"锁"）</td></tr>
+<tr><td class="k">锁</td><td>买一把锁（受量词修饰、指事物）</td><td>名词</td><td>指称具体器具</td><td><b>同音词</b>：严禁算作"名动兼类"，防止兼类泛滥</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（1）</span>坦承局限：例外只作"个别处理"</h4>
+<div class="tri">
+  <div class="tri-head">▍三种典型例外 <span class="tagline"><span class="tag">#离析</span><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §五（二）</div>
+    <blockquote>
+      "事物是复杂的，语言中千千万万个词它们各自的语法性质也是复杂的。我们不能期求按某些标准，通过几次分类手续就可以把所有的词分得清清楚楚，干干净净。
+      语言事实告诉我们，语言里存在着词的兼类现象、例外现象，存在着难以处理的词……<b>对于例外现象只能个别处理，作特别说明。</b>"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文最能见学者品格的一处：<strong>不为维护体系的"完美"而掩盖矛盾</strong>。
+    先谦抑地承认语言的复杂性，再给出处理原则（个别处理＋特别说明），最后逐一落实。下面三类例外逐一对应"为什么不必另设新类"：</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "事物是复杂的，语言中千千万万个 <span class="sans">{对象}</span> 它们各自的 <span class="sans">{性质}</span> 也是复杂的。
+      我们不能期求按某些标准，通过几次分类手续就可以把所有的 <span class="sans">{对象}</span> 分得清清楚楚，干干净净……
+      <b>对于例外现象只能个别处理，作特别说明。</b>"
+      <span class="src">来源：本文 §五（二）原文。是处理"体系不完美"时最稳的措辞。</span>
+    </blockquote>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 4-3</span>三类例外的定性与处理（据 §五（二））</caption>
+<thead><tr><th style="width:150px">例外个案</th><th style="width:280px">反常表现</th><th>定性处理</th></tr></thead>
+<tbody>
+<tr><td class="k">"很"与"极"</td><td>系统归入程度副词，但可充当补语（"好得很、好极了"）</td><td>定性为<b>程度副词的例外用法</b>，不为此另设新类</td></tr>
+<tr><td class="k">量词受动词支配</td><td>量词通则是不作动词宾语，但"馒头论个、烙饼论张、油条论根"中作"论"的宾语</td><td>定性为<b>量词在特定动词下的例外用法</b></td></tr>
+<tr><td class="k">副词"一起"</td><td>专职作状语（一起走），但在"在一起、想到一起了"中进入"在／到"后槽位</td><td>定性为<b>特定结构下的例外固化用法</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 反例处置的三种"刻度"</span>
+  把五篇的处置手法放在一起排一遍，你会发现它们是同一思路的不同刻度：<br>
+  <b>朱德熙</b>：兼类离析（析出新词项）→ <b>陆俭明</b>：例外个别说明（不另设类）→ <b>邢福义</b>：假说还原（把反例收进框架内）→ <b>吴为善</b>：重新分析（改变切分使反例合法）。<br>
+  共同点是：<strong>从不忽略反例，也从不因反例放弃主张</strong>——而是给反例一个精确的位置。
+</div>
+
+<h3 id="s4-6">4.6 结语动作：从局部描写走向全语言系统</h3>
+
+<div class="tri">
+  <div class="tri-head">▍宏观工程闭环 <span class="tagline"><span class="tag">#升华</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>结语做了两件事，都值得学：</p>
+    <ol>
+      <li><b>宣示问题的终结</b>：以四万词实证为依托，把汉语词类从"实／虚粗线条二分"或无休止的"名动形"纠缠，
+      推进到 <strong>15 个完备类别</strong>，形成一个自足可操作的系统工程——<strong>结语的第一功能是"交账"：我解决了引言里诊断的那个病</strong>；</li>
+      <li><b>标示方法论的普遍意义</b>：指出本文是索绪尔组合／聚合理论、美国结构主义分布理论与汉语事实深度融合的结晶，
+      证明汉语即便没有印欧语式形态，靠<strong>分布框架与功能切分</strong>依然能建立严密分类范式——
+      <strong>结语的第二功能是"升格"：把一个具体问题的解法，推进为一种可推广的方法</strong>。</li>
+    </ol>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（结语双动作）</div>
+    <blockquote class="tpl">
+      「<b>交账</b>」"本文以 <span class="sans">{材料规模}</span> 的实证检验为依托，将 <span class="sans">{对象}</span> 从 <span class="sans">{旧的低精度划分}</span> 精细化为涵括 <span class="sans">{新类目}</span> 在内的 <span class="sans">{n}</span> 个完备类别，形成了自足可操作的 <span class="sans">{对象}</span> 系统工程。"<br>
+      「<b>升格</b>」"本文是 <span class="sans">{理论来源甲、乙}</span> 与 <span class="sans">{本语言}</span> 事实深度融合的结晶，证明了 <span class="sans">{本语言}</span> 即便没有 <span class="sans">{某种条件}</span>，
+      依靠 <span class="sans">{本文方法}</span>，依然能够建立起逻辑极其严密的分类范式。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍本篇技法一句话</span>
+  <strong>先诊断学科症结（不说分歧，说盲区）→ 逐一排除旧依据（不是批倒，是说"用不上"）→ 立唯一依据并给四条理论支撑 → 概念精确化 → 用 14 步流水线给出可复现的分类程序 → 例外个别说明 → 结语"交账＋升格"。</strong>
+</div>
+
+<!-- ---------- 理据层 ---------- -->
+<h3 id="s4-7">4.7 深读：理论、对话、例证与结论的咬合</h3>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 本节体例</span>
+  只依据原文自身可核验的内容展开。<span class="src-tag src-self">原文自述</span>＝作者明确说出；
+  <span class="src-tag src-infer">文本可证</span>＝作者未直说，但可从该文论证操作直接看出。<strong>不引入原文之外的学术史判断。</strong>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍理论依据 <span class="dh-sub">五篇中交代得最充分的一篇</span></div>
+  <div class="deep-body">
+    <h6>① 原文点名的理论资源</h6>
+    <ul>
+      <li><b>结构主义的组合／聚合理论</b>：原文论"从结构主义看"时明确表述"组合关系构成句法结构，聚合关系构成词类，词类就是聚合关系的产物"。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>"形态不过是功能的标志"</b>：原文以此为引号内的论断，用来把形态分类归入功能分类。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>意义的两分（词汇意义／语法意义）</b>：原文以"词的意义有两方面，一是词汇意义，一是语法意义"作为排除"意义标准"的起点。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>四万词实证工程</b>：原文明确交代这是国家"七五"重点项目，对"四万个词逐个进行研究"——这既是材料基础，也是方法论立场（实证优先于思辨）。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>语法性质／语法特点的区分</b>：原文给出两个严格定义（详见 <a class="ref" href="#s4-3">§4.3</a>）。<span class="src-tag src-self">原文自述</span></li>
+    </ul>
+
+    <h6>② 理论的排布方式：理论被拆成"论证的四个角度"</h6>
+    <p>本篇最有特点的做法是：<strong>不用一整节讲理论，而把理论拆成四个独立角度，逐一嵌进"为何只能用功能"的论证里</strong>（详见 <a class="ref" href="#s4-2">§4.2 表 4-1</a>）：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 4-1</span>四个角度各自的理论身份</caption>
+    <thead><tr><th style="width:120px">角度</th><th style="width:170px">理论身份</th><th>它在论证中承担的角色</th></tr></thead>
+    <tbody>
+    <tr><td class="k">从目的看</td><td>功能主义式的目的论</td><td>回答"分类是为了什么"——为上位任务服务</td></tr>
+    <tr><td class="k">从结构主义看</td><td>索绪尔式组合／聚合</td><td>回答"词类从何而来"——是聚合关系的产物</td></tr>
+    <tr><td class="k">从形态本质看</td><td>形态—功能关系论</td><td>回答"形态派可否替代功能派"——不能，形态只是标志</td></tr>
+    <tr><td class="k">从意义映射看</td><td>意义—形式对应论</td><td>回答"功能分类会否割裂意义"——不会，深层意义有共同点</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>四个角度<strong>互不重复、各挡一路反驳</strong>。
+    这种"四路合围"的写法，比单讲一种理论更能封住反对意见——因为它预先回答了四类可能的质难。
+    <span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍学术对话 <span class="dh-sub">五篇中唯一有明确论辩对象的一篇</span></div>
+  <div class="deep-body">
+    <h6>① 与前人的关系：三种不同的处理</h6>
+    <p>原文对前人观点的处理<strong>并非一律批驳，而是一分三</strong>。这个区分极值得学：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 4-2</span>原文对三类前人观点的不同处理</caption>
+    <thead><tr><th style="width:130px">对象</th><th style="width:110px">态度</th><th style="width:230px">原文的处置</th><th>措辞特征</th></tr></thead>
+    <tbody>
+    <tr><td class="k">"依据意义"一派</td><td><b>批驳</b></td><td>指出按词汇意义分类"只能获得概念的类，不能获得语法研究和语法教学中所需要的词类"；语法意义"太复杂""很难把握住"；结论："根据词的意义划分词类是行不通的"</td><td>直接否定，给出技术理由</td></tr>
+    <tr><td class="k">"依据形态"一派</td><td><b>不完全否定</b></td><td>先承认"对于像印欧语那样有形态的语言来说，是可行的"；再指出"汉语缺乏严格意义的形态标志和形态变化"；结论："这条依据虽好，但就汉语来说，用不上"</td><td>先肯定其价值，再限定适用范围</td></tr>
+    <tr><td class="k">吕叔湘（单一／多重标准）</td><td><b>接受并补强</b></td><td>引其"找不着理想的标准，就不得不采用多重标准"，随后补充关键约束："所选取的多重标准必须有某种共性"</td><td>引而后进，补一条安全阀</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h6>② 批驳的"强度分级"——本文提供了一套可模仿的刻度</h6>
+    <ul>
+      <li><b>最重：彻底证伪</b>（对"意义"派）——用"行不通"三个字定性，并给出不可反驳的技术理由（太复杂、难把握）；</li>
+      <li><b>中等：限定适用</b>（对"形态"派）——不否定其原理，只指出不适用于汉语；用"虽好……但用不上"这种"先褒后限"的句式；</li>
+      <li><b>最轻：接受并推进</b>（对吕叔湘）——完整引出原话，再补一条约束，使对方论断更严密。</li>
+    </ul>
+    <p>三种强度对应三种措辞，措辞与论证目的严格匹配。
+    <strong>"对谁用什么语气"不是修辞的随意，而是论证的设计。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 与"学术界整体"的对话</h6>
+    <p>除了点名批驳两派、引用吕叔湘，原文还有一处更宏观的对话——针对整个学科的研讨方式：</p>
+    <blockquote>
+      "大家一直在理论上打转转，很少有人作踏踏实实的实证研究工作。如果我们能面对几万个词，一个词一个词地研究一下，就有可能获得有关汉语词类的新认识，可是以往没能这样做。"
+    </blockquote>
+    <p>这句的对话对象不是某个人，而是<strong>半个多世纪的学术风气</strong>：
+    批评的是"只论不证"的路径，随即用"四万词工程"给出替代方案。
+    <strong>批驳之后立刻出示自己的路径与弹药</strong>——这是最有力的对话姿态。<span class="src-tag src-self">原文自述</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍例证与理论的咬合 <span class="dh-sub">例证服务于"程序的可复现"</span></div>
+  <div class="deep-body">
+    <h6>① 例证的功能与其他四篇截然不同</h6>
+    <p>在朱德熙、邢福义那里，例证用来<strong>逼出一条规则</strong>；在本文这里，例证用来<strong>展示一道工序</strong>。</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 4-3</span>例证的"工序展示"功能</caption>
+    <thead><tr><th style="width:150px">论证环节</th><th style="width:200px">例证形态</th><th>例证在此的作用</th></tr></thead>
+    <tbody>
+    <tr><td class="k">排除意义标准</td><td>不举具体词，只作推理（"只能获得概念的类"）</td><td>此处<b>不需要例证</b>——因为反驳的是标准的逻辑，不是词的表现</td></tr>
+    <tr><td class="k">14 步流水线</td><td>每步给出正负标签与代表词（"病、醒"／"通红、雪白"等）</td><td>让每一步切分都<b>可被复核</b>：读者拿词一试即知归属</td></tr>
+    <tr><td class="k">兼类判定</td><td>"自动"（区别词／副词）、"锁"（动词／名词）成对列举</td><td>用最小对照展示<b>判定规则的运算过程</b></td></tr>
+    <tr><td class="k">例外处置</td><td>"好得很／好极了""馒头论个""在一起"</td><td>展示<b>例外如何被定性与归档</b>，而非被删除</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>注意第一行：<strong>该用推理处就不用例证</strong>。
+    本文对例证的使用是有节制的——凡属标准之间的逻辑关系，纯作推理；凡属分类操作，必给词例。
+    <strong>"哪里要例子、哪里不要"，本身就是理论判断力的体现。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>② 例证的"符号化"处理</h6>
+    <p>形容词语法特点写作 <span class="sans">［+很~~，-~宾语］</span>，
+    用正负号与波浪线把"能／不能"压成符号。
+    这一步的作用是<strong>让例证脱离个别性</strong>：读者不必记住"干净、大方"这些词，
+    只需记住"受'很'修饰、不带宾语"这一条可检验的判定式。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 规模作为论据</h6>
+    <p>"四万个词"这一数字本身参与论证——它把全文的结论从"我的观察"升格为"穷尽考察的结果"。
+    例证的可靠性，在此由<strong>数量</strong>而非<strong>精巧</strong>来保证。<span class="src-tag src-self">原文自述</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍分类如何映射结论 <span class="dh-sub">程序即结论</span></div>
+  <div class="deep-body">
+    <h6>① 本文的分类有一个罕见特征：分类过程本身就是论点</h6>
+    <p>其他四篇的分类是"给东西归类"，本文的分类是"<strong>证明可以怎样归类</strong>"。
+    因此它的每一级切分都必须<strong>可复现</strong>——这正是 14 步流水线的存在理由。</p>
+
+    <h6>② 分类的层级与结论的层级完全重合</h6>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 4-4</span>层级切分与结论的对应</caption>
+    <thead><tr><th style="width:150px">切分层级</th><th style="width:200px">切分依据（单一功能）</th><th>该层级对总结论的贡献</th></tr></thead>
+    <tbody>
+    <tr><td class="k">总库 → 叹词</td><td>能否与别的词结合</td><td rowspan="5">逐级剥离，证明<b>十五类可由单一功能链逐层导出</b></td></tr>
+    <tr><td class="k">非叹词 → 成分词／非成分词</td><td>能否作句法成分</td></tr>
+    <tr><td class="k">非成分词 → 连／介／助／语气词</td><td>连接功能·框架作状语·停顿位置</td></tr>
+    <tr><td class="k">成分词 → 拟声／代词／数词</td><td>拟声·指代·计数功能</td></tr>
+    <tr><td class="k">成分词 → 动形词 → 形容词／动词</td><td>受"不／很"修饰·带宾补 → 受"很"／带宾语</td></tr>
+    <tr><td class="k">成分词 → 状态词／量名词／修饰词</td><td>作补语 → 作中心语 → 作定状语</td><td>补足剩余类别，闭合全表</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h6>③ 结论的两层，正对应分类的两层</h6>
+    <p>本文的结论有两层，且与分类的两层严格对应：</p>
+    <ol>
+      <li><b>第一层（关于分类本身）</b>——划分词类的唯一本质依据是语法功能。
+      对应分类的"依据"层：14 步中每一步只用一种功能；</li>
+      <li><b>第二层（关于分类结果）</b>——汉语可分出 15 个完备类别。
+      对应分类的"结果"层：漏斗终端的十五个标签。</li>
+    </ol>
+    <p>更值得注意的对应是：<strong>"单层唯一标准"这一方法论主张，正是靠 14 步流水线每一步只用一个功能来兑现的</strong>。
+    主张与操作在这里完全同构——<strong>若某个步骤并用了两个功能，全文的核心主张就当场崩塌</strong>。
+    这是"分类严格映射结论"的极端例证。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>④ 兼类与例外的分类学位置</h6>
+    <p>结语之前，作者为"不合规则者"设了专门位置：兼类词须满足同一性原则（同音同义），
+    例外现象则个别说明、不另设类。
+    <strong>这些安排的意义是：让分类结果的十五类不被反例侵蚀</strong>，
+    从而保证"完备类别"这一结论成立。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     第五篇 · 胡裕树、张斌
+     ============================================================ -->
+<section id="s5">
+<h2><span class="num">五</span>胡裕树、张斌《现代汉语动词的次范畴》</h2>
+
+<div class="master">
+  <div class="mname">胡裕树　张斌<span class="yr">1982 · 次范畴分类</span></div>
+  <div class="mdesc">
+    范式：<b>结构主义次范畴分类</b>。以"透过外在形式发现内蕴意义"为总纲，
+    在<strong>静态词组</strong>中用<strong>功能框架</strong>对动词逐层二分，
+    主干为"带宾语情况"与"能否单独做谓语"两大维度。
+    写作示范价值在于：<b>如何把方法论宣言、功能框架、层级切分三者合成一条严密的"分类流水线"。</b>
+  </div>
+</div>
+
+<h3 id="s5-1">5.1 引言动作：以方法论总纲立宪</h3>
+
+<div class="tri">
+  <div class="tri-head">▍"透过形式发现意义" <span class="tagline"><span class="tag">#切入点</span><span class="tag">#命题</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §一（第 73 页）</div>
+    <blockquote>
+      "意义是内蕴的，形式是外观的。功能意义决定词的差别，功能形式显示词的类别。
+      意义看不见摸不着，因此，从发现程序来说，总是要透过形式去发现意义。
+      功能形式，就是一个词在句法结构里所能安排的位置，可称之为'分布'或'广义形态'。
+      从句法平面给动词进行次范畴分类，得借助于功能形式。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文的"立宪条文"，四句话完成四件事，层次极清楚：</p>
+    <ol>
+      <li><b>本体论</b>："意义内蕴、形式外观"——定下对象的性质；</li>
+      <li><b>决定关系</b>："功能意义决定差别，功能形式显示类别"——定下二者的分工；</li>
+      <li><b>发现程序</b>："透过形式去发现意义"——定下操作的<strong>方向</strong>；</li>
+      <li><b>术语操作化</b>："功能形式＝分布＝广义形态"——把抽象概念换算成可检验的东西。</li>
+    </ol>
+    <p>名家写方法论，从不停在口号上：<strong>每一个主张后面必须紧跟一个"可操作的定义"</strong>。
+    此文把"功能形式"直接定义为"一个词在句法结构里所能安排的位置"，此后全文的框架测试就都有了依据。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（方法论总纲）</div>
+    <blockquote class="tpl">
+      "意义是内蕴的，形式是外观的。功能意义决定 <span class="sans">{差别}</span>，功能形式显示 <span class="sans">{类别}</span>。
+      意义看不见摸不着，因此，从发现程序来说，总是要透过形式去发现意义。<br>
+      功能形式，就是 <span class="sans">{一个可操作的界定}</span>，可称之为'<span class="sans">{术语甲}</span>'或'<span class="sans">{术语乙}</span>'。"
+      <span class="src">要点：本体论 → 决定关系 → 发现方向 → 术语操作化，四句到位。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>划定操作边界：只在静态词组里确认功能</h4>
+<div class="tri">
+  <div class="tri-head">▍静态词组原则 <span class="tagline"><span class="tag">#界定</span><span class="tag">#排雷</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §一（第 73 页）＋第 74 页脚注①</div>
+    <blockquote>
+      "动词的功能，一般地说，在以静态形式出现的词组里就能体现出来，把动词放在词组结构里，
+      就可看出它和其他词的结合能力，从词组里确认动词的句法功能就可进行分类；
+      而不必放到以动态形式出现的句子中去确认它的功能。"<br><br>
+      脚注补充："由于语用的要求，某些在词组里带宾语的动词在具体的句子里面可以不带宾语。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是一条极重要的"<strong>操作边界</strong>"：把观察点从动态句子移到静态词组。
+    理由是动态句子里有语用省略——若在句子里看，"他正在吃"会被误判为不及物动词；
+    而在静态框架"吃＋饭"中检验，及物性一目了然。</p>
+    <p>写法启示：<strong>凡涉及"在什么材料上观察"的判断，都要给出反例说明"若在别处观察会出错"</strong>。
+    这里用一个"他正在吃"的例子，把这条边界的必要性讲得无可辩驳。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{对象}</span> 的功能，一般地说，在以 <span class="sans">{静态形式}</span> 出现的 <span class="sans">{单位}</span> 里就能体现出来……
+      而不必放到以 <span class="sans">{动态形式}</span> 出现的 <span class="sans">{更大单位}</span> 中去确认它的功能。"<br>
+      <span class="src">脚注补一句："由于 <span class="sans">{某干扰因素}</span>，某些在 <span class="sans">{甲环境}</span> 中有 X 的 <span class="sans">{对象}</span>，在 <span class="sans">{乙环境}</span> 中可以不 X。"</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>"多角度多层次"与单层唯一标准</h4>
+<div class="tri">
+  <div class="tri-head">▍分类铁律 <span class="tagline"><span class="tag">#命题</span><span class="tag">#界定</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §一（第 74 页）</div>
+    <blockquote>
+      "动词类是一个系统。次范畴分类是讲它的子系统。动词类可以逐层逐级往下分。
+      在不同的层次里，作为分类根据的具体功能不一样，因此用来鉴别不同功能的功能框架也不一样。
+      不同角度不同层次分类时根据不同的功能，但这并不是多标准。
+      因为在一定角度一定层次只能用一个标准，即用某一种功能。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这段话拆解了一个常见的逻辑混淆：<strong>"不同层次用不同功能"≠"多标准"</strong>。
+    因为标准的多寡不是按"全文用了几种功能"算的，而是按"<strong>同一个层次的同一次切分</strong>"算的。
+    只要每次切分只用一种功能，那么即使全文用了十种功能，也仍然是"单层唯一标准"。</p>
+    <p>这与<a class="ref" href="#s4-3">陆俭明篇</a>关于"多重标准必须有共性"的补充形成呼应——
+    两位学者处理的是同一类方法论焦虑，只是切入角度不同：陆从"标准之间必须有共性"下手，
+    胡、张从"<strong>层次切分必须单标</strong>"下手。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "<span class="sans">{上位类}</span> 是一个系统。<span class="sans">{下位分类}</span> 是讲它的子系统。<span class="sans">{上位类}</span> 可以逐层逐级往下分。
+      在不同的层次里，作为分类根据的具体功能不一样，因此用来鉴别不同功能的功能框架也不一样。<br>
+      不同角度不同层次分类时根据不同的功能，但这并不是多标准。因为<b>在一定角度一定层次只能用一个标准</b>，即用某一种功能。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s5-2">5.2 主体动作（一）：功能框架驱动的分类流水线</h3>
+
+<div class="tri">
+  <div class="tri-head">▍框架测试的操作定义 <span class="tagline"><span class="tag">#框架</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §一（第 73 页）</div>
+    <blockquote>
+      "有效的方法是：把不同的动词放到一定功能框架里检验。动词和其他词结合时所形成的词组形式是多种多样的。
+      次范畴分类时所选择的特定词组形式可作为功能框架。不同功能类别的动词在某种功能框架中占据着一定的位置，
+      能出现或不能出现在该框架一定位置上的动词分别聚合成不同的动词次类或小类。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这段话把"分类"重写为一段<strong>标准输入—输出流程</strong>：
+    <b>输入</b>＝动词；<b>处理</b>＝放入框架；<b>输出</b>＝"能出现"与"不能出现"两堆聚合。</p>
+    <p>关键在于"<strong>能出现或不能出现</strong>"这一对——它把分类从"主观列举"变成了<strong>一个二值判定</strong>。
+    只要框架稳定，结果就可被任何人复现。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "有效的方法是：把不同的 <span class="sans">{对象}</span> 放到一定 <span class="sans">{功能框架}</span> 里检验。
+      <span class="sans">{分类}</span> 时所选择的特定 <span class="sans">{词组形式}</span> 可作为 <span class="sans">{功能框架}</span>。
+      不同功能类别的 <span class="sans">{对象}</span> 在某种 <span class="sans">{功能框架}</span> 中占据着一定的位置，
+      <b>能出现或不能出现</b>在该框架一定位置上的 <span class="sans">{对象}</span> 分别聚合成不同的 <span class="sans">{次类}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（1）</span>第一层级：有宾动词 vs. 无宾动词</h4>
+<div class="tri">
+  <div class="tri-head">▍准入与排除的定性模板 <span class="tagline"><span class="tag">#框架</span><span class="tag">#对立体</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §二.1（第 74 页）</div>
+    <blockquote>
+      设定基础功能框架：<b>"动词＋实词" → 动宾词组</b>（不添加任何成分的动宾词组）<br>
+      <b>有宾动词</b>：能进入上述框架者，如"吃（饭）、读（书）、姓（李）、是（学生）、值得（研究）"。<br>
+      <b>无宾动词</b>：不能进入上述框架者，如"病、醒、休息、游行、咳嗽、打仗"。
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>注意括号里的限定语——"<strong>不添加任何成分的动宾词组</strong>"。
+    这短短一句排除了两种干扰：介词短语、补语成分。若不限定，
+    像"病在床上"这种带介词短语的格式就会混进来，造成形式失真。</p>
+    <p>写法启示：<strong>每设一个框架，都要同时说明它的纯度条件</strong>。
+    框架本身是"筛子"，筛孔的大小必须写清楚。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      "按照 <span class="sans">{对象}</span> 能否 <span class="sans">{某功能}</span> 来给它进行下位分类，可先设定功能框架：'<span class="sans">＋</span>' → <span class="sans">{词组类型}</span>（<b>不添加任何其他成分</b>）。
+      据此可把 <span class="sans">{对象}</span> 分成两类："<br>
+      "（1）<b><span class="sans">{A类}</span></b>。凡能出现在上述框架中的 <span class="sans">{对象}</span>，都是 <span class="sans">{A类}</span>。例如……<br>
+      （2）<b><span class="sans">{B类}</span></b>。凡不能出现在上述框架中的 <span class="sans">{对象}</span>，都是 <span class="sans">{B类}</span>。例如……"
+      <span class="src">来源：本文 §二.1 原文句式。注意"凡能……都是"这一全称措辞，它把分类坐实为穷尽判定。</span>
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（2）</span>第二层级：宾语语义类型的逐层深挖</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 5-1</span>宾语维度下的层级二分（据 §二.5—2.8 整理）</caption>
+<thead><tr><th style="width:150px">层级／次类</th><th style="width:230px">功能框架</th><th style="width:260px">典型词例</th><th>鉴别要点</th></tr></thead>
+<tbody>
+<tr><td class="k">施宾动词</td><td>"动＋施名" → 动宾词组</td><td>下（雨）、刮（风）、晒（太阳）、出（麻疹）</td><td>可逆变换："施名＋动"后变主谓结构而意义不变（雨下／风刮）</td></tr>
+<tr><td class="k">非施宾动词</td><td>不能进入"动＋施名"</td><td>看（电影）、批评（小王）、是（老师）、姓（张）</td><td>宾语非施事</td></tr>
+<tr><td class="k">小句宾动词</td><td>"动＋小句宾（主谓词组）"</td><td>希望（他健康）、同意（小王当组长）、觉得（全身发冷）</td><td>能带小句宾语</td></tr>
+<tr><td class="k">非小句宾动词</td><td>不能带小句宾语</td><td>继续、善于、显得、乐意、应当</td><td>宾语不能是主谓词组</td></tr>
+<tr><td class="k">全能动词</td><td>代词替换测试</td><td>—</td><td>可用"谁／什么"指代者＝<b>指称性宾语</b>；可用"怎么样"指代者＝<b>陈述性宾语</b></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 层级递进的结构美感</span>
+  注意这一维度的展开顺序：<b>有宾／无宾 → 单宾／双宾 → 施宾／非施宾 → 小句宾／非小句宾 → 典型无宾／离合动词</b>。
+  每一步都是在<strong>上一层的子集里</strong>再切一刀，而不是每次回到全量重切。
+  这种"<strong>只往下、不回退</strong>"的编排，是层级分类论文保持清晰的不二法门。
+</div>
+
+<h4><span class="lv">（3）</span>第二维度：能否单独做谓语</h4>
+<div class="tri">
+  <div class="tri-head">▍新维度的开启方式 <span class="tagline"><span class="tag">#承继</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §三.1</div>
+    <blockquote>
+      "有些语法著作认为，动词可单独做谓语。也有的语法著作认为动词做谓语不需要什么条件。
+      实际上，现代汉语动词有些能单独做谓语；而有些却没有这样的能力，必须跟其他词语结合以后才能充当谓语。
+      所以根据动词能否单独做谓语，也可以进行次范畴分类。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文"开启新维度"的标准动作，三段式极清晰：</p>
+    <ol>
+      <li><b>先摆学界成见</b>："有些著作认为……也有的认为……"；</li>
+      <li><b>再用事实修正</b>："实际上，有些能……而有些不能……"；</li>
+      <li><b>最后顺势推出新维度</b>："所以根据……也可以进行次范畴分类"。</li>
+    </ol>
+    <p>这个三段式的妙处在于：<strong>新维度不是凭空的，而是从旧成见的缺口里长出来的</strong>。
+    读者会感觉这一步是"不得不做"，而不是"作者想做"。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（开启新维度）</div>
+    <blockquote class="tpl">
+      "有些语法著作认为，<span class="sans">{旧观点甲}</span>。也有的语法著作认为 <span class="sans">{旧观点乙}</span>。
+      实际上，现代汉语 <span class="sans">{对象}</span> 有些能 <span class="sans">{某功能}</span>；而有些却没有这样的能力，必须跟其他词语结合以后才能 <span class="sans">{某功能}</span>。
+      所以根据 <span class="sans">{对象}</span> 能否 <span class="sans">{某功能}</span>，也可以进行 <span class="sans">{下位分类}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 5-1</b>　动词次范畴的双维度级联二分（据 §二、§三）</div>
+  <div class="chain vert">
+    <div class="node" style="background:#F6F7F1;border-style:dashed;"><span class="nt">现代汉语动词总类</span></div>
+    <div class="arrow">↓ 分为两条主干维度</div>
+    <div class="node"><span class="nt">维度一 · 按带宾情况（§二）</span>框架："动＋实词"→ 有宾动词 ／ 无宾动词</div>
+    <div class="arrow">↓ 有宾动词再切</div>
+    <div class="node"><span class="nt">"动＋施名"</span>→ 施宾（下雨／刮风） ／ 非施宾（看书／批评）</div>
+    <div class="arrow">↓ 非施宾再切</div>
+    <div class="node alt"><span class="nt">"动＋小句"</span>→ 小句宾（希望／觉得） ／ 非小句宾（显得／企图）</div>
+    <div class="arrow">↓ 无宾动词再切</div>
+    <div class="node alt"><span class="nt">"AB → A…B"</span>→ 典型无宾（病／醒／休息） ／ 离合动词（睡觉／革命／吃亏）</div>
+    <div class="arrow">↓ 另一条主干</div>
+    <div class="node blue"><span class="nt">维度二 · 按能否单独做谓语（§三）</span>框架："名＋动"→ 自由动词（去／走／玩） ／ 不自由动词</div>
+    <div class="arrow">↓ 不自由动词再切</div>
+    <div class="node blue"><span class="nt">按后接成分性质</span>→ 名宾不自由（姓／等于） ／ 非名宾不自由（显得／免得／严加） ／ 全能不自由</div>
+  </div>
+</div>
+
+<h3 id="s5-3">5.3 材料的双轨排布与反例处置</h3>
+
+<div class="tri">
+  <div class="tri-head">▍极简词例 ＋ 文学书证 <span class="tagline"><span class="tag">#剪裁</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这篇的材料排布有一个非常经济的分工：</p>
+    <ul>
+      <li><b>下定义时用极简词例</b>：音节最简、日常最通行的单双音动词（病、醒、跌、去、走、看、读），
+      让读者在最短时间内抓住该次类的核心特征；</li>
+      <li><b>验证规则时用文学书证</b>：在较深层级（无宾自由动词、名宾不自由动词、非名宾不自由动词）密集调动现当代权威作品，
+      给规则的适用性"加压"。</li>
+    </ul>
+    <p>用一句话概括这条原则：<strong>"极简词例确立规则 → 文学用例证实规则"</strong>。
+    前半段服务于<strong>理解</strong>，后半段服务于<strong>信度</strong>。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      「<b>确立规则</b>」用最简、最通行的词例说明框架（如 <span class="sans">{甲乙丙}</span>），确保读者一看即懂；<br>
+      「<b>证实规则</b>」在深层层级引入权威书面语料（<span class="sans">{作者＋篇名}</span>），说明该规则在真实文本中同样成立。
+    </blockquote>
+  </div>
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 5-2</span>文学书证举例（据 §二，第 81 页）</caption>
+<thead><tr><th style="width:150px">次类</th><th style="width:170px">鉴别功能框架</th><th style="width:290px">权威文学经典例句</th><th>语法表现特征</th></tr></thead>
+<tbody>
+<tr><td class="k">无宾自由动词</td><td>主＋动（不带任何宾语）</td><td>"天色慢慢地<b>破晓</b>了。"（徐迟）<br>"人们在古松环抱的草坪上<b>憩息</b>。"（秦牧）<br>"胡儿嚎啕<b>痛哭</b>。"（郭沫若）</td><td>能独立作谓语，但在动态句子中也坚决排斥任何宾语</td></tr>
+<tr><td class="k">名宾不自由动词</td><td>动＋名宾（强制带体词）</td><td>"历史剧不<b>等于</b>历史书。"（茅盾）<br>"古代的社会，女子多<b>当作</b>男人的物品。"（鲁迅）<br>"她<b>姓</b>陈，<b>名叫</b>二妹。"（郁达夫）</td><td>必须与名词性宾语共现，单独充当谓语则不合法</td></tr>
+<tr><td class="k">非名宾不自由动词</td><td>动＋非名宾（强制带谓词）</td><td>"他<b>显得</b>安详而又机智。"（秦牧）<br>"皇亲们妄图<b>顽抗</b>。"（姚雪垠）<br>"让他回家给方乡绅<b>严加</b>管束。"（钱钟书）</td><td>句法槽位后必须黏着形容词性或动词性短语，不可独立成句</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（1）</span>离合词：用扩展测试化解"是词还是词组"</h4>
+<div class="tri">
+  <div class="tri-head">▍扩展测试 <span class="tagline"><span class="tag">#框架</span><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · §二.8（第 79 页）</div>
+    <blockquote>
+      面对"睡觉、革命、上当、吃亏"等词长期存在的"是词还是词组"分歧，作者不作概念争辩，而是设立机械化扩展框架：<b>"动词 AB → 动宾词组 A……B"</b><br><br>
+      "（1）<b>典型的无宾动词</b>。指不能进入上述框架，即不能带任何宾语也不能扩展成动宾词组的动词……例如'病、醒、跌'等。"<br>
+      "（2）<b>离合动词</b>。指能进入上述框架，即能将内部 A、B 两个语素扩展成动宾词组的动词。例如：'睡觉'→睡了一觉，'上当'→上了他的当，'革命'→革他的命，'吃亏'→吃了大亏。"<br><br>
+      作者总结："这类词的特点是：<b>合则为动词，分则为动宾词组</b>。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这是全文处理反例最漂亮的一处。<strong>争议的本质是"归类"，但作者不问"它该归哪类"，而问"它能不能被扩展"</strong>——
+    把一个归属之争，转换成一个可测试的形式问题。</p>
+    <p>处理结果也极干净：离合词被定性为<strong>无宾动词下的一个特殊派生次类</strong>，
+    既没有另立大门类，也没有回避现象。最后那句"<strong>合则为动词，分则为动宾词组</strong>"，
+    用八个字说清了它的全部语法行为——这是"<strong>一句话定性</strong>"的典范。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      面对"<span class="sans">{现象}</span> 是 <span class="sans">{甲类}</span> 还是 <span class="sans">{乙类}</span>"的长期分歧，不作概念争辩，而设立机械化的 <span class="sans">{扩展／变换}</span> 框架：'<span class="sans">{A → A……B}</span>'。<br>
+      "（1）<b><span class="sans">{类甲}</span></b>：指不能进入上述框架的……例如……<br>
+      （2）<b><span class="sans">{类乙}</span></b>：指能进入上述框架的……例如……"<br>
+      小结一句话定性："这类词的特点是：<b><span class="sans">{八字式概括}</span></b>。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s5-4">5.4 机制归因与升华</h3>
+
+<div class="tri">
+  <div class="tri-head">▍破除"动词天生作谓语"的神话 <span class="tagline"><span class="tag">#升华</span><span class="tag">#命题</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>结语的提升点在于一个新范畴的确立——<strong>"不自由动词"</strong>。</p>
+    <p>传统语法受印欧语影响，往往认为动词天生具有充当句子核心谓语的能力。
+    胡、张二位通过形式排查，论证了现代汉语中存在相当大一批<strong>自身不具备独立成句能力</strong>的动词
+    （姓、属于、等于、当作、显得、免得、严加、企图）。这些动词虽有动作或关涉意义，
+    但在句法构造上<strong>必须向后依存</strong>名词性或谓词性成分，形成"动宾补足格式"后才能进入句子层面。</p>
+    <p>这一步的意义有两层：<b>其一</b>，深化了汉语动词的配价与构型理论；
+    <b>其二</b>，它是一次"<strong>用形式事实纠正理论预设</strong>"的成功演示——
+    如果不用框架去测，这批动词会被一路含混地算作普通动词，问题永远不会被发现。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（结语的"新范畴"写法）</div>
+    <blockquote class="tpl">
+      "传统语法受 <span class="sans">{外来理论}</span> 影响，往往认为 <span class="sans">{某预设}</span>。
+      本文通过形式排查，论证了现代汉语中存在着相当大一批 <span class="sans">{范畴名}</span>（如 <span class="sans">{甲乙丙}</span>）。
+      这些 <span class="sans">{对象}</span> 虽然具有 <span class="sans">{意义特征}</span>，但在句法构造上必须 <span class="sans">{依存方向}</span>，
+      形成 <span class="sans">{补足格式}</span> 后才能进入句子层面，这一发现深化了 <span class="sans">{相关理论}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍本篇技法一句话</span>
+  <strong>以方法论四句立宪（本体→关系→方向→操作化）→ 划定静态词组的观察边界 → 用"能出现／不能出现"把分类变成二值判定 → 只往下不回退地级联二分 → 用扩展测试化解词／词组之争 → 结语确立"不自由动词"这一新范畴。</strong>
+</div>
+
+<!-- ---------- 理据层 ---------- -->
+<h3 id="s5-5">5.5 深读：理论、对话、例证与结论的咬合</h3>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 本节体例</span>
+  只依据原文自身可核验的内容展开。<span class="src-tag src-self">原文自述</span>＝作者明确说出；
+  <span class="src-tag src-infer">文本可证</span>＝作者未直说，但可从该文论证操作直接看出。<strong>不引入原文之外的学术史判断。</strong>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍理论依据 <span class="dh-sub">把方法论写在最前面的一篇</span></div>
+  <div class="deep-body">
+    <h6>① 原文点名的理论工具与立场</h6>
+    <ul>
+      <li><b>意义与形式的二分</b>：原文开篇即立"意义是内蕴的，形式是外观的"。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>"分布"／"广义形态"</b>：原文明确把"功能形式"界定为"一个词在句法结构里所能安排的位置"，并给出两个等义术语。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>发现程序（发现程序这一提法本身）</b>：原文表述为"从发现程序来说，总是要透过形式去发现意义"——这里使用的是"程序"而非"结论"的视角。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>系统与子系统、层次</b>：原文以"动词类是一个系统。次范畴分类是讲它的子系统"作为分类层级化的依据。<span class="src-tag src-self">原文自述</span></li>
+      <li><b>功能框架（特定词组形式）</b>：原文把"次范畴分类时所选择的特定词组形式"定义为功能框架。<span class="src-tag src-self">原文自述</span></li>
+    </ul>
+    <p class="gap-note">说明：与 <a class="ref" href="#s4-7">陆俭明篇</a> 不同，本篇使用这些概念时<strong>未标注出处</strong>（未出现"索绪尔""布龙菲尔德"等名号，也未引具体论著）。因此本文档只登记概念本身，不追其理论来源。</p>
+
+    <h6>② 理论立在最前，且是"操作化的理论"</h6>
+    <p>本篇的理论出现顺序与多数论文相反：<strong>不开篇讲故事，也不开篇摆分歧，而是开篇立规则</strong>。
+    四句之内完成"本体→关系→方向→操作化"（详见 <a class="ref" href="#s5-1">§5.1</a>），
+    之后全文的一切操作都必须通过这四条检验。</p>
+    <p>这种写法的代价是开头略显抽象，收益是——<strong>此后每一个功能框架的设立，都具备先天的合法性</strong>，
+    读者不会问"你凭什么这样分类"，因为"凭什么"已经在 §一 里答完了。
+    <span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 理论内部的联防：三条原则互相支撑</h6>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 5-1</span>三条方法论原则的分工</caption>
+    <thead><tr><th style="width:170px">原则</th><th style="width:220px">原文表述要点</th><th>它挡住什么问题</th></tr></thead>
+    <tbody>
+    <tr><td class="k">透过形式发现意义</td><td>"意义看不见摸不着，因此……总是要透过形式去发现意义"</td><td>挡住"凭语感分类"的质疑</td></tr>
+    <tr><td class="k">静态词组确认功能</td><td>"不必放到以动态形式出现的句子中去确认它的功能"</td><td>挡住语用省略造成的误判</td></tr>
+    <tr><td class="k">单层唯一标准</td><td>"在一定角度一定层次只能用一个标准，即用某一种功能"</td><td>挡住"标准交叉混淆"的指责</td></tr>
+    </tbody>
+    </table>
+    </div>
+    <p>三条原则各有靶子，合起来构成一套完整的"操作合法性论证"。
+    作者不是先分类再解释方法，而是<strong>先把方法的合法性建立起来，再动手分类</strong>。
+    <span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍学术对话 <span class="dh-sub">不点名，但对话对象清晰可辨</span></div>
+  <div class="deep-body">
+    <h6>① 原文的对话对象：三类未具名的做法</h6>
+    <p>本篇与 <a class="ref" href="#s4-7">陆俭明篇</a> 不同，<strong>不点名任何学者</strong>；但其批驳对象在文中以"以往""有些语法著作""也有的语法著作"指称，界限清楚：</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 5-2</span>原文指向的三类做法及态度</caption>
+    <thead><tr><th style="width:170px">指称方式</th><th style="width:110px">态度</th><th style="width:250px">原文的处置</th><th>对话类型</th></tr></thead>
+    <tbody>
+    <tr><td class="k">"以意派类"的做法<br>（未具名，全文多处暗批）</td><td><b>批驳</b></td><td>原文开篇即宣告须"透过形式去发现意义"，与"意义看不见摸不着"相对；直接导致"凭语义想象定类别"失去合法性</td><td>方法论层面的间接批驳</td></tr>
+    <tr><td class="k">"以往语法著作"在确立"动词"大类后<br>便浅尝辄止，或仅划"及物／不及物"</td><td><b>补足</b></td><td>原文指出"如果不深入到其子系统（次范畴）进行精细切分，就无法真正解释动词在语句组织中的组合限制"</td><td>指其不足，非指其错误</td></tr>
+    <tr><td class="k">"有些语法著作认为，动词可单独做谓语。也有的语法著作认为动词做谓语不需要什么条件"</td><td><b>修正</b></td><td>原文以"实际上，现代汉语动词有些能单独做谓语；而有些却没有这样的能力，必须跟其他词语结合以后才能充当谓语"更正之，并顺势推出新维度</td><td>先摆成见，再以事实修正</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h6>② 对话的三种强度，与陆俭明互为镜像</h6>
+    <ul>
+      <li><b>批驳</b>（对"以意派类"）：力度等同于陆俭明对"意义派"的批驳，但<strong>不点名</strong>，因而语气更含蓄；</li>
+      <li><b>补足</b>（对以往对动词的研究）：承认其存在，指出其未做到底——是"接着做"，不是"推翻"；</li>
+      <li><b>修正</b>（对"动词都能单独作谓语"的成见）：先用"有些著作认为……也有的认为……"摆出两种说法，再用事实校正。</li>
+    </ul>
+    <p>共同点是：<strong>本篇的对话一律不针对人，只针对做法</strong>。
+    这与陆俭明"点名批两派、引吕叔湘"的做法形成鲜明对照——
+    <strong>同样在进行学术对话，一个点名，一个不点名；一个明写，一个暗置。</strong>
+    两种都成立，取决于作者选择让"商榷"占据多少篇幅。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 与前人成果的关系：以"成见—修正"替代"批驳—取代"</h6>
+    <p>最典型的句式出现在 §三.1（见 <a class="ref" href="#s5-2">§5.2</a>）：
+    先引述两种既有说法，再以"实际上"转折给出事实，最后以"所以……也可以进行次范畴分类"收束。
+    这个三段式使<strong>新维度的出现显得"不得不为"，而非作者的主观选择</strong>——
+    是既有认识不够用，才需要新维度。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍例证与理论的咬合 <span class="dh-sub">框架是理论，词例是测量</span></div>
+  <div class="deep-body">
+    <h6>① 例证的角色：被"投入框架"的测量对象</h6>
+    <p>本篇的例证用法极有特色——<strong>例证不是用来"说明"的，而是用来"测量"的</strong>。
+    每一个词例都要在框架里接受一次二值判定：能进／不能进。</p>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 5-3</span>例证在框架中的两种出场方式</caption>
+    <thead><tr><th style="width:170px">出场方式</th><th style="width:230px">例证形态</th><th>它承担的论证任务</th></tr></thead>
+    <tbody>
+    <tr><td class="k">确立规则时</td><td>极简单双音日常动词：病、醒、跌、去、走、看、读</td><td>让读者<b>一眼看清判定结果</b>，降低理解成本</td></tr>
+    <tr><td class="k">证实规则时</td><td>权威书面语例：鲁迅、茅盾、钱钟书、郭沫若、秦牧、徐迟、姚雪垠等</td><td>证明该规则<b>在真实文本中同样成立</b>，提高信度</td></tr>
+    <tr><td class="k">揭示问题时</td><td>"他正在吃"（句中不带宾语）</td><td>作为<b>反面警示</b>，说明为何必须用静态词组</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h6>② 括号里的限定语，是理论的一部分</h6>
+    <p>原文设立第一个框架时写作：<b>"动词＋实词" → 动宾词组（不添加任何成分的动宾词组）</b>。</p>
+    <p>这个括号极重要——它把"纯度条件"写进了框架的定义里。
+    若不加此限，"病在床上"这类带介词短语的格式就会混入，导致测量失真。
+    <strong>框架与纯度条件必须同时给出，否则测量的结果不可信。</strong><span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 例证的"对照格式"统一</h6>
+    <p>原文交代次类时，一律写成固定格式：先给框架，再给"（1）A 类。凡能出现在上述框架中的……例如……"，
+    再给"（2）B 类。凡不能……"。
+    这种高度统一的写法，使每一组词例都成为<strong>同一台仪器上的一次读数</strong>，
+    因而不同次类之间可以横向比较。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>④ 离合词：例证从"测量对象"升为"理论的证明"</h6>
+    <p>扩展测试（睡觉→睡了一觉）是全文最漂亮的一处例证运用：
+    它把"是词还是词组"这一理论争议，转化为<strong>一个可当场执行的机械操作</strong>，
+    结果以"合则为动词，分则为动宾词组"八字定性。
+    <strong>例证在此不只是证据，而是争端的裁决方式。</strong><span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+
+<div class="deep">
+  <div class="deep-head">▍分类如何映射结论 <span class="dh-sub">双维度骨架＋新范畴结语</span></div>
+  <div class="deep-body">
+    <h6>① 分类骨架：两条主干，每层只切一刀</h6>
+    <div class="tbl-wrap">
+    <table>
+    <caption><span class="cap-n">深读表 5-4</span>分类层级与结论的对应</caption>
+    <thead><tr><th style="width:130px">层级</th><th style="width:200px">切分依据（功能）</th><th>该层级对总结论的贡献</th></tr></thead>
+    <tbody>
+    <tr><td class="k">维度一 · 第一层</td><td>"动＋实词"能否成立</td><td rowspan="4">证明<b>带宾情况可逐层切出多重次类</b></td></tr>
+    <tr><td class="k">维度一 · 第二层</td><td>"动＋施名"能否成立</td></tr>
+    <tr><td class="k">维度一 · 第三层</td><td>"动＋小句宾"能否成立</td></tr>
+    <tr><td class="k">维度一 · 附属</td><td>"AB → A……B"能否扩展</td></tr>
+    <tr><td class="k">维度二 · 第一层</td><td>"名＋动"能否独立成立</td><td rowspan="2">证明<b>存在不具备独立成句能力的动词</b></td></tr>
+    <tr><td class="k">维度二 · 第二层</td><td>后接成分为名宾／非名宾</td></tr>
+    </tbody>
+    </table>
+    </div>
+
+    <h6>② 分类与结论的映射，体现在"维度的选择"上</h6>
+    <p>本文只选了<strong>两个</strong>维度：带宾语情况、能否单独作谓语。
+    为什么是这两个？从结语可反推——本文最终确立的新范畴是"<strong>不自由动词</strong>"，
+    而"是否自由"恰是维度二直接测出的东西；"带宾语"则是维度一。</p>
+    <p>也就是说：<strong>维度的选择不是随意的，而是由结论的需要决定的</strong>。
+    若要论证"不自由动词"的存在，就必须有一个维度专门测"能否独立成句"；
+    若要论证次类的丰富性，就必须有一个维度能逐层细分。两个维度的分工，正对应结论的两个侧面。
+    <span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>③ 节内结构固定，使分类可累加</h6>
+    <p>原文第二大节的八个递进小节，一律按"<b>设立功能框架 → 分两类 → 列典型 → 入深层</b>"推进。
+    这一固定接榫使八个次类<strong>彼此可比</strong>：读者能在同一坐标系里累加阅读。
+    若各节结构不同，"次范畴系统"的整体图景就无法形成。<span class="src-tag src-infer">文本可证</span></p>
+
+    <h6>④ 反例的分类学收容</h6>
+    <p>离合词被定性为"无宾动词下的一个特殊派生次类"，而非另立门户。
+    这一处理的分类学意义是：<strong>保持原有层级骨架不被反例破坏，同时给反例一个明确位置</strong>。
+    分类因此既完整又诚实——这也是结语能顺利推出"不自由动词"新范畴的前提。<span class="src-tag src-infer">文本可证</span></p>
+  </div>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     工序横向对比章
+     ============================================================ -->
+<section id="s6">
+<h2><span class="num">六</span>写作工序横向对比</h2>
+
+<p class="lead">
+纵读到此处，各家的"笔法"应当已有手感。这一章换一个切面：<strong>把五篇拆成五道工序，横着比</strong>。
+目的不是再复述一遍结论，而是看清<em>同一个工序，五种学者有五种做法，各自的适用条件是什么</em>。
+（每一小节都可点回对应篇目细看三栏解剖。）
+</p>
+
+<div class="fig">
+  <div class="fig-cap"><b>图 6-0</b>　一篇论文的五道工序（本文横比章的编排依据）</div>
+  <div class="chain">
+    <div class="node"><span class="nt">工序一</span>选题切入<br><span style="font-size:12px;color:var(--ink-3)">问题从哪来</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">工序二</span>命题与界定<br><span style="font-size:12px;color:var(--ink-3)">主张什么、管到哪</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">工序三</span>形式测试与材料剪裁<br><span style="font-size:12px;color:var(--ink-3)">怎么逼出规律</span></div>
+    <div class="arrow">→</div>
+    <div class="node"><span class="nt">工序四</span>谋篇与段际缝合<br><span style="font-size:12px;color:var(--ink-3)">章节怎么排</span></div>
+    <div class="arrow">→</div>
+    <div class="node blue"><span class="nt">工序五</span>归因与升华<br><span style="font-size:12px;color:var(--ink-3)">结论接到哪里</span></div>
+  </div>
+</div>
+
+<h3 id="s6-1">6.1 工序一 · 选题切入：问题从哪里来</h3>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-1</span>五种切入动作对照</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:130px">切入类型</th><th style="width:250px">具体切口</th><th style="width:200px">破题的第一句话在做什么</th><th>适用条件</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>事实反常</td><td>词义相同而句法分布截然断裂</td><td>"本文拟说明……的区别"——直接锁定对象与角度</td><td>存在"看不出问题却大量存在"的现象</td></tr>
+<tr><td class="k">邢福义</td><td>事实反常</td><td>体词带动态虚词"了"的成句反常</td><td>立代号、列格式——把现象压缩成两格棋盘</td><td>有形态小、高频、口语化的格式</td></tr>
+<tr><td class="k">吴为善</td><td>事实反常</td><td>表层语义冲突的凝固熟语</td><td>证明"整体义不可推导"——争构式资格</td><td>有字面冲突但意义可懂的口语格式</td></tr>
+<tr><td class="k">陆俭明</td><td>学术史反思</td><td>半个世纪"老大难"的理论移植盲区</td><td>下诊断——不是答案错，是依据与程序错</td><td>学科长期争论未决的宏观问题</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>方法论反思</td><td>以意派类、缺乏发现程序</td><td>立方法论总纲——先定"怎么看"</td><td>已有分类粗疏、需要建立程序的问题</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">▍横比要点</span>
+  <b>反常型切入</b>的破题必须极短——第一句就要把矛盾摆出来，因为读者未必知道这个矛盾存在；
+  <b>反思型切入</b>的破题必须极稳——要先立"诊断"，再给"药方与弹药"（陆俭明的"四万词工程"就是弹药）。
+  两者的共同底线是：<strong>引言不写学科普及，只写"这个问题为什么非解决不可"。</strong>
+</div>
+
+<h3 id="s6-2">6.2 工序二 · 命题与界定：主张什么、管到哪</h3>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-2</span>核心命题与对象边界</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:240px">核心命题（一句话）</th><th style="width:230px">对象界定方式</th><th>"预先排雷"动作</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>性质与状态的对立构成一个语法范畴——性状范畴</td><td>用列举法清点甲类／乙类成员</td><td>脚注排除构词法产物（黑墨、酸醋）；正文排除凝固格式（清唱、红烧）</td></tr>
+<tr><td class="k">邢福义</td><td>"NP了"具推移性，是自足非主谓句，无否定形式</td><td>给 NP、S 立代号，列两个镜像格式</td><td>第 4 节专门离析"天啥时候了"，保全非主谓判断</td></tr>
+<tr><td class="k">吴为善</td><td>构式义虚化导致重新分析，"不到哪里去"成为复合程度量补语</td><td>先证构式资格（整体义不可推导）</td><td>指明肯定形式"能V到哪里去"是有标记形式</td></tr>
+<tr><td class="k">陆俭明</td><td>划分词类唯一本质依据是语法功能，逐层二分得十五类</td><td>区分"语法性质"（总和）与"语法特点"（排他）</td><td>同一性原则防兼类泛化；例外个别说明</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>动词须借功能框架在静态词组中逐层二分</td><td>框架设置＋纯度条件（不添加任何成分）</td><td>脚注排除动态句中的语用省略</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 一个共同规律</span>
+  五家无一例外，都在<strong>正式论证之前</strong>完成了两件事：<b>① 把研究对象清点干净</b>（哪些算、哪些不算）；
+  <b>② 把将来的麻烦预先请出场外</b>（构词法／语用省略／凝固格式／有标记形式）。
+  这两件事做得越早，正文就越不必为枝节反复辩解。<strong>这是"引言写得厚一点，正文才能利落"的道理。</strong>
+</div>
+
+<h3 id="s6-3">6.3 工序三 · 形式测试与材料剪裁：怎么逼出规律</h3>
+
+<h4><span class="lv">（1）</span>测试手段的五种型制</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-3</span>形式测试手段横向对照</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:180px">主导测试</th><th style="width:280px">操作方式</th><th>它逼出了什么隐性规律</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>槽位替换＋平行多测</td><td>横向铺开定／状／谓／补四槽位；"的"字五项平行测试</td><td>两类的选择限制（限制性 vs. 描写性）</td></tr>
+<tr><td class="k">邢福义</td><td>删除测试＋还原测试</td><td>去掉"了"看句子是否成立；把单说的"NP了"还原出隐去的 S</td><td>虚词的成句功能；独用形式的完整语义</td></tr>
+<tr><td class="k">吴为善</td><td>复句还原＋历时溯源</td><td>拆两个原型复句各取一半合成目标式；语料库检索最早书证</td><td>非原型复句的整合性；认知域的承继链</td></tr>
+<tr><td class="k">陆俭明</td><td>否定式排查＋层级漏斗</td><td>逐一证伪三条旧依据；14 步二分淘汰</td><td>功能标准的唯一性；词类的层级体系</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>功能框架填充</td><td>把动词放进"动＋实词""动＋施名""AB→A…B"等框架看能否出现</td><td>有宾／无宾、施宾／非施宾、离合词等次类</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（2）</span>最小对立体的四组经典样本</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-4</span>最小对立体：变量控制与解释句式</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:180px">正例 <span class="tag t-plus">+</span></th><th style="width:160px">反例 <span class="tag t-star">*</span></th><th style="width:160px">变量控制</th><th>解释机制</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>白纸、雪白的手</td><td><span class="star">*白手</span></td><td>单音形容词直接修饰具象个体</td><td>甲₁式呈强烈凝固趋势，非自由造句原则</td></tr>
+<tr><td class="k">朱德熙</td><td>很远的一家旅馆</td><td><span class="star">*远旅馆</span></td><td>度量形容词进入限制性定语</td><td>"远、近、快、慢"不把该性质作为分类根据</td></tr>
+<tr><td class="k">邢福义</td><td>百把斤的猪了</td><td><span class="star">*猪了</span></td><td>体词内部是否内含变移历程</td><td>"猪"不是由别的什么变来的，无推移性</td></tr>
+<tr><td class="k">邢福义</td><td>大孩子了</td><td><span class="star">*小孩子了</span></td><td>变移是否符合时间矢量单向性</td><td>"小孩子"不是由"大孩子"变来的</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tri">
+  <div class="tri-head">▍横比：两种对立体的取向 <span class="tagline"><span class="tag">#对立体</span></span></div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <ul>
+      <li><b>朱德熙</b>的对立侧重"<strong>形态范畴与成分性质的选择限制</strong>"（类名 vs. 个体）；</li>
+      <li><b>邢福义</b>的对立侧重"<strong>词汇语义内在的时间矢量与事态变化的匹配</strong>"（变来的 vs. 原生的）。</li>
+    </ul>
+    <p>两人都<strong>在段落中连续排布多组对立体</strong>，让读者"看见"规则的刚性边界。
+    这个"连排"的写法值得注意：<strong>一组对立体可能被解释成偶然，连排三组就形成了边界线。</strong></p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（对立体连排）</div>
+    <blockquote class="tpl">
+      在同一段内连排 <b>2—3 组</b>最小对立体，每组格式统一为「正例 ／ <span class="star">*反例</span>」，<br>
+      随后<strong>统一给出一个解释机制</strong>，使多组事实收拢于一条原则之下。
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>材料剪裁的三条通则</h4>
+<div class="index-grid">
+  <div class="index-card">
+    <h5>① 降噪：剪到只剩骨架</h5>
+    <p style="font-size:13.5px;margin:0;color:var(--ink-2)">朱德熙引文学例句，只留足以呈现语法关系的最小结构；胡、张用极简单双音动词打底。引证的价值在"可验证"，不在"文采"。</p>
+  </div>
+  <div class="index-card">
+    <h5>② 梯度：由典型到边缘</h5>
+    <p style="font-size:13.5px;margin:0;color:var(--ink-2)">朱德熙由单音（典型甲类）推向双音（过渡性质）；吴为善按"空间→数量→性状"排动词虚化三阶。梯度让人看到连续统。</p>
+  </div>
+  <div class="index-card">
+    <h5>③ 加压：用权威语料试刀</h5>
+    <p style="font-size:13.5px;margin:0;color:var(--ink-2)">胡、张在深层层级密集调用鲁迅、茅盾、钱钟书等书面语例；吴为善用 CCL 检索并汇报条数与分布。加压是为了信度。</p>
+  </div>
+</div>
+
+<h3 id="s6-4">6.4 工序四 · 谋篇与段际缝合：章节怎么排</h3>
+
+<h4><span class="lv">（1）</span>四种篇章骨架</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-5</span>主体骨架的四种组织逻辑</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:180px">骨架逻辑</th><th style="width:300px">主体章节</th><th>骨架的好处</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>横向槽位平铺</td><td>§1 定语 → §2 状语 → §3 谓语 → §4 补语 → §5 重叠式感情色彩</td><td>槽位即目录，读者可按图索骥；每一节都在为同一对立补证</td></tr>
+<tr><td class="k">邢福义</td><td>由形式到性质逐层深入</td><td>代号与事实 → 复句关系与还原 → 推移性语义 → 句型地位与否定 → 机制</td><td>层层收紧，最后用"否定形式缺失"收口，结论不可退</td></tr>
+<tr><td class="k">吴为善</td><td>共时 → 历时 → 认知</td><td>构式界定 → 话语功能与复句整合 → 历时溯源与虚化梯度 → 承继链 → 重新分析</td><td>材料多重、层次递进，最后落到认知通则，格局自然打开</td></tr>
+<tr><td class="k">陆俭明</td><td>方法论推进</td><td>症结检讨 → 依据排查 → 概念精确化 → 14 步流水线 → 兼类与例外</td><td>先解决"凭什么"，再解决"怎么分"，程序正义先于结论</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>双维度级联</td><td>§一 原则 → §二 按带宾情况（8 小节）→ §三 按能否单独作谓语（3 小节）</td><td>只往下不回退，每个子类都在上一层子集里切出</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（2）</span>段际缝合的三种动作</h4>
+<div class="tri">
+  <div class="tri-head">▍段首接榫与跨章回溯 <span class="tagline"><span class="tag">#承继</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>原文引证 · 朱德熙 §3.3</div>
+    <blockquote>
+      "就构造说，这两类句子也是有区别的。上文讨论定语的时候，我们曾经说明甲类成分之后的'的'跟乙类成分之后的'的'性质不一样……
+      如果这个分析是正确的，那么我们应该承认'这张纸是白的'跟'这张纸是很白的'是性质不同的两种句子。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>这一段是"跨章节回溯"的教科书样本，一句话里做了三件事：</p>
+    <ul>
+      <li><b>回扣</b>："上文讨论定语的时候，我们曾经说明……"——把旧结论调来当前语境；</li>
+      <li><b>迁移</b>：同一组证据（"的"的性质）在谓语位置再验证一次；</li>
+      <li><b>推进</b>："如果这个分析是正确的，那么……"——用条件句把新旧两节咬合起来。</li>
+    </ul>
+    <p>段际缝合主要有三种动作，五家都用到了，只是分布不同：</p>
+    <ol style="font-family:'PingFang SC','Microsoft YaHei',sans-serif;font-size:14px;">
+      <li><b>接榫式</b>：前节结论直接转下节前提（朱德熙 §2.1 开篇即用定语的结论引出状语）；</li>
+      <li><b>回溯式</b>：跨越数节回取同一证据，再作新解（朱德熙 §3.3；胡、张 §三 回扣 §二）；</li>
+      <li><b>成见式</b>：先摆学界成见，再用事实修正，顺势推出新维度（胡、张 §三.1；陆俭明 §三（五））。</li>
+    </ol>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板（三种缝合句）</div>
+    <blockquote class="tpl">
+      「<b>接榫</b>」"由 <span class="sans">{对象}</span> 构成的 <span class="sans">{成分}</span> 表示的是……；就性质来说，它是 <span class="sans">{性质甲}</span>，不是 <span class="sans">{性质乙}</span>。因此 <span class="sans">{甲类}</span> 一般不宜于 <span class="sans">{某用法}</span>，<span class="sans">{乙类}</span> 则经常担任这种职务。"<br>
+      「<b>回溯</b>」"上文讨论 <span class="sans">{前一节}</span> 的时候，我们曾经说明……如果这个分析是正确的，那么我们应该承认……"<br>
+      「<b>成见</b>」"有些研究认为 <span class="sans">{旧说}</span>。实际上，<span class="sans">{事实}</span>。所以根据 <span class="sans">{新参项}</span>，也可以进行 <span class="sans">{新分类}</span>。"
+    </blockquote>
+  </div>
+</div>
+
+<h4><span class="lv">（3）</span>段末收拢的两种语气</h4>
+<div class="tri">
+  <div class="tri-head">▍断言句 vs. 谦抑句 <span class="tagline"><span class="tag">#承继</span><span class="tag">#离析</span></span></div>
+  <div class="lane lane-quote">
+    <div class="lane-label"><span class="ic">❝</span>对照两种段末</div>
+    <blockquote>
+      <b>朱德熙（断言）</b>："以上的事实说明甲₁是一种具有强烈凝固趋势的结构，它的结构原则不是自由的造句原则。"<br><br>
+      <b>陆俭明（谦抑）</b>："我们不能期求按某些标准，通过几次分类手续就可以把所有的词分得清清楚楚，干干净净……对于例外现象只能个别处理，作特别说明。"
+    </blockquote>
+  </div>
+  <div class="lane lane-note">
+    <div class="lane-label"><span class="ic">✎</span>解剖点评</div>
+    <p>段末的语气选择，其实取决于<strong>该段结论的性质</strong>：</p>
+    <ul>
+      <li>证据已经连排、机制已经给出 → 用<b>不可逆的断言句</b>兜住（朱德熙："以上的事实说明……"）；</li>
+      <li>涉及体系的边界与局限 → 用<b>谦抑的说明句</b>留出余地（陆俭明："不能期求……只能个别处理"）。</li>
+    </ul>
+    <p>要避免的是相反的错误：该断言时犹疑（"或许可以认为……"削弱力度），
+    该谦抑时夸大（声称体系已完美无缺，反而招致反驳）。</p>
+  </div>
+  <div class="lane lane-tpl">
+    <div class="lane-label"><span class="ic">⧉</span>可迁移模板</div>
+    <blockquote class="tpl">
+      「<b>断言收拢</b>」"以上的事实说明 <span class="sans">{X}</span> 是一种具有 <span class="sans">{性质}</span> 的 <span class="sans">{单位}</span>，它的 <span class="sans">{原则}</span> 不是 <span class="sans">{另一种原则}</span>。"<br>
+      「<b>谦抑说明</b>」"我们不能期求按某些标准、通过几次分类手续就可以把所有的 <span class="sans">{对象}</span> 分得清清楚楚，干干净净……对于 <span class="sans">{例外}</span> 只能个别处理，作特别说明。"
+    </blockquote>
+  </div>
+</div>
+
+<h3 id="s6-5">6.5 工序五 · 归因与升华：结论接到哪里</h3>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-6</span>结语的取向与"出海口"</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:200px">结语做了什么</th><th style="width:260px">接到什么更大的问题上</th><th>结语类型</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>发现重叠式的感情色彩随句法槽位反转</td><td>主观量与主观估价——语法形式如何编码说话人的态度</td><td>深化型（由句法推主观）</td></tr>
+<tr><td class="k">邢福义</td><td>指出"NP了"是说话人截取客观变移作为情态基底</td><td>主观规约与社会认知图式；以动统静、短语成句</td><td>升格型（由句法到认知）</td></tr>
+<tr><td class="k">吴为善</td><td>抽象出三构式承继链与重新分析</td><td>"从具体到抽象"是人类认知的普遍规律</td><td>通则型（个案接普遍规律）</td></tr>
+<tr><td class="k">陆俭明</td><td>宣示十五类系统建成；指明方法的普遍意义</td><td>结构主义分布论与汉语事实深度融合的可能</td><td>交账＋升格型</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>确立"不自由动词"新范畴</td><td>汉语动词的配价与构型理论；形式事实纠正理论预设</td><td>新范畴型</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 五种"出海口"的共同点</span>
+  没有一家的结语是"正文结论的重述"。它们都做了同一件事：<strong>把具体结论接到一个"更大但可及"的问题上</strong>——
+  或是主观性，或是认知规律，或是方法论范式。
+  联系<a class="ref" href="#s7">迁移清单</a>第 12 条：<strong>结语不是总结，是发射架。</strong>
+</div>
+
+<h3 id="s6-6">6.6 跨篇理论对话：五家如何处置"理论与前人"</h3>
+
+<p>
+前面 6.1–6.5 是"横着比同一道工序"；这一节换最后一刀：<strong>竖着比五家处置"理论"与"前人"的态度</strong>。
+各篇解剖章里的 <a class="ref" href="#s1-5">深读</a> 已逐篇记录，这里做三件事——
+<span class="pnum">①</span>把四层（理论依据／学术对话／例证咬合／分类映射）逐篇的<strong>有无</strong>拉成一张登记表；
+<span class="pnum">②</span>归纳出两种理论处置<strong>类型</strong>；<span class="pnum">③</span>给"回应前人"排出<strong>强度梯度</strong>。
+</p>
+
+<div class="note-bar">
+  <span class="nb-title">◇ 登记原则</span>
+  下表只登记<strong>文本自身可证</strong>的内容：作者明说的记 <span class="src-tag src-self">原文自述</span>，
+  只能从论证操作推出的记 <span class="src-tag src-infer">文本可证</span>，原文未出现的一律记 <span class="void">—（空缺·不填补）</span>。
+  缺格不是缺陷，是<strong>文体选择</strong>——有的篇目本就不靠"理论标举"取胜。
+</div>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-7</span>四层理论处置 · 逐篇有无登记（含空缺登记）</caption>
+<thead><tr>
+  <th style="width:112px">学者</th>
+  <th style="width:150px">理论依据<br><span style="font-weight:400;font-size:12px;color:var(--ink-3)">是否明标所用理论</span></th>
+  <th style="width:180px">学术对话<br><span style="font-weight:400;font-size:12px;color:var(--ink-3)">如何处置前人观点</span></th>
+  <th style="width:150px">例证咬合<br><span style="font-weight:400;font-size:12px;color:var(--ink-3)">例子如何服务论点</span></th>
+  <th>分类映射<br><span style="font-weight:400;font-size:12px;color:var(--ink-3)">分类如何对应结论</span></th>
+</tr></thead>
+<tbody>
+<tr>
+  <td class="k">朱德熙</td>
+  <td><span class="src-tag src-infer">文本可证</span><br>不标理论名；以"词义相同而分布不同"这一<strong>方法论原则</strong>贯穿</td>
+  <td><span class="void">—（空缺）</span><br>正文未设学术对话，<strong>只对"意义决定论"作隐含校正</strong></td>
+  <td><span class="src-tag src-self">原文自述</span><br>甲／乙两类重叠式两两对举，用分布差异反证性质差异</td>
+  <td><span class="src-tag src-self">原文自述</span><br>两类形容词的划分，直接兑现"简单形式／复杂形式"的对立结论</td>
+</tr>
+<tr>
+  <td class="k">邢福义</td>
+  <td><span class="void">—（空缺）</span><br>不设理论依据，全篇以<strong>句式描写</strong>推进</td>
+  <td><span class="void">—（空缺）</span><br>不辩不驳，<strong>只立规则</strong></td>
+  <td><span class="src-tag src-self">原文自述</span><br>四类例证层层逼出"NP了"的成句条件与情态底色</td>
+  <td><span class="src-tag src-self">原文自述</span><br>三分法（NP类／"了"性质／情态类别）直接支撑"以动统静"的结论</td>
+</tr>
+<tr>
+  <td class="k">吴为善</td>
+  <td><span class="src-tag src-self">原文自述</span><br>明标构式语法、承继、重新分析、隐喻与主观性</td>
+  <td><span class="void">—（空缺）</span><br>未设专节对话，理论以"用而不辩"的方式在场</td>
+  <td><span class="src-tag src-self">原文自述</span><br>语料按"原型—边缘"分层，为承继链提供证据</td>
+  <td><span class="src-tag src-self">原文自述</span><br>三构式分类＝承继链的节点，分类本身即结论</td>
+</tr>
+<tr>
+  <td class="k">陆俭明</td>
+  <td><span class="src-tag src-self">原文自述</span><br>明标分布论，并自陈取舍原因</td>
+  <td><span class="src-tag src-self">原文自述</span><br>对意义派<strong>批驳</strong>，对形态派<strong>不完全否定</strong>，对吕叔湘<strong>接受并补强</strong></td>
+  <td><span class="src-tag src-self">原文自述</span><br>分布特征逐类验证，例证服从"可操作"标准</td>
+  <td><span class="src-tag src-self">原文自述</span><br>十五类系统的建成，即对"能否划分"这一命题的正面答复</td>
+</tr>
+<tr>
+  <td class="k">胡裕树·张斌</td>
+  <td><span class="src-tag src-self">原文自述</span><br>明标次范畴与分布／功能标准</td>
+  <td><span class="src-tag src-self">原文自述</span><br>对"以意派"类做法<strong>批驳</strong>，并<strong>补足、修正</strong>成说</td>
+  <td><span class="src-tag src-self">原文自述</span><br>以"不自由动词"的分布事实回应理论预设</td>
+  <td><span class="src-tag src-self">原文自述</span><br>次范畴的划分直接兑现"形式事实纠正理论"的结论</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">◇ 这张表怎么读</span>
+  横看是"四层齐备度"：<strong>陆、胡张四层全满</strong>（两张"对话"栏都是 <span class="src-tag src-self">原文自述</span>），
+  <strong>吴为善三缺一</strong>（无专设对话），<strong>朱德熙三缺一</strong>（理论隐于操作、无对话），
+  <strong>邢福义两缺二</strong>（只靠例证与分类立论）。这恰好印证一条：<em>理论越"显"，对话往往越密；理论越"隐"，对话越可省。</em>
+</div>
+
+<h4>（1）理论处置的两种类型</h4>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-8</span>明标理论型 · 隐于操作型</caption>
+<thead><tr><th style="width:130px">类型</th><th style="width:150px">代表</th><th style="width:280px">理论在文中的存在方式</th><th>适用条件</th></tr></thead>
+<tbody>
+<tr>
+  <td class="k">明标理论型</td>
+  <td><a class="ref" href="#s4">陆俭明</a><br><a class="ref" href="#s5">胡裕树·张斌</a></td>
+  <td>理论<strong>具名出场</strong>，作者交代其来源与取舍理由，并主动与前人观点交锋</td>
+  <td>研究的<strong>合法性本身有待论证</strong>——"能不能分""要不要新范畴"是需要先说服读者的问题</td>
+</tr>
+<tr>
+  <td class="k">隐于操作型</td>
+  <td><a class="ref" href="#s1">朱德熙</a><br><a class="ref" href="#s2">邢福义</a><br><a class="ref" href="#s3">吴为善</a></td>
+  <td>理论<strong>不具名</strong>，化进切分动作、对照设计、结论措辞里；读者从操作中感到方法，而非从标签中读到方法</td>
+  <td>结论<strong>自身就有说服力</strong>——分布摆出来、规则立起来，方法即被示范，无须先声张</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar blue">
+  <span class="nb-title">◇ 迁移提示</span>
+  两种类型不是高下之分，而是<strong>选题性质决定的</strong>。
+  你的论题若属于"新范畴／新分类的建立"，宜走<strong>明标型</strong>（先把合法性说清）；
+  若属于"某种现象的条件描写"，宜走<strong>隐于操作型</strong>（让事实自证）。
+  混用会两头落空：<em>该辩的不辩，会显得论点悬空；不必辩的硬辩，会显得小题大做。</em>
+</div>
+
+<h4>（2）回应前人的强度梯度</h4>
+
+<p>
+"学术对话"并非只有"赞成／反对"两档。五篇里<strong>真正设了对话的只有陆、胡张两家</strong>，
+但把它们的动作排开，可以得到一条<strong>从强到弱的四级梯度</strong>——这四级是可迁移的操作刻度：
+</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 6-9</span>回应前人的四级强度梯度（据陆俭明、胡裕树·张斌两篇之"原文自述"归纳）</caption>
+<thead><tr><th style="width:88px">强度</th><th style="width:120px">动作</th><th style="width:210px">典型做法</th><th style="width:150px">出处</th><th>何时使用</th></tr></thead>
+<tbody>
+<tr><td class="k">★★★<br>批驳</td><td>正面否定</td><td>指出前人路径在<strong>方法上不成立</strong>，并给出反例证伪</td><td><a class="ref" href="#s4-7">陆→意义派</a>；<a class="ref" href="#s5-5">胡张→以意派类</a></td><td>前人的判定标准会导致"分不下去"，且你有硬反例</td></tr>
+<tr><td class="k">★★<br>不完全否定</td><td>部分承认</td><td>承认前人<strong>方向可取</strong>，但指出<strong>范围或力度不足</strong>，予以限定后保留</td><td><a class="ref" href="#s4-7">陆→形态派</a></td><td>前人抓住了真问题，只是用它的标准还不够</td></tr>
+<tr><td class="k">★<br>接受并补强</td><td>继承加码</td><td>接受前人结论，<strong>补上新证据或新层次</strong>，使其更稳固</td><td><a class="ref" href="#s4-7">陆→吕叔湘</a></td><td>前人判断正确，但当时证据未及你手</td></tr>
+<tr><td class="k">☆<br>补足·修正</td><td>低调推进</td><td>不针锋相对，仅<strong>把成说的边界放宽或收紧</strong>，属"接着说"</td><td><a class="ref" href="#s5-5">胡张→成说</a></td><td>前人框架大体可用，只差一处调整</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar">
+  <span class="nb-title">◇ 一句总结</span>
+  理论浓淡、对话强弱，<strong>都是选题的性质在替作者作决定</strong>。
+  写作时不必强求四层齐备——但必须清楚：<em>你缺的那一层，是主动省去的，还是你没想到的？</em>
+  前者是文体，后者是漏洞。
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     迁移清单
+     ============================================================ -->
+<section id="s7">
+<h2><span class="num">七</span>迁移清单：可复用的结构动作</h2>
+
+<p class="lead">
+下面 16 条，都是从五篇原文里抽出来的<strong>可执行动作</strong>。每条的格式统一为：
+<b>动作名 → 什么时候用 → 怎么做 → 出处</b>。写论文时按需检索即可。
+</p>
+
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 7-1</span>写作动作迁移清单（按论文推进顺序编排）</caption>
+<thead><tr><th style="width:44px">#</th><th style="width:150px">动作</th><th style="width:220px">什么时候用</th><th style="width:330px">怎么做</th><th>出处</th></tr></thead>
+<tbody>
+<tr><td class="c">1</td><td class="k">一句话立总纲</td><td>引言第一句</td><td>用"本文拟说明 A 和它的 B 在 C 上的区别"同时锁定对象、角度、任务</td><td><a class="ref" href="#s1-1">朱德熙 §0.1</a></td></tr>
+<tr><td class="c">2</td><td class="k">排除＋立论对句</td><td>需要替换旧解释时</td><td>"不在……上，而在……上"——先用否定式关掉易想到的解释，再引入新层次并当场命名</td><td><a class="ref" href="#s1-1">朱德熙 §0.2</a></td></tr>
+<tr><td class="c">3</td><td class="k">操作性定义优先</td><td>界定研究对象</td><td>不给抽象定义，直接清点"包括①…②…③…；下列不在讨论范围"</td><td><a class="ref" href="#s1-1">朱德熙 §0.1</a></td></tr>
+<tr><td class="c">4</td><td class="k">预先排雷</td><td>对象边界处</td><td>把构词法产物／凝固格式／语用省略在论证前请出场外；一句话能说清放脚注，关键判断放正文</td><td><a class="ref" href="#s1-1">朱德熙脚注①</a>｜<a class="ref" href="#s5-1">胡·张脚注①</a></td></tr>
+<tr><td class="c">5</td><td class="k">先立假说后铺证据</td><td>长篇论证的开头</td><td>在进入主体前亮出理论判断，使后文每一步测试都有服务对象</td><td><a class="ref" href="#s1-1">朱德熙 §0.2</a></td></tr>
+<tr><td class="c">6</td><td class="k">小节工序固定化</td><td>主体各节内部</td><td>统一走"列对立体 → 施测试 → 揭语义 → 离析例外"，让读者可预期</td><td><a class="ref" href="#s1-2">朱德熙 §1—§4</a></td></tr>
+<tr><td class="c">7</td><td class="k">对立体连排</td><td>需要证明规则边界</td><td>同段连排 2—3 组最小对立体，格式统一，随后给一个统一机制</td><td><a class="ref" href="#s6-3">朱德熙 §1.3／邢福义 §3</a></td></tr>
+<tr><td class="c">8</td><td class="k">平行多测</td><td>要给某一成分定性</td><td>设 n 项相互独立的平行测试，格式完全统一，五项同向即难反驳</td><td><a class="ref" href="#s1-2">朱德熙 §1.4 五项测试</a></td></tr>
+<tr><td class="c">9</td><td class="k">删除／扩展测试</td><td>要锁定核心变量或化解归属之争</td><td>只动一个成分看句子是否成立；或用扩展框架把"是词还是词组"变成可测问题</td><td><a class="ref" href="#s2-1">邢福义删除测试</a>｜<a class="ref" href="#s5-3">胡·张离合词测试</a></td></tr>
+<tr><td class="c">10</td><td class="k">还原／隐去假说</td><td>出现"独用形式"类反例</td><td>提出"隐去了 X"假说并当场还原，把零散事实收进理论框架</td><td><a class="ref" href="#s2-2">邢福义 §2</a>｜<a class="ref" href="#s3-2">吴为善 §3.1</a></td></tr>
+<tr><td class="c">11</td><td class="k">极性不对称收口</td><td>结语前的最后一击</td><td>用"否定形式缺失"或"肯定形式空缺"反证构式的性质与倾向</td><td><a class="ref" href="#s2-4">邢福义 §4</a>｜<a class="ref" href="#s3-3">吴为善 §4.1</a></td></tr>
+<tr><td class="c">12</td><td class="k">结语发射架</td><td>写结语时</td><td>不重述结论，而把结论接到主观性／认知规律／方法论范式上</td><td><a class="ref" href="#s6-5">五家结语对照</a></td></tr>
+<tr><td class="c">13</td><td class="k">穷尽排查法</td><td>理论辨析型论文</td><td>列出全部候选依据 → 逐一证伪 / 有条件排除 → 留存唯一；对"虽好但用不上"的依据要留情面</td><td><a class="ref" href="#s4-2">陆俭明 §二</a></td></tr>
+<tr><td class="c">14</td><td class="k">四路合围</td><td>要为一个主张加固</td><td>从目的、理论出身、本质、深层映射四个独立角度同时论证同一主张</td><td><a class="ref" href="#s4-2">陆俭明 §二</a></td></tr>
+<tr><td class="c">15</td><td class="k">二值判定＋层级不回退</td><td>写分类程序</td><td>框架设定到"能出现／不能出现"两堆；每一步只在上一层子集里切一刀，只往下不回退</td><td><a class="ref" href="#s5-2">胡·张 §二；陆俭明 §四</a></td></tr>
+<tr><td class="c">16</td><td class="k">个案接通则</td><td>个案研究型论文</td><td>把个案发现嵌进已有共识："……印证／补充／修正了某通例"</td><td><a class="ref" href="#s3-4">吴为善 §4.3</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="s7-1">7.1 典范句式库（按用途归类）</h3>
+
+<h4><span class="lv">（1）</span>破题与立论</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 7-2</span>破题句式</caption>
+<thead><tr><th style="width:120px">用途</th><th style="width:330px">句式</th><th>出处</th></tr></thead>
+<tbody>
+<tr><td>锁定总题</td><td>"本文拟说明 <span class="sans">{X}</span> 和它的 <span class="sans">{Y}</span> 在 <span class="sans">{Z}</span> 上的区别。"</td><td><a class="ref" href="#s1-1">朱德熙 §0.1</a></td></tr>
+<tr><td>排除旧解</td><td>"<span class="sans">{A}</span> 与 <span class="sans">{B}</span> 的区别，不在 <span class="sans">{常见归因}</span> 上，而在 <span class="sans">{理论层次}</span> 上，即前者表示 <span class="sans">{P}</span>，后者表示 <span class="sans">{Q}</span>。"</td><td><a class="ref" href="#s1-1">朱德熙 §0.2</a></td></tr>
+<tr><td>立范畴</td><td>"在现代汉语里，<span class="sans">{P}</span> 与 <span class="sans">{Q}</span> 两种概念的区别构成一个语法范畴——<span class="sans">{N}</span> 范畴。"</td><td><a class="ref" href="#s1-1">朱德熙 §0.2</a></td></tr>
+<tr><td>立代号</td><td>"一个 <span class="sans">{成分}</span>，带上 <span class="sans">{标记}</span>，可以成为一个分句……可以列出两个基本格式：Ⅰ……；Ⅱ……"</td><td><a class="ref" href="#s2-1">邢福义 开篇</a></td></tr>
+<tr><td>争理论资格</td><td>"从语义上分析……难以搭配，因此整个结构表达的意义显然不能从其构成成分直接推导出来。可见，'<span class="sans">{格式}</span>' 是一个典型的 <span class="sans">{理论术语}</span>。"</td><td><a class="ref" href="#s3-1">吴为善 §1</a></td></tr>
+<tr><td>学术史诊断</td><td>"<span class="sans">{问题}</span> 始终是 <span class="sans">{学科}</span> 研究中一个老大难的问题。问题的症结在于：（一）……（二）……"</td><td><a class="ref" href="#s4-1">陆俭明 §一</a></td></tr>
+<tr><td>方法论立宪</td><td>"意义是内蕴的，形式是外观的。功能意义决定 <span class="sans">{差别}</span>，功能形式显示 <span class="sans">{类别}</span>……总是要透过形式去发现意义。"</td><td><a class="ref" href="#s5-1">胡·张 §一</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（2）</span>论证与处置</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 7-3</span>论证句式</caption>
+<thead><tr><th style="width:120px">用途</th><th style="width:330px">句式</th><th>出处</th></tr></thead>
+<tbody>
+<tr><td>排除语义归因</td><td>"这一类格式之所以不能成立，不能从词汇意义上去找解释，因为我们只要把其中的 <span class="sans">{甲类}</span> 换成 <span class="sans">{乙类}</span>，仍旧可以造成合法的格式；不过这样造成的格式已经不是 <span class="sans">{X}</span>，而是 <span class="sans">{Y}</span> 了。"</td><td><a class="ref" href="#s1-2">朱德熙 §1.3</a></td></tr>
+<tr><td>兼类离析</td><td>"<span class="sans">{A₁}</span> 和 <span class="sans">{A₂}</span> 的意义和造句功能都不相同，应该算两个词……能作 <span class="sans">{某用法}</span> 的 <span class="sans">{A}</span>，在语法性质上实际上已经转化为 <span class="sans">{另一类}</span>。"</td><td><a class="ref" href="#s1-3">朱德熙 §2.3</a></td></tr>
+<tr><td>核心变量测试</td><td>"'<span class="sans">{格式}</span>' 成为分句的关键是 <span class="sans">{成分}</span>。如果不用，<span class="sans">{X}</span> 和 <span class="sans">{Y}</span> 就不构成 <span class="sans">{关系}</span>。"</td><td><a class="ref" href="#s2-1">邢福义 §1</a></td></tr>
+<tr><td>语义参项定义</td><td>"能进入 '<span class="sans">{格式}</span>' 的 <span class="sans">{成分}</span> 具有 <span class="sans">{特征名}</span>。它所表示的概念，是由相对的概念推移而来的，原来并非如此。"</td><td><a class="ref" href="#s2-3">邢福义 §3</a></td></tr>
+<tr><td>对立体解释</td><td>"'<span class="sans">{A}</span>' 是由 '<span class="sans">{非A}</span>' 变来的，有 <span class="sans">{特征}</span>，因此能说成……；'<span class="sans">{B}</span>' 不是由别的什么变成的，没有 <span class="sans">{特征}</span>，因此不能说成……"</td><td><a class="ref" href="#s2-3">邢福义 §3</a></td></tr>
+<tr><td>否定阻断定性</td><td>"'<span class="sans">{格式}</span>' 不能直接采用否定形式……因此，作为一种句式，'<span class="sans">{格式}</span>' 实际上没有否定形式。"</td><td><a class="ref" href="#s2-4">邢福义 §4</a></td></tr>
+<tr><td>非原型还原</td><td>"这类复句不具有原型性，它们是 <span class="sans">{甲关系}</span> 复句与 <span class="sans">{乙关系}</span> 复句整合的结果……两者分别截取前一个分句和后一个分句，就可以构成……"</td><td><a class="ref" href="#s3-2">吴为善 §3.1</a></td></tr>
+<tr><td>历时检索汇报</td><td>"通过对 <span class="sans">{语料库}</span> 检索，最早的文献记录可以追溯到 <span class="sans">{时代}</span>。共搜到 <span class="sans">{n}</span> 条，其中动词主要是 <span class="sans">{甲、乙、丙}</span> 三个……"</td><td><a class="ref" href="#s3-4">吴为善 §4.1</a></td></tr>
+<tr><td>重新分析</td><td>"构式语义的逐渐虚化，会导致结构的重新分析。如 '<span class="sans">{例}</span>'，分析为 '<span class="sans">{旧切分}</span>' 是没有意义的，更合理的切分也许是 '<span class="sans">{新切分}</span>'。"</td><td><a class="ref" href="#s3-5">吴为善 §4.3</a></td></tr>
+<tr><td>依据排查</td><td>"依据 <span class="sans">{甲}</span> 分类只能获得 <span class="sans">{不合适的产物}</span>……依据 <span class="sans">{乙}</span> 对于 <span class="sans">{适用语言}</span> 可行，但 <span class="sans">{本语言}</span> 缺乏该条件，虽好但用不上。"</td><td><a class="ref" href="#s4-2">陆俭明 §二</a></td></tr>
+<tr><td>同一性原则</td><td>"考虑 <span class="sans">{X}</span> 问题一定要注意同一性原则。只把 <span class="sans">{条件甲}</span> 而 <span class="sans">{条件乙}</span> 的看作 <span class="sans">{类甲}</span>；否则看作两个不同的词。"</td><td><a class="ref" href="#s4-5">陆俭明 §五</a></td></tr>
+<tr><td>例外处理</td><td>"我们不能期求按某些标准、通过几次分类手续就可以把所有的词分得清清楚楚……对于例外现象只能个别处理，作特别说明。"</td><td><a class="ref" href="#s4-5">陆俭明 §五</a></td></tr>
+<tr><td>框架定性</td><td>"（1）<span class="sans">{A类}</span>。凡能出现在上述框架中的 <span class="sans">{对象}</span>，都是 <span class="sans">{A类}</span>……（2）<span class="sans">{B类}</span>。凡不能出现的，都是 <span class="sans">{B类}</span>。"</td><td><a class="ref" href="#s5-2">胡·张 §二.1</a></td></tr>
+<tr><td>开新维度</td><td>"有些研究认为 <span class="sans">{旧说}</span>。实际上，<span class="sans">{事实}</span>。所以根据 <span class="sans">{参项}</span>，也可以进行 <span class="sans">{新分类}</span>。"</td><td><a class="ref" href="#s5-2">胡·张 §三.1</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h4><span class="lv">（3）</span>承接与收束</h4>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 7-4</span>段际与结语句式</caption>
+<thead><tr><th style="width:120px">用途</th><th style="width:330px">句式</th><th>出处</th></tr></thead>
+<tbody>
+<tr><td>跨章回溯</td><td>"上文讨论 <span class="sans">{前一节}</span> 的时候，我们曾经说明……如果这个分析是正确的，那么我们应该承认……"</td><td><a class="ref" href="#s1-4">朱德熙 §3.3</a></td></tr>
+<tr><td>断言收拢</td><td>"以上的事实说明 <span class="sans">{X}</span> 是一种具有 <span class="sans">{性质}</span> 的结构，它的结构原则不是 <span class="sans">{另一种原则}</span>。"</td><td><a class="ref" href="#s1-2">朱德熙 §1.3</a></td></tr>
+<tr><td>维词共现证主观</td><td>"不管是 <span class="sans">{关系甲}</span> 还是 <span class="sans">{关系乙}</span>，'<span class="sans">{格式}</span>' 后边都可以加 <span class="sans">{虚词}</span>，借以表示 <span class="sans">{主观义}</span>。"</td><td><a class="ref" href="#s2-2">邢福义 §2</a></td></tr>
+<tr><td>升格到通则</td><td>"三个构式的承继关系主要依赖于相关认知域的隐喻映射……从'具体'到'抽象'是人类认知的普遍规律。"</td><td><a class="ref" href="#s3-4">吴为善 §4.3</a></td></tr>
+<tr><td>交账＋升格</td><td>"本文以 <span class="sans">{材料规模}</span> 的实证为依托，将 <span class="sans">{对象}</span> 精细化为 <span class="sans">{n}</span> 个完备类别……本文是 <span class="sans">{理论}</span> 与 <span class="sans">{本语言}</span> 事实深度融合的结晶。"</td><td><a class="ref" href="#s4-6">陆俭明 结语</a></td></tr>
+<tr><td>新范畴结语</td><td>"传统语法受 <span class="sans">{外来理论}</span> 影响，往往认为 <span class="sans">{预设}</span>。本文通过形式排查，论证了存在着相当大一批 <span class="sans">{范畴名}</span>……"</td><td><a class="ref" href="#s5-4">胡·张 结语</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-bar warn">
+  <span class="nb-title">⚠ 使用提醒</span>
+  表格里的句式是"<strong>骨架</strong>"，不是"<strong>套话</strong>"。
+  填进 <span class="sans">{ }</span> 的内容必须是<strong>你自己的研究对象与研究结论</strong>；
+  若只把名词换掉而论证动作没做（例如没有真的去排对立体、没有真的去做还原），
+  句式就会立刻变成空架子。<strong>先有动作，再择句式。</strong>
+</div>
+</section>
+
+<hr class="sep">
+
+<!-- ============================================================
+     三重索引
+     ============================================================ -->
+<section id="s8">
+<h2><span class="num">索引</span>三重索引与跳转</h2>
+
+<h3 id="s8-1">8.1 篇目索引</h3>
+<div class="index-grid">
+  <div class="index-card">
+    <h5>一 · 朱德熙（1956）</h5>
+    <ul>
+      <li><a href="#s1-1">1.1 引言动作：以"分布断裂"破题</a></li>
+      <li><a href="#s1-2">1.2 主体动作：四大槽位的横向排查</a></li>
+      <li><a href="#s1-3">1.3 材料的剪裁与反例处置</a></li>
+      <li><a href="#s1-4">1.4 机制归因与升华</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5>二 · 邢福义（1984）</h5>
+    <ul>
+      <li><a href="#s2-1">2.1 引言动作：代号化＋十秒聚焦</a></li>
+      <li><a href="#s2-2">2.2 槽位倒置与复句关系统查</a></li>
+      <li><a href="#s2-3">2.3 "推移性"与两组反例证伪</a></li>
+      <li><a href="#s2-4">2.4 非主谓句与否定阻断</a></li>
+      <li><a href="#s2-5">2.5 机制归因与升华</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5>三 · 吴为善、夏芳芳（2011）</h5>
+    <ul>
+      <li><a href="#s3-1">3.1 从"字面语义冲突"立构式</a></li>
+      <li><a href="#s3-2">3.2 复句整合与还原</a></li>
+      <li><a href="#s3-3">3.3 能性结构与极性不对称</a></li>
+      <li><a href="#s3-4">3.4 历时溯源与认知域承继链</a></li>
+      <li><a href="#s3-5">3.5 收口：句法重新分析</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5>四 · 陆俭明（1994）</h5>
+    <ul>
+      <li><a href="#s4-1">4.1 以学术史清算破题</a></li>
+      <li><a href="#s4-2">4.2 三条依据的逐一排查</a></li>
+      <li><a href="#s4-3">4.3 概念精确化与标准辩证</a></li>
+      <li><a href="#s4-4">4.4 14 步二分淘汰流水线</a></li>
+      <li><a href="#s4-5">4.5 兼类界定与例外处置</a></li>
+      <li><a href="#s4-6">4.6 结语：走向全语言系统</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5>五 · 胡裕树、张斌（1982）</h5>
+    <ul>
+      <li><a href="#s5-1">5.1 以方法论总纲立宪</a></li>
+      <li><a href="#s5-2">5.2 功能框架驱动的分类流水线</a></li>
+      <li><a href="#s5-3">5.3 双轨排布与反例处置</a></li>
+      <li><a href="#s5-4">5.4 机制归因与升华</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5>跨篇</h5>
+    <ul>
+      <li><a href="#s0">导读 · 三栏体例与读法</a></li>
+      <li><a href="#overview">总览 · 五家范式与一句话技法</a></li>
+      <li><a href="#s6">工序横向对比</a></li>
+      <li><a href="#s6-6">§6.6 跨篇理论对话</a></li>
+      <li><a href="#s7">迁移清单与句式库</a></li>
+    </ul>
+  </div>
+</div>
+
+<h3 id="s8-2">8.2 工序索引</h3>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 8-1</span>按写作工序检索</caption>
+<thead><tr><th style="width:190px">工序</th><th style="width:120px">横比章</th><th>各篇对应位置</th></tr></thead>
+<tbody>
+<tr><td class="k">工序一 · 选题切入</td><td><a class="ref" href="#s6-1">§6.1</a></td><td><a href="#s1-1">朱 §0.1</a>｜<a href="#s2-1">邢 §1</a>｜<a href="#s3-1">吴 §1</a>｜<a href="#s4-1">陆 §一</a>｜<a href="#s5-1">胡·张 §一</a></td></tr>
+<tr><td class="k">工序二 · 命题与界定</td><td><a class="ref" href="#s6-2">§6.2</a></td><td><a href="#s1-1">朱 §0.1—0.2</a>｜<a href="#s2-1">邢 §1</a>｜<a href="#s3-1">吴 §1</a>｜<a href="#s4-3">陆 §三</a>｜<a href="#s5-1">胡·张 §一</a></td></tr>
+<tr><td class="k">工序三 · 形式测试与材料剪裁</td><td><a class="ref" href="#s6-3">§6.3</a></td><td><a href="#s1-2">朱 §1.3—1.4</a>｜<a href="#s2-3">邢 §3</a>｜<a href="#s3-3">吴 §4.1</a>｜<a href="#s4-4">陆 §四</a>｜<a href="#s5-3">胡·张 §二</a></td></tr>
+<tr><td class="k">工序四 · 谋篇与段际缝合</td><td><a class="ref" href="#s6-4">§6.4</a></td><td><a href="#s1-2">朱 §1—§5 骨架</a>｜<a href="#s2-2">邢 §2</a>｜<a href="#s3-4">吴 §4.3</a>｜<a href="#s4-4">陆 §四</a>｜<a href="#s5-2">胡·张 §二—§三</a></td></tr>
+<tr><td class="k">工序五 · 归因与升华</td><td><a class="ref" href="#s6-5">§6.5</a></td><td><a href="#s1-4">朱 §5</a>｜<a href="#s2-5">邢 结语</a>｜<a href="#s3-4">吴 §4.3</a>｜<a href="#s4-6">陆 结语</a>｜<a href="#s5-4">胡·张 结语</a></td></tr>
+<tr><td class="k">另附 · 反例处置</td><td><a class="ref" href="#s6-3">§6.3</a></td><td><a href="#s1-3">朱 §2.1—2.3</a>｜<a href="#s2-4">邢 §4</a>｜<a href="#s3-5">吴 §4.3</a>｜<a href="#s4-5">陆 §五</a>｜<a href="#s5-3">胡·张 §二.8</a></td></tr>
+<tr><td class="k">另附 · 理论与前人处置</td><td><a class="ref" href="#s6-6">§6.6</a></td><td><a href="#s1-5">朱 §1.5</a>｜<a href="#s2-6">邢 §2.6</a>｜<a href="#s3-6">吴 §3.6</a>｜<a href="#s4-7">陆 §4.7</a>｜<a href="#s5-5">胡·张 §5.5</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="s8-3">8.3 动作标签索引</h3>
+<div class="index-grid">
+  <div class="index-card">
+    <h5><span class="tag">#切入点</span></h5>
+    <ul>
+      <li><a href="#s1-1">朱：词义同而分布裂</a></li>
+      <li><a href="#s2-1">邢：体词带"了"成句</a></li>
+      <li><a href="#s3-1">吴：表层语义冲突的熟语</a></li>
+      <li><a href="#s4-1">陆：学术史症结诊断</a></li>
+      <li><a href="#s5-1">胡·张：发现程序的缺失</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#界定</span></h5>
+    <ul>
+      <li><a href="#s1-1">朱：清点式操作性定义</a></li>
+      <li><a href="#s2-1">邢：代号系统</a></li>
+      <li><a href="#s3-1">吴：构式资格论证</a></li>
+      <li><a href="#s4-3">陆：语法性质 vs. 语法特点</a></li>
+      <li><a href="#s5-1">胡·张：静态词组边界</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#命题</span></h5>
+    <ul>
+      <li><a href="#s1-1">朱：性状范畴</a></li>
+      <li><a href="#s2-3">邢：推移性</a></li>
+      <li><a href="#s3-5">吴：重新分析</a></li>
+      <li><a href="#s4-2">陆：功能唯一依据</a></li>
+      <li><a href="#s5-4">胡·张：不自由动词</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#对立体</span></h5>
+    <ul>
+      <li><a href="#s1-2">朱：甲₁／乙式矩阵</a></li>
+      <li><a href="#s2-3">邢：猪了／大孩子了</a></li>
+      <li><a href="#s3-3">吴：肯定形式空缺</a></li>
+      <li><a href="#s4-2">陆：三依据排查</a></li>
+      <li><a href="#s6-3">横比：对立体四组样本</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#框架</span></h5>
+    <ul>
+      <li><a href="#s1-2">朱：五条平行测试槽</a></li>
+      <li><a href="#s2-2">邢：虚词共现检验</a></li>
+      <li><a href="#s3-2">吴：差比紧缩测试</a></li>
+      <li><a href="#s4-4">陆：14 步漏斗</a></li>
+      <li><a href="#s5-2">胡·张：功能框架填充</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#排雷</span></h5>
+    <ul>
+      <li><a href="#s1-1">朱：排除构词法与凝固格式</a></li>
+      <li><a href="#s1-3">朱：历时新词说明</a></li>
+      <li><a href="#s5-1">胡·张：排除动态句语用省略</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#剪裁</span></h5>
+    <ul>
+      <li><a href="#s1-3">朱：文学书证骨干化</a></li>
+      <li><a href="#s2-1">邢：对称例证</a></li>
+      <li><a href="#s3-4">吴：条数＋来源＋分布</a></li>
+      <li><a href="#s4-4">陆：算法式呈现</a></li>
+      <li><a href="#s5-3">胡·张：极简＋书证双轨</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#离析</span></h5>
+    <ul>
+      <li><a href="#s1-3">朱：兼类离析法</a></li>
+      <li><a href="#s2-4">邢：类比离析"天"</a></li>
+      <li><a href="#s4-5">陆：例外个别说明</a></li>
+      <li><a href="#s5-3">胡·张：离合词扩展测试</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#承继</span></h5>
+    <ul>
+      <li><a href="#s1-2">朱：节内工序固定化</a></li>
+      <li><a href="#s1-4">朱：跨章回溯</a></li>
+      <li><a href="#s2-2">邢：隐去成分还原</a></li>
+      <li><a href="#s3-2">吴：复句整合还原</a></li>
+      <li><a href="#s6-4">横比：三种缝合动作</a></li>
+    </ul>
+  </div>
+  <div class="index-card">
+    <h5><span class="tag">#升华</span></h5>
+    <ul>
+      <li><a href="#s1-4">朱：槽位调控主观量</a></li>
+      <li><a href="#s2-5">邢：社会认知图式</a></li>
+      <li><a href="#s3-4">吴：具体到抽象</a></li>
+      <li><a href="#s4-6">陆：交账＋升格</a></li>
+      <li><a href="#s5-4">胡·张：新范畴</a></li>
+      <li><a href="#s6-5">横比：五种出海口</a></li>
+    </ul>
+  </div>
+</div>
+
+<h3 id="s8-4">8.4 附：五篇的"技术指标"一览</h3>
+<div class="tbl-wrap">
+<table>
+<caption><span class="cap-n">表 8-2</span>快速检索表</caption>
+<thead><tr><th style="width:110px">学者</th><th style="width:150px">主导测试</th><th style="width:130px">核心术语</th><th style="width:150px">反例处置手法</th><th>结语取向</th></tr></thead>
+<tbody>
+<tr><td class="k">朱德熙</td><td>槽位替换 · 平行多测</td><td>甲类／乙类 · 性状范畴</td><td>兼类离析 · 凝固格式排除</td><td>句法→主观量</td></tr>
+<tr><td class="k">邢福义</td><td>删除测试 · 还原测试</td><td>推移性 · 非主谓自足</td><td>假说还原 · 类比离析</td><td>句法→认知图式</td></tr>
+<tr><td class="k">吴为善</td><td>复句还原 · 历时检索</td><td>构式 · 重新分析</td><td>重新分析使反例合法</td><td>个案→普遍规律</td></tr>
+<tr><td class="k">陆俭明</td><td>否定式排查 · 层级漏斗</td><td>语法性质／特点 · 同一性</td><td>例外个别说明</td><td>交账＋方法论升格</td></tr>
+<tr><td class="k">胡裕树·张斌</td><td>功能框架填充</td><td>分布 · 广义形态 · 次范畴</td><td>扩展测试化解归属之争</td><td>确立新范畴</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<hr class="sep">
+
+<footer style="margin:40px 0 20px; padding-top:22px; border-top:3px double var(--line-2); font-family:'PingFang SC','Microsoft YaHei',sans-serif; font-size:13px; color:var(--ink-3); line-height:2;">
+  <div style="color:var(--green-d); font-size:14.5px; font-weight:600; margin-bottom:8px;">汉语语法名家论著写作技法深度解剖</div>
+  <div>体例：三栏并置（原文 → 点评 → 模板） · 四级层级 · 篇目纵排 ＋ 工序横比 · 三重索引</div>
+  <div>解剖对象：朱德熙（1956）｜邢福义（1984）｜吴为善·夏芳芳（2011）｜陆俭明（1994）｜胡裕树·张斌（1982）</div>
+  <div style="margin-top:8px; color:var(--ink-3);">引文均出自各篇原文，页码依据材料标注；点评与模板为本文档所加，供写作技法学习与迁移使用。</div>
+</footer>
+
+</div><!-- /wrap -->
+
+<button class="totop" id="totop" title="回到顶部">↑</button>
+
+<script>
+var prog = document.getElementById('progress');
+var totop = document.getElementById('totop');
+function onScroll(){
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+  prog.style.width = p + '%';
+  totop.style.display = (h.scrollTop || document.body.scrollTop) > 400 ? 'block' : 'none';
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+</script>
+</body>
+</html>

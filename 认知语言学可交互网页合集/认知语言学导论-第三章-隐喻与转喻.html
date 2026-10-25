@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隐喻与转喻 · 《认知语言学导论》第三章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第三章做成单文件交互网页：概念隐喻映射、怒火温度计、转喻九型、科学政治隐喻辨析。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink);
+  text-align:left}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+.sent{font-size:.82rem;color:var(--ink-faint);margin:.2em 0}
+
+/* ---------- 出处角标 ---------- */
+.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+.cite:hover{filter:brightness(1.15)}
+.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center;white-space:nowrap}
+thead th{background:var(--hl);font-weight:700}
+
+/* ---------- 映射图 ---------- */
+.mapline{stroke:var(--ink-faint);stroke-width:2;fill:none;opacity:.35;transition:opacity .2s}
+.mapline.on{stroke:var(--red);stroke-width:3.5;opacity:1}
+.mapbox{fill:var(--card);stroke:var(--ink);stroke-width:2}
+.mapbox.on{stroke:var(--red);stroke-width:3}
+.maptxt{font-family:"Kaiti SC","STKaiti",KaiTi,serif;fill:var(--ink);text-anchor:middle;font-size:16px}
+.mapsub{font-family:-apple-system,"PingFang SC",sans-serif;fill:var(--ink-faint);text-anchor:middle;font-size:11px}
+
+/* ---------- 转喻卡片 ---------- */
+.metgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0}
+.metcard{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:8px 6px;
+  text-align:center;font-size:.85rem;cursor:pointer;font-family:inherit;color:var(--ink);min-height:44px}
+.metcard:hover{border-color:var(--ink)}
+.metcard.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.metcard.hit{outline:2.5px solid var(--green);outline-offset:1px}
+@media (max-width:520px){.metgrid{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">隐喻与转喻 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第三章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">隐喻与转喻</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第三章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>隐喻和转喻不只是修辞格，而是思维方式——隐喻把具体源概念的结构映射到抽象目标概念（论证是战斗、时间是金钱），转喻用"邻接"让一个成分代表另一个；情感概念则由生理转喻加概念隐喻共同搭建。<button type="button" class="cite" data-cite="mapping" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metoTrad" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">这是全章七场实验共同指向的结论；每场实验讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="概念隐喻三要素：源概念经映射域映射到目标概念">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="30" y="60" width="170" height="120" rx="12"/>
+        <rect x="285" y="60" width="190" height="120" rx="12" stroke-dasharray="7 5"/>
+        <rect x="560" y="60" width="170" height="120" rx="12"/>
+        <path d="M205 85 L280 85 M205 120 L280 120 M205 155 L280 155"/>
+        <path d="M480 85 L555 85 M480 120 L555 120 M480 155 L555 155"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="115" y="46" font-size="15" font-weight="700">源概念（具体）</text>
+        <text x="115" y="96" font-size="14">旅程 · 战斗</text>
+        <text x="115" y="122" font-size="14">建筑物 · 容器</text>
+        <text x="115" y="148" font-size="14">金钱 · 热</text>
+        <text x="380" y="46" font-size="15" font-weight="700">映射域</text>
+        <text x="380" y="96" font-size="13">意象图式</text>
+        <text x="380" y="122" font-size="13">基本相互关系</text>
+        <text x="380" y="148" font-size="13">文化依存评价</text>
+        <text x="645" y="46" font-size="15" font-weight="700">目标概念（抽象）</text>
+        <text x="645" y="96" font-size="14">人生 · 论证</text>
+        <text x="645" y="122" font-size="14">思想 · 时间</text>
+        <text x="645" y="148" font-size="14">情感 · 爱</text>
+        <text x="380" y="205" font-size="13" fill="var(--red)">映射：源模型的结构转移到目标模型</text>
+      </g>
+    </svg>
+    <figcaption>概念隐喻的三个成分与流向（据 3.1 图 3.4、3.5 演绘）<button type="button" class="cite" data-cite="mapping" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">修辞格还是概念</button>
+    <button class="chip" data-jump="s2">映射图</button>
+    <button class="chip" data-jump="s3">论证实验室</button>
+    <button class="chip" data-jump="s4">怒火温度计</button>
+    <button class="chip" data-jump="s5">转喻九型</button>
+    <button class="chip" data-jump="s6">科学政治隐喻</button>
+    <button class="chip" data-jump="s7">类转映射域</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>修辞格，还是概念系统？</h2>
+  </div>
+  <p class="point">莎士比亚写"天空的眼睛"指太阳，日常里"华盛顿与莫斯科之间的对话"每天都在用——<span class="hl">哲学家和认知语言学家证明，二者是概念化世界的认知工具</span>。<button type="button" class="cite" data-cite="scope31" aria-label="查看出处"></button><button type="button" class="cite" data-cite="eyeSun" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">动手分一分：下面这些表达，哪些是隐喻，哪些是转喻？</p>
+    <div class="btn-row" id="s1items"></div>
+    <div class="btn-row" id="s1tags" aria-label="选择类别">
+      <button class="btn" data-tag="y">隐喻</button>
+      <button class="btn" data-tag="m">转喻</button>
+    </div>
+    <p class="feedback" id="s1fb">先点表达，再选类别。</p>
+  </div>
+
+  <details>
+    <summary>传统看法：邻接、相似与三项模型</summary>
+    <p>转喻被认为包含字面意义和比喻意义之间的"邻接"关系——一个成分<strong>代表</strong>另一个成分；图 3.1 一口气列出九种代表关系。<button type="button" class="cite" data-cite="metoTrad" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partWhole" aria-label="查看出处"></button></p>
+    <p>隐喻则被认为建立在"相似"或"对比"上，是一个三项模型：<strong>本体、喻体、背景</strong>（Leech 1969:148）。<button type="button" class="cite" data-cite="metaTrad" aria-label="查看出处"></button></p>
+    <p>Richards 与 Black 的互动理论把本质放在表达方式与语境的互动上：eye 的隐喻用法和 of heaven 的语境冲突，才产生"太阳"的意义。<button type="button" class="cite" data-cite="interact" aria-label="查看出处"></button></p>
+    <p>规约化隐喻：head of department（系主任）这类比喻义因频繁结合进入词汇，被叫作"死"隐喻；但 Lakoff 和 Turner 提醒：最活跃、最有力的恰恰是那些自动到无意识的事物。<button type="button" class="cite" data-cite="conventional" aria-label="查看出处"></button><button type="button" class="cite" data-cite="lakoffTurner" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">认知视角的结论：真正最重要的隐喻，是通过长期规约关系无意识进入语言的那些。<button type="button" class="cite" data-cite="conclConv" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：映射图 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>概念隐喻映射图</h2>
+  </div>
+  <p class="point">图 3.5 里左栏抽象、右栏具体——<span class="hl">我们依赖具体世界的概念，对抽象的现象概念化</span>。点一个目标概念，看哪些具体概念来支援它。<button type="button" class="cite" data-cite="abstractConcrete" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fig35" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">实验台：点目标概念，高亮它的映射线<span class="tag" data-label="读图">读图</span></p>
+    <div class="btn-row" id="mapTargets" aria-label="选择目标概念">
+      <button class="chip sel" data-tgt="arg">论争 ARGUMENT</button>
+      <button class="chip" data-tgt="time">时间 TIME</button>
+      <button class="chip" data-tgt="life">人生 LIFE</button>
+      <button class="chip" data-tgt="idea">思想 IDEAS</button>
+    </div>
+    <svg viewBox="0 0 760 330" role="img" aria-label="目标概念与源概念的映射图">
+      <g filter="url(#rough2)" fill="none" stroke-linecap="round">
+        <path class="mapline" data-tgt="arg" data-src="journey" d="M170 52 C 380 52, 380 31, 590 31"/>
+        <path class="mapline" data-tgt="arg" data-src="battle" d="M170 52 C 380 52, 380 83, 590 83"/>
+        <path class="mapline" data-tgt="arg" data-src="building" d="M170 52 C 380 52, 380 135, 590 135"/>
+        <path class="mapline" data-tgt="arg" data-src="container" d="M170 52 C 380 52, 380 187, 590 187"/>
+        <path class="mapline" data-tgt="time" data-src="money" d="M170 114 C 380 114, 380 239, 590 239"/>
+        <path class="mapline" data-tgt="life" data-src="journey" d="M170 176 C 380 176, 380 31, 590 31"/>
+        <path class="mapline" data-tgt="idea" data-src="plants" d="M170 238 C 380 238, 380 291, 590 291"/>
+        <path class="mapline" data-tgt="idea" data-src="building" d="M170 238 C 380 238, 380 135, 590 135"/>
+        <path class="mapline" data-tgt="idea" data-src="container" d="M170 238 C 380 238, 380 187, 590 187"/>
+      </g>
+      <rect class="mapbox on" data-tgt="arg" x="40" y="30" width="130" height="44" rx="10"/>
+      <rect class="mapbox" data-tgt="time" x="40" y="92" width="130" height="44" rx="10"/>
+      <rect class="mapbox" data-tgt="life" x="40" y="154" width="130" height="44" rx="10"/>
+      <rect class="mapbox" data-tgt="idea" x="40" y="216" width="130" height="44" rx="10"/>
+      <g class="maptxt">
+        <text x="105" y="58">论争</text>
+        <text x="105" y="120">时间</text>
+        <text x="105" y="182">人生</text>
+        <text x="105" y="244">思想</text>
+      </g>
+      <rect class="mapbox on" data-src="journey" x="590" y="12" width="130" height="38" rx="10"/>
+      <rect class="mapbox on" data-src="battle" x="590" y="64" width="130" height="38" rx="10"/>
+      <rect class="mapbox on" data-src="building" x="590" y="116" width="130" height="38" rx="10"/>
+      <rect class="mapbox on" data-src="container" x="590" y="168" width="130" height="38" rx="10"/>
+      <rect class="mapbox" data-src="money" x="590" y="220" width="130" height="38" rx="10"/>
+      <rect class="mapbox" data-src="plants" x="590" y="272" width="130" height="38" rx="10"/>
+      <g class="maptxt" font-size="14">
+        <text x="655" y="36">旅程</text>
+        <text x="655" y="88">战斗</text>
+        <text x="655" y="140">建筑物</text>
+        <text x="655" y="192">容器</text>
+        <text x="655" y="244">金钱</text>
+        <text x="655" y="296">植物</text>
+      </g>
+      <g class="mapsub">
+        <text x="105" y="86">抽象目标</text>
+        <text x="655" y="322">具体源概念（图 3.5）</text>
+      </g>
+    </svg>
+    <p class="feedback" id="mapFb">论争靠四个具体概念搭起来：旅程、战斗、建筑物、容器。<button type="button" class="cite" data-cite="arg4" aria-label="查看出处"></button></p>
+    <figcaption>主要源概念与目标概念对照（据原著图 3.5 演绘）<button type="button" class="cite" data-cite="fig35" aria-label="查看出处"></button><span class="tag" data-label="读图">读图</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>映射是什么？映射域又限制了什么</summary>
+    <p>TIME IS MONEY 不只是语言用法：我们确实通过金钱这个源概念来思考时间——"你在浪费我的时间""你是怎么花你的时间的""我们正在用完时间"。<button type="button" class="cite" data-cite="timeMoney" aria-label="查看出处"></button><button type="button" class="cite" data-cite="timeExp" aria-label="查看出处"></button></p>
+    <p>人生是旅程：出生是抵达（孩子在来的路上、已经来了），死亡是离去（他走了、他过去了），中间那段路由自己走——走过一生、知道去向、不知道该选哪条路、获得成功、克服障碍。<button type="button" class="cite" data-cite="lifeJourney" aria-label="查看出处"></button></p>
+    <p>映射域是一套限制，规定哪些对应有资格从源概念映射到目标概念；三个成分是意象图式（路径、容器、部分-整体）、基本相互关系（变化与运动、原因与结果）、文化依存评价。<button type="button" class="cite" data-cite="scopeDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scope3" aria-label="查看出处"></button></p>
+    <p>文化差异：西方文化里猪"肮脏、贪婪"，John is a pig 是"他不整洁"；在现代中国，猪也用作对情人的情话，同一隐喻意思完全不同。<button type="button" class="cite" data-cite="pigWest" aria-label="查看出处"></button><button type="button" class="cite" data-cite="pigChina" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">隐喻把源模型的整套结构搬过去，不只是搬一两个属性。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 修辞格还是概念</button>
+    <button class="btn" data-jump="s3">下一场：论证实验室 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>论证实验室：论争的四种概念隐喻</h2>
+  </div>
+  <p class="point">Lakoff 和 Johnson 说，我们对 ARGUMENT 的概念化建立在四个隐喻上：<span class="hl">论争是旅程、是战斗、是建筑物、是容器</span>。<button type="button" class="cite" data-cite="arg4" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">战斗与论争的阶段结构类比（据原著插图演绘）<span class="tag" data-label="读图">读图</span></p>
+    <svg viewBox="0 0 760 220" role="img" aria-label="战斗阶段与论争表达方式的对应">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="40" y="26" width="160" height="52" rx="10"/>
+        <rect x="220" y="26" width="160" height="52" rx="10"/>
+        <rect x="400" y="26" width="160" height="52" rx="10"/>
+        <rect x="580" y="26" width="160" height="52" rx="10"/>
+        <path d="M200 52 L215 52 M380 52 L395 52 M560 52 L575 52"/>
+        <path d="M120 82 L120 104 M300 82 L300 104 M480 82 L480 104 M660 82 L660 104"/>
+        <rect x="40" y="108" width="160" height="72" rx="10"/>
+        <rect x="220" y="108" width="160" height="72" rx="10"/>
+        <rect x="400" y="108" width="160" height="72" rx="10"/>
+        <rect x="580" y="108" width="160" height="72" rx="10"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="120" y="48" font-size="15" font-weight="700">初始位置</text>
+        <text x="300" y="48" font-size="15" font-weight="700">进攻</text>
+        <text x="480" y="48" font-size="15" font-weight="700">防御</text>
+        <text x="660" y="48" font-size="14" font-weight="700">胜利·失败·休战</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink-soft)" text-anchor="middle" font-size="12">
+        <text x="120" y="132">他们排列成</text>
+        <text x="120" y="150">战斗队形</text>
+        <text x="300" y="132">她攻击我论证中</text>
+        <text x="300" y="150">的每一个弱点</text>
+        <text x="480" y="132">他驳倒了我</text>
+        <text x="480" y="150">所有的论据</text>
+        <text x="660" y="132">好吧，你赢了</text>
+        <text x="660" y="150">宣布休战吧</text>
+      </g>
+      <text x="380" y="205" text-anchor="middle" font-size="12" fill="var(--ink-faint)" font-family="-apple-system,'PingFang SC',sans-serif">战斗的阶段结构 → 论争的阶段结构（撤退等阶段见原文）</text>
+    </svg>
+    <figcaption>论争是战斗：阶段结构整体搬迁（部分例句）<button type="button" class="cite" data-cite="argStages" aria-label="查看出处"></button><button type="button" class="cite" data-cite="argBattle" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">例句实验室：这句话在说"论争是什么"？<span id="argScore" style="float:right"></span></p>
+    <div id="argLab"></div>
+  </div>
+
+  <details>
+    <summary>思想是什么：三个隐喻，两种映射</summary>
+    <p>思想的三个概念隐喻：头脑是装思想的容器、思想是物体、思想是生物或人。我们谈论 having、getting、borrowing 甚至 selling ideas；思想可以 big、sharp、bright，可以被 adopted、killed。<button type="button" class="cite" data-cite="idea3" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ideaObjects" aria-label="查看出处"></button></p>
+    <p>丰富映射把大量属性从具体源搬到抽象目标（论争、思想、情感都因此获得概念结构）；贫乏映射只突显一两个特征——John is a pig 的映射域集中于"肮脏"。拟人是 PERSON 这个一般源概念到具体目标的贫乏映射。<button type="button" class="cite" data-cite="leanRich" aria-label="查看出处"></button><button type="button" class="cite" data-cite="johnPig" aria-label="查看出处"></button><button type="button" class="cite" data-cite="personif" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">抽象目标从具体源获得大量属性＝丰富映射；只突显个别特征＝贫乏映射。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 映射图</button>
+    <button class="btn" data-jump="s4">下一场：怒火温度计 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>怒火温度计：情感怎么被概念化</h2>
+  </div>
+  <p class="point">愤怒时脸红、体温升高——这是<strong>生理转喻</strong>（生理结果代表情感）；"怒火中烧"则靠隐喻：<span class="hl">怒气是容器中液体的热，液体升高、冒蒸汽，最后容器爆炸</span>。<button type="button" class="cite" data-cite="physioMeto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="angerHeat" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">实验台：拖滑块，看怒火升级时语言怎么变<span class="tag" data-label="示意">示意</span></p>
+    <svg id="heatSvg" viewBox="0 0 760 260" role="img" aria-label="怒火容器与温度计：液体随滑块升高">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M90 40 L90 190 Q90 204 104 204 L256 204 Q270 204 270 190 L270 40"/>
+        <path d="M90 40 L270 40"/>
+        <rect id="heatLiquid" x="96" y="120" width="168" height="78" fill="hsl(210,60%,55%)" stroke="none" opacity=".85"/>
+        <path d="M104 200 L96 224 M108 202 L104 228 M112 200 L116 226" stroke="var(--red)" stroke-width="2"/>
+        <path id="heatFlame" d="M180 226 Q160 210 172 194 Q180 204 184 194 Q196 210 180 226 Z" fill="var(--red)" stroke="var(--red)" opacity=".9"/>
+        <rect x="330" y="50" width="26" height="140" rx="13"/>
+        <circle cx="343" cy="205" r="20"/>
+        <rect id="heatMercury" x="336" y="120" width="14" height="64" fill="hsl(210,60%,55%)" stroke="none"/>
+        <g id="heatBlast" stroke="var(--red)" stroke-width="2.5" opacity="0">
+          <path d="M292 60 L272 44 M292 90 L268 82 M292 120 L270 118 M292 150 L272 156"/>
+        </g>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink-faint)" font-size="12">
+        <text x="372" y="60">温</text>
+        <text x="372" y="100">热</text>
+        <text x="372" y="140">烫</text>
+        <text x="372" y="180">烧</text>
+        <text x="372" y="216">爆</text>
+        <text x="180" y="248" text-anchor="middle">身体是情感的容器（THE BODY IS A CONTAINER FOR EMOTION）</text>
+      </g>
+    </svg>
+    <input type="range" id="heatSlider" min="0" max="100" value="45" step="5" aria-label="怒火强度">
+    <p style="margin:.2em 0"><output id="heatOut">45</output> / 100 ｜ <span id="heatStage" style="font-weight:700">液体升高</span><button type="button" class="cite" data-cite="angerStages" aria-label="查看出处"></button></p>
+    <div class="feedback" id="heatFb"></div>
+    <figcaption>怒火升级的容器隐喻（温度与阶段为示意；表达方式出自原文）<button type="button" class="cite" data-cite="angerStages" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：ANGER、FEAR、JOY、LOVE 四种情感，哪一种的生理转喻最多？</p>
+    <div class="btn-row" id="emoGuess">
+      <button class="btn" data-e="anger">愤怒 ANGER</button>
+      <button class="btn" data-e="fear">恐惧 FEAR</button>
+      <button class="btn" data-e="joy">快乐 JOY</button>
+      <button class="btn" data-e="love">爱 LOVE</button>
+    </div>
+    <div class="reveal" id="emoRev" hidden>
+      <p><strong>恐惧。</strong>它是图 3.9 所列情感中拥有最多转喻的，但概念隐喻不多；JOY 和 LOVE 正好相反——转喻少、隐喻多。<button type="button" class="cite" data-cite="fearMost" aria-label="查看出处"></button><button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>补偿原则与情感情节</summary>
+    <p>补偿原则：ANGER 在隐喻和转喻之间达到平衡；FEAR 主要依靠转喻；JOY 和 LOVE 的概念结构更多地依靠隐喻（快乐还是"正被升起"：我在九重云上、她正在空中漫步）。<button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="joyUp" aria-label="查看出处"></button></p>
+    <p>ANGER IS FIRE 不如 ANGER IS THE HEAT OF A FLUID IN A CONTAINER 发达——后者靠沸腾、上升、蒸汽、冒烟、爆裂、爆炸这些基本层次概念，还依托"身体是情感的容器"这条一般隐喻。愤怒也被看成活跃的敌人、危险好斗的动物、自然之力。<button type="button" class="cite" data-cite="angerFluid" aria-label="查看出处"></button><button type="button" class="cite" data-cite="angerOthers" aria-label="查看出处"></button></p>
+    <p>情感情节（图 3.13）：第一阶段原因、第二阶段情感、第三阶段试图控制、第四阶段失控、第五阶段行为；愤怒的隐喻序列正好从第二阶段推进到第四阶段。<button type="button" class="cite" data-cite="angerScenario" aria-label="查看出处"></button></p>
+    <p>语言学和心理学证据显示，约六种情感概念可以看成基本的：悲哀、愤怒、厌恶/憎恨、恐惧、快乐/幸福、欲望/爱。<button type="button" class="cite" data-cite="basic6" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">转喻独自给不了情感完整的概念结构——必须靠隐喻的概念潜力支持。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 论证实验室</button>
+    <button class="btn" data-jump="s5">下一场：转喻九型 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>转喻九型：邻接与代表</h2>
+  </div>
+  <p class="point">转喻建立在字面义与比喻义之间的<strong>邻接</strong>关系上：一个成分<strong>代表</strong>另一个成分。图 3.1 列出九种代表关系——<span class="hl">先点一句例句，再点它属于哪种转喻</span>。<button type="button" class="cite" data-cite="metoTrad" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">转喻例句台<span id="metProg" style="float:right"></span></p>
+    <div class="btn-row" id="metItems"></div>
+    <div class="metgrid" id="metCards">
+      <button class="metcard" data-type="part">部分表整体</button>
+      <button class="metcard" data-type="whole">整体表部分</button>
+      <button class="metcard" data-type="container">容器表内容</button>
+      <button class="metcard" data-type="material">材质表物体</button>
+      <button class="metcard" data-type="producer">生产者表产品</button>
+      <button class="metcard" data-type="placeInst">地方表机构</button>
+      <button class="metcard" data-type="placeEvent">地方表事件</button>
+      <button class="metcard" data-type="controlled">被控制者表控制者</button>
+      <button class="metcard" data-type="cause">原因表结果</button>
+    </div>
+    <p class="feedback" id="metFb">例句出自图 3.1 的九种代表关系<button type="button" class="cite" data-cite="partWhole" aria-label="查看出处"></button>；先点一句例句，再点转喻类型。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：All heads on deck.（全体水手在甲板集合）——这句话成立吗？</p>
+    <div class="btn-row" id="headGuess">
+      <button class="btn" data-h="y">成立</button>
+      <button class="btn" data-h="n">不成立</button>
+    </div>
+    <div class="reveal" id="headRev" hidden>
+      <p><strong>不成立。</strong>航行语境只给 HAND（体力劳动）和 BODY/PERSON 的部分-整体联系提供合适的映射域；HEAD 联系的是智力——所以"大学需要更多聪明人"才成立。<button type="button" class="cite" data-cite="scopeDeck" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scopeUniv" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>映射域决定转喻成不成</summary>
+    <p>白宫能发起减税运动——"美国政府"映射域让 WHITE HOUSE 和 PRESIDENT 的空间联系成立；换成温室就不行，园艺语境不含减税观念。<button type="button" class="cite" data-cite="whiteHouse" aria-label="查看出处"></button><button type="button" class="cite" data-cite="greenhouse" aria-label="查看出处"></button></p>
+    <p>有的转喻用作表语时，指称功能让位于突显功能——I'm all ears（我洗耳恭听）突出的是听力；这类转喻已经很接近"人是野兽"这类贫乏映射的隐喻，有人因此主张隐喻和转喻是一条认知操作的渐变群。<button type="button" class="cite" data-cite="ears" aria-label="查看出处"></button></p>
+    <p>规约化：buy a Picasso 被言语社团公认（"著名画家"映射域支持作者代表作品）；an excellent Mary 只在小家庭圈子里成立。转喻的三个方面都是同一个认知模型的组成部分，所以原型转喻限制在单个认知模型内，不像隐喻跨模型映射。<button type="button" class="cite" data-cite="maryPicasso" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metoSingle" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">转喻比隐喻更基本：它的对应直接以"部分-整体"这类意象图式为依据，而这些图式在隐喻中只是映射域的组成部分。<button type="button" class="cite" data-cite="metoBasic" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 怒火温度计</button>
+    <button class="btn" data-jump="s6">下一场：科学政治隐喻 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>科学和政治中的隐喻</h2>
+  </div>
+  <p class="point">Boyd 说，隐喻"构成了它所表达的理论，而不仅仅是注释性的"。<span class="hl">解释性隐喻帮外行听懂，结构性隐喻是理论本身的组成部分</span>——先点案例，再派它去对应的桶。<button type="button" class="cite" data-cite="boyd" aria-label="查看出处"></button><button type="button" class="cite" data-cite="summary33" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">辨析台：这个案例是解释性还是结构性？<span id="polProg" style="float:right"></span></p>
+    <div class="btn-row" id="polCases"></div>
+    <div class="btn-row" id="polBuckets" aria-label="选择类别">
+      <button class="btn" data-b="exp">解释性</button>
+      <button class="btn" data-b="struct">结构性</button>
+      <button class="btn" data-b="both">既是解释性又是结构性</button>
+    </div>
+    <p class="feedback" id="polFb">先点案例，再选桶。</p>
+  </div>
+
+  <details>
+    <summary>原文案例与政治危险性</summary>
+    <p>办公室隐喻：屏幕是桌面、文件夹归档、窗口开关、多余文件进垃圾桶——只有和缩写命令 CLS（清屏）、MD（建目录）、Rd（删目录）对比，它的教学价值才显出来。<button type="button" class="cite" data-cite="office" aria-label="查看出处"></button></p>
+    <p>Kuhn 的例证：玻尔把原子核、电子比作太阳和行星（微型太阳系），对外行是解释；物理学家真正用的是"原子核和电子是乒乓球"的模型——隐喻在这里是衡量力学与电磁表现的标准。<button type="button" class="cite" data-cite="solar" aria-label="查看出处"></button><button type="button" class="cite" data-cite="pingpong" aria-label="查看出处"></button><button type="button" class="cite" data-cite="solarLay" aria-label="查看出处"></button></p>
+    <p>政治中隐喻先看情感效果："国家是病人"自《理查德二世》起就是惯用隐喻；失业是传染病，"它不会在经济区的边界上止步"。重复多次之后，民众会把这些隐喻当作自己概念框架的结构性成分。<button type="button" class="cite" data-cite="illness" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kinnock" aria-label="查看出处"></button><button type="button" class="cite" data-cite="peopleStructural" aria-label="查看出处"></button></p>
+    <p>海湾战争的"专家隐喻"：战争是以其他手段继续的政治、政治是生意，二者熔合成"战争是成本/利润分析"；"国家是个单个的人"则掩盖内部差异，让"高于一切的国家利益"显得正当。<button type="button" class="cite" data-cite="expertMeto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="warCost" aria-label="查看出处"></button><button type="button" class="cite" data-cite="statePerson" aria-label="查看出处"></button></p>
+    <p>Lakoff 还用严父/慈父两个家庭模型解释美国保守派与自由派：道德是力量、道德权威就是父母的权威 vs 道德是体谅、道德是公平的分配。<button type="button" class="cite" data-cite="strictFather" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">隐喻可以很有建设性，也可以被用来掩盖本该考虑的问题——力量同在。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 转喻九型</button>
+    <button class="btn" data-jump="s7">下一场：类转映射域 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>用转喻思维：类转与映射域</h2>
+  </div>
+  <p class="point">转喻的解释潜力受限制：<span class="hl">只有映射域支持，代表关系才成立</span>。名词-动词类转（to author a book）就是转喻——你觉得下面这些说法成立吗？<button type="button" class="cite" data-cite="metoLimit" aria-label="查看出处"></button><button type="button" class="cite" data-cite="conversion" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">类转实验室：这句话的转喻成立吗？<span id="convProg" style="float:right"></span></p>
+    <div id="convLab"></div>
+    <p class="feedback" id="convFb">逐句判断：转喻成不成立，看映射域支不支持。</p>
+  </div>
+
+  <details>
+    <summary>领属复合词与言语行为的转喻</summary>
+    <p>领属复合词：skinhead（光头党）、paperback（平装本）靠"以突出的特征表人/物体"，是对"部分-整体"图式的运用。但光有属性不够——*brownhead 不行，因为不存在"棕色头发的人"这样的社会群体来充当映射域；光头党则共同处在 SOCIAL GROUP 认知模型里。<button type="button" class="cite" data-cite="skinhead" aria-label="查看出处"></button><button type="button" class="cite" data-cite="salient" aria-label="查看出处"></button><button type="button" class="cite" data-cite="brownhead" aria-label="查看出处"></button></p>
+    <p>图 3.15 的"参与者代表动作"：施动者（to father a child）、工具（to ski down the hill）、对象（to pepper the dish）、身体部位（to tiptoe into the room），都可归入"参与者代表动作/事件"。<button type="button" class="cite" data-cite="fig315" aria-label="查看出处"></button></p>
+    <p>言语行为：Thornburg 和 Panther 把 Can you pass me the salt? 解释为"能力代表行为"的转喻；但两个问题悬而未决——这种关系够不够抽象到算原型转喻？意向性和礼貌怎么融合进来？<button type="button" class="cite" data-cite="salt" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">任何转喻的成功，都有赖于获得一个可及的映射域——一个认知模型，或其他概念背景。<button type="button" class="cite" data-cite="metoSuccess" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 科学政治隐喻</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>1. 传统三要素里的"背景"，在认知观中由哪个概念接手？<button type="button" class="cite" data-cite="metaTrad" aria-label="查看出处"></button></h3>
+    <details><summary>看答案</summary>
+      <p>由<strong>映射域</strong>接手：本体→目标概念，喻体→源概念，背景→映射域（规定哪些对应有资格映射）。<button type="button" class="cite" data-cite="metaTrad" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scopeDef" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>2. 为什么说转喻比隐喻"更为基本"？<button type="button" class="cite" data-cite="metoBasic" aria-label="查看出处"></button></h3>
+    <details><summary>看答案</summary>
+      <p>转喻的对应直接以意象图式或基本相互关系（部分-整体、内部-外部、原因-结果）为依据，而它们只是作为映射域的组成部分<strong>间接</strong>参与隐喻；转喻的源与目标通常还限于具体概念。<button type="button" class="cite" data-cite="metoBasic" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>3. 补偿原则下，ANGER、FEAR、JOY 各依靠什么？<button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button></h3>
+    <details><summary>看答案</summary>
+      <p>ANGER 在隐喻和转喻之间达到平衡；FEAR 主要依靠转喻（生理转喻最多）；JOY 主要依靠隐喻（容器只溢不爆、快乐是正被升起）。<button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fearMost" aria-label="查看出处"></button><button type="button" class="cite" data-cite="joyUp" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>认知观：隐喻＝源概念结构映射到目标概念，映射域规定资格；转喻＝邻接代表，限制在认知模型内。<button type="button" class="cite" data-cite="mapping" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metoSingle" aria-label="查看出处"></button></li>
+    <li>传统三要素→认知三要素：本体→目标概念，喻体→源概念，背景→映射域。<button type="button" class="cite" data-cite="metaTrad" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scopeDef" aria-label="查看出处"></button></li>
+    <li>论争四隐喻：旅程、战斗、建筑物、容器；思想三隐喻：头脑是容器、思想是物体、思想是生物或人。<button type="button" class="cite" data-cite="arg4" aria-label="查看出处"></button><button type="button" class="cite" data-cite="idea3" aria-label="查看出处"></button></li>
+    <li>丰富映射 vs 贫乏映射；拟人是 PERSON 源概念到具体目标的贫乏映射。<button type="button" class="cite" data-cite="leanRich" aria-label="查看出处"></button><button type="button" class="cite" data-cite="personif" aria-label="查看出处"></button></li>
+    <li>情感＝生理转喻＋概念隐喻；补偿原则；约六种基本情感。<button type="button" class="cite" data-cite="physioMeto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="basic6" aria-label="查看出处"></button></li>
+    <li>科学政治：解释性 vs 结构性隐喻；政治中选择隐喻先看情感效果，重复多次会被民众当作结构性成分。<button type="button" class="cite" data-cite="summary33" aria-label="查看出处"></button><button type="button" class="cite" data-cite="peopleStructural" aria-label="查看出处"></button></li>
+    <li>转喻应用：领属复合词、名词-动词类转、言语行为，成败全看映射域。<button type="button" class="cite" data-cite="skinhead" aria-label="查看出处"></button><button type="button" class="cite" data-cite="salt" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metoSuccess" aria-label="查看出处"></button></li>
+    <li>转喻九型（图 3.1）：部分-整体、整体-部分、容器-内容、材质-物体、生产者-产品、地方-机构、地方-事件、被控制者-控制者、原因-结果。<button type="button" class="cite" data-cite="partWhole" aria-label="查看出处"></button><button type="button" class="cite" data-cite="causeEffect" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>概念隐喻</strong>：用一个具体概念对另一个（常抽象的）概念进行思维；转移的是整个认知模型的结构。<button type="button" class="cite" data-cite="timeMoney" aria-label="查看出处"></button></li>
+    <li><strong>源概念 / 目标概念</strong>：隐喻中提供结构的具体概念 / 被结构化的概念（对应传统"喻体/本体"）。<button type="button" class="cite" data-cite="metaTrad" aria-label="查看出处"></button></li>
+    <li><strong>映射</strong>：源模型的结构向目标模型的转移。<button type="button" class="cite" data-cite="mapping" aria-label="查看出处"></button></li>
+    <li><strong>映射域</strong>：规定哪些对应有资格映射的一套限制；含意象图式、基本相互关系、文化依存评价。<button type="button" class="cite" data-cite="scopeDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scope3" aria-label="查看出处"></button></li>
+    <li><strong>规约化隐喻</strong>：比喻义因频繁使用进入词汇的隐喻；认知视角认为它们最有力。<button type="button" class="cite" data-cite="conventional" aria-label="查看出处"></button><button type="button" class="cite" data-cite="lakoffTurner" aria-label="查看出处"></button></li>
+    <li><strong>转喻</strong>：字面义与比喻义之间的邻接关系，一个成分代表另一个成分。<button type="button" class="cite" data-cite="metoTrad" aria-label="查看出处"></button></li>
+    <li><strong>生理转喻</strong>：某种情感的生理结果代表这种情感。<button type="button" class="cite" data-cite="physioMeto" aria-label="查看出处"></button></li>
+    <li><strong>补偿原则</strong>：隐喻与转喻相互交替使用；愤怒平衡、恐惧靠转喻、快乐和爱靠隐喻。<button type="button" class="cite" data-cite="compensation" aria-label="查看出处"></button></li>
+    <li><strong>情感情节</strong>：把情感放进原因-情感-控制-失控-行为五阶段的序列。<button type="button" class="cite" data-cite="angerScenario" aria-label="查看出处"></button></li>
+    <li><strong>类转</strong>：同一形式出现在几个词类；名词-动词类转是"参与者代表动作"的转喻。<button type="button" class="cite" data-cite="conversion" aria-label="查看出处"></button></li>
+    <li><strong>解释性 vs 结构性隐喻</strong>：帮外行理解的脚手架 / 理论阐述不可或缺的组成部分。<button type="button" class="cite" data-cite="summary33" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第三章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 手绘课堂笔记风</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  scope31:{page:"3.1",quote:"哲学家和认知语言学家证明隐喻和转喻是我们对世界进行概念化的有力的认知工具",zh:"隐喻和转喻是概念化世界的认知工具"},
+  eyeSun:{page:"3.1",quote:"我们可以推断出例(3)中的表达方式 the eye of heaven(天空的眼睛)意指太阳",zh:"莎士比亚'天空的眼睛'是隐喻，指太阳"},
+  eyePerson:{page:"3.1",quote:"在例(4)中，我们假定眼睛代表某个举止特别恭敬的人……这两个例子分别是传统上称作'隐喻'和'转喻'的很典型的例子",zh:"同一组诗里 eye 也可代表恭敬的人，是转喻"},
+  metoTrad:{page:"3.1",quote:"转喻被认为包含一种词表示的字面意义和它相应的比喻意义之间的'邻接'（即接近或邻近）关系……转喻联系着的一个成分代表（stand for）另一个成分",zh:"传统看法：转喻靠邻接，一个成分代表另一个"},
+  metaTrad:{page:"3.1",quote:"隐喻被认为是一个三项模型，包括'本体'、'喻体'、'背景'这三个成分(Leech 1969:148)",zh:"传统隐喻三项模型：本体、喻体、背景"},
+  interact:{page:"3.1",quote:"I. A. Richards(1936)和Max Black(1962,1993)提出了所谓的隐喻'互动理论'。他们坚持认为隐喻的本质在于隐喻表达方式和隐喻使用时的语境之间的互动",zh:"互动理论：隐喻的本质在表达与语境的互动"},
+  conventional:{page:"3.1",quote:"我们把后一种叫做规约化的、词汇化的或者'死'的隐喻……通过和某一语言形式的频繁结合，一个词语的比喻意义在言语社团中变得如此确定（即规约化）",zh:"规约化隐喻：比喻义因频繁使用进入词汇"},
+  lakoffTurner:{page:"3.1",quote:"最活跃的、最根深蒂固的、有效的、有力的是那些自动到无意识而无须费劲的事物(Lakoff 和 Turner 1989: 129)",zh:"最无意识的隐喻恰恰最有力"},
+  conclConv:{page:"3.1",quote:"真正最重要的隐喻是那些通过长期建立的规约关系而无意识地进入语言的隐喻",zh:"认知视角：无意识进入语言的隐喻最重要"},
+  partWhole:{page:"3.1",quote:"PART FOR WHOLE (all hands on deck) +以部分表整体+(全体水手在甲板集合)",zh:"以部分表整体"},
+  wholePart:{page:"3.1",quote:"WHOLE FOR PART (to fill up the car) +以整体表部分+(给汽车装满油)",zh:"以整体表部分"},
+  containerContent:{page:"3.1",quote:"CONTAINER FOR CONTENT (I'll have a glass) +以容器表内容+(我要喝一杯)",zh:"以容器表内容"},
+  materialObject:{page:"3.1",quote:"MATERIAL FOR OBJECT (a glass, an iron) +以材质表物体+(一个玻璃(杯),一个铁(熨斗))",zh:"以材质表物体"},
+  producerProduct:{page:"3.1",quote:"PRODUCER FOR PRODUCT (have a Löwenbräu, buy a Ford) +以生产者表产品+(买一辆福特)",zh:"以生产者表产品"},
+  placeInst:{page:"3.1",quote:"PLACE FOR INSTITUTION (talks between Washington and Moscow) +以地方表机构+(华盛顿和莫斯科之间的对话)",zh:"以地方表机构"},
+  placeEvent:{page:"3.1",quote:"PLACE FOR EVENT (Watergate changed our politics) +以地方表事件+(水门改变了我们的政治)",zh:"以地方表事件"},
+  controlled:{page:"3.1",quote:"CONTROLLED FOR CONTROLLER (the buses are on strike) +以被控制者表控制者+(公共汽车在罢工)",zh:"以被控制者表控制者"},
+  causeEffect:{page:"3.1",quote:"CAUSE FOR EFFECT (his native tongue is German) +以原因表结果+(他的母语是德语)",zh:"以原因表结果"},
+  picasso:{page:"3.1",quote:"(5) I have just bought a Picasso.（我刚买了一张毕加索。）",zh:"买毕加索＝买毕加索的画，作者代表作品"},
+  timeMoney:{page:"3.1",quote:"我们不仅是在语言上利用+TIME IS MONEY+（+时间就是金钱+）这个隐喻，而且我们确实也通过 MONEY（金钱）这个源（source）概念，对他们所说的目标（target）概念 TIME（时间）进行思考或概念化",zh:"时间就是金钱：用金钱源概念思考时间目标概念"},
+  timeExp:{page:"3.1",quote:"You're wasting my time. （你在浪费我的时间。）How do you spend your time? （你是怎么花你的时间的？）We are running out of time. （我们正在用完时间。）",zh:"浪费、花、用完时间都是 TIME IS MONEY 的表达"},
+  abstractConcrete:{page:"3.1",quote:"左栏中的概念在性质上较为抽象，而右栏里的则更为具体。这似乎证明我们依赖具体世界的概念对抽象的现象概念化",zh:"用具体源概念给抽象目标概念结构化"},
+  fig35:{page:"3.1",quote:"图 3.5 目标概念：life death lifetime time anger love argument ideas understanding communication world；源概念：journey departure day money dangerous animal, container war, valuable object journey, war, building, container plants, building, container seeing packing, sending, unpacking theatre",zh:"图 3.5 主要源概念与目标概念对照"},
+  mapping:{page:"3.1",quote:"认知语言学家把这种转移叫做来源向目标的'映射'。意思就是，从认知视角看，隐喻是把源模型的结构映射到目标模型上",zh:"映射＝源模型结构转移到目标模型"},
+  lifeJourney:{page:"3.1",quote:"人的生命周期被规约地概念化为从 arriving in(来到)这个世界开始，going through life(走过一生)，在死的时候leaving(离去)或departing(离开)",zh:"人生是旅程：出生抵达、一生在路上、死亡离去"},
+  scopeDef:{page:"3.1",quote:"隐喻的映射域最好理解为一套限制，这套限制规定哪些对应有资格从源概念映射到选定的目标概念上",zh:"映射域＝规定哪些对应有资格映射的限制"},
+  scope3:{page:"3.1",quote:"意象图式(image schemas)，它牢固地根植于我们的身体经验中……基本相互关系(basic correlations)……文化依存评价(culture-dependent evaluations)，限于某一特定文化的成员",zh:"映射域三成分：意象图式、基本相互关系、文化依存评价"},
+  pigWest:{page:"3.1",quote:"猪在西方文化中特定的属性'肮脏'和'贪婪'确定John is a pig这个隐喻短语要理解为'他不整洁'或者'他吃相不佳'",zh:"西方文化里'他是头猪'＝不整洁、吃相差"},
+  pigChina:{page:"3.1",quote:"在现代中国，词位猪具有和西方相似的内涵，但是它也用作对情人的情话……隐喻+A PERSON IS A PIG+（+某人是头猪+）就具有和西方完全不同的意思",zh:"同一隐喻在现代中国意思不同：猪也用作情人间的爱称"},
+  arg4:{page:"3.1",quote:"我们对概念 ARGUMENT 的概念化建立在下面四个相关的隐喻上：+AN ARGUMENT IS A JOURNEY+（+论争是旅程+）、+AN ARGUMENT IS A BATTLE+（+论争是战斗+）、+AN ARGUMENT IS A CONTAINER+（+论争是容器+）、+AN ARGUMENT IS A BUILDING+（+论争是建筑物+）",zh:"论争靠四个概念隐喻搭建"},
+  argJourney:{page:"3.1",quote:"We have set out to prove that bats are birds. (我们已经开始证明蝙蝠是鸟。) Do you follow my argument?（你跟得上我的论证吗？）",zh:"论争是旅程：出发、到达、跟上、迷路"},
+  argBattle:{page:"3.1",quote:"She attacked every weak point in my argument.（她攻击我论证中的每一个弱点。）He shot down all my arguments.（他驳倒了我所有的论据。）",zh:"论争是战斗：攻击弱点、驳倒论据"},
+  argBuilding:{page:"3.1",quote:"If you don't support your argument with solid facts, it's whole structure will collapse. (如果你不用可靠的事实支撑你的观点, 它的整个结构就会崩溃。)",zh:"论争是建筑物：不用事实支撑就会崩塌"},
+  argContainer:{page:"3.1",quote:"That argument has holes in it. (那个论点有漏洞。) Your argument is vacuous. (你的论点很空洞。)",zh:"论争是容器：有漏洞、很空洞"},
+  argStages:{page:"3.1",quote:"就像战斗一样，论争可以分成几个阶段，特别是对手的初始位置，随后是进攻、撤退和反击等阶段，以及最终一方的胜利或者非常少见的双方休战",zh:"战斗与论争的阶段结构类比"},
+  idea3:{page:"3.1",quote:"+THE MIND IS A CONTAINER FOR IDEAS+（+头脑是装思想的容器+）、+IDEAS ARE OBJECTS+（+思想是物体+）、+IDEAS ARE ANIMATE BEINGS OR PERSONS+（+思想是生物或人+）",zh:"思想的三个概念隐喻"},
+  ideaObjects:{page:"3.1",quote:"我们谈论 having(有)，getting(得到)，borrowing(借)甚至 selling ideas(出卖思想)；某事或某人可以 giving us ideas(给我们思想)",zh:"思想是货物：有、得到、借、出卖"},
+  leanRich:{page:"3.1",quote:"正是这种丰富映射（rich mapping）强烈吸引了早期隐喻认知学者，以至于忽略了隐喻的其他类型",zh:"丰富映射：具体源向抽象目标转移大量属性"},
+  johnPig:{page:"3.1",quote:"隐喻映射被映射域限制在几个对应上，集中于'肮脏'，而'贪吃'等方面则起着补充的但是次要的作用",zh:"贫乏映射：John is a pig 只集中映射'肮脏'"},
+  personif:{page:"3.1",quote:"贫乏映射也可能发生在一个一般源概念（如PERSON（人）概念）和一个具体目标概念之间。这些例子——传统上叫做拟人（personification）",zh:"拟人＝PERSON 源概念到具体目标的贫乏映射"},
+  physioMeto:{page:"3.2",quote:"Kövecses 和 Lakoff(Lakoff 1987: 382)为什么要假设一个普遍的转喻：+ THE PHYSIOLOGICAL EFFECTS OF AN EMOTION STAND FOR THE EMOTION+（+某种情感的生理结果代表这种情感+）",zh:"生理结果代表情感：普遍转喻"},
+  hotCollar:{page:"3.2",quote:"体温升高 → 愤怒、快乐、爱：Don't get hot under the collar.（别发怒。）（图 3.9）",zh:"体温升高是愤怒等的生理转喻"},
+  flushed:{page:"3.2",quote:"脸、脖子红 → 愤怒、快乐：She was flushed with anger.（她气得满脸通红。）（图 3.9）",zh:"脸红代表愤怒"},
+  welledUp:{page:"3.2",quote:"Anger welled up in his body（他体内不断冒出怒火）（像容器中的液体一样）",zh:"怒火在体内升起＝容器里的液体"},
+  steamConcepts:{page:"3.2",quote:"像 BOIL(沸腾)，RISE(上升)，STEAM(蒸发)，FUME(冒烟)，BURST(爆裂)，EXPLODE(爆炸)这样极富启发性的基本层次概念",zh:"沸腾、上升、蒸发、冒烟、爆裂、爆炸"},
+  angerHeat:{page:"3.2",quote:"由生理转喻引发的基本隐喻是+ANGER IS HEAT+（+怒气是热）……第一个（+ANGER IS FIRE+（+怒气是火+））不如第二个发达（+ANGER IS THE HEAT OF A FLUID IN A CONTAINER+（+怒气是容器中液体的热+））",zh:"怒气是火不如'怒气是容器中液体的热'发达"},
+  angerFluid:{page:"3.2",quote:"这个隐喻依靠着最重要的一般隐喻之一，即 + CONTAINER + 这一隐喻，在这里则以+THE BODY IS A CONTAINER FOR EMOTION +（+身体是情感的容器+）这种形式出现",zh:"身体是情感的容器"},
+  angerStages:{page:"3.2",quote:"ANGER（愤怒）加热了容器里的液体，液体升高，压力上升，产生了蒸汽（所有这些隐喻都属于第二阶段）；然后气体有控制地释放（第三阶段）；如果失败了，容器就会爆炸，碎片飞到空中（第四阶段）",zh:"怒火升级：加热→升高→蒸汽→受控释放→爆炸"},
+  angerOthers:{page:"3.2",quote:"+ANGER IS AN ACTIVE ENEMY+（+怒气是个活跃的敌人）、+ANGER IS A DANGEROUS AGGRESSIVE ANIMAL+（+怒气是一只危险而好斗的动物）、+ANGER IS AN NATURAL FORCE+（+怒气是一种自然之力）",zh:"愤怒还被看成敌人、动物、自然之力"},
+  fearMost:{page:"3.2",quote:"概念 FEAR（恐惧）支配着大量的转喻（它是图 3.9 中所列的情感中拥有最多转喻的），但似乎并没有吸引很多概念隐喻",zh:"四种情感里恐惧的生理转喻最多"},
+  compensation:{page:"3.2",quote:"似乎有一条补偿原则在起作用，即隐喻和转喻相互交替使用。ANGER（愤怒）在隐喻和转喻这两种认知过程之间达到了平衡，而FEAR（恐惧）则主要依靠转喻，JOY（快乐）和LOVE（爱）的概念结构更多地依靠隐喻",zh:"补偿原则：愤怒平衡、恐惧靠转喻、快乐和爱靠隐喻"},
+  joyUp:{page:"3.2",quote:"+JOY IS BEING LIFTED UP+（+快乐是正被升起）……I'm on cloud nine，she's walking on air",zh:"快乐是升起：九重云、空中漫步"},
+  angerScenario:{page:"3.2",quote:"图 3.13：第一阶段原因、第二阶段情感、第三阶段试图控制、第四阶段失控、第五阶段行为",zh:"愤怒与恐惧的五阶段情感情节"},
+  basic6:{page:"3.2",quote:"大约有六种情感概念(SADNESS(悲哀)，ANGER(愤怒)，DISGUST/HATE(厌恶/憎恨)，FEAR(恐惧)，JOY/HAPPINESS(快乐/幸福)，和 DESIRE/LOVE(欲望/爱))可以看成是基本的",zh:"六种基本情感概念"},
+  handsDeck:{page:"3.1",quote:"(1a) All hands on deck. (全体水手在甲板集合。)",zh:"水手上甲板：手代表体力劳动者"},
+  scopeDeck:{page:"3.1",quote:"'航行'为 HAND(手)和 BODY/PERSON(身体/人)之间的部分-整体联系提供了一个合适的映射域。用 HAND(手)这一概念代表体力劳动似乎是很自然的；然而……HEAD(头)和 PERSON(人)之间的转喻联系则并不同样适合航行这一语境",zh:"航行语境适合'手'，不适合'头'"},
+  scopeUniv:{page:"3.1",quote:"映射域'大学'导致了(2a)中的 HEAD(头)和 BODY/PERSON(身体/人)之间的联系，这种联系关注人类的智力",zh:"大学语境适合'聪明的头'"},
+  whiteHouse:{page:"3.1",quote:"(3a) The White House has launched a tax-cutting campaign. (白宫发起了一场减税运动。)",zh:"白宫代表总统：美国政府映射域"},
+  greenhouse:{page:"3.1",quote:"GREENHOUSE(温室)概念可能在园艺语境中看到，但并不真正地包括减税的观念",zh:"温室发起减税运动——映射域不支持"},
+  ears:{page:"3.1",quote:"有的转喻，在用作表语时，其指称功能则让位于突显功能（highlighting function），如 I'm all ears（我正洗耳恭听）",zh:"我洗耳恭听：突显听力而非指称"},
+  metoSingle:{page:"3.1",quote:"转喻所有的三个方面（源概念，目标概念和映射域）就都是一个认知模型的组成部分，这就解释了认知语言学家们为什么主张把原型的转喻限制在单个的认知模型内",zh:"原型转喻限制在单个认知模型内"},
+  metoBasic:{page:"3.1",quote:"转喻的对应直接以意象图式或基本相互关系（'部分-整体'，'内部-外部'，'原因-结果'）为依据，而它们只是作为映射域的组成部分，间接参与隐喻。从这个意义上来说，转喻比隐喻更为基本",zh:"转喻比隐喻更基本"},
+  maryPicasso:{page:"3.1",quote:"'烤馅饼'这个映射域只适用于小的家庭圈子……相反，'著名画家'这一映射域完全支持就毕加索而言的+AUTHOR FOR WORK+（+作者代表作品+）这个转喻",zh:"玛丽馅饼不被公认，毕加索被公认"},
+  boyd:{page:"3.3",quote:"隐喻'构成了它所表达的理论，而不仅仅是注释性的'。（Boyd 1993: 486）",zh:"Boyd：隐喻构成理论，不只是注释"},
+  summary33:{page:"3.3",quote:"概念隐喻可以通过两种方式帮助我们思考：作为解释性的或结构性的隐喻。解释性隐喻用来使外行更容易理解复杂的科学、政治和社会问题。结构性隐喻是对这些问题作理论阐述时不可或缺的组成部分",zh:"解释性 vs 结构性隐喻"},
+  office:{page:"3.3",quote:"屏幕是可以被清理干净的桌面，有文件归档用的文件夹，可以暂时保存文件的写字板，窗口可以打开和关闭，多余文件可以扔进垃圾桶",zh:"办公室隐喻：桌面、文件夹、垃圾桶"},
+  mouse:{page:"3.3",quote:"COMPUTER MOUSE(计算机鼠标)……该隐喻绝妙地把动物的外表和可能的活动都映射到跟踪球工具(它原先的名字)这一概念上，而实际上并没有解释它背后的抽象原理",zh:"鼠标：动物外表映射到跟踪球"},
+  virusUser:{page:"3.3",quote:"对他们来说，这些隐喻不仅仅实现了解释功能，而且对计算机故障的概念化来说还是结构性的",zh:"普通用户眼中病毒隐喻是结构性的"},
+  virusExpert:{page:"3.3",quote:"对他们来说，计算机领域的+VIRUS+（+病毒+）隐喻和其他隐喻是注释性的，而不是像Boyd所说是结构性的",zh:"计算机科学家眼中病毒隐喻是注释性的"},
+  solar:{page:"3.3",quote:"通过把原子核、电子的排列与太阳、行星之间的互动进行比较……+THE ATOM IS A (MINIATURE) SOLAR SYSTEM+（+原子是（微型的）太阳系+）这一隐喻",zh:"玻尔模型＝微型太阳系"},
+  solarLay:{page:"3.3",quote:"+ SOLAR SYSTEM+（+ 太阳系+）隐喻提供了一个有用的解释……因此对非专家来说，它曾（也许仍然）既是解释性的又是结构性的",zh:"对外行：太阳系隐喻既是解释性又是结构性"},
+  pingpong:{page:"3.3",quote:"Kuhn的看法是，+PINGPONG BALL+（+乒乓球+）隐喻不仅是个解释的工具，而且对来个理论来说也是结构性的",zh:"对物理学家：乒乓球隐喻是结构性的"},
+  illness:{page:"3.3",quote:"+COUNTRY IS A PERSON THAT IS ILL+（+国家是一个病人+）这个隐喻，自从在莎士比亚的《理查德二世》中 Gaunt 的演讲里使用过以后，就成了政治家的惯用隐喻",zh:"国家是病人：政治家惯用隐喻"},
+  kinnock:{page:"3.3",quote:"Unemployment is a contagious disease. It doesn't stop at the borders of economic regions. It infects the whole economic body.（失业是传染病……它传染整个经济体。）",zh:"失业是传染病：Kinnock 演讲"},
+  peopleStructural:{page:"3.3",quote:"过些时候，他们就会把这些隐喻当成他们概念框架中结构性的组成部分",zh:"民众会把反复出现的隐喻当作概念框架的结构性成分"},
+  expertMeto:{page:"3.3",quote:"不仅外行的想法，而且专家们的论证也是由一套他称之为'专家隐喻'的概念隐喻构建的",zh:"海湾战争论证由专家隐喻构建"},
+  warCost:{page:"3.3",quote:"+ POLITICS+（+政治+）隐喻和 + BUSINESS+（+生意+）隐喻熔合成 + WAR IS A COST/BENEFIT ANALYSIS+（+战争是成本/利润分析+）这一隐喻",zh:"战争是成本利润分析"},
+  statePerson:{page:"3.3",quote:"它使下面这种主张是正当的，即总是有高于一切的统一的国家利益，而对这种利益的追求常常以牺牲弱势的少数人为代价",zh:"国家是单个的人：掩盖内部差异"},
+  strictFather:{page:"3.3",quote:"STRICT FATHER(严父)模型产生了诸如+MORALITY IS STRENGTH+(道德是力量)，+MORAL AUTHORITY IS PARENTAL AUTHORITY+(道德权威就是父母的权威)",zh:"严父模型与慈父模型的道德隐喻"},
+  metoLimit:{page:"3.4",quote:"真正的概念转喻仅限于以小部分基本经验为基础的代表这一联系，并且只在合适的映射域内才有效，这似乎限制了转喻的解释潜力",zh:"转喻的解释潜力受映射域限制"},
+  conversion:{page:"3.4",quote:"这种类转的基础似乎也是转喻的代表关系：即+AGENT FOR ACTION+（+施动者代表动作+），+INSTRUMENT FOR ACTION+（+工具代表动作+），+OBJECT FOR ACTION+（+对象代表动作+），+BODY PART FOR ACTION+（身体部位代表动作）",zh:"类转＝参与者代表动作的转喻"},
+  skinhead:{page:"3.4",quote:"一种似乎真的可以追溯到转喻方法的构词法是领属复合词，如skinhead（光头党）和paperback（平装本）",zh:"领属复合词：光头党、平装本"},
+  salient:{page:"3.4",quote:"+SALIENT FEATURE FOR PERSON/OBJECT+（+以突出的特征表人/物体+）这一转喻，它可以理解为对'部分-整体'意象图式的运用",zh:"突出特征表人/物体＝部分-整体的运用"},
+  brownhead:{page:"3.4",quote:"*brownhead 或 *brownhair 这种可能的、专用的转喻，只在特定的，而不是普遍的情境中起作用，因为不存在棕色头发的人的社会性群体（因而也没有认可的映射域）",zh:"棕头不行：没有相应社会群体当映射域"},
+  fig315:{page:"3.4",quote:"图 3.15：施动者代表动作 to father a child；工具代表动作 to ski down the hill；对象代表动作 to pepper the dish；身体部位代表动作 to tiptoe into the room",zh:"参与者代表动作：图 3.15 四型"},
+  pepper:{page:"3.4",quote:"(1a) Julia peppered the curry. — Julia dropped pepper on the curry. (朱莉娅在咖喱上加了胡椒粉。)",zh:"在咖喱里加胡椒粉：成立"},
+  pepperBad:{page:"3.4",quote:"(1b)? Julia peppered the table. — Julia dropped pepper on the table. (？朱莉娅在桌子上加了胡椒粉。)",zh:"在桌子上加胡椒粉：不成立"},
+  authorOk:{page:"3.4",quote:"(2a) Sue has authored two novels. — Sue has written two novels. (苏写了两本小说。)",zh:"写小说：印刷媒介映射域，成立"},
+  authorBad:{page:"3.4",quote:"(2b)? Sue has authored a computer program. — Sue has written a computer program. (？苏写了一个计算机程序。)",zh:"写计算机程序：映射域不支持"},
+  fatherOk:{page:"3.4",quote:"(3a) He fathered a baby. — He is the father of the baby. (他抚养了一个婴儿。)",zh:"抚养婴儿：亲属关系映射域，成立"},
+  fatherBad:{page:"3.4",quote:"(3b)? He fathered the project. — He is the father of the project. (？他制订了这个方案。)",zh:"制订方案：映射域不支持"},
+  heelBad:{page:"3.4",quote:"像 heel（脚后跟）(she heeled into the room (她用脚后跟走进房间))这种例子的转喻类转不行，有一个原因是我们无法为那样的行走方式想出一个貌似合理的动机来充当合适的映射域",zh:"脚后跟走进房间：想不出合理动机"},
+  salt:{page:"3.4",quote:"Thornburg 和 Panther 对像 Can you pass me the salt? (你能把盐递给我吗？)……这些言语行为要理解为+ABILITY FOR ACTION+（能力代表行为）这个转喻的实例",zh:"递盐问句＝能力代表行为的转喻"},
+  metoSuccess:{page:"3.4",quote:"任何转喻的成功都有赖于获得一个认知模型或者充当语言使用者可及的映射域的其他类型的概念背景",zh:"转喻成功取决于可及的映射域"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+}
+numberCites();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第三章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：隐喻 vs 转喻 ================= */
+(function(){
+  const data=[
+    {s:"talks between Washington and Moscow",zh:"华盛顿和莫斯科之间的对话",k:"m",note:"转喻——地方表机构：两座城市各代表两国政府，靠邻接。",cite:"placeInst"},
+    {s:"All hands on deck",zh:"全体水手在甲板集合",k:"m",note:"转喻——部分表整体：hands 代表整船水手。",cite:"partWhole"},
+    {s:"the eye of heaven",zh:"天空的眼睛（指太阳）",k:"y",note:"隐喻——太阳和眼睛在'看、发光'上相似。",cite:"eyeSun"},
+    {s:"eye 向初升的景象表示敬意",zh:"例(4)：眼睛代表举止恭敬的人",k:"m",note:"转喻——眼睛是人的一部分，代表整个人。",cite:"eyePerson"},
+    {s:"You're wasting my time",zh:"你在浪费我的时间",k:"y",note:"概念隐喻 TIME IS MONEY——时间像钱一样被浪费。",cite:"timeMoney"},
+    {s:"the buses are on strike",zh:"公共汽车在罢工",k:"m",note:"转喻——被控制者表控制者：车不会罢工，是司机在罢。",cite:"controlled"},
+    {s:"He is a pig",zh:"他是头猪",k:"y",note:"隐喻——人与猪在'肮脏、贪吃'上对比（贫乏映射）。",cite:"johnPig"},
+    {s:"I have just bought a Picasso",zh:"我刚买了一张毕加索",k:"m",note:"转喻——作者表作品：买的是画，不是人。",cite:"picasso"}
+  ];
+  const box=$("#s1items"),fb=$("#s1fb");
+  let cur=null;
+  data.forEach((d,i)=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=d.s+"（"+d.zh+"）";b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=d;
+      fb.textContent="你选了「"+d.zh+"」。现在选一个类别。";
+      fb.style.color="";
+    });
+    box.appendChild(b);
+  });
+  $$("#s1tags .btn").forEach(b=>b.addEventListener("click",()=>{
+    if(!cur){fb.textContent="先点一个表达，再选类别。";return;}
+    const ok=cur.k===b.dataset.tag;
+    fb.innerHTML=(ok?"✓ ":"✗ ")+cur.note;
+    fb.style.color=ok?"var(--green)":"var(--red)";
+  }));
+})();
+
+/* ================= 场景二：映射图 ================= */
+(function(){
+  const info={
+    arg:{fb:"论争靠四个具体概念搭起来：旅程（出发、到达、跟上）、战斗（攻击、驳倒）、建筑物（框架、地基、崩塌）、容器（有漏洞、空洞）。",cites:["arg4","argJourney","argBuilding","argContainer"]},
+    time:{fb:"时间靠金钱来想：浪费、花、给、用完、值得——都是 TIME IS MONEY 的表达。",cites:["timeMoney","timeExp"]},
+    life:{fb:"人生是旅程：出生是抵达（孩子在来的路上），死亡是离去（他走了、他过去了），中间那段自己走。",cites:["lifeJourney"]},
+    idea:{fb:"图 3.5 给思想列的源概念是植物、建筑物、容器；3.1 正文讨论的三个隐喻是：头脑是装思想的容器、思想是物体（货物）、思想是生物或人。",cites:["idea3","fig35"]}
+  };
+  const fb=$("#mapFb");
+  function render(tgt){
+    $$("#mapTargets .chip").forEach(c=>c.classList.toggle("sel",c.dataset.tgt===tgt));
+    $$(".mapline").forEach(l=>l.classList.toggle("on",l.dataset.tgt===tgt));
+    $$(".mapbox[data-tgt]").forEach(b=>b.classList.toggle("on",b.dataset.tgt===tgt));
+    $$(".mapbox[data-src]").forEach(b=>{
+      const on=$$(".mapline.on").some(l=>l.dataset.src===b.dataset.src);
+      b.classList.toggle("on",on);
+    });
+    const d=info[tgt];
+    let html=d.fb;
+    d.cites.forEach(id=>{
+      html+='<button type="button" class="cite" data-cite="'+id+'" aria-label="查看出处"></button>';
+    });
+    fb.innerHTML=html;
+    numberCites();
+  }
+  $$("#mapTargets .chip").forEach(c=>c.addEventListener("click",()=>render(c.dataset.tgt)));
+  render("arg");
+})();
+
+/* ================= 场景三：论证实验室 ================= */
+(function(){
+  const items=[
+    {s:"We have set out to prove that bats are birds.",zh:"我们已经开始证明蝙蝠是鸟。",t:"journey"},
+    {s:"Do you follow my argument?",zh:"你跟得上我的论证吗？",t:"journey"},
+    {s:"She attacked every weak point in my argument.",zh:"她攻击我论证中的每一个弱点。",t:"battle"},
+    {s:"O.K., you win.",zh:"好吧，你赢了。",t:"battle"},
+    {s:"If you don't support your argument with solid facts, it will collapse.",zh:"不用可靠的事实支撑，它的整个结构就会崩溃。",t:"building"},
+    {s:"With the groundwork you've got, you can construct a pretty solid argument.",zh:"凭你已有的基础，你可以构建一个相当牢固的论证。",t:"building"},
+    {s:"That argument has holes in it.",zh:"那个论点有漏洞。",t:"container"},
+    {s:"Your argument is vacuous.",zh:"你的论点很空洞。",t:"container"}
+  ];
+  const names={journey:"论争是旅程",battle:"论争是战斗",building:"论争是建筑物",container:"论争是容器"};
+  const box=$("#argLab"),score=$("#argScore");
+  let done=0,right=0;
+  items.forEach((d,i)=>{
+    const wrap=document.createElement("div");
+    wrap.style.cssText="margin:10px 0;padding-top:8px;border-top:1.5px dashed var(--line)";
+    const p=document.createElement("p");
+    p.style.cssText="margin:0 0 6px;font-size:.95rem";
+    p.innerHTML="<strong>"+(i+1)+".</strong> "+d.s+"<br><span class='sent'>"+d.zh+"</span>";
+    wrap.appendChild(p);
+    const row=document.createElement("div");row.className="btn-row";
+    const fbd=document.createElement("p");fbd.className="feedback";fbd.style.margin="4px 0";
+    Object.keys(names).forEach(k=>{
+      const b=document.createElement("button");
+      b.className="btn";b.textContent=names[k];
+      b.addEventListener("click",()=>{
+        if(wrap.dataset.done) return;
+        wrap.dataset.done="1";done++;
+        const ok=k===d.t;
+        if(ok) right++;
+        b.classList.add("sel");
+        fbd.textContent=(ok?"✓ ":"✗ ")+"这句话说的是「"+names[d.t]+"」。";
+        fbd.style.color=ok?"var(--green)":"var(--red)";
+        score.textContent="已答对 "+right+" / "+items.length;
+      });
+      row.appendChild(b);
+    });
+    wrap.appendChild(row);wrap.appendChild(fbd);box.appendChild(wrap);
+  });
+})();
+
+/* ================= 场景四：怒火温度计 ================= */
+(function(){
+  const stages=[
+    {name:"体温升高",phase:"生理转喻",fb:"体温升高——愤怒、快乐、爱都能让人浑身发热。例：Don't get hot under the collar.（别发怒。）",cite:"hotCollar"},
+    {name:"液体受热",phase:"第二阶段",fb:"容器里的液体开始受热：脸和脖子涨红。例：She was flushed with anger.（她气得满脸通红。）",cite:"flushed"},
+    {name:"液体升高",phase:"第二阶段",fb:"液体升高、压力上升：怒火在体内往上冒。例：Anger welled up in his body.（他体内不断冒出怒火。）",cite:"welledUp"},
+    {name:"蒸汽与冒烟",phase:"第二阶段→第三阶段",fb:"蒸汽、冒烟：气体还有控制地释放。源概念：BOIL 沸腾、RISE 上升、STEAM 蒸发、FUME 冒烟。",cite:"steamConcepts"},
+    {name:"爆裂与爆炸",phase:"第四阶段",fb:"控制失败：容器爆炸，碎片飞到空中。源概念：BURST 爆裂、EXPLODE 爆炸。",cite:"angerStages"}
+  ];
+  const slider=$("#heatSlider"),out=$("#heatOut"),stage=$("#heatStage"),fb=$("#heatFb");
+  const liquid=$("#heatLiquid"),mercury=$("#heatMercury"),flame=$("#heatFlame"),blast=$("#heatBlast");
+  function render(){
+    const v=Number(slider.value);
+    const idx=Math.min(4,Math.floor(v/20));
+    const st=stages[idx];
+    out.textContent=String(v);
+    stage.textContent=st.name+"（"+st.phase+"）";
+    const hue=210-v*2.1;
+    const col="hsl("+hue.toFixed(0)+","+(55+v*0.2).toFixed(0)+"%,"+(60-v*0.08).toFixed(0)+"%)";
+    const h=v*1.5;
+    liquid.setAttribute("y",String(190-h));
+    liquid.setAttribute("height",String(h));
+    liquid.setAttribute("fill",col);
+    const mh=v*1.4;
+    mercury.setAttribute("y",String(190-mh));
+    mercury.setAttribute("height",String(mh));
+    mercury.setAttribute("fill",col);
+    flame.setAttribute("opacity",v>=55?"0.95":v>=25?"0.4":"0.12");
+    blast.setAttribute("opacity",v>=88?"1":"0");
+    let html=st.fb;
+    html+='<button type="button" class="cite" data-cite="'+st.cite+'" aria-label="查看出处"></button>';
+    fb.innerHTML=html;
+    numberCites();
+  }
+  slider.addEventListener("input",render);
+  render();
+})();
+
+/* 场景四：情感转喻数量猜测 */
+(function(){
+  const rev=$("#emoRev");
+  $$("#emoGuess .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#emoGuess .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.e!=="fear");
+  }));
+})();
+
+/* ================= 场景五：转喻九型 ================= */
+(function(){
+  const items=[
+    {s:"All hands on deck.",zh:"全体水手在甲板集合",t:"part",cite:"partWhole"},
+    {s:"to fill up the car",zh:"给汽车装满油",t:"whole",cite:"wholePart"},
+    {s:"I'll have a glass",zh:"我要喝一杯",t:"container",cite:"containerContent"},
+    {s:"a glass, an iron",zh:"一个玻璃杯、一个铁熨斗",t:"material",cite:"materialObject"},
+    {s:"buy a Ford",zh:"买一辆福特",t:"producer",cite:"producerProduct"},
+    {s:"talks between Washington and Moscow",zh:"华盛顿和莫斯科之间的对话",t:"placeInst",cite:"placeInst"},
+    {s:"Watergate changed our politics",zh:"水门改变了我们的政治",t:"placeEvent",cite:"placeEvent"},
+    {s:"the buses are on strike",zh:"公共汽车在罢工",t:"controlled",cite:"controlled"},
+    {s:"his native tongue is German",zh:"他的母语是德语",t:"cause",cite:"causeEffect"}
+  ];
+  const names={part:"部分表整体",whole:"整体表部分",container:"容器表内容",material:"材质表物体",
+    producer:"生产者表产品",placeInst:"地方表机构",placeEvent:"地方表事件",controlled:"被控制者表控制者",cause:"原因表结果"};
+  const box=$("#metItems"),cards=$("#metCards"),fb=$("#metFb"),prog=$("#metProg");
+  let cur=null,right=0;
+  items.forEach((d,i)=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=(i+1)+". "+d.s;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=d;
+      fb.textContent="你选了例句 "+(i+1)+"。现在点一个转喻类型。";
+      fb.style.color="";
+    });
+    box.appendChild(b);
+  });
+  $$(".metcard",cards).forEach(c=>c.addEventListener("click",()=>{
+    if(!cur){fb.textContent="先点一句例句，再点类型。";return;}
+    const ok=cur.t===c.dataset.type;
+    if(ok&&!c.dataset.hit){c.dataset.hit="1";right++;prog.textContent="已答对 "+right+" / "+items.length;}
+    fb.innerHTML=(ok?"✓ ":"✗ ")+"例句"+items.indexOf(cur)+"："+cur.zh+" → "+names[cur.t];
+    fb.style.color=ok?"var(--green)":"var(--red)";
+  }));
+})();
+
+/* 场景五：heads on deck 猜测 */
+(function(){
+  const rev=$("#headRev");
+  $$("#headGuess .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#headGuess .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.h!=="n");
+  }));
+})();
+
+/* ================= 场景六：解释性 vs 结构性 ================= */
+(function(){
+  const cases=[
+    {t:"办公室桌面·文件夹·垃圾桶（教外行用电脑）",b:"exp",note:"解释性——和缩写命令 CLS、MD、Rd 相比，它的教学价值才显出来，是注释性引入的。",cite:"office"},
+    {t:"「计算机鼠标」（动物外表 → 跟踪球工具）",b:"exp",note:"解释性——映射了外表和活动，但没有解释背后的抽象原理。",cite:"mouse"},
+    {t:"「计算机病毒」（普通用户理解电脑故障）",b:"struct",note:"结构性——对外行来说不只是解释，还是概念化故障的组成部分。",cite:"virusUser"},
+    {t:"「计算机病毒」（计算机科学家眼中）",b:"exp",note:"解释性——对他们来说是注释性的，不是 Boyd 意义上的结构性。",cite:"virusExpert"},
+    {t:"「原子是微型太阳系」（向外行解释玻尔模型）",b:"both",note:"既是解释性又是结构性——对外行既提供解释，也构成通俗理论。",cite:"solarLay"},
+    {t:"「原子核和电子是乒乓球」（物理学家的衡量标准）",b:"struct",note:"结构性——Kuhn：不只是解释工具，对理论也是结构性的。",cite:"pingpong"},
+    {t:"「国家是病人」（民众耳濡目染的政治宣传）",b:"struct",note:"结构性——重复多次后，会被当作概念框架的结构性成分。",cite:"peopleStructural"},
+    {t:"海湾战争「专家隐喻」（战争是成本利润分析）",b:"struct",note:"结构性——专家们的论证本身就是由这套概念隐喻构建的。",cite:"expertMeto"}
+  ];
+  const bucketName={exp:"解释性",struct:"结构性",both:"既是解释性又是结构性"};
+  const box=$("#polCases"),fb=$("#polFb"),prog=$("#polProg");
+  let cur=null,right=0;
+  cases.forEach((d,i)=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=(i+1)+". "+d.t;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=d;
+      fb.textContent="你选了案例 "+(i+1)+"。现在选一个桶。";
+      fb.style.color="";
+    });
+    box.appendChild(b);
+  });
+  $$("#polBuckets .btn").forEach(b=>b.addEventListener("click",()=>{
+    if(!cur){fb.textContent="先点一个案例，再选桶。";return;}
+    const ok=cur.b===b.dataset.b;
+    if(ok&&!cur.hit){cur.hit=1;right++;prog.textContent="已答对 "+right+" / "+cases.length;}
+    fb.innerHTML=(ok?"✓ ":"✗ ")+"案例"+cases.indexOf(cur)+"："+cur.note;
+    fb.style.color=ok?"var(--green)":"var(--red)";
+  }));
+})();
+
+/* ================= 场景七：类转实验室 ================= */
+(function(){
+  const items=[
+    {s:"Julia peppered the curry.",zh:"朱莉娅在咖喱里加了胡椒粉。",ok:true,note:"成立——活动属于'准备食物/调味品'映射域。",cite:"pepper"},
+    {s:"? Julia peppered the table.",zh:"朱莉娅在桌子上加了胡椒粉。",ok:false,note:"不成立——只是把胡椒撒在某处，映射域不支持这种转喻。",cite:"pepperBad"},
+    {s:"Sue has authored two novels.",zh:"苏写了两本小说。",ok:true,note:"成立——'印刷媒介'映射域里 author 与 write 同义。",cite:"authorOk"},
+    {s:"? Sue has authored a computer program.",zh:"苏写了一个计算机程序。",ok:false,note:"不成立——'计算机工作/软件工程'不在 author 的映射域里。",cite:"authorBad"},
+    {s:"He fathered a baby.",zh:"他抚养了一个婴儿。",ok:true,note:"成立——'亲属关系'是 father 转喻用法的必要映射域。",cite:"fatherOk"},
+    {s:"? He fathered the project.",zh:"他制订了这个方案。",ok:false,note:"不成立——baby 隐喻地指计划时，唤起的是另一个映射域。",cite:"fatherBad"},
+    {s:"She heeled into the room.",zh:"她用脚后跟走进房间。",ok:false,note:"不成立——想不出貌似合理的行走动机来充当合适的映射域。",cite:"heelBad"}
+  ];
+  const box=$("#convLab"),prog=$("#convProg");
+  let right=0;
+  items.forEach((d,i)=>{
+    const wrap=document.createElement("div");
+    wrap.style.cssText="margin:8px 0;padding-top:8px;border-top:1.5px dashed var(--line)";
+    const p=document.createElement("p");
+    p.style.cssText="margin:0 0 6px;font-size:.95rem";
+    p.innerHTML="<strong>"+(i+1)+".</strong> "+d.s+"<br><span class='sent'>"+d.zh+"</span>";
+    wrap.appendChild(p);
+    const row=document.createElement("div");row.className="btn-row";
+    const fbd=document.createElement("p");fbd.className="feedback";fbd.style.margin="4px 0";
+    [["y","成立"],["n","不成立"]].forEach(([k,label])=>{
+      const b=document.createElement("button");
+      b.className="btn";b.textContent=label;
+      b.addEventListener("click",()=>{
+        if(wrap.dataset.done) return;
+        wrap.dataset.done="1";
+        const ok=(k==="y")===d.ok;
+        if(ok) right++;
+        b.classList.add("sel");
+        fbd.innerHTML=(ok?"✓ ":"✗ ")+d.note;
+        fbd.style.color=ok?"var(--green)":"var(--red)";
+        prog.textContent="已答对 "+right+" / "+items.length;
+      });
+      row.appendChild(b);
+    });
+    wrap.appendChild(row);wrap.appendChild(fbd);box.appendChild(wrap);
+  });
+})();
+
+/* 动态生成的角标统一编号 */
+numberCites();
+</script>
+</body>
+</html>

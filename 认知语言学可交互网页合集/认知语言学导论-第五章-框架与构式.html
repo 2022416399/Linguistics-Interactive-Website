@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>框架与构式 · 《认知语言学导论》第五章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第五章做成单文件交互网页：七场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip input{margin-right:6px}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 出处角标 ---------- */
+sup.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center;white-space:nowrap}
+thead th{background:var(--hl);font-weight:700}
+th[data-col],td[data-col]{cursor:default}
+td.pos{color:var(--green);font-weight:800}
+td.neg{color:var(--red);font-weight:800}
+td.dev{color:#8a6d1f;font-weight:800}
+td.unk{color:var(--ink-faint)}
+tr.hlcol td{background:color-mix(in srgb,var(--hl) 45%,transparent)}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">框架与构式 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第五章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">框架与构式</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第五章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>Fillmore 把一次"买"拆成买者、卖者、货物、金钱四个角色<button type="button" class="cite" data-cite="buyFour" aria-label="查看出处"></button>，同一事件换个动词就换个视角；脚本给常见事件排好顺序；Talmy 的事件框架能沿路径"开窗"；Goldberg 的构式让句法格式自己携带意义。<span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">从商务事件到构式语法，一条"框架"概念越走越宽的路。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 240" role="img" aria-label="第五章结构图：框架与脚本、事件框架与视窗、跨语言对照、构式语法四步推进">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M225 66 L272 66"/>
+        <path d="M380 66 L380 108"/>
+        <path d="M380 96 L380 140"/>
+        <path d="M505 66 L552 66"/>
+        <path d="M505 158 L552 158"/>
+      </g>
+      <g stroke="var(--ink)" stroke-width="2.2" fill="var(--card)">
+        <rect x="20" y="34" width="205" height="64" rx="12"/>
+        <rect x="275" y="34" width="205" height="64" rx="12"/>
+        <rect x="530" y="34" width="210" height="64" rx="12"/>
+        <rect x="275" y="126" width="205" height="64" rx="12"/>
+        <rect x="530" y="126" width="210" height="64" rx="12"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="122" y="62" font-size="15" font-weight="700">框架与脚本</text>
+        <text x="122" y="84" font-size="11.5" fill="var(--ink-soft)">商务事件四角色 · 餐馆脚本</text>
+        <text x="377" y="62" font-size="15" font-weight="700">事件框架</text>
+        <text x="377" y="84" font-size="11.5" fill="var(--ink-soft)">位移六成分 · 致使链</text>
+        <text x="635" y="62" font-size="15" font-weight="700">注意力视窗</text>
+        <text x="635" y="84" font-size="11.5" fill="var(--ink-soft)">开启 · 隔断 · 路径三位置</text>
+        <text x="377" y="154" font-size="15" font-weight="700">跨语言对照</text>
+        <text x="377" y="176" font-size="11.5" fill="var(--ink-soft)">动词框架 / 卫星框架</text>
+        <text x="635" y="154" font-size="15" font-weight="700">构式语法</text>
+        <text x="635" y="176" font-size="11.5" fill="var(--ink-soft)">形式-意义配对 · 存于记忆</text>
+      </g>
+    </svg>
+    <figcaption>第五章的问题与推进路线（示意）<button type="button" class="cite" data-cite="scriptDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="consCore" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">商务事件</button>
+    <button class="chip" data-jump="s2">餐馆脚本</button>
+    <button class="chip" data-jump="s3">位移六成分</button>
+    <button class="chip" data-jump="s4">注意力视窗</button>
+    <button class="chip" data-jump="s5">致使链</button>
+    <button class="chip" data-jump="s6">跨语言对照</button>
+    <button class="chip" data-jump="s7">构式实验室</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>商务事件：四个角色，几种视角</h2>
+  </div>
+  <p class="point">Fillmore 把"框架"引入语言学，起点是<span class="hl">商务事件</span>：一次购买至少牵动买者、卖者、货物、金钱四个范畴；同一事件选用不同动词，被推到前台的角色就不同。<button type="button" class="cite" data-cite="frameIntro" aria-label="查看出处"></button><button type="button" class="cite" data-cite="buyFour" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">实验台：点一个句式，看哪个角色被前景化（红框＝前台主角，虚线框＝暗含不出场）<span class="tag" data-label="示意">示意</span></p>
+    <svg id="s1Fig" viewBox="0 0 760 250" role="img" aria-label="商务事件框架图：中央购买框架连接买者、货物、卖者、金钱四个角色">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M300 108 L196 54"/>
+        <path d="M470 108 L574 54"/>
+        <path d="M300 146 L196 200"/>
+        <path d="M470 146 L574 200"/>
+      </g>
+      <g stroke="var(--ink)" stroke-width="2.2" fill="var(--card)">
+        <rect id="cBox" x="300" y="94" width="170" height="66" rx="12"/>
+        <rect id="r-buyer" x="46" y="24" width="150" height="56" rx="10"/>
+        <rect id="r-goods" x="564" y="24" width="150" height="56" rx="10"/>
+        <rect id="r-seller" x="46" y="172" width="150" height="56" rx="10"/>
+        <rect id="r-money" x="564" y="172" width="150" height="56" rx="10"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="385" y="122" font-size="16" font-weight="700">商务事件</text>
+        <text x="385" y="144" font-size="12" fill="var(--ink-soft)">当前动词：<tspan id="s1Verb" font-weight="700">buy</tspan></text>
+        <text x="121" y="49" font-size="14.5" font-weight="700">买者</text>
+        <text x="121" y="68" font-size="10.5" fill="var(--ink-soft)">BUYER</text>
+        <text x="639" y="49" font-size="14.5" font-weight="700">货物</text>
+        <text x="639" y="68" font-size="10.5" fill="var(--ink-soft)">GOODS</text>
+        <text x="121" y="197" font-size="14.5" font-weight="700">卖者</text>
+        <text x="121" y="216" font-size="10.5" fill="var(--ink-soft)">SELLER</text>
+        <text x="639" y="197" font-size="14.5" font-weight="700">金钱</text>
+        <text x="639" y="216" font-size="10.5" fill="var(--ink-soft)">MONEY</text>
+      </g>
+    </svg>
+    <div class="btn-row" id="s1sent" aria-label="选择句式"></div>
+    <p class="feedback" id="s1ex" style="margin-bottom:2px"></p>
+    <p class="feedback" id="s1fb"></p>
+    <figcaption>[购买]框架与视角变化（据原著图 5.1、5.2、5.3 演绘）<button type="button" class="cite" data-cite="buyFour" aria-label="查看出处"></button><button type="button" class="cite" data-cite="spendCost" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>原文细节：框架概念的三个定义与一次"认知转向"</summary>
+    <p>1975 年 Fillmore 把框架定义为"能与场景的原型实例建立联系的语言选择的任何系统"。<button type="button" class="cite" data-cite="fill75" aria-label="查看出处"></button></p>
+    <p>1985 年："知识的特定统一框架，或经验有机的系统化"；1992 年："认知结构……为编码为词语的概念所预设的知识"——框架从语言选择系统被重新阐释为认知结构。<button type="button" class="cite" data-cite="fill85" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fill92" aria-label="查看出处"></button></p>
+    <p>视角随之变成认知概念："当我们想让听者注意买者和货物时，我们就用动词 buy……而注意力焦点是卖者和货物时，就用动词 sell。"<button type="button" class="cite" data-cite="attn" aria-label="查看出处"></button></p>
+    <p>与 Langacker 的主体/背景理论相比，框架的长处在于视野更大：它也谈论间接宾语和状语这类只吸引一小部分注意力潜力的成分。<button type="button" class="cite" data-cite="adverbial" aria-label="查看出处"></button></p>
+    <p>在本书的术语系统里，框架是认知模型的一种："框架将被看作一种表征关于具体而常见情景的知识与信念的认知模型"。<button type="button" class="cite" data-cite="frameModel" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">小结：四个动词的区别，只是同一框架内部的视角变化。<button type="button" class="cite" data-cite="fourVerbs" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：餐馆脚本 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>从框架到脚本：餐馆里该发生什么</h2>
+  </div>
+  <p class="point">没上文交代，<span class="hl">the life vest 和 the flight attendant 却带着定冠词</span>——因为"飞机"一词激活了整个[乘飞机]框架；把框架按时间顺序排好，就得到脚本。<button type="button" class="cite" data-cite="theWhy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scriptDef" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">脚本漫游：选一个场景，按"下一步"走一遍 Schank &amp; Abelson 的[餐馆]脚本<button type="button" class="cite" data-cite="schank" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="s2stages" aria-label="选择脚本场景"></div>
+    <p class="feedback" id="s2fb"></p>
+    <div class="btn-row">
+      <button class="btn" id="s2next">下一步 →</button>
+      <button class="btn" id="s2reset">↺ 重来</button>
+    </div>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：两个信息量差不多的 John 餐馆小故事，哪一个说得通？</p>
+    <div class="btn-row" id="s2opts">
+      <button class="btn" data-opt="a">故事一：向女服务生要了菜，付账离开</button>
+      <button class="btn" data-opt="b">故事二：看见一位女服务生，就起身回家</button>
+      <button class="btn" data-opt="c">两个都说得通</button>
+      <button class="btn" data-opt="d">两个都不通</button>
+    </div>
+    <div class="reveal" id="s2rev" hidden>
+      <p><strong>故事一说得通。</strong>它符合我们内化的餐馆脚本，于是我们自动补上没说的话：点菜前看过菜单，吃了饭才付钱。<button type="button" class="cite" data-cite="storyWhy" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">故事二违背脚本预期，三件事连不成一个连贯的致使链，所以读起来没有意义。<button type="button" class="cite" data-cite="unscript" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>原文细节：飞机脚本、默认指派与脚本的"乏味"</summary>
+    <p>Minsky 把框架定义为"表征模式化情境的数据结构"；"飞机"这个范畴会激活飞行员、空勤人员、救生衣、安全带、安全须知等同属[乘飞机]框架的范畴。<button type="button" class="cite" data-cite="minsky" aria-label="查看出处"></button><button type="button" class="cite" data-cite="planeKnow" aria-label="查看出处"></button></p>
+    <p>框架还有下位框架：[用餐]、[看电影]、[上洗手间]；认知范畴对框架起定位和触发作用。<button type="button" class="cite" data-cite="subframe" aria-label="查看出处"></button></p>
+    <p>默认指派：在[机上用餐]下位框架里，你不会想到摆着贵重餐具和蜡烛的大餐桌——除非你常坐一等舱。<button type="button" class="cite" data-cite="defaultVal" aria-label="查看出处"></button></p>
+    <p>图 5.4 的[乘飞机]脚本分三段：登机前（到飞机场→找检票口→检票→过海关→找入口→等待通知登机）；飞机上（登机→找座位→放行李→系安全带→听安全须知→起飞；飞行中→用餐、睡觉、看电影→上洗手间→降落）；下飞机后（下飞机→取行李→过海关→出飞机场）。<button type="button" class="cite" data-cite="planeScript" aria-label="查看出处"></button></p>
+    <p>脚本看着乏味，但它保证我们说话听话时无意识地填入大量信息——没有它，"最简单的话语片断也无法理解"。<button type="button" class="cite" data-cite="storyWhy" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">框架管"一台戏有哪些角色"，脚本管"这出戏按什么顺序演"。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 商务事件</button>
+    <button class="btn" data-jump="s3">下一场：位移六成分 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>位移事件：Talmy 的六个成分</h2>
+  </div>
+  <p class="point">Talmy 把位移事件拆成<span class="hl">主体、背景、路径、位移</span>四个中心成分，加上方式、原因两个可选成分；"书放在桌上"也算位移的特例——零位移。<button type="button" class="cite" data-cite="six" aria-label="查看出处"></button><button type="button" class="cite" data-cite="zero" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：点一句"铅笔"，看六个成分里哪些被这句话激活</p>
+    <svg id="s3Fig" viewBox="0 0 760 340" role="img" aria-label="位移事件场景图与六个成分框">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M70 190 L690 190"/>
+        <path d="M120 190 L110 242 M640 190 L650 242"/>
+        <rect x="250" y="166" width="86" height="20" rx="6" transform="rotate(-9 293 176)"/>
+        <path d="M348 162 C 412 128 422 88 362 60" stroke-dasharray="6 6"/>
+        <path d="M362 60 l -11 13 m 11 -13 l 3 17"/>
+      </g>
+      <g font-size="12.5" fill="var(--ink-soft)" font-family="-apple-system,'PingFang SC',sans-serif">
+        <text x="293" y="222" text-anchor="middle">铅笔滚过桌面（示意）</text>
+        <text x="430" y="86" text-anchor="middle">路径</text>
+        <text x="205" y="150">主体</text>
+        <text x="560" y="215">背景</text>
+      </g>
+      <g id="s3Comps" stroke="var(--ink)" stroke-width="2.2" fill="var(--card)">
+        <rect id="k-figure" x="40" y="250" width="200" height="34" rx="9"/>
+        <rect id="k-ground" x="280" y="250" width="200" height="34" rx="9"/>
+        <rect id="k-path" x="520" y="250" width="200" height="34" rx="9"/>
+        <rect id="k-motion" x="40" y="294" width="200" height="34" rx="9"/>
+        <rect id="k-manner" x="280" y="294" width="200" height="34" rx="9"/>
+        <rect id="k-cause" x="520" y="294" width="200" height="34" rx="9"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" font-size="14" fill="var(--ink)" text-anchor="middle">
+        <text x="140" y="272">主体 FIGURE</text>
+        <text x="380" y="272">背景 GROUND</text>
+        <text x="620" y="272">路径 PATH</text>
+        <text x="140" y="316">位移 MOTION</text>
+        <text x="380" y="316">方式 MANNER</text>
+        <text x="620" y="316">原因 CAUSE</text>
+      </g>
+    </svg>
+    <div class="btn-row" id="s3sent" aria-label="选择例句"></div>
+    <p class="feedback" id="s3fb"></p>
+  </div>
+
+  <details>
+    <summary>原文细节：事件框架的定义与五种类型</summary>
+    <p>Talmy 的事件框架定义："被一起激活或被互相激活的一组概念成分及其相互关系……次要的成分则在该事件框架之外。"<button type="button" class="cite" data-cite="efDef" aria-label="查看出处"></button></p>
+    <p>五种事件框架：位移、致使、循环、参与者互动、相互关系；位移事件框架结构最具体，是"注意力视窗"的范例。<button type="button" class="cite" data-cite="fiveTypes" aria-label="查看出处"></button></p>
+    <p>原因和方式"看起来并不那么具有中心地位"——Talmy 把它们归入伴随事件，四个中心成分构成框架事件。<button type="button" class="cite" data-cite="six" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">六个成分是后面"开窗"游戏的底盘：句子能亮起其中哪几格，大有讲究。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 餐馆脚本</button>
+    <button class="btn" data-jump="s4">下一场：注意力视窗 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>开启注意力视窗：一句话能开几扇窗</h2>
+  </div>
+  <p class="point">同一个"板条箱掉落"事件，可以只提路径的一段：<span class="hl">起始、中间、结尾</span>。说出的部分被前景化，没说的被"隔断"——但听者通常能把整条路径重建出来。<button type="button" class="cite" data-cite="threePos" aria-label="查看出处"></button><button type="button" class="cite" data-cite="recon" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">视窗选择器：勾选要开启的路径段，看句子怎么变<button type="button" class="cite" data-cite="crate" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></p>
+    <svg id="s4Fig" viewBox="0 0 760 250" role="img" aria-label="开放路径上的三个视窗：出飞机、穿过空中、落进大洋">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <ellipse cx="112" cy="52" rx="42" ry="10"/>
+        <path d="M96 52 L132 34 L142 34 L122 54 Z"/>
+        <path d="M74 50 L60 36 L70 36 L88 50 Z"/>
+        <rect x="152" y="44" width="18" height="18" rx="2"/>
+        <path d="M420 212 q 30 -12 60 0 q 30 12 60 0 q 30 -12 60 0 q 30 12 60 0"/>
+        <path id="segA" d="M172 56 C 230 60 272 78 312 94" stroke-width="3"/>
+        <path id="segB" d="M312 94 C 372 108 432 128 482 150" stroke-width="3"/>
+        <path id="segC" d="M482 150 C 532 168 572 198 622 210" stroke-width="3"/>
+        <path d="M622 210 l -16 -2 m 16 2 l -8 -14"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" font-size="13.5" fill="var(--ink)" text-anchor="middle">
+        <text id="lbA" x="240" y="82">a 起始视窗 out of the airplane</text>
+        <text id="lbB" x="397" y="122">b 中间视窗 through the air</text>
+        <text id="lbC" x="552" y="190">c 结尾视窗 into the ocean</text>
+      </g>
+      <g font-size="12" fill="var(--ink-soft)" font-family="-apple-system,'PingFang SC',sans-serif">
+        <text x="120" y="86" text-anchor="middle">飞机货舱</text>
+        <text x="580" y="238" text-anchor="middle">大洋</text>
+      </g>
+    </svg>
+    <div class="btn-row" id="s4Wins" aria-label="勾选视窗">
+      <label class="chip sel"><input type="checkbox" id="winA" checked> a 起始视窗</label>
+      <label class="chip sel"><input type="checkbox" id="winB" checked> b 中间视窗</label>
+      <label class="chip sel"><input type="checkbox" id="winC" checked> c 结尾视窗</label>
+    </div>
+    <p class="feedback" id="s4out" style="font-size:.92rem"></p>
+    <figcaption>板条箱掉落的开放路径与三种视窗位置（据原著图 5.9、5.10 演绘）<button type="button" class="cite" data-cite="winA" aria-label="查看出处"></button><button type="button" class="cite" data-cite="winB" aria-label="查看出处"></button><button type="button" class="cite" data-cite="winC" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>原文细节：三种路径与一例"不可接受"</summary>
+    <p>开放路径：起点和终点在不同空间位置（Blériot 例句、板条箱例句）；封闭路径：起点终点重合，想像成圆周箭头（I need the milk.）。<button type="button" class="cite" data-cite="openP" aria-label="查看出处"></button><button type="button" class="cite" data-cite="closedP" aria-label="查看出处"></button></p>
+    <p>封闭路径里，★Go 单开起始视窗不可接受：离开的动作不含关于剩余路径的足够信息，甚至看不出路径会成圆圈还是直线。<button type="button" class="cite" data-cite="goWhy" aria-label="查看出处"></button></p>
+    <p>虚构路径：My bike is across the street from the bakery——听者先把注意力指向参照点（面包店），再在心理上走一条"街对面"的虚构路径。<button type="button" class="cite" data-cite="fictive" aria-label="查看出处"></button></p>
+    <p>虚构路径的语序不遵循路径方向：结尾部分反而由第一个状语说出，起始部分由最后一个状语说出。<button type="button" class="cite" data-cite="fictiveOrder" aria-label="查看出处"></button></p>
+    <p>参照点可以被隔断，但条件是"它的身份一般由语境或规约提供"。<button type="button" class="cite" data-cite="gapRef" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">前景化的部分得到增强的注意加工；被隔断的部分仍在概念里，随时可重建。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 位移六成分</button>
+    <button class="btn" data-jump="s5">下一场：致使链 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>致使链：打碎窗户的五个次事件</h2>
+  </div>
+  <p class="point">John broke the window 背后是五步链条。<span class="hl">语言默认只开启第 1 步和第 5 步</span>，中间三步被隔断——意图和实现"让人觉得是无缝连接"。<button type="button" class="cite" data-cite="sub5" aria-label="查看出处"></button><button type="button" class="cite" data-cite="win15" aria-label="查看出处"></button><button type="button" class="cite" data-cite="seamless" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">点一个阶段，看它在链条里的位置与开/断状态</p>
+    <svg id="s5Fig" viewBox="0 0 760 170" role="img" aria-label="致使链五个阶段：下决心、身体动作、石头飞过、击中、窗碎">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M140 82 L156 82"/>
+        <path d="M284 82 L300 82"/>
+        <path d="M428 82 L444 82"/>
+        <path d="M572 82 L588 82"/>
+      </g>
+      <g id="s5Stages" stroke="var(--ink)" stroke-width="2.2">
+        <rect id="st1" x="16" y="48" width="124" height="68" rx="10" fill="var(--hl)" stroke="var(--red)" stroke-width="3"/>
+        <rect id="st2" x="160" y="48" width="124" height="68" rx="10" fill="var(--card)"/>
+        <rect id="st3" x="304" y="48" width="124" height="68" rx="10" fill="var(--card)"/>
+        <rect id="st4" x="448" y="48" width="124" height="68" rx="10" fill="var(--card)"/>
+        <rect id="st5" x="592" y="48" width="124" height="68" rx="10" fill="var(--hl)" stroke="var(--red)" stroke-width="3"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="78" y="76" font-size="14" font-weight="700">1 下决心</text>
+        <text x="78" y="98" font-size="11" fill="var(--red)">开</text>
+        <text x="222" y="76" font-size="14" font-weight="700">2 身体动作</text>
+        <text x="222" y="98" font-size="11" fill="var(--ink-soft)">断</text>
+        <text x="366" y="76" font-size="14" font-weight="700">3 石头飞过</text>
+        <text x="366" y="98" font-size="11" fill="var(--ink-soft)">断</text>
+        <text x="510" y="76" font-size="14" font-weight="700">4 击中窗户</text>
+        <text x="510" y="98" font-size="11" fill="var(--ink-soft)">断</text>
+        <text x="654" y="76" font-size="14" font-weight="700">5 窗户碎了</text>
+        <text x="654" y="98" font-size="11" fill="var(--red)">开</text>
+      </g>
+      <g font-size="12" fill="var(--ink-soft)" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">
+        <text x="380" y="146">每个次事件以致使关系连接下一个，构成"致使链事件"（示意）</text>
+      </g>
+    </svg>
+    <p class="feedback" id="s5fb"></p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：I broke the window 后面接哪个 by 小句，英语才完全说得通？</p>
+    <div class="btn-row" id="s5opts" aria-label="选择 by 小句"></div>
+    <div class="reveal" id="s5rev" hidden></div>
+  </div>
+
+  <details>
+    <summary>原文细节：致使有程度，成分会"冻结"</summary>
+    <p>Talmy 1976 年提出致使有程度：事件致使（the vase broke）、人为致使（he broke the vase by mistake）、施事致使（he broke the vase to irritate his wife）。<button type="button" class="cite" data-cite="causal" aria-label="查看出处"></button><button type="button" class="cite" data-cite="causal3" aria-label="查看出处"></button></p>
+    <p>阶段 4 之所以重要，因为它指出最终结果的直接原因；英语的主要施动致使结构 by 小句，就是为倒数第二个次事件准备的。<button type="button" class="cite" data-cite="byWhy" aria-label="查看出处"></button></p>
+    <p>"冻结补足语"：事件框架中那些不能在语言表层表达出来的成分，如 The book cost ten pounds ★to John / ★from Sue。<button type="button" class="cite" data-cite="blocked" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">最自然的致使描述是"不连续"的：只开头尾，中间留给听话人去补。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 注意力视窗</button>
+    <button class="btn" data-jump="s6">下一场：跨语言对照 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>同一件事，四种语言四种摆法</h2>
+  </div>
+  <p class="point">路径是塞进动词（法语 sortir、西语 salir），还是交给小品词（英语 out、德语 hinaus）？Talmy 据此分出<span class="hl">动词框架语言与卫星框架语言</span>，汉语属后者。<button type="button" class="cite" data-cite="vfLang" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sfLang" aria-label="查看出处"></button><button type="button" class="cite" data-cite="langList" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">选一组例句、一种语言，看路径和方式各放在哪儿<button type="button" class="cite" data-cite="boyOut" aria-label="查看出处"></button><button type="button" class="cite" data-cite="boyRode" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="s6Set" aria-label="选择例句组">
+      <button class="chip sel" data-set="path">路径例句</button>
+      <button class="chip" data-set="manner">方式例句</button>
+    </div>
+    <div class="btn-row" id="s6Lang" aria-label="选择语言"></div>
+    <p class="feedback" id="s6ex" style="font-size:.92rem"></p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：《青蛙，你在哪儿？》的 60 个故事里，英语叙述者一共用了多少个动词类型？<button type="button" class="cite" data-cite="frog" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="s6opts">
+      <button class="btn" data-opt="a">27 个</button>
+      <button class="btn" data-opt="b">47 个</button>
+      <button class="btn" data-opt="c">123 个</button>
+      <button class="btn" data-opt="d">216 个</button>
+    </div>
+    <div class="reveal" id="s6rev" hidden>
+      <p><strong>47 个。</strong>单看动词词干，英语叙述者用了 47 个动词类型；若把动词与"卫星词"的组合也算进来，达 123 个。西班牙语叙述者只用了 27 个。<button type="button" class="cite" data-cite="verbCount" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">（216 是西语故事资料的规模；英语儿童甚至能用"over a cliff into the water"一句话开出中间和结尾两扇窗。）<button type="button" class="cite" data-cite="sp216" aria-label="查看出处"></button><button type="button" class="cite" data-cite="deerPond" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>原文细节：翻译、青蛙与叙述风格</summary>
+    <p>英语句子里，位移和方式溶入动词 fly，路径和背景交给由 across 加名词短语组成的状语<button type="button" class="cite" data-cite="crossE" aria-label="查看出处"></button>；逐字翻译不可接受：法语不能说成 ★Blériot vola pardessus la Manche，对等译法是把路径放进动词（traversa）。<button type="button" class="cite" data-cite="vola" aria-label="查看出处"></button><button type="button" class="cite" data-cite="crossF" aria-label="查看出处"></button></p>
+    <p>Slobin 的译文统计：西班牙语译者约有一半时候省略方式信息；英语译者约在四分之一翻译中给西语原文添加方式信息。<button type="button" class="cite" data-cite="slobin" aria-label="查看出处"></button></p>
+    <p>同一个情节，9 岁英语儿童说 He tips him off over a cliff into the water——场景并进了位移事件；西语儿童则用一个关系小句静态地交代"下面有一条河的地方"。<button type="button" class="cite" data-cite="deerPond" aria-label="查看出处"></button><button type="button" class="cite" data-cite="spStatic" aria-label="查看出处"></button></p>
+    <p>《丽贝卡》的英语原句一个小句，西语译文要三个小句，还漏掉了垂直方向的 up 和中间视窗 over the cliffs——节奏被放慢，画面更"静态"。<button type="button" class="cite" data-cite="rebecca" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">句法类型学差异最后会在叙述风格上留痕：一个动态连贯，一个一步一顿。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 致使链</button>
+    <button class="btn" data-jump="s7">下一场：构式实验室 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>构式：句法格式自己会说话</h2>
+  </div>
+  <p class="point">Goldberg 的关键证据：<span class="hl">sneeze 本不及物</span>，Frank sneezed the tissue off the table 却能解成"一个喷嚏把纸巾掠下桌"——多出来的致使义来自构式，不是动词。<button type="button" class="cite" data-cite="sneeze" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sneezePara" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 220" role="img" aria-label="双宾构式图式：形式一侧与意义一侧的配对">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round">
+        <path d="M176 38 L584 38"/>
+        <path d="M176 78 L584 78"/>
+        <path d="M176 118 L584 118"/>
+        <path d="M176 158 L584 158"/>
+      </g>
+      <g stroke="var(--ink)" stroke-width="2.2" fill="var(--card)">
+        <rect x="30" y="20" width="146" height="36" rx="9"/>
+        <rect x="30" y="60" width="146" height="36" rx="9"/>
+        <rect x="30" y="100" width="146" height="36" rx="9"/>
+        <rect x="30" y="140" width="146" height="36" rx="9"/>
+        <rect x="584" y="20" width="146" height="36" rx="9" fill="var(--hl)"/>
+        <rect x="584" y="60" width="146" height="36" rx="9" fill="var(--hl)"/>
+        <rect x="584" y="100" width="146" height="36" rx="9" fill="var(--hl)"/>
+        <rect x="584" y="140" width="146" height="36" rx="9" fill="var(--hl)"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" font-size="14.5" fill="var(--ink)" text-anchor="middle">
+        <text x="103" y="43">主语</text>
+        <text x="103" y="83">动词</text>
+        <text x="103" y="123">间接宾语</text>
+        <text x="103" y="163">直接宾语</text>
+        <text x="657" y="43">施事</text>
+        <text x="657" y="83">致使-接受</text>
+        <text x="657" y="123">接受者</text>
+        <text x="657" y="163">受事</text>
+      </g>
+      <g font-size="12.5" fill="var(--ink-soft)" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">
+        <text x="380" y="34">形式</text>
+        <text x="380" y="196">Joe gave Sally the ball.（Joe 把球给了 Sally。）</text>
+        <text x="380" y="76">构式＝形式和意义的配对</text>
+      </g>
+    </svg>
+    <figcaption>双宾构式图式（据原著图 5.22 及 Goldberg 论著演绘）<button type="button" class="cite" data-cite="fig522" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">构式实验室：把动词填进构式，看整句意思从哪里来</p>
+    <h3 style="margin-top:10px">致使-位移构式（SVOA）：某人使另一个物体移动<button type="button" class="cite" data-cite="fig522" aria-label="查看出处"></button></h3>
+    <div class="btn-row" id="s7cm" aria-label="选择动词填入致使位移构式"></div>
+    <p class="feedback" id="s7cmOut" style="font-size:.92rem"></p>
+    <h3>双宾构式（SVOO）：某人使另一个人接受某物<button type="button" class="cite" data-cite="ditrans" aria-label="查看出处"></button></h3>
+    <div class="btn-row" id="s7dt" aria-label="选择动词填入双宾构式"></div>
+    <p class="feedback" id="s7dtOut" style="font-size:.92rem"></p>
+    <h3>结果构式（SVOC）：某人使某物改变状态<button type="button" class="cite" data-cite="result" aria-label="查看出处"></button></h3>
+    <div class="btn-row" id="s7rs" aria-label="选择动词填入结果构式"></div>
+    <p class="feedback" id="s7rsOut" style="font-size:.92rem"></p>
+  </div>
+
+  <details>
+    <summary>原文细节：构式的储存、多义与"冰山"</summary>
+    <p>从框架到构式的桥：The draught blew the pencil off the table 一句话里，既有位移事件框架（铅笔从桌上被吹落），又有致使链事件框架（位移由穿堂风产生，一个事件-致使实例）——这个联合体就是致使-位移事件框架。<button type="button" class="cite" data-cite="causedMo" aria-label="查看出处"></button></p>
+    <p>语料库（ICE-GB）里随手一抓就是：I shoved them into a corner、I brought her out of hospital、They kicked him to the ground——同一个句式反复出现，说明它不是临时拼出来的。<button type="button" class="cite" data-cite="icegb" aria-label="查看出处"></button></p>
+    <p>构式可能不是随时生成的，"就像框架，甚至像个体概念一样，是储存于长期记忆中的"；形式和意义互相激活。<button type="button" class="cite" data-cite="threePoints" aria-label="查看出处"></button><button type="button" class="cite" data-cite="consMean" aria-label="查看出处"></button></p>
+    <p>构式也像词一样多义：致使-位移构式有核心意义，也有"帮助""使得"乃至"阻止离开"等引申。<button type="button" class="cite" data-cite="poly" aria-label="查看出处"></button></p>
+    <p>外壳-内容构式（Schmid）：抽象名词当"外壳"，从句当"内容"，整个命题因此被"具体化"，可当作名词用。<button type="button" class="cite" data-cite="shell" aria-label="查看出处"></button><button type="button" class="cite" data-cite="shellNoun" aria-label="查看出处"></button></p>
+    <p>同一个 idea，带不定式是"计划"，带 that 小句是"想法"；task 带出"义务"，solution 带出"方式"——意义不能只从成分推导。<button type="button" class="cite" data-cite="ideaEx" aria-label="查看出处"></button><button type="button" class="cite" data-cite="noncomp" aria-label="查看出处"></button></p>
+    <p>习语也能是构式：let alone 连接的两个成分必须落在同一个语义级差上；这类"形式上的习语"在句法上仍能产。<button type="button" class="cite" data-cite="letAlone" aria-label="查看出处"></button></p>
+    <p>Croft："构式之尾要摇句法之犬"——构式储存着概念语义、句法和语用三种知识。<button type="button" class="cite" data-cite="crofTail" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">本章收尾：构式是形式和意义的配对，存于长期记忆，按语义、句法和语用具体化。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 跨语言对照</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>其一：商务事件框架有哪四个范畴？buy 和 sell 的视角差在哪里？</h3>
+    <details><summary>看答案</summary>
+      <p>买者、卖者、货物、金钱。buy 把买者和货物放在主语、宾语视角（从买者出发），sell 把卖者和货物放在主语、宾语视角（从卖者出发）——同一事件，视角不同。<button type="button" class="cite" data-cite="buyFour" aria-label="查看出处"></button><button type="button" class="cite" data-cite="verbViews" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其二：什么是"开启注意力视窗"？板条箱例句里开启结尾视窗的是哪个短语？</h3>
+    <details><summary>看答案</summary>
+      <p>用显性语言成分指称事件框架的特定部分（如路径上的起始、中间、结尾段）使其前景化；相反过程叫"隔断"。板条箱句的结尾视窗是 into the ocean。<button type="button" class="cite" data-cite="winDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="winC" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其三：动词框架语言和卫星框架语言怎么分？汉语属哪一类？</h3>
+    <details><summary>看答案</summary>
+      <p>动词框架语言把路径融入动词词义（法语 entrer、西班牙语 entrar；罗曼语、闪米特语、日语）；卫星框架语言用小品词或动词性小品词表达路径（英语 go into、德语 hineingehen）。汉语属卫星框架语言。<button type="button" class="cite" data-cite="vfLang" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sfLang" aria-label="查看出处"></button><button type="button" class="cite" data-cite="langList" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>商务事件四范畴：买者、卖者、货物、金钱；四个动词的区别只是同一框架内的视角变化。<button type="button" class="cite" data-cite="buyFour" aria-label="查看出处"></button></li>
+    <li>spend 导向买者与钱，cost 放在货物上；两者都暗含一个语言表层不出现的卖者。<button type="button" class="cite" data-cite="spendCost" aria-label="查看出处"></button></li>
+    <li>脚本＝为经常发生的事件序列设计的知识结构；餐馆脚本四场景：进入、点菜、用餐、离开。<button type="button" class="cite" data-cite="scriptDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="rest4" aria-label="查看出处"></button></li>
+    <li>位移事件六成分：主体、背景、路径、位移（中心）＋方式、原因（可选）；"书放在桌上"是零位移。<button type="button" class="cite" data-cite="six" aria-label="查看出处"></button></li>
+    <li>视窗开启 vs 隔断；路径三位置：起始、中间、结尾；三种路径：开放、封闭、虚构。<button type="button" class="cite" data-cite="winDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="pathTypes" aria-label="查看出处"></button></li>
+    <li>封闭路径里单开起始视窗不可接受（★Go）：离开动作不含重建整条路径的足够信息。<button type="button" class="cite" data-cite="goWhy" aria-label="查看出处"></button></li>
+    <li>致使链五阶段；John broke the window 只开启阶段 1 和 5；by 小句标记倒数第二个次事件。<button type="button" class="cite" data-cite="win15" aria-label="查看出处"></button><button type="button" class="cite" data-cite="byWhy" aria-label="查看出处"></button></li>
+    <li>动词框架语言（罗曼语、闪米特语、日语）vs 卫星框架语言（英语、德语、汉语等）。<button type="button" class="cite" data-cite="langList" aria-label="查看出处"></button></li>
+    <li>构式＝形式和意义的配对，储存于长期记忆；sneeze 句证明构式义可独立于动词义。<button type="button" class="cite" data-cite="consMean" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sneezePara" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>框架</strong>：与场景的原型实例相联系的语言选择系统；本书视为表征具体常见情景知识与信念的认知模型。<button type="button" class="cite" data-cite="fill75" aria-label="查看出处"></button><button type="button" class="cite" data-cite="frameModel" aria-label="查看出处"></button></li>
+    <li><strong>句法视角</strong>：动词决定句法角色指派的方式；认知上看是注意力导向的结果。<button type="button" class="cite" data-cite="perspDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="attn" aria-label="查看出处"></button></li>
+    <li><strong>脚本</strong>：为经常发生的事件序列特别设计的知识结构（Schank &amp; Abelson）。<button type="button" class="cite" data-cite="scriptDef" aria-label="查看出处"></button></li>
+    <li><strong>默认指派</strong>：框架在"常规"条件下给不同位置的赋值。<button type="button" class="cite" data-cite="defaultVal" aria-label="查看出处"></button></li>
+    <li><strong>事件框架</strong>：被一起激活的一组概念成分及其相互关系（Talmy）。<button type="button" class="cite" data-cite="efDef" aria-label="查看出处"></button></li>
+    <li><strong>开启注意力视窗 / 隔断</strong>：前景化事件框架特定部分的认知过程 / 其相反过程。<button type="button" class="cite" data-cite="winDef" aria-label="查看出处"></button></li>
+    <li><strong>致使链事件</strong>：由致使关系连接的次事件序列；阶段 1 与 5 最常被开启。<button type="button" class="cite" data-cite="sub5" aria-label="查看出处"></button><button type="button" class="cite" data-cite="win15" aria-label="查看出处"></button></li>
+    <li><strong>动词框架语言 / 卫星框架语言</strong>：路径融入动词 / 路径由小品词表达。<button type="button" class="cite" data-cite="vfLang" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sfLang" aria-label="查看出处"></button></li>
+    <li><strong>构式</strong>：储存于长期记忆的形式-意义配对；其意义不能完全从成分推导。<button type="button" class="cite" data-cite="consMean" aria-label="查看出处"></button><button type="button" class="cite" data-cite="noncomp" aria-label="查看出处"></button></li>
+    <li><strong>外壳名词</strong>：外壳-内容构式中充当信息容器的抽象名词（fact、aim、problem 等）。<button type="button" class="cite" data-cite="shellNoun" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第五章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  frameIntro:{page:"5.1",quote:"框架这一概念由 Charles Fillmore 于 20 世纪 70 年代中期引入语言学，它的基础是所谓的“商务事件”框架",zh:"Fillmore 于 20 世纪 70 年代中期引入框架概念，基础是商务事件框架"},
+  fourVerbs:{page:"5.1",quote:"根据框架概念，这四个动词的区别只是同一框架内部的视角变化。",zh:"四个动词的区别只是同一框架内部的视角变化"},
+  buyFour:{page:"5.1",quote:"BUY（购买）这一行为范畴至少可参照另外四个范畴，即 BUYER（买者），SELLER（卖者），GOODS（货物）和 MONEY（钱）。",zh:"购买行为参照四个范畴：买者、卖者、货物、钱"},
+  perspDef:{page:"5.1",quote:"这些句法角色的指派，当然在很大程度上是由buy(买)这个动词决定的，我们把它叫作句子的句法视角(syntactic perspective)。",zh:"句法视角：动词决定句法角色指派"},
+  verbViews:{page:"5.1",quote:"选用动词 sell(出售)，就会使我们把范畴卖者和货物置于主语(subject)和宾语的视角，而可能把买者当作间接宾语……动词 charge(收费)把卖者、买者视角指派为主语、宾语……用动词 pay(支付)，则把买者、钱视角指派为作主、宾语，还可能引入卖者作间接宾语",zh:"sell/charge/pay 把不同角色推到主宾语视角"},
+  adverbial:{page:"5.1",quote:"这是框架理论超过主体和背景理论的第一个标志：它更加重视句子中像状语这类较不凸显的成分。",zh:"框架理论重视状语等不凸显成分"},
+  fill75:{page:"5.1",quote:"能与场景的原型实例建立联系的语言选择的任何系统——最简单的例子是词的组合，也包括语法规则和语言范畴的选择。(1975:124)",zh:"Fillmore 1975 年定义"},
+  fill85:{page:"5.1",quote:"知识的特定统一框架，或经验有机的系统化。（1985：223）",zh:"Fillmore 1985 年定义"},
+  fill92:{page:"5.1",quote:"认知结构[……]，为编码为词语的概念所预设的知识（Fillmore和Atkins 1992：75）",zh:"Fillmore 1992 年定义：框架是认知结构"},
+  attn:{page:"5.1",quote:"当我们想让听者注意买者和货物时，我们就用动词 buy(购买)来表述商务事件，而当我们的注意力焦点是卖者和货物时，就用动词 sell(出售)。",zh:"视角的基础是引导注意力"},
+  spendCost:{page:"5.1",quote:"这两个动词暗含了一个在语言上不能表现出来的 SELLER(卖者)(因此把它放到括号里)。相反，视角在使用 spend (付出)时把注意力导向了 BUYER(买者)和 MONEY(钱)，而选择 cost(花费)则将注意力放在 GOODS(货物)上。",zh:"spend 导向买者与钱，cost 放在货物上；都暗含卖者"},
+  frameModel:{page:"5.1",quote:"框架将被看作一种表征关于具体而常见情景的知识与信念的认知模型",zh:"框架是一种认知模型"},
+  minsky:{page:"5.1",quote:"计算机科学家 Marvin Minsky 将框架定义为“表征模式化情境的数据结构”（Minsky 1975: 212）。",zh:"Minsky：框架是表征模式化情境的数据结构"},
+  theWhy:{page:"5.1",quote:"为什么虽然 life vest（救生衣）和 flight attendant（空勤人员）在前面并没提到过，在后面也没有说明，但它们伴随着定冠词呢",zh:"定冠词之谜：上文未提及却带 the"},
+  planeKnow:{page:"5.1",quote:"航空公司为所有乘客都提供救生衣，一般放在座位下面，而且飞机上有空勤人员，他们的工作就是为乘客服务。",zh:"坐飞机经验提供的世界知识"},
+  subframe:{page:"5.1",quote:"还有很多所谓的下位框架，储存与更特殊的飞行情景有关的知识，如[用餐]，[看电影]和[上洗手间]。",zh:"乘飞机框架含下位框架"},
+  defaultVal:{page:"5.1",quote:"在[机上用餐]这个下位框架中，你不会想到在一个摆着贵重的餐具和蜡烛的大餐桌上用餐。",zh:"默认指派：常规条件下的赋值"},
+  scriptDef:{page:"5.1",quote:"为经常发生的事件序列(event sequences)所特别设计的知识结构",zh:"脚本：为事件序列设计的知识结构"},
+  schank:{page:"5.1",quote:"由计算机科学家 Roger Schank 和社会心理学家 Robert Abelson 共同设计的[餐馆]脚本（Schank 和 Abelson 1977:42以次）",zh:"Schank 与 Abelson 的餐馆脚本"},
+  rest4:{page:"5.1",quote:"总体上[餐馆]脚本分为四个场景，即进入，点菜，用餐和离开。",zh:"餐馆脚本四场景"},
+  planeScript:{page:"5.1",quote:"1. 登机前阶段 到飞机场→找检票口→检票→过海关(乘国际航班)→找入口→等待通知登机；2. 飞机上 起飞前：登机→找座位→放随带行李→坐下并系安全带→听安全须知→起飞；3. 下飞机后 下飞机→取行李→过海关(乘国际航班)→出飞机场",zh:"图 5.4 乘飞机脚本三阶段"},
+  storyWhy:{page:"5.1",quote:"第一个故事符合我们内化的餐馆用餐脚本，所以我们能毫无困难地添补缺失的部分，如 John 可能在点菜前看了菜单，并且他吃了饭才付钱离开。",zh:"脚本让我们自动补全未说出的环节"},
+  unscript:{page:"5.1",quote:"除非由脚本提供关联，否则这些事件就不能形成一个有意义的致使链",zh:"没有脚本关联，事件连不成致使链"},
+  six:{page:"5.2",quote:"共有六个认知成分在一个位移事件的概念结构中起了作用，即主体（FIGURE）、背景（GROUND）、路径（PATH）、位移（MOTION）、方式（MANNER）和原因（CAUSE）",zh:"位移事件六成分"},
+  zero:{page:"5.2",quote:"可以把一个可移动主体（但不在移动）——如一本书——和它的背景（如桌子）两者之间的静态位置关系归为位移的一个特例，即零位移或零路径定位。",zh:"零位移：书放在桌上也是位移特例"},
+  efDef:{page:"5.2",quote:"被一起激活或被互相激活的一组概念成分及其相互关系，它可以被认为存在于一个事件框架中或构成了一个事件框架，而那些被认为是次要的成分——不管它们是被微弱地激活或根本未激活——则在该事件框架之外。(Talmy 2000/I: 259)",zh:"Talmy 的事件框架定义"},
+  fiveTypes:{page:"5.2",quote:"位移事件框架，致使事件框架，循环事件框架，参与者互动事件框架和相互关系事件框架",zh:"五种事件框架类型"},
+  threePos:{page:"5.2",quote:"Talmy 区分了路径上的三个可前景化的位置：起始视窗、中间视窗和结尾视窗。",zh:"路径上三个可前景化位置"},
+  crate:{page:"5.2",quote:"The crate that was in the aircraft's cargo bay fell—（飞机货舱中的板条箱掉—）",zh:"板条箱掉落主句"},
+  winA:{page:"5.2",quote:"起始视窗 —out of the airplane.（出了飞机。）",zh:"起始视窗短语"},
+  winB:{page:"5.2",quote:"中间视窗 —through the air.（落在空中。）",zh:"中间视窗短语"},
+  winC:{page:"5.2",quote:"结尾视窗 —into the ocean.（进大洋里。）",zh:"结尾视窗短语"},
+  winDef:{page:"5.2",quote:"Talmy(2000/I: 258-309)将这种凸显事件框架中特定部分的认知过程称为开启注意力视窗(windowing of attention)。相反的过程则被称为隔断(gapping)",zh:"开启注意力视窗与隔断"},
+  recon:{page:"5.2",quote:"不管路径有多少部分被开启了注意力视窗，它通常是整体概念化的……概念内容中前景化的部分将用增强了的注意力系统来处理",zh:"被隔断部分可重建；前景部分增强加工"},
+  pathTypes:{page:"5.2",quote:"开放路径，封闭路径和虚构路径",zh:"三种路径类型"},
+  openP:{page:"5.2",quote:"开放路径(open path)类型，即一种起点和终点处于不同空间位置的路径",zh:"开放路径：起点终点位置不同"},
+  closedP:{page:"5.2",quote:"封闭路径(closed path)，大致与开放路径相同，只是它应想像成圆周箭头。也就是说，封闭路径的起点和终点在同一空间位置上重合。",zh:"封闭路径：起点终点重合"},
+  goWhy:{page:"5.2",quote:"离开这一动作的发生没有包含有关剩余路径的足够信息，以确保整个位移事件的实现。",zh:"起始视窗为何不可用"},
+  fictive:{page:"5.2",quote:"理解这个句子后，听者的反映首先是把他或她的注意力指向参照点（the bakery）（面包店），然后建构出 across the street（街对面）这一心理的或虚构的路径。",zh:"虚构路径：听者心理上走一遍"},
+  fictiveOrder:{page:"5.2",quote:"就虚构路径视窗来说，语言成分的次序并不一定遵循路径方向。",zh:"虚构路径：语序不遵循路径方向"},
+  gapRef:{page:"5.2",quote:"这个成分只有“当它的身份一般由语境或规约提供的时候”，它才可能被隔断(2000/I:269)",zh:"参照点被隔断的条件"},
+  causal:{page:"5.2",quote:"Talmy 早在 1976 年就曾提出，致使存在不同程度。",zh:"致使有程度之分"},
+  causal3:{page:"5.2",quote:"一类是由不涉及生物的其他事件引起的事件（=“事件致使”，如 the vase broke（花瓶碎了））……（=“人为致使”，如 he broke the vase by mistake（他不小心打碎了花瓶））……第三种是其结果与施事意图一致的事件（=“施事致使”，如 he broke the vase to irritate his wife（他为了使他妻子生气而摔碎了花瓶））",zh:"事件致使、人为致使、施事致使"},
+  sub5:{page:"5.2",quote:"1. 施动者打定主意要打碎窗户。2. 他屈膝，将手伸到地上抓住一块石头，……松开手中的石头从而使得石头向前运动。3. 石头从空中飞过。4. 石头有力地触及窗户。5. 窗户碎了。",zh:"打碎窗户的五个次事件"},
+  win15:{page:"5.2",quote:"阶段1(施事)和阶段5(最终结果)开启了注意力视窗，而中间阶段则被隔断。这种只有施事和结果的“不连续”视窗开启，成了描述一个致使事件的最自然方式。",zh:"只开启施事与结果"},
+  seamless:{page:"5.2",quote:"两个阶段“让人觉得是无缝连接”，而两者间缺少的部分几乎达不到被注意的水平。",zh:"意图与实现无缝连接"},
+  byWhy:{page:"5.2",quote:"阶段4在认知上的重要性在英语的这样的事实中得到了反映：一个主要施动致使结构，即by小句，因倒数第二个事件而被倒装了。",zh:"by 小句标记倒数第二个次事件"},
+  blocked:{page:"5.2",quote:"“冻结补足语”（blocked complements），即事件框架中那些不能在语言表层表达出来的成分（例如：The book cost ten pounds★ to John/★ from Sue）",zh:"冻结补足语：不能表层出现的成分"},
+  crossE:{page:"5.3",quote:"(a) Blériot flew across the Channel. 主体 位移方式 路径 背景",zh:"英语：位移与方式溶入动词，路径用介词"},
+  crossF:{page:"5.3",quote:"(b) Blériot traversa la manche en avion. 主体 位移路径 背景 方式",zh:"法语：路径融入动词，方式用状语"},
+  vola:{page:"5.3",quote:"逐字翻译的★Blériot vola pardessus la Manche 这一法语句子是不可接受的。",zh:"逐字对译不可接受"},
+  boyOut:{page:"5.3",quote:"E. The boy went out of the yard. G. Der Jung ging aus dem Hof hinaus. Fr. Le garçon sortit de la cour. Sp. El chico salió del patio.",zh:"男孩出院落：四语言路径表达"},
+  boyRode:{page:"5.3",quote:"E. The boy rode out of the yard. G. Der Junge ritt aus dem Hof hinaus. Fr. Le garçon sortit à cheval de la cour. Sp. El chico salió a caballo del patio.",zh:"男孩骑马出来：四语言方式表达"},
+  vfLang:{page:"5.3",quote:"法语和西班牙语可以被称为动词框架语言（verb-framed languages）",zh:"动词框架语言：路径在动词里"},
+  sfLang:{page:"5.3",quote:"英语和德语可以称作卫星框架语言（satellite-framed languages）",zh:"卫星框架语言：路径在小品词里"},
+  langList:{page:"5.3",quote:"动词框架语言包括了所有的罗曼语，闪米特语（如阿拉伯语和希伯来语），日语以及其他一些语言。卫星框架的语言除了英语和德语之外还包括所有的印欧语（除罗曼语以外），芬兰-乌戈尔语和汉语。",zh:"两类语言名单；汉语属卫星框架"},
+  slobin:{page:"5.3",quote:"西班牙语译者大约有一半的时候省略方式信息，而英语译者则在他们大约四分之一的翻译中在西班牙语原文上添加了方式信息。(Slobin1996: 212)",zh:"方式信息：西语约一半省略，英语约四分之一添加"},
+  frog:{page:"5.3",quote:"他们从每种语言五个年龄组(3岁、4岁、5岁、9岁及成人)中的各12个叙述者那里收集到了60个实际内容相同的故事。",zh:"青蛙故事：每语言 5 个年龄组各 12 人"},
+  verbCount:{page:"5.3",quote:"西班牙叙述者只使用了27个动词，而英语叙述者则使用了更多的动词：通过单独计算动词词干，Slobin找到了47个动词类型；而如果把与“卫星词”的组合也计算在内，简单动词和短语动词类型的数量就达到了123个。",zh:"动词数：西语 27；英语词干 47、含卫星 123"},
+  sp216:{page:"5.3",quote:"即使西班牙语资料增加到由拉丁美洲叙述者讲述的216个故事，也只找到三个例子，它们开始视窗或中间视窗是和结尾路径视窗结合在一起的。",zh:"西语资料增至 216 个故事，组合视窗仅三例"},
+  deerPond:{page:"5.3",quote:"He[the deer] starts running and tips him off over a cliff into the water. (他[鹿]开始跑，然后把他从悬崖上掀到了水里。)[9岁]",zh:"9 岁英语儿童：中间+结尾双视窗"},
+  spStatic:{page:"5.3",quote:"使用西班牙语的儿童用一个完整的关系从句表明事件发生的场所（un sitio, donde debajo había un río“一个下面有一条河的地方”）。因此场景本身也表达为一个事件，并用一个附加的小句和一种颇为静态的方式来描述。",zh:"西语儿童：场景用关系小句静态描写"},
+  rebecca:{page:"5.3",quote:"然而，西班牙语的译文需要三个小句来对译英语的一个小句，却又略去了原文中的两点信息。",zh:"丽贝卡例句：西语三小句对英语一小句"},
+  causedMo:{page:"5.4",quote:"The draught blew the pencil off the table.（穿堂风将铅笔从桌子上吹落下来）",zh:"致使-位移例句"},
+  icegb:{page:"5.4",quote:"I[...] shoved them into a corner. I brought her out of hospital. They kicked him to the ground. We can always put a pillow over her head.",zh:"ICE-GB 语料库中的致使-位移句"},
+  consCore:{page:"5.4",quote:"句法格式本身在对某种经验进行编码时起作用。……从长期记忆中成批地选取储存于其中的特定句法格式或构式（construction）",zh:"构式语法核心：句法格式参与编码"},
+  consMean:{page:"5.4",quote:"构式本身传达了某种要表达的概念内容，换句话说，构式有自身意义，而这种意义与相应的概念框架有关系。",zh:"构式有自身意义"},
+  sneeze:{page:"5.4",quote:"Frank pushed the tissue off the table. (Frank 将纸巾推到桌下。) Frank sneezed the tissue off the table. (Frank 打了个喷嚏把纸巾吹到桌下。)",zh:"push 典型组配 vs sneeze 错配"},
+  sneezePara:{page:"5.4",quote:"第二个例句也可以解释为致使的位移，并且也可以意译为“Frank sneezed and thus caused the tissue to be swept off the table.”",zh:"错配句的意译：喷嚏使纸巾被掠下桌"},
+  threePoints:{page:"5.4",quote:"构式事实上可能不是随时生成的，而就像框架，甚至像个体概念一样，是储存于长期记忆中的",zh:"构式储存于长期记忆"},
+  ditrans:{page:"5.4",quote:"Joe gave Sally the ball. (Joe 把球给了 Sally。) Joe painted Sally a picture. (Joe 给 Sally 画了一幅画。) Bob told Joe a story. (Bob 给 Joe 讲了个故事。)",zh:"双宾构式例句"},
+  result:{page:"5.4",quote:"Terry wiped the table clean. (Terry 把桌子擦干净了。) He ate himself sick. (他把自己吃病了。) Terry pushed the door shut. (Terry 把门推上了。)",zh:"结果构式例句"},
+  fig522:{page:"5.4",quote:"致使-位移构式 主语-动词-宾语-状语(SVOA)；致使-接受构式 主语-动词-间接宾语-直接宾语(SVOO)；结果构式 主语-动词-宾语-宾语补足语(SVOC)",zh:"三构式的句法基础"},
+  poly:{page:"5.4",quote:"跟词位(lexeme)一样，构式是多义的",zh:"构式如词位一样多义"},
+  shell:{page:"5.4",quote:"它们主要的作用是让(从句表达的)整个命题可用作一个像名词的概念，这个过程叫做“具体化”(reification)(将某事变为某物)，并将命题置于某种视角之下",zh:"外壳-内容构式的具体化功能"},
+  shellNoun:{page:"5.4",quote:"抽象名词充当了一种信息的容器或“外壳”，而这种信息是包含在从句中的，这种抽象名词也因此被称为“外壳名词”(shell noun)。",zh:"外壳名词：信息的容器"},
+  ideaEx:{page:"5.4",quote:"idea+不定式被解释为表达了一个计划，而idea +that 小句则被解释为表达了一种想法。",zh:"idea 带不定式表计划，带 that 小句表想法"},
+  noncomp:{page:"5.4",quote:"构式的特殊意义不能从它的成分推导出来。这种非推导性或非合成性似乎是构式的一个本质的——事实上甚至是决定性的——特点。",zh:"构式的非推导性"},
+  letAlone:{page:"5.4",quote:"两个并列成分必须表达“级差的两个点”(Fillmore, Kay 及 O'Connor 1988: 513)。",zh:"let alone 要求级差两点"},
+  crofTail:{page:"5.4",quote:"“构式之尾要摇句法之犬”(2001:17)",zh:"Croft：构式之尾要摇句法之犬"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent=s.page==="封面"?"位置：封面":"位置：第五章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：商务事件框架 ================= */
+(function(){
+  const data={
+    buy:{verb:"buy",ex:"David bought an old shirt from John for ten pounds.（用 10 英镑从 John 那儿买了一件旧衬衫）",
+         hi:["buyer","goods"],imp:[],
+         t:"buy：买者作主语、货物作直接宾语——从买者的视角描述事件。"},
+    sell:{verb:"sell",ex:"John sold an old shirt to David for ten pounds.（以 10 英镑向 David 出售了一件旧衬衫）",
+         hi:["seller","goods"],imp:[],
+         t:"sell：卖者与货物被置于主语和宾语的视角，买者可能降为间接宾语。"},
+    charge:{verb:"charge",ex:"John charged David ten pounds for an old shirt.（为这件旧衬衫收取了 David 10 英镑）",
+         hi:["seller","buyer"],imp:[],
+         t:"charge：把卖者、买者的视角指派为主语、宾语。"},
+    pay:{verb:"pay",ex:"David paid ten pounds to John for an old shirt.（为一件旧衬衫向 John 支付 10 英镑）",
+         hi:["buyer","money"],imp:[],
+         t:"pay：把买者、钱的视角指派为主、宾语，还可能引入卖者作间接宾语。"},
+    spend:{verb:"spend",ex:"David spent ten pounds on an old shirt.（在一件旧衬衫上花了 10 英镑）",
+         hi:["buyer","money"],imp:["seller"],
+         t:"spend：注意力导向买者与钱；卖者在语言表层完全不出现，原著把它放进括号。"},
+    cost:{verb:"cost",ex:"The old shirt cost David ten pounds.（这件旧衬衫花了大卫 10 英镑）",
+         hi:["goods"],imp:["seller"],
+         t:"cost：注意力放在货物上；同样暗含一个不能表现出来的卖者。"}
+  };
+  const box=$("#s1sent"),fb=$("#s1fb"),exEl=$("#s1ex"),verbEl=$("#s1Verb");
+  function paint(k){
+    const d=data[k];
+    ["buyer","goods","seller","money"].forEach(r=>{
+      const el=document.getElementById("r-"+r);
+      if(!el) return;
+      const on=d.hi.includes(r),imp=d.imp.includes(r);
+      el.setAttribute("stroke",on?"var(--red)":"var(--ink)");
+      el.setAttribute("stroke-width",on?4.5:2.2);
+      el.setAttribute("fill",on?"var(--hl)":"var(--card)");
+      el.setAttribute("stroke-dasharray",imp?"7 5":"none");
+      el.style.opacity=(!on&&!imp)?.5:1;
+    });
+    if(verbEl) verbEl.textContent=d.verb;
+  }
+  Object.keys(data).forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip"+(k==="buy"?" sel":"");b.textContent=k;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");
+      paint(k);
+      exEl.textContent=data[k].ex;
+      fb.textContent=data[k].t;
+    });
+    box.appendChild(b);
+  });
+  paint("buy");
+  exEl.textContent=data.buy.ex;
+  fb.textContent=data.buy.t;
+})();
+
+/* ================= 场景二：餐馆脚本漫游 ================= */
+(function(){
+  const stages={
+    enter:{name:"进入",steps:[
+      "顾客进入餐馆。",
+      "寻找一张桌子，决定坐在哪儿。",
+      "走到桌前，坐在椅子上。",
+      "每个行为都是下一个行为的先决条件；整个场景是点菜场景的先决条件。"]},
+    order:{name:"点菜",steps:[
+      "三种开局：桌上已有菜单／服务生拿来菜单／顾客索要菜单。",
+      "三条路径通向同一结果：顾客拿到菜单。",
+      "选择食物，告诉服务生；服务生到厨房把点的菜告诉厨师。",
+      "岔路一：厨师准备食物——用餐场景的先决条件成立。",
+      "岔路二：厨师示意没有所点的食物——顾客重新选择（退回菜单），或决定离开（跳到“未付款离开”变体）。"]},
+    eat:{name:"用餐",steps:[
+      "原著原话：用餐和离开的场景“也能以一种相似的方式用该脚本格式表示”。",
+      "正文未逐步展开；道具表里的账单、收银员(M)与钱，提示结账属于离开场景。"]},
+    leave:{name:"离开",steps:[
+      "原著未逐步展开；点菜岔路二的“未付款便离开”是它的一个变体。",
+      "脚本的用处：符合预期时听话人自动补全，违背预期时话语读不出意义。"]}
+  };
+  const stageBox=$("#s2stages"),fb=$("#s2fb");
+  let cur="enter",i=0;
+  function render(){
+    const st=stages[cur];
+    fb.textContent="【"+st.name+"】第 "+(i+1)+" / "+st.steps.length+" 步："+st.steps[i];
+  }
+  Object.keys(stages).forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip"+(k==="enter"?" sel":"");b.textContent=stages[k].name;
+    b.addEventListener("click",()=>{
+      $$(".chip",stageBox).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=k;i=0;render();
+    });
+    stageBox.appendChild(b);
+  });
+  $("#s2next").addEventListener("click",()=>{
+    const st=stages[cur];
+    if(i<st.steps.length-1){i++;render();}
+    else{cur=Object.keys(stages)[(Object.keys(stages).indexOf(cur)+1)%4];i=0;
+      $$(".chip",stageBox).forEach(c=>c.classList.toggle("sel",c.textContent===stages[cur].name));
+      render();}
+  });
+  $("#s2reset").addEventListener("click",()=>{cur="enter";i=0;
+    $$(".chip",stageBox).forEach(c=>c.classList.toggle("sel",c.textContent==="进入"));
+    render();});
+  render();
+})();
+
+/* 场景二：两个 John 故事 */
+(function(){
+  const ans={a:true,b:false,c:false,d:false};
+  $$("#s2opts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#s2opts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    const rev=$("#s2rev");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",!ans[b.dataset.opt]);
+  }));
+})();
+
+/* ================= 场景三：铅笔四句 ================= */
+(function(){
+  const data={
+    roll:{sent:"The pencil rolled off the table.",
+          hi:["figure","ground","path","motion","manner"],
+          note:"roll：“真正”位移；方式（滚）溶入动词，路径 off 由介词表达。"},
+    blow:{sent:"The pencil blew off the table.",
+          hi:["figure","ground","path","motion","cause"],
+          note:"blow：“真正”位移；这次是原因（被吹）在动词里。"},
+    lie:{sent:"The pencil lay on the table.",
+          hi:["figure","ground","path","manner"],
+          note:"lie：零位移特例——不移动的主体，路径表现为静止位置 on。"},
+    stick:{sent:"The pencil stuck on the table (after I glued it).",
+          hi:["figure","ground","path","cause"],
+          note:"stick：零位移特例；原因（我粘了它）由动词表达。"}
+  };
+  const box=$("#s3sent"),fb=$("#s3fb");
+  function paint(k){
+    const d=data[k];
+    ["figure","ground","path","motion","manner","cause"].forEach(c=>{
+      const el=document.getElementById("k-"+c);
+      if(!el) return;
+      const on=d.hi.includes(c);
+      el.setAttribute("fill",on?"var(--hl)":"var(--card)");
+      el.setAttribute("stroke",on?"var(--red)":"var(--ink)");
+      el.setAttribute("stroke-width",on?4:2.2);
+      el.style.opacity=on?1:.42;
+    });
+  }
+  Object.keys(data).forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip"+(k==="roll"?" sel":"");b.textContent=data[k].sent;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");paint(k);fb.textContent=data[k].note;
+    });
+    box.appendChild(b);
+  });
+  paint("roll");fb.textContent=data.roll.note;
+})();
+
+/* ================= 场景四：视窗选择器 ================= */
+(function(){
+  const wins={
+    a:{phrase:"out of the airplane",seg:"segA",lb:"lbA",box:null},
+    b:{phrase:"through the air",seg:"segB",lb:"lbB",box:null},
+    c:{phrase:"into the ocean",seg:"segC",lb:"lbC",box:null}
+  };
+  const out=$("#s4out");
+  function refresh(){
+    const sel=[];
+    Object.keys(wins).forEach(k=>{
+      const w=wins[k];
+      const seg=document.getElementById(w.seg);
+      const lb=document.getElementById(w.lb);
+      const on=$("#win"+k.toUpperCase()).checked;
+      if(seg){
+        seg.setAttribute("stroke",on?"var(--red)":"var(--ink)");
+        seg.setAttribute("stroke-width",on?5:3);
+        seg.style.opacity=on?1:.3;
+      }
+      if(lb) lb.setAttribute("fill",on?"var(--red)":"var(--ink-soft)");
+      if(on) sel.push(w.phrase);
+    });
+    out.textContent=sel.length
+      ? "The crate that was in the aircraft's cargo bay fell — "+sel.join(" ")+"."
+      : "（未开启任何视窗：整条路径被隔断——但语境充足时，听者仍能把它重建出来。）";
+  }
+  ["a","b","c"].forEach(k=>{
+    $("#win"+k.toUpperCase()).addEventListener("change",()=>{
+      const lab=$("#win"+k.toUpperCase()).closest(".chip");
+      lab.classList.toggle("sel",$("#win"+k.toUpperCase()).checked);
+      refresh();
+    });
+  });
+  refresh();
+})();
+
+/* ================= 场景五：致使链 + by 小句 ================= */
+(function(){
+  const stages=[
+    {t:"阶段 1：施动者打定主意要打碎窗户。——开启视窗",win:true},
+    {t:"阶段 2：屈膝、抓石、举石、挥臂、松手，身体动作引发事件。——被隔断",win:false},
+    {t:"阶段 3：石头从空中飞过（相互致使连接的中间次事件，可有）。——被隔断",win:false},
+    {t:"阶段 4：石头有力地触及窗户——最终结果的直接原因，by 小句的正选。——被隔断",win:false},
+    {t:"阶段 5：窗户碎了——施事的计划目标。——开启视窗",win:true}
+  ];
+  const fb=$("#s5fb");
+  for(let i=0;i<5;i++){
+    const el=document.getElementById("st"+(i+1));
+    if(!el) continue;
+    el.style.cursor="pointer";
+    el.addEventListener("click",()=>{
+      for(let j=0;j<5;j++){
+        const o=document.getElementById("st"+(j+1));
+        o.setAttribute("stroke",stages[j].win?"var(--red)":"var(--ink)");
+        o.setAttribute("stroke-width",stages[j].win?3:2.2);
+      }
+      el.setAttribute("stroke","var(--blue)");
+      el.setAttribute("stroke-width",4.5);
+      fb.textContent=stages[i].t;
+    });
+  }
+  fb.textContent="默认只有阶段 1 和 5 开启注意力视窗——这就是 John broke the window 一句话的认知结构。";
+
+  const byOpts=[
+    {k:"a",t:"by grasping a stone with my hand.（用手抓着石头）",v:"★",why:"只进行到“抓住石头”，够不到最终结果。"},
+    {k:"b",t:"by lifting a stone with my hand.（用手举起石头）",v:"★",why:"只进行到“举起石头”。"},
+    {k:"c",t:"by swinging a stone with my arm.（用胳膊扔石头）",v:"★",why:"只进行到“挥动胳膊”。"},
+    {k:"d",t:"propelling a stone through the air.（在空中向前扔出石头）",v:"★",why:"只进行到“石头在空中”，还没击中。"},
+    {k:"e",t:"by throwing a stone towards it.（冲着它扔石头）",v:"★",why:"towards：朝它扔，不含“击中”。"},
+    {k:"f",t:"by throwing a stone at it.（朝它扔石头）",v:"？",why:"有些说话人认为可行——他们从句中推断出石头确实砸上了窗户。"},
+    {k:"g",t:"by hitting it with a stone.（用石头砸）",v:"✓",why:"只有它表达了倒数第二个次事件，完全可接受。"}
+  ];
+  const box=$("#s5opts"),rev=$("#s5rev");
+  byOpts.forEach(o=>{
+    const b=document.createElement("button");
+    b.className="btn";b.textContent="("+o.k+")";
+    b.addEventListener("click",()=>{
+      $$(".btn",box).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      const ok=o.v==="✓";
+      rev.hidden=false;
+      rev.classList.toggle("wrong",!ok);
+      rev.innerHTML="<p style='margin:0 0 4px'><strong>("+o.k+") "+o.t+"</strong>　原书标注："+o.v+"</p>"+
+        "<p style='margin:0;font-size:.9rem;color:var(--ink-soft)'>"+o.why+"</p>";
+    });
+    box.appendChild(b);
+  });
+})();
+
+/* ================= 场景六：四语言对照 ================= */
+(function(){
+  const data={
+    path:{
+      E:{sent:"The boy went out of the yard.",note:"位移 went ＋ 小品词 out（路径）——卫星框架：路径在小品词里。"},
+      G:{sent:"Der Jung ging aus dem Hof hinaus.",lit:"“The boy went from the yard out.”",note:"动词性小品词 hinaus 从小句复杂动词中分离，移到句尾。"},
+      Fr:{sent:"Le garçon sortit de la cour.",lit:"“The boy exited from the yard.”",note:"路径融入动词 sortir（出去）——动词框架。"},
+      Sp:{sent:"El chico salió del patio.",lit:"“The boy exited from the yard.”",note:"路径融入动词 salir（出去）——动词框架。"}
+    },
+    manner:{
+      E:{sent:"The boy rode out of the yard.",note:"方式 rode（骑）融入动词，路径仍由小品词 out 表达。"},
+      G:{sent:"Der Junge ritt aus dem Hof hinaus.",lit:"“The boy rode from the yard out.”",note:"方式融入动词 ritt，路径在句尾小品词。"},
+      Fr:{sent:"Le garçon sortit à cheval de la cour.",lit:"“The boy exited on horse from the yard.”",note:"方式 à cheval（骑马）是独立加上去的状语。"},
+      Sp:{sent:"El chico salió a caballo del patio.",lit:"“The boy exited on horse from the yard.”",note:"方式 a caballo（骑马）是独立加上去的状语。"}
+    }
+  };
+  const langBox=$("#s6Lang"),exEl=$("#s6ex");
+  const langs=[["E","英语"],["G","德语"],["Fr","法语"],["Sp","西班牙语"]];
+  let set="path",lang="E";
+  function render(){
+    const d=data[set][lang];
+    let html="<span class='serif' style='font-size:1.02rem'>"+d.sent+"</span>";
+    if(d.lit) html+="<br><span style='font-size:.85rem;color:var(--ink-faint)'>字面："+d.lit+"</span>";
+    html+="<br>"+d.note;
+    exEl.innerHTML=html;
+  }
+  langs.forEach(([k,label])=>{
+    const b=document.createElement("button");
+    b.className="chip"+(k==="E"?" sel":"");b.textContent=label;
+    b.addEventListener("click",()=>{
+      $$(".chip",langBox).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");lang=k;render();
+    });
+    langBox.appendChild(b);
+  });
+  $$("#s6Set .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#s6Set .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");set=b.dataset.set;render();
+  }));
+  render();
+})();
+
+/* 场景六：青蛙故事猜动词数 */
+(function(){
+  const ans={a:false,b:true,c:false,d:false};
+  $$("#s6opts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#s6opts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    const rev=$("#s6rev");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",!ans[b.dataset.opt]);
+  }));
+})();
+
+/* ================= 场景七：构式实验室 ================= */
+(function(){
+  const groups=[
+    {box:"#s7cm",out:"#s7cmOut",items:[
+      {v:"pushed",sent:"Frank pushed the tissue off the table.",zh:"Frank 将纸巾推到桌下。",note:"典型组配：动词义与构式义一致。"},
+      {v:"sneezed",sent:"Frank sneezed the tissue off the table.",zh:"Frank 打了个喷嚏把纸巾吹到桌下。",note:"错配：sneeze 本不及物、无致使义；整句仍解出致使位移——“打了个喷嚏，因此纸巾被掠到桌下”。多出来的义来自构式。",bad:true},
+      {v:"kicked",sent:"They kicked him to the ground.",zh:"他们把他踢倒在地上。",note:"ICE-GB 语料库随手一句，同一构式。"}
+    ]},
+    {box:"#s7dt",out:"#s7dtOut",items:[
+      {v:"gave",sent:"Joe gave Sally the ball.",zh:"Joe 把球给了 Sally。",note:"给予类的核心情形。"},
+      {v:"painted",sent:"Joe painted Sally a picture.",zh:"Joe 给 Sally 画了一幅画。",note:"“画”不等于“给”，是构式给出“使接受”的骨架。"},
+      {v:"told",sent:"Bob told Joe a story.",zh:"Bob 给 Joe 讲了个故事。",note:"“讲”同样被装进同一骨架。"}
+    ]},
+    {box:"#s7rs",out:"#s7rsOut",items:[
+      {v:"wiped",sent:"Terry wiped the table clean.",zh:"Terry 把桌子擦干净了。",note:"结果 clean 由构式的结果义托住。"},
+      {v:"ate",sent:"He ate himself sick.",zh:"他把自己吃病了。",note:"eat 本不指向状态改变，构式补出结果。"},
+      {v:"pushed",sent:"Terry pushed the door shut.",zh:"Terry 把门推上了。",note:"shut 是门的结果状态。"}
+    ]}
+  ];
+  groups.forEach(g=>{
+    const box=$(g.box),out=$(g.out);
+    g.items.forEach(it=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=it.v;
+      b.addEventListener("click",()=>{
+        $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+        b.classList.add("sel");
+        out.innerHTML="<span class='serif' style='font-size:1.02rem'>"+it.sent+"</span> "+it.zh+
+          "<br><span style='font-size:.88rem;"+(it.bad?"color:var(--red);font-weight:700":"color:var(--ink-soft)")+"'>"+it.note+"</span>";
+      });
+      box.appendChild(b);
+    });
+  });
+  const first=$("#s7cm .chip");
+  if(first) first.click();
+})();
+</script>
+</body>
+</html>

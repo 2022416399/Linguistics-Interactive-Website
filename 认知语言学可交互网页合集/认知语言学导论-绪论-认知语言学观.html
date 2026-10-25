@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认知语言学观 · 《认知语言学导论》绪论可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》绪论做成单文件交互网页：经验观、凸显观、注意观与心理空间整合，五场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 翻转对比卡 ---------- */
+.flip-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0}
+@media (max-width:640px){.flip-pair{grid-template-columns:1fr}}
+.flip{appearance:none;border:0;background:none;padding:0;font:inherit;color:inherit;text-align:left;
+  cursor:pointer;width:100%;perspective:900px}
+.flip-in{position:relative;display:block;transform-style:preserve-3d;transition:transform .55s;min-height:172px}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.face{backface-visibility:hidden;-webkit-backface-visibility:hidden;display:block;min-height:172px}
+.face.back{position:absolute;inset:0;transform:rotateY(180deg)}
+.flip-hint{display:block;margin-top:8px;font-size:.78rem;color:var(--ink-faint)}
+@media (prefers-reduced-motion: reduce){.flip-in{transition:none}}
+
+/* ---------- 句子成分条 ---------- */
+.sent{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;align-items:center}
+.seg{padding:7px 11px;border:1.5px dashed var(--line);border-radius:9px;background:var(--card);
+  cursor:pointer;font-size:.95rem;font-family:inherit;color:var(--ink)}
+.seg:hover{border-color:var(--ink)}
+.seg.sel{border:2px solid var(--red);background:var(--hl);font-weight:700}
+.sent.flat .seg{cursor:default;border-style:solid;border-color:var(--red);color:var(--red);opacity:.85}
+
+/* ---------- 分类筐 / 心理空间 ---------- */
+.zone-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media (max-width:640px){.zone-row{grid-template-columns:1fr}}
+.space{border:1.5px dashed var(--line);border-radius:12px;padding:8px 10px;min-height:76px;background:var(--card)}
+.space .bench-label{margin-bottom:4px}
+.zone-shared{border-color:var(--green)}
+.zone-personal{border-color:var(--red)}
+.blend-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+@media (max-width:640px){.blend-row{grid-template-columns:1fr}}
+.b-car{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 7%,var(--card))}
+.b-wild{border-color:var(--green);background:color-mix(in srgb,var(--green) 7%,var(--card))}
+.space .chip{margin:3px 4px 3px 0}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+.cite:hover{filter:brightness(1.15)}
+.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">绪论 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 绪论<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">认知语言学观</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 五场实验台 ｜ 材料：绪论转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>词义不只是结构描写，还是一整片亲身经验（经验观）；谁站 C 位由情境里的凸显性决定（凸显观）；一句话只截取我们注意到的事件片段（注意观）；广告口号则把两个心理空间整合成新概念。三种“观”互锁，构成全书核心领域。<button type="button" class="cite" data-cite="threeViews" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">这是五场实验共同指向的图景；每场实验讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 258" role="img" aria-label="绪论地图：从一句汽车坏了的话分出经验观、凸显观、注意观，汇入认知语言学核心领域，下方是在线处理的概念整合">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M96 44 Q96 20 124 20 L176 20 Q204 20 204 44 L204 78 Q204 102 176 102 L140 102 L118 122 L120 102 L124 102 Q96 102 96 78 Z"/>
+        <path d="M208 56 C232 48 246 42 260 38"/>
+        <path d="M208 72 L260 72"/>
+        <path d="M208 88 C232 96 246 102 260 106"/>
+        <rect x="264" y="14" width="182" height="46" rx="9"/>
+        <rect x="264" y="50" width="182" height="46" rx="9"/>
+        <rect x="264" y="86" width="182" height="46" rx="9"/>
+        <path d="M450 37 C472 37 480 50 496 56"/>
+        <path d="M450 73 L496 73"/>
+        <path d="M450 109 C472 109 480 96 496 90"/>
+        <rect x="500" y="34" width="152" height="78" rx="9"/>
+        <path d="M576 116 L576 148" stroke-dasharray="5 5"/>
+        <rect x="264" y="152" width="388" height="52" rx="9"/>
+        <path d="M300 178 L352 178"/>
+        <path d="M566 178 L618 178"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="150" y="48" font-size="14">Our car has</text>
+        <text x="150" y="66" font-size="14">broken down</text>
+        <text x="150" y="86" font-size="11" fill="var(--ink-soft)">我们的汽车坏了</text>
+        <text x="355" y="33" font-size="14" font-weight="700">经验观</text>
+        <text x="355" y="51" font-size="11" fill="var(--ink-soft)">词义是一整片经验</text>
+        <text x="355" y="69" font-size="14" font-weight="700">凸显观</text>
+        <text x="355" y="87" font-size="11" fill="var(--ink-soft)">谁凸显，谁当主语</text>
+        <text x="355" y="105" font-size="14" font-weight="700">注意观</text>
+        <text x="355" y="123" font-size="11" fill="var(--ink-soft)">只截注意到的片段</text>
+        <text x="576" y="62" font-size="14" font-weight="700">三种互锁的途径</text>
+        <text x="576" y="84" font-size="13" font-weight="700">认知语言学的</text>
+        <text x="576" y="102" font-size="13" font-weight="700">核心领域</text>
+        <text x="326" y="175" font-size="12" fill="var(--ink-soft)">汽车空间</text>
+        <text x="592" y="175" font-size="12" fill="var(--ink-soft)">野生动物空间</text>
+        <text x="458" y="172" font-size="14" font-weight="700">概念整合</text>
+        <text x="458" y="192" font-size="11" fill="var(--ink-soft)">Unleash a Jaguar（放开美洲虎）</text>
+      </g>
+    </svg>
+    <figcaption>绪论地图：从一句话到三种“观”，再到在线处理（示意）<button type="button" class="cite" data-cite="threeViews" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">两种问法</button>
+    <button class="chip" data-jump="s2">经验观</button>
+    <button class="chip" data-jump="s3">凸显观</button>
+    <button class="chip" data-jump="s4">注意观</button>
+    <button class="chip" data-jump="s5">心理空间</button>
+    <button class="chip" data-jump="quiz">去自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>两种问法</h2>
+  </div>
+  <p class="point">一句 <strong>Our car has broken down</strong>（我们的汽车坏了）——传统语言学和认知语言学，问的是<span class="hl">两个不一样的问题</span>。<button type="button" class="cite" data-cite="tradDesc" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogAsk" aria-label="查看出处"></button></p>
+
+  <div class="flip-pair">
+    <button type="button" class="flip" aria-pressed="false">
+      <span class="flip-in">
+        <span class="face front card">
+          <span class="bench-label">问法一 · 传统描写</span>
+          <strong>“这句话是什么意思、怎么构成的？”</strong>
+          <span class="flip-hint">点我翻面 →</span>
+        </span>
+        <span class="face back card">
+          <span class="bench-label">它会做三件事</span>
+          解释所用词语的意义；分析小句类型（在这儿是主语与动词或谓语的简单组合）；讨论现在完成时的用法。<button type="button" class="cite" data-cite="tradDesc" aria-label="查看出处"></button>
+        </span>
+      </span>
+    </button>
+    <button type="button" class="flip" aria-pressed="false">
+      <span class="flip-in">
+        <span class="face front card">
+          <span class="bench-label">问法二 · 认知语言学</span>
+          <strong>“你说这句话时，头脑里发生了什么？”</strong>
+          <span class="flip-hint">点我翻面 →</span>
+        </span>
+        <span class="face back card">
+          <span class="bench-label">它请语言使用者自己说</span>
+          描写他们在造词、造句和理解词、句的时候，头脑中发生了什么。<button type="button" class="cite" data-cite="cogAsk" aria-label="查看出处"></button>
+        </span>
+      </span>
+    </button>
+  </div>
+  <p class="feedback" id="s1fb">两张卡都翻翻看。</p>
+
+  <details>
+    <summary>实验里，人们谈 car 还说了什么</summary>
+    <p>被试不仅会说：车有箱子似的形状，有轮子、门、窗，由引擎驱动，装有方向盘、加速器和刹车，有驾驶员和乘客的座位。还很可能提到汽车舒适、快捷，给人以灵活性、独立性，也许还有社会地位。有的人可能把 car 这一概念与初恋相联系，或者，如果他们曾遇上车祸，则与受伤联系起来。<button type="button" class="cite" data-cite="carAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="carPersonal" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">把联想与印象也算进来，就是把经验纳入词义——这是经验观的起点。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：经验观 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>经验观：词义是一整片经验</h2>
+  </div>
+  <p class="point">有一种<span class="hl">重视我们对这个世界的体验</span>的描写方法——经验观(experiential view)，它给词义提供了丰富而相当自然的描写。<button type="button" class="cite" data-cite="expViewDef" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">动手分一分：这些关于 car 的属性，哪些是共同经验，哪些纯属个人？</p>
+    <div class="pool" id="attrPool"></div>
+    <div class="zone-row">
+      <div class="space zone-shared" id="zoneShared"><p class="bench-label">共同经验</p></div>
+      <div class="space zone-personal" id="zonePersonal"><p class="bench-label">个人主观经验</p></div>
+    </div>
+    <p class="feedback" id="attrFb">点一个属性，看它进哪个筐。</p>
+    <button class="btn" id="attrReset">重置</button>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：只有三个轮子的交通工具，人们还会叫它 car 吗？<button type="button" class="cite" data-cite="typicalCar" aria-label="查看出处"></button></p>
+    <div class="btn-row">
+      <button class="btn opt" data-ok="1">会，照样叫 car</button>
+      <button class="btn opt" data-ok="0">不会，得换个词</button>
+      <button class="btn opt" data-ok="0">看情况，说不准</button>
+    </div>
+    <div class="reveal" hidden>
+      <p style="margin:0">会，而且<strong>毫不犹豫</strong>——因为可以把它们与我们已储存于头脑中的典型汽车的观念进行对照。<button type="button" class="cite" data-cite="typicalCar" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 218" role="img" aria-label="car 概念的三层经验：结构与功能、共同经验、个人主观经验，另有隐喻通道">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M46 118 L52 96 Q58 84 76 82 L118 78 Q132 62 154 60 L206 58 Q224 58 230 72 L238 90 Q258 94 262 108 L264 118 Q266 126 256 126 L54 126 Q44 126 46 118 Z"/>
+        <path d="M126 76 L126 96 M196 74 L196 96" stroke-width="1.6"/>
+        <circle cx="96" cy="128" r="16"/>
+        <circle cx="218" cy="128" r="16"/>
+        <rect x="286" y="20" width="452" height="46" rx="9"/>
+        <rect x="286" y="82" width="452" height="46" rx="9"/>
+        <rect x="286" y="144" width="452" height="46" rx="9"/>
+        <path d="M266 66 C276 50 280 44 286 43"/>
+        <path d="M266 105 L286 105"/>
+        <path d="M266 122 C276 140 280 150 286 167"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">
+        <text x="512" y="38" font-size="13.5" font-weight="700">结构与功能</text>
+        <text x="512" y="57" font-size="11" fill="var(--ink-soft)">箱子似的形状 · 轮子门窗 · 引擎 · 方向盘加速器刹车 · 座位</text>
+        <text x="512" y="100" font-size="13.5" font-weight="700">共同经验</text>
+        <text x="512" y="119" font-size="11" fill="var(--ink-soft)">舒适 · 快捷 · 灵活性 · 独立性</text>
+        <text x="512" y="162" font-size="13.5" font-weight="700">个人主观经验</text>
+        <text x="512" y="181" font-size="11" fill="var(--ink-soft)">初恋 · 车祸与受伤</text>
+        <text x="150" y="172" font-size="12" text-anchor="middle" fill="var(--ink)">car</text>
+        <text x="150" y="190" font-size="10.5" text-anchor="middle" fill="var(--ink-soft)">（手绘示意）</text>
+      </g>
+    </svg>
+    <figcaption>car 词义里的三层经验（示意）<button type="button" class="cite" data-cite="carAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sharedVsPersonal" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>经验的第二个来源：隐喻</summary>
+    <p>共有的经验也储存在日常语言里；要打开这个矿藏，必须超出小句句型的“逻辑”并考察比喻性的语言，特别是隐喻。<button type="button" class="cite" data-cite="expInLanguage" aria-label="查看出处"></button></p>
+    <p>汽车坏了显然不会真像椅子散架；我们是用椅子散架的知识，来理解引擎突然停止运转。理解 Dad exploded（爸爸气炸了），则要唤起煤气炉、鞭炮甚至炸弹实际爆炸的知识。隐喻是除实验和访谈之外，语言经验观的第二个主要基础。<button type="button" class="cite" data-cite="brokenChair" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dadExploded" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metaphorBasis" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">经验的矿藏也藏在日常语言里，打开它要靠隐喻。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 两种问法</button>
+    <button class="btn" data-jump="s3">下一场：凸显观 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>凸显观：谁抢眼，谁开头</h2>
+  </div>
+  <p class="point">同一场事故，让谁站 C 位有讲究——<span class="hl">小句主语的选择，由情境中成分所负载的凸显性决定</span>。<button type="button" class="cite" data-cite="promReason" aria-label="查看出处"></button><button type="button" class="cite" data-cite="promDef" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：同一场事故，哪种说法更自然？</p>
+    <div class="btn-row">
+      <button class="btn opt" data-ok="1">A. The car crashed into the tree</button>
+      <button class="btn opt" data-ok="0">B. The tree was hit by the car</button>
+    </div>
+    <div class="reveal" hidden>
+      <p style="margin:0">A 更自然：这个句子听起来是以一种比较自然的方式来描写那个情境；B“看起来就有些奇怪而不自然”。<button type="button" class="cite" data-cite="crashTree" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">句子成分分析台：点一个成分，看它在事故里有多凸显</p>
+    <div class="sent" id="sentActive">
+      <button class="seg" data-seg="subj">The car</button>
+      <button class="seg" data-seg="verb">crashed into</button>
+      <button class="seg" data-seg="obj">the tree</button>
+    </div>
+    <p class="feedback" id="sentFb">点一个成分试试。</p>
+    <div class="sent flat">
+      <span class="seg">The tree</span><span class="seg">was hit by</span><span class="seg">the car</span>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-faint);margin-bottom:0">被动句把 tree 挪到句首——原文评价：有些奇怪而不自然。<button type="button" class="cite" data-cite="crashTree" aria-label="查看出处"></button></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 216" role="img" aria-label="事故情境示意图：移动的汽车带运动线撞向树，汽车被虚线光圈标为最凸显">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 150 L740 150" stroke-width="1.6" opacity=".55"/>
+        <path d="M120 118 L126 96 Q132 84 150 82 L192 78 Q206 62 228 60 L280 58 Q298 58 304 72 L312 90 Q332 94 336 108 L338 118 Q340 126 330 126 L128 126 Q118 126 120 118 Z"/>
+        <path d="M200 76 L200 96 M270 74 L270 96" stroke-width="1.6"/>
+        <circle cx="170" cy="128" r="16"/>
+        <circle cx="292" cy="128" r="16"/>
+        <path d="M40 96 L96 96 M52 112 L100 112 M64 128 L104 128" stroke-width="1.6" opacity=".6"/>
+        <path d="M352 108 L372 96 L378 112 L398 100 L388 122 L410 118 L386 134 L396 148 L372 140 L366 156 L354 138 L338 146 L346 128 L330 124 L348 114 Z" stroke="var(--red)"/>
+        <path d="M596 148 L596 96" stroke-width="3"/>
+        <path d="M596 96 Q560 92 552 62 Q584 66 596 44 Q608 66 640 62 Q632 92 596 96 Z"/>
+        <ellipse cx="228" cy="98" rx="150" ry="72" stroke-dasharray="7 6" stroke="var(--red)"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">
+        <text x="228" y="14" font-size="12.5" text-anchor="middle" fill="var(--red)">最引人注目和凸显</text>
+        <text x="660" y="176" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)">被撞的树</text>
+        <text x="120" y="186" font-size="11.5" text-anchor="middle" fill="var(--ink-soft)">移动的汽车</text>
+      </g>
+    </svg>
+    <figcaption>事故情境里，移动的汽车是最凸显的成分（示意）<button type="button" class="cite" data-cite="promReason" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>凸显观的正式说法</summary>
+    <p>小句主语的选择是由情境中涉及的成分所负载的凸显性的不同程度决定的；这种凸显性不仅体现在对与宾语和状语相对的小句主语的选择上，而且应用到其他许多方面。凸显观为如何选择和配置小句中的信息提供了一种解释。<button type="button" class="cite" data-cite="promDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="promRole" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">凸显观解释小句信息的选择与配置。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 经验观</button>
+    <button class="btn" data-jump="s4">下一场：注意观 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>注意观：只拍注意到的那一格</h2>
+  </div>
+  <p class="point">我们实际上所表达的，<span class="hl">反映了一个事件中哪些部分引起了我们的注意</span>——所以这种理论叫注意观(attentional view)。<button type="button" class="cite" data-cite="attnDef" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">事件阶段选择器：The car crashed into the tree 这句话，提到了下面哪些阶段？（可多选，然后对答案）</p>
+    <div class="btn-row" id="tlStages"></div>
+    <button class="btn" id="tlReveal">对答案</button>
+    <div class="reveal" id="tlRev" hidden></div>
+  </div>
+
+  <details>
+    <summary>回想起来的事件，比句子长得多</summary>
+    <p>头脑里回忆起来的事件可能是：汽车如何开始突然转向，如何滑向路的另一边并轰然窜到路边上；而 The car crashed into the tree 只选择了这个事件的一小部分。撞上树之前，上述事情都发生过，却没有提及。<button type="button" class="cite" data-cite="attnStages" aria-label="查看出处"></button></p>
+    <p>注意力集中于汽车路径最后结束的关键点上：撞树导致汽车严重受损，还很可能使乘客受伤。注意观解释了为什么句子表达了事件的一个阶段，而其他阶段却没有表达。<button type="button" class="cite" data-cite="attnFocus" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">凸显管“谁站 C 位”，注意管“拍到哪一格”。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 凸显观</button>
+    <button class="btn" data-jump="s5">下一场：心理空间 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>两个心理空间的整合</h2>
+  </div>
+  <p class="point">认知输入的心智处理、特别是概念化的在线处理，越来越受关注——<span class="hl">一句广告能让读者同时建立两个心理空间</span>。<button type="button" class="cite" data-cite="mentalProc" aria-label="查看出处"></button><button type="button" class="cite" data-cite="twoSpaces" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：Unleash a Jaguar（放开美洲虎）这句广告<button type="button" class="cite" data-cite="jaguarAd" aria-label="查看出处"></button>，让读者同时建立几个心理空间？</p>
+    <div class="btn-row">
+      <button class="btn opt" data-ok="0">一个</button>
+      <button class="btn opt" data-ok="1">两个</button>
+      <button class="btn opt" data-ok="0">三个</button>
+    </div>
+    <div class="reveal" hidden>
+      <p style="margin:0">两个：一个是“汽车”空间，一个是“野生动物”空间；读者要经历概念整合，才能理解这句口号。<button type="button" class="cite" data-cite="twoSpaces" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blending" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">整合实验台：点下面的联想，把它放进对应的空间；全部放好后按“整合”</p>
+    <div class="blend-row">
+      <div class="space b-car" id="spaceCar"><p class="bench-label">汽车空间</p></div>
+      <div class="space b-wild" id="spaceWild"><p class="bench-label">野生动物空间</p></div>
+    </div>
+    <div class="pool" id="blendPool"></div>
+    <p class="feedback" id="blendFb">广告把两个概念领域的印象合并成一条强有力的信息。</p>
+    <button class="btn" id="blendBtn" disabled>整合 →</button>
+    <button class="btn" id="blendReset">重置</button>
+    <div class="reveal" id="blendRev" hidden></div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 216" role="img" aria-label="两个心理空间的整合：汽车空间与野生动物空间重叠，整合出像野生动物的汽车">
+      <g filter="url(#rough)" fill="none" stroke-width="2">
+        <circle cx="272" cy="102" r="84" stroke="var(--blue)" stroke-dasharray="7 6"/>
+        <circle cx="428" cy="102" r="84" stroke="var(--green)" stroke-dasharray="7 6"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="196" y="46" font-size="13.5" font-weight="700" fill="var(--blue)">汽车空间</text>
+        <text x="196" y="66" font-size="11" fill="var(--ink-soft)">强有力的引擎</text>
+        <text x="196" y="82" font-size="11" fill="var(--ink-soft)">最高的速度 · 迷人的设计</text>
+        <text x="504" y="46" font-size="13.5" font-weight="700" fill="var(--green)">野生动物空间</text>
+        <text x="504" y="66" font-size="11" fill="var(--ink-soft)">狂野</text>
+        <text x="504" y="82" font-size="11" fill="var(--ink-soft)">奔跑的速度 · 柔韧优雅</text>
+        <text x="350" y="98" font-size="13.5" font-weight="700">整合概念</text>
+        <text x="350" y="118" font-size="12">像野生动物的汽车</text>
+        <text x="380" y="196" font-size="11.5" fill="var(--ink-soft)">概念整合有点儿模糊、具有开放性——这正是广告加以利用的</text>
+      </g>
+    </svg>
+    <figcaption>两个心理空间揉成一个整合概念（示意）<button type="button" class="cite" data-cite="twoSpaces" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blending" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>三种“观”去哪一章深挖</summary>
+    <ul>
+      <li>第一章借早期认知范畴心理学研究探讨经验观，产生范畴化的原型模型。<button type="button" class="cite" data-cite="bookSeven" aria-label="查看出处"></button></li>
+      <li>第二章集中讨论基本层次范畴。<button type="button" class="cite" data-cite="ch2" aria-label="查看出处"></button></li>
+      <li>第四章专门讨论凸显观，中心是主体/背景分离原则。<button type="button" class="cite" data-cite="ch4" aria-label="查看出处"></button></li>
+      <li>第五章论证注意观的潜力，从“框架”概念开始。<button type="button" class="cite" data-cite="ch5" aria-label="查看出处"></button></li>
+      <li>第六章以 Fauconnier 和 Turner 的概念整合理论讨论在线认知处理。<button type="button" class="cite" data-cite="ch6" aria-label="查看出处"></button></li>
+    </ul>
+  </details>
+
+  <p class="scene-foot">三种“观”互锁，构成核心领域；概念整合补上在线处理一环。<button type="button" class="cite" data-cite="threeViews" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 注意观</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>1. 按经验观，car 的词义里除了结构描写，还包括什么？</h3>
+    <details><summary>看答案</summary>
+      <p>还包括我们关于汽车的共同经验（舒适、快捷、灵活性、独立性），乃至个人联想（初恋、受伤）——这些属性共同反映了我们感知周围世界并与之互动的方式。<button type="button" class="cite" data-cite="sharedVsPersonal" aria-label="查看出处"></button><button type="button" class="cite" data-cite="expViewDef" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>2. 为什么 The car crashed into the tree 比 The tree was hit by the car 更自然？</h3>
+    <details><summary>看答案</summary>
+      <p>因为移动的汽车是整个情境中最引人注目和凸显的因素，所以用 the car 这个名词短语来作句子的开头；小句主语的选择由成分负载的凸显性决定。<button type="button" class="cite" data-cite="promReason" aria-label="查看出处"></button><button type="button" class="cite" data-cite="promDef" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>3. 注意观和凸显观的分工是什么？</h3>
+    <details><summary>看答案</summary>
+      <p>凸显观解释小句中信息如何选择与配置（如主语的选择）；注意观解释事件的哪个阶段被表达、哪些阶段没有被表达——注意力分配的结果。<button type="button" class="cite" data-cite="promRole" aria-label="查看出处"></button><button type="button" class="cite" data-cite="attnFocus" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>经验观：词义包含我们感知世界并与之互动的经验；来源一是实验与访谈，二是日常语言里的隐喻。<button type="button" class="cite" data-cite="expViewDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metaphorBasis" aria-label="查看出处"></button></li>
+    <li>凸显观：小句主语由情境成分负载的凸显性决定；汽车撞树用主动句，树被汽车撞则不自然。<button type="button" class="cite" data-cite="promDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="crashTree" aria-label="查看出处"></button></li>
+    <li>注意观：表达反映事件中引起注意的部分；撞树句只截取路径终点的关键阶段。<button type="button" class="cite" data-cite="attnDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="attnFocus" aria-label="查看出处"></button></li>
+    <li>心理空间与概念整合：Unleash a Jaguar 让读者建立汽车与野生动物两个空间，整合出“像野生动物的汽车”。<button type="button" class="cite" data-cite="twoSpaces" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blending" aria-label="查看出处"></button></li>
+    <li>三种“观”是根据语言与周围世界的关系处理语言的互锁途径，共同描述认知语言学的核心领域。<button type="button" class="cite" data-cite="threeViews" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>经验观 (experiential view)</strong>：重视我们对这个世界的体验的描写方法，给词义提供丰富而自然的描写。<button type="button" class="cite" data-cite="expViewDef" aria-label="查看出处"></button></li>
+    <li><strong>凸显观 (prominence view)</strong>：小句主语的选择由情境成分负载的凸显性决定，并应用于许多其他方面。<button type="button" class="cite" data-cite="promDef" aria-label="查看出处"></button></li>
+    <li><strong>注意观 (attentional view)</strong>：所表达的内容反映事件中哪些部分引起了我们的注意。<button type="button" class="cite" data-cite="attnDef" aria-label="查看出处"></button></li>
+    <li><strong>心理空间</strong>：理解话语时在线建立的心理场景，如“汽车”空间与“野生动物”空间。<button type="button" class="cite" data-cite="twoSpaces" aria-label="查看出处"></button></li>
+    <li><strong>概念整合 (conceptual blending)</strong>：把两个心理空间揉成一个整合概念的过程，产出“像野生动物的汽车”。<button type="button" class="cite" data-cite="blending" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版绪论 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到绪论段落；关键引语请点开角标核对原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 2026-10-24</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿绪论段落标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"〔德〕弗里德里希·温格瑞尔 汉斯—尤格·施密特 著；彭利贞 许国萍 赵微 译",zh:"《认知语言学导论》第 2 版，本页材料为绪论"},
+  tradDesc:{page:"绪论 ¶1",quote:"传统的描写可能试图解释所用词语的意义，可能分析小句类型（在这儿是主语与动词或谓语的简单组合），并且，接下来还可能讨论现在完成时的用法。",zh:"传统描写：解释词义、分析小句类型、讨论现在完成时"},
+  cogAsk:{page:"绪论 ¶1",quote:"另一种方法是要求语言使用者描写在他们造词、造句和理解词、句的时候他们的头脑中发生了什么。",zh:"认知语言学的问法：说话人造词、造句和理解词句时头脑里发生了什么"},
+  carAttrs:{page:"绪论 ¶2",quote:"人们不仅会说，车有箱子似的形状，有轮子、门、窗，由引擎驱动，装有方向盘、加速器和刹车，有驾驶员和乘客的座位。还很有可能提到汽车舒适、快捷，给人以灵活性、独立性，也许还有社会地位。",zh:"被试谈 car：结构与功能属性，外加舒适、快捷、灵活性、独立性，也许还有社会地位"},
+  carPersonal:{page:"绪论 ¶2",quote:"有的人可能把 car（小汽车）这一概念与初恋相联系，或者，如果他们曾遇上车祸，则与受伤联系起来。",zh:"有人把 car 与初恋相连，或与车祸受伤相连"},
+  sharedVsPersonal:{page:"绪论 ¶3",quote:"如果把最后两项（“初恋”和“受伤”）看作是纯粹个人、主观的经验，那么，像“舒适”、“快速”、“灵活性”和“独立性”这些属性似乎可以看作是我们对汽车的共同经验的组成部分。",zh:"初恋/受伤是纯粹个人、主观的经验；舒适、快速、灵活性、独立性是共同经验"},
+  typicalCar:{page:"绪论 ¶3",quote:"我们会毫不犹豫地用 car（小汽车）这个词来指只有三个轮子的交通工具或样子古怪的越野吉普，因为我们可以把它们与我们已储存于头脑中的典型汽车的观念进行对照。",zh:"三个轮子的交通工具、古怪越野吉普也会被叫 car——可与脑中典型汽车观念对照"},
+  expViewDef:{page:"绪论 ¶3",quote:"有一种重视我们对这个世界的体验的描写方法——或者更专业地说，有一种对词和其他语言结构的经验观(experiential view)——似乎给词义提供了丰富而相当自然的描写，而这正是本书介绍的认知语言学理论的目标之一。",zh:"经验观：重视我们对世界的体验，给词义丰富而自然的描写"},
+  expInLanguage:{page:"绪论 ¶4",quote:"我们对世界共有的经验也储存于我们日常使用的语言中，所以这种经验也可以从我们表达观念的方式中收集。然而，为了打开这个矿藏，我们必须超出小句句型的“逻辑”并考察比喻性的语言，特别是隐喻。",zh:"共同经验也储存在日常语言里；打开矿藏须考察隐喻"},
+  brokenChair:{page:"绪论 ¶4",quote:"汽车坏了，显然不会真的像一把椅子散架那样分崩离析、支离破碎。尽管如此，这一表达的概念背景还是足够清楚的。因为，关于汽车及汽车是如何运转的，大多数人并不懂得太多，所以，我们就用有关椅子或其他同样熟悉的物体的散架的知识，来理解汽车的引擎突然停止运转时所发生的事情。",zh:"用椅子散架的知识，理解引擎突然停止运转"},
+  dadExploded:{page:"绪论 ¶5",quote:"有人描写车主对他的汽车抛锚的反应时，用了这些词：Dad exploded（爸爸气炸了）。为了完全理解这句话和anger（愤怒）所表达的概念，我们会唤起关于煤气炉、鞭炮甚至炸弹实际爆炸的知识。",zh:"理解 Dad exploded 要唤起煤气炉、鞭炮、炸弹实际爆炸的知识"},
+  metaphorBasis:{page:"绪论 ¶5",quote:"只要想一想隐喻背后的大量的观感、印象和联想，也就难怪它们是除实验和访谈之外语言经验观的第二个主要基础了。",zh:"隐喻是经验观除实验和访谈之外的第二个主要基础"},
+  crashTree:{page:"绪论 ¶6",quote:"当你想像这个例子刻画的事故情境时，你可能会同意，这个句子听起来是以一种比较自然的方式来描写那个情境的。比较而言，像 The tree was hit by the car（树被汽车撞了）这种描写事故的方式看起来就有些奇怪而不自然。",zh:"主动句自然；The tree was hit by the car 则奇怪而不自然"},
+  promReason:{page:"绪论 ¶6",quote:"原因在于移动的汽车是整个情境中最引人注目和凸显的因素，所以我们会用 the car（小汽车）这个名词短语来作句子的开头。",zh:"移动的汽车是情境中最引人注目和凸显的因素，所以作句子开头"},
+  promDef:{page:"绪论 ¶6",quote:"小句主语的选择是由情境中涉及的成分所负载的凸显性的不同程度决定的。这种凸显性不仅体现在对与宾语和状语相对的小句主语的选择上，而且这种可以称之为语言结构的凸显观(prominence view)的思想还应用到其他许多方面。",zh:"凸显观：小句主语选择由成分负载的凸显性决定，且应用广泛"},
+  promRole:{page:"绪论 ¶7",quote:"凸显观为如何选择和配置小句中的信息提供了一种解释。",zh:"凸显观解释小句信息的选择与配置"},
+  attnDef:{page:"绪论 ¶7",quote:"还有一种理论，它以下面这种假设为基础：我们实际上所表达的，反映了一个事件中哪些部分引起了我们的注意。所以这种理论可以叫做注意观(attentional view)。",zh:"注意观：所表达的内容反映事件中哪些部分引起了注意"},
+  attnStages:{page:"绪论 ¶7",quote:"我们头脑中回忆起来的事件可能是：汽车如何开始突然转向，如何滑向路的另一边并轰然窜到路边上；而The car crashed into the tree(汽车撞到树上)这个句子只选择了这个事件的一小部分。",zh:"回想的事件：突然转向、滑向路另一边、轰然窜到路边；句子只选一小部分"},
+  attnFocus:{page:"绪论 ¶7",quote:"因为我们的注意力集中于汽车路径最后结束的关键点上，即汽车撞到树上，它导致汽车严重受损，还很可能使乘客受伤。按照注意力分配原理来分析这个句子，注意观解释了为什么在句子中表达了事件的一个阶段，而其他阶段却没有表达。",zh:"注意力集中于路径终点撞树；注意观解释为何只表达一个阶段"},
+  threeViews:{page:"绪论 ¶8",quote:"经验观、凸显观和注意观是根据语言与我们周围世界的关系来处理语言的三种互锁的途径，它们共同描述了认知语言学的核心领域。",zh:"三种互锁的途径，共同描述认知语言学的核心领域"},
+  mentalProc:{page:"绪论 ¶8",quote:"还有一个方面越来越引起认知语言学家注意，它与认知输入的心智处理(mental processing of cognitive input)，特别与我们的概念化的在线处理有关。",zh:"心智处理、概念化的在线处理越来越受关注"},
+  jaguarAd:{page:"绪论 ¶8",quote:"Unleash a Jaguar(放开美洲虎)。这个广告利用该品牌名称的来源，把来源于汽车与野生动物这两个概念领域的印象结合到了一起，把它们合并成了一条强有力的信息，暗示着这样一种车的形象：它迫不及待地等待着顾客，等待着获得自由，等待着让它表现自己的力量、速度与野性。",zh:"放开美洲虎：把汽车与野生动物两个概念领域的印象合并成一条信息"},
+  twoSpaces:{page:"绪论 ¶8",quote:"Unleash a Jaguar(放开美洲虎)这一表达引领读者同时建立两个“心理空间”：一个是“汽车”空间，它包含了强有力的引擎、最高的速度、迷人的设计之类的联想；一个是“野生动物”空间，包括了一般因美洲虎而产生的狂野、奔跑的速度和柔韧优雅之类的联想。",zh:"两个心理空间：汽车空间（引擎、速度、设计）与野生动物空间（狂野、奔跑、柔韧优雅）"},
+  blending:{page:"绪论 ¶8",quote:"读者不得不经历把这两个心理空间进行概念整合(conceptually blending)的过程，这个过程产生了“像野生动物的汽车”这一整合的概念。关于它的意义，这个概念整合有点儿模糊，而且是开放性的，而这种模糊性与开放性正是广告和许多其他文本类型加以利用的。",zh:"概念整合产出“像野生动物的汽车”；模糊开放正是广告利用的特性"},
+  bookSeven:{page:"绪论 ¶10",quote:"本书分七章。第一章将通过考察早期对认知范畴的心理学研究（大部分是 Eleanor Rosch 从事的）来探讨经验观。",zh:"全书七章；第一章借早期认知范畴研究探讨经验观"},
+  ch2:{page:"绪论 ¶11",quote:"第二章集中讨论处于支配地位的范畴化的“中间”层次，即所谓的基本层次。",zh:"第二章：基本层次范畴"},
+  ch4:{page:"绪论 ¶14",quote:"第四章专门讨论凸显观。处于这种理论的中心是主体/背景分离原则，这一原则来源于完形心理学家对视觉感知的研究成果。",zh:"第四章专论凸显观，中心是主体/背景分离"},
+  ch5:{page:"绪论 ¶15",quote:"第五章将论证注意观的潜力。这一章的讨论(很多是来自Fillmore、Talmy和Slobin的想法)从“框架”概念开始。",zh:"第五章论证注意观，从“框架”概念开始"},
+  ch6:{page:"绪论 ¶16",quote:"第六章以 Fauconnier 和 Turner 的概念整合理论为代表，讨论了在线认知处理的分析。",zh:"第六章：概念整合理论与在线认知处理"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置："+s.page;
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 先猜再看（通用） ================= */
+$$("[data-guess]").forEach(g=>{
+  const rev=g.querySelector(".reveal");
+  $$(".opt",g).forEach(b=>b.addEventListener("click",()=>{
+    $$(".opt",g).forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    if(rev){rev.hidden=false;rev.classList.toggle("wrong",b.dataset.ok!=="1");}
+  }));
+});
+
+/* ================= 场景一：翻转对比卡 ================= */
+$$(".flip").forEach(f=>f.addEventListener("click",()=>{
+  f.classList.toggle("flipped");
+  f.setAttribute("aria-pressed",f.classList.contains("flipped")?"true":"false");
+}));
+
+/* ================= 场景二：属性分筐 ================= */
+(function(){
+  const ATTRS=[
+    {k:"箱子似的形状",z:"s"},
+    {k:"轮子、门、窗",z:"s"},
+    {k:"引擎驱动",z:"s"},
+    {k:"方向盘、加速器、刹车",z:"s"},
+    {k:"驾驶与乘客的座位",z:"s"},
+    {k:"舒适、快捷",z:"s"},
+    {k:"灵活性、独立性",z:"s"},
+    {k:"初恋",z:"p"},
+    {k:"车祸与受伤",z:"p"},
+    {k:"社会地位",z:"u"}
+  ];
+  const MSG={
+    s:"「X」→ 共同经验。原文：这类属性是我们对汽车的共同经验的组成部分。",
+    p:"「X」→ 个人主观经验。原文：把初恋、受伤这类看作纯粹个人、主观的经验。",
+    u:"「社会地位」：原文只说“也许还有”，没有把它归进任何一类。"
+  };
+  const pool=$("#attrPool"),fb=$("#attrFb");
+  const zoneS=$("#zoneShared"),zoneP=$("#zonePersonal");
+  let done=0;
+  function reset(){
+    pool.innerHTML="";zoneS.innerHTML="<p class=\"bench-label\">共同经验</p>";zoneP.innerHTML="<p class=\"bench-label\">个人主观经验</p>";
+    done=0;fb.textContent="点一个属性，看它进哪个筐。";
+    ATTRS.forEach(a=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=a.k;
+      b.addEventListener("click",()=>{
+        if(b.dataset.placed) return;
+        if(a.z==="u"){fb.textContent=MSG.u;return;}
+        b.dataset.placed="1";b.classList.add("sel");
+        (a.z==="s"?zoneS:zoneP).appendChild(b);
+        fb.textContent=MSG[a.z].replace("X",a.k);
+        done++;
+        if(done===8) fb.textContent="全部归好了——剩下的“社会地位”，原文没有归类。";
+      });
+      pool.appendChild(b);
+    });
+  }
+  reset();
+  $("#attrReset").addEventListener("click",reset);
+})();
+
+/* ================= 场景三：句子成分分析 ================= */
+(function(){
+  const SEGS={
+    subj:"The car：移动的汽车是整个情境中最引人注目和凸显的因素，所以由它来作句子的开头。",
+    verb:"crashed into：谓语交代事故本身；原文的解释集中在小句主语的选择上。",
+    obj:"the tree：被撞的对象，凸显性不如移动的汽车——把它挪到句首，句子就变得不自然。"
+  };
+  const fb=$("#sentFb");
+  $$("#sentActive .seg").forEach(b=>b.addEventListener("click",()=>{
+    $$("#sentActive .seg").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    fb.textContent=SEGS[b.dataset.seg];
+  }));
+})();
+
+/* ================= 场景四：事件阶段选择器 ================= */
+(function(){
+  const STAGES=["开始突然转向","滑向路的另一边","轰然窜到路边","撞到树上"];
+  const OK={3:true};
+  const box=$("#tlStages"),rev=$("#tlRev");
+  const picked=new Set();
+  STAGES.forEach((s,i)=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=s;
+    b.addEventListener("click",()=>{
+      if(b.classList.toggle("sel")) picked.add(i); else picked.delete(i);
+      rev.hidden=true;
+    });
+    box.appendChild(b);
+  });
+  $("#tlReveal").addEventListener("click",()=>{
+    const only=picked.size===1&&picked.has(3);
+    let html="";
+    if(only){
+      html="<p style='margin:0 0 6px'><strong>对——只有“撞到树上”被表达。</strong>回想起来的事件长得多：突然转向、滑向另一边、轰然窜到路边都在撞树前发生过，句子却只字未提。</p>";
+    }else{
+      html="<p style='margin:0 0 6px'><strong>再看一次：句子只选了“撞到树上”。</strong>突然转向、滑向另一边、轰然窜到路边虽然都发生过，却没有被提及。</p>";
+    }
+    html+="<p style='margin:0;font-size:.9rem;color:var(--ink-soft)'>注意力集中于汽车路径最后结束的关键点上：撞树导致汽车严重受损，还很可能使乘客受伤。</p>";
+    rev.innerHTML=html;
+    rev.hidden=false;
+    rev.classList.toggle("wrong",!only);
+  });
+})();
+
+/* ================= 场景五：心理空间整合 ================= */
+(function(){
+  const CHIPS=[
+    {k:"强有力的引擎",z:"car"},{k:"最高的速度",z:"car"},{k:"迷人的设计",z:"car"},
+    {k:"狂野",z:"wild"},{k:"奔跑的速度",z:"wild"},{k:"柔韧优雅",z:"wild"}
+  ];
+  const pool=$("#blendPool"),fb=$("#blendFb"),btn=$("#blendBtn"),rev=$("#blendRev");
+  const car=$("#spaceCar"),wild=$("#spaceWild");
+  let placed=0;
+  function reset(){
+    pool.innerHTML="";
+    car.innerHTML="<p class=\"bench-label\">汽车空间</p>";
+    wild.innerHTML="<p class=\"bench-label\">野生动物空间</p>";
+    placed=0;btn.disabled=true;rev.hidden=true;
+    fb.textContent="广告把两个概念领域的印象合并成一条强有力的信息。";
+    CHIPS.forEach(c=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=c.k;
+      b.addEventListener("click",()=>{
+        if(b.dataset.placed) return;
+        b.dataset.placed="1";
+        (c.z==="car"?car:wild).appendChild(b);
+        placed++;
+        fb.textContent="放进"+(c.z==="car"?"汽车":"野生动物")+"空间。";
+        if(placed===CHIPS.length){btn.disabled=false;fb.textContent="六个联想都归位了——按“整合”看看产出。";}
+      });
+      pool.appendChild(b);
+    });
+  }
+  reset();
+  $("#blendReset").addEventListener("click",reset);
+  btn.addEventListener("click",()=>{
+    rev.innerHTML="<p style='margin:0 0 6px'><strong>整合产出：像野生动物的汽车。</strong>读者把两个心理空间进行概念整合，得到这一整合的概念。</p><p style='margin:0;font-size:.9rem;color:var(--ink-soft)'>这个概念整合有点儿模糊、具有开放性——而这种模糊性与开放性正是广告和许多其他文本类型加以利用的。</p>";
+    rev.hidden=false;
+    btn.disabled=true;
+  });
+})();
+</script>
+</body>
+</html>

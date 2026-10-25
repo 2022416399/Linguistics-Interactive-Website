@@ -1,0 +1,17 @@
+# Large source archives and binary corpus files kept locally
+术语查询站/raw/
+术语查询站/result/
+术语查询站/**/*.zip
+术语查询站/*.zip
+术语查询站/下载/
+术语查询站/downloaded.json
+术语查询站/batch_big.json
+术语查询站/batch_small.json
+术语查询站/submit_state.json
+
+# Generated/local runtime artifacts
+术语查询站/**/node_modules/
+术语查询站/**/__pycache__/
+术语查询站/**/*.pyc
+术语查询站/**/.cache/
+术语查询站/git_write_test.txt

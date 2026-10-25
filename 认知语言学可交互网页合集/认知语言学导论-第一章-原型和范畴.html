@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>原型和范畴 · 《认知语言学导论》第一章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第一章做成单文件交互网页：七场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 出处角标 ---------- */
+sup.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center;white-space:nowrap}
+thead th{background:var(--hl);font-weight:700}
+th[data-col],td[data-col]{cursor:default}
+td.pos{color:var(--green);font-weight:800}
+td.neg{color:var(--red);font-weight:800}
+td.dev{color:#8a6d1f;font-weight:800}
+td.unk{color:var(--ink-faint)}
+tr.hlcol td{background:color-mix(in srgb,var(--hl) 45%,transparent)}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">原型和范畴 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第一章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">原型和范畴</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第一章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>我们靠原型认世界，不靠边界——每个范畴都有一个认知参照点，成员有好样本也有差样本，边界是模糊的；而且这一切还会跟着语境和文化模型搬家。<span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">这是全章七场实验共同指向的结论；每场实验讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="第一章结构图：从边界难题分出三条线索，汇入原型范畴模型">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M60 60 Q120 30 190 62 Q250 88 200 108 Q140 126 78 100 Q36 82 60 60 Z"/>
+        <path d="M235 85 C300 60 330 60 390 82"/>
+        <path d="M215 100 C280 110 320 118 385 128"/>
+        <path d="M235 112 C300 150 330 160 392 172"/>
+        <path d="M455 82 C520 60 560 80 600 95"/>
+        <path d="M450 128 C515 128 555 128 600 128"/>
+        <path d="M455 172 C520 195 560 178 600 160"/>
+        <path d="M600 60 L600 195"/>
+        <path d="M612 95 L640 95 M612 128 L640 128 M612 160 L640 160"/>
+        <rect x="640" y="55" width="110" height="145" rx="10"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="128" y="80" font-size="17">边界难题</text>
+        <text x="128" y="102" font-size="12" fill="var(--ink-soft)">750 万种颜色没有天然界线</text>
+        <text x="305" y="66" font-size="13">1.1 焦点色</text>
+        <text x="305" y="126" font-size="13">1.2 内部结构</text>
+        <text x="305" y="188" font-size="13">1.3 语境与文化</text>
+        <text x="695" y="92" font-size="14" font-weight="700">原型</text>
+        <text x="695" y="114" font-size="14" font-weight="700">参照点</text>
+        <text x="695" y="142" font-size="12" fill="var(--ink-soft)">成员分等级</text>
+        <text x="695" y="160" font-size="12" fill="var(--ink-soft)">边界模糊</text>
+        <text x="695" y="178" font-size="12" fill="var(--ink-soft)">随语境而变</text>
+      </g>
+    </svg>
+    <figcaption>第一章的问题与三条研究线索（示意）</figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">边界难题</button>
+    <button class="chip" data-jump="s2">焦点色</button>
+    <button class="chip" data-jump="s3">典型性</button>
+    <button class="chip" data-jump="s4">杯子实验</button>
+    <button class="chip" data-jump="s5">内部结构</button>
+    <button class="chip" data-jump="s6">语境依赖</button>
+    <button class="chip" data-jump="s7">文化模型</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>边界难题：世界没有天然分界线</h2>
+  </div>
+  <p class="point"><span class="hl">膝盖到哪儿结束、山谷从哪儿变成山坡，现实答不上来</span>；颜色约 750 万种，也划不出天然界线。<button type="button" class="cite" data-cite="colors7m" aria-label="查看出处"></button><button type="button" class="cite" data-cite="vagueEnt" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">动手分一分：下面这些"模糊"，是实体本身含糊，还是范畴边界模糊？</p>
+    <div class="btn-row" id="s1items"></div>
+    <div class="btn-row" id="s1tags" aria-label="选择类别">
+      <button class="btn" data-tag="entity">实体含糊</button>
+      <button class="btn" data-tag="fuzzy">范畴模糊</button>
+      <button class="btn" data-tag="both">两者都是</button>
+    </div>
+    <p class="feedback" id="s1fb">先点一个项目，再选一个类别。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：两类"模糊"必须分开</summary>
+    <p>Black 的"椅子博物馆"从一把奇彭代尔椅排到一小块没有明显特征的木头，参观者无法在椅子与非椅子之间划出界线——但每件展品自身的边界都很清楚。<button type="button" class="cite" data-cite="black" aria-label="查看出处"></button></p>
+    <p>Quine 指出山是双重案例：作为实体它边界含糊，作为范畴 MOUNTAIN 它的边界也是模糊的。<button type="button" class="cite" data-cite="quine" aria-label="查看出处"></button></p>
+    <p>因此本书约定："含糊（实体）"用于膝盖、雾、山谷这类东西；"模糊（范畴边界）"用于 CHAIR 这类认知范畴的边界。<button type="button" class="cite" data-cite="vagueFuzzy" aria-label="查看出处"></button></p>
+    <p>长度、温度、颜色这些物理特性是在两端之间不间断延伸的"等级"，对它们的分类只能是一种心理过程——即<strong>范畴化</strong>，其结果就是<strong>认知范畴</strong>。<button type="button" class="cite" data-cite="scale" aria-label="查看出处"></button><button type="button" class="cite" data-cite="catDef" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">所以第一章的出发点是：把连续经验切成范畴，靠的不是边界，而是参照点。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：焦点色 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>焦点色：给颜色找个参照点</h2>
+  </div>
+  <p class="point">Berlin &amp; Kay 请 20 种语言的人从 329 片标准色卡里指出"最好的红"——<span class="hl">不同语言的人，指向了几乎同一处</span>。<button type="button" class="cite" data-cite="bk98" aria-label="查看出处"></button><button type="button" class="cite" data-cite="munsell" aria-label="查看出处"></button><button type="button" class="cite" data-cite="focusCross" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台 A：你也来指一次——点一下你认为"最好的红色"<span class="tag" data-label="示意">示意</span></p>
+    <div id="s2grid" style="max-width:520px"></div>
+    <p class="feedback" id="s2fb">色卡板是按原著图 1.1 排布的简化示意：横轴是色度，纵轴是亮度。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：Rosch 给一排色卡，让 24 个三岁孩子自由选喜欢的颜色<button type="button" class="cite" data-cite="kids24" aria-label="查看出处"></button>。你猜其中几人选了黄色焦点卡？</p>
+    <input type="range" id="s2guess" min="0" max="24" value="12" aria-label="猜测人数">
+    <p style="margin:.2em 0"><output id="s2out">12</output> 人 / 共 24 人</p>
+    <button class="btn" id="s2reveal">揭晓</button>
+    <div class="reveal" id="s2rev" hidden>
+      <p><strong>22 人</strong>选了黄色焦点卡；同组实验里选橙色焦点卡的 21 人、绿色 11 人。<button type="button" class="cite" data-cite="kids24" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">焦点色比其他颜色更能抓住三岁孩子的注意——这就是"感知显著性"。<button type="button" class="cite" data-cite="kidLogic" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>更多实验：Dani 人、记忆与命名</summary>
+    <p>Dugum Dani 语只有 2 个基本颜色词，英语有 11 个；Rosch 特意选他们做"未被颜色词污染"的被试。<button type="button" class="cite" data-cite="basicTerms" aria-label="查看出处"></button><button type="button" class="cite" data-cite="basicTermDef" aria-label="查看出处"></button></p>
+    <p>识别实验：随机给 Dani 人和英语使用者看 8 张焦点卡与 8 张非焦点卡，每张看 5 秒，间隔 30 秒后再去色卡上指认——两组对焦点色的指认都准确得多。<button type="button" class="cite" data-cite="recog" aria-label="查看出处"></button></p>
+    <p>学习实验：教 Dani 人 16 个色名（8 焦点 + 8 非焦点），在第一次全部答对之前，非焦点色平均每人每色错 9.9 次，焦点色只有 7.3 次；整个学习过程平均持续 3 天半。<button type="button" class="cite" data-cite="daniLearn" aria-label="查看出处"></button><button type="button" class="cite" data-cite="daniDays" aria-label="查看出处"></button></p>
+    <p>命名任务里，焦点色的名称能更快给出，也更早被孩子习得。<button type="button" class="cite" data-cite="roschSummary" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">结论：颜色范畴不是任意的，而是"锚"在焦点色上的——这是通往原型模型的第一步。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 边界难题</button>
+    <button class="btn" data-jump="s3">下一场：典型性 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>典型性：成员分三六九等</h2>
+  </div>
+  <p class="point">Rosch 让学生给每个范畴的成员打分：<span class="hl">同一个"鸟"字底下，成员的地位可以差得很远</span>——成员身份是等级，不是有无。<button type="button" class="cite" data-cite="rosch75" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：三个范畴的"最好样本"，你猜分别是哪个？</p>
+    <div id="s3quiz"></div>
+  </div>
+
+  <details>
+    <summary>实验设计与预供信息效应</summary>
+    <p>方法：7 点刻度（1 = 很好的样本，7 = 极差的样本），一共测了 10 个范畴，鸟、水果、交通工具、家具、武器等各有约 50 个候选成员。<button type="button" class="cite" data-cite="rosch75" aria-label="查看出处"></button></p>
+    <p>预供信息实验：正式呈现前两秒先给被试看范畴名称（如"鸟"），再判断"企鹅=企鹅"这类配对是否相同。结果好样本的匹配明显变快，差样本反而变慢——企鹅、橄榄、独轮车这类边缘成员会被预供信息干扰。<button type="button" class="cite" data-cite="priming" aria-label="查看出处"></button><button type="button" class="cite" data-cite="primingEx" aria-label="查看出处"></button></p>
+    <p>由此本书的小结是：在原型和边界之间，范畴成员在典型性上可以从好样本到差样本划分等级。<button type="button" class="cite" data-cite="summary11" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">在本书的立场里，原型不是"代表"，而是心理词库里的认知参照点。<button type="button" class="cite" data-cite="protoDef" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 焦点色</button>
+    <button class="btn" data-jump="s4">下一场：杯子实验 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>杯子实验：边界会挪位</h2>
+  </div>
+  <p class="point"><span class="hl">同一只容器，换个语境就改名字</span>——Labov 用一排"像杯子的东西"量出了范畴边界有多模糊。<button type="button" class="cite" data-cite="labovDef" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">实验台：选一个容器（宽度逐个加大，高度不变），再选语境，然后给它起个名——最后看 Labov 的真实结果。<span class="tag" data-label="示意">示意</span></p>
+    <div class="btn-row" id="cupSteps" aria-label="选择容器"></div>
+    <svg id="cupSvg" viewBox="35 25 275 145" role="img" aria-label="当前容器的线条画">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path id="cupBody" d=""/>
+        <path id="cupHandle" d=""/>
+        <path d="M40 150 L260 150" stroke-width="1.5" opacity=".5"/>
+      </g>
+    </svg>
+    <div class="radio-row" id="cupCtx" role="group" aria-label="选择语境"></div>
+    <div class="btn-row" id="cupNames" role="group" aria-label="给它起名"></div>
+    <button class="btn" id="cupReveal">看 Labov 的结果</button>
+    <div class="reveal" id="cupRev" hidden></div>
+    <figcaption>Labov 实验容器的简化线条画（高度恒定、宽度渐变），形态与语境均为示意；结果文字见弹出。</figcaption>
+  </figure>
+
+  <details>
+    <summary>"一致性"是怎么量的</summary>
+    <p>如果一个实验里所有被试都把某个对象叫作"椅子"，一致性就是 100%；一半被试犹豫、不肯叫它椅子，一致性就掉到 50%。<button type="button" class="cite" data-cite="labovDef" aria-label="查看出处"></button></p>
+    <p>Labov 考察的维度不止宽度：还有高度/深度、形状（圆柱体、截去顶端的圆锥体），以及语境、质料（玻璃、瓷器）、柄的有无——他把这些统统当作"维度上的值"来处理。<button type="button" class="cite" data-cite="labovDim" aria-label="查看出处"></button></p>
+    <p>原著让被试想像三个场景之一：(a) 喝咖啡情境，(b) 对象盛着土豆泥的餐桌情境（食物语境），(c) 对象竖立在架子上、里边插着折下的花的场景。<button type="button" class="cite" data-cite="ctxExp" aria-label="查看出处"></button></p>
+    <p>原著图 1.5 的曲线说明：1 号容器的"杯子"一致性是 100%，向 5 号递减；到 4、5 号时"杯子"一致性急剧下降，"碗"的命名曲线开始上升。<button type="button" class="cite" data-cite="cupCurve" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cupBowl" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">模糊边界不是向"非 X"的过渡，而是相邻范畴之间的边缘地带：杯子、碗、茶缸、花瓶可以同时竞选。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 典型性</button>
+    <button class="btn" data-jump="s5">下一场：内部结构 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>内部结构：属性、家族相似性与完形</h2>
+  </div>
+  <p class="point">知更鸟有 10 条属性，鸵鸟只剩 4 条；可"长脖子"又把鸵鸟和红鹳连在一起——<span class="hl">范畴靠的是一张交叉相似性的网，不是全员共有属性</span>。<button type="button" class="cite" data-cite="robinAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ostrich" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">点一个项目，看它和邻居共享什么属性</p>
+    <svg id="frSvg" viewBox="0 0 760 210" role="img" aria-label="家族相似性示意图：四个项目 AB、BC、CD、DE 连成链"></svg>
+    <p class="feedback" id="frFb">四个项目里，有没有哪个属性是全体共有的？——没有。连成一张网，靠的就是交叉相似。</p>
+    <figcaption>家族相似性结构示意：项目 1=AB、2=BC、3=CD、4=DE（据原著图表演绘）<button type="button" class="cite" data-cite="frTable" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">鸟范畴属性矩阵（点列头高亮一列）<span class="tag" data-label="读图">读图</span></p>
+    <div class="table-wrap">
+      <table id="birdTable">
+        <thead><tr><th>属性</th><th data-col="robin">知更鸟</th><th data-col="sparrow">麻雀</th><th data-col="dove">鸽子</th><th data-col="parrot">鹦鹉</th><th data-col="ostrich">鸵鸟</th></tr></thead>
+        <tbody>
+          <tr><td>下蛋</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="pos">＋</td><td data-col="parrot" class="pos">＋</td><td data-col="ostrich" class="pos">＋</td></tr>
+          <tr><td>有羽毛</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="pos">＋</td><td data-col="parrot" class="pos">＋</td><td data-col="ostrich" class="pos">＋</td></tr>
+          <tr><td>会飞</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="pos">＋</td><td data-col="parrot" class="pos">＋</td><td data-col="ostrich" class="neg">－</td></tr>
+          <tr><td>有喙</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="pos">＋</td><td data-col="parrot" class="pos">＋</td><td data-col="ostrich" class="dev">±</td></tr>
+          <tr><td>瘦而短的腿</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="pos">＋</td><td data-col="parrot" class="neg">－</td><td data-col="ostrich" class="neg">－</td></tr>
+          <tr><td>小而重量轻</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="neg">－</td><td data-col="parrot" class="neg">－</td><td data-col="ostrich" class="neg">－</td></tr>
+          <tr><td>啾唧/唱歌</td><td data-col="robin" class="pos">＋</td><td data-col="sparrow" class="pos">＋</td><td data-col="dove" class="neg">－</td><td data-col="parrot" class="neg">－</td><td data-col="ostrich" class="unk">·</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.82rem;color:var(--ink-faint);margin-bottom:0">＋ 有 / － 无 / ± 偏离 / · 原文未提及。原著矩阵另有两翼两腿、短尾、红胸等行。<button type="button" class="cite" data-cite="robinAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dove" aria-label="查看出处"></button><button type="button" class="cite" data-cite="parrot" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ostrich" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>家族相似性与完形：原文怎么说</summary>
+    <p>维特根斯坦论"游戏"：棋盘游戏、纸牌游戏、球赛、奥林匹克比赛——"你不会看见它们全部都共同的东西，而只会看到相似性、相互关系和它们的整个系列。"<button type="button" class="cite" data-cite="witt" aria-label="查看出处"></button></p>
+    <p>Rosch 与 Mervis 的定义："每个项目与一个或多个其他项目，有至少一个、也可能是几个共有的成分，但是没有、或者很少几个成分是为全部项目所共有的。"<button type="button" class="cite" data-cite="frDef" aria-label="查看出处"></button></p>
+    <p>属性列举实验：400 名美国心理学学生，每人 1 分半钟列出属性；再给属性"称重"——全员共有的属性得 20 分（如交通工具的"运输手段"），只有一个人提及的只得 1 分（如电梯的"安装在建筑物内"）。<button type="button" class="cite" data-cite="attrExp" aria-label="查看出处"></button><button type="button" class="cite" data-cite="attrWeight" aria-label="查看出处"></button></p>
+    <p>跨范畴对比：不同范畴的好样本之间属性交叉区最小；差样本、边缘样本之间的交叉区反而大得多——这是"边界模糊"的另一种说法。<button type="button" class="cite" data-cite="crossCat" aria-label="查看出处"></button></p>
+    <p>完形四律：邻近、相似、封闭、连续；越符合这些规律的组织"完整性（Prägnanz）"越高，圆、正方形、等边三角形就是好形状。<button type="button" class="cite" data-cite="gestalt" aria-label="查看出处"></button><button type="button" class="cite" data-cite="goodShape" aria-label="查看出处"></button></p>
+    <p>原型完形 = 功能部件以最佳比例组合：椅子的原型完形主要依靠腿儿、座位和靠背；鸟则看喙、腿、翅膀的比例是否适合生存功能。<button type="button" class="cite" data-cite="chairParts" aria-label="查看出处"></button></p>
+    <p>农舍实验（Schmid 1993）：先整体感知，再（可选地）分解属性；12 个被试中 10 人否定了那座"太大"的房子是农舍。平房宜用简化图示，农舍的图示则需要丰富细节。<button type="button" class="cite" data-cite="holistic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="farmhouse" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bungalow" aria-label="查看出处"></button></p>
+    <p>对照面是"正统观"：范畴由必要和充分条件的有限集合来定义（如有两翼两腿、有羽毛、下蛋才是鸟）——它解释不了好样本与差样本。<button type="button" class="cite" data-cite="classical" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">到这里，原型范畴的四块拼图齐了：原型、典型性等级、模糊边界、内部结构。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 杯子实验</button>
+    <button class="btn" data-jump="s6">下一场：语境依赖 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>语境依赖：原型会搬家</h2>
+  </div>
+  <p class="point">"猎人叫上他的狗"想到猎狗，"比赛追兔子"想到灰狗——<span class="hl">语境一换，原型就换人，整个成员结构跟着重组</span>。<button type="button" class="cite" data-cite="dogSent" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">点一张句子卡，看它唤起的原型狗</p>
+    <div class="btn-row" id="dogCards"></div>
+    <p class="feedback" id="dogFb">四句话说的都是 dog，想到的却不是同一种狗。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 200" role="img" aria-label="从情境到文化模型的概念链条">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="20" y="60" width="150" height="80" rx="12"/>
+        <path d="M180 100 L232 100"/>
+        <rect x="240" y="60" width="150" height="80" rx="12"/>
+        <path d="M400 100 L452 100"/>
+        <rect x="460" y="60" width="150" height="80" rx="12"/>
+        <path d="M620 100 L640 100"/>
+        <rect x="640" y="60" width="110" height="80" rx="12"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="95" y="88" font-size="15" font-weight="700">情境</text>
+        <text x="95" y="110" font-size="11" fill="var(--ink-soft)">真实世界里物体的互动</text>
+        <text x="315" y="88" font-size="15" font-weight="700">语境</text>
+        <text x="315" y="110" font-size="11" fill="var(--ink-soft)">范畴互动的认知表征</text>
+        <text x="535" y="88" font-size="15" font-weight="700">认知模型</text>
+        <text x="535" y="110" font-size="11" fill="var(--ink-soft)">个体储存的语境总和</text>
+        <text x="695" y="88" font-size="15" font-weight="700">文化模型</text>
+        <text x="695" y="110" font-size="11" fill="var(--ink-soft)">一个社团所共有</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="380" y="185">例：男孩用桶和铲子建沙城堡（原著图 1.13 演绘）</text>
+      </g>
+    </svg>
+    <figcaption>四个术语的链条（示意）<button type="button" class="cite" data-cite="situation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="context" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogModel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cultModel" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>语境怎么改变范畴：两条路径</summary>
+    <p>第一，语境改变与范畴有关的属性的"分量"：吠、四条腿、摇尾巴这些属性在打猎语境里退居二线，"拾回猎物""指出猎物位置"变得重要；赛狗语境里"腿长、跑得快、有耐力"成为关键。第二，语境能强调原本不凸显的属性，甚至引入新属性。<button type="button" class="cite" data-cite="ctxAttr" aria-label="查看出处"></button></p>
+    <p>沙城堡例句："男孩正在用他的桶和铲子建一座沙城堡"——情境是男孩、沙城堡、桶、铲子四样东西的互动；语境是"正在建一座沙城堡"这个认知表征。光靠这句话，塑料桶就成了"桶"的最典型成员，孩子的铲子成了"铲子"的最典型成员。<button type="button" class="cite" data-cite="sandcastle" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bucket" aria-label="查看出处"></button></p>
+    <p>认知模型的三个性子：基本上不可穷尽、相互连成网络、无处不在——连"中性语境"的实验也调用模型（When she looked out of the window she saw a ...）。<button type="button" class="cite" data-cite="modelProps" aria-label="查看出处"></button></p>
+    <p>非语境化的典型性等级里，德国狼狗才是原型狗，灰狗、塞特猎狗、小卷毛狗只是"稍微没那么原型"，哈巴狗偏边缘——可见语境依赖的范畴结构可以和非语境结构差得很远。<button type="button" class="cite" data-cite="dogRank" aria-label="查看出处"></button></p>
+  </details>
+
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 内部结构</button>
+    <button class="btn" data-jump="s7">下一场：文化模型 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>文化模型与朴素模型</h2>
+  </div>
+  <p class="point">英法早餐、中日书桌、尼日利亚和美国学生心里的"食物"排名——<span class="hl">原型是一个社团共有的文化模型画出来的</span>。<button type="button" class="cite" data-cite="breakfast" aria-label="查看出处"></button><button type="button" class="cite" data-cite="desk" aria-label="查看出处"></button><button type="button" class="cite" data-cite="foodExp" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看（McCloskey 实验）：飞机在恒定高度匀速飞行，途中落下一颗大金属球，忽略空气阻力。球落地时在哪里？</p>
+    <div class="btn-row" id="mcqOpts">
+      <button class="btn" data-opt="a">抛出点的正下方</button>
+      <button class="btn" data-opt="b">一条斜线的末端</button>
+      <button class="btn" data-opt="c">抛物线，落在落地瞬间飞机正下方</button>
+      <button class="btn" data-opt="d">垂直下落，落在飞机后方</button>
+    </div>
+    <div class="reveal" id="mcqRev" hidden>
+      <p><strong>答案是 c。</strong>球保持与飞机相同的水平速度继续前进，同时获得垂直加速度，所以走抛物线，落点是落地瞬间飞机的正下方。<button type="button" class="cite" data-cite="mccloskey2" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">McCloskey 的实验里，<strong>只有不到 40% 的被试</strong>作出了科学上正确的回答——多数人心里装着一个"朴素模型"，不管它在科学上对不对，只要功能预测有效就能活下去。<button type="button" class="cite" data-cite="mccloskey" aria-label="查看出处"></button><button type="button" class="cite" data-cite="naive" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">恒温器的两种"民间理论"（Kempton）</p>
+    <p style="margin:.2em 0"><strong>反馈论</strong>（技术上正确）：感应温度，开/关取暖炉以保持恒温。<strong>阀门论</strong>（错了但好用）：调得越高，热量流量越大——按它操作，屋里温度也确实听话。<button type="button" class="cite" data-cite="kempton" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>三组文化模型实例</summary>
+    <p><strong>早餐</strong>：法国 PETIT DEJEUNER 很简单——一大碗咖啡加羊角面包，送到床边或去咖啡馆，不含在房费里；英国 ENGLISH BREAKFAST 则是谷类牛奶、茶或咖啡加橙汁、吐司黄油果酱、咸肉鸡蛋烘豆香肠土豆，在早餐厅用，含在房费里。差异背后是两种"一日各餐"文化模型：法国模型中早餐次要，英国模型则是头尾两餐丰盛、午餐微不足道。<button type="button" class="cite" data-cite="breakfast" aria-label="查看出处"></button><button type="button" class="cite" data-cite="breakfast2" aria-label="查看出处"></button></p>
+    <p><strong>书桌</strong>：在欧洲传统里桌子是站着或坐椅子用的；在席地而坐的传统书写文化模型里，榻式矮桌才是桌子范畴的原型，欧式桌子反而是边缘成员——这个模型也正在被现代办公标准改变。<button type="button" class="cite" data-cite="desk" aria-label="查看出处"></button></p>
+    <p><strong>食物</strong>：75 名尼日利亚学生与 74 名美国学生给 48 种食物排典型性。尼日利亚前列：豆类、大米、山药、鸡、肉、木薯粉、通心粉；美国前列：鸡、鱼、面包、比萨饼、沙拉、肉。同样说英语，BUS 在美国让人想到"黄色、学校、孩子"，在英国则是"红色、公共交通、工作"。<button type="button" class="cite" data-cite="foodRank" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bus" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">认知模型强调心理性与个体差异，文化模型强调社团共有——它们是一枚硬币的两面。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 语境依赖</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>1. "含糊"和"模糊"差在哪儿？各举一个书里的例子。</h3>
+    <details><summary>看答案</summary>
+      <p>含糊是<strong>实体本身</strong>边界不清（膝盖、雾、山谷）；模糊是<strong>认知范畴</strong>边界不清（Black 椅子博物馆里的"椅子 vs 非椅子"）。山则是双重案例。<button type="button" class="cite" data-cite="vagueFuzzy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="black" aria-label="查看出处"></button><button type="button" class="cite" data-cite="quine" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>2. 鸵鸟和知更鸟共有的属性很少，为什么我们还是管它叫鸟？</h3>
+    <details><summary>看答案</summary>
+      <p>一是仍有几条关键共有属性（下蛋、羽毛、两腿、某种喙）；二是家族相似性——"长脖子"把它和红鹳、白鹳连起来，"装饰性羽毛"把它和孔雀连起来。范畴靠交叉相似性网络维系，不要求全员共有属性。<button type="button" class="cite" data-cite="ostrich" aria-label="查看出处"></button><button type="button" class="cite" data-cite="frDef" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>3. 语境通过哪两种方式改变范畴的内部结构？</h3>
+    <details><summary>看答案</summary>
+      <p>一是改变已有属性的分量（打猎语境里"吠、摇尾巴"退位，"拾回猎物"上台）；二是强调原本不凸显的属性，甚至引入新属性（赛狗语境里的"腿长、跑得快"）。<button type="button" class="cite" data-cite="ctxAttr" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>范畴化三过程：刺激选择 → 鉴别和分类 → 命名。<button type="button" class="cite" data-cite="barsalou" aria-label="查看出处"></button></li>
+    <li>原型范畴四要点：有原型作参照点；成员按典型性分等级；边界模糊；结构随语境与文化模型而变。<button type="button" class="cite" data-cite="summary11" aria-label="查看出处"></button></li>
+    <li>正统观（必要充分条件）解释不了好样本/差样本；本书立场：原型是心理表征、认知参照点。<button type="button" class="cite" data-cite="classical" aria-label="查看出处"></button><button type="button" class="cite" data-cite="protoDef" aria-label="查看出处"></button></li>
+    <li>含糊 vs 模糊：实体边界不清 vs 范畴边界不清；Quine 的"山"两者兼有。<button type="button" class="cite" data-cite="vagueFuzzy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="quine" aria-label="查看出处"></button></li>
+    <li>家族相似性：没有全员共有属性，只有交叉相似（维特根斯坦的"游戏"）。<button type="button" class="cite" data-cite="frDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="witt" aria-label="查看出处"></button></li>
+    <li>Labov 的贡献：把宽度、高度、形状、语境、质料、柄都当作维度，用"一致性"量化模糊边界。<button type="button" class="cite" data-cite="labovDim" aria-label="查看出处"></button><button type="button" class="cite" data-cite="labovDef" aria-label="查看出处"></button></li>
+    <li>术语四件套：情境（真实世界互动）→ 语境（认知表征）→ 认知模型（个体语境总和）→ 文化模型（社团共有）。<button type="button" class="cite" data-cite="situation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="context" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogModel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cultModel" aria-label="查看出处"></button></li>
+    <li>朴素模型可以"错误但好用"（阀门论、落球直觉）；专家模型才追求科学精确。<button type="button" class="cite" data-cite="kempton" aria-label="查看出处"></button><button type="button" class="cite" data-cite="mccloskey" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>范畴化 / 认知范畴</strong>：把连续经验变成范畴的心理过程及其结果。<button type="button" class="cite" data-cite="catDef" aria-label="查看出处"></button></li>
+    <li><strong>基本颜色词语</strong>：源自母语的单个词、不限于极窄用途、为大多数使用者熟悉的颜色词。<button type="button" class="cite" data-cite="basicTermDef" aria-label="查看出处"></button></li>
+    <li><strong>焦点色</strong>：被多数说话人认定为"最好样本"的颜色区域；跨语言高度一致。<button type="button" class="cite" data-cite="focusCross" aria-label="查看出处"></button></li>
+    <li><strong>原型</strong>：本书立场——一种心理表征、认知参照点（不只是"最好样本"）。<button type="button" class="cite" data-cite="protoDef" aria-label="查看出处"></button></li>
+    <li><strong>典型性</strong>：成员作为好样本/差样本的等级（Rosch 用 7 点刻度）。<button type="button" class="cite" data-cite="rosch75" aria-label="查看出处"></button></li>
+    <li><strong>一致性</strong>：Labov 衡量模糊程度的指标——所有被试都叫它 X 则为 100%。<button type="button" class="cite" data-cite="labovDef" aria-label="查看出处"></button></li>
+    <li><strong>家族相似性</strong>：项目间交叉共享属性，但无（或极少）全员共有属性。<button type="button" class="cite" data-cite="frDef" aria-label="查看出处"></button></li>
+    <li><strong>完形 / 好完形</strong>：符合邻近、相似、封闭、连续四律的整体感知；Prägnanz 越高越易范畴化。<button type="button" class="cite" data-cite="gestalt" aria-label="查看出处"></button></li>
+    <li><strong>心理词库</strong>：储存于心智中的心理概念总和。<button type="button" class="cite" data-cite="mentalLex" aria-label="查看出处"></button></li>
+    <li><strong>朴素模型 vs 专家模型</strong>：民间经验模型（可错但好用）与科学精确模型。<button type="button" class="cite" data-cite="naive" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第一章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 2026-10-24</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  colors7m:{page:"1.1",quote:"我们又是怎么能把英语中可找到的主要颜色词分派给我们显然可以识别的7500000种颜色（见Brown和Lenneberg1954:457）的？",zh:"人眼可辨的颜色约 750 万种，连续统没有天然分界"},
+  vagueEnt:{page:"1.1",quote:"膝盖到哪一点结束，而大腿又从哪儿开始？……谁又能令人信服地确定毛毛细雨变成雨、雨变成雪的那个点",zh:"膝盖、山谷、雾这类实体本身边界含糊"},
+  scale:{page:"1.1",quote:"一些物理特性如长度、宽度、高度、温度、颜色……都是在两端之间不间断地扩展延伸的等级",zh:"长度、温度、颜色等物理特性是连续等级"},
+  catDef:{page:"1.1",quote:"这种分类的心理过程现在一般被称为范畴化(categorization)，范畴化的结果则是认知范畴(cognitive categories)",zh:"范畴化是把连续经验变成范畴的心理过程"},
+  bk98:{page:"1.1",quote:"他们调查了 98 种语言，其中对 20 种进行口语测试，对其他语言的调查则以语法和其他书面材料为基础",zh:"Berlin & Kay 调查 98 种语言，20 种做了口语测试"},
+  munsell:{page:"1.1",quote:"由 329 片色卡组成，其中 320 片代表 40 种不同的颜色……每一种色度分为 8 个层次的亮度。剩下的 9 片色卡是白色、黑色和 7 个层次的灰色",zh:"Munsell 色卡 329 片：40 色度 × 8 亮度 + 白黑与 7 级灰"},
+  bkQ:{page:"1.1",quote:"1. 所有在任何条件下都称之为 x 的色卡。2. x 最好的，最典型的样本。",zh:"Berlin & Kay 问两个问题：全部叫 x 的卡；x 最好的样本"},
+  focusRed:{page:"1.1",quote:"当操英语的人被问到红色的最好样本时，他们一致指向标为红色的较低，也就是较暗区域中的色卡（图 1.1 中的 f3 和 g3）",zh:"英语使用者的红色焦点在较暗区域（图 1.1 的 f3、g3）"},
+  focusYellow:{page:"1.1",quote:"至于黄色，被试一致选择了在黄色标签之下的第二等亮度的色卡（图 1.1 中的 b9）",zh:"黄色焦点在第二亮度级（b9）"},
+  focusCross:{page:"1.1",quote:"不但说同一种语言的人拥有同样的焦点色，而且说不同语言的人拥有的焦点色也非常一致",zh:"焦点色跨语言高度一致"},
+  basicTerms:{page:"1.1",quote:"Dugum Dani 这种 Dani 人说的语言只有两个基本颜色词语(Heider 1971)……相对于说英语的人可以有的11个基本颜色词语",zh:"Dani 语有 2 个基本颜色词，英语有 11 个"},
+  basicTermDef:{page:"1.1",quote:"这些词语应该只包含源自母语的一个词……不应该只用于非常有限的一类事物……应该很容易地出现在脑子里并为所有或至少是某种语言的大多数使用者所熟悉",zh:"基本颜色词语的三条标准"},
+  kids24:{page:"1.1",quote:"在24个孩子中，分别有22、21、11个从颜色排列中选取那种焦点色卡（黄、橙、绿）",zh:"24 个三岁孩子自选色卡：选黄色焦点 22 人、橙色 21 人、绿色 11 人"},
+  daniLearn:{page:"1.1",quote:"Dani人对非焦点色的每种颜色给出了9.9个不正确的答案，而对焦点颜色，同样的错误平均数只有7.3",zh:"Dani 人学色名：非焦点色平均错 9.9 次，焦点色 7.3 次"},
+  daniDays:{page:"1.1",quote:"这个平均持续3天半的整个学习过程被保留了详细的记录",zh:"学习过程平均持续 3 天半"},
+  recog:{page:"1.1",quote:"随机给Dani人和操英语的被试看8张焦点颜色卡片和8张非焦点颜色卡片，每张看5秒钟",zh:"识别实验：8 张焦点卡 + 8 张非焦点卡，每张看 5 秒"},
+  roschSummary:{page:"1.1",quote:"在颜色命名任务中，焦点色的名称能被更快地给出并为孩子更早习得",zh:"焦点色命名更快、习得更早"},
+  barsalou:{page:"1.1",quote:"（1）刺激的选择（2）鉴别和分类（3）命名(Barsalou 1987: 102)",zh:"范畴化包含的三个认知过程"},
+  goodShape:{page:"1.1",quote:"这些好形状，也就是正方形、圆形、等边三角形，被认为在感知上是显著的",zh:"正方形、圆形、等边三角形是感知上显著的好形状"},
+  shapeExp:{page:"1.1",quote:"不管原型出现在自然范畴中（第1组）还是在其他某一组……它总是能和一个名称对上号并被判定为最好样本",zh:"形状实验中，原型总能配上名称并被评为最好样本"},
+  rosch75:{page:"1.1",quote:"合格性等级划分为7点刻度(1点表示很好的样本，7点表示极差的样本)。一共试验了10个范畴",zh:"Rosch 1975：7 点刻度评定典型性，测了 10 个范畴"},
+  top8:{page:"1.1",quote:"图 1.3 前 3 名——鸟：知更鸟、麻雀、松鸦；水果：橙子、苹果、香蕉；交通工具：汽车、货车、卡车；家具：椅子、沙发、长沙发；武器：枪、手枪、左轮",zh:"图 1.3 各范畴最好样本前 3 名"},
+  priming:{page:"1.1",quote:"预供信息的被试对于已经列入好样本（词和图画）项目的同一配对作出的反应更快。相反，当涉及差样本时，信息预供却降低了反应的速度",zh:"先给范畴名：好样本匹配变快，差样本反而变慢"},
+  primingEx:{page:"1.1",quote:"当被试面对企鹅、橄榄、独轮车这些……配对时，带有范畴名称的信息预供反而会迷惑实验中的被试",zh:"企鹅、橄榄、独轮车这类边缘成员会被预供信息干扰"},
+  summary11:{page:"1.1",quote:"在原型和边界之间，认知范畴包含的成员，在典型性上可以从好样本到差样本的范围内划分等级",zh:"成员身份是典型性等级，不是有无"},
+  protoDef:{page:"1.2",quote:"应该把原型定义为一种心理表征，定义为某种认知参照点",zh:"本书立场：原型是心理表征、认知参照点"},
+  black:{page:"1.1",quote:"在一系列质地差别极不明显椅子的长列一端，可能是一把 Chippendale 牌椅子，而另一端，是一小块没有明显特征的木头(Black 1949: 32)",zh:"Black 的椅子博物馆：从奇彭代尔椅到一块普通木头"},
+  quine:{page:"1.1",quote:"在包括了多少地带以后才能算是毋庸置疑的山脉这一点上是含糊的，而在高到多大程度的高地可算作是山的范围这一点上也是模糊的(Quine 1960: 126)",zh:"Quine：山既是含糊实体，其范畴边界也是模糊的"},
+  vagueFuzzy:{page:"1.1",quote:"把术语含糊实体和含糊性限用于第一类(膝盖、雾、山谷)而把术语模糊范畴边界和模糊限用于第二类，也就是 CHAIR 等等的范畴边界",zh:"术语区分：实体含糊 vs 范畴边界模糊"},
+  labovDef:{page:"1.1",quote:"如果在一个实验中所有的被试都把一个对象叫做椅子，那么一致性是100%……如果一半的被试对某一对象是否仍然是椅子有所怀疑……一致性的值就下降到50%(Labov 1973: 353)",zh:"Labov 用命名一致性衡量边界模糊程度"},
+  cupCurve:{page:"1.1",quote:"对于1号容器的一致性是100%，但向5号容器递减",zh:"1 号容器 100% 被叫作杯子，向后递减"},
+  cupBowl:{page:"1.1",quote:"随着对4号和5号容器的杯子一致性值的急剧下降，用碗命名的一致性慢慢开始上升",zh:"4、5 号杯子一致性急剧下降，碗开始上升"},
+  cupFood:{page:"1.1",quote:"在食物语境中，3号容器对大多数被试来说就不再是杯子了……有一半的被试把它叫做碗，对于4号容器，这种向碗的转变甚至更为引人注目",zh:"食物语境里 3 号约一半被试叫它碗，4 号转变更明显"},
+  cupCoffee:{page:"1.1",quote:"杯子这个词的使用在咖啡语境中为被试所扩大而在食物语境中被缩小",zh:"咖啡语境扩大杯子的使用，食物语境缩小"},
+  labovDim:{page:"1.2",quote:"Labov可以依靠宽度、高度/深度和形状……把中性、咖啡、食物和鲜花语境定义为语境这一维度上的值；把玻璃、瓷器定义为质料这一维度上的值",zh:"Labov 把宽度、高度、形状、语境、质料、柄都当作维度"},
+  ctxExp:{page:"1.1",quote:"要求被试想像如下三个场景中的一个场景：(a) 喝咖啡情境，(b) 对象盛有土豆泥的餐桌情境（食物语境），(c) 对象竖立在架子上，里边插着折下的花的场景",zh:"原著设置的三种想像场景"},
+  classical:{page:"1.2",quote:"范畴是由必要和充分条件的有限集合来定义的……一种生物只有有两只翅膀和两条腿、一个喙、有羽毛并下蛋，它才能是鸟",zh:"正统观：范畴由必要充分条件定义"},
+  robinAttrs:{page:"1.2",quote:"1.下蛋 2.有两翼与两腿 3.有喙 4.有羽毛 5.会飞 6.有瘦而短的腿 7.小而重量轻 8.有短尾 9.啾唧/唱歌 10.有红色的胸",zh:"知更鸟的 10 条属性清单（词典定义 + Hampton 1979 实验）"},
+  dove:{page:"1.2",quote:"鸽子不啾唧或者唱歌，并在个头与体重上超过其他三种鸟。要不然，就共有所列属性了",zh:"鸽子不唱歌、体型体重超过知更鸟等三种"},
+  ostrich:{page:"1.2",quote:"在我们短短的清单中，它所共有的属性只有下蛋，有两腿和羽毛，它还有某种喙",zh:"鸵鸟只共享 4 条属性，且不会飞"},
+  parrot:{page:"1.2",quote:"鹦鹉有相当粗壮的腿，大多数鹦鹉比知更鸟大得多且有相当长的尾巴。并且鹦鹉当然不啾唧或唱歌",zh:"鹦鹉在腿、体型、尾、叫声上偏离知更鸟"},
+  witt:{page:"1.2",quote:"你不会看见它们全部都共同的东西，而只会看到相似性，看到相互关系和它们的整个系列(维特根斯坦1958: 66以次)",zh:"维特根斯坦：游戏之间没有全体共有特征，只有交叉相似"},
+  frDef:{page:"1.2",quote:"每个项目与一个或多个其他项目，有至少一个，也可能是几个共有的成分，但是没有，或者很少几个成分是为全部项目所共有的(Rosch 和 Mervis 1975: 575)",zh:"家族相似性定义"},
+  attrExp:{page:"1.2",quote:"他们给每个被试（400 个美国心理学学生）6 张在顶端写有实验项目的纸。被试用 1 分半钟时间写下所有他们能想到的属性",zh:"属性列举实验：400 名被试，每人 1 分半钟"},
+  attrWeight:{page:"1.2",quote:"如果一个属性为全部范畴成员所共有，那么给它20分的最高分（如在交通工具实例中的运输手段这一属性）……一个属性只为一个范畴成员列出时只得1分",zh:"属性称重：全员共有得 20 分，仅一人列举得 1 分"},
+  crossCat:{page:"1.2",quote:"不同范畴的好样本之间的属性交叉区最小，而不同范畴的差样本或边缘样本之间的属性交叉区却大得多",zh:"好样本与其他范畴原型差异最大；边缘成员反而更像邻居"},
+  gestalt:{page:"1.2",quote:"邻近原则：个体成分之间的距离小将被感知为它们互相有某种联系。相似原则……封闭原则……连续原则",zh:"完形四律：邻近、相似、封闭、连续"},
+  chairParts:{page:"1.2",quote:"一把椅子的功能相关部分是腿儿、座位和靠背……椅子的原型完形主要依靠这三个功能部分以最佳功能比例的存在",zh:"椅子的原型完形靠腿、座、靠背以最佳比例组合"},
+  holistic:{page:"1.2",quote:"第一步，将物体作为整体的感知（所谓的整体感知）；(可选的)第二步，对感知到的整体进行某种分解，把它分解成独特的特性或属性",zh:"先整体感知，后（可选）分解属性"},
+  farmhouse:{page:"1.2",quote:"12个被试中有10个不把图(c)叫做农舍，而只有2个把它叫做农舍",zh:"农舍实验：12 人中 10 人否定了图 (c)"},
+  bungalow:{page:"1.2",quote:"平房简化为功能组成部分……相反，农舍的图示则包含了丰富的细节，而这对于易于识别来说好像是必需的",zh:"平房宜简化图示，农舍需要丰富细节"},
+  dogSent:{page:"1.3",quote:"在例(1)的打猎语境中，最有可能的狗也许是某种猎狗；在例(2)的赛狗语境中，首先进入我们脑子里的当然是一只灰狗……你可能会分别想像到卷毛小狗和德国狼狗",zh:"四句话唤起四种原型狗：猎狗、灰狗、小卷毛狗、德国狼狗"},
+  dogRank:{page:"1.3",quote:"ALSATIAN（德国狼狗）在等级上列为原型狗，GREYHOUND（灰狗）、SETTER（塞特猎狗）、POODLE（小卷毛狗）只是稍微没那么称得上原型……PEKINESE（哈巴狗）可能是较边缘的狗",zh:"非语境化等级里，德国狼狗才是原型狗"},
+  ctxAttr:{page:"1.3",quote:"语境改变与某种范畴有关的属性的重要性……语境可以强调本不凸显的属性，甚至引入在非语境化的属性列举实验中根本不会提及的新属性",zh:"语境改变属性分量，甚至引入新属性"},
+  situation:{page:"1.3",quote:"我们把情境(situation)这一术语定义为真实世界中物体的互动",zh:"情境 = 真实世界中物体的互动"},
+  context:{page:"1.3",quote:"语境：认知范畴（或者概念）之间相互作用的认知表征",zh:"语境 = 范畴互动的认知表征"},
+  cogModel:{page:"1.3",quote:"认知模型：个体对特定领域经验过并且储存起来的语境的总和",zh:"认知模型 = 个体储存的某领域语境总和"},
+  cultModel:{page:"1.3",quote:"文化模型：一种对认知模型的看法，强调这些认知模型主观间地为一个社会或一个社团的成员所共有",zh:"文化模型 = 一个社团共有的认知模型"},
+  sandcastle:{page:"1.3",quote:"The boy was building a sandcastle with his bucket and his spade.（这个男孩正在用他的桶和铲子建一座沙城堡）",zh:"沙城堡例句：情境是四样东西的互动，语境是它们的认知表征"},
+  bucket:{page:"1.3",quote:"把 PLASTIC BUCKET（塑料桶）选为 BUCKET（水桶）这一依赖语境的范畴的最典型成员，而把 CHILDREN'S SPADE（孩子的铲子）选为 SPADE（铲子）这一语境依赖范畴的最典型成员",zh:"沙城堡语境里，塑料桶是桶的最典型成员"},
+  modelProps:{page:"1.3",quote:"认知模型基本上是无限的……认知模型本身也不是孤立的认知实体，而是相互联系的……在每一次范畴化活动中，我们都或多或少有意识地提及一个或几个我们已经储存的认知模型",zh:"认知模型：不可穷尽、连成网络、无处不在"},
+  breakfast:{page:"1.3",quote:"法国的 PETIT DEJEUNER 相当简单，只有一大碗咖啡和羊角面包，而英国的 ENGLISH BREAKFAST 则包含各种各样的食品与饮料",zh:"法式早餐（咖啡+羊角面包）vs 英式早餐（种类繁多）"},
+  breakfast2:{page:"1.3",quote:"按照法国的 MEALS OF THE DAY 模型，早餐是次要的……英国关于这一点的文化模型的基础是丰盛的第一餐和最后一餐，而中饭或午餐则是相当微不足道的",zh:"差异源自两种一日各餐文化模型"},
+  desk:{page:"1.3",quote:"在这种传统的书写文化模型中，图1.17中物体(c)是桌子范畴的原型，而物体(a)和(b)将是相当边缘的范畴成员",zh:"传统中日书写文化里，榻式矮桌才是桌子原型"},
+  foodExp:{page:"1.3",quote:"访问了尼日利亚北部的 Maiduguri 大学的75个尼日利亚学生和 California 的 Santa Barbara、Massachusetts 的 Lexington 的两所美国大学的74名学生……48个项目的食物组成的清单",zh:"FOOD 实验：75 名尼日利亚学生 vs 74 名美国学生"},
+  foodRank:{page:"1.3",quote:"尼日利亚前列：豆类、大米、山药、鸡、肉、木薯粉、通心粉；美国前列：鸡、鱼、面包、比萨饼、沙拉、肉（图 1.18）",zh:"两国学生的 FOOD 典型性排名前列"},
+  bus:{page:"1.3",quote:"在美国，BUS（公共汽车）得出了黄色、学校和小孩/孩子这类属性，而在英国，红色、公共交通和工作这些属性则更凸显",zh:"BUS：美国联想到黄色校车，英国联想到红色公共交通"},
+  naive:{page:"1.3",quote:"狗摇尾巴表示我很快乐，而咆哮则意味着我很生气……对动物学家或生物学家来说，所有这些信条都是非常可疑的",zh:"朴素模型可以不科学，只要功能预测有效"},
+  mccloskey:{page:"1.3",quote:"因为，在 McCloskey 的实验中，只有不到40%的被试作出了在科学上正确的回答",zh:"McCloskey 实验：不到 40% 被试答对落点问题"},
+  mccloskey2:{page:"1.3",quote:"金属球将以抛物线降落并正好在飞机同一时间到达的下面的那个点上触及地面",zh:"科学答案：球走抛物线，落点是落地瞬间飞机正下方"},
+  kempton:{page:"1.3",quote:"反馈理论在技术上是正确的，而阀门理论却错了……即使阀门理论错了，它还是能让我们对一座房子里的温度控制作出正确的预测(Kempton 1987: 224)",zh:"Kempton：恒温器的反馈论（对）与阀门论（错但好用）"},
+  mentalLex:{page:"1.2",quote:"它们在一起组成所谓的心理词库",zh:"心理词库：储存于心智中的心理概念总和"},
+  kidLogic:{page:"1.1",quote:"这个实验背后的道理是，焦点色比其他颜色更易于吸引孩子的注意。事实上，其结果是孩子们选取焦点色卡的频率的确比选取非焦点色卡的频率高得多",zh:"焦点色更能吸引三岁孩子的注意"},
+  frTable:{page:"1.2",quote:"项目 1=AB、项目 2=BC、项目 3=CD、项目 4=DE（原著家族相似性分布表）",zh:"四个项目的属性分布：AB、BC、CD、DE"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第一章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：含糊 vs 模糊 ================= */
+(function(){
+  const data={膝盖:{a:"entity",t:"对——膝盖本身没有清晰的边界，属于含糊实体。"},
+              雾:{a:"entity",t:"对——雾的边界在现实里就是渐变的，属于含糊实体。"},
+              山:{a:"both",t:"两个都对——Quine 说山既是含糊实体，MOUNTAIN 范畴的边界也是模糊的。"},
+              椅子:{a:"fuzzy",t:"对——Black 博物馆里每件展品的边界都清清楚楚，模糊的是椅子与非椅子这条范畴界线。"}};
+  const box=$("#s1items"),fb=$("#s1fb");
+  let cur=null;
+  Object.keys(data).forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=k;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=k;
+      fb.textContent="你选了「"+k+"」。现在选一个类别。";
+    });
+    box.appendChild(b);
+  });
+  $$("#s1tags .btn").forEach(b=>b.addEventListener("click",()=>{
+    if(!cur){fb.textContent="先点一个项目，再选类别。";return;}
+    const ok=data[cur].a===b.dataset.tag;
+    fb.textContent=(ok?"✓ ":"✗ ")+data[cur].t;
+    fb.style.color=ok?"var(--green)":"var(--red)";
+  }));
+})();
+
+/* ================= 场景二：色卡板 + 猜人数 ================= */
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const box=$("#s2grid");
+  const svg=document.createElementNS(NS,"svg");
+  svg.setAttribute("viewBox","0 0 480 300");
+  svg.setAttribute("style","width:100%;height:auto;display:block");
+  const hues=[0,28,52,110,175,215,265,300];
+  const huesName=["红","橙","黄","黄绿","绿","青","蓝","紫"];
+  const ROWS=8;
+  const fb=$("#s2fb");
+  let done=false;
+  const zoneRed=[],zoneYel=[];
+  for(let r=0;r<ROWS;r++){
+    for(let c=0;c<hues.length;c++){
+      const x=64+c*50,y=26+(ROWS-1-r)*32;
+      const light=18+r*9;
+      const rect=document.createElementNS(NS,"rect");
+      rect.setAttribute("x",x);rect.setAttribute("y",y);
+      rect.setAttribute("width",46);rect.setAttribute("height",28);
+      rect.setAttribute("rx",3);
+      rect.setAttribute("fill","hsl("+hues[c]+","+(c%2?62:70)+"%,"+light+"%)");
+      rect.setAttribute("stroke","var(--line)");
+      rect.setAttribute("stroke-width","1");
+      rect.style.cursor="pointer";
+      if(c<=1&&r<=2) zoneRed.push(rect);
+      if(c===2&&r===6) zoneYel.push(rect);
+      rect.addEventListener("click",()=>{
+        if(done) return;done=true;
+        zoneRed.forEach(g=>{g.setAttribute("stroke","var(--red)");g.setAttribute("stroke-width","3");});
+        zoneYel.forEach(g=>{g.setAttribute("stroke","var(--red)");g.setAttribute("stroke-width","3");});
+        const inZone=zoneRed.includes(rect);
+        fb.innerHTML=inZone
+          ? "你和多数英语使用者判断一致——最好的红在较暗区域（原著图 1.1 的 f3、g3）；黄色焦点在第二等亮度（b9）。"
+          : "你点的是「"+huesName[c]+"」区第 "+(ROWS-r)+" 层。原著里多数英语使用者把红色焦点放在较暗区域（f3、g3），黄色焦点在第二等亮度（b9）。";
+      });
+      svg.appendChild(rect);
+    }
+  }
+  const g=document.createElementNS(NS,"g");
+  g.setAttribute("font-size","11");g.setAttribute("fill","var(--ink-soft)");
+  g.setAttribute("font-family","-apple-system,'PingFang SC',sans-serif");
+  const labels=[["亮",18,16],["↑ 亮度",6,150],["色度 →",300,292],["红",80,292],["黄",180,292],["蓝",330,292]];
+  labels.forEach(([t,x,y])=>{const e=document.createElementNS(NS,"text");e.setAttribute("x",x);e.setAttribute("y",y);e.textContent=t;g.appendChild(e);});
+  svg.appendChild(g);
+  box.appendChild(svg);
+
+  const slider=$("#s2guess"),out=$("#s2out");
+  slider.addEventListener("input",()=>{out.textContent=slider.value;});
+  $("#s2reveal").addEventListener("click",()=>{$("#s2rev").hidden=false;});
+})();
+
+/* ================= 场景三：最好样本 ================= */
+(function(){
+  const groups=[
+    {q:"鸟",opts:["知更鸟","麻雀","企鹅","孔雀"],ok:"知更鸟",top:"鸟：知更鸟 → 麻雀 → 松鸦"},
+    {q:"水果",opts:["橙子","苹果","香蕉","橄榄"],ok:"橙子",top:"水果：橙子 → 苹果 → 香蕉"},
+    {q:"武器",opts:["枪","手枪","左轮","刀"],ok:"枪",top:"武器：枪 → 手枪 → 左轮"}
+  ];
+  const box=$("#s3quiz");
+  groups.forEach(gr=>{
+    const wrap=document.createElement("div");
+    wrap.className="card";wrap.style.margin="10px 0";
+    const p=document.createElement("p");
+    p.style.margin="0 0 6px";p.innerHTML="<strong>"+gr.q+"</strong>范畴的最好样本是？";
+    wrap.appendChild(p);
+    const row=document.createElement("div");row.className="btn-row";
+    const rev=document.createElement("div");rev.className="reveal";rev.hidden=true;
+    gr.opts.forEach(o=>{
+      const b=document.createElement("button");
+      b.className="btn";b.textContent=o;
+      b.addEventListener("click",()=>{
+        $$("button",row).forEach(x=>x.disabled=true);
+        const ok=o===gr.ok;
+        b.classList.add("sel");
+        rev.hidden=false;rev.classList.toggle("wrong",!ok);
+        rev.innerHTML=ok
+          ? "<p style='margin:0'>答对了。原著图 1.3 的前三名："+gr.top+"。</p>"
+          : "<p style='margin:0'>你选的是「"+o+"」。原著图 1.3 的前三名："+gr.top+"。</p>";
+      });
+      row.appendChild(b);
+    });
+    wrap.appendChild(row);wrap.appendChild(rev);box.appendChild(wrap);
+  });
+})();
+
+/* ================= 场景四：杯子实验台 ================= */
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const WIDTHS=[70,96,124,152,182];
+  const neutral={1:"全部被试一致把它叫作杯子（一致性 100%）。",
+                 2:"仍然压倒多数地被称为杯子——宽度/高度比例和 1 号很接近。",
+                 3:"中性语境下多数被试仍叫它杯子。",
+                 4:"被评定为杯子的边缘实例——宽度/高度比例明显偏离理想值。",
+                 5:"杯子一致性急剧下降，碗的命名曲线开始上升。"};
+  const food={3:"在食物语境里，3 号对大多数被试不再是杯子——约一半被试把它叫作碗。",
+              4:"食物语境中，4 号向碗的转变比 3 号更引人注目。"};
+  const ctxNote={neutral:"",coffee:"原著说明：咖啡语境中杯子的使用被扩大；原文未逐条给出每个容器的一致性数值。",
+                 food:"",flower:"原著引入插花场景考察语境效应，未逐条给出命名结果；语境会整体缩小杯子的使用。"};
+  let step=1,ctx="neutral";
+  const stepsBox=$("#cupSteps");
+  for(let i=1;i<=5;i++){
+    const b=document.createElement("button");
+    b.className="chip"+(i===1?" sel":"");b.textContent=i+" 号";
+    b.dataset.step=i;
+    b.addEventListener("click",()=>{
+      step=i;$$(".chip",stepsBox).forEach(c=>c.classList.toggle("sel",c===b));
+      drawCup();$("#cupRev").hidden=true;
+    });
+    stepsBox.appendChild(b);
+  }
+  function drawCup(){
+    const w=WIDTHS[step-1],h=64,cx=150;
+    const top=cx-w/2,bot=cx+w/2;
+    $("#cupBody").setAttribute("d",
+      "M"+top+" 46 L"+(top+3)+" 110 Q"+cx+" 122 "+(bot-3)+" 110 L"+bot+" 46 Z");
+    $("#cupHandle").setAttribute("d",
+      "M"+bot+" 58 Q"+(bot+26)+" 66 "+(bot+22)+" 84 Q"+(bot+16)+" 98 "+bot+" 100");
+  }
+  drawCup();
+  const ctxs=[["neutral","中性语境"],["coffee","咖啡语境"],["food","食物语境"],["flower","鲜花语境"]];
+  const ctxBox=$("#cupCtx");
+  ctxs.forEach(([v,label])=>{
+    const b=document.createElement("button");
+    b.className="chip"+(v==="neutral"?" sel":"");b.textContent=label;b.dataset.ctx=v;
+    b.addEventListener("click",()=>{
+      ctx=v;$$(".chip",ctxBox).forEach(c=>c.classList.toggle("sel",c===b));
+      $("#cupRev").hidden=true;
+    });
+    ctxBox.appendChild(b);
+  });
+  const names=["杯子","碗","茶缸","花瓶"];
+  const nameBox=$("#cupNames");
+  names.forEach(n=>{
+    const b=document.createElement("button");
+    b.className="btn";b.textContent=n;
+    b.addEventListener("click",()=>{b.dataset.pick=n;});
+    nameBox.appendChild(b);
+  });
+  $("#cupReveal").addEventListener("click",()=>{
+    const rev=$("#cupRev");
+    let html="";
+    if(ctx==="neutral") html="<p style='margin:0 0 6px'><strong>"+step+" 号容器（中性语境）：</strong>"+neutral[step]+"</p>";
+    else if(ctx==="food"&&food[step]) html="<p style='margin:0 0 6px'><strong>"+step+" 号容器（食物语境）：</strong>"+food[step]+"</p>";
+    else if(ctx==="coffee") html="<p style='margin:0 0 6px'><strong>咖啡语境：</strong>"+ctxNote.coffee+"</p>";
+    else if(ctx==="flower") html="<p style='margin:0 0 6px'><strong>鲜花语境：</strong>"+ctxNote.flower+"</p>";
+    else html="<p style='margin:0 0 6px'><strong>食物语境下的 "+step+" 号：</strong>原著只说明食物语境整体上缩小了杯子的使用，未逐条给出该容器的结果。</p>";
+    if(ctx==="neutral"||ctx==="food"){
+      html+="<p style='margin:0;font-size:.88rem;color:var(--ink-soft)'>模糊边界不是向非杯子的过渡，而是杯子、碗、茶缸、花瓶之间的边缘地带。</p>";
+    }
+    rev.innerHTML=html;rev.hidden=false;
+  });
+})();
+
+/* ================= 场景五：家族相似性网络 ================= */
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const svg=$("#frSvg");
+  const nodes=[{x:90,y:70,attrs:"AB"},{x:280,y:70,attrs:"BC"},{x:470,y:70,attrs:"CD"},{x:660,y:70,attrs:"DE"}];
+  const share=[null,"B","C","D"];
+  const g=document.createElementNS(NS,"g");
+  g.setAttribute("filter","url(#rough2)");
+  g.setAttribute("fill","none");g.setAttribute("stroke","var(--ink)");
+  g.setAttribute("stroke-width","2");g.setAttribute("stroke-linecap","round");
+  for(let i=0;i<3;i++){
+    const l=document.createElementNS(NS,"path");
+    l.setAttribute("d","M"+(nodes[i].x+56)+" 70 L"+(nodes[i+1].x-56)+" 70");
+    g.appendChild(l);
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("x",(nodes[i].x+nodes[i+1].x)/2);t.setAttribute("y",58);
+    t.setAttribute("text-anchor","middle");t.setAttribute("font-size","14");
+    t.setAttribute("fill","var(--red)");t.setAttribute("stroke","none");
+    t.textContent="共有 "+share[i+1];
+    g.appendChild(t);
+  }
+  svg.appendChild(g);
+  const fb=$("#frFb");
+  nodes.forEach((n,i)=>{
+    const box=document.createElementNS(NS,"g");
+    box.style.cursor="pointer";
+    const r=document.createElementNS(NS,"rect");
+    r.setAttribute("x",n.x-52);r.setAttribute("y",n.y-28);
+    r.setAttribute("width",104);r.setAttribute("height",56);r.setAttribute("rx",10);
+    r.setAttribute("fill","var(--card)");r.setAttribute("stroke","var(--ink)");r.setAttribute("stroke-width","2.2");
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("x",n.x);t.setAttribute("y",n.y+7);
+    t.setAttribute("text-anchor","middle");t.setAttribute("font-size","20");
+    t.setAttribute("font-weight","700");t.setAttribute("fill","var(--ink)");
+    t.textContent="项目 "+(i+1)+"："+n.attrs;
+    box.appendChild(r);box.appendChild(t);
+    box.addEventListener("click",()=>{
+      const prev=share[i],next=share[i+1];
+      let msg="项目 "+(i+1)+"（"+n.attrs+"）：";
+      if(prev) msg+="与项目 "+i+" 共有 "+prev+"；";
+      if(next) msg+="与项目 "+(i+2)+" 共有 "+next+"；";
+      msg+="四个项目没有任何一个属性是全员共有的。";
+      fb.textContent=msg;
+      $$("rect",svg).forEach((rr,k)=>{rr.setAttribute("stroke-width",k===i?"4":"2.2");rr.setAttribute("stroke",k===i?"var(--red)":"var(--ink)");});
+    });
+    svg.appendChild(box);
+  });
+  const cap=document.createElementNS(NS,"text");
+  cap.setAttribute("x",380);cap.setAttribute("y",160);
+  cap.setAttribute("text-anchor","middle");cap.setAttribute("font-size","13");
+  cap.setAttribute("fill","var(--ink-soft)");
+  cap.textContent="AB → BC → CD → DE：相邻的才相交，全体没有交集";
+  svg.appendChild(cap);
+})();
+
+/* 鸟矩阵：点列头高亮 */
+(function(){
+  $$("#birdTable th[data-col]").forEach(th=>{
+    th.style.cursor="pointer";
+    th.addEventListener("click",()=>{
+      const col=th.dataset.col;
+      const on=!th.classList.contains("sel");
+      $$("#birdTable th[data-col]").forEach(h=>h.classList.remove("sel"));
+      $$("#birdTable td").forEach(td=>td.parentElement.classList.remove("hlcol"));
+      if(on){
+        th.classList.add("sel");
+        $$('#birdTable td[data-col="'+col+'"]').forEach(td=>td.parentElement.classList.add("hlcol"));
+      }
+    });
+  });
+})();
+
+/* ================= 场景六：四句狗 ================= */
+(function(){
+  const cards=[
+    {s:"猎人拿起枪，离开小屋并叫上他的狗。",d:"猎狗——打猎语境里，拾回猎物、指出猎物位置的属性变得重要。"},
+    {s:"比赛一开始，狗就开始追兔子。",d:"灰狗——赛狗语境里，腿长、跑得快、有耐力成为关键属性。"},
+    {s:"她把狗带到美容院给它打理卷毛。",d:"小卷毛狗——美容语境几乎排除了其他所有狗。"},
+    {s:"警察们带着狗排成一列面对暴徒。",d:"德国狼狗——警戒语境唤起的原型狗。"}
+  ];
+  const box=$("#dogCards"),fb=$("#dogFb");
+  cards.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=c.s;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      fb.textContent="你脑中出现的是："+c.d+"（非语境化等级里，德国狼狗才是原型狗。）";
+    });
+    box.appendChild(b);
+  });
+})();
+
+/* ================= 场景七：落球选择题 ================= */
+(function(){
+  $$("#mcqOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#mcqOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#mcqRev").hidden=false;
+    $("#mcqRev").classList.toggle("wrong",b.dataset.opt!=="c");
+  }));
+})();
+</script>
+</body>
+</html>

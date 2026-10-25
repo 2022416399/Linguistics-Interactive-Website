@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主体与背景 · 《认知语言学导论》第四章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第四章做成单文件交互网页：七场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:520px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+.sent-card{font-size:.95rem}
+.sent-card .subj{background:var(--hl);font-weight:800;padding:0 .25em;border-radius:3px}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center;white-space:nowrap}
+thead th{background:var(--hl);font-weight:700}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.drag-ball{cursor:grab;touch-action:none}
+.drag-ball:active{cursor:grabbing}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+    <path id="profPath" d="M240 58 C215 59 199 76 190 103 C184 118 186 130 192 138 L199 145 L191 150 L197 155 L190 161 L200 174 C209 186 211 202 205 218 L201 300 L36 300 L40 208 C47 138 72 78 122 60 C152 49 205 49 240 58 Z"/>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">主体与背景 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第四章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">主体与背景</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第四章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>看世界时，我们总先把对象从背景里"拎"出来——这个凸显原则从花瓶/人脸错觉出发，一路管到介词的空间意义、小句的主语选择、词类的分工，乃至说话人与言语事件的关系。<span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">这是全章七场实验共同指向的结论；每场实验讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="第四章结构图：凸显原则分出三条支流，汇入认知语法">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="18" y="85" width="150" height="80" rx="12"/>
+        <path d="M168 110 C220 95 240 95 290 105"/>
+        <path d="M168 125 C220 125 240 125 290 125"/>
+        <path d="M168 140 C220 155 240 155 290 145"/>
+        <rect x="292" y="72" width="180" height="42" rx="10"/>
+        <rect x="292" y="104" width="180" height="42" rx="10"/>
+        <rect x="292" y="136" width="180" height="42" rx="10"/>
+        <path d="M472 93 C520 80 545 80 588 92"/>
+        <path d="M472 125 L588 125"/>
+        <path d="M472 157 C520 170 545 170 588 158"/>
+        <rect x="590" y="70" width="152" height="110" rx="12"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="93" y="112" font-size="16" font-weight="700">凸显原则</text>
+        <text x="93" y="134" font-size="12" fill="var(--ink-soft)">主体从背景中凸现</text>
+        <text x="93" y="152" font-size="11" fill="var(--ink-faint)">Rubin · 一个世纪前</text>
+        <text x="382" y="91" font-size="13">介词的空间意义</text>
+        <text x="382" y="108" font-size="10" fill="var(--ink-soft)">射体 / 界标 / 路径 · 中心图式</text>
+        <text x="382" y="123" font-size="13">小句句型</text>
+        <text x="382" y="140" font-size="10" fill="var(--ink-soft)">句法主体 / 句法背景 · 动作链</text>
+        <text x="382" y="155" font-size="13">认知处理与言语事件</text>
+        <text x="382" y="172" font-size="10" fill="var(--ink-soft)">认知域 / 侧显 / 扫描 / 视角</text>
+        <text x="666" y="108" font-size="15" font-weight="700">Langacker</text>
+        <text x="666" y="130" font-size="15" font-weight="700">认知语法</text>
+        <text x="666" y="152" font-size="11" fill="var(--ink-soft)">图四·二四：六项应用</text>
+      </g>
+    </svg>
+    <figcaption>全章地图：凸显原则的几处用武之地（示意）</figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">花瓶错觉</button>
+    <button class="chip" data-jump="s2">over 分析台</button>
+    <button class="chip" data-jump="s3">out 与 up</button>
+    <button class="chip" data-jump="s4">主语即主体</button>
+    <button class="chip" data-jump="s5">动作链</button>
+    <button class="chip" data-jump="s6">场景梯度</button>
+    <button class="chip" data-jump="s7">词类与扫描</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>花瓶错觉：一次只能看见一种</h2>
+  </div>
+  <p class="point">人脸/花瓶幻觉图里，<span class="hl">你一次只能看见一种：两张人脸，或一个花瓶</span>——这就是"主体/背景分离"，这个术语由丹麦心理学家 Rubin 在近一个世纪前引入心理学。<button type="button" class="cite" data-cite="rubin" aria-label="查看出处"></button><button type="button" class="cite" data-cite="vase" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">点按钮，在两种看法之间切换（重绘）<span class="tag" data-label="示意">示意</span></p>
+    <svg id="fgSvg" viewBox="0 0 480 300" role="img" aria-label="人脸/花瓶双关图：两张深色侧脸夹一只白色花瓶">
+      <g id="fgFaces" fill="var(--ink)" stroke="var(--red)" stroke-width="3" filter="url(#rough)">
+        <use href="#profPath"/>
+        <use href="#profPath" transform="translate(480,0) scale(-1,1)"/>
+      </g>
+      <path id="fgVase" filter="url(#rough)" fill="var(--card)" stroke="var(--red)" stroke-width="4" stroke-linejoin="round"
+        d="M240 62 C217 64 202 80 194 105 C188 120 190 131 196 139 L203 146 L195 151 L201 156 L194 162 L204 175 C213 187 215 203 209 219 L205 262 C215 272 228 276 240 276 C252 276 265 272 275 262 L271 219 C265 203 267 187 276 175 C286 162 296 156 289 151 L281 146 L288 139 C294 131 296 120 290 105 C282 80 267 64 240 62 Z"/>
+    </svg>
+    <div class="btn-row" id="fgModes" role="group" aria-label="选择看法">
+      <button class="btn" data-mode="faces">看作两张人脸</button>
+      <button class="btn" data-mode="vase">看作一个花瓶</button>
+    </div>
+    <p class="feedback" id="fgFb">先点一种看法。</p>
+    <figcaption>图 4.1 人脸/花瓶幻觉（根据 Rubin 重绘）<button type="button" class="cite" data-cite="vase" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：一本书摆在桌上，完形心理学家说哪个会被选作主体？<button type="button" class="cite" data-cite="bookTable" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="bkOpts">
+      <button class="btn" data-pick="book">书</button>
+      <button class="btn" data-pick="table">桌子</button>
+      <button class="btn" data-pick="same">一样凸显</button>
+    </div>
+    <div class="reveal" id="bkRev" hidden>
+      <p><strong>书。</strong>图 4.2 的场景里书是显著实体，桌子被给予背景地位——除非作特殊而相当不自然的努力把桌子看作主体。<button type="button" class="cite" data-cite="bookTable" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">书的轮廓封闭、形体连续，一小块深色加均衡比例惹眼，而且它比桌子更容易移动（拿得起来）。<button type="button" class="cite" data-cite="gestaltBook" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>原文细节：主体的属性，与气球、房子</summary>
+    <p>主体的属性：应有形状或外形（背景无定形）；共有的轮廓线似乎属于主体；有结构与连贯性（背景无结构、无形状、均匀）；位于背景前面；主体被感知得更突出，更容易被识别和记忆，并与意义、情感及审美价值有关。<button type="button" class="cite" data-cite="figProps" aria-label="查看出处"></button></p>
+    <p>移动的物体更显著：看图 4.3 时我们会毫不犹豫地把气球看作主体、房子看作背景，因为气球被认为是正在移动着的物体。<button type="button" class="cite" data-cite="balloon" aria-label="查看出处"></button></p>
+    <p>落到语言上：the book is on the table（书在桌上）、the balloon is above the house（气球在房子上方）、The balloon is flying over the house（气球正飞越房子上空）——主体/背景关系常由介词表达。<button type="button" class="cite" data-cite="prepRel" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">主体与背景的关系可以看作位置关系，通常由介词表达——这正是认知语言学家看上介词的原因。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：over 分析台 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>over 分析台：射体、界标与路径</h2>
+  </div>
+  <p class="point">"主体/背景"进入关系结构后有了新名字：<span class="hl">移动的是射体，定位参照是界标</span>。over 的中心图式就是射体从界标上方一端沿路径移向另一端。<button type="button" class="cite" data-cite="trLm" aria-label="查看出处"></button><button type="button" class="cite" data-cite="overCenter" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">实验台：拖动小球（射体），看它相对房子（界标）的位置对应哪种描述<span class="tag" data-label="示意">示意</span></p>
+    <svg id="ovSvg" viewBox="0 0 720 260" role="img" aria-label="over 分析台：小球沿弧线路径越过房子">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 222 L680 222" stroke-width="1.5" opacity=".55"/>
+        <path d="M300 222 L300 128 L360 84 L420 128 L420 222 Z"/>
+        <rect x="316" y="142" width="26" height="26"/>
+        <path d="M346 222 L346 190 L374 190 L374 222"/>
+      </g>
+      <path d="M110 172 Q360 26 610 172" fill="none" stroke="var(--blue)" stroke-width="2" stroke-dasharray="7 6" opacity=".8"/>
+      <g id="ovGA" style="display:none">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="330" cy="106" r="13" fill="var(--card)"/>
+          <path d="M322 96 L318 90 M338 96 L342 90"/>
+          <path d="M300 128 L330 106" stroke="var(--red)" stroke-width="2.5"/>
+        </g>
+        <text x="360" y="60" font-size="13" fill="var(--ink-soft)" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">变式 a：射体与界标相接触的位移动词</text>
+      </g>
+      <g id="ovGB" style="display:none">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2">
+          <circle cx="360" cy="72" r="30" fill="var(--hl)" opacity=".85"/>
+        </g>
+        <text x="360" y="34" font-size="13" fill="var(--ink-soft)" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">变式 b：大小相近、十分接近，实际上覆盖了界标</text>
+      </g>
+      <g id="ovGC" style="display:none">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+          <path d="M262 200 L438 118"/>
+          <path d="M290 186 L276 208 M322 168 L308 190 M354 150 L340 172 M386 132 L372 154 M418 114 L404 136"/>
+        </g>
+        <text x="360" y="60" font-size="13" fill="var(--ink-soft)" text-anchor="middle" font-family="-apple-system,'PingFang SC',sans-serif">变式 c：射体与界标融合——倾倒的篱笆</text>
+      </g>
+      <circle id="ovBall" class="drag-ball" cx="110" cy="172" r="13" fill="var(--red)" stroke="var(--ink)" stroke-width="2"/>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-soft)">
+        <text x="60" y="140">射体</text>
+        <text x="352" y="246">界标（房子）</text>
+        <text x="560" y="60">路径</text>
+      </g>
+    </svg>
+    <input type="range" id="ovSlider" min="0" max="100" value="0" aria-label="射体沿路径的位置">
+    <p class="feedback" id="ovRead"></p>
+    <div class="btn-row" id="ovElab" role="group" aria-label="选择细化变式">
+      <button class="chip" data-e="none">中心图式</button>
+      <button class="chip" data-e="a">细化 a · 接触</button>
+      <button class="chip" data-e="b">细化 b · 覆盖</button>
+      <button class="chip" data-e="c">细化 c · 融合</button>
+    </div>
+    <p class="feedback" id="ovElabDesc" style="min-height:3.2em"></p>
+    <figcaption>over 的中心图式与细化（据原著图 4.5、4.8 演绘）<button type="button" class="cite" data-cite="overElab" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：The plane flew over（飞机从上空飞过）——这句话的界标是什么？<button type="button" class="cite" data-cite="planeOver" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="plOpts">
+      <button class="btn" data-pick="plane">飞机自己</button>
+      <button class="btn" data-pick="ground">地面</button>
+      <button class="btn" data-pick="speaker">说话人/感知者的位置</button>
+    </div>
+    <div class="reveal" id="plRev" hidden>
+      <p style="margin-bottom:0"><strong>界标可以不确定。</strong>这里把说话者或感知者的位置作为界标，所以 The plane flew over 与 The plane flew over me/us（飞机从我/我们上空飞过）语义相近。<button type="button" class="cite" data-cite="planeOver" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>术语的来历：意象图式与射体/界标</summary>
+    <p>over、under、up、down、in、out 等方位关系被描写为意象图式（image schema）——我们在与现实世界的身体互动中得到的简单而基本的认知结构，是我们对周围世界的方位感。<button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></p>
+    <p>射体（trajector）代表主体或任何关系结构中最凸显的成分（用粗线表示）；界标（landmark）指关系中的另一个实体，主要功用是作为定位的参照点。它们是更广泛的"主体/背景"概念的特殊表现。<button type="button" class="cite" data-cite="trLm" aria-label="查看出处"></button></p>
+    <p>三个中心图式共同的结构：一个射体，其运动沿着一个路径，而且被看作与之相关的是一个界标。<button type="button" class="cite" data-cite="threeParts" aria-label="查看出处"></button></p>
+    <p>细化（elaboration）：射体、路径、界标的变化只是限定了图式的一些部分，并未偏离其一般结构；这些变化都能从同一个射体/界标关系派生出来。<button type="button" class="cite" data-cite="elab" aria-label="查看出处"></button></p>
+    <p>原著出处：over 的分析是 Lakoff（1987）对 Brugman（1981）的总结；out 与 up 见于 Lindner（1982）。<button type="button" class="cite" data-cite="overCenter" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">over 能长出"飞越、接触、覆盖、融合"一大家子意义——靠的是细化，不是各不相关的多义。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 花瓶错觉</button>
+    <button class="btn" data-jump="s3">下一场：out 与 up →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>out 与 up：阶段、静态与隐喻</h2>
+  </div>
+  <p class="point">out 的中心图式分三个阶段：<span class="hl">射体先在界标（房间）里，再移到两者完全分离</span>；而动态介词也能表静态——"把画挂在烟囱上"其实是移动过程的最后阶段。<button type="button" class="cite" data-cite="outCenter" aria-label="查看出处"></button><button type="button" class="cite" data-cite="staticUse" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">阶段放映机：点阶段，看射体相对界标的位置<span class="tag" data-label="示意">示意</span></p>
+    <svg id="outSvg" viewBox="0 0 640 170" role="img" aria-label="out 三阶段：房间内、越界、完全分离；up：垂直路径">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linejoin="round">
+        <rect x="60" y="30" width="150" height="120" rx="6"/>
+        <path d="M300 150 L300 26" stroke-width="2.5"/>
+        <path d="M292 150 L308 150"/>
+      </g>
+      <circle id="outDot" cx="135" cy="90" r="12" fill="var(--red)" stroke="var(--ink)" stroke-width="2"/>
+      <circle id="upDot" cx="300" cy="118" r="11" fill="var(--green)" stroke="var(--ink)" stroke-width="2"/>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-soft)">
+        <text x="135" y="170" text-anchor="middle">out：界标 = 房间</text>
+        <text x="300" y="170" text-anchor="middle">up：界标只取垂直维度</text>
+        <text x="135" y="20" text-anchor="middle">阶段</text>
+        <text x="470" y="80" text-anchor="middle">The rocket went up：界标不确定</text>
+      </g>
+    </svg>
+    <div class="btn-row" id="outStages" role="group" aria-label="选择阶段">
+      <button class="chip" data-st="0">阶段 1</button>
+      <button class="chip" data-st="1">阶段 2</button>
+      <button class="chip" data-st="2">阶段 3</button>
+    </div>
+    <p class="feedback" id="outFb"></p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">动态介词表静态：点句子，看它对应图式的哪个阶段<button type="button" class="cite" data-cite="staticUse" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="staticCards" role="group" aria-label="选择例句"></div>
+    <p class="feedback" id="staticFb">三句话表面静止，认知上却各是某条路径的最后阶段。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">隐喻引申：点句子，看空间图式怎么被映射到抽象域<button type="button" class="cite" data-cite="powerOver" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="metaCards" role="group" aria-label="选择例句"></div>
+    <p class="feedback" id="metaFb">over 的权力义、颠覆义、恢复义，都能从空间图式找到来路。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：out、up 的中心图式与细化</summary>
+    <p>out 的第一阶段射体包括在界标所占空间之内，界标代表房间或其他不确定的物体；这一起始阶段大体与 in（在……里）对应。out 的特殊方面是射体由界标边界内的一个位置移到两者完全分离的位置，由图中射体的三个位置表示。<button type="button" class="cite" data-cite="outCenter" aria-label="查看出处"></button></p>
+    <p>up 的射体路径有垂直方向，界标仅就其垂直延伸而与之相关，所以图中只用垂直线表示；爬墙时不会想到它的厚度。这种抽象界标更难掌握，却使界标不确定的用法（The rocket went up）更容易想像。<button type="button" class="cite" data-cite="upCenter" aria-label="查看出处"></button></p>
+    <p>out 的细化主要与起始阶段有关——射体如何被（或不被）界标并入；起始阶段与最后阶段相对立，正是在此对立中 out 明示了自身含义。<button type="button" class="cite" data-cite="outElab" aria-label="查看出处"></button></p>
+    <p>表面静止的三个例句：Hang the painting over the chimney（把画挂在烟囱上）、She stays out（她留在外面）、She lived three floors up（她住在三层楼上）。<button type="button" class="cite" data-cite="staticUse" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">从空间到权力、从越墙到走出离婚——中心图式加隐喻引申，撑起 over 的多义网络。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← over 分析台</button>
+    <button class="btn" data-jump="s4">下一场：主语即主体 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>主语即主体：小句句型</h2>
+  </div>
+  <p class="point">Langacker 的认知语法：及物句里<span class="hl">主语对应主体，宾语对应背景，动词表示两者关系</span>。选谁作主语由说话者决定——就像决定把花瓶/人脸图看成哪一样。<button type="button" class="cite" data-cite="subjFig" aria-label="查看出处"></button><button type="button" class="cite" data-cite="resemble" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">点句子卡，看被选定的主语怎么改变评论对象</p>
+    <div class="btn-row" id="swapCards" role="group" aria-label="选择句子"></div>
+    <p class="feedback" id="swapFb">两句说的是同一种"像"的关系，被评论的恰好对调。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">角色原型配配对：先点句子，再点它主语的角色原型<button type="button" class="cite" data-cite="roleSubj" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="roleSents" role="group" aria-label="选择句子"></div>
+    <div class="btn-row" id="roleRoles" role="group" aria-label="选择角色原型">
+      <button class="btn" data-r="施事">施事</button>
+      <button class="btn" data-r="感事">感事</button>
+      <button class="btn" data-r="工具">工具</button>
+      <button class="btn" data-r="受事">受事</button>
+    </div>
+    <p class="feedback" id="roleFb">先点一句，再选角色。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：句法主体、句法背景与角色原型</summary>
+    <p>传统语法主张简单小句一般由三个关键成分组成：主语、动词性成分（或谓语）、补足语（如宾语或状语）。<button type="button" class="cite" data-cite="clauseDef" aria-label="查看出处"></button></p>
+    <p>为解释主语与补足语之间凸显程度的不同，本书使用句法主体（syntactic figure）和句法背景（syntactic ground）；Langacker 最喜欢的术语是"（小句）射体"和"（小句）界标"。<button type="button" class="cite" data-cite="synFig" aria-label="查看出处"></button></p>
+    <p>角色原型源自我们与世界互动的经验：施事——能使物体或其他人发生位移或身体活动；受事——受外部物理影响而产生状态变化或被移动；工具——施事与受事之间的媒介；感事——参与心理活动（包括情感活动）的人。<button type="button" class="cite" data-cite="roles" aria-label="查看出处"></button></p>
+    <p>角色原型不是离散范畴，而是渐变现象——用 Langacker 的话说，它们"不像艺术馆中所排列的一排塑像，而类似于群山的一些最高峰"。<button type="button" class="cite" data-cite="roleGrad" aria-label="查看出处"></button></p>
+    <p>四个角色都能出现在主语位置，但施事较之于其他角色原型更经常地被作为句法主体。<button type="button" class="cite" data-cite="roleSubj" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">主语不是句法标签，而是认知凸显的落脚点；这就是"句法主体"这个名字的来历。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← out 与 up</button>
+    <button class="btn" data-jump="s5">下一场：动作链 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>动作链：能量像台球一样传递</h2>
+  </div>
+  <p class="point">物理接触像打台球：<span class="hl">能量从动作链的"头"（施事）一路传到"尾"（受事）</span>。二成分结构里，施事、链头、句法主体三者重合；受事、链尾、句法背景一致。<button type="button" class="cite" data-cite="actionChain" aria-label="查看出处"></button><button type="button" class="cite" data-cite="agentHead" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">动作链图解：Floyd 用锤子打碎玻璃（双箭头 = 能量传递）<span class="tag" data-label="示意">示意</span></p>
+    <svg id="chainSvg" viewBox="0 0 720 190" role="img" aria-label="三成分动作链：Floyd、锤子、玻璃，能量从头传到尾">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round">
+        <path d="M116 90 L212 90" marker-end="none"/>
+        <path d="M212 90 L116 90"/>
+        <path d="M288 90 L384 90"/>
+        <path d="M384 90 L288 90"/>
+      </g>
+      <circle id="chainA" cx="90" cy="90" r="26" fill="var(--hl)" stroke="var(--red)" stroke-width="4.5"/>
+      <circle id="chainB" cx="250" cy="90" r="22" fill="var(--card)" stroke="var(--ink)" stroke-width="2.4"/>
+      <circle id="chainC" cx="420" cy="90" r="22" fill="var(--hl)" stroke="var(--ink)" stroke-width="2.4"/>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12.5" fill="var(--ink)" text-anchor="middle">
+        <text x="90" y="140">Floyd · 施事</text>
+        <text x="90" y="158" fill="var(--red)">链头 · 主语</text>
+        <text x="250" y="140">锤子 · 工具</text>
+        <text x="250" y="158" fill="var(--ink-soft)">能量中间阶段</text>
+        <text x="420" y="140">玻璃 · 受事</text>
+        <text x="420" y="158" fill="var(--ink-soft)">链尾 · 宾语</text>
+        <text x="164" y="80" fill="var(--ink-faint)">能量流</text>
+        <text x="336" y="80" fill="var(--ink-faint)">能量流</text>
+      </g>
+    </svg>
+    <figcaption>动作链与台球隐喻（据原著图 4.12、4.13 演绘）<button type="button" class="cite" data-cite="billiard" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">视角选择器：勾选"用语言表达出来的成分"，看句式怎么变<button type="button" class="cite" data-cite="upstream" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="exprBoxes" role="group" aria-label="选择要表达的成分">
+      <label class="chip"><input type="checkbox" id="cbA" checked> Floyd（施事）</label>
+      <label class="chip"><input type="checkbox" id="cbB" checked> 锤子（工具）</label>
+      <label class="chip"><input type="checkbox" id="cbC" checked> 玻璃（受事）</label>
+    </div>
+    <p class="feedback" id="exprOut" style="font-size:1.02rem;font-weight:700"></p>
+    <p class="feedback" id="exprNote"></p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：如果只表达锤子和玻璃，主语会是谁？<button type="button" class="cite" data-cite="upstream" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="hmOpts">
+      <button class="btn" data-pick="glass">玻璃（受事）</button>
+      <button class="btn" data-pick="hammer">锤子（工具）</button>
+      <button class="btn" data-pick="none">都不能当主语</button>
+    </div>
+    <div class="reveal" id="hmRev" hidden>
+      <p style="margin-bottom:0"><strong>锤子。</strong>主语的地位给了动作链中语言上表达出来的最远的"上游"成分；受事仍可在宾语位置出现（The hammer broke the glass）。<button type="button" class="cite" data-cite="upstream" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>原文细节：动作链、能量流与心理互动</summary>
+    <p>动作链有一个能量"头"（能量来源），能量向第二个实体传递，直到最后一个只消耗剩余能量而不发散能量的实体，叫做动作链的"尾"；Langacker 借河流隐喻用"上游""下游"指称。<button type="button" class="cite" data-cite="actionChain" aria-label="查看出处"></button></p>
+    <p>台球隐喻：白球被球棒击发后推向其他球，力量足够时部分初始能量传给第二个球，如此继续；剩余能量被桌边或网袋吸收。<button type="button" class="cite" data-cite="billiard" aria-label="查看出处"></button></p>
+    <p>三成分动作链：第一个成分是施事，最后一个是受事，介于两者之间的工具充当能量传递的中间阶段——Floyd broke the glass with a hammer。<button type="button" class="cite" data-cite="threeChain" aria-label="查看出处"></button></p>
+    <p>The glass broke 为什么不及物：玻璃是链尾，能量在此消耗，没有能量继续消散、没有再与其他物体建立物理接触，因此也无认知背景，不需要句法宾语。<button type="button" class="cite" data-cite="glassIntr" aria-label="查看出处"></button></p>
+    <p>Fillmore（1968: 33）首先观察到主语选择受控于"施事＞工具＞受事"层级。<button type="button" class="cite" data-cite="fillmore" aria-label="查看出处"></button></p>
+    <p>心理互动是另一类结构：第二个实体不被真正触及或改变（感事 / 被感），两者之间用"较弱"但有方向性的单线箭头表示，源头感事是主体，被感是背景——Susan loves bananas 也适用主体/背景解释。<button type="button" class="cite" data-cite="psych" aria-label="查看出处"></button><button type="button" class="cite" data-cite="psychArrow" aria-label="查看出处"></button></p>
+    <p>give 与 receive 都包含两个认知过程：一个动作链加一个心理过程；receive 的动作链预设了但未用词语表达，明说出来的是感事与被感之间的心理互动，所以主语是感事而非施事。<button type="button" class="cite" data-cite="giveReceive" aria-label="查看出处"></button><button type="button" class="cite" data-cite="recvStruct" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">能量流解释了主宾语：发起者最凸显所以当主语，链尾能量耗尽所以常不及物。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 主语即主体</button>
+    <button class="btn" data-jump="s6">下一场：场景梯度 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>场景的梯度：从状语到主语</h2>
+  </div>
+  <p class="point">舞台隐喻里参与者上台、场景搭台。<span class="hl">同一个地点，凸显程度可以差很多</span>：in Munich 在"人们喝啤酒"里是纯场景，在"Susan 住在慕尼黑"里却是必要背景。<button type="button" class="cite" data-cite="stage" aria-label="查看出处"></button><button type="button" class="cite" data-cite="munich" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">凸显阶梯：点一级，看场景如何一步步"升"进句子核心<span class="tag" data-label="示意">示意</span></p>
+    <div class="btn-row" id="ladderBtns" role="group" aria-label="选择凸显等级">
+      <button class="chip" data-l="0">状语</button>
+      <button class="chip" data-l="1">更凸显的状语</button>
+      <button class="chip" data-l="2">宾语</button>
+      <button class="chip" data-l="3">主语</button>
+    </div>
+    <svg id="ladderFig" viewBox="0 0 720 150" role="img" aria-label="场景凸显阶梯的四级图示">
+      <g id="lg0" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2">
+        <rect x="230" y="40" width="260" height="90" rx="10" stroke-dasharray="8 7" opacity=".7"/>
+        <circle cx="360" cy="85" r="15" fill="var(--red)" stroke="var(--ink)" stroke-width="2.2"/>
+      </g>
+      <g id="lg1" style="display:none" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2">
+        <rect x="230" y="40" width="260" height="90" rx="10" stroke-dasharray="8 7" opacity=".7"/>
+        <path d="M210 85 L510 85" stroke="var(--red)" stroke-width="2.6"/>
+        <path d="M210 78 L198 85 L210 92 M510 78 L522 85 L510 92" stroke="var(--red)" stroke-width="2.6"/>
+        <circle cx="360" cy="85" r="15" fill="var(--red)" stroke="var(--ink)" stroke-width="2.2"/>
+      </g>
+      <g id="lg2" style="display:none" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2">
+        <rect x="230" y="40" width="260" height="90" rx="10" stroke="var(--red)" stroke-width="4.5"/>
+        <circle cx="360" cy="85" r="15" fill="var(--hl)" stroke="var(--ink)" stroke-width="2.2"/>
+      </g>
+      <g id="lg3" style="display:none" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2">
+        <rect x="230" y="40" width="260" height="90" rx="10" stroke="var(--red)" stroke-width="4.5"/>
+        <circle cx="250" cy="60" r="5" fill="var(--ink-soft)"/>
+        <circle cx="300" cy="100" r="5" fill="var(--ink-soft)"/>
+        <circle cx="360" cy="60" r="5" fill="var(--ink-soft)"/>
+        <circle cx="430" cy="105" r="5" fill="var(--ink-soft)"/>
+        <circle cx="470" cy="65" r="5" fill="var(--ink-soft)"/>
+      </g>
+    </svg>
+    <p class="feedback" id="ladderSent" style="font-size:1.02rem;font-weight:700"></p>
+    <p class="feedback" id="ladderNote"></p>
+  </div>
+
+  <details>
+    <summary>原文细节：舞台隐喻、容器图式与 there 句</summary>
+    <p>舞台隐喻（Tesnière 1959）：后景像道具布景，凸显性留给演员；借此区分场景（全面而相对稳定）与参与者（较小而可变，参与物理接触或心理互动）。参与者由主语或宾语表示，场景由状语表示。<button type="button" class="cite" data-cite="stage" aria-label="查看出处"></button><button type="button" class="cite" data-cite="settingAdv" aria-label="查看出处"></button></p>
+    <p>in Munich 不是参与者，因为与受事不同，它并没有状态或位置的变化；Susan lives in Munich 的句法关系是"be in"图式或容器图式，而不是典型的"路径"图式。<button type="button" class="cite" data-cite="containerSchema" aria-label="查看出处"></button></p>
+    <p>场景凸显的连续升级：swam in the Channel（非强制性状语）→ swam across the Channel（across 给出两个边界）→ swam the Channel（介词丢了，海峡像"必须打败的敌人"）。<button type="button" class="cite" data-cite="swimGrad" aria-label="查看出处"></button></p>
+    <p>The garden is swarming with bees：花园是主语（场景），蜜蜂是背景——容器-内容关系里参与者和场景的凸显被倒了过来。<button type="button" class="cite" data-cite="garden" aria-label="查看出处"></button></p>
+    <p>there 句要谨慎：there 被解释为一种抽象的或不确定的场景并充当主语，但这与"主语应赋予最高凸显度"的直觉相反；本书结论是处理应谨慎一点。<button type="button" class="cite" data-cite="there" aria-label="查看出处"></button></p>
+    <p>主语图式定义：施事原型角色的实现；动作链中第一个被表达出的成分（能量流上游）；主动的参与者；句法主体。原型主语则是及物小句中的施事，其他主语都以某种方式偏离。<button type="button" class="cite" data-cite="schematic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="protoSubj" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">凸显是渐变现象：场景可以一路升级，直到登上主语位。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 动作链</button>
+    <button class="btn" data-jump="s7">下一场：词类与扫描 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>词类、扫描与言语事件</h2>
+  </div>
+  <p class="point">词类也是凸显的选择：<span class="hl">侧显整体区域得名词，侧显关系得动词或介词</span>；次第扫描出动词，总括扫描出介词。收尾处，舞台隐喻连说话人与言语事件也一并纳入。<button type="button" class="cite" data-cite="group" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scanning" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">侧显选择器：同一认知单位（三个个体加它们的关系），侧显哪一面？<button type="button" class="cite" data-cite="group" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="profBtns" role="group" aria-label="选择侧显对象">
+      <button class="chip" data-p="rel">侧显关系</button>
+      <button class="chip" data-p="region">侧显整体区域</button>
+    </div>
+    <p class="feedback" id="profOut"></p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">两种扫描：同一段"进房间"，动词与介词各扫一遍<button type="button" class="cite" data-cite="enterFig" aria-label="查看出处"></button></p>
+    <svg id="scanSvg" viewBox="0 0 640 150" role="img" aria-label="enter 与 into 的扫描对比：次第扫描逐格推进，总括扫描叠成一张总印象">
+      <g id="scGhosts" style="display:none" fill="var(--blue)" opacity=".35">
+        <circle cx="300" cy="85" r="9"/><circle cx="345" cy="85" r="9"/><circle cx="390" cy="85" r="9"/><circle cx="435" cy="85" r="9"/>
+      </g>
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2">
+        <rect x="460" y="35" width="130" height="100" rx="8"/>
+        <path d="M240 85 L460 85" stroke-dasharray="6 6" opacity=".6"/>
+      </g>
+      <circle id="scDot" cx="255" cy="85" r="11" fill="var(--red)" stroke="var(--ink)" stroke-width="2"/>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-soft)">
+        <text x="525" y="155" text-anchor="middle">界标（房间）</text>
+        <text x="255" y="120" text-anchor="middle">射体</text>
+      </g>
+    </svg>
+    <div class="btn-row" id="scanBtns" role="group" aria-label="选择扫描方式">
+      <button class="chip" data-s="seq">次第扫描 · enter（动词）</button>
+      <button class="chip" data-s="sum">总括扫描 · into / in（介词）</button>
+    </div>
+    <p class="feedback" id="scanFb">次第扫描像看电影，一格格推进；总括扫描像把整条路径叠进一张画面。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">视角配置：三句"醋在哪里"，台上台下关系各不同<button type="button" class="cite" data-cite="vinegar" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="viewCards" role="group" aria-label="选择句子"></div>
+    <p class="feedback" id="viewFb">标准配置不表达说者/听者与事件的关系；自我中心配置把它显性化。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：认知域、侧显、扫描与视角</summary>
+    <p>三个问题：认知单位如何建立；如何翻译成词汇范畴；词怎样组合成小句。认知域是"刻画语义单位的语境"，最基本的是空间和视觉、温度、味道、压力、痛感及颜色。<button type="button" class="cite" data-cite="threeQ" aria-label="查看出处"></button><button type="button" class="cite" data-cite="domains" aria-label="查看出处"></button></p>
+    <p>圆是主体/侧面（profile），认知域是背景/基底（base）；弧只用空间域不够，要靠"圆"这个更具体的基础域（primary domain）来定义——侧显分两级，每级都是主体/背景分离的实例。<button type="button" class="cite" data-cite="profileBase" aria-label="查看出处"></button><button type="button" class="cite" data-cite="arc" aria-label="查看出处"></button></p>
+    <p>身体在空间域里刻画，又针对颜色、温度等域具体化，构成矩阵；身体为手臂提供域，手臂为手、肘提供域——认知域层层嵌套。<button type="button" class="cite" data-cite="bodyMatrix" aria-label="查看出处"></button></p>
+    <p>同一认知单位可选名词也可选动词：指关节可由名词"指关节"表示，也可包含在动词"敲"里；"肘"在"弯曲手臂"中由动词"弯曲"表示——起支配作用的还是凸显原则。<button type="button" class="cite" data-cite="knuckle" aria-label="查看出处"></button></p>
+    <p>总括扫描：各方面被连续检验、数据不断合计，完成时作为一个整体"完形"进入头脑，适合名词性侧面；次第扫描只用于事件，一阶段合计一次，得到一串小事件，像看电影，主要由（限定）动词表示。<button type="button" class="cite" data-cite="summaryScan" aria-label="查看出处"></button><button type="button" class="cite" data-cite="seqScan" aria-label="查看出处"></button></p>
+    <p>希腊色拉情景：名词性侧面像台上演员，关系侧面像演员互动，Langacker 称之为互动网络；同一情景可说出三种句子（施事主语的长动作链、连续动作链、场景主语的容器句）。<button type="button" class="cite" data-cite="network" aria-label="查看出处"></button><button type="button" class="cite" data-cite="saladEx" aria-label="查看出处"></button></p>
+    <p>三原则：凸显、具体性、视角。标准视角配置不表达说者/听者与台上事件的关系（第三人称为常态）；自我中心配置用第一人称指说话人、第二人称指听话人，here、now、this 也表示说话人的"视角位置"。<button type="button" class="cite" data-cite="viewing" aria-label="查看出处"></button><button type="button" class="cite" data-cite="standardView" aria-label="查看出处"></button></p>
+    <p>视角配置还管言语行为：断言是典型台上话句；命令原型是说者在自我中心配置中向听话人发出指令（Please pass the vinegar）。Langacker（1991: 498）："应该认为背景基本上等同于有利位置，从这个位置上，说话人和听话人对由名词句或限定小句产生的内容进行概念化。"<button type="button" class="cite" data-cite="speechActs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="quoteGround" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">从一滴认知刺激到一句说出口的话，凸显原则一路在场——这就是图 4.24 的全景。<button type="button" class="cite" data-cite="fig424" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 场景梯度</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>为什么人脸/花瓶能反转，书和桌子却一般不能？</h3>
+    <details><summary>看答案</summary>
+      <p>人脸/花瓶是性质非常特殊的例子，它允许"主体/背景的反转"；日常场景多包含特别的主体/背景分离。书容易满足封闭性（轮廓封闭）和连续性（未被打断的整体），还有一小块深色加均衡比例惹眼、比桌子更容易移动，所以被选为主体。<button type="button" class="cite" data-cite="vase" aria-label="查看出处"></button><button type="button" class="cite" data-cite="gestaltBook" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>The glass broke 为什么是不及物的？</h3>
+    <details><summary>看答案</summary>
+      <p>玻璃是动作链的末尾，能量在这里被消耗；没有能量继续消散，没有再与其他物体建立物理接触，因此也无认知背景——不需要句法宾语。主语则给了被表达出来的最上游成分（这里是受事）。<button type="button" class="cite" data-cite="glassIntr" aria-label="查看出处"></button><button type="button" class="cite" data-cite="upstream" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>enter 和 into 说的是同一件事，差别在哪里？</h3>
+    <details><summary>看答案</summary>
+      <p>关系侧面相同（射体进入界标），但扫描方式不同：enter 是次第扫描，像电影一格格推进，适合时间关系，由（限定）动词表示；into 是总括扫描，把路径上各位置叠成一张总印象，由介词表示；in 连射体也是静止的，需要重复扫描确认。<button type="button" class="cite" data-cite="seqScan" aria-label="查看出处"></button><button type="button" class="cite" data-cite="summaryScan" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>主体/背景分离（Rubin，近一个世纪前引入）：一次只看见一种，可随意反转；主体有形状、结构连贯、在前、更突出、更易识别记忆。<button type="button" class="cite" data-cite="figProps" aria-label="查看出处"></button></li>
+    <li>射体/界标：主体/背景在关系结构中的特称；射体沿路径相对界标移动，界标是定位参照点，且可以不确定。<button type="button" class="cite" data-cite="trLm" aria-label="查看出处"></button></li>
+    <li>over 中心图式：射体从界标上方一端沿路径移到另一端；细化三变式：接触、覆盖、融合（倾倒的篱笆）。<button type="button" class="cite" data-cite="overElab" aria-label="查看出处"></button></li>
+    <li>out 三阶段：界标内（≈in）→ 越界 → 完全分离；up 的界标只取垂直维度，可不确定。<button type="button" class="cite" data-cite="outCenter" aria-label="查看出处"></button><button type="button" class="cite" data-cite="upCenter" aria-label="查看出处"></button></li>
+    <li>动态介词表静态：挂画、留在外面、住三层楼上，都是路径的最后阶段。<button type="button" class="cite" data-cite="staticUse" aria-label="查看出处"></button></li>
+    <li>隐喻引申：权利关系是空间关系；控制是向上运动/竖立状态；正常运作是直立状态；生活是旅行、生活中的问题是旅行中的障碍。<button type="button" class="cite" data-cite="powerOver" aria-label="查看出处"></button><button type="button" class="cite" data-cite="overThrow" aria-label="查看出处"></button><button type="button" class="cite" data-cite="divorce" aria-label="查看出处"></button></li>
+    <li>小句句型：主语=主体，宾语=背景，动词=关系；术语叫句法主体/句法背景（Langacker 偏爱"小句射体/界标"）。<button type="button" class="cite" data-cite="subjFig" aria-label="查看出处"></button></li>
+    <li>角色原型四件套（施事、受事、工具、感事）都是渐变现象；四者都能作主语，施事最常作句法主体。<button type="button" class="cite" data-cite="roleSubj" aria-label="查看出处"></button></li>
+    <li>动作链：头（能量来源）→ 尾（只消耗能量）；上游原则——主语给最上游的被表达成分；The glass broke 不及物的认知解释。<button type="button" class="cite" data-cite="upstream" aria-label="查看出处"></button></li>
+    <li>场景凸显梯度：非强制状语 → across 状貌 → 宾语（像要打败的敌人）→ 主语（花园例句，容器-内容反转）。<button type="button" class="cite" data-cite="swimGrad" aria-label="查看出处"></button></li>
+    <li>词类：侧显关系得动词/介词/形容词/副词，侧显区域得名词；同一单位可名可动（指关节/敲、肘/弯曲）。<button type="button" class="cite" data-cite="knuckle" aria-label="查看出处"></button></li>
+    <li>扫描：总括扫描（名词性侧面）vs 次第扫描（限定动词）；enter/into/in 是经典对照。<button type="button" class="cite" data-cite="enterFig" aria-label="查看出处"></button></li>
+    <li>视角配置：标准配置（第三人称常态）vs 自我中心配置（第一人称指说者、第二人称指听者）；背景≈有利位置。<button type="button" class="cite" data-cite="quoteGround" aria-label="查看出处"></button></li>
+    <li>图 4.24 六项应用：感知刺激（认知单位/认知域）、词类（侧面/单位）、介词（射体/界标）、互动（参与者/场景）、主宾语（句法主体/句法背景）、言语事件（台上/台下）。<button type="button" class="cite" data-cite="fig424" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>主体/背景分离</strong>（figure/ground segregation）：感知组织的基本原则，Rubin 引入心理学。<button type="button" class="cite" data-cite="rubin" aria-label="查看出处"></button></li>
+    <li><strong>射体 / 界标</strong>（trajector / landmark）：关系结构中最凸显的成分 / 另一实体（定位参照点）。<button type="button" class="cite" data-cite="trLm" aria-label="查看出处"></button></li>
+    <li><strong>意象图式</strong>（image schema）：身体互动中得到的简单基本认知结构。<button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></li>
+    <li><strong>中心图式 / 细化</strong>（central schema / elaboration）：多义网络的中心；限定图式部分而不离其结构的变式。<button type="button" class="cite" data-cite="elab" aria-label="查看出处"></button></li>
+    <li><strong>句法主体 / 句法背景</strong>（syntactic figure / ground）：主语/补足语的认知解读。<button type="button" class="cite" data-cite="synFig" aria-label="查看出处"></button></li>
+    <li><strong>角色原型</strong>：施事、受事、工具、感事（及被感）——渐变而非离散。<button type="button" class="cite" data-cite="roleGrad" aria-label="查看出处"></button></li>
+    <li><strong>动作链</strong>（action chain）：能量从头传到尾；上游/下游借河流隐喻。<button type="button" class="cite" data-cite="actionChain" aria-label="查看出处"></button></li>
+    <li><strong>认知域 / 基底 / 侧面 / 基础域</strong>（domain / base / profile / primary domain）：刻画语义单位的语境；侧面是主体，域是背景。<button type="button" class="cite" data-cite="profileBase" aria-label="查看出处"></button></li>
+    <li><strong>总括扫描 / 次第扫描</strong>（summary / sequential scanning）：整体完形式 vs 事件逐阶段式。<button type="button" class="cite" data-cite="scanning" aria-label="查看出处"></button></li>
+    <li><strong>视角配置</strong>（viewing arrangement）：说者/听者与台上事件的关系；标准 / 自我中心。<button type="button" class="cite" data-cite="viewing" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第四章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  rubin:{page:"4.1",quote:"这一术语首先由丹麦的心理学家Rubin在近一个世纪之前引入心理学，后来由完形心理学家将其融入更全面的感知组织框架中(参见1.2节)",zh:"主体/背景分离术语由丹麦心理学家 Rubin 近一个世纪前引入心理学"},
+  vase:{page:"4.1",quote:"你会注意到感知这个图的两种可能性（把它看作两张人脸或一个花瓶），但一次只能看见一种。而且，你可以在两种看图方式之间随意地转换，尤其是观看了较长时间之后。我们不能同时看见花瓶和人脸",zh:"人脸/花瓶图一次只能看见一种，且可在两种看法间随意转换"},
+  figProps:{page:"4.1",quote:"主体应有形状或外形，背景则无定形，而与主体共有的轮廓线也似乎是属于主体的。除了形状和轮廓之外，主体似乎还有其他的一些类物性，如结构及连贯性，而背景则是无结构、无形状、均匀的。主体似乎位于背景的前面，而背景则在其后或多或少地不断延伸。总之，主体被感知得比背景更突出，心理学研究表明主体更容易被识别和记忆，并与意义、情感及审美价值有关",zh:"主体的属性：有形状、轮廓归己、结构连贯、在前、更突出、更易识别记忆"},
+  bookTable:{page:"4.1",quote:"在图4.2所描画的场景中，会被选为主体的显著实体是书，而桌子则被给予背景的地位，除非作出特殊而相当不自然的努力来把桌子看作主体",zh:"书被选作主体，桌子被给予背景地位"},
+  gestaltBook:{page:"4.1",quote:"图4.2中的书容易满足封闭性（它的外部轮廓是封闭的）和连续性（它是个未被打断的整体）这样一些完形原则。此外，一块相对较小的黑色区域及均衡比例吸引了我们的注意力，并使书比桌子更可能成为主体的候选对象。最后，书看起来比桌子更容易移动（例如可以拿起来），这也决定了我们对主体的自然选择",zh:"书胜出的完形理由：封闭性、连续性、深色小块加均衡比例、更容易移动"},
+  balloon:{page:"4.1",quote:"看这幅图时，我们会毫不犹豫地把气球看作主体，而把房子看作背景；气球因为被认为是正在移动着的物体，它看起来比房子显著得多",zh:"气球是主体：移动的物体比静止的显著"},
+  prepRel:{page:"4.1",quote:"主体与背景之间的关系可以看作位置关系，通常由介词表达；或者从相反的角度来看，方位介词的意义可以理解为主体/背景的关系。正是第二种观点，即能用主体和背景来解释介词这样的语言形式，引起了认知语言学家的注意",zh:"介词意义可理解为主体/背景关系，这引起了认知语言学家的注意"},
+  imageSchema:{page:"4.1",quote:"在那儿，“over”(在……上)和“under”(在……下)，“up”(向上)和“down”(向下)，“in”(在……里)和“out”(在……外)这些方位关系被描写为意象图式(image schema)，即我们在与现实世界的身体互动中得到的简单而基本的认知结构，或者更确切地说，是我们对于周围世界的方位感",zh:"意象图式：身体互动中得到的简单基本认知结构"},
+  trLm:{page:"4.1",quote:"因为子弹或导弹的路径可以理解为弹道，主体可以叫做“射体”。背景的主要功用是作为定位的参照点，因此被叫做“界标”。这也就是说，“射体”和“界标”是更广泛运用的“主体”和“背景”概念的特殊表现。在认知语言学中，已经普遍使用“射体”和“界标”。因此射体(trajector)代表了主体或在任何关系结构中最凸显的成分(因此用粗线表示)，而界标(landmark)则指关系中的另一个实体",zh:"射体=最凸显成分，界标=另一实体（定位参照点）"},
+  overCenter:{page:"4.1",quote:"我们认为图 4.5 是“over”(在……上)的中心图式。它包含有射体：射体从界标上方的一端向另一端沿一定路径移动直至消失。如前所述，射体可能代表气球、飞机、鸟、风筝，而界标可能代表房子、墙、树、山头等等",zh:"over 中心图式：射体从界标上方一端沿路径移到另一端直至消失"},
+  planeOver:{page:"4.1",quote:"另外有时界标也可以不确定，如在“The plane flew over(飞机从上空飞过)”这个句子中。这里将说话者或感知者的位置作为界标，因此“The plane flew over(飞机从上空飞过)”与“The plane flew over me/us(飞机从我/我们上空飞过）”的语义是相近的",zh:"界标可不确定：The plane flew over 以说者/感知者位置为界标"},
+  outCenter:{page:"4.1",quote:"第一阶段射体是包括在界标所占空间之内的，界标所代表的是房间或其他并不确定的物体，表示“她从我们所在的空间内出去”。单独地来看，这一起始阶段大体与介词 in(在……里)所表示的状态相对应，因而可以看作是“in”(在……里)的意象图式。“out”(在……外)这一意象图式中特殊的方面是射体由包含于界标边界范围内的一个位置移动到一个两者完全分离的位置。这由图中射体的三个位置来表示",zh:"out 中心图式：界标内（≈in）→ 越界 → 完全分离，共三个阶段"},
+  upCenter:{page:"4.1",quote:"在这里，射体的路径有一个垂直的方向，而界标仅就其垂直的延伸而与之相关。这也就是为何界标在图中只用垂直线表示的原因，即使在特定的“The boy climbed up the wall(男孩爬上墙)”中也是如此(毕竟在你爬墙时不会想到它的厚度，只会关心其与垂直的距离有关的垂直维度)。这种较抽象的界标概念比其他种类界标更难掌握与接受，但这使得更容易想像界标是不被确定的，就像在句子The rocket went up(卫星飞上了天)中一样",zh:"up 中心图式：路径垂直，界标只取垂直维度，且可不确定"},
+  threeParts:{page:"4.1",quote:"这三个中心图式都表征了由三个成分及其相互关系构成的认知结构，即：……一个射体，其运动沿着一个路径，而且被看作与之相关的是一个界标",zh:"三个中心图式的共同结构：射体 + 路径 + 界标"},
+  elab:{page:"4.1",quote:"这些变化只是限定了图式的一些部分，而并未偏离其一般的结构，我们因而称之为细化(elaboration)",zh:"细化：限定图式部分而不偏离一般结构的变化"},
+  overElab:{page:"4.1",quote:"变式(a)描述的是一种一般的情况，应用于射体和界标相接触的位移动词。变式(b)表明射体可以拥有与界标相类似的大小、形状，并且射体与界标十分接近，因而实际上是覆盖了界标。最后，变式(c)解释了一种通常认为是边缘的状态——射体同界标的融合。倾倒的篱笆(或者至少是其上端)是沿着路径运动的射体，并且同时也是作为位移参照点的界标",zh:"over 三细化：接触、覆盖、融合（倾倒的篱笆身兼射体与界标）"},
+  outElab:{page:"4.1",quote:"它们的最主要共同点是变化主要与起始阶段有关，即与射体是如何被(或不被)界标并入有关。起始阶段与最后阶段相对立，因为正是在此对立中，“out”(在……外)明示了其自身含义；如果中间阶段并未添加任何重要信息的话",zh:"out 的细化集中在起始阶段：射体如何被界标并入"},
+  staticUse:{page:"4.1",quote:"先分析第一个例句，句中所描述的画的位置可以很容易地被理解为将画移动到其位置上的过程的最后阶段。这一点表示为图4.10。与之相似，句(2)和句(3)可被解释为“out”(在……外)、“up”(向上)图式中路径的最后阶段",zh:"动态介词表静态：挂画、留在外面、住三层楼上都是路径最后阶段"},
+  powerOver:{page:"4.1",quote:"以上两个句子中的“over（在……上）”都可以通过 + POWER RELATIONGS ARE SPATIAL RELATIONS+（+权利关系是空间关系+）这一隐喻来解释。这种隐喻关联由基于“上-下”意象图式的映射域决定，这个意象图式认为，向上的运动和有权利的地位为“上”，相反则为“向下”……这个隐喻也可以理解为 + CONTROL IS UPWARD MOVEMENT / UPRIGHT POSITION+（+控制是向上的运动/竖立的状态+），也正是这个映射很明白地解释了第一个例句中的“over”（在……上）",zh:"权利关系是空间关系；控制是向上的运动/竖立状态"},
+  overThrow:{page:"4.1",quote:"正如 Lakoff（1987：439）所说：“在事件发生之前，政府有控制能力（隐喻上的竖立），之后失去了控制能力（从隐喻上说，它已经倒下了）。”人们也许可以把这个隐喻的另一变体也算在内，这个隐喻变体大致可描写为：+PROPER FUNCTIONING IS UPRIGHT POSITION+（+正常运作是直立状态+）",zh:"颠覆政府=失去控制（倒下了）；变体隐喻：正常运作是直立状态"},
+  divorce:{page:"4.1",quote:"Harry still hasn't got over his divorce (Harry还没有从离婚中恢复过来) 可以被看作是 + LIFE IS A JOURNEY + ( + 生活是旅行 + ) 隐喻的体现，正如 3.1 节所表明的那样，该隐喻将 JOURNEY (旅行) 这一事件概念的结构投射到 LIFE (生活) 这一抽象概念上，这个投射过程由以路径图式等为基础的映射域所控制。旅行的一个特性是旅行者的行程有时会被一些如河流、峡谷及山脉之类的障碍阻挡，这时旅行隐喻的更特殊的变体，即 + PROBLEMS IN LIFE ARE OBSTACLES IN A JOURNEY + ( + 生活中的问题是旅行中的障碍 + ) 开始起作用。如果人生的逆境、挫折及问题等被看作是生命旅行中像大山之类的垂直障碍，人们就要越过它们以继续生活下去 ( 又如，也说 He is over the hill (他越过了小山 ) )。从对 “over” ( 在……上 ) 图式的补充角度来看 ( 图 4.5 )，这意味着 Harry 就是那个射体，他为了继续自己的路径 ( = 旅行 =他的生活)，必须越过界标(=障碍=离婚)",zh:"生活是旅行；问题是障碍；Harry 是射体，离婚是必须越过的界标"},
+  clauseDef:{page:"4.2",quote:"传统语法主张，简单小句一般应由三个关键成分组成：主语、动词性成分（或谓语）、补足语（如宾语或状语）",zh:"传统语法：小句三成分——主语、动词性成分、补足语"},
+  subjFig:{page:"4.2",quote:"这种语法认为：如果人们将这种主语—动词—补足语形式作为一种普遍的认知规则——主体/背景分离——的反映来理解，那么还是有可能为这些句法差异提供一个统一解释的。或者说得更确切一些：在一个简单的及物句中，主语对应于主体，宾语对应于背景，而动词则表示了主体和背景之间的关系",zh:"及物句中：主语=主体，宾语=背景，动词=两者关系"},
+  resemble:{page:"4.2",quote:"正如本章4.1节一开始所提到的人脸/花瓶幻觉一样，选择哪一个句子成分作为支配成分是由说话者决定的。从语言学角度来看，表示凸显办法就是把优先选定的成分放在主语位置；这就像决定把人脸/花瓶幻觉看作是两张脸还是一个花瓶一样。一旦决定用Susan(句(a))或句(b)中的my sister(我的姐姐)，在两种变例中被选定的主语是主体，它要比其他成分(背景)更凸显",zh:"选谁作主语由说话者决定；被选定的主语是主体，比背景更凸显"},
+  synFig:{page:"4.2",quote:"为了解释主语及补足语之间存在的凸显程度的不同，我们将分别使用句法主体(syntactic figure)和句法背景(syntactic ground)这些术语。(对于这种区分Langacker最喜欢的术语是“(小句)射体”和“(小句)界标”，但有时也会用一些其他术语。)",zh:"术语：句法主体/句法背景；Langacker 偏爱小句射体/界标"},
+  roles:{page:"4.2",quote:"角色原型源自于我们与世界互动的经验。从这些经验中我们知道我们能够使物体或者其他人发生位移或身体的活动（对原型施事（agent）的一种近似的定义）。相反我们也感受到了物体或生物受外部物理影响而产生状态变化或被移动到其他位置。这就是受事（patient）的定义，在这一广义的定义中也包括了 Langacker 的一个单独的“移动者”角色。工具（instrument）的角色原型则定义为施事及受事之间的媒介，感事（experiencer）角色则指参与心理活动（包括情感活动）的人",zh:"角色原型定义：施事（使位移/活动）、受事（被影响）、工具（媒介）、感事（心理活动者）"},
+  roleGrad:{page:"4.2",quote:"和一般的认知范畴一样，角色原型并不是离散的范畴，而是渐变的现象。正如 Langacker 所说，它们“不像艺术馆中所排列的一排塑像，而类似于群山的一些最高峰”（1991:285）",zh:"角色原型是渐变现象，如群山最高峰"},
+  roleSubj:{page:"4.2",quote:"正如对以下例句的分析所显示的一样，在一定情况下，所有角色原型都可在主语位置出现：……这四种句型都是可以接受的，这是很明显的，虽然如此，但施事较之于其他的角色原型来说，更经常地被作为句法主体",zh:"四种角色都能作主语（剥香蕉=施事、喜欢香蕉=感事、锤子打碎玻璃=工具、玻璃碎了=受事）；施事最常作句法主体"},
+  actionChain:{page:"4.2",quote:"动作链(action chain) 的特点是：有一个能量“头”，是一个作为能量来源的物体或生物，从这一源头开始，能量向第二个实体传递，这样继续下去直到最后一个只消耗剩余的能量而不发散能量的实体，这个成分被叫做动作链的“尾”。为了强调能量流概念，Langacker 利用了河流的隐喻，使用了“上游”（头）和“下游”（指动作链中的其他成分）这两个术语",zh:"动作链：能量从头（来源）传到尾（只消耗不散发）；上游/下游借河流隐喻"},
+  billiard:{page:"4.2",quote:"在被台球棒击发之后，白球被推向其他的球，如果这一物理接触有必需的力量，部分初始能量被传递到第二个球上，理论上第二个球会撞到第三个球，并将能量传递给它，如此继续下去。剩余的能量被软垫桌边冲吸收，或者，如果球击到了目标，就被台球桌的网袋所吸收",zh:"台球隐喻：能量在接触中逐球传递，剩余被桌边或网袋吸收"},
+  agentHead:{page:"4.2",quote:"当表达出一个施事和受事的时候(如在 Susan is peeling a banana(Susan 在剥香蕉)中)，施事对应于动作链的头，受事对应于尾，这似乎是相当明显的。既然施事是能量流的发起者，他或她在一定情景中就是最凸显的成分，因此被给予了句法主体即主语的地位。受事表现为句法背景或宾语。简言之，结果就是至少是在图 4.12(a)中的二成分结构中，施事、动作链的头、句法主体三者相重合；受事、动作链的尾、句法背景相一致",zh:"二成分结构：施事=链头=主语；受事=链尾=宾语"},
+  threeChain:{page:"4.2",quote:"现在当我们转到三成分动作链时(图 4.12(b))，也很容易把第一个成分看作施事，把最后一个成分看作受事。介于两者之间的表现工具的角色，充当能量传递的中间阶段。这一认知结构在语言上反映在句子 Floyd broke the glass with a hammer (Floyd 用锤子打碎了玻璃)中，施事被作为句法主体，之后是作为句法背景或宾语的受事以及工具(这里的认知顺序被倒过来了)",zh:"三成分动作链：施事—工具（中间阶段）—受事"},
+  upstream:{page:"4.2",quote:"主语的地位给了动作链中语言上表达出来的成分，是最远的“上游”成分。在图4.13(b)是工具(锤子)，(c)中实际上是动作链中的最后一个成分——受事(玻璃)，在图中主语地位由特粗圆表示",zh:"主语=被表达出来的最远上游成分"},
+  glassIntr:{page:"4.2",quote:"同时它也代表了动作链的末尾，在这里能量被消耗，这是一个原型受事。这就意味着，没有能量继续消散，没有再与其他的物体建立物理接触，因此也无认知背景。这时不需要句法宾语，这就从认知上解释了为什么像 The glass broke(玻璃打碎了)这种句子是不及物的",zh:"The glass broke 不及物：链尾能量耗尽，无认知背景故无需宾语"},
+  fillmore:{page:"4.2",quote:"证实了施事、动作链头与句法主体或主语之间的联系；从认知上解释了由 Fillmore(1968:33)首先观察到的主语选择受控于“施事＞工具＞受事”层级。最后它将动词(如 break(打碎))的不及物用法结合到了主体/背景范式中",zh:"Fillmore 层级：主语选择受控于施事＞工具＞受事"},
+  psych:{page:"4.2",quote:"相反，所发生的事件有心理的特点，并且其中的人也不产生物理能量，而是参与心理活动的一个有感觉的生物。对于这一角色原型，术语感事(experiencer)要比施事更适当。但和心理运作与动作链差异有关的主要是第二个成分。作为动作链尾的受事接受并消耗物理能量，而且发生一些变化，或至少是移动到另一个位置。与之不同，心理活动中的第二个实体并不被这种互动真正触及或改变。为了表示这一角色原型，Langacker开始用术语“absolute”，后来用“theme”来替代。但在我们有限的讨论中，被感(the)experienced)会更有用一些，因为它表明了与感事之间的关系",zh:"心理互动：感事（不产物理能量）与被感（不被真正触及或改变）"},
+  psychArrow:{page:"4.2",quote:"在此图中，两个参与者之间的关系由一个单线箭头表示（这与表示动作链中强烈的能量联系的双线箭头不……同）。这是为了表示，在某种意义上心理联系比动作链中的能量联系要“弱”，但仍很明显有方向性。它的源头是感事，因此标记为更凸显的活动发出者、这个心理互动中的主体，而被感则被标记为背景",zh:"心理互动用较弱的单线箭头：源头感事是主体，被感是背景"},
+  giveReceive:{page:"4.2",quote:"动词 receive（接受）与“给”这个观念密切相关，因此用动词 give（给）及两个宾语组成的句子表达最自然不过了，就像 Aunt Emily gave Susan the present (Emily 姑姑送给 Susan 礼物) 这个句子一样。虽然这与动作动词相类似，Susan received the present 中的主语仍应被看作是感事而不是施事。当我们按图 4.15 将 give（给）和 receive（接受）的认知结构进行比较就会发现确实如此。这两个图表明，give（给）和 receive（接受）都包含了两个认知过程，即一个动作链和一个心理过程",zh:"give 与 receive 都含两个认知过程：一个动作链加一个心理过程"},
+  giveStruct:{page:"4.2",quote:"先看“give”（给），动作链由施事开始（在我们的例句中是 Aunt Emily (Emily 姑姑)）；施事将能量传到受事（the present（礼物）），使用了未说明的工具（如 Emily 姑姑的手）作为中介。感事（Susan）则发起了一个与被感相关的心理互动，被感与动作链中的受事相同。结果，感事（Susan）认识到会从给予这个动作中获益",zh:"give 的结构：施事经工具传能量给受事；感事发起对被感的心理互动"},
+  recvStruct:{page:"4.2",quote:"至于 receive(接受)(图 4.15(b))，认知结构很大程度上和 give (给)一致。虽然预设了一个相同的动作链，但并未用词语表达出来，而这就是其主要区别。用语言明确表达出来的是感事(Susan)与被感/受事(the present(礼物))之间的心理互动。主体和背景分布也像其他心理互动一样：感事充当句法主体或主语，而被感(也叫受事)则充当句法背景或宾语",zh:"receive：动作链预设而未表达；明说的是感事（主语）与被感（宾语）"},
+  take:{page:"4.2",quote:"接受者和被传递的物体之间的物理接触显然可以用动词 take(拿)来表示，这个词甚至可与 give(给)联合起来使用……和 give(给)一样，带 take(拿)小句的基础也是一个动作链。接受者是施事，人的手是未说出的工具，交换的礼物是被移动的受事。唯一不同的只是运动的方向：用 take(拿)时，向着而不是背着施事移动",zh:"take 也是动作链：施事=接受者，运动方向向着施事"},
+  stage:{page:"4.2",quote:"一方面，为了解释主体与背景之间，另一方面，解释主体与后景之间的关系，Langacker使用了另一隐喻——+STAGE+（+舞台+）隐喻。这一隐喻在法国语言学家Tesnière（1959，第48章）的著作中已经有所提及。根据这一隐喻，句中成分的组织与舞台上戏剧中所发生的情况有点相似。后景与戏剧的道具或布景的作用相似，凸显性留给了演员，他们在舞台上四处移动，演说、争斗、厮杀，或者拥抱。将+舞台+隐喻应用于普遍的认知知觉，我们就可以把一个事件的场景（setting）与事件中的参与者（participants）区分开来，前者是全面而相对稳定的，而后者是较小而可变的，并参与物理接触或心理互动",zh:"舞台隐喻：后景如布景，凸显给演员；区分场景与参与者"},
+  settingAdv:{page:"4.2",quote:"当把这种参与者与场景的区别转换为语言表达时，这种区别就清楚地反映在小句结构上了。参与者由主语或者宾语表示，而场景则由状语表示，尤其是表示时间或空间的状语，就像在下面的例子那样：Susan was eating a banana in the kitchen at nine o'clock in the morning. (Susan 早上九点的时候在厨房吃香蕉。)",zh:"参与者由主语/宾语表示，场景由（时空）状语表示"},
+  munich:{page:"4.2",quote:"第一句中地点状语 in Munich（在慕尼黑）是一个包含了两个参与者（施事 people（人们）和受事 beer（啤酒））的动作链的真实场景。而第二句中同样的状语不仅是一个一般的位置后景，而且是与作为句法主体的参与者 Susan 相关联的一个必要的部分。换句话说，这里的位置场景起到了可识背景的作用。然而 in Munich（在 Munich）不是一个参与者，因为与受事不同，它并没有状态或位置的变化",zh:"in Munich 对比：喝啤酒句里是纯场景，住慕尼黑句里是必要背景；它没有状态变化故不是参与者"},
+  containerSchema:{page:"4.2",quote:"在图 4.17 中，圆圈被置于代表第二个成分的方框之内；它好像被“包含”于在个例子里表示场景的第二个成分中。如果我们以意象图式来理解句法，我们就可以说在 Susan lives in Munich（Susan 住在 Munich）这类句子中的句法关系表示了一种“be in”（在……里）图式或者容器图式，而不是动作链和心理互动中典型的“路径”图式",zh:"Susan lives in Munich：容器图式而非路径图式"},
+  swimGrad:{page:"4.2",quote:"句(a)中施事及句法主体(Susan)发起了一个动作链，这一动作链中没有包括任何受事，但这一动作链发生于某个特定的场景中(the Channel(海峡))；在语言形式上表达为带非强制性状语的不及物结构。句(b)中场景更加具体，有两个边界，完全被施事/主体穿过。所有这些含义都是介词 across(穿越)表示的，结果是这个场景比句(a)中的场景更为凸显。最后的句子(c)中，这个介词丢了。认知解释远不认为这只是句(b)的形式变体，而认为 the Channel(海峡)获得了句法凸显，已经愈加不是单纯的场景了。场景被看作更像是在与施事-主语的互动中的一个参与者，例如是一个必须打败的敌人，这反映在名词短语类宾语用法中",zh:"场景凸显升级：in（非强制状语）→ across（两边界）→ 丢掉介词成宾语（像要打败的敌人）"},
+  garden:{page:"4.2",quote:"在这个句子中，我们不难把句法主体或主语(the garden(花园))看作位置场景，而句法背景位置则由 bees(蜜蜂)占据。它的认知解释在图 4.18 中得到了证明。其基本原则又是句法主体和背景之间的容器-内容关系。这与图 4.17 所说明的 Susan lives in Munich(Susan 住在 Munich)这类句子结构相对应，但有一个关键的不同之处，那就是参与者和场景的凸显已经被倒过来了（对比图4.18中相反的粗黑线与黑线）。场景(the garden(花园))在容器-内容关系中占有凸显地位，表达了类似“是飞舞行为的场景”的意义，其中涉及的蜜蜂则是句法背景",zh:"花园例句：场景当主语、蜜蜂当背景，容器-内容关系里凸显倒转"},
+  there:{page:"4.2",quote:"这些大家熟知结构中的 there 成分，通常被解释为傀儡成分，或者解释为结构主语或形式主语。然而所有这些解释与“所有语法成分都有概念内涵”这个基本认知原则相矛盾。这也就是为什么 Langacker 同意别的对 there 构式的研究（如 Lakoff1987:462 以次），认为 there 被用来表达一种场景，尽管是一种抽象的或不确定的场景，而且这种场景充当主语。问题在于，作为主语，there 在句中应赋予最高的凸显度，而这与我们对于以上两个句子和类似用例的直觉是相反的。另一个看起来似乎是 Langacker 暂时解决了的问题是，there 构式中的动词形式与句法背景、而非 there 主语一致（看上面的第二个例子）。我们的结论是，对 there 句的这种解释的处理应谨慎一点儿",zh:"there 句：Langacker 视之为抽象场景充当主语，但与最高凸显度直觉相反，本书主张谨慎处理"},
+  protoSubj:{page:"4.2",quote:"对于小句主语来说，结果是——并出乎意料——典型的主语是及物小句中的施事，所有其他主语都以某种方式偏离这一定义",zh:"原型主语=及物小句中的施事，其他主语都偏离"},
+  schematic:{page:"4.2",quote:"主语是施事原型角色的实现(解释了及物行为小句中的施事主语)……主语是动作链中第一个被表达出的成分，即作为动作链特征的能量流的上游（加上行为小句中的工具及不及物受事主语）……主语是主动的参与者（加上心理活动中的主语）……主语是句法主体（加上场景中的显著成分）……这一结果就是(或是近似于)Langacker所说的与纯粹的原型描写相对的主语图式定义(schematic definition)",zh:"主语图式定义四条：施事实现、最上游被表达成分、主动参与者、句法主体"},
+  threeQ:{page:"4.3",quote:"如果我们试图研究这些翻译中的认知过程，最迫切的问题是：……认知单位是如何建立的？……这些认知单位是如何被翻译成存在于单词中的词汇范畴的？……当对一个更为复杂的情景进行概念化并用语言来表达时，这些词是怎样组合在一起的？",zh:"4.3 节的三个问题：认知单位、词汇范畴、词的组合"},
+  domains:{page:"4.3",quote:"然而Langacker却持有一个更为抽象的观点，他认为每一个刺激都按照他所说的认知域(domains)来评价。根据他(Langacker1987a:147)的说法，认知域是“刻画语义单位（即下面小斜体大写字母[汉字用粗楷体]表示的‘认知单位’）的语境”。最基本的认知域是空间和视觉、温度、味道、压力、痛感及颜色",zh:"认知域=刻画语义单位的语境；最基本的是空间/视觉、温度、味道、压力、痛感、颜色"},
+  profileBase:{page:"4.3",quote:"如果应用主体/背景对比，那么圆是主体或侧面(profile)，而认知域则起到了背景或基底(base)的作用。(Langacker用“侧面”和“基底”给主体/背景对比引入了另一个隐喻，这一隐喻对于描述这种认知过程中的对立似乎尤其适用。)",zh:"侧面=主体，基底=背景；Langacker 的另一组隐喻"},
+  arc:{page:"4.3",quote:"与圆不同，弧这个认知单位仅用空间认知域来定义是不够的。如果弧仅……用空间认知域来侧显，它只代表了一条曲线，而不是圆的一段。这也就是为什么在图(b)中的认知域不是一个二维的空间，而是一个圆的概念。也就是说，弧的定义需要两步，每一步都体现了主体/背景分离的实例。在第一层，圆侧显为一个认知单位，而它又在第二层为弧提供了认知域。因为“圆”是更具体的因而也是与弧更直接相关的认知域，圆就被称弧的基础域(primary domain)",zh:"弧需两级侧显：圆先作单位，再作弧的基础域"},
+  bodyMatrix:{page:"4.3",quote:"就其形状而言，这一单位是在“空间”认知域中刻画的，但它也针对“颜色”、“温度”之类的其他基本认知域进行具体化。这样，这些基本认知域构成了身体这个认知单位矩阵。身体这个认知单位接下来又为手臂提供认知域，手臂又为手、肘等提供认知域。手这个认知单位又为更具体的认知单位手指提供认知域，最后，手指可看作是被侧显的指关节这一单位的(基本)认知域",zh:"身体矩阵：多域具体化；身体→手臂→手→手指→指关节层层嵌套"},
+  knuckle:{page:"4.3",quote:"以上暂时标为指关节的认知单位可由名词指关节来表示，但在一定情景中可包含于敲这一动词表示的行为中，因此可由动词敲来表示。与此相似，肘这一认知单位可由名词肘来表示，但在短语“弯曲手臂”中，也会由动词弯曲来表示。正如这些例子所示，认知单位转化为认知范畴(我们引入的第二个问题)与词类的选择有密切的关系。其中起支配作用的原则还是凸显原则，这里也就是选择直接相关的认知单位来表达一个特定的情景，这也许是认知处理中对主体/背景对立给人印象最深的应用",zh:"同一单位可名可动（指关节/敲、肘/弯曲）；词类选择仍由凸显原则支配"},
+  group:{page:"4.3",quote:"如图(b)所示，将认知单位作为基底(或背景)，就有可能凸显三个个体之间的关系。这一被侧显的关系(profiled relation)可以用副词 together(一起)表达(正如 Langacker 所提出来的那样)，但也可以用形容词 common(共同的)或者由动词 share(共有)来表示，就像在下面的几个例子那样：The three people were together. (三个人在一起。)……第二种侧显选择(图(c))，将这个认知单位作为一个整体包括在内，包括了涉及的各个个体及其关系，实际上侧显了包括其所有成分和它们之间的相互联系的一个认知区域。这个被侧显的认知区域(profiled cognitive region)由一个名词，即词项 group(组)来表示；它也可以由一个代词或 The Haydn Trio(如海顿三重奏)这种更复杂的名词性短语来表示",zh:"侧显关系得 together/common/share；侧显整体区域得名词 group"},
+  enterInto:{page:"4.3",quote:"这些成对的位移动词及方向介词也很好地证明了这样一个事实：关系侧面有一个内在的主体/背景结构。如4.1节中所讨论的一样，像out(外)、up(向上)(还有 into(进入))这种介词描述了可移动的射体(主体)及静止的界标(背景)之间的关系，这对于位移动词来说也是如此",zh:"动词/介词成对（enter/into 等）：关系侧面内含射体/界标结构"},
+  scanning:{page:"4.3",quote:"与这种技术处理相比，正如 Langacker 所设想的那样，人类的认知处理更灵活，并且可主要区分为总括扫描（summary scanning）和次第扫描（sequential scanning）",zh:"两种扫描：总括扫描与次第扫描"},
+  summaryScan:{page:"4.3",quote:"在总括扫描中，一个情景的不同方面，像反映到一个认知单位里，被一个接着一个地检验，数据则被不断合计，扫描过程完成时，所有与这个认知单位有关的方面就作为一个整体集合在观察者的头脑中，就像一个单个的“完形”一样（参见1.2节）。这种在很大程度上和电脑扫描对应的扫描适合于名词性侧面，因为它能同时获得一个整体的认知领域，并解释作为名词典型特点的这种意义的综合性。但是正如我们将要看到的，总括扫描也可以生成由介词或形容词所表达的一些关系侧面",zh:"总括扫描：数据连续合计，完成时成一个整体完形；适合名词性侧面，也生介词/形容词"},
+  seqScan:{page:"4.3",quote:"与总括的方法相比，次第扫描在应用时有更多的限制：实际上它只用于事件（即包含变化的过程）。至于总括扫描，有关的认知单位被连续地检查，但数据仅在事件的某一阶段被合计，当合计完成时，在事件的下一阶段，一组新的扫描数据被收集，如此继续下去。结果，我们得到的是一系列互不相同的小事件，这些小事件因而表现了隐含在事件中的变化。这种结果与看电影或录像相似。就像显示的速度使我们不能区分电影的单个画面一样，认知处理的甚至更高的速度则意味着被感知事件是一个不间断的行为。就像这种描述所表明的那样，次第扫描也就适合于时间关系，并主要由（限定）动词来表示",zh:"次第扫描：只用于事件，一阶段合计一次，像看电影；主要由（限定）动词表示"},
+  enterFig:{page:"4.3",quote:"这一区别最适合用涉及射体/界标明确对立的例子来解释，这将我们带回了列举在例(1)—(3)中那几组位移动词与介词。图4.21解释了第一对中的不同扫描类型，即动词enter（走进）和介词into（进入）；也包括了相关的介词in（里）",zh:"图 4.21：enter（次第）与 into、in（总括）的扫描对照"},
+  network:{page:"4.3",quote:"圆圈表示名词性侧面（其中的人物、配料、所用容器及实际产品——希腊色拉），关系侧面则由连接圆圈的线及各个动词及介词标示。如果我们回忆一下舞台隐喻，就很容易发现，被侧显的名词性成分类似于舞台上的演员，而被侧显的关系则类似于演员之间的互动，或者更一般地说，名词代表了此情景中的参与者，动词与介词代表了他们之间的互动。Langacker 在谈论互动网络（interactive network）时，对此是了然于心的",zh:"互动网络：名词性侧面如演员，关系侧面如互动"},
+  saladEx:{page:"4.3",quote:"a. Susan is preparing the Greek salad. (Susan 在做希腊色拉。) b. Susan puts the oil and the vinegar into the bowl, stirs them, adds onions, tomatoes and olives and puts a large slice of sheep's milk cheese on top.（Susan 将油和醋倒入碗中，搅拌了一下，加入洋葱、西红柿和橄榄，并在上面放了一大片羊奶酪。） c. The Greek salad contains onions, tomatoes, olives and sheep's milk cheese. (希腊色拉中有洋葱、西红柿、橄榄和羊奶酪)",zh:"同一情景三种句式：施事主语、连续动作链、场景主语"},
+  viewing:{page:"4.3",quote:"Langacker(1995: 9 以次)认为凸显是指导认知处理的三原则之一，其他两个与之契合的原则是具体性及视角。特定性原则(specificity)决定了我们同周围世界接触的层次(基本层次，下位层次或上位层次；参见第二章)。第二条附加原则，即视角，Langacker更经常地称之为视角配置(viewing arrangement)。这一概念最好用前面提到过几次的+STAGE+（+舞台+）隐喻来理解",zh:"三原则：凸显、具体性、视角；视角配置借舞台隐喻理解"},
+  standardView:{page:"4.3",quote:"正常的或“标准”的配置是观众（说者/听者）及台上事件之间的关系并不直接表达出来。句子表达的是台上事件，这也就是为什么第三人称视角成为常态的原因。另一个也很常见的视角是以自我为中心的视角配置。这时说者/听者与事件之间的关系显性化，并以第一人称指示代词指说话人，用第二人称指示代词指听话人。其他指示(或索引)词，如 here(这里)、now(现在)和 this(这个)以及其他的限定词通常也被看作是表示了与说话人“视角位置”参照",zh:"标准配置不表达说听关系（第三人称常态）；自我中心配置显性化之"},
+  vinegar:{page:"4.3",quote:"a. (Where is the vinegar?) It is on the table. (醋在哪里？它在桌上。——未表达与说话人/听话人的关系) b. I can see the vinegar. (我能看见醋。——表达了与说话人的关系) c. Have you seen the vinegar? (你看到醋了吗？——表达了与听话人的关系)",zh:"三句醋：标准配置、说者自我中心、听者自我中心"},
+  speechActs:{page:"4.3",quote:"Langacker 认为，视角配置也为其他一些语用现象提供了一个认知解释。这些现象包括了一些主要的言语行为如断言(如(a)中的 It is on the table (它在桌上)这样典型的台上话句)和命令(原型为说者在自我中心的视角配置中说话人向听话人表达的指令行为，如 Please pass the vinegar(请把醋递给我))。此外视角配置还被认为包括 Langacker 所称的言语行为的心理方面，这些方面包括语用学的一些基本原理，如 Grice 的合作原则及 Searle 的成功言语行为的得体条件",zh:"视角配置解释言语行为：断言（台上话句）与命令（向听话人发指令）"},
+  quoteGround:{page:"4.3",quote:"应该认为背景基本上等同于有利位置，从这个位置上，说话人和听话人对由名词句或限定小句产生的内容进行概念化。",zh:"Langacker（1991:498）：背景≈说话人与听话人据以概念化的有利位置"},
+  fig424:{page:"4.3",quote:"图 4.24 Langacker 认知语法中主体/背景分离的主要应用概览",zh:"六项应用：组织感知刺激（认知单位/认知域）、词类选择（名词性侧面·关系侧面/认知单位）、介词关系（射体/界标）、互动（参与者/场景）、主宾语（句法主体/句法背景）、言语事件（台上/台下）——据转录稿表格整理"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent = s.page==="封面" ? "位置：封面" : "位置：第四章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：花瓶/人脸 + 书桌之猜 ================= */
+(function(){
+  const faces=$("#fgFaces"),vase=$("#fgVase"),fb=$("#fgFb");
+  function setMode(m){
+    const faceMode=m==="faces";
+    faces.setAttribute("opacity",faceMode?"1":".16");
+    vase.setAttribute("opacity",faceMode?"1":"1");
+    vase.setAttribute("stroke",faceMode?"var(--line)":"var(--red)");
+    vase.setAttribute("stroke-width",faceMode?"1.5":"4.5");
+    faces.setAttribute("stroke",faceMode?"var(--red)":"transparent");
+    faces.setAttribute("stroke-width",faceMode?"3":"0");
+    fb.textContent = faceMode
+      ? "看作两张人脸：深色侧脸从浅色背景里凸出来——脸是主体，花瓶让出的空间退成背景。"
+      : "看作一个花瓶：白色器皿成为主体，两侧侧脸退成背景——同一幅画，主体与背景对调了。";
+    $$("#fgModes .btn").forEach(b=>b.classList.toggle("sel",b.dataset.mode===m));
+  }
+  $$("#fgModes .btn").forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));
+  setMode("faces");
+
+  const picks={book:"对——书是显著实体，桌子被给予背景地位。",table:"再想想：除非作特殊而相当不自然的努力，桌子不会被看作主体。",same:"不对：主体/背景分离意味着凸显不等，总有一个更突出。"};
+  $$("#bkOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#bkOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#bkRev").hidden=false;
+    $("#bkRev").classList.toggle("wrong",b.dataset.pick!=="book");
+  }));
+})();
+
+/* ================= 场景二：over 分析台 ================= */
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const P0={x:110,y:172},P1={x:360,y:26},P2={x:610,y:172};
+  const ball=$("#ovBall"),readout=$("#ovRead"),slider=$("#ovSlider"),svg=$("#ovSvg");
+  function bez(t){const u=1-t;return{x:u*u*P0.x+2*u*t*P1.x+t*t*P2.x,y:u*u*P0.y+2*u*t*P1.y+t*t*P2.y};}
+  function render(){
+    const t=Number(slider.value)/100;
+    const p=bez(t);
+    ball.setAttribute("cx",p.x);ball.setAttribute("cy",p.y);
+    let msg;
+    if(t<.18) msg="射体悬在界标上方一侧——静态方位：The balloon is above the house.（气球在房子上方）";
+    else if(t<.85) msg="射体正沿路径从界标上方一端移向另一端——中心图式：The balloon is flying over the house.（气球正飞越房子上空）";
+    else msg="射体到达界标另一端、即将消失——中心图式的路径终点。";
+    readout.textContent=msg;
+  }
+  slider.addEventListener("input",render);
+  let dragging=false;
+  function svgX(clientX){
+    const pt=svg.createSVGPoint();pt.x=clientX;pt.y=0;
+    const m=svg.getScreenCTM();
+    return m?pt.matrixTransform(m.inverse()).x:clientX;
+  }
+  ball.addEventListener("pointerdown",e=>{
+    dragging=true;
+    try{ball.setPointerCapture(e.pointerId);}catch(err){}
+    e.preventDefault();
+  });
+  ball.addEventListener("pointermove",e=>{
+    if(!dragging) return;
+    const x=svgX(e.clientX);
+    let t=(x-P0.x)/(P2.x-P0.x);
+    t=Math.max(0,Math.min(1,t));
+    slider.value=String(Math.round(t*100));
+    render();
+  });
+  const endDrag=()=>{dragging=false;};
+  ball.addEventListener("pointerup",endDrag);
+  ball.addEventListener("pointercancel",endDrag);
+  render();
+
+  const descs={
+    none:"中心图式：射体从界标上方的一端向另一端沿一定路径移动直至消失。",
+    a:"变式 a：射体与界标相接触的位移动词——路径贴着界标表面。",
+    b:"变式 b：射体与界标大小、形状相近且十分接近，实际上是覆盖了界标。",
+    c:"变式 c：射体与界标融合——倾倒的篱笆（或其上端）既是沿路径运动的射体，又是位移参照的界标。"
+  };
+  const groups={a:$("#ovGA"),b:$("#ovGB"),c:$("#ovGC")};
+  $$("#ovElab .chip").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      $$("#ovElab .chip").forEach(c=>c.classList.remove("sel"));
+      ch.classList.add("sel");
+      const e=ch.dataset.e;
+      ball.style.display = e==="none"?"":"none";
+      slider.disabled = e!=="none";
+      Object.keys(groups).forEach(k=>{groups[k].style.display = (k===e)?"":"none";});
+      $("#ovElabDesc").textContent=descs[e];
+      if(e==="none") render();
+    });
+  });
+  $("#ovElab").querySelector('.chip[data-e="none"]').classList.add("sel");
+  $("#ovElabDesc").textContent=descs.none;
+
+  const opts={plane:"不对：射体是飞机自己，界标另有其物。",ground:"再想想：这句话并没有一个现成的地面作参照。",speaker:"对——这里把说话者或感知者的位置作为界标。"};
+  $$("#plOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#plOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#plRev").hidden=false;
+    $("#plRev").classList.toggle("wrong",b.dataset.pick!=="speaker");
+  }));
+})();
+
+/* ================= 场景三：out 阶段 + 静态 + 隐喻 ================= */
+(function(){
+  const dot=$("#outDot"),fb=$("#outFb");
+  const pos=[{x:135,y:90},{x:212,y:90},{x:288,y:90}];
+  const notes=[
+    "阶段 1：射体在界标（房间）所占空间之内——大体对应 in（在……里）。",
+    "阶段 2：射体正在越过界标边界。",
+    "阶段 3：射体与界标完全分离——这是 out 区别于 in 的特殊之处。"
+  ];
+  $$("#outStages .chip").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      $$("#outStages .chip").forEach(c=>c.classList.remove("sel"));
+      ch.classList.add("sel");
+      const i=Number(ch.dataset.st);
+      dot.setAttribute("cx",pos[i].x);dot.setAttribute("cy",pos[i].y);
+      fb.textContent=notes[i];
+    });
+  });
+  $("#outStages").querySelector('.chip[data-st="0"]').classList.add("sel");
+  fb.textContent=notes[0];
+
+  const statics=[
+    {s:"Hang the painting over the chimney.（把画挂在烟囱上。）",t:"画的位置，可理解为把画移动到该位置的过程的最后阶段。"},
+    {s:"She stays out.（她留在外面。）",t:"out 图式中路径的最后阶段：停留在分离后的位置。"},
+    {s:"She lived three floors up.（她住在三层楼上。）",t:"up 图式中路径的最后阶段：垂直位移的终点被当作静态位置。"}
+  ];
+  const sBox=$("#staticCards"),sFb=$("#staticFb");
+  statics.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=c.s;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",sBox).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      sFb.textContent=c.t;
+    });
+    sBox.appendChild(b);
+  });
+
+  const metas=[
+    {s:"She has a strange power over me.",t:"权利关系是空间关系：\"在上\"映射为\"有控制权\"——控制是向上的运动/竖立状态。"},
+    {s:"The government was overthrown.",t:"事件前政府有控制能力（隐喻上的竖立），之后失去控制（倒下了）；变体隐喻：正常运作是直立状态。"},
+    {s:"Harry still hasn't got over his divorce.",t:"生活是旅行，问题是旅行中的障碍：Harry 是射体，为了继续自己的路径，必须越过界标（=障碍=离婚）。"}
+  ];
+  const mBox=$("#metaCards"),mFb=$("#metaFb");
+  metas.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=c.s;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",mBox).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      mFb.textContent=c.t;
+    });
+    mBox.appendChild(b);
+  });
+})();
+
+/* ================= 场景四：主语互换 + 角色配对 ================= */
+(function(){
+  const swaps=[
+    {s:"Susan resembles my sister.",sub:"Susan",t:"被选定的主语 Susan 是主体，以 my sister 为背景被评论；关系本身没变，评论对象换了。"},
+    {s:"My sister resembles Susan.",sub:"My sister",t:"同样的\"像\"的关系，这回以 Susan 为背景评论 my sister——选谁当主语由说话者决定。"}
+  ];
+  const box=$("#swapCards"),fb=$("#swapFb");
+  swaps.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip sent-card";b.style.textAlign="left";
+    b.innerHTML=c.s.replace(c.sub,"<span class=\"subj\">"+c.sub+"</span>");
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      fb.textContent=c.t;
+    });
+    box.appendChild(b);
+  });
+
+  const roles=[
+    {s:"Susan is peeling a banana.",r:"施事",t:"主语 = 施事：她使香蕉发生位移/变化。"},
+    {s:"Susan loves bananas.",r:"感事",t:"主语 = 感事：心理活动的参与者，不产生物理能量。"},
+    {s:"The hammer broke the glasses.",r:"工具",t:"主语 = 工具：能量传递的中间阶段被放到了主体位。"},
+    {s:"The glass broke.",r:"受事",t:"主语 = 受事：动作链的尾，能量在此消耗。"}
+  ];
+  const sBox=$("#roleSents"),rBox=$("#roleRoles"),rFb=$("#roleFb");
+  let cur=null;
+  roles.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=c.s;b.style.textAlign="left";
+    b.addEventListener("click",()=>{
+      $$(".chip",sBox).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");cur=c;
+      rFb.textContent="你选了「"+c.s+"」。现在点一个角色原型。";
+    });
+    sBox.appendChild(b);
+  });
+  $$("#roleRoles .btn").forEach(b=>b.addEventListener("click",()=>{
+    if(!cur){rFb.textContent="先点一个句子，再选角色。";return;}
+    const ok=b.dataset.r===cur.r;
+    $$("#roleRoles .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    rFb.style.color=ok?"var(--green)":"var(--red)";
+    rFb.textContent=(ok?"✓ ":"✗ ")+cur.t+(ok?"":"（正确角色："+cur.r+"）");
+  }));
+})();
+
+/* ================= 场景五：动作链 + 视角选择器 ================= */
+(function(){
+  const cbA=$("#cbA"),cbB=$("#cbB"),cbC=$("#cbC");
+  const out=$("#exprOut"),note=$("#exprNote");
+  const chainA=$("#chainA"),chainB=$("#chainB"),chainC=$("#chainC");
+  function render(){
+    const a=cbA.checked,b=cbB.checked,c=cbC.checked;
+    let sent="",txt="";
+    if(a&&b&&c){sent="Floyd broke the glass with a hammer.";txt="三者都表达：主语给了最上游的被表达成分——施事 Floyd；受事居宾语，工具在 with 短语（认知顺序被倒了过来）。";}
+    else if(b&&c){sent="The hammer broke the glass.";txt="主语给了最上游的被表达成分——工具（锤子）；受事仍可作宾语。";}
+    else if(a&&c){sent="Floyd broke the glass.";txt="工具不必说出；主语仍是施事，受事作宾语。";}
+    else if(c){sent="The glass broke.";txt="玻璃是链尾：能量被消耗，没有能量继续消散、没有再与其他物体接触，因此无认知背景——所以不及物。";}
+    else if(a&&b){sent="Floyd broke (it) with the hammer.";txt="受事（链尾）不表达时缺少宾语，句子不完整——能量总得有个消耗处。";}
+    else if(a){sent="Floyd broke something.";txt="只有链头被表达：主语是施事，但宾位置空。";}
+    else if(b){sent="The hammer broke something.";txt="只有工具被表达：主语是最上游的被表达成分，宾位置空。";}
+    else{sent="（至少勾选一个成分）";txt="动作链至少得有一个成分被表达出来，才能成形。";}
+    out.textContent=sent;note.textContent=txt;
+    chainA.setAttribute("stroke-width",a?"4.5":"1.6");
+    chainB.setAttribute("stroke-width",b?"4.5":"1.6");
+    chainC.setAttribute("stroke-width",c?"4.5":"1.6");
+    chainA.setAttribute("stroke",a?"var(--red)":"var(--ink-faint)");
+    chainB.setAttribute("stroke",b?"var(--red)":"var(--ink-faint)");
+    chainC.setAttribute("stroke",c?"var(--red)":"var(--ink-faint)");
+  }
+  [cbA,cbB,cbC].forEach(cb=>cb.addEventListener("change",render));
+  render();
+
+  const opts={glass:"再想想：主语地位不给链尾，除非只有它被表达。",hammer:"对——主语给最上游的被表达成分；受事仍可作宾语。",none:"不对：只要被表达出来，就能竞争主语。"};
+  $$("#hmOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#hmOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#hmRev").hidden=false;
+    $("#hmRev").classList.toggle("wrong",b.dataset.pick!=="hammer");
+  }));
+})();
+
+/* ================= 场景六：凸显阶梯 ================= */
+(function(){
+  const steps=[
+    {sent:"Susan swam in the Channel.",note:"场景：动作链发生的地点，表达为带非强制性状语的不及物结构。"},
+    {sent:"Susan swam across the Channel.",note:"across 给出两个边界，场景被完全穿过——比 in 更凸显。"},
+    {sent:"Susan swam the Channel.",note:"介词丢了：海峡获得句法凸显，像与施事互动中的一个参与者（一个必须打败的敌人），反映在名词短语类宾语用法中。"},
+    {sent:"The garden is swarming with bees.",note:"场景登上主语位：容器-内容关系里花园是主体，蜜蜂是句法背景——凸显倒转。"}
+  ];
+  const sentEl=$("#ladderSent"),noteEl=$("#ladderNote");
+  const groups=[$("#lg0"),$("#lg1"),$("#lg2"),$("#lg3")];
+  function show(i){
+    $$("#ladderBtns .chip").forEach(c=>c.classList.toggle("sel",Number(c.dataset.l)===i));
+    groups.forEach((g,k)=>{g.style.display = k===i?"":"none";});
+    sentEl.textContent=steps[i].sent;noteEl.textContent=steps[i].note;
+  }
+  $$("#ladderBtns .chip").forEach(ch=>ch.addEventListener("click",()=>show(Number(ch.dataset.l))));
+  show(0);
+})();
+
+/* ================= 场景七：侧显 + 扫描 + 视角 ================= */
+(function(){
+  const profOut=$("#profOut");
+  const profs={
+    rel:"侧显三个个体之间的关系：together（副词）／ common（形容词）／ share（动词）——关系侧面。",
+    region:"侧显包括所有成分与相互联系的整体区域：group（名词）／ The Haydn Trio（名词短语）——名词性侧面。"
+  };
+  $$("#profBtns .chip").forEach(ch=>{
+    ch.addEventListener("click",()=>{
+      $$("#profBtns .chip").forEach(c=>c.classList.remove("sel"));
+      ch.classList.add("sel");
+      profOut.textContent=profs[ch.dataset.p];
+    });
+  });
+  $("#profBtns").querySelector('.chip[data-p="rel"]').classList.add("sel");
+  profOut.textContent=profs.rel;
+
+  const dot=$("#scDot"),ghosts=$("#scGhosts"),fb=$("#scanFb");
+  const xs=[255,300,345,390,435];
+  let timer=null;
+  function stop(){if(timer){clearInterval(timer);timer=null;}}
+  function seq(){
+    stop();ghosts.style.display="none";
+    if(!motionOK()){dot.setAttribute("cx",xs[xs.length-1]);fb.textContent="次第扫描：一阶段合计一次，像看电影一格格推进——enter 是限定动词。";return;}
+    let i=0;dot.setAttribute("cx",xs[0]);
+    fb.textContent="次第扫描进行中：一阶段合计一次，得到一串小事件……";
+    timer=setInterval(()=>{
+      i++;if(i>=xs.length){stop();dot.setAttribute("cx",xs[xs.length-1]);fb.textContent="次第扫描完成：射体进入界标——适合时间关系，主要由（限定）动词 enter 表示。";return;}
+      dot.setAttribute("cx",xs[i]);
+    },260);
+  }
+  function sum(){
+    stop();ghosts.style.display="";
+    dot.setAttribute("cx",xs[xs.length-1]);
+    fb.textContent="总括扫描：路径上各位置叠进一张画面（小圆圈即总体印象）——由介词 into、in 表示。";
+  }
+  $$("#scanBtns .chip").forEach(ch=>ch.addEventListener("click",()=>{
+    $$("#scanBtns .chip").forEach(c=>c.classList.remove("sel"));
+    ch.classList.add("sel");
+    if(ch.dataset.s==="seq") seq(); else sum();
+  }));
+  $("#scanBtns").querySelector('.chip[data-s="seq"]').classList.add("sel");
+
+  const views=[
+    {s:"It is on the table.",t:"标准视角配置：不表达说者/听者与台上事件的关系——第三人称视角成为常态的原因。"},
+    {s:"I can see the vinegar.",t:"自我中心配置：显性化了与说话人的关系（第一人称指说话人）。"},
+    {s:"Have you seen the vinegar?",t:"自我中心配置：显性化了与听话人的关系（第二人称指听话人）。"}
+  ];
+  const vBox=$("#viewCards"),vFb=$("#viewFb");
+  views.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=c.s;
+    b.addEventListener("click",()=>{
+      $$(".chip",vBox).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      vFb.textContent=c.t;
+    });
+    vBox.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>

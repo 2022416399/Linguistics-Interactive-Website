@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>整合和关联 · 《认知语言学导论》第六章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第六章做成单文件交互网页：概念整合四空间网络、压缩维度、词汇整合实验室、谜语与笑话、关联度实验室。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+
+/* ---------- 吸顶工具栏 ---------- */
+.topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:6px;
+  padding:8px 12px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(6px);border-bottom:1.5px solid var(--line)}
+.tb-title{font-size:.95rem;font-weight:700;color:var(--ink-soft)}
+.tb-btn{min-height:36px;padding:4px 10px;border:1.5px solid var(--line);border-radius:9px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s;text-align:left}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 空间网络 / 步骤 ---------- */
+.nd{cursor:pointer}
+.nd rect{transition:filter .15s}
+.nd:hover rect{filter:brightness(.94)}
+.steprow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.tabpanel svg{width:100%;height:auto;display:block}
+
+/* ---------- 人物牌（长椅情景） ---------- */
+.people{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
+.person{flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;
+  background:var(--card);cursor:pointer;font-family:inherit;color:var(--ink);text-align:left}
+.person:hover{border-color:var(--ink)}
+.person.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.person .pname{font-weight:700;font-size:.95rem}
+.mrow{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--ink-soft);margin:5px 0}
+.mrow .mlab{flex:none;width:4.2em}
+.mrow .bar{flex:1;height:10px;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden;background:var(--card)}
+.mrow .bar i{display:block;height:100%;width:0;background:var(--green);transition:width .35s}
+.mrow.effort .bar i{background:var(--blue)}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+button.cite:hover{filter:brightness(1.15)}
+button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center}
+thead th{background:var(--hl);font-weight:700}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 两栏对比 ---------- */
+.tbl2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.tbl2 .cell{border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card)}
+.tbl2 .cell b{display:block;margin-bottom:4px}
+@media(max-width:520px){.tbl2{grid-template-columns:1fr}}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">整合和关联 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第六章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">整合和关联</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第六章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>读一句话，脑子里会建起一个个"小概念包"（心理空间）；两个空间并置、压缩，跑出谁都没有的新生结构——这是概念整合。而关联理论回答另一半问题：人为什么总能找到最省力的理解路径。<button type="button" class="cite" data-cite="dynamic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="relevanceSearch" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">前半章讲整合怎么做，后半章讲整合被什么驱动；七场实验各讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 240" role="img" aria-label="本章地图：从前三章的静态概念结构分出四条线索，汇入在线处理">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="20" y="70" width="150" height="100" rx="12"/>
+        <path d="M170 100 C200 70 215 55 240 48"/>
+        <path d="M170 120 C205 118 220 118 240 87"/>
+        <path d="M170 140 C205 142 220 142 240 126"/>
+        <path d="M170 160 C200 170 215 175 240 165"/>
+        <rect x="240" y="32" width="190" height="32" rx="9"/>
+        <rect x="240" y="71" width="190" height="32" rx="9"/>
+        <rect x="240" y="110" width="190" height="32" rx="9"/>
+        <rect x="240" y="149" width="190" height="32" rx="9"/>
+        <path d="M430 48 C470 44 490 66 520 74"/>
+        <path d="M430 87 C470 88 490 92 520 96"/>
+        <path d="M430 126 C470 126 490 120 520 118"/>
+        <path d="M430 165 C470 164 490 150 520 140"/>
+        <rect x="520" y="60" width="220" height="90" rx="12"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="95" y="105" font-size="15" font-weight="700">前三章</text>
+        <text x="95" y="127" font-size="15" font-weight="700">静态图像</text>
+        <text x="95" y="150" font-size="11" fill="var(--ink-soft)">范畴·隐喻·转喻</text>
+        <text x="95" y="166" font-size="11" fill="var(--ink-soft)">图式·框架·构式</text>
+        <text x="335" y="53" font-size="13">6.1 四空间与压缩</text>
+        <text x="335" y="92" font-size="13">6.2 词汇与句子</text>
+        <text x="335" y="131" font-size="13">6.3 广告·谜语·笑话</text>
+        <text x="335" y="170" font-size="13">6.4 关联理论</text>
+        <text x="630" y="98" font-size="16" font-weight="700">在线处理</text>
+        <text x="630" y="124" font-size="11" fill="var(--ink-soft)">心理空间 · 新创结构 · 人文尺度</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="380" y="222">关联同时是整合的一条控制原则（6.1）和独立的语用理论（6.4）</text>
+      </g>
+    </svg>
+    <figcaption>本章地图（示意，据 6.1 节开头与各节主题绘）<button type="button" class="cite" data-cite="relevanceP" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">强心针</button>
+    <button class="chip" data-jump="s2">压缩与控制</button>
+    <button class="chip" data-jump="s3">词汇实验室</button>
+    <button class="chip" data-jump="s4">句子整合</button>
+    <button class="chip" data-jump="s5">谜语笑话</button>
+    <button class="chip" data-jump="s6">认知环境</button>
+    <button class="chip" data-jump="s7">关联度</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>一剂强心针：四空间怎么跑起来</h2>
+  </div>
+  <p class="point">概念整合把隐喻、转喻的静态图像换成<span class="hl">在线处理</span>：读《新闻周刊》里"大众需要一剂强心针"，脑子里先建起一个个小概念包——心理空间。<button type="button" class="cite" data-cite="dynamic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="mentalSpace" aria-label="查看出处"></button></p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">动手走一遍：点步骤看网络逐层点亮，或直接点图里的元素</p>
+    <div class="steprow" id="s1steps" aria-label="整合步骤"></div>
+    <svg id="netSvg" viewBox="0 0 760 330" role="img" aria-label="shot in the arm 的四空间整合网络图">
+      <g id="s1in1" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="24" y="36" width="220" height="116" rx="10" fill="var(--card)"/>
+        <g class="nd" data-info="dir"><rect x="44" y="64" width="66" height="26" rx="6" fill="var(--hl)"/><text x="77" y="82" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">新董事</text></g>
+        <g class="nd" data-info="vw"><rect x="120" y="64" width="66" height="26" rx="6" fill="var(--hl)"/><text x="153" y="82" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">大众公司</text></g>
+        <g class="nd" data-info="prof"><rect x="80" y="98" width="80" height="26" rx="6" fill="var(--hl)"/><text x="120" y="116" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">提高利润</text></g>
+        <text x="134" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" stroke="none">输入空间 1 · 雇用空间</text>
+      </g>
+      <g id="s1in2" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="24" y="196" width="220" height="116" rx="10" fill="var(--card)"/>
+        <g class="nd" data-info="doc"><rect x="40" y="226" width="52" height="26" rx="6" fill="var(--hl)"/><text x="66" y="244" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">医生</text></g>
+        <g class="nd" data-info="inj"><rect x="100" y="226" width="52" height="26" rx="6" fill="var(--hl)"/><text x="126" y="244" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">注射器</text></g>
+        <g class="nd" data-info="pat"><rect x="160" y="226" width="56" height="26" rx="6" fill="var(--hl)"/><text x="188" y="244" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">病人</text></g>
+        <g class="nd" data-info="heal"><rect x="90" y="260" width="80" height="26" rx="6" fill="var(--hl)"/><text x="130" y="278" text-anchor="middle" font-size="13" fill="var(--ink)" stroke="none">恢复健康</text></g>
+        <text x="134" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" stroke="none">输入空间 2 · 注射空间</text>
+      </g>
+      <g id="s1map" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="5 4">
+        <path d="M244 77 L292 128"/>
+        <path d="M244 111 L292 150"/>
+        <path d="M244 111 L292 172"/>
+        <path d="M244 239 L292 128"/>
+        <path d="M244 239 L292 172"/>
+        <path d="M244 273 L292 150"/>
+      </g>
+      <g id="s1gen">
+        <rect x="292" y="112" width="140" height="100" rx="10" fill="var(--card)" stroke="var(--ink-faint)" stroke-width="1.8" stroke-dasharray="6 5"/>
+        <text x="362" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" stroke="none">类属空间</text>
+        <text x="362" y="162" text-anchor="middle" font-size="11" fill="var(--ink-soft)" stroke="none">共有的事件结构</text>
+        <text x="362" y="180" text-anchor="middle" font-size="11" fill="var(--ink-soft)" stroke="none">施事-行为-受事</text>
+        <text x="362" y="200" text-anchor="middle" font-size="10" fill="var(--ink-faint)" stroke="none">原书图 6.1 从此省略</text>
+      </g>
+      <g id="s1ghost" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-dasharray="5 4">
+        <rect x="520" y="64" width="200" height="30" rx="6" fill="var(--card)"/>
+        <text x="620" y="83" text-anchor="middle" font-size="11.5" fill="var(--red)" stroke="none">施事与工具：句中未提，完善"推荐"进来</text>
+      </g>
+      <g id="s1blend" filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+        <path d="M452 96 C490 96 496 110 512 118" stroke-width="2.6"/>
+        <path d="M452 254 C490 254 496 226 512 218" stroke-width="2.6"/>
+        <rect x="512" y="100" width="224" height="170" rx="10" fill="var(--card)"/>
+        <text x="624" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" stroke="none">整合空间</text>
+        <g class="nd" data-info="blendDoc"><rect x="528" y="132" width="120" height="24" rx="6" fill="var(--hl)"/><text x="588" y="149" text-anchor="middle" font-size="12" fill="var(--ink)" stroke="none">新董事→医生（施事）</text></g>
+        <g class="nd" data-info="blendVw"><rect x="656" y="132" width="70" height="24" rx="6" fill="var(--hl)"/><text x="691" y="149" text-anchor="middle" font-size="12" fill="var(--ink)" stroke="none">大众→病人</text></g>
+        <g class="nd" data-info="blendAct"><rect x="528" y="162" width="120" height="24" rx="6" fill="var(--hl)"/><text x="588" y="179" text-anchor="middle" font-size="12" fill="var(--ink)" stroke="none">雇用≈实施注射</text></g>
+        <g class="nd" data-info="blendProf"><rect x="656" y="162" width="70" height="24" rx="6" fill="var(--hl)"/><text x="691" y="179" text-anchor="middle" font-size="12" fill="var(--ink)" stroke="none">利润≈健康</text></g>
+      </g>
+      <g id="s1emg">
+        <rect x="528" y="200" width="192" height="52" rx="8" fill="color-mix(in srgb,var(--red) 10%,var(--card))" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="624" y="221" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--red)" stroke="none">新创结构</text>
+        <text x="624" y="241" text-anchor="middle" font-size="12" fill="var(--red)" stroke="none">"像实施注射一样雇用"</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--blue)">
+        <text x="262" y="106" stroke="none">同一性</text>
+        <text x="262" y="268" stroke="none">同一性</text>
+      </g>
+    </svg>
+    <p class="feedback" id="s1fb">点上面的步骤，或直接点图中的元素。</p>
+    <figcaption>"shot in the arm"整合的网络模型（据原著图 6.1 重绘；方框=整合的新生结构）<button type="button" class="cite" data-cite="fig61" aria-label="查看出处"></button><button type="button" class="cite" data-cite="omitGeneric" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>概念整合补上了隐喻分析的哪三个短板</summary>
+    <p>纯隐喻+转喻分析不管这个表达在具体文本里的特殊语境；只讲源概念对目标概念的影响，是单向的；而且只有被词汇化成"所需的帮助或鼓励"时才算处理完。<button type="button" class="cite" data-cite="threeFlaws" aria-label="查看出处"></button></p>
+    <p>整合理论的回答：心理空间依赖语境；映射从两个输入空间指向第三个空间；细化在读者"运行"整合时持续进行，深度因读者而异。<button type="button" class="cite" data-cite="diffSummary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="elaborDepth" aria-label="查看出处"></button></p>
+    <p>三个过程的分工：组合把两个空间的概念内容融为一体（把雇用董事看作实施注射）；完善把句中未提、但框架里必不可少的元素"推荐"进来；细化则通过"模拟"或"运行"整合来进行。<button type="button" class="cite" data-cite="compEx" aria-label="查看出处"></button><button type="button" class="cite" data-cite="completion" aria-label="查看出处"></button><button type="button" class="cite" data-cite="elaboration" aria-label="查看出处"></button></p>
+    <p>新董事在整合空间里的角色是含混的——可能是医生，也可能是工具本身；原书指出这类含混留待进一步细化，不必为解决而解决。两个行为的目标还被融入"像改善健康状况一样增长利润"。<button type="button" class="cite" data-cite="roleAmb" aria-label="查看出处"></button><button type="button" class="cite" data-cite="roleOpen" aria-label="查看出处"></button><button type="button" class="cite" data-cite="emergent2" aria-label="查看出处"></button></p>
+    <p>跨空间映射的基础是"重要关系"（同一性、空间、时间、原因-结果、部分-整体）；压缩把几个源头的概念复杂性大大降低，得到认知上易于管理、具有"人文尺度"的新生结构。<button type="button" class="cite" data-cite="vitalRel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="comprGoal" aria-label="查看出处"></button><button type="button" class="cite" data-cite="humanScale" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">输入空间提供材料，整合空间长出新结构——它和两个输入都不同，也不等于两者相加。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：压缩与控制 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>压缩的维度，控制的原则</h2>
+  </div>
+  <p class="point">相似性是最常见的重要关系，但空间、时间、原因-结果、部分-整体也都被压进整合空间——<span class="hl">压缩是整合过程的核心</span>。<button type="button" class="cite" data-cite="similarity" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sum61b" aria-label="查看出处"></button></p>
+
+  <figure class="figbox tabpanel" data-figure>
+    <p class="bench-label">选一种重要关系，看它怎么被压缩（示意图均据原著例子重绘）</p>
+    <div class="btn-row" id="cTabs" aria-label="选择压缩维度">
+      <button class="chip sel" data-tab="space">空间</button>
+      <button class="chip" data-tab="time">时间</button>
+      <button class="chip" data-tab="cause">原因-结果</button>
+      <button class="chip" data-tab="part">部分-整体</button>
+    </div>
+
+    <div class="tabpane" id="pane-space">
+      <svg viewBox="0 0 680 170" role="img" aria-label="空间压缩：加勒比飓风场景与法国村庄暴风雨场景压成一个整合空间">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+          <rect x="20" y="34" width="200" height="102" rx="10" fill="var(--card)"/>
+          <rect x="280" y="34" width="200" height="102" rx="10" fill="var(--card)"/>
+          <path d="M220 85 L278 85"/>
+          <path d="M270 78 L280 85 L270 92"/>
+          <path d="M480 85 L510 85"/>
+          <path d="M502 78 L512 85 L502 92"/>
+          <rect x="512" y="34" width="150" height="102" rx="10" fill="color-mix(in srgb,var(--red) 8%,var(--card))" stroke="var(--red)"/>
+        </g>
+        <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)" stroke="none">
+          <text x="120" y="58" text-anchor="middle" font-size="13" font-weight="700">加勒比飓风的破坏</text>
+          <text x="120" y="80" text-anchor="middle" font-size="11" fill="var(--ink-soft)">巨浪·汽车掀翻</text>
+          <text x="120" y="98" text-anchor="middle" font-size="11" fill="var(--ink-soft)">木屋车库被夷平</text>
+          <text x="380" y="58" text-anchor="middle" font-size="13" font-weight="700">法国村庄的暴风雨</text>
+          <text x="380" y="80" text-anchor="middle" font-size="11" fill="var(--ink-soft)">大雨·树被拔起</text>
+          <text x="380" y="98" text-anchor="middle" font-size="11" fill="var(--ink-soft)">屋瓦横飞·落叶枝干</text>
+          <text x="587" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--red)">整合空间</text>
+          <text x="587" y="90" text-anchor="middle" font-size="11.5">"美式龙卷风"</text>
+          <text x="587" y="108" text-anchor="middle" font-size="11" fill="var(--ink-soft)">袭法村；细节悬而未决</text>
+        </g>
+        <text x="340" y="158" text-anchor="middle" font-size="11" fill="var(--ink-faint)" stroke="none">两个地点被压进一条消息，损害的确切特点无法真正分辨</text>
+      </svg>
+    </div>
+
+    <div class="tabpane" id="pane-time" hidden>
+      <svg viewBox="0 0 680 170" role="img" aria-label="时间压缩：1853 年的 Northern Light 与 1993 年的 Great American II 被压成一场竞赛">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+          <path d="M60 44 L620 44"/>
+          <path d="M60 122 L620 122"/>
+          <path d="M60 83 L620 83" stroke="var(--red)" stroke-dasharray="7 5"/>
+          <path d="M500 44 C540 44 545 60 560 70"/>
+          <path d="M470 122 C510 122 545 100 560 92"/>
+        </g>
+        <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)" stroke="none">
+          <text x="60" y="30" font-size="12.5" font-weight="700">1853 · Northern Light</text>
+          <text x="620" y="30" text-anchor="end" font-size="11.5" fill="var(--ink-soft)">76 天 8 小时（1993 年仍是纪录）</text>
+          <text x="60" y="142" font-size="12.5" font-weight="700">1993 · Great American II</text>
+          <text x="620" y="142" text-anchor="end" font-size="11.5" fill="var(--ink-soft)">同一航线</text>
+          <text x="340" y="78" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)">同一条航线（压缩）</text>
+        </g>
+        <g font-family="-apple-system,'PingFang SC',sans-serif" stroke="none">
+          <circle cx="520" cy="44" r="7" fill="var(--blue)"/>
+          <circle cx="480" cy="122" r="7" fill="var(--green)"/>
+          <text x="500" y="104" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--red)">领先 4.5 天</text>
+          <text x="340" y="164" text-anchor="middle" font-size="11" fill="var(--ink-faint)">来自"想象两条船竞赛"，不是数学计算</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="tabpane" id="pane-cause" hidden>
+      <svg viewBox="0 0 680 170" role="img" aria-label="原因-结果压缩：致使链的中间阶段被压进单个动词 break">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+          <rect x="20" y="56" width="86" height="34" rx="8" fill="var(--card)"/>
+          <rect x="120" y="56" width="86" height="34" rx="8" fill="var(--card)"/>
+          <rect x="220" y="56" width="86" height="34" rx="8" fill="var(--card)"/>
+          <rect x="320" y="56" width="86" height="34" rx="8" fill="var(--card)"/>
+          <rect x="420" y="56" width="86" height="34" rx="8" fill="var(--card)"/>
+          <path d="M106 73 L118 73 M206 73 L218 73 M306 73 L318 73 M406 73 L418 73"/>
+          <path d="M506 73 L530 73"/>
+          <path d="M522 66 L532 73 L522 80"/>
+          <rect x="534" y="48" width="120" height="52" rx="10" fill="color-mix(in srgb,var(--red) 8%,var(--card))" stroke="var(--red)"/>
+        </g>
+        <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)" stroke="none">
+          <text x="63" y="78" text-anchor="middle" font-size="12">弯腰捡石</text>
+          <text x="163" y="78" text-anchor="middle" font-size="12">伸出手</text>
+          <text x="263" y="78" text-anchor="middle" font-size="12">抓住举起</text>
+          <text x="363" y="78" text-anchor="middle" font-size="12">石头接触</text>
+          <text x="463" y="78" text-anchor="middle" font-size="12">窗被打碎</text>
+          <text x="594" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="var(--red)">break</text>
+          <text x="594" y="90" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">单个动词</text>
+          <text x="340" y="140" text-anchor="middle" font-size="11" fill="var(--ink-faint)">John broke the window：中间阶段被背景化，致使复杂度大降</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="tabpane" id="pane-part" hidden>
+      <svg viewBox="0 0 680 170" role="img" aria-label="部分-整体压缩：脸或声音与整体的人压成一个整合空间">
+        <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+          <rect x="30" y="44" width="180" height="82" rx="10" fill="var(--card)"/>
+          <rect x="250" y="44" width="180" height="82" rx="10" fill="var(--card)"/>
+          <path d="M210 85 L248 85"/>
+          <path d="M240 78 L250 85 L240 92"/>
+          <path d="M430 85 L458 85"/>
+          <path d="M450 78 L460 85 L450 92"/>
+          <rect x="462" y="44" width="190" height="82" rx="10" fill="color-mix(in srgb,var(--red) 8%,var(--card))" stroke="var(--red)"/>
+        </g>
+        <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)" stroke="none">
+          <text x="120" y="76" text-anchor="middle" font-size="13" font-weight="700">输入空间 1</text>
+          <text x="120" y="98" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">脸（肖像）/ 声音（门口）</text>
+          <text x="340" y="76" text-anchor="middle" font-size="13" font-weight="700">输入空间 2</text>
+          <text x="340" y="98" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)">作为整体的人</text>
+          <text x="557" y="76" text-anchor="middle" font-size="13" font-weight="700" fill="var(--red)">整合空间</text>
+          <text x="557" y="98" text-anchor="middle" font-size="11.5">"That's Jim"：在脸/声音</text>
+          <text x="557" y="116" text-anchor="middle" font-size="11.5">与整体之间切换</text>
+          <text x="340" y="152" text-anchor="middle" font-size="11" fill="var(--ink-faint)">没人认为只在概念化一张脸——但整合给出的也不是完全转喻的解释</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>四种压缩维度（示意；例子分别见"美式龙卷风"、船赛、break 与 That's Jim）<button type="button" class="cite" data-cite="tornado" aria-label="查看出处"></button><button type="button" class="cite" data-cite="regattaRun" aria-label="查看出处"></button><button type="button" class="cite" data-cite="brokeWindow2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="thatsJim" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">整合的特性：这个修饰语，压的是哪种关系？<button type="button" class="cite" data-cite="blendedProp" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="propChips">
+      <button class="chip" data-prop="mid">mid-Atlantic English</button>
+      <button class="chip" data-prop="old">old friend（老朋友）</button>
+      <button class="chip" data-prop="warm">warm coat（温暖的外套）</button>
+    </div>
+    <p class="feedback" id="propFb">"老朋友"当然可以相当年轻——猜猜"老"压的是什么。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">控制原则：原书把九个原则浓缩成五个，点一条看它管什么<button type="button" class="cite" data-cite="ninePrinciples" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="ctrlChips">
+      <button class="chip" data-p="topo">拓扑学原则</button>
+      <button class="chip" data-p="fus">融合原则</button>
+      <button class="chip" data-p="unp">开包原则</button>
+      <button class="chip" data-p="rel">关联原则</button>
+      <button class="chip" data-p="hs">人文尺度原则</button>
+    </div>
+    <p class="feedback" id="ctrlFb">这些原则是为了回应"怎么都行"的批评而提出的。<button type="button" class="cite" data-cite="anythingGoes" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>压缩总是指向"统一"</summary>
+    <p>无论压缩的是同一性、时空距离、原因-结果链还是整体-部分，目标都可以理解为一种统一状态；统一成的可以是一个人的概念、物的概念或行为的概念，也可以只是附加在别的概念上的一种特性（整合的特性）。<button type="button" class="cite" data-cite="unified" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blendedProp" aria-label="查看出处"></button></p>
+    <p>例子往往是孤立列出的；真实压缩通常同时影响几种重要关系，而且整合中总是存在某种同一性压缩。<button type="button" class="cite" data-cite="sum61a" aria-label="查看出处"></button></p>
+    <p>船赛整合的细节：两个输入空间分别装 1853 年与 1993 年的航行；跨空间的同一性（船、起点终点、航线、位置）以组合方式融合，新生结构主要靠两个时间段的压缩。"领先 4.5 天"靠想象竞赛直接掌握情景，而不是把船位同航线起终点做数学计算。<button type="button" class="cite" data-cite="regatta" aria-label="查看出处"></button><button type="button" class="cite" data-cite="regattaAhead" aria-label="查看出处"></button></p>
+    <p>"美式龙卷风"一句里，损害的确切特点不会也不能真正分辨出来——达到的结果是一种新生结构，细节则悬而未决。<button type="button" class="cite" data-cite="tornadoDetail" aria-label="查看出处"></button></p>
+    <p>五条控制原则的原文要点：拓扑学原则要求整合空间接收并保持输入空间概念结构的重要内容；融合原则要求新生结构尽可能具有"完形"特征；开包原则确保整合仍能促成整个网络的重建——哲学演讲里"康德说：X，但是我反对：Y"的虚拟争论，就是争论框架从整合空间开包为两个时代的输入框架。人文尺度原则被 Fauconnier &amp; Turner 认为是"首要目标"；关联原则给成分分配重要性，是整合背后的主要动力。<button type="button" class="cite" data-cite="topology" aria-label="查看出处"></button><button type="button" class="cite" data-cite="integration" aria-label="查看出处"></button><button type="button" class="cite" data-cite="unpacking" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kant" aria-label="查看出处"></button><button type="button" class="cite" data-cite="humanScaleP" aria-label="查看出处"></button><button type="button" class="cite" data-cite="relevanceDrive" aria-label="查看出处"></button></p>
+    <p>三个整合特性：mid-Atlantic English 压的是美英空间关系；old friend 的"老"压的是一段长时间里熟悉过程的各阶段；warm coat 的"温暖"压的是外套与温暖之间的原因-结果——而 thick coat 的"厚"不涉及整合。<button type="button" class="cite" data-cite="midAtlantic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="oldFriend" aria-label="查看出处"></button><button type="button" class="cite" data-cite="warmCoat" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">压缩降复杂性，控制原则管方向——而关联原则被看作整合背后的主要动力。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 强心针</button>
+    <button class="btn" data-jump="s3">下一场：词汇实验室 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>词汇整合实验室</h2>
+  </div>
+  <p class="point">smog、brunch 这类形态整合是两个词压成一个新词；infotainment 的新生结构却仍是<span class="hl">开放式的——整合未必收敛成确定词义</span>。<button type="button" class="cite" data-cite="blends6_2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="infotain" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：左右各选一词，看整合成不成立</p>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:2px 0">左栏（第一输入空间）</p>
+    <div class="btn-row" id="blendA" aria-label="第一输入空间"></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:2px 0">右栏（第二输入空间）</p>
+    <div class="btn-row" id="blendB" aria-label="第二输入空间"></div>
+    <p class="feedback" id="blendFb">比如 smoke + fog，就是英语里现成的 smog。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：2005 年 6 月德国《图片报》头版出现 Ballacktisch 一词。猜猜它想说什么？<button type="button" class="cite" data-cite="ballack" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="ballackOpts">
+      <button class="btn" data-opt="a">拜仁慕尼黑的新球场名</button>
+      <button class="btn" data-opt="b">Ballack 将转会皇家马德里的传闻</button>
+      <button class="btn" data-opt="c">一种新足球阵型</button>
+    </div>
+    <div class="reveal" id="ballackRev" hidden>
+      <p><strong>是传闻。</strong>输入空间 1：Ballack——拜仁球员，与慕尼黑相联系；输入空间 2：皇家马德里——以"银河舰队"著称。整合空间里"皇家是银河巨星云集的"这一特性映射到 Ballack 身上：他也可以被认为是银河巨星、对皇家合格；慕尼黑↔马德里的空间压缩支持这条统一的消息。<button type="button" class="cite" data-cite="ballackBg" aria-label="查看出处"></button><button type="button" class="cite" data-cite="galacticos" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ballackMsg" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">不掌握背景知识的读者读不出它——这正是它"在线特征"的简单检测办法。<button type="button" class="cite" data-cite="ballackTest" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">cherry jeans 有四种读法，点一种看压的是什么关系<button type="button" class="cite" data-cite="cherryJeans" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="cherryChips">
+      <button class="chip" data-c="color">樱桃红颜色的牛仔裤</button>
+      <button class="chip" data-c="pattern">印樱桃图案的白底牛仔裤</button>
+      <button class="chip" data-c="stain">被樱桃汁弄脏的牛仔裤</button>
+      <button class="chip" data-c="pick">摘樱桃时穿的牛仔裤</button>
+    </div>
+    <p class="feedback" id="cherryFb">较固定的意义只有第一种；其余都依赖具体语境。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">缩略词 + 固定词：关联原则促使我们寻找两者间的概念联系<button type="button" class="cite" data-cite="propWord" aria-label="查看出处"></button><button type="button" class="cite" data-cite="CARE" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="acroChips">
+      <button class="chip" data-a="care">CARE（援欧组织）</button>
+      <button class="chip" data-a="wasp">WASP（白盎格鲁撒克逊新教徒）</button>
+      <button class="chip" data-a="pisa">PISA + 斜塔（《南德意志报》）</button>
+    </div>
+    <p class="feedback" id="acroFb">固定词和缩写义的联系，有时显而易见，有时只剩模糊联想。</p>
+  </div>
+
+  <details>
+    <summary>为什么有的整合"不成"：缺重要关系</summary>
+    <p>swimsation（游泳学校名）和 sportianity 里，跨空间投射不"重要"——不能理解为同一、空间、时间、原因-结果或部分-整体；基本的组合和完善因此不适用，压缩并不产生新生结构，只剩"和第一个输入空间有关"的印象。<button type="button" class="cite" data-cite="swimsation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="noVital" aria-label="查看出处"></button></p>
+    <p>infotainment 相反：输入空间（纪实与娱乐）有很大相似性，新生结构却是开放式的——不容置疑地定义这个混合体很困难，也许甚至没必要。<button type="button" class="cite" data-cite="infotain" aria-label="查看出处"></button></p>
+    <p>固化与在线：smog 因高度词汇化，说话人已意识不到整合背景；pet fish 一般唤起鱼缸语境，却被研究鲨鱼的生物学家用来指她最喜欢的鲨鱼样本——固化的解释不适应特定语境时，整合的在线特性就表现出来。<button type="button" class="cite" data-cite="smogFossil" aria-label="查看出处"></button><button type="button" class="cite" data-cite="petFish" aria-label="查看出处"></button></p>
+    <p>组合式复合词如 apple juice 是两个输入空间的组合，新生结构把第一个空间的核心信息融入第二个；wheelchair 则超出两个成分的固有意义之外——多出的属性可看作整合中产生的新兴概念结构。<button type="button" class="cite" data-cite="appleJuice" aria-label="查看出处"></button><button type="button" class="cite" data-cite="wheelchair" aria-label="查看出处"></button></p>
+    <p>cherry jeans 的四种读法各压一种关系：颜色特性间的同一性（樱桃红，最固化）；底布图案与樱桃形状特性间的投射（较不常见）；樱桃汁与污点的原因-结果（需预设意外真的发生）；工装牛仔裤功能与收获樱桃的原因-结果（依赖语境的在线概念化）。<button type="button" class="cite" data-cite="cherryColor" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cherryPattern" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cherryStain" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cherryPick" aria-label="查看出处"></button></p>
+    <p>PISA 配斜塔的新生结构（也许颇为模糊地）表示：好的测试结果保住文化遗产，但教育也许出现了偏差，就像斜塔一样。<button type="button" class="cite" data-cite="PISAblend" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">整合分析能写词汇化的常见实例，更擅长边缘、一次性、靠语境的在线概念化。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 压缩与控制</button>
+    <button class="btn" data-jump="s4">下一场：句子整合 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>句子里的整合</h2>
+  </div>
+  <p class="point">整合不止于词：<span class="hl">三个事件图式能合成一个句子</span>，一个 if 从句能一次开两个"世界"。<button type="button" class="cite" data-cite="sneeze" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：Frank sneezed the tissue off the table 里藏着哪几个事件？逐个选中，再合成</p>
+    <div class="btn-row" id="sneezeChips">
+      <button class="chip" data-e="c1">① 致使事件：Frank sneezed</button>
+      <button class="chip" data-e="c2">② 结果事件：the tissue fell off the table</button>
+      <button class="chip" data-e="c3">③ 致使-位移：Frank pushed the tissue off the table</button>
+    </div>
+    <button class="btn" id="sneezeMerge" disabled>合成 →</button>
+    <div class="reveal" id="sneezeRev" hidden>
+      <p>新生结构把<strong>施事（Frank）·行为（sneezed→pushed）·受事（the tissue）·方向性位置（off the table）</strong>组合成一句合法英语；输入空间 1 本身已是原因-结果压缩的产物，布局由融合原则控制。<button type="button" class="cite" data-cite="sneezeIn1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sneezeIn2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sneezeResult" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sneezeTopo" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">错句修复：*Susan remembered Tom of Grandma's birthday<button type="button" class="cite" data-cite="susanErr" aria-label="查看出处"></button></p>
+    <div class="btn-row"><button class="btn" id="susanGo">走一遍整合 →</button></div>
+    <p class="feedback" id="susanFb">remember 的构式里，Tom 这个名词没有被安置。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看："If I were you, I'd apply for the York position just for the experience"——这个建议主要站在谁的角度？<button type="button" class="cite" data-cite="counterfactual" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="yorkOpts">
+      <button class="btn" data-opt="a">听者的角度</button>
+      <button class="btn" data-opt="b">说者的角度</button>
+      <button class="btn" data-opt="c">双方完全均衡</button>
+    </div>
+    <div class="reveal" id="yorkRev" hidden>
+      <p><strong>说者的角度。</strong>两个输入空间由施事角色间的同一性联系：说者从言语情景空间被投射到听者位置，两难困境表现为说者不得不做决定——问题仍主要从说者立场出发。这种只强调同一性又不维持它的混合体，有时显得高人一等。<button type="button" class="cite" data-cite="condEffect" aria-label="查看出处"></button><button type="button" class="cite" data-cite="condSuperior" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">空间建造者：一个表达式，开一个新空间<button type="button" class="cite" data-cite="spaceBuilders" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="sbChips">
+      <button class="chip" data-s="fairy">once upon a time（从前）</button>
+      <button class="chip" data-s="movie">in the movie（电影中）</button>
+      <button class="chip" data-s="ifyou">If I were you（如果我是你）</button>
+    </div>
+    <p class="feedback" id="sbFb">典型例子还有 in that story、my daughter thinks that、last night I dreamt that。<button type="button" class="cite" data-cite="spaceBuilderEx" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>错句整合的完整过程</summary>
+    <p>输入空间 1：remember 活在"感事-心理过程-被感对象"的构式里，Tom 松散未安置；输入空间 2：remind 的致使-经验构式有"施事-心理行为-感事-被感对象"四个成分，Tom 有了着落。<button type="button" class="cite" data-cite="susanIn1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="susanIn2" aria-label="查看出处"></button></p>
+    <p>整合的结果不是把 remember 直接换成 remind，而是一个新生结构："Susan caused Tom to remember Grandma's birthday"；只有当语言使用者意识到这是学习者的错误，才会发生 Oh, you mean 'remind Tom', not 'remember Tom' 的修正——整合至此实现功用并被抛弃。<button type="button" class="cite" data-cite="susanBlend" aria-label="查看出处"></button><button type="button" class="cite" data-cite="susanReplace" aria-label="查看出处"></button></p>
+    <p>反事实句的两个"世界"是语言学常识；整合理论把它从小句型式带到言语事件和想象行为的语用层面。<button type="button" class="cite" data-cite="counterfactual" aria-label="查看出处"></button></p>
+    <p>本节小结：整合分析完全能写词汇化词组和固定构式，也能处理更边缘、更有意思的例子，因此适合扩展语言学研究的领域。<button type="button" class="cite" data-cite="sum62" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">从词到句子再到语用：整合是在线处理的统一刻画工具。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 词汇实验室</button>
+    <button class="btn" data-jump="s5">下一场：谜语笑话 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>谜语和笑话：整合当解题工具</h2>
+  </div>
+  <p class="point">广告强加联想、谜语逼你主动整合、笑话靠不相容性发笑——<span class="hl">三种文本都利用新生结构的在线特征</span>。<button type="button" class="cite" data-cite="textTypes" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sum63" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看（佛教和尚谜语）：和尚拂晓上山、日落到顶，山顶打坐几天后某拂晓下山、日落到山脚。对这<span class="hl">两次不同日的旅行</span>，路上有没有一个地方，他在两天的同一时刻都在那里？<button type="button" class="cite" data-cite="monkRiddle" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="monkOpts">
+      <button class="btn" data-opt="y">有</button>
+      <button class="btn" data-opt="n">没有</button>
+    </div>
+    <div class="reveal" id="monkRev" hidden>
+      <p><strong>有。</strong>Fauconnier &amp; Turner 的解法：想像他在同一天、沿同一条路上山下山——一定有个地方让他"遇见自己"，即使见面地点的确切位置并不清楚。<button type="button" class="cite" data-cite="monkSolve" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">整合台：按步骤把两次旅行压成一次</p>
+    <div class="steprow" id="mkSteps" aria-label="谜语整合步骤"></div>
+    <svg id="mkSvg" viewBox="0 0 680 260" role="img" aria-label="和尚谜语整合图：上山与下山两条路径被压缩到同一天">
+      <path d="M60 225 C160 185 240 100 340 50 C440 100 520 185 620 225" fill="none" stroke="var(--ink-faint)" stroke-width="2" filter="url(#rough2)"/>
+      <path d="M60 225 L620 225" stroke="var(--ink-faint)" stroke-width="1.5" stroke-dasharray="4 5"/>
+      <g id="mkUp" filter="url(#rough2)">
+        <path d="M78 208 C150 175 230 100 338 55" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-dasharray="6 4"/>
+        <path d="M330 62 L340 50 L328 44" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+        <circle cx="78" cy="208" r="6" fill="var(--red)"/>
+        <text x="92" y="228" font-size="12" fill="var(--red)" stroke="none">a₁ 拂晓出发</text>
+        <text x="330" y="34" text-anchor="end" font-size="12" fill="var(--red)" stroke="none">日落到顶 · 打坐几天</text>
+      </g>
+      <g id="mkDown" filter="url(#rough2)">
+        <path d="M342 55 C420 100 500 175 602 208" fill="none" stroke="var(--blue)" stroke-width="2.2" stroke-dasharray="6 4"/>
+        <path d="M594 196 L604 210 L590 214" fill="none" stroke="var(--blue)" stroke-width="2.2"/>
+        <circle cx="602" cy="208" r="6" fill="var(--blue)"/>
+        <text x="618" y="228" text-anchor="end" font-size="12" fill="var(--blue)" stroke="none">a₂ 日落山脚</text>
+        <text x="352" y="34" font-size="12" fill="var(--blue)" stroke="none">某拂晓启程</text>
+      </g>
+      <g id="mkMerge">
+        <path d="M78 208 C150 175 230 100 338 55 C420 100 500 175 602 208" fill="none" stroke="var(--green)" stroke-width="2.6" filter="url(#rough2)"/>
+        <text x="340" y="248" text-anchor="middle" font-size="12" fill="var(--green)" stroke="none">同一天 · 同一条路（日子被压缩）</text>
+      </g>
+      <g id="mkMeet">
+        <circle cx="248" cy="128" r="7" fill="var(--red)"/>
+        <circle cx="248" cy="128" r="7" fill="none" stroke="var(--blue)" stroke-width="2"/>
+        <circle cx="248" cy="128" r="15" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <text x="262" y="120" font-size="12.5" font-weight="700" fill="var(--ink)" stroke="none">必然相遇</text>
+        <text x="262" y="138" font-size="11" fill="var(--ink-soft)" stroke="none">a₁′ 与 a₂′ 走个照面</text>
+      </g>
+      <g id="mkQ">
+        <text x="248" y="112" text-anchor="middle" font-size="20" font-weight="800" fill="var(--red)" stroke="none">？</text>
+        <text x="150" y="170" text-anchor="middle" font-size="11.5" fill="var(--ink-soft)" stroke="none">相遇的时刻与位置并不清楚</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="10.5" fill="var(--ink-faint)" stroke="none">
+        <text x="60" y="16">a₁ = 上山的和尚，a₂ = 下山的和尚（据原著图 6.10 注释）</text>
+      </g>
+    </svg>
+    <p class="feedback" id="mkFb">点步骤，看两次旅行怎么被压成一次。</p>
+    <figcaption>和尚整合的网络表征（据 Fauconnier &amp; Turner 2002: 45 重绘，示意）<button type="button" class="cite" data-cite="monkCompress" aria-label="查看出处"></button><button type="button" class="cite" data-cite="monkFixed" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">笑话台：Mary 为什么被送回家？<button type="button" class="cite" data-cite="koestler" aria-label="查看出处"></button></p>
+    <div class="tbl2">
+      <div class="cell"><b>框架 1 · 抽烟</b>男生是施事，在抽烟；Mary 被背景化为旁观者；违规=抽烟。</div>
+      <div class="cell"><b>框架 2 · 点火</b>Mary 是施事，往男生身上点火；百科知识：点着的物体会冒烟。</div>
+    </div>
+    <div class="btn-row"><button class="btn" id="jokeGo">揭示笑点 →</button></div>
+    <p class="feedback" id="jokeFb">妈妈问：如果他在抽烟，怎么把你送回家了？</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">广告是"强加"的整合</p>
+    <p style="margin:.2em 0">潘婷广告把<strong>情人空间</strong>与<strong>潘婷空间</strong>在线压缩：情人间的互动关系被映射到两种护发产品的关系上；这种跨空间关联是靠画面"强加给"读者的，不确定性被藏起来。<button type="button" class="cite" data-cite="panteneSpaces" aria-label="查看出处"></button><button type="button" class="cite" data-cite="panteneBlend" aria-label="查看出处"></button><button type="button" class="cite" data-cite="panteneForced" aria-label="查看出处"></button><button type="button" class="cite" data-cite="adsHide" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>三种文本的小结（原书原文）</summary>
+    <p>广告文体鼓励甚至强迫读者把（常常由图像）暗示的积极效果和产品在线压缩；为了增强效果，通常隐藏整合的不确定。<button type="button" class="cite" data-cite="adsSummary" aria-label="查看出处"></button>潘婷广告就这样加入强加整合的行列——与万宝路王国、Bacardi 朗姆酒的热带海滩同类。<button type="button" class="cite" data-cite="forcedBlend" aria-label="查看出处"></button></p>
+    <p>有问题的谜（和未来行为的计划）通过有策略地、审慎地整合不同事件场景并评估可能结果来解决——整合可以是审慎选择的解决问题策略。<button type="button" class="cite" data-cite="riddleSummary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="problemSolving" aria-label="查看出处"></button></p>
+    <p>笑话产生的新生结构至少包含一些因不相容而使整合不成功的成分——这正是幽默效果的来源。<button type="button" class="cite" data-cite="jokeSummary" aria-label="查看出处"></button></p>
+    <p>Koestler 的双联理论：情景 L 被迫在两个内部一致而习惯上不相容的参照框架 M.1、M.2 之间来回摆动；整合空间概念恰好解释了这种"摆动"。<button type="button" class="cite" data-cite="koestler" aria-label="查看出处"></button><button type="button" class="cite" data-cite="jokeFrames" aria-label="查看出处"></button></p>
+    <p>和尚谜语的三种跨空间关系：由和尚体现的同一性、两条线路间的空间关系，以及最重要的时间关系——全部经过压缩。<button type="button" class="cite" data-cite="monkRels" aria-label="查看出处"></button></p>
+    <p>点火笑话的两个输入空间：输入空间 1 把施事指派给抽烟的男生，Mary 被背景化为旁观者；输入空间 2 里 Mary 是施事、男生是受事。三种跨空间关系（同一性、点火→冒烟的原因-结果、违规严重性的量级）全部压缩：旁观者被提升为施事——显著的不相容性点明笑话所在与幽默来源。<button type="button" class="cite" data-cite="marySpace1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="marySpace2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="maryRels" aria-label="查看出处"></button><button type="button" class="cite" data-cite="maryCompress" aria-label="查看出处"></button><button type="button" class="cite" data-cite="maryHumor" aria-label="查看出处"></button></p>
+    <p>Barthes 的"锚地"与"替班"：前者为图画提供明示和直指支持的文本，后者是与图像有互补关系的文本；潘婷一例属于更有趣的"替班"。<button type="button" class="cite" data-cite="barthes" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">谜语的破解也只能靠把两次旅行整合为一次——开放和不确定，不妨碍它有用。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 句子整合</button>
+    <button class="btn" data-jump="s6">下一场：认知环境 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>认知环境与明示行为</h2>
+  </div>
+  <p class="point">听到一句不搭茬的话，我们仍忍不住问"为什么此时此地对我说这些"——<span class="hl">对关联的寻找控制和主宰着理解</span>。<button type="button" class="cite" data-cite="relevanceSearch" aria-label="查看出处"></button><button type="button" class="cite" data-cite="whyMe" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">Peter：你想喝点儿咖啡吗？Mary：咖啡会让我清醒。<button type="button" class="cite" data-cite="coffee" aria-label="查看出处"></button></p>
+    <p style="font-size:.9rem;color:var(--ink-soft);margin:2px 0">Mary 没有直接回答。 Peter 靠共有的深夜情景信息和"咖啡因影响睡眠"的百科知识来补全——这些就是两人认知环境的一部分。<button type="button" class="cite" data-cite="cogEnv" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="toneChips">
+      <button class="chip" data-t="no">降调："不，谢谢你。"</button>
+      <button class="chip" data-t="yes">升调："好的，谢谢。"</button>
+    </div>
+    <p class="feedback" id="toneFb">选一种语调，看它支持哪个假设：拒绝→她怕睡不着；接受→她想保持清醒（也许是怕开车睡着）。<button type="button" class="cite" data-cite="toneLines" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coffeeAssume" aria-label="查看出处"></button></p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">公园长椅：Peter 僵硬地往后一靠，Mary 看见了三个人<button type="button" class="cite" data-cite="bench" aria-label="查看出处"></button><button type="button" class="cite" data-cite="benchPeople" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></p>
+    <div class="people" id="benchPeople">
+      <button class="person" data-w="ice">
+        <span class="pname">卖冰淇淋的人</span>
+        <span class="mrow"><span class="mlab">语境效果</span><span class="bar"><i data-v="1"></i></span></span>
+        <span class="mrow effort"><span class="mlab">认知努力</span><span class="bar"><i data-v="2"></i></span></span>
+      </button>
+      <button class="person" data-w="walk">
+        <span class="pname">陌生的散步者</span>
+        <span class="mrow"><span class="mlab">语境效果</span><span class="bar"><i data-v="1"></i></span></span>
+        <span class="mrow effort"><span class="mlab">认知努力</span><span class="bar"><i data-v="2"></i></span></span>
+      </button>
+      <button class="person" data-w="wm">
+        <span class="pname">熟人 William</span>
+        <span class="mrow"><span class="mlab">语境效果</span><span class="bar"><i data-v="3"></i></span></span>
+        <span class="mrow effort"><span class="mlab">认知努力</span><span class="bar"><i data-v="1"></i></span></span>
+      </button>
+    </div>
+    <p class="feedback" id="benchFb">点其中一位，看带来多少语境效果、要花多少努力。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">明示推论行为</p>
+    <p style="margin:.2em 0">说出的话加手势、表情等非语言信号构成"明示推论行为"：刺激作主体，从潜在假设的背景中突出。它传递<strong>两个</strong>意图——告诉某事，以及"我在告诉你"这个交际意图。<button type="button" class="cite" data-cite="ostensive" aria-label="查看出处"></button><button type="button" class="cite" data-cite="figGround" aria-label="查看出处"></button><button type="button" class="cite" data-cite="twoIntentions" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>认知环境：定义、差异与即时建构</summary>
+    <p>认知环境是对双方而言显而易见的所有假设的集合——能在物理环境中感知、或靠记忆和推理推断出的假设；它由储存于记忆的、即时感知的或即时推断的假设构成。<button type="button" class="cite" data-cite="cogEnv" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogEnvAssump" aria-label="查看出处"></button></p>
+    <p>认知环境因人而异、因情景而异；Sperber &amp; Wilson 和概念整合一样关心即时意义建构，强调感知新事实、形成新假设和推论的能力。<button type="button" class="cite" data-cite="cogEnvVary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="onlineBoth" aria-label="查看出处"></button></p>
+    <p>Peter 怎么知道附加推论也是 Mary 有意传递的？钥匙是她实际说了什么——明示推论刺激从背景中突出，读者据此取舍假设。<button type="button" class="cite" data-cite="ostensive" aria-label="查看出处"></button></p>
+    <p>长椅情景的细节：卖冰淇淋的人是坐下前就注意到的，再注意他是对处理资源的浪费；陌生散步者是新信息，却推论不出什么；William 能引出许多结论，是认知环境里唯一真正相关的变化。<button type="button" class="cite" data-cite="iceWaste" aria-label="查看出处"></button><button type="button" class="cite" data-cite="walkerFew" aria-label="查看出处"></button><button type="button" class="cite" data-cite="williamMany" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">认知环境 = 假设的集合；明示行为改变它，让某些假设凸显出来。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 谜语笑话</button>
+    <button class="btn" data-jump="s7">下一场：关联度 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>关联度实验室</h2>
+  </div>
+  <p class="point">一个假设算不算"与个体相关"，看两个条件：<span class="hl">巨大的积极认知效果，加上很小的处理努力</span>。<button type="button" class="cite" data-cite="cond1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cond2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="effEff" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看（原书练习）：四组句子，每组点一句你认为"认知处理效率更高"的<button type="button" class="cite" data-cite="exercise2" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+    <div id="relPairs"></div>
+    <div class="reveal" id="relRev" hidden>
+      <p>四组都是短说法更关联：转喻（a glass 代啤酒）和固化表达让努力更小，语境效果却不减。<strong>认知经济性</strong>：关于一个对象的最大量信息，可以用最小认知努力获得（Rosch）。<button type="button" class="cite" data-cite="glassMetonymy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="rosch" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">原书练习未给标准答案；这里的判定依据是第六章的两个关联条件，属解读。<button type="button" class="cite" data-cite="exercise2" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">两种理论，两种脾气</p>
+    <div class="tbl2">
+      <div class="cell"><b>关联理论</b>偏逻辑推断；假设成系统、有层级；提出独立的推论模块，与一般认知只有松散联系。</div>
+      <div class="cell"><b>概念整合</b>更丰富、更多元的认知观，但更含糊、更直观；持认知整体观——语言使用与感知、注意、解决问题交织在一起。</div>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-faint);margin-bottom:0">二者能否从更密切的合作中得益？原书说：这是一个可以提出却无法回答的问题。<button type="button" class="cite" data-cite="comparison" aria-label="查看出处"></button><button type="button" class="cite" data-cite="module" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cooperation" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>从语音到假设：关联怎么一步步工作</summary>
+    <p>即使忽略语义，[rtlgetkauld] 这个语音序列也改变了 Peter 的认知环境；只有当他决定处理"不需太多努力就可能产生最大认知收获"的假设，才导向集合 {I}——包括"Mary 要 Peter 立刻过来吃饭"这个高度关联的假设。<button type="button" class="cite" data-cite="dinner" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dinnerChoose" aria-label="查看出处"></button></p>
+    <p>即使 Mary 选最直白的说法，只考虑词义而忽视认知环境中的推论，这个简单的显义也得不到确切处理——隐涵之外还有显义，都靠认知环境兜底。<button type="button" class="cite" data-cite="explicature" aria-label="查看出处"></button></p>
+    <p>关联理论给认知语言学的三点提示：理想化认知模型应推广到个体化的认知环境；主体/背景应分说者与听者取向；认知经济性应在完形、转喻等分析中更广泛适用。<button type="button" class="cite" data-cite="sum64a" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sum64b" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sum64c" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">整合负责"怎么长出意义"，关联负责"为什么偏偏是这个意义"。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 认知环境</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>一、从输入空间到整合空间，要经过哪些过程？</h3>
+    <details><summary>看答案</summary>
+      <p>组合、完善、细化。组合把两个空间的概念内容融为一体（把雇用董事看作实施注射）；完善把句子没提但框架里必不可少的元素"推荐"进来；细化是读者自行"运行"整合，深度因读者而异。<button type="button" class="cite" data-cite="threeProcs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="elaborDepth" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>二、和尚谜语里，什么被压缩了，什么没有？</h3>
+    <details><summary>看答案</summary>
+      <p>日子被压成同一天、和尚和路线被统一；但相遇的时刻没有被压缩，相遇地点也只是缩小为一段而并未固定——新生结构保持模糊，谜却已经破解。<button type="button" class="cite" data-cite="monkCompress" aria-label="查看出处"></button><button type="button" class="cite" data-cite="monkFixed" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>三、Sperber &amp; Wilson 说假设"与个体相关"，要满足哪些条件？</h3>
+    <details><summary>看答案</summary>
+      <p>条件一：此假设被优先处理时，获得巨大的积极认知效果；条件二：获得这些效果所需的努力是小的。两者缺一不可——William 正是效果大、努力小的那个。<button type="button" class="cite" data-cite="cond1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cond2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="williamEffort" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>概念整合把静态概念结构换成在线处理：心理空间是小概念包，运作于工作记忆，也激活长期记忆里的结构。<button type="button" class="cite" data-cite="mentalSpace" aria-label="查看出处"></button></li>
+    <li>四空间：输入空间 1 + 输入空间 2 → 整合空间（类属空间在原书图 6.1 起省略）。<button type="button" class="cite" data-cite="omitGeneric" aria-label="查看出处"></button></li>
+    <li>三过程：组合、完善、细化；新生结构不同于任一输入空间。<button type="button" class="cite" data-cite="threeProcs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blendNew" aria-label="查看出处"></button></li>
+    <li>重要关系：同一性、空间、时间、原因-结果、部分-整体（相似性最常见）；压缩是整合的核心目标。<button type="button" class="cite" data-cite="vitalRel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="comprGoal" aria-label="查看出处"></button></li>
+    <li>五控制原则：拓扑学、融合（完形）、开包、关联、人文尺度；由九个原则浓缩而来，为回应"怎么都行"的批评。<button type="button" class="cite" data-cite="ninePrinciples" aria-label="查看出处"></button></li>
+    <li>语言层：形态整合、复合词、缩略词+固定词、事件构式、反事实与空间建造者。<button type="button" class="cite" data-cite="blends6_2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="spaceBuilders" aria-label="查看出处"></button></li>
+    <li>广告=强加整合并隐藏不确定性；谜语=审慎的问题解决策略；笑话=不相容性产生幽默。<button type="button" class="cite" data-cite="adsSummary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="riddleSummary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="jokeSummary" aria-label="查看出处"></button></li>
+    <li>关联两条件：巨大积极认知效果 + 小努力；认知经济=最大信息量用最小努力获得。<button type="button" class="cite" data-cite="cond1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cond2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="rosch" aria-label="查看出处"></button></li>
+    <li>明示推论行为传递两个意图：信息意图 + 交际意图。<button type="button" class="cite" data-cite="twoIntentions" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>心理空间</strong>：思考和谈话时为局部理解和行动构建的小概念包。<button type="button" class="cite" data-cite="mentalSpace" aria-label="查看出处"></button></li>
+    <li><strong>输入空间 / 整合空间</strong>：被并置融合的两个（或多个）空间；整合空间包含映射来的信息，并呈现新结构。<button type="button" class="cite" data-cite="inputSpaces" aria-label="查看出处"></button><button type="button" class="cite" data-cite="blendSpace" aria-label="查看出处"></button></li>
+    <li><strong>类属空间</strong>：Fauconnier &amp; Turner 网络中的第四个空间；原书图 6.1 起省略。<button type="button" class="cite" data-cite="omitGeneric" aria-label="查看出处"></button></li>
+    <li><strong>重要关系</strong>：跨空间映射的基础，如同一性、空间、时间、原因-结果、部分-整体。<button type="button" class="cite" data-cite="vitalRel" aria-label="查看出处"></button></li>
+    <li><strong>压缩</strong>：把几个源头的概念复杂性大大降低，得到"人文尺度"的统一结构。<button type="button" class="cite" data-cite="comprGoal" aria-label="查看出处"></button><button type="button" class="cite" data-cite="humanScale" aria-label="查看出处"></button></li>
+    <li><strong>新创结构</strong>：整合空间中不同于输入空间的新结构，如"像实施注射一样雇用"。<button type="button" class="cite" data-cite="emergent" aria-label="查看出处"></button></li>
+    <li><strong>整合的特性</strong>：统一状态附加在另一概念上的功能，如"老朋友"的"老"。<button type="button" class="cite" data-cite="blendedProp" aria-label="查看出处"></button></li>
+    <li><strong>固定词</strong>：被缩写词"借用"的现成英语词，触发寻找概念联系。<button type="button" class="cite" data-cite="propWord" aria-label="查看出处"></button></li>
+    <li><strong>空间建造者</strong>：开启新空间或把注意焦点转移到现有空间的语法表达式。<button type="button" class="cite" data-cite="spaceBuilders" aria-label="查看出处"></button></li>
+    <li><strong>强加整合</strong>：关联被"强加给"读者的整合，如潘婷广告。<button type="button" class="cite" data-cite="panteneForced" aria-label="查看出处"></button></li>
+    <li><strong>认知环境</strong>：对双方显而易见的所有假设的集合。<button type="button" class="cite" data-cite="cogEnv" aria-label="查看出处"></button></li>
+    <li><strong>明示推论行为</strong>：说出的话连同手势、表情等非语言信号。<button type="button" class="cite" data-cite="ostensive" aria-label="查看出处"></button></li>
+    <li><strong>语境效果 / 认知努力</strong>：关联的两个程度条件，一增一减。<button type="button" class="cite" data-cite="cond1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cond2" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第六章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">转录稿无页码，角标位置精确到节；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库，quote 为 OCR 原句） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  dynamic:{page:"6.1",quote:"为了用一种更动态的方法代替概念化的这种颇为静态的图像，认知语言学扩大了视野，把在线语言处理也包括了进来",zh:"认知语言学把在线语言处理纳入视野，代替静态图像"},
+  mentalSpace:{page:"6.1",quote:"心理空间是我们思考和谈话时为局部的理解和行动而构建的小概念包，……(它们)运作于工作记忆中，但是它们的建立，也部分地通过激活长期记忆中已有的结构。",zh:"心理空间：在线构建的小概念包，运作于工作记忆（Fauconnier & Turner 2002: 40, 102）"},
+  inputSpaces:{page:"6.1",quote:"这两个心理空间（即雇用空间和注射空间，可称为输入空间（input space））被并置且融合或“整合”。",zh:"雇用空间与注射空间即两个输入空间，被并置且融合"},
+  blendSpace:{page:"6.1",quote:"这个认知运作的结果是一个新的整合空间（blended space），这个空间包括了从两个输入空间映射的信息。",zh:"整合空间包含从两个输入空间映射来的信息"},
+  blendNew:{page:"6.1",quote:"然而整合空间并不仅仅利用输入空间间，它本身也表现为新的、动态呈现的概念结构，它的结构不同于两个输入空间。",zh:"整合空间呈现不同于两个输入空间的新结构"},
+  fig61:{page:"6.1",quote:"为得到网络模型中的视觉表征，可对照图6.1，它利用了4.2节介绍的参与者角色术语。",zh:"原著图 6.1 即该整合的网络图表"},
+  omitGeneric:{page:"6.1",quote:"（注意：和Mandelblit（2000）及Coulson和Oakley（2003）一样，在这个图和以后的图中，我们都忽略了第四个空间，即由Fauconnier及Turner在此图及此后的一些图中所提出的所谓“类属空间”，因为对于理解网络模型（network model）来说它并没有添加我们认为重要的任何东西）",zh:"原书图 6.1 起省略类属空间，认为它对理解网络模型没有增添重要内容"},
+  threeProcs:{page:"6.1",quote:"根据 Fauconnier 及 Turner(2002:48 以次)，从输入空间到整合空间的映射包括了三个过程：组合，完善和细化。",zh:"三过程：组合、完善、细化"},
+  compEx:{page:"6.1",quote:"把雇用董事看作实施注射，或把提高利润看作改善健康状况，这时就涉及组合（composition）过程。",zh:"组合：把雇用董事看作实施注射、提高利润看作改善健康"},
+  completion:{page:"6.1",quote:"不论是实施注射的人（即施事），还是注射空间所需的工具都没有在这个句子中提到。因为这些元素是注射情景不可或缺的部分并因此包含在相应的框架中，可以说，它们为了“完善”而被未具体化的句子所“推荐”。",zh:"完善：句中未提的施事和工具被“推荐”进整合"},
+  elaboration:{page:"6.1",quote:"细化（elaboration）被认为是在高度动态的模式下进行的，即通过“模拟”或“运行”这个整合。",zh:"细化：通过“模拟”或“运行”整合来进行"},
+  elaborDepth:{page:"6.1",quote:"这个细化过程的深度（同样还很可能包括持续时间）在原则上无尽头且因读者而异。",zh:"细化的深度原则上无尽头且因读者而异"},
+  vitalRel:{page:"6.1",quote:"输入空间不仅（通过提供必要的投射）填充了整合空间，而且还以跨空间映射（cross-space mappings）的方式相互联系，这种跨空间映射的基础是 Fauconnier 及 Turner(2002: 89-111) 所谓的重要关系 (vital relations)。",zh:"跨空间映射的基础是重要关系（F&T 2002: 89-111）"},
+  comprGoal:{page:"6.1",quote:"正如在下一节将更详细地表明一样，压缩实际上是整个整合过程最终的目标。压缩最重要的结果是，来自几个源头输入的概念复杂性大大降低了。",zh:"压缩是整合的最终目标，概念复杂性大大降低"},
+  humanScale:{page:"6.1",quote:"一个认知上易于管理，因此具有 (正如 Fauconnier 及 Turner (2002: 312) 所说的) “人文尺度”。",zh:"压缩结果认知上易于管理，具有“人文尺度”（F&T 2002: 312）"},
+  emergent:{page:"6.1",quote:"结果是两个空间的行为经历了 Fauconnier 及 Turner (2002: 92 以次, 312-325) 所谓的压缩 (compression)。",zh:"两个行为经历压缩，产生统一的新生结构"},
+  emergent2:{page:"6.1",quote:"同样，如同我们已经看到的，两个行为的目标被融入“像改善健康状况一样增长利润”。",zh:"新生结构还包括“像改善健康一样增长利润”"},
+  roleAmb:{page:"6.1",quote:"有一个可能的解释，那就是，在整合空间中，他扮演的是医生这一施事角色，此角色将要向生病的公司实施注射。另一个理解是，他自己可以充当工具",zh:"新董事在整合空间中角色含混：可能是医生，也可能是工具"},
+  roleOpen:{page:"6.1",quote:"这种含混问题并不因整合空间要“有意义”而需要解决，它们留待进一步细化。",zh:"角色含混留待进一步细化，不必解决"},
+  threeFlaws:{page:"6.1",quote:"这个解释不考虑“a shot in the arm”在这个文本中使用的特殊语境；这个分析把注意力集中在源概念对于目标概念的影响上，因而只提供了一个单向的解释；最后，这意味着隐喻映射只有在可以被词汇化为“（给）他们所需的帮助或鼓励”（如前文引用的《牛津现代高级英语词典》（OALD）的解释所表明的那样）时才会被完全处理。",zh:"纯隐喻分析的三个短板：不管特殊语境、单向、只到词汇化"},
+  diffSummary:{page:"6.1",quote:"概念隐喻理论与储存在长期记忆中的认知模型一起运作，而整合理论则与心理空间一起运作，这种心理空间是于在线处理时建立的，但也常常以认知模型为基础。",zh:"整合理论与在线建立的心理空间一起运作"},
+  similarity:{page:"6.1",quote:"相似性可能是压缩到整合空间中最重要和最常见的重要关系，但是还有其他的一些关系也受这种压缩过程影响",zh:"相似性是最重要和最常见的重要关系"},
+  tornado:{page:"6.1",quote:"Without any warning an American-type tornado hit the sleepy French village of Châtel-les-Bains leaving a trail of destruction behind.",zh:"“美式龙卷风”例句：空间压缩"},
+  tornadoDetail:{page:"6.1",quote:"很显然，两个输入空间位于不同的地点，并且同样清楚的是，为使这条消息有意义，就要克服它们的空间分离。所以，为了克服它们的空间分离，这两个输入空间就被压缩。",zh:"两个不同地点被压缩，损害的确切特点无法真正分辨"},
+  regatta:{page:"6.1",quote:"The clipper ship Northern Light sailed in 1853 from San Francisco to Boston in 76 days, 8 hours. That time was still the fastest on record in 1993, when a modern catamaran, Great American Ⅱ, set out on the same course.",zh:"船赛整合：1853 年 Northern Light 用 76 天 8 小时，纪录保持到 1993 年（F&T 2002: 63）"},
+  regattaAhead:{page:"6.1",quote:"A few days before the catamaran reached Boston, observers were able to say: at this point Great American Ⅱ is 4.5 days ahead of Northern Light.",zh:"观察员说：Great American II 领先 Northern Light 4.5 天"},
+  regattaRun:{page:"6.1",quote:"这个时间的压缩是“通过想像两条船的竞赛来运行整合”（Fauconnier 及 Turner 2002：63）的条件；时间压缩提供的是对于情景的直接掌握，而不是数学计算，数学计算将不得不把船的位置同航线的起点或者终点联系起来。",zh:"时间压缩靠想象竞赛运行整合，而非数学计算"},
+  brokeWindow2:{page:"6.1",quote:"实际的话语 John broke the window (John 打碎了窗户) 只将施事映射于整合空间中，而把所有的中间阶段（弯下膝盖，伸出手，抓住石头，将石头向上拿起，等等）压缩进了单个动词 break（打碎）中。",zh:"致使链的中间阶段被压进单个动词 break"},
+  thatsJim:{page:"6.1",quote:"当我们听到某人在门口的声音时，如果我们说“That's Jim”(那是Jim)，那么，就不那么完全确定我们是自动回忆起此人的整体的",zh:"That's Jim：脸/声音与整体的人之间的部分-整体压缩"},
+  unified:{page:"6.1",quote:"如果有人试图描写在整合空间中压缩重要关系所达到的目标，那么，这种目标则总是可以理解为一种统一状态。",zh:"压缩的目标总可理解为一种统一状态"},
+  blendedProp:{page:"6.1",quote:"这种功能将被称为整合的特性(blended property)⑤。",zh:"整合的特性：统一状态附加在另一概念上的功能"},
+  midAtlantic:{page:"6.1",quote:"修饰语“mid-Atlantic”(中大西洋)可以被理解为一种涉及美国和英国的空间关系的压缩，以表示美国-英国混合体的统一；它附加在ENGLISH（作为一种语言）这个概念上，充当一种整合的特性",zh:"mid-Atlantic English：美英空间关系压缩成整合的特性"},
+  oldFriend:{page:"6.1",quote:"在“old friend”(老朋友)——这个朋友当然可以是相当年轻的——这个名词短语中，“老”这一特性可以被认为是对一段很长时间中的熟悉过程的各种阶段压缩的结果。",zh:"old friend 的“老”：长时间熟悉过程各阶段的压缩"},
+  warmCoat:{page:"6.1",quote:"因此，“温暖”是把“外套”和“温暖”之间的原因-结果关系压缩到一个整合特性里的结果（而在“thick coat”(厚外套)的“厚”这一特性则不会涉及整合）。",zh:"warm coat 的“温暖”：原因-结果压缩成整合特性"},
+  ninePrinciples:{page:"6.1",quote:"Fauconnier和Turner（2002：325-334)提出了九个控制(或优选)原则，来回应这些反对意见，这些原则决定了由特定整合所达到的压缩和统一的程度。为着简化的目的，这里将这些原则浓缩成五个⑥。",zh:"九个控制原则被原书浓缩为五个（F&T 2002: 325-334）"},
+  anythingGoes:{page:"6.1",quote:"为讨论概念整合而举的大量例子(“性幻想，语法，复数，个人身份，赎买与彩票抑郁”，Fauconnier及Turner 2002：309)招致了“怎么都行”(意即“万金油”，适用于所有对象——译者加)的批评(参见Gibbs 2000：349以次，Broccias 2004)。",zh:"整合理论曾招致“怎么都行”的批评，控制原则是回应"},
+  topology:{page:"6.1",quote:"拓扑学原则要求整合空间接收并保持输入空间概念结构的重要内容，例如，对身体和它的部件进行概念化时，要接收和保持部分-整体这种空间-内部关系；或者，对事件进行概念化时，要接收和保持事件的施事-行为-受事这种形式（就像老板雇用新雇员）。",zh:"拓扑学原则：整合空间要接收并保持输入空间的重要内容"},
+  integration:{page:"6.1",quote:"它和人们希望压缩过程应该遵循的原则有关：建立的新生结构，应尽可能具有概念“完形”特征，也就是整体概念化并易于处理成一个单位的特征，这些特征可以帮助巩固和记忆。",zh:"融合（完形）原则：新生结构应尽可能具有完形特征"},
+  unpacking:{page:"6.1",quote:"相反，开包原则(principle of unpacking)则确保该整合仍然能够促成整个网络的重建(Fauconnier及Turner 2002:332)。",zh:"开包原则：确保整合仍能促成整个网络的重建"},
+  kant:{page:"6.1",quote:"例如，在哲学演讲中，演讲的教授可以用“康德说：X，但是我反对：Y”这种形式在一个著名的哲学家和自己之间设立一种虚拟的争论。",zh:"康德争论：争论框架开包为输入框架（F&T 2002: 59）"},
+  relevanceP:{page:"6.1",quote:"与这些原则相比，关联原则(principle of relevance)具有的是更基本的功能，这个原则给整合的成分分配不同的重要性，以此来决定该整合按哪种方向发展。",zh:"关联原则：给整合成分分配重要性，决定发展方向"},
+  relevanceDrive:{page:"6.1",quote:"换句话说，关联是实际语境中整合背后的主要动力。",zh:"关联是实际语境中整合背后的主要动力"},
+  humanScaleP:{page:"6.1",quote:"同样广泛而无所不在的是以前提到过的人文尺度原则(principle of human scale)，它被Fauconnier及Turner认为是“首要目标”。",zh:"人文尺度原则被 F&T 认为是“首要目标”"},
+  sum61a:{page:"6.1",quote:"· 整合中的重要关系包括意象图式(部分-整体)，基本的相互关系(原因-结果)，时空以及其他一些关系，它们的地位仍有待评价(Fauconnier及Turner 2002:98,100)。",zh:"重要关系还包括意象图式与基本相互关系"},
+  sum61b:{page:"6.1",quote:"· 压缩是整合过程的核心，一般涉及几种重要关系。",zh:"压缩是整合过程的核心，一般涉及几种重要关系"},
+  blends6_2:{page:"6.2",quote:"从表面上看，使用概念整合进行分析的最明显的候选对象是它在构词领域中与构词同名的形态整合，表现为 smog（烟雾）、brunch（早午餐）、motel（汽车旅馆）、infotainment（纪实娱乐性节目）等词项。",zh:"形态整合：smog、brunch、motel、infotainment 等"},
+  smogFossil:{page:"6.2",quote:"许多语言使用者选择词语 smog（烟雾）时，因为这个词今天高度的固化和词汇化，他们甚至不再会意识到这个整合的背景。",zh:"smog 高度固化，说话人意识不到整合背景"},
+  infotain:{page:"6.2",quote:"虽然输入空间显示出极大的相似性——纪实(information)和娱乐(entertainment)是有联系的抽象原则，都表示让观众满意的方法——但是，整合空间的新生结构是开放式的；以不容置疑的方式来定义由 infotainment(纪实娱乐性节目)表示的混合体是很困难的，并且也许甚至是没有必要的",zh:"infotainment：输入空间相似，新生结构却开放式"},
+  swimsation:{page:"6.2",quote:"为什么人们可能发现很容易识别“swimming”（游泳）这个概念，而对第二个输入空间“sensation”（感觉）却很难识别？",zh:"swimsation：第一空间好认，第二空间难认"},
+  noVital:{page:"6.2",quote:"连接第一个空间“swimming”（游泳）、“sports”（运动）和第二个空间“sensation”（感觉）、“Christianity”（基督教）的跨空间投射看起来不十分“重要”；它们不能理解为同一、空间、时间、原因-结果或部分-整体等关系。",zh:"跨空间投射不“重要”，无法归入五种重要关系"},
+  ballack:{page:"6.2",quote:"Ballacktisch[1]（“Ballacktic”）是德国著名报纸 Bildzeitung（2005年6月6日）上的头版标题，它有这样的背景知识：Ballack是德国拜仁慕尼黑足球队在报纸发行时的著名球员的名字，据说他正在进行转会皇家马德里的谈判。",zh:"Ballacktisch：《图片报》2005 年 6 月 6 日头版标题"},
+  ballackBg:{page:"6.2",quote:"Ballack是德国拜仁慕尼黑足球队在报纸发行时的著名球员的名字，据说他正在进行转会皇家马德里的谈判。",zh:"Ballack：拜仁球员，传闻正谈判转会皇家马德里"},
+  galacticos:{page:"6.2",quote:"这是另一支著名球队，实际上这个球队在当时受到如此高的赞誉，以至于获得了“银河舰队”(galacticos)的昵称。",zh:"皇家马德里当时被誉为“银河舰队”"},
+  ballackMsg:{page:"6.2",quote:"其结果是产生了一个新生结构，这个新生结构显示（虽然不是陈述为事实），Ballack将要去马德里加入皇家球队。将推测的传闻浓缩为Ballacktisch这个单词正是这个著名报纸标题的目的。",zh:"新生结构显示 Ballack 将去马德里加入皇家；标题浓缩传闻"},
+  ballackTest:{page:"6.2",quote:"你只需问一下自己，在不需要上面提供的信息的情况下，是否也理解它（就像该报的几百万读者在报纸付印那个时候显然理解的那样）。",zh:"不掌握背景信息就读不懂——在线特征的简单检测"},
+  appleJuice:{page:"6.2",quote:"像apple juice（苹果汁）这样的组合式复合词可以被解释为两个输入空间的组合（苹果空间和果汁空间）；这里整合空间的新生结构的特点是把第一个输入空间的核心信息融入第二个空间。",zh:"apple juice：两个输入空间的组合，核心信息融入第二空间"},
+  wheelchair:{page:"6.2",quote:"至于整合过程更复杂的类型，可以举出 wheelchair（轮椅）这种组合性稍差的复合词来说明超出 wheel（轮子）和 chair（椅子）这两个构成成分固有意义之外的额外属性。",zh:"wheelchair：超出两个成分固有意义之外的额外属性"},
+  petFish:{page:"6.2",quote:"她有一个相当奇特的例子，即复合词pet fish（宠物鱼），这个复合词一般会唤起鱼缸语境，但是可以被一个研究鲨鱼行为的生物学家用来指称她最喜欢的鲨鱼样本",zh:"pet fish：固化解释不适应语境时，在线特性表现出来（Coulson 2001: 142-144）"},
+  cherryJeans:{page:"6.2",quote:"比如 cherry jeans，其比较固定的意义大概是“樱桃红颜色的牛仔裤”。",zh:"cherry jeans 较固定的意义是“樱桃红颜色的牛仔裤”"},
+  cherryColor:{page:"6.2",quote:"它依靠涉及樱桃空间的颜色特性和牛仔裤空间的颜色特性之间的同一性这种重要关系的跨空间映射；两种颜色特性都被映射到整合的空间并被压缩进指派给 cherry jeans 的“樱桃红”这一被整合特性之中。",zh:"樱桃红：颜色特性间的同一性压缩成整合特性"},
+  cherryPattern:{page:"6.2",quote:"可以假设在牛仔裤的（底）布图案与樱桃的形状特性之间存在一个相似的（但较不常见的）投射，以用来描述一条印有樱桃图案的白底牛仔裤",zh:"樱桃图案：底布图案与樱桃形状特性间的投射，较不常见"},
+  cherryStain:{page:"6.2",quote:"将 cherry jeans 概念化为“被樱桃汁污点弄脏的衣服”预先假定这样的知识：即这种意外确实发生了。只有在这种情况下，原因（樱桃汁）和结果（牛仔裤上的彩色污点）的跨空间映射才被激活并压缩到牛仔裤的整合特性（“牛仔裤上的樱桃汁污点”）中。",zh:"樱桃汁污点：原因-结果压缩，需预设意外真的发生"},
+  cherryPick:{page:"6.2",quote:"最后一个变体（“摘樱桃时穿的牛仔裤”）依靠的是（工装）牛仔裤的一个传统功能（园艺工作，包括摘樱桃）和收获樱桃的结果（樱桃输入空间的来源成分）之间的原因-结果关系，这种关系将被压缩到整合空间中的牛仔裤的整合特性之中。",zh:"摘樱桃时穿：功能与收获之间的原因-结果压缩"},
+  propWord:{page:"6.2",quote:"但是已有的英语词一旦发挥作用并被用为“固定词”(prop words)，关联控制原则就会促使我们寻找固定词和缩略词意义之间的概念联系，此联系可以理解为对两个输入空间进行的概念整合。",zh:"固定词：关联原则促使寻找固定词与缩写义间的概念联系"},
+  CARE:{page:"6.2",quote:"这种联系可能是显而易见的，例如历史悠久的缩略词 CARE（Cooperative American Relief to Europe，美国援欧合作组织），可以在关怀的态度和实施该意图之间建立原因-结果关系；但常常并不如此直接，如众所周知的 WASP（White Anglo-Saxon Protestant，白盎格鲁撒克逊新教徒[2]）或 PISA（Programme for International Student Assessment，国际学生评估项目)这个更新的缩略词。",zh:"CARE 的联系显而易见；WASP、PISA 则常不直接"},
+  PISAblend:{page:"6.2",quote:"这种原因-结果关系在整合空间中压缩进一个新生结构，这个新生结构(也许是颇为模糊地)表示：好的Pisa测试结果保留为我们的文化遗产，但同时也表示教育也许出现了偏差，就像斜塔一样。",zh:"PISA+斜塔：好结果保住文化遗产，但教育也许偏了像斜塔"},
+  sneeze:{page:"6.2",quote:"Frank sneezed the tissue off the table (Frank 打喷嚏把纸巾吹到桌下) 这个句子也可以解释成一个在线整合，它包括三个不同的事件图式——请对照图6.5。",zh:"该句是在线整合，包含三个不同的事件图式"},
+  sneezeIn1:{page:"6.2",quote:"致使事件(可解释为 Frank sneezed (Frank 打了个喷嚏)) 和结果事件(可解释为 the tissue fell off the table(纸巾掉到桌下)) 这两个事件图式在输入空间1中概念化",zh:"输入空间 1：致使事件 + 结果事件"},
+  sneezeIn2:{page:"6.2",quote:"第三个事件图式，即致使-位移事件(典型地解释为 Frank pushed the tissue off the table (Frank 将纸巾推到桌下)) 包含在输入空间2中。",zh:"输入空间 2：致使-位移事件"},
+  sneezeResult:{page:"6.2",quote:"那么，结果就是整合空间中的一个新生结构，这个结构把施事（AGENT）、行为（ACTION）、受事（PATIENT）和（方向性）位置（DIRECTIONAL）LOCATIVE）组合在一起",zh:"新生结构组合施事、行为、受事、方向性位置"},
+  sneezeTopo:{page:"6.2",quote:"换句话说，第一个输入空间的两事件形式和在第二个空间中被激活的构式合成一体，第一个空间的布局被融合原则控制。",zh:"两事件形式与构式合成一体，布局由融合原则控制"},
+  susanErr:{page:"6.2",quote:"以“Susan remembered Tom of Grandma's birthday”(Susan使记得Tom奶奶的生日)这个句子为例。",zh:"外语学习者错句：remember 被按 remind 的构式使用"},
+  susanIn1:{page:"6.2",quote:"动词remember（记得）在一个包含感事(EXPERIENCER)-心理过程(MENTAL PROCESS)-被感对象(EXPERIENCED OBJECT)(即传统术语中的一个单及物形式)等成分的构式中活动，但 Tom 这个名词未被说明。",zh:"输入空间 1：remember 构式里 Tom 未被安置"},
+  susanIn2:{page:"6.2",quote:"致使-经验构式（致使-接受构式的一个变体；参见 5.4 节）满足了这些条件。……这个构式包含了施事（AGENT）-心理行为（MENTAL ACTION）-感事（EXPERIENCER）-被感对象（EXPERIENCED OBJECT）等四个成分",zh:"输入空间 2：remind 的致使-经验构式有四个成分"},
+  susanBlend:{page:"6.2",quote:"然而，结果却不是直接用动词remind(使……记起)来代替remember(记得)，而是使用了一个最好刻画为意为“Susan caused Tom to remember Grandma's birthday”(Susan让Tom记住奶奶的生日)的新生结构。",zh:"整合结果：新生结构“Susan 让 Tom 记住奶奶的生日”"},
+  susanReplace:{page:"6.2",quote:"Oh，you mean‘remind Tom’，not‘remember Tom’（哦，你的意思是“remind Tom”，而不是“remember Tom”)……这个整合至此实现了它的功用并将被抛弃。",zh:"意识到错误后 remind 替换 remember，整合被抛弃"},
+  counterfactual:{page:"6.2",quote:"像 If I were you, I'd apply for the York position just for the experience(如果我是你,我只为经验也会申请 York 这个职位)(来自 ICE-GB(国际英语语料库英国英语分库))的反事实句涉及两个不同的“世界”,一个事实世界和一个反事实世界,这是语言学常识",zh:"反事实句涉及事实世界与反事实世界"},
+  condEffect:{page:"6.2",quote:"这种联系的结果是说者从第一个输入空间被投射到听者空间的听者位置上，因此，整合是从如下的角度来看待听者的两难困境的：说者表现为不得不做决定。",zh:"说者被投射到听者位置，问题仍主要从说者立场看"},
+  condSuperior:{page:"6.2",quote:"这个特殊的混合体在言词上强调同一性关系而同时又没有一直强调下去，也许就是它使这种表达在某种程度上产生了高人一等的口气。",zh:"这种混合体有时产生高人一等的口气"},
+  spaceBuilders:{page:"6.2",quote:"按 Fauconnier 的定义，“空间建造者”是“一种语法表达式，它或者开启新空间，或者将注意焦点转移到现有空间上”(1997：40)。",zh:"空间建造者：开启新空间或转移注意焦点的语法表达式"},
+  spaceBuilderEx:{page:"6.2",quote:"典型的例子是 once upon a time(从前)，in that story(在那个故事中)，in the movie(在电影中)，my daughter thinks that(我的女儿认为)，last night I dreamt that(昨晚我梦到)，等等。",zh:"空间建造者的典型例子"},
+  sum62:{page:"6.2",quote:"分析表明，整合分析虽然完全能够描写词汇化词组或固定化构式的常见实例，然而，比起更传统的分析方法，它也可以处理更边缘但也更有意思的例子，因此它也很适合用来扩展语言学研究的领域。",zh:"整合分析善写常见实例，更长于边缘例子"},
+  textTypes:{page:"6.3",quote:"大多数文本类型中都能发现概念整合，但在有些类型中概念整合采用了特殊的形式并达到了特殊效果。本节选取讨论的广告、谜语和笑话似乎就是如此。",zh:"广告、谜语、笑话中整合采取特殊形式、达到特殊效果"},
+  barthes:{page:"6.3",quote:"Roland Barthes(1977:38-41)已经就这种现象提出了“锚地”(anchorage，为图画提供明示和直指支持的文本)和“替班”(relay，具有互补关系的文本和图像)之间的基本区别",zh:"Barthes：锚地与替班的区别"},
+  panteneSpaces:{page:"6.3",quote:"此则广告被解释为与两个输入空间有关，一个是（基于图像的）情人空间，另一个是潘婷空间（基于图像和文本的，包括实际上跨在广告两个部分中间的标题）。",zh:"潘婷广告：情人空间 + 潘婷空间"},
+  panteneBlend:{page:"6.3",quote:"其明显意图是建立一个新生结构，在这个结构中，情人间的典型互动关系被映射到两个护发产品之间的关系上。",zh:"情人间的互动关系被映射到两种护发产品的关系上"},
+  panteneForced:{page:"6.3",quote:"关键的是这种跨空间映射的关联似乎是（通过图画的尺寸和迷人的色彩、情人的吸引力，等等）“强加给”读者的。",zh:"跨空间关联被“强加给”读者"},
+  forcedBlend:{page:"6.3",quote:"这样，潘婷广告就加入到了强加整合（forced blends）的行列，宣传了与烟民的万宝路王国或快乐的人们喝着Bacardi朗姆酒的热带海滩生活同样强大且基本无差别的形象。",zh:"潘婷广告属于强加整合，与万宝路、Bacardi 形象同类"},
+  adsHide:{page:"6.3",quote:"广告人决不是想说清这些护发产品和恋人亲吻的联想之间的关系，他将乐得充分运用由概念整合所引发的在线处理的模糊性",zh:"广告人乐得运用整合的模糊性"},
+  adsSummary:{page:"6.3",quote:"· 广告文体鼓励甚至强迫读者把(常常由图像)暗示的积极效果和广告产品进行在线压缩。为了增强效果，它们通常会隐藏整合的不确定，而不是把它展现给读者。",zh:"广告强迫读者在线压缩，并隐藏整合的不确定"},
+  riddleSummary:{page:"6.3",quote:"有问题的谜(和未来行为的计划)是通过有策略地、审慎地整合不同事件场景并评估它们的可能结果来解决的。",zh:"谜语通过审慎整合不同事件场景并评估结果来解决"},
+  jokeSummary:{page:"6.3",quote:"· 笑话产生了一个新生结构，这个新生结构至少包括一些因为它们不相容使得整合不成功的成分，这是笑话幽默效果的来源。",zh:"笑话的新生结构含不相容成分，是幽默的来源"},
+  monkRiddle:{page:"6.3",quote:"A Buddhist monk begins at dawn one day walking up a mountain, reaches the top at sunset, meditates at the top for several days until one dawn when he begins to walk back to the foot of the mountain, which he reaches at sunset. ... Riddles: Is there a place on the path that the monk occupies at the same hour of the day on the two separate journeys?",zh:"佛教和尚谜语（F&T 2002: 39，据 Koestler 1964 概括）"},
+  monkSolve:{page:"6.3",quote:"为了解这个谜，Fauconnier 和 Turner(2002:39)提出，应当想像和尚是在同一天沿着同一条路上、下山。这样假定以后，一定有一个地方，在这个地方他“遇见自己”，也就是说，他在两次旅行中都经过这个地方，即使想像中见面地点的确切位置并不清楚。",zh:"解法：想像同一天沿同一条路上下山，必有“遇见自己”之处"},
+  monkRels:{page:"6.3",quote:"把两次旅行合并起来，我们认识到，两次旅行之间一定存在跨空间的同一关系，这是一种由和尚体现的关系；此外，他两次旅行所走的线路之间一定存在空间关系，最后，也是最重要的，还一定存在时间关系。",zh:"两次旅行间有同一性、空间和时间三种跨空间关系"},
+  monkCompress:{page:"6.3",quote:"在这个整合中，所有这些关系都经过压缩。这个和尚和经过的路线在整合的空间中被轻而易举地统一在一起，而时间的压缩却只进行到一端：我们可以压缩两次旅行的日子，但却不能压缩想像中见面的时刻；这样，这个新生结构仍然是模糊的。",zh:"日子可压缩、相遇时刻不可压缩，新生结构保持模糊"},
+  monkFixed:{page:"6.3",quote:"而想像中 a1 和 a2 的相遇地点的实际位置则缩小为 a1′ 和 a2′ 之间的一段，但并非真正固定。",zh:"相遇位置缩小为一段，并未真正固定"},
+  problemSolving:{page:"6.3",quote:"这表明概念整合不仅是话语(在某种程度上，还有其他的现象)解释中差不多无意识的过程，而且还可能是一个审慎选择的解决问题的策略(problem-solving strategy)。",zh:"整合可以是审慎选择的解决问题策略"},
+  koestler:{page:"6.3",quote:"在两个内部一致而习惯上却不相容的参照框架 M.1 和 M.2 中理解一个情景或思想 L[……]。两个参照框架在事件 L 中交叉在一起，事件 L 似乎被迫同时在两个不同的参照框架中来回摆动。",zh:"Koestler 的笑话原则：两个不相容参照框架间来回摆动（1964: 35）"},
+  jokeFrames:{page:"6.3",quote:"把笑话和两个不同的参考框架(或者两个不同的脚本，如Raskin (1985)所提出的那样)联系起来的想法，直接产生了两个输入空间的设想，而整合空间概念则恰如其分地解释了“同时在两个不同的参照框架中来回摆动”",zh:"两个参照框架即两个输入空间，整合解释“来回摆动”"},
+  marySpace1:{page:"6.3",quote:"输入空间 1 记录 Mary 的第一句话，将施事 (AGENT) 角色指派给男生，他正施行抽烟的行为。因为 XY is smoking a cigarette/pipe (XY 在抽香烟/烟斗) 是比较固定的构式，它自动地隐含了香烟这个受事 (PATIENT) 角色。Mary 的主体被背景化，其地位降为旁观者 (BYSTANDER)。",zh:"输入空间 1（抽烟）：男生是施事，Mary 降为旁观者"},
+  marySpace2:{page:"6.3",quote:"输入空间2用来表达笑料的内容。这时，Mary的作用是施事(AGENT)，参与了向受事(PATIENT)身上点火的行为，由男生代表受事。因此输入空间2是一个点火空间，它包含了如下的百科知识：点着的物体会冒烟。",zh:"输入空间 2（点火）：Mary 是施事，男生是受事"},
+  maryRels:{page:"6.3",quote:"第一个是输入空间1中的施事（AGENT）和输入2中的受事(PATIENT)(二者都代表男生)之间的同一性关系；第二个是点火行为和冒烟之间的原因-结果关系，最后一个是表示发生的违规行为的严重性的量级关系。",zh:"三种跨空间关系：同一性、原因-结果、量级"},
+  maryCompress:{page:"6.3",quote:"在整合过程中，所有这三种跨空间关系都经过压缩：在整合空间的新生结构中，施事(AGENT)角色被受事(PATIENT)角色代替，而旁观者(BYSTANDER)角色被提升到施事(AGENT)的地位。",zh:"旁观者被提升为施事，施事反被受事代替"},
+  maryHumor:{page:"6.3",quote:"也正是这种出现在整合空间的结构中显著的不相容性点明了笑话的所在和幽默效果的来源。",zh:"显著的不相容性点明笑话所在与幽默来源"},
+  sum63:{page:"6.3",quote:"综上所述，本节讨论的所有各种文本有一个共同点，它们都显而易见地利用了整合中新生结构的在线特征。",zh:"三种文本都利用新生结构的在线特征"},
+  relevanceSearch:{page:"6.4",quote:"对关联的寻找似乎控制和主宰着人类对语言和非语言交际事件的理解。",zh:"对关联的寻找控制和主宰着理解"},
+  whyMe:{page:"6.4",quote:"面对与一段与正在进行的对话显然不连贯的成分时，我们仍然禁不住追问“为什么在此时此地对我说这些？”",zh:"面对不连贯成分仍追问“为什么此时此地对我说这些”"},
+  coffee:{page:"6.4",quote:"Peter: Do you want some coffee? (你想喝点儿咖啡吗?) Mary: Coffee would keep me awake.（咖啡会让我清醒。）",zh:"Peter/Mary 咖啡对话（S&W 1995: 34）"},
+  coffeeAssume:{page:"6.4",quote:"其中有一个假设可能是：Mary也许想保持清醒来积极参与晚会中其他客人的谈话；另一个假设可能是：她害怕如果没有咖啡她也许在开车回家的路上睡着了。",zh:"两种可能假设：想清醒参会，或怕开车睡着"},
+  cogEnv:{page:"6.4",quote:"它被定义为对Peter和Mary来说显而易见的所有假设的集合，因为他们能够在他们的物理环境中感知这些假设，或使用记忆和推理之类的认知能力推断出这些假设（1995：39）。",zh:"认知环境：对双方显而易见的所有假设的集合（S&W 1995: 39）"},
+  cogEnvAssump:{page:"6.4",quote:"认知环境由假设(assumption)构成，它们或者是储存于记忆中的，或是即时感知的，或者是即时推断的。",zh:"认知环境由储存、感知或推断的假设构成"},
+  cogEnvVary:{page:"6.4",quote:"认知环境因人而异，也因情景而异。",zh:"认知环境因人而异、因情景而异"},
+  onlineBoth:{page:"6.4",quote:"像前几节所提到的概念整合理论一样，Sperber和Wilson特别感兴趣的是即时意义建构，并因此强调认知能力也包括感知新增事实并因此形成新的假设和推论(new assumptions and inferences)的能力。",zh:"两个理论都关心即时意义建构"},
+  ostensive:{page:"6.4",quote:"她确实说过的话，连同她的手势、表情和其他非语言信号，在关联理论中被称为她的“明示推论行为”(ostensive-inferential behaviour)。",zh:"明示推论行为：话语加手势、表情等非语言信号"},
+  figGround:{page:"6.4",quote:"这可以用主体/背景分离来理解：（所谓的）明示推论刺激作为主体从所有那些没有被（用语言或以非语言）显性编码的潜在假设构成的概念背景中突出出来。",zh:"明示刺激作主体，从潜在假设的背景中突出"},
+  toneLines:{page:"6.4",quote:"利用不同的语调形式可能是没那么明确但仍然有所帮助的，降调表示对提议的拒绝，而升调则表示接受。",zh:"降调表拒绝，升调表接受"},
+  bench:{page:"6.4",quote:"Sperber 和 Wilson 自己的例子是公园长椅情景(Sperber 和 Wilson 1995:48-49):Peter 正和 Mary 坐在公园长椅上，他用一个僵硬的向后靠的动作表示，他不是想换一个更舒服的姿势，而是想将 Mary 的注意力吸引到一个他移动前被隐藏在她视野之外的现象上。",zh:"公园长椅情景：Peter 向后靠吸引 Mary 注意（S&W 1995: 48-49）"},
+  benchPeople:{page:"6.4",quote:"作为 Peter 向后靠的结果她能看到的是，在其他事物中，三个人：一个是在她坐在长椅上之前已经注意到的那个卖冰淇淋的人，一个是她以前从未看见过的普通的散步者；还有一个是她的熟人 William，他正向他们走过来，而且他是一个令人讨厌的家伙。",zh:"Mary 看见三个人：卖冰淇淋的、陌生散步者、熟人 William"},
+  iceWaste:{page:"6.4",quote:"如果是这样，现在进一步注意他将是对处理资源的一种浪费。",zh:"再注意卖冰淇淋的人是对处理资源的浪费"},
+  walkerFew:{page:"6.4",quote:"陌生的散步者的出现对她来说是一个新信息，但是从中推论出很少甚至推论不出什么；所以，她能从散步者身上感知和推论的还是不可能跟她有太多的关联。",zh:"陌生散步者：新信息但推论不出什么"},
+  williamMany:{page:"6.4",quote:"相反的，从 William 正向她走来这一事实，她可以得出许多结论，而这些结论又引出更多的结论。因此，这是在她认知环境中发生的唯一真正相关的变化；这是她应注意的特别现象。",zh:"William：能得出许多结论，是唯一真正相关的变化"},
+  williamEffort:{page:"6.4",quote:"William的出现对Mary的认知环境有积极的认知效果，而她不用花太多的努力。",zh:"William：积极认知效果大，努力不大"},
+  effEff:{page:"6.4",quote:"关联要根据对人的认知环境的影响效果(effects)和处理短期信息的效率(efficiency)来理解，这一点就很清楚了。",zh:"关联=影响效果 + 处理效率"},
+  cond1:{page:"6.4",quote:"一个假设达到如下程度时被认为与个体相关：当此假设被优先处理时获得了巨大的积极认知效果。",zh:"条件一：优先处理时获得巨大积极认知效果（S&W 1995: 265 以次）"},
+  cond2:{page:"6.4",quote:"一个假设达到如下程度时被认为与个体相关:获得这些积极认知效果所需的努力是小的。",zh:"条件二：获得这些效果所需努力是小的"},
+  rosch:{page:"6.4",quote:"Rosch把认知经济性定义为：关于一个对象的最大量信息可以用最小认知努力获得（参见2.1节）。",zh:"认知经济性：最大量信息用最小认知努力获得（Rosch 1978）"},
+  glassMetonymy:{page:"6.4",quote:"至于转喻，也有很多例子，比如，a glass (of beer)(一杯(啤酒))、drive a Ford (开福特)、wait for White House decision(等待白宫的决定)(参见 3.1 节)，它们借助易于理解的源概念而使得经济性处理成为可能。",zh:"转喻借易懂源概念实现经济性处理"},
+  dinner:{page:"6.4",quote:"即使忽略了这句话的语义内容，由 Mary 发出的 [rtlgetkauld] 这一语音序列也改变了 Peter 的认知环境。",zh:"“饭做好了”：语音序列本身即改变认知环境（S&W 1995: 176-182）"},
+  dinnerChoose:{page:"6.4",quote:"只有当他决定处理(6)—(7)这些假设的时候，因为它们不需要太多处理努力就可能产生最大量的认知收获，这才会导致收在集合{I}中的假设。",zh:"不需太多努力却产生最大认知收获的假设被选中"},
+  explicature:{page:"6.4",quote:"然而，即使Mary选择Peter，you must come at once to eat dinner because it's getting cold（“Peter，你必须立刻过来吃饭，因为饭要凉了”）这种直白的语句，如果只考虑语句的词义而忽视从语句所在的认知环境得出的推论，那么，这个简单的显义(explicature)例子(Sperber 和 Wilson 1995: 180 - 183)也不能得到确切的处理。",zh:"显义也离不开认知环境中的推论"},
+  comparison:{page:"6.4",quote:"简而言之，关联理论显然更偏向于逻辑推断这一面，是典型的受哲学传统启发的语用学成果，而概念整合理论拥有更丰富、更多元的认知观，但也更含糊、更直观。",zh:"关联理论偏逻辑推断；概念整合更丰富但更含糊直观"},
+  module:{page:"6.4",quote:"而在另一方面，关联理论则提出了一个独立的推论模块，这个模块和一般认知只存在松散的联系",zh:"关联理论提出独立推论模块，与一般认知松散联系"},
+  cooperation:{page:"6.4",quote:"假定这两个理论之间更基础的思想体系差异可以调和，那么，二者是否能从一种彼此更密切的合作中得益？这是一个可以提出却无法回答的问题。",zh:"两理论能否合作得益：可以提出却无法回答"},
+  sum64a:{page:"6.4",quote:"· 理想化认知模型的概念(框架、脚本、情节)应该推广到个体化的认知环境。",zh:"ICM 应推广到个体化的认知环境"},
+  sum64b:{page:"6.4",quote:"· 主体和背景的概念应该给予说者取向和听者取向的解释，以此来应对关系的认知方面。",zh:"主体/背景应分说者与听者取向"},
+  sum64c:{page:"6.4",quote:"与认知经济性和认知效率有关的概念在认知语言学中应该获得更广泛的适用（如在完形、转喻等的分析中）。",zh:"认知经济性应在完形、转喻等分析中更广适用"},
+  exercise2:{page:"6.4",quote:"看看下列成对的句子，判断每对中哪一句会产生更高的认知处理效率。哪个涉及转喻，如果涉及，是什么转喻？",zh:"原书练习：判断每对中哪句认知处理效率更高"},
+  twoIntentions:{page:"6.4",quote:"Wilson 和 Sperber (2003:611 以次)强调，Peter 的明示行为所传递的意图不是一个，而是两个：一是把某事告诉 Mary 的意图，更重要的是，把他传递信息的意图告诉她的意图；这第二个“交际性意图”清楚地反映了作为明示推论行为结果的交际关联性(communicative relevance)。",zh:"明示行为传递两个意图：信息意图 + 交际意图（Wilson & Sperber 2003: 611 以次）"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第六章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：四空间网络 ================= */
+(function(){
+  const groups=["s1in1","s1in2","s1map","s1gen","s1ghost","s1blend","s1emg"];
+  const steps=[
+    {label:"① 建雇用空间",on:["s1in1"],fb:"读到标题、导言和第一段，读者建起雇用空间：大众公司雇了新董事。心理空间是在线概念表征，也调用已储存的认知模型。"},
+    {label:"② 建注射空间",on:["s1in2"],fb:"a shot in the arm 触发第二个空间：医生把注射器扎进病人胳膊；同时激活目的知识——病人健康的改善。"},
+    {label:"③ 组合与映射",on:["s1in1","s1in2","s1map","s1gen"],fb:"两个输入空间被并置且融合。跨空间映射以“同一性”等重要关系相连：新董事↔医生、大众公司↔病人、提高利润↔恢复健康。"},
+    {label:"④ 完善",on:["s1in1","s1in2","s1map","s1gen","s1ghost"],fb:"句子没提施事和工具——完善把它们“推荐”进整合空间；新董事的角色因此含混：是医生，还是那剂药本身？"},
+    {label:"⑤ 细化与新创结构",on:["s1in1","s1in2","s1map","s1gen","s1ghost","s1blend","s1emg"],fb:"读者自行“运行”整合，深度因读者而异。压缩后的新生结构——“像实施注射一样雇用”——认知上易于管理，即“人文尺度”。"}
+  ];
+  const box=$("#s1steps"),fb=$("#s1fb");
+  function setStep(i){
+    const on=steps[i].on;
+    groups.forEach(g=>{
+      const el=document.getElementById(g);
+      if(!el) return;
+      el.setAttribute("opacity",on.indexOf(g)>=0?"1":"0.22");
+    });
+    fb.textContent=steps[i].fb;
+  }
+  steps.forEach((s,i)=>{
+    const b=document.createElement("button");
+    b.className="chip"+(i===0?" sel":"");b.textContent=s.label;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");setStep(i);
+    });
+    box.appendChild(b);
+  });
+  setStep(0);
+  const info={
+    dir:"新董事：输入空间 1 里他是被雇的施事；整合空间里不再是被影响的成分——可能扮演医生（施事），也可能自己充当工具。这种含混留待细化。",
+    vw:"大众公司：从雇用空间的受事，变成整合空间里需要药物治疗的病人。",
+    prof:"提高利润：组合的一例——被看作“改善健康状况”。",
+    doc:"医生：注射空间的施事；整合空间里这一角色映射到新董事身上。",
+    pat:"病人：注射空间的受事；整合空间里由大众公司充任。",
+    inj:"注射器：注射空间的工具；句中没有明说，靠完善补入。",
+    heal:"恢复健康：注射的目的；整合空间里对应“提高利润”。",
+    gen:"类属空间：Fauconnier & Turner 网络中的第四个空间。原书图 6.1 起就省略它，认为对理解网络模型没有增添重要内容。",
+    blendDoc:"同一性被压缩：新董事像医生一样“下药”。",
+    blendVw:"大众公司像病人一样“接受治疗”。",
+    blendAct:"雇用≈实施注射：压缩后的统一行为。",
+    blendProf:"提高利润≈恢复健康：两个行为的目标被融为一体。"
+  };
+  $$("#netSvg .nd").forEach(g=>{
+    g.addEventListener("click",()=>{fb.textContent=info[g.dataset.info]||"";});
+  });
+  const emg=$("#s1emg");
+  if(emg) emg.addEventListener("click",()=>{fb.textContent="新创结构与两个输入空间的结构都不同，也不等于两者简单相加——这就是“新生结构”。";});
+})();
+
+/* ================= 场景二：压缩 tabs + 特性 + 控制原则 ================= */
+(function(){
+  const tabs=[["space","pane-space"],["time","pane-time"],["cause","pane-cause"],["part","pane-part"]];
+  tabs.forEach(([k,pid])=>{
+    const b=$('#cTabs [data-tab="'+k+'"]');
+    b.addEventListener("click",()=>{
+      $$("#cTabs .chip").forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");
+      tabs.forEach(([,p])=>{$("#"+p).hidden=(p!==pid);});
+    });
+  });
+  const props={
+    mid:"mid-Atlantic English：“中大西洋”是涉及美国和英国的空间关系的压缩，作为整合特性附加在“英语”上——某些英国杂志里的特殊英语。",
+    old:"old friend：这个朋友当然可以相当年轻。“老”是对一段长时间里熟悉过程各阶段的压缩，所以它有资格做整合的特性；“old man（老人）”的“老”没有。",
+    warm:"warm coat：“温暖”不表示外套固有温暖，而表示穿上它让人温暖——把“外套”和“温暖”之间的原因-结果压进一个整合特性；“thick coat（厚外套）”的“厚”不涉及整合。"
+  };
+  const pfb=$("#propFb");
+  $$("#propChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#propChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");pfb.textContent=props[b.dataset.prop];
+  }));
+  const ctrls={
+    topo:"拓扑学原则：整合空间要接收并保持输入空间概念结构的重要内容——比如事件的施事-行为-受事形式（老板雇用新雇员）。",
+    fus:"融合（完形）原则：新生结构应尽可能具有概念“完形”特征——整体概念化、易于处理成一个单位，帮助巩固和记忆。",
+    unp:"开包原则：确保整合仍能促成整个网络的重建。哲学演讲里教授用“康德说：X，但我反对：Y”设一场虚拟争论——争论框架从整合空间“开包”回不同时代的两个输入框架。",
+    rel:"关联原则：给整合的成分分配不同的重要性，决定整合往哪个方向发展——关联是实际语境中整合背后的主要动力。",
+    hs:"人文尺度原则：被 Fauconnier & Turner 认为是“首要目标”。它嵌在原型、基本层次、部分-整体层级和具体到抽象的隐喻里。"
+  };
+  const cfb=$("#ctrlFb");
+  $$("#ctrlChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#ctrlChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");cfb.textContent=ctrls[b.dataset.p];
+  }));
+})();
+
+/* ================= 场景三：词汇实验室 ================= */
+(function(){
+  const pairs=[
+    {a:"烟 smoke",b:"雾 fog",w:"smog 烟雾",ok:true,t:"smog = smoke + fog：两个输入空间压缩成一个新词；因为今天高度的固化和词汇化，很多说话人甚至意识不到这个整合的背景。"},
+    {a:"早餐 breakfast",b:"午餐 lunch",w:"brunch 早午餐",ok:true,t:"brunch：处理时也许还能分出两个输入空间，但也可以直接从新生结构理解，不必“开包”整个整合。"},
+    {a:"驾车者 motorist",b:"旅馆 hotel",w:"motel 汽车旅馆",ok:true,t:"motel：与 brunch 同类，新生结构已可直接概念化。"},
+    {a:"信息 information",b:"娱乐 entertainment",w:"infotainment 纪实娱乐",ok:true,t:"infotainment：输入空间（纪实与娱乐）有很大相似性，但整合空间的新生结构是开放式的——不容置疑地定义这个混合体很困难，也许甚至没必要。"},
+    {a:"游泳 swimming",b:"感觉 sensation",w:"swimsation",ok:false,t:"swimsation：跨空间投射不“重要”——不能理解为同一、空间、时间、原因-结果或部分-整体；组合和完善不适用，压缩不产生新生结构，只剩“和游泳有关”的印象。"},
+    {a:"运动 sports",b:"基督教 Christianity",w:"sportianity",ok:false,t:"sportianity：同样缺重要关系；第一空间好认，第二空间难认——整合超出“和运动有关”这种令人不满意的印象。"}
+  ];
+  const boxA=$("#blendA"),boxB=$("#blendB"),fb=$("#blendFb");
+  let selA=-1,selB=-1;
+  function chip(text,onPick,sel){
+    const b=document.createElement("button");
+    b.className="chip"+(sel?" sel":"");b.textContent=text;
+    b.addEventListener("click",()=>onPick(b));
+    return b;
+  }
+  pairs.forEach((p,i)=>{
+    boxA.appendChild(chip(p.a,b=>{selA=i;$$(".chip",boxA).forEach(c=>c.classList.remove("sel"));b.classList.add("sel");check();},selA===i));
+    boxB.appendChild(chip(p.b,b=>{selB=i;$$(".chip",boxB).forEach(c=>c.classList.remove("sel"));b.classList.add("sel");check();},selB===i));
+  });
+  function check(){
+    if(selA<0||selB<0) return;
+    if(selA!==selB){fb.textContent="这两个词不在同一行——整合讲的是两个输入空间的配对，不是任意两词。";return;}
+    const p=pairs[selA];
+    fb.textContent=(p.ok?"✓ ":"✗ ")+p.t;
+    fb.style.color=p.ok?"var(--green)":"var(--red)";
+  }
+  /* Ballack 先猜再看 */
+  const rev=$("#ballackRev");
+  $$("#ballackOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#ballackOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    const ok=b.dataset.opt==="b";
+    rev.hidden=false;rev.classList.toggle("wrong",!ok);
+    if(!ok){
+      const p=document.createElement("p");
+      p.style.margin="0 0 6px";p.textContent="你选的是「"+b.textContent+"」。再看正确答案：";
+      rev.insertBefore(p,rev.firstChild);
+    }
+  }));
+  /* cherry jeans */
+  const cherry={
+    color:"樱桃红：樱桃空间与牛仔裤空间的颜色特性之间的同一性，被压成“樱桃红”这一整合特性——最可能、也最固化的解释。",
+    pattern:"樱桃图案：牛仔裤底布图案与樱桃形状特性之间的投射——较不常见的一种。",
+    stain:"樱桃汁污点：原因（樱桃汁）与结果（污点）的跨空间映射压进整合特性；需预设“意外真的发生了”。",
+    pick:"摘樱桃时穿：工装牛仔裤的功能与收获樱桃之间的原因-结果；依赖具体语境的在线概念化，难流行。"
+  };
+  const cfb=$("#cherryFb");
+  $$("#cherryChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#cherryChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");cfb.textContent=cherry[b.dataset.c];
+  }));
+  /* 缩略词 */
+  const acro={
+    care:"CARE = Cooperative American Relief to Europe：固定词 care 与缩写义之间能建原因-结果（关怀的态度→实施意图），联系显而易见。",
+    wasp:"WASP = White Anglo-Saxon Protestant：固定词与缩写义的联系常常不直接——新生结构只剩或多或少的模糊而主观的联想。",
+    pisa:"PISA + 斜塔：输入空间 1 是测试结果（教育成就），输入空间 2 是斜塔（“建筑师噩梦”名声的文化遗产）；假设一种不确定的原因-结果并压进新生结构：好结果保住文化遗产，但教育也许偏了，就像斜塔。"
+  };
+  const afb=$("#acroFb");
+  $$("#acroChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#acroChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");afb.textContent=acro[b.dataset.a];
+  }));
+})();
+
+/* ================= 场景四：句子整合 ================= */
+(function(){
+  const picked=new Set();
+  const chips=$$("#sneezeChips .chip");
+  const merge=$("#sneezeMerge"),rev=$("#sneezeRev");
+  chips.forEach(b=>b.addEventListener("click",()=>{
+    picked.add(b.dataset.e);
+    b.classList.add("sel");
+    if(picked.size===3) merge.disabled=false;
+  }));
+  merge.addEventListener("click",()=>{
+    rev.hidden=false;
+    merge.disabled=true;
+    chips.forEach(b=>b.disabled=true);
+  });
+  /* Susan 错句 */
+  const stages=[
+    "*Susan remembered Tom of Grandma's birthday——remember 的构式里，Tom 这个名词没有被安置。",
+    "输入空间 1：感事（Susan）·心理过程（remember）·被感对象（奶奶的生日），Tom 松散地挂着。",
+    "输入空间 2：remind 的致使-经验构式——施事·心理行为·感事·被感对象，Tom 有了着落。",
+    "整合：新生结构 = “Susan caused Tom to remember Grandma's birthday”。意识到是学习者错误后，remind 替换 remember——整合实现功用，被抛弃。"
+  ];
+  let st=0;
+  const sfb=$("#susanFb");
+  $("#susanGo").addEventListener("click",function(){
+    if(st<stages.length-1){st++;sfb.textContent=stages[st];}
+    else{sfb.textContent=stages[st]+"（已到末段，再点从头开始）";st=-1;this.textContent="再走一遍 →";return;}
+    this.textContent=st>=stages.length-1?"从头再走 →":"下一步 →";
+  });
+  /* York 先猜再看 */
+  const yrev=$("#yorkRev");
+  $$("#yorkOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#yorkOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    const ok=b.dataset.opt==="b";
+    yrev.hidden=false;yrev.classList.toggle("wrong",!ok);
+    if(!ok){
+      const p=document.createElement("p");
+      p.style.margin="0 0 6px";p.textContent="你选的是「"+b.textContent+"」。再看正确答案：";
+      yrev.insertBefore(p,yrev.firstChild);
+    }
+  }));
+  /* 空间建造者 */
+  const sbs={
+    fairy:"once upon a time 立即激活童话空间：会说话的动物、鬼怪、巫婆和巫师、各种怪事，都不奇怪。",
+    movie:"in the movie / in the novel 让听者建一个虚构空间：糟糕的现实中的法则被暂时中止。",
+    ifyou:"If I were you 建一个反事实空间：说者被投射到听者的位置上。"
+  };
+  const sbfb=$("#sbFb");
+  $$("#sbChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#sbChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");sbfb.textContent=sbs[b.dataset.s];
+  }));
+})();
+
+/* ================= 场景五：谜语 + 笑话 + 广告 ================= */
+(function(){
+  const mrev=$("#monkRev");
+  $$("#monkOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#monkOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    const ok=b.dataset.opt==="y";
+    mrev.hidden=false;mrev.classList.toggle("wrong",!ok);
+    if(!ok){
+      const p=document.createElement("p");
+      p.style.margin="0 0 6px";p.textContent="你选了「没有」。再看正确答案：";
+      mrev.insertBefore(p,mrev.firstChild);
+    }
+  }));
+  const groups=["mkUp","mkDown","mkMerge","mkMeet","mkQ"];
+  const steps=[
+    {label:"① 上山旅程",on:["mkUp"],fb:"拂晓出发、日落到顶，山顶打坐几天——第一次旅程。"},
+    {label:"② 下山旅程",on:["mkUp","mkDown"],fb:"几天后的另一个拂晓启程，日落到山脚。两次旅程隔着好些天。"},
+    {label:"③ 压缩日子",on:["mkUp","mkDown","mkMerge"],fb:"把两次旅行并入同一天、同一条路——跨空间的同一性（和尚）、空间关系（路线）和时间关系都在压缩。"},
+    {label:"④ 必然相遇",on:["mkUp","mkDown","mkMerge","mkMeet"],fb:"同一时刻走在同一条往返的路上，一定有个地方让他“遇见自己”——即使位置说不清。"},
+    {label:"⑤ 开放结构",on:["mkUp","mkDown","mkMerge","mkMeet","mkQ"],fb:"相遇的时刻无法压缩，位置也只缩小为一段而未固定——新生结构保持模糊，但谜已经破解。"}
+  ];
+  const box=$("#mkSteps"),fb=$("#mkFb");
+  function setStep(i){
+    const on=steps[i].on;
+    groups.forEach(g=>{
+      const el=document.getElementById(g);
+      if(!el) return;
+      el.setAttribute("opacity",on.indexOf(g)>=0?"1":"0.18");
+    });
+    fb.textContent=steps[i].fb;
+  }
+  steps.forEach((s,i)=>{
+    const b=document.createElement("button");
+    b.className="chip"+(i===0?" sel":"");b.textContent=s.label;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");setStep(i);
+    });
+    box.appendChild(b);
+  });
+  setStep(0);
+  /* 笑话 */
+  const jfb=$("#jokeFb");
+  let jst=0;
+  const jstages=[
+    "妈妈问：但是如果他在抽烟，怎么把你送回家了？",
+    "整合：三种跨空间关系全部压缩——男生（同一性）、点火→冒烟（原因-结果）、违规严重性（量级）。旁观者 Mary 被提升为施事，男生反被受事代替。",
+    "“我把他点着了。”——两个行为（抽烟/点火生烟）看起来不相容，压缩把两种截然不同的违规性评价叠在一起：显著的不相容性点明笑话所在。",
+    "整合也遵守开包原则：回看才能明白 Mary 的言语技巧——先把自己背景化成旁观者，再抛出笑料。"
+  ];
+  $("#jokeGo").addEventListener("click",function(){
+    if(jst<jstages.length-1){jst++;jfb.textContent=jstages[jst];}
+    else{jfb.textContent=jstages[jst]+"（再点从头看）";jst=0;return;}
+    this.textContent=jst>=jstages.length-1?"从头再看 →":"下一步 →";
+  });
+})();
+
+/* ================= 场景六：咖啡 + 长椅 ================= */
+(function(){
+  const tones={
+    no:"降调表拒绝——明确支持“她要睡个好觉”的假设：不喝咖啡，以免睡不着。",
+    yes:"升调表接受——更适合“她想保持清醒”的假设：也许是怕开车回家路上睡着，也许想清醒着参加晚会。"
+  };
+  const tfb=$("#toneFb");
+  $$("#toneChips .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#toneChips .chip").forEach(c=>c.classList.remove("sel"));
+    b.classList.add("sel");tfb.textContent=tones[b.dataset.t];
+  }));
+  const bench={
+    ice:"坐下前就已经注意到他——再注意他是对处理资源的浪费：效果小，努力白花。",
+    walk:"新信息，但从中推论出很少甚至推论不出什么——效果小，关联有限。",
+    wm:"从 William 正走来能得出许多结论，结论又引出更多结论——效果大；脑中已存大量关于他的信息，设计摆脱策略的努力不大。他认知环境里唯一真正相关的变化。"
+  };
+  const bfb=$("#benchFb");
+  $$("#benchPeople .person").forEach(b=>{
+    b.addEventListener("click",()=>{
+      $$("#benchPeople .person").forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      bfb.textContent=bench[b.dataset.w];
+    });
+  });
+  $$("#benchPeople .bar i").forEach(i=>{
+    i.style.width=(Number(i.dataset.v)/3*100)+"%";
+  });
+})();
+
+/* ================= 场景七：关联度实验室 ================= */
+(function(){
+  const pairs=[
+    {a:"I'd like to have another half pint of White Label, please.",b:"I'd like to have another glass, please.",ok:"b",
+     why:"短的更关联：a glass 是转喻（容器代啤酒），固化说法省努力，语境效果不减。"},
+    {a:"Nine-eleven changed our view of the world.",b:"The terrorist attack against the World Trade Center in September 2001 changed our view of the world.",ok:"a",
+     why:"短的更关联：名称触发整套共享认知环境，长的那个把效果摊薄、努力增加。"},
+    {a:"You see the whole hospital is on strike.",b:"You see the whole medical staff, doctors and nurse and all, are working to rule.",ok:"a",
+     why:"短的更关联：整体代部分（医院代全体人员）的转喻让处理更经济。"},
+    {a:"If we take the car, we'd better fill her up for the trip.",b:"If we take the car, we'll need a tankful of petrol for the journey.",ok:"a",
+     why:"短的更关联：fill her up 是固化表达，转喻式地处理“加油”，努力小效果不减。"}
+  ];
+  const box=$("#relPairs"),rev=$("#relRev");
+  let done=0;
+  pairs.forEach((p,i)=>{
+    const wrap=document.createElement("div");
+    wrap.className="card";wrap.style.margin="10px 0";
+    const row=document.createElement("div");row.className="btn-row";
+    [["a",p.a],["b",p.b]].forEach(([k,txt])=>{
+      const b=document.createElement("button");
+      b.className="btn";b.textContent=txt;b.style.flex="1 1 240px";
+      b.addEventListener("click",()=>{
+        if(wrap.dataset.done) return;
+        wrap.dataset.done="1";done++;
+        $$(".btn",row).forEach(x=>x.disabled=true);
+        b.classList.add("sel");
+        const fb=document.createElement("p");
+        fb.className="feedback";fb.style.margin="6px 0 0";
+        fb.textContent=(k===p.ok?"✓ ":"✗ ")+p.why;
+        fb.style.color=k===p.ok?"var(--green)":"var(--red)";
+        wrap.appendChild(fb);
+        if(done===pairs.length) rev.hidden=false;
+      });
+      row.appendChild(b);
+    });
+    wrap.appendChild(row);box.appendChild(wrap);
+  });
+})();
+</script>
+</body>
+</html>

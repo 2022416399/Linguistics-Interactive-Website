@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认知语言学的其他问题 · 《认知语言学导论》第七章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第七章做成单文件交互网页：象似性、词汇演变、语法化、外语教学，七场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.done{opacity:.55;text-decoration:line-through}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.vs .vscol{border:1.5px dashed var(--line);border-radius:10px;padding:8px 12px;font-size:.9rem}
+.vs .vscol h4{margin:0 0 4px;font-size:.85rem;color:var(--ink-soft)}
+.vs .vscol.new{border:1.5px solid var(--green);background:color-mix(in srgb,var(--green) 7%,var(--card))}
+@media (max-width:560px){.vs{grid-template-columns:1fr}}
+
+/* ---------- 出处角标 ---------- */
+sup.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">认知语言学的其他问题 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第七章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">认知语言学的其他问题</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索＋查读 ｜ 七场实验台 ｜ 材料：第七章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>语言不只是一套任意规约——声音和结构可以模仿我们心中的世界模型（象似性）；词义围着原型稳中求变（词汇演变）；实词沿着斜坡慢慢虚化成语法标记（语法化）；这些认知发现还能反过来安排外语课堂（教学启示）。<span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">这是全章七场实验共同指向的结论；每场实验讲其中一块。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="第七章结构图：象似性、词汇演变、语法化、外语教学四节共用同一个认知立场">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M70 44 Q380 12 690 44"/>
+        <path d="M70 44 L70 56 M690 44 L690 56 M380 16 L380 26"/>
+        <rect x="30" y="62" width="160" height="92" rx="10"/>
+        <rect x="212" y="62" width="160" height="92" rx="10"/>
+        <rect x="394" y="62" width="160" height="92" rx="10"/>
+        <rect x="576" y="62" width="160" height="92" rx="10"/>
+        <path d="M110 154 L110 186 M292 154 L292 186 M474 154 L474 186 M656 154 L656 186"/>
+        <rect x="30" y="188" width="706" height="46" rx="10"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="385" y="36" font-size="14" fill="var(--red)">不是“语言像世界”，而是“语言像我们对世界的概念化”</text>
+        <text x="110" y="88" font-size="16" font-weight="700">7.1 象似性</text>
+        <text x="110" y="112" font-size="12" fill="var(--ink-soft)">声音与结构</text>
+        <text x="110" y="130" font-size="12" fill="var(--ink-soft)">模仿概念模型</text>
+        <text x="292" y="88" font-size="16" font-weight="700">7.2 词汇演变</text>
+        <text x="292" y="112" font-size="12" fill="var(--ink-soft)">词义围着</text>
+        <text x="292" y="130" font-size="12" fill="var(--ink-soft)">原型稳中求变</text>
+        <text x="474" y="88" font-size="16" font-weight="700">7.3 语法化</text>
+        <text x="474" y="112" font-size="12" fill="var(--ink-soft)">实词沿着斜坡</text>
+        <text x="474" y="130" font-size="12" fill="var(--ink-soft)">虚化成语法标记</text>
+        <text x="656" y="88" font-size="16" font-weight="700">7.4 外语教学</text>
+        <text x="656" y="112" font-size="12" fill="var(--ink-soft)">认知发现</text>
+        <text x="656" y="130" font-size="12" fill="var(--ink-soft)">回到课堂</text>
+        <text x="383" y="216" font-size="14" font-weight="700">立场：范畴、认知模型、意象图式与完形</text>
+      </g>
+    </svg>
+    <figcaption>第七章地图：四节共用一个认知立场（示意）<button type="button" class="cite" data-cite="cognitiveBase" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">象似性分类</button>
+    <button class="chip" data-jump="s2">句法象似</button>
+    <button class="chip" data-jump="s3">拟声与元音</button>
+    <button class="chip" data-jump="s4">词汇演变</button>
+    <button class="chip" data-jump="s5">语法化斜坡</button>
+    <button class="chip" data-jump="s6">教学启示</button>
+    <button class="chip" data-jump="s7">文本策略</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>象似性入门：符号不只靠约定</h2>
+  </div>
+  <p class="point">索绪尔说形式与意义的关系"事实上是任意的"；Peirce 提醒我们还有<strong>指示</strong>和<strong>图象</strong>两类带着自然基础的符号。<span class="hl">象似性，就是语言在模仿我们心中的世界模型</span>。<button type="button" class="cite" data-cite="peirce3" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cognitiveBase" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">动手分一分：这些例子分别属于哪种象似性？先点例子，再选类别</p>
+    <div class="btn-row" id="iconItems"></div>
+    <div class="btn-row" id="iconCats" aria-label="选择类别">
+      <button class="btn" data-cat="sound">语音象似（拟声）</button>
+      <button class="btn" data-cat="seq">顺序象似</button>
+      <button class="btn" data-cat="prox">邻近象似</button>
+      <button class="btn" data-cat="qty">量象似</button>
+    </div>
+    <p class="feedback" id="iconFb">先点例子，再选类别：本章的句法原则有三类，外加拟声。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：英语 bow-wow（汪汪）和德语 waw-waw 开首唇音不同。按索绪尔的理论，这类声音象征该怎么定位？</p>
+    <div class="btn-row" id="saussureOpts">
+      <button class="btn" data-opt="a">语言符号的常态</button>
+      <button class="btn" data-opt="b">充其量只是例外</button>
+      <button class="btn" data-opt="c">象似性的典范</button>
+    </div>
+    <div class="reveal" id="saussureRev" hidden>
+      <p><strong>答案是 b。</strong>索绪尔主张大多数词的形式只是通过规约与内容相联系，形式与意义"事实上是任意的"；bow-wow 这类声音象征在他的理论里充其量只看作例外。<button type="button" class="cite" data-cite="peirce3" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">Peirce 则把这类模仿归入"图象"：表达与对象有相似性的符号——认知语言学要做的，是把相似性挪到"概念化"层面上来理解。<button type="button" class="cite" data-cite="diagramDef" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>Peirce 的三类符号与两种"图象"</summary>
+    <p>只有"象征"（symbol）是约定俗成的，接近索绪尔的任意符号；"指示"（index）具有指明功能，由人称代词、指示代词和 here/there/now/then 这类直指副词实现，天气风向标指明风向、烟是火的信号也属此类。"图象"（icon）与对象有相似性：模仿式的叫"映象"（image，如 bow-wow），结构相似式的叫"拟象"（diagram，如语言成分排列像事件结构）。<button type="button" class="cite" data-cite="indexEx" aria-label="查看出处"></button></p>
+    <p>句法领域由此提出三条象似原则：象似顺序（小句跟着事件的自然时间顺序）、象似邻近（关系近的成分靠近放）、象似量（表达式长度对应信息量）。<button type="button" class="cite" data-cite="threeTypes" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">分类游戏的答案没有唯一标准表述，但每一条都能在原文找到依据——点开角标核对。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：句法象似 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>句法象似：排队与黏着都有道理</h2>
+  </div>
+  <p class="point"><span class="hl">关系近的成分必须靠近放在一起</span>——形容词排队如此，动词词干与体、时、情态标记的黏着距离也如此。<button type="button" class="cite" data-cite="proxEx" aria-label="查看出处"></button><button type="button" class="cite" data-cite="verbMorph" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台 A：把修饰语排成可接受的英语短语（名词 pizza 固定在最后）</p>
+    <div class="btn-row" id="pizzaPool"></div>
+    <p style="margin:.2em 0">当前短语：<span class="mono" id="pizzaOut" style="font-size:1.05rem">____ ____ ____ ____ pizza</span></p>
+    <div class="btn-row">
+      <button class="btn" id="pizzaCheck">检查</button>
+      <button class="btn" id="pizzaReset">重排</button>
+    </div>
+    <div class="reveal" id="pizzaRev" hidden>
+      <p style="margin:0 0 6px"><strong>只有 the famous delicious Italian pepperoni pizza 可接受。</strong>pepperoni 是比萨饼的固有组成成分，必须紧贴名词；Italian 表示产地，第二接近；delicious（特点）与 famous（评价）离名词较远。<button type="button" class="cite" data-cite="proxEx" aria-label="查看出处"></button></p>
+      <p style="margin:0;font-size:.88rem;color:var(--ink-soft)">认知解释：语言是一维线性序列，而现实中所有特色融合在同一个物体上——邻近性模仿的是范畴间的心理邻近。<button type="button" class="cite" data-cite="proxEx" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">实验台 B：按"离动词词干由近到远"依次点出三种标记</p>
+    <div class="btn-row" id="morphPool"></div>
+    <div class="btn-row">
+      <button class="btn" id="morphReset">重来</button>
+    </div>
+    <div class="reveal" id="morphRev" hidden>
+      <p style="margin:0 0 6px"><strong>正确顺序：体标记 → 时标记 → 情态标记。</strong>She was working 里 -ing 紧贴词干；不表体时 -ed 可直接附着；而 ★She swim-could 不合法——情态标记不能移近词干。<button type="button" class="cite" data-cite="verbMorph" aria-label="查看出处"></button><button type="button" class="cite" data-cite="swimCould" aria-label="查看出处"></button></p>
+      <p style="margin:0 0 6px">概念理由：DURATION（持续）、PROGRESSION（进行）与 WORK 范畴关系最密切；TEMPORAL LOCATION（时间位置）远一些；ABILITY（能力）与 SWIM 的关系最远。</p>
+      <p style="margin:0;font-size:.88rem;color:var(--ink-soft)">名词一侧同理：复数标记直接附着名词词干，格标记通常第二近；children's 里不规则复数 -ren 比属格 -s 更近，且顺序不可颠倒。<button type="button" class="cite" data-cite="nounMorph" aria-label="查看出处"></button><button type="button" class="cite" data-cite="childrens" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>量象似性：长的一定更重要吗</summary>
+    <p>Givón 的规则：语言材料的量与被处理信息的重要性和可预测性程度相对应。同一个遇见"她"的场面，代词 her → the girl from next door → this fair-haired, fragile, just unbelievably beautiful creature，表达式一路变长，信息的重要性和意外性也一路升高。<button type="button" class="cite" data-cite="givonQty" aria-label="查看出处"></button><button type="button" class="cite" data-cite="brighton" aria-label="查看出处"></button></p>
+    <p>这也解释了人称代词为什么通常比完整名词短语短、标准形式为什么往往比对比形式短——法语非重读的 je（我知道、我喜欢）与对比形式 moi 就是一对。<button type="button" class="cite" data-cite="pronounFr" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">句法象似的三条原则，都能改写成"语言层面 ↔ 概念化层面"的对应关系。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 象似性入门</button>
+    <button class="btn" data-jump="s3">下一场：拟声与元音 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>拟声词与文化概念化</h2>
+  </div>
+  <p class="point">拟声词模仿的不是世界本身，而是<span class="hl">我们依赖文化的概念化</span>：狗叫在英语里是 bow-wow，在法语里是 ouaf ouaf；/i/ 让人想到小、亮、愉快，/u/、/o/ 则想到大、强、不快。<button type="button" class="cite" data-cite="onomatopoeia" aria-label="查看出处"></button><button type="button" class="cite" data-cite="vowelAssoc" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">翻一翻：先点动物，再点语言，看拟声词怎么变</p>
+    <div class="btn-row" id="animalChips"></div>
+    <div class="btn-row" id="langChips"></div>
+    <p class="feedback" id="animalFb">同一头牛，六种语言六种叫法。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：Tolkien 给《指环王》人物取名。Aegnor、Carcharoth、Earendil、Morgoth 这四个名字里，哪几个是正面人物？<button type="button" class="cite" data-cite="tolkien" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="tolkienOpts">
+      <button class="btn" data-opt="a">Aegnor 和 Earendil</button>
+      <button class="btn" data-opt="b">Carcharoth 和 Morgoth</button>
+      <button class="btn" data-opt="c">四个都是正面人物</button>
+    </div>
+    <div class="reveal" id="tolkienRev" hidden>
+      <p><strong>答案是 a。</strong>不熟悉 Tolkien 的被试大多能凭语感把名字分对：前元音（/i/、/e/）归正面人物，后元音（/u/、/o/）归反面人物——Aegnor、Earendil 属前者，Carcharoth、Morgoth 属后者。<button type="button" class="cite" data-cite="tolkien" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">Tolkien 自编的三种人工语言也呈同样分布：两种"正面"精灵语前元音比例高，"反面"兽人语 /u/ 占四成、辅音对元音比达 1.7。<button type="button" class="cite" data-cite="fig72" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 290" role="img" aria-label="Tolkien 三种人工语言的元音分布柱状图：精灵语前元音多，兽人语后元音多">
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-soft)">
+        <text x="30" y="20">图据原书图 7.2（Podhorodecka，待刊）——辅音对元音比：Sindarin 1.22、Quenya 1.08、Black Speech 1.7</text>
+      </g>
+      <g stroke="var(--line)" stroke-width="1">
+        <path d="M60 40 L60 240 M60 240 L720 240"/>
+        <path d="M60 90 L720 90 M60 140 L720 140 M60 190 L720 190" stroke-dasharray="3 5"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="end">
+        <text x="54" y="44">50%</text><text x="54" y="94">40%</text><text x="54" y="144">30%</text><text x="54" y="194">20%</text><text x="54" y="244">0</text>
+      </g>
+      <g filter="url(#rough2)" stroke="var(--ink)" stroke-width="1.6">
+        <rect x="54" y="127.5" width="44" height="112.5" fill="var(--hl)"/>
+        <rect x="110" y="62.5" width="44" height="177.5" fill="var(--hl)"/>
+        <rect x="166" y="230" width="44" height="10" fill="var(--red)"/>
+        <rect x="222" y="40" width="44" height="200" fill="none"/>
+        <rect x="284" y="100" width="44" height="140" fill="var(--hl)"/>
+        <rect x="340" y="125" width="44" height="115" fill="var(--hl)"/>
+        <rect x="396" y="190" width="44" height="50" fill="var(--red)"/>
+        <rect x="452" y="45" width="44" height="195" fill="none"/>
+        <rect x="514" y="170" width="44" height="70" fill="var(--hl)"/>
+        <rect x="570" y="240" width="44" height="0" fill="var(--hl)"/>
+        <rect x="626" y="40" width="44" height="200" fill="var(--red)"/>
+        <rect x="682" y="10" width="44" height="230" fill="none"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink)" text-anchor="middle" font-weight="700">
+        <text x="76" y="123.5">22.5</text>
+        <text x="132" y="58.5">35.5</text>
+        <text x="188" y="226">2</text>
+        <text x="244" y="36">40</text>
+        <text x="306" y="96">28</text>
+        <text x="362" y="121">23</text>
+        <text x="418" y="186">10</text>
+        <text x="474" y="41">39</text>
+        <text x="536" y="166">14</text>
+        <text x="592" y="232">0</text>
+        <text x="648" y="36">40</text>
+        <text x="704" y="6">46</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-soft)" text-anchor="middle">
+        <text x="160" y="272">Sindarin（精灵语）</text>
+        <text x="390" y="272">Quenya（精灵语）</text>
+        <text x="620" y="272">Black Speech（兽人语）</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="160" y="260">前元音合计 58%</text>
+        <text x="390" y="260">前元音合计 51%</text>
+        <text x="620" y="260">前元音合计 14%</text>
+      </g>
+    </svg>
+    <figcaption>三种人工语言的元音分布：黄＝前元音 /iː/ /e/，红＝后元音 /u/，空白＝其他元音；"前元音合计"为推算<button type="button" class="cite" data-cite="fig72" aria-label="查看出处"></button><span class="tag" data-label="推算">推算</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>实验证据与一个反转</summary>
+    <p>Sapir 1929 年起，[mil] 与 [mal] 这类无意义话段的大小指派在实验中反复得到证实；/sw/ 开头的 swing、sway、sweep、swirl、swagger 则让人产生"摆动"的印象。<button type="button" class="cite" data-cite="sapir" aria-label="查看出处"></button><button type="button" class="cite" data-cite="swCluster" aria-label="查看出处"></button></p>
+    <p>反转在于日常词汇自己拆台：英语 small/big、good/bad 的语音形式恰好与大小、好坏的联想相反；Masuda 的解释是小/大对立源于发 /i/ 与 /u/ 时口腔共鸣腔的小与大——而我们的概念化容得下相互竞争的表达式（bow-wow 与 dog 本来就能切换使用）。<button type="button" class="cite" data-cite="smallBig" aria-label="查看出处"></button><button type="button" class="cite" data-cite="masuda" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coexist" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">声音象征不是"语言像世界"，而是"语言像我们对世界的概念化"——文化模型不同，叫声的写法就不同。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 句法象似</button>
+    <button class="btn" data-jump="s4">下一场：词汇演变 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>词汇演变：围着原型稳中求变</h2>
+  </div>
+  <p class="point">语言似乎有一种内在的稳定性，同时又灵活到容得下实质的词汇演变——<span class="hl">原型范畴同时解释了这两点</span>。<button type="button" class="cite" data-cite="stability" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">拖动时间轴：看 coach 的原型几百年里怎么搬家（1500–2000）<button type="button" class="cite" data-cite="coach16" aria-label="查看出处"></button></p>
+    <input type="range" id="coachSlider" min="0" max="3" step="1" value="0" aria-label="选择时代">
+    <p class="feedback" id="coachFb" style="min-height:4.5em"></p>
+    <svg id="coachSvg" viewBox="0 0 760 180" style="width:100%;height:auto;display:block" role="img" aria-label="coach 范畴四个下位范畴随时代更替成为原型"></svg>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 310" role="img" aria-label="BIRD 范畴结构图：中心成员、边缘成员与六种隐喻用法">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <ellipse cx="380" cy="160" rx="120" ry="86" stroke-dasharray="6 6"/>
+        <ellipse cx="380" cy="160" rx="52" ry="40"/>
+        <path d="M260 132 L150 70 M258 100 L138 128 M502 132 L610 70 M502 100 L622 128 M380 74 L380 34 M380 246 L380 284"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="380" y="156" font-size="17" font-weight="700">BIRD</text>
+        <text x="380" y="178" font-size="11" fill="var(--ink-soft)">原型：知更鸟·麻雀·乌鸫</text>
+        <text x="380" y="26" font-size="12">(a) 传信的小鸟</text>
+        <text x="380" y="302" font-size="12">(b) 飞机</text>
+        <text x="130" y="56" font-size="12">(c) 囚犯</text>
+        <text x="130" y="146" font-size="12">(d) 古怪的人</text>
+        <text x="630" y="56" font-size="12">(e) strictly for the birds</text>
+        <text x="630" y="146" font-size="12">(f) get the big bird</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-soft)" text-anchor="middle">
+        <text x="130" y="74" >鸵鸟·火烈鸟·孔雀</text>
+        <text x="630" y="74">鹦鹉·虎皮鹦鹉等笼中鸟</text>
+        <text x="130" y="164">奇特的外表</text>
+        <text x="630" y="164">关在笼子里</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="380" y="46">中心属性：啁啾·轻·会飞</text>
+        <text x="380" y="286">中心属性：会飞·有翅膀</text>
+        <text x="130" y="92">边缘家族相似</text>
+        <text x="630" y="92">边缘家族相似</text>
+        <text x="130" y="182">(e)(f) 连边缘都算不上</text>
+        <text x="630" y="182">源自噪音/食粪，非共有属性</text>
+      </g>
+    </svg>
+    <figcaption>BIRD 的隐喻大多来自边缘属性，动不了范畴中心（示意）<button type="button" class="cite" data-cite="birdCenter" aria-label="查看出处"></button><button type="button" class="cite" data-cite="birdPrisoner" aria-label="查看出处"></button><button type="button" class="cite" data-cite="birdsUseless" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：古英语里，fugol 和 bryd 分别指什么？</p>
+    <div class="btn-row" id="fugolOpts">
+      <button class="btn" data-opt="a">fugol＝幼鸟，bryd＝所有鸟</button>
+      <button class="btn" data-opt="b">fugol＝所有鸟，bryd＝幼鸟</button>
+      <button class="btn" data-opt="c">两个词都指所有鸟</button>
+    </div>
+    <div class="reveal" id="fugolRev" hidden>
+      <p><strong>答案是 b。</strong>古英语 fugol 指所有种类的鸟；bryd 已用于 YOUNG BIRD（幼鸟）范畴。后来 fugol 转指家禽（现代 fowl），bryd 泛化接手整个 BIRD 范畴——因为幼鸟范畴原本就包含 BIRD 的全部主要属性，范畴中心未变，转换才得以顺利完成。<button type="button" class="cite" data-cite="fugol" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bryd" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">"小"这个幼鸟的重要属性，成了 bird 从幼鸟范畴走向全范畴的拐杖。<button type="button" class="cite" data-cite="crutch" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>原型转移与原型分裂</summary>
+    <p>COACH 的换代中，"用于客运"这个功能属性把成员拢在一起：动力来源从"马拉"到"机车拖行"再到"自动推进"变化巨大，但"大而封闭的车厢、四个轮子、里面有座位"整体转移到了新原型身上，所以使用者几乎无感。<button type="button" class="cite" data-cite="coachAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="powerChange" aria-label="查看出处"></button></p>
+    <p>例外是铁路客车：它不能在公路上独立使用，于是 coach 在这里分裂出了另一个原型——这样的原型分裂在具体物体范畴不常见，在抽象范畴常见得多。IDEA 自 15 世纪进入英语后，就从全局原型分裂出 CONCEPT（the idea of）、BELIEF（the idea that）、AIM（the idea is to）、SUDDEN INSPIRATION（have/get an idea）四个局部原型。<button type="button" class="cite" data-cite="protoSplit" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ideaProto" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">传统分类只有泛化、特化、比喻、替代四种过程；原型视角追问的是：变的是哪一部分，什么没有变。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 拟声与元音</button>
+    <button class="btn" data-jump="s5">下一场：语法化斜坡 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>语法化斜坡：从 go 到 gonna</h2>
+  </div>
+  <p class="point">实义动词 go 一路下滑成助动词 gonna：<span class="hl">转喻打前站，隐喻接力，最后只剩音变</span>——语法化就是词汇单位慢慢承担语法功能的过程。<button type="button" class="cite" data-cite="meillet" aria-label="查看出处"></button><button type="button" class="cite" data-cite="stage2" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">点阶段按钮，看例子和背后的认知机制</p>
+    <div class="btn-row" id="stageChips"></div>
+    <p class="feedback" id="stageFb" style="min-height:5em"></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 270" role="img" aria-label="going to 将来时语法化斜坡：实义动词经转喻、隐喻扩展最终音变为 gonna">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+        <path d="M60 40 C240 60 420 140 700 220"/>
+        <path d="M700 220 L676 212 M700 220 L690 196"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="80" y="86" font-size="14" font-weight="700">go 实义位移动词</text>
+        <text x="80" y="106" font-size="11" fill="var(--ink-soft)">Susan's going to London</text>
+        <text x="290" y="126" font-size="14" font-weight="700">趋向＋目的</text>
+        <text x="290" y="146" font-size="11" fill="var(--ink-soft)">going to work at our office</text>
+        <text x="500" y="176" font-size="14" font-weight="700">将来时标记</text>
+        <text x="500" y="196" font-size="11" fill="var(--ink-soft)">You're going to like her</text>
+        <text x="660" y="252" font-size="14" font-weight="700">gonna 助动词</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--red)" text-anchor="middle">
+        <text x="205" y="76">转喻</text>
+        <text x="410" y="140">隐喻</text>
+        <text x="600" y="222">音系缩写</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="380" y="26">词汇 ————————————→ 语法（单向演化）</text>
+      </g>
+    </svg>
+    <figcaption>going-to 将来时的四阶段斜坡（据原书图 7.9 演绘）<button type="button" class="cite" data-cite="windowing" aria-label="查看出处"></button><button type="button" class="cite" data-cite="stage4" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>为什么是 go，传统描写差在哪儿</summary>
+    <p>位移事件三要素——目标取向、变化、视点——在 going-to 的语法化里轮流登场；只有 go 这样强调结尾路径视窗的动词才具有目标取向，才容得下带意图潜势的不定式，leave（起点视窗）、pass（中间视窗）、stagger/ride/fly（方式）都不行。<button type="button" class="cite" data-cite="motionEvent" aria-label="查看出处"></button><button type="button" class="cite" data-cite="whyGo" aria-label="查看出处"></button></p>
+    <p>传统语法把第二阶段叫"重新分析"、第三阶段叫"类推"；认知解释换成转喻与隐喻，好处是能说明限制：You are going to be friends 可以说，The earth is going to be round for ever 不可接受——going-to 的预言用法只留给不排斥变化的状态。<button type="button" class="cite" data-cite="traditionalView" aria-label="查看出处"></button><button type="button" class="cite" data-cite="goingToLimit" aria-label="查看出处"></button></p>
+    <p>Heine 的框架把语法化接到命题图式上：方位、位移、动作三个基本图式，派生出的等式、伴随、拥有、方式、状态变化、意愿六个图式——意愿产生英语 will 将来时，状态变化产生德语 werden 将来时，很多非洲语言用伴随发展出进行体。<button type="button" class="cite" data-cite="schemas" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fig711" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">认知分析支持"词汇→语法"的第一阶段单向演化；反向的"去语法化"若真出现，也应有工具去处理。<button type="button" class="cite" data-cite="unidirection" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 词汇演变</button>
+    <button class="btn" data-jump="s6">下一场：教学启示 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>教学启示：两张牌</h2>
+  </div>
+  <p class="point">认知语言学对外语教学的贡献是双重的：<span class="hl">一张是"认知-经验途径"，一张是"认知网络"</span>——前者经由原型、基本层次、主体/背景与完形，后者把词汇场、隐喻网络、介词网络织在一起。<button type="button" class="cite" data-cite="twofold" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">对照卡：点话题，看传统做法与认知启示的差别</p>
+    <div class="btn-row" id="teachChips"></div>
+    <div class="vs" id="teachVs">
+      <div class="vscol"><h4>传统做法</h4><p id="teachOld" style="margin:0">先点上面的。</p></div>
+      <div class="vscol new"><h4>认知启示</h4><p id="teachNew" style="margin:0">这些话题都出自本节原文。</p></div>
+    </div>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：West 编《英语最常用词汇表》时，除了频率还想找的是什么词？</p>
+    <div class="btn-row" id="westOpts">
+      <button class="btn" data-opt="a">最高频的功能词（the、of、and）</button>
+      <button class="btn" data-opt="b">基本层次范畴的词</button>
+      <button class="btn" data-opt="c">构词能力最强的长词</button>
+    </div>
+    <div class="reveal" id="westRev" hidden>
+      <p><strong>答案是 b。</strong>West 知道频率本身不充分，补了覆盖率、对定义和构词的价值、风格中性化、可用度、学习难易度等标准——这份清单读起来就像基本层次范畴的描写；结论是"基本层次范畴似乎提供了通向常用词汇的最佳通道"。<button type="button" class="cite" data-cite="westCriteria" aria-label="查看出处"></button><button type="button" class="cite" data-cite="basicChannel" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">语料库频率表恰恰由 the、of、and 这类功能词领头——单靠频率选词会失真，这正是 West 加标准的原因。</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>课堂细节：原型例子、词汇场与介词网络</summary>
+    <p>词义用典型例子（知更鸟）而非奇异例子说明更易掌握；英语 bread、法语 pain、德语 Brot 原型不同，正是跨文化认识的好机会。词汇场之所以好用，是因为它反映心理词库的构建方式——且要打破词类界限；有经验的教材编写者进入类关系之前先穷尽部分-整体关系，连 ANIMAL、CLOTHES、FURNITURE、SPORTS 这些分类模型（图 7.12 中带星号）也有资格充当部分-整体模型的候选。<button type="button" class="cite" data-cite="protoTeach" aria-label="查看出处"></button><button type="button" class="cite" data-cite="breadPain" aria-label="查看出处"></button><button type="button" class="cite" data-cite="semanticField" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partwhole" aria-label="查看出处"></button><button type="button" class="cite" data-cite="greenLine" aria-label="查看出处"></button></p>
+    <p>专门用途英语要换基本层次：给植物学家不该停在 tree、flower，要用更精细的术语。给习语指出底层隐喻（+FIRE+ 隐喻统辖愤怒、爱、想象、冲突、热情）能帮助习得；介词 over 的 A-B-C 轨迹可以用翻页书或猫跳墙动画来教，完结义靠突显最后阶段 C 自然呈现。<button type="button" class="cite" data-cite="esp" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metaphorIdioms" aria-label="查看出处"></button><button type="button" class="cite" data-cite="overABC" aria-label="查看出处"></button></p>
+    <p>还有些句子被整体当成"块"在前语法模式里处理（kick the bucket、white elephant）——完形感知是语言输入非分析处理的条件，小学课堂的角色扮演、顺口溜、谜语、童话正该按这个标准来选。<button type="button" class="cite" data-cite="chunks" aria-label="查看出处"></button><button type="button" class="cite" data-cite="primary" aria-label="查看出处"></button></p>
+    <p>名词语法与动词形式也有完形化的余地：与其记可数/不可数二分，不如按人、物概念分类（单个物体、物质、"成对"物体、事物集合）；时体标记则有原型可依——yesterday/ago 指向过去时，always/often 支撑简单式，at this moment 支撑进行体，标记充当用法的参照点。<button type="button" class="cite" data-cite="countMass" aria-label="查看出处"></button><button type="button" class="cite" data-cite="tenseMarkers" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">三件套：目标要交际（最终跨文化），方法行为取向、以学习者为中心，途径走认知-经验。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 语法化斜坡</button>
+    <button class="btn" data-jump="s7">下一场：文本策略 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>文本策略：象似性放大到整篇</h2>
+  </div>
+  <p class="point">旅游指南像导游带路（<span class="hl">路径策略</span>），电话号码簿和新闻报道则靠<strong>分类-加权策略</strong>——读者把这些行为结构从自身体验整体转移到文本理解上。<button type="button" class="cite" data-cite="pathStrategy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sortingWeighting" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">排一排：一次导游参观按什么顺序展开？依原文顺序点选步骤<button type="button" class="cite" data-cite="pathParts" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="pathSteps"></div>
+    <p class="feedback" id="pathFb">六步来自原著的路径策略成分清单，顺序点错会提示。</p>
+    <div class="reveal" id="pathRev" hidden>
+      <p style="margin:0 0 6px">原著的清单是：以邀请同行达到高潮的<strong>揭幕仪式</strong> → 沿路径行走 → 在不同路线中作出<strong>选择</strong> → <strong>指出</strong>有趣的事物 → 对它们进行<strong>解释</strong> → 恰当的<strong>结束仪式</strong>。<button type="button" class="cite" data-cite="pathParts" aria-label="查看出处"></button></p>
+      <p style="margin:0;font-size:.88rem;color:var(--ink-soft)">旅游手册的写法印证了它："跨过 Llancaiach Fawr 的门槛，回到 350 多年前的大动乱和内战时期……"—— step over、enter、guide 这些路径动词与迎候、服饰、讲解细节结合在一起。<button type="button" class="cite" data-cite="llancaiach" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>路径策略不止用于旅游指南</summary>
+    <p>路径概念是基本意象图式之一，也是主体/背景对立、射体、位移事件图式的支柱。路径策略为说明书、程序文本（菜谱、自己动手的手册）、按序时记录（纪实、历史小说、传记）充当参考；它的效果甚至超出语言媒介，对景点推介类电视节目同样关键。<button type="button" class="cite" data-cite="pathStrategy" aria-label="查看出处"></button></p>
+    <p>电话号码簿和新闻报道没有"引导"性质，却也靠象似支持：分类策略（汇集材料、分析大小/形状/颜色/价值等参数、定分类原则、分阶段、决定显示方式）常与加权策略结合；新闻报道"自上而下、按递减的重要性排列"，正是分类-加权策略的体现，也解释了结尾焦点为什么好用。<button type="button" class="cite" data-cite="sortingWeighting" aria-label="查看出处"></button><button type="button" class="cite" data-cite="newsDown" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">象似性的最高境界：不是单个词语模仿声音，而是整篇文本模仿我们的行为经验。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 教学启示</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>① 动词词干与体、时、情态标记的距离，说明了什么概念关系？</h3>
+    <details><summary>看答案</summary>
+      <p>体标记离词干最近，因为 DURATION（持续）、PROGRESSION（进行）与 WORK 这类动词行为范畴关系最密切；TEMPORAL LOCATION（时间位置）远一些，ABILITY（能力）这类情态概念与词汇范畴的关系最远——所以 ★She swim-could 不合法。名词一侧同理：复数标记最近，格标记第二近。<button type="button" class="cite" data-cite="verbMorph" aria-label="查看出处"></button><button type="button" class="cite" data-cite="swimCould" aria-label="查看出处"></button><button type="button" class="cite" data-cite="nounMorph" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>② coach 的原型从贵宾马车一路换到公共汽车，为什么使用者几乎无感？</h3>
+    <details><summary>看答案</summary>
+      <p>因为"用于客运"这个最重要的功能属性，连同"大而封闭的车厢、四个轮子、里面有座位"整体转移到了新原型身上；变的只是动力来源（马拉→机车拖行→自动推进）。例外是铁路客车——不能在公路独立使用，分裂出了另一个原型。<button type="button" class="cite" data-cite="coachAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="powerChange" aria-label="查看出处"></button><button type="button" class="cite" data-cite="protoSplit" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>③ 为什么 You are going to be friends 可以说，The earth is going to be round for ever 不可接受？</h3>
+    <details><summary>看答案</summary>
+      <p>going-to 将来时的预言用法受"变化&lt;&gt;位移"关系限制：只用于表示人的好恶、友谊这类"非永久而易于变化"的状态；"地球将永远是圆的"与变化观念冲突，越过了映射限制。It's going to rain 可以，是因为有当下可见的征兆作参照点。<button type="button" class="cite" data-cite="goingToLimit" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>Peirce 三类符号：象征（约定）、指示（指明：here/there/now/then、风向标、烟）、图象（相似：映象＋拟象）。<button type="button" class="cite" data-cite="peirce3" aria-label="查看出处"></button><button type="button" class="cite" data-cite="indexEx" aria-label="查看出处"></button></li>
+    <li>句法象似三原则：顺序（小句跟着事件时间顺序）、邻近（关系近的成分靠近）、量（长度对应信息量与重要性）。<button type="button" class="cite" data-cite="threeTypes" aria-label="查看出处"></button></li>
+    <li>认知转向的关键：不跟真实物体比，跟范畴与认知模型比。<button type="button" class="cite" data-cite="cognitiveBase" aria-label="查看出处"></button></li>
+    <li>形态证据：动词词干—体—时—情态，距离递减；名词词干—复数—格，距离递减；children's 不可换序。<button type="button" class="cite" data-cite="verbMorph" aria-label="查看出处"></button><button type="button" class="cite" data-cite="childrens" aria-label="查看出处"></button></li>
+    <li>词汇演变的传统四分：泛化、特化、比喻、替代（语义转移）；认知视角加原型转移与原型分裂。<button type="button" class="cite" data-cite="tradTypes" aria-label="查看出处"></button></li>
+    <li>BIRD 案例：隐喻多来自边缘属性；fugol（所有鸟）→fowl（家禽），bryd（幼鸟）→bird（全范畴），中心未变。<button type="button" class="cite" data-cite="birdStable" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fugol" aria-label="查看出处"></button></li>
+    <li>语法化四阶段（going to）：实义位移 → 转喻扩展 → 隐喻扩展 → 音系缩写；传统叫重新分析与类推。<button type="button" class="cite" data-cite="stage2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="stage3" aria-label="查看出处"></button><button type="button" class="cite" data-cite="traditionalView" aria-label="查看出处"></button></li>
+    <li>Heine 命题图式：方位、位移、动作三个基本图式，派生等式、伴随、拥有、方式、状态变化、意愿。<button type="button" class="cite" data-cite="schemas" aria-label="查看出处"></button></li>
+    <li>教学三件套：目标（交际→跨文化）、方法（行为取向、学习者中心）、途径（原型、基本层次、主体/背景、完形）。<button type="button" class="cite" data-cite="paradigm" aria-label="查看出处"></button></li>
+    <li>不定式＝情景的个别实例；动名词＝从单一事件剥离出的情景；这种对立要整体培养敏感性。<button type="button" class="cite" data-cite="infinitive" aria-label="查看出处"></button><button type="button" class="cite" data-cite="gerund" aria-label="查看出处"></button><button type="button" class="cite" data-cite="gestaltLearner" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>象似性</strong>：语言层面与概念化层面之间的相似关系，不是语言与现实对象的直接相似。<button type="button" class="cite" data-cite="cognitiveBase" aria-label="查看出处"></button></li>
+    <li><strong>映象 / 拟象</strong>：Peirce 的两种图象——映象是模仿（bow-wow），拟象是结构相似（成分排列像事件结构）。<button type="button" class="cite" data-cite="diagramDef" aria-label="查看出处"></button></li>
+    <li><strong>指示</strong>：具有指明功能的符号，常借时空定位实现，如 here/there/now/then。<button type="button" class="cite" data-cite="indexEx" aria-label="查看出处"></button></li>
+    <li><strong>原型转移</strong>：范畴核心属性整体换代，如 coach 从贵宾马车到公共汽车。<button type="button" class="cite" data-cite="coachShift" aria-label="查看出处"></button></li>
+    <li><strong>原型分裂</strong>：一个范畴裂出多个局部原型，IDEA（概念/信念/目的/灵感）最典型。<button type="button" class="cite" data-cite="protoSplit" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ideaProto" aria-label="查看出处"></button></li>
+    <li><strong>语法化</strong>：自主的词转变为语法成分的角色；词汇单位承担语法功能的过程。<button type="button" class="cite" data-cite="meillet" aria-label="查看出处"></button></li>
+    <li><strong>重新分析 / 类推</strong>：传统语法给 going-to 第二、三阶段的命名；认知说法是转喻与隐喻。<button type="button" class="cite" data-cite="traditionalView" aria-label="查看出处"></button></li>
+    <li><strong>命题图式</strong>：Heine 框架中表征过程和事件的结构，语法范畴从最一般的图式发展而来。<button type="button" class="cite" data-cite="schemas" aria-label="查看出处"></button></li>
+    <li><strong>认知-经验途径</strong>：经由原型、基本层次、主体/背景、完形习得外语的通道。<button type="button" class="cite" data-cite="twofold" aria-label="查看出处"></button></li>
+    <li><strong>词汇场</strong>：反映心理词库构建方式的语义相关词项聚集，须打破词类界限。<button type="button" class="cite" data-cite="semanticField" aria-label="查看出处"></button></li>
+    <li><strong>路径策略 / 分类-加权策略</strong>：两类有象似支持的文本策略，分别对应"导游带路"与"按参数排序"。<button type="button" class="cite" data-cite="pathStrategy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sortingWeighting" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第七章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web 技能制作 · 单文件 · 零外部依赖</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"（德）弗里德里希·温格瑞尔、汉斯—尤格·施密特 著；彭利贞、许国萍、赵微 译",zh:"《认知语言学导论》第 2 版"},
+  peirce3:{page:"7.1",quote:"根据 Peirce 的观点，只有一类他称之为“象征”(symbol)的符号，表征与对象的约定俗成的关系，因此接近于 Saussure 对任意符号的标准解释。Peirce 提出的另两个主要的符号范畴，“指示”和“图象”，正像柏拉图已讨论过的那样，具有“自然的”基础特征。",zh:"Peirce 三分：象征靠约定，指示与图象有自然基础；索绪尔只把 bow-wow 类声音象征看作例外"},
+  indexEx:{page:"7.1",quote:"指示(index)大致说来具有指明功能……指示功能由人称代词、指示代词及处所、时间直指副词实现，如 here(这里)，there(那里)，now(现在)，then(那时)。不过，指示的概念也超出语言表达式的层次，常常以非语词形式表示，例如，天气风向标指明风向，或者，烟是火的信号。",zh:"指示的指明功能：直指副词、风向标、烟与火"},
+  diagramDef:{page:"7.1",quote:"他把语言结构和现实中遇到的事件(以及其他现象)结构之间的相似性包括在内；对这类图象他使用的术语是“拟象”(diagram)。",zh:"拟象＝语言结构与事件结构之间的相似性"},
+  threeTypes:{page:"7.1",quote:"就这个领域提出的象似原则包括语言材料的象似顺序（iconic sequencing）、象似邻近（iconic proximity）和象似量（iconic quantity）",zh:"句法象似三原则：顺序、邻近、量"},
+  cognitiveBase:{page:"7.1",quote:"认知语言学家并不主张去描述真实世界的物体和生命体，而是处理我们所具有的关于真实世界的范畴和认知模型",zh:"象似性的认知参照点：范畴与认知模型，而非真实物体"},
+  proxEx:{page:"7.1",quote:"因为pepperoni(意大利辣香肠)是这种比萨饼的固有组成成分，所以这个词必须直接放在该名词前边；Italian(意大利)表示产地，应得到第二接近的位置，而比萨饼的特点delicious(美味的)和对它的评价famous(著名的)则居于离名词较远的位置。",zh:"只有 the famous delicious Italian pepperoni pizza 可接受：固有成分最近，产地次之，评价最远"},
+  verbMorph:{page:"7.1",quote:"对动词形态变化的研究已经表明，在许多语言中，体标记比时标记更靠近动词词干，而时标记又比情态标记更靠近动词词干。",zh:"动词词干与标记的距离：体最近，时次之，情态最远"},
+  swimCould:{page:"7.1",quote:"正如不合语法的第四个句子所表明的那样，情态标记不能移入离动词词干更近的位置，例如，把它变成一个后缀。",zh:"★She swim-could 不合法：情态标记不能黏到词干上"},
+  nounMorph:{page:"7.1",quote:"最具体的物体和人被看作是易数的实体，所以表达它们的概念与存在于复数标记中的QUANTITY(量)概念结合良好，而这就是复数标记直接附着在名词词干上的原因所在。",zh:"复数标记直接附着名词词干；格标记通常第二近"},
+  childrens:{page:"7.1",quote:"这儿的“不规则”复数标记-ren比属格标记-s更靠近名词词干，而且这种排列顺序是不能倒过来的。",zh:"children's 中 -ren 比 -s 更近，且顺序不可颠倒"},
+  givonQty:{page:"7.1",quote:"Givón (1990)从语言表达式越长表达的概念信息量越大这个规则出发，认为语言材料的量与被处理信息的重要性和可预测性程度是相对应的。",zh:"量象似性：语言材料的量对应信息的重要性与可预测性"},
+  brighton:{page:"7.1",quote:"在最后一个句子中，激增的语言表达式与信息的独特的概念重要性和它的意外性相匹配。",zh:"同一场面三种说法：代词 her → the girl from next door → 一长串形容词，重要性与意外性递增"},
+  pronounFr:{page:"7.1",quote:"量的象似性原则解释了为什么人称代词通常比完全的名词短语要短，为什么代词的标准形式往往比对比形式（它强调符号的重要性）要短。我们可以比较一下非重读的法语第一人称代词 je（我）……和对比形式 moi（我）。",zh:"代词短于完整名词短语；法语 je 与对比形式 moi 一对"},
+  onomatopoeia:{page:"7.1",quote:"由于我们对世界的感知是由文化模型决定的，因此说不同语言的人在概念化过程中倾向于突出动物声音的不同方面——和阿拉伯语的haphap比较一下，与它更接近的是英语的woof-woof（汪汪）以及法语中的ouafouaf，而不是bow-wow。",zh:"拟声词各语言不同：模仿的是依赖文化的概念化"},
+  swCluster:{page:"7.1",quote:"因为所有这些词都表达摆动的意思，所以它们产生了这样的印象，即/sw/象似地反映了摆动的运动和声音。",zh:"/sw/ 辅音丛：swing、sway、sweep、swirl、swagger"},
+  vowelAssoc:{page:"7.1",quote:"前元音/i/代表小，明亮和令人愉快的感觉，而后元音/u/和/o/则意味着粗大，强大和令人不快的感觉。",zh:"诱发联想的声音象征：/i/ 小亮愉快，/u/ /o/ 大强不快"},
+  sapir:{page:"7.1",quote:"从1929年Sapir的研究开始，这些联想在实验中得到反复证实，在Sapir的研究中，要求被试把最小的无意义的话段，如[mil]和[mal]指派给大的和小的物体。",zh:"Sapir 1929：[mil] 与 [mal] 的大小指派实验"},
+  tolkien:{page:"7.1",quote:"当询问被试……他们认为这些名字中哪些适合正面人物,哪些适合反面人物时,大多数人与 Tolkien 的指派一致,这种指派的基础是前元音对正面人物、后元音对反面人物强势性",zh:"Tolkien 人物命名：前元音归正面人物，后元音归反面人物"},
+  fig72:{page:"7.1",quote:"图 7.2：Sindarin /iː/ 22.5%、/e/ 35.5%、/u/ 2%、其他元音 40%、辅音对元音 1.22；Quenya 28%、23%、10%、39%、1.08；Black Speech 14%、0%、40%、46%、1.7",zh:"三种人工语言元音分布：两种精灵语前元音占一半以上，兽人语 /u/ 占四成、辅音比 1.7"},
+  smallBig:{page:"7.1",quote:"有点儿讽刺意味的是，英语中，前后元音相应的小/大(small/big)和好/坏(good/bad)联想被表达这些概念的两对形容词的语音形式取消了，在很多其他语言中也是如此。",zh:"反转：small/big、good/bad 自身语音与联想相反"},
+  masuda:{page:"7.1",quote:"最核心的联想，也就是小/大的对立，可以分别与发/i/和/u/语音时口腔产生的共鸣腔的小和大这些身体经验相联系(Masuda 2000)。",zh:"小/大对立源于发 /i/ 与 /u/ 的口腔共鸣腔大小"},
+  coexist:{page:"7.1",quote:"我们能不费吹灰之力根据恰当的语境换着使用拟声的 bow-wow(汪汪)或 miaow(喵喵) 和词汇形式 dog(狗)或 cat(猫)",zh:"概念化容得下相互竞争的表达式：拟声词与词汇形式并存"},
+  pathStrategy:{page:"7.1",quote:"设想路径策略的较为恰当和实际的方法是设想一个这样的情景：某人沿着一条路径引导另一个人，例如本地人引导外国游客到新的目的地，或者导游带领旅游团参观古堡、花园或公园。",zh:"路径策略＝导游带路的行为结构整体转移到文本理解"},
+  pathParts:{page:"7.1",quote:"这个行为结构的其他成分是：邀请某人同行时达到高潮的揭幕仪式，在不同路线中作出选择，指出在行程中遇到的有趣的事物，对它们进行解释，最后是恰当的结束仪式。",zh:"路径策略成分：揭幕仪式、路径行走、路线选择、指出事物、解释、结束仪式"},
+  llancaiach:{page:"7.1",quote:"Step over the threshold of Llancaiach (pronounced glan kayack) Fawr and travel back over 350 years to a time of great unrest and Civil War in Wales.",zh:"威尔士庄园旅游手册选段：跨过门槛回到 350 多年前"},
+  sortingWeighting:{page:"7.1",quote:"分类策略常常和加权策略(weighting strategy)结合在一起，意思是按照分类参数向上或向下排列项目，这为加权过程提供了起始焦点或结尾焦点。",zh:"分类策略＋加权策略：按参数向上或向下排列项目"},
+  newsDown:{page:"7.1",quote:"如果我们看一看典型的新闻报道，它们遵循着自上而下的原则，按照递减的重要性顺序排列项目，这常常和空间路径或时间先后顺序观念有出入。",zh:"新闻报道自上而下、按递减重要性排列"},
+  stability:{page:"7.2",quote:"语言似乎有一种内在的稳定性，即说话人可以依靠的一个意义核心。同时，语言似乎很灵活，足以使实质的词汇演变成为可能。",zh:"词汇既有意义核心的稳定，又容得下实质演变"},
+  tradTypes:{page:"7.2",quote:"传统上，词义的演变被描写为泛化、特化、比喻用法，更不用说，也被描写为替代或语义转移这种彻底的变化。",zh:"传统四分：泛化、特化、比喻、替代（语义转移）"},
+  birdCenter:{page:"7.2",quote:"“提供秘密消息的小鸟”(例(a))着重于前三个属性(啁啾/轻/会飞)，而“飞机”(b)这一隐喻用法则主要依靠后两个属性(会飞/有翅膀)。",zh:"基于中心属性的隐喻：传信小鸟、飞机"},
+  birdPrisoner:{page:"7.2",quote:"尽管这个隐喻也使人想起了鸟的很多其他特征，其中有中心属性“会飞”和“有翅膀”，但被关起来这种概念只是鹦鹉、虎皮鹦鹉及其他供观赏的笼中鸟的特点，不是所有的鸟都有的。",zh:"基于边缘属性的隐喻：bird 指囚犯靠'关在笼子里'"},
+  birdsUseless:{page:"7.2",quote:"限用于鸟(strictly for the birds)(e)，意思是“完全无用”，这个用法和“吃马粪或牛粪的鸟”有关。",zh:"strictly for the birds＝完全无用，源自食粪的鸟"},
+  fugol:{page:"7.2",quote:"在古英语中，词语 fugol 指所有种类的鸟。",zh:"古英语 fugol 指所有种类的鸟，后转指家禽（现代 fowl）"},
+  bryd:{page:"7.2",quote:"其背景是它的古英语形式 bryd 已经用于有密切关系的YOUNG BIRD(幼鸟)范畴(见图7.5中的(B))。",zh:"古英语 bryd 已用于幼鸟范畴"},
+  crutch:{page:"7.2",quote:"从认知上来说，这可以看作利用幼鸟的重要属性，即小这一属性的手段，看作帮助这个词语 bird(鸟)从 YOUNG BIRD(幼鸟)范畴转换为 BIRD(鸟)范畴的拐杖。",zh:"'小'是 bird 从幼鸟范畴扩到全范畴的拐杖"},
+  birdStable:{page:"7.2",quote:"主要原因似乎是范畴的中心区域，尤其是原型，在很大程度上未受隐喻演变的影响，甚至也未受涉及 BIRD(鸟)范畴的特化和泛化过程的影响。",zh:"BIRD 范畴跨世纪稳定：中心区域与原型基本未受演变影响"},
+  coach16:{page:"7.2",quote:"词语 coach 于 16 世纪引入英语，用来指大的、封闭的、四个轮子的、里外都有座位、马拉的车。",zh:"16 世纪 coach 指大型封闭四轮马车，原型为贵宾马车"},
+  coachShift:{page:"7.2",quote:"图(b) 勾画了 19 世纪的情况，>STAGE COACH<（公共马车）取代了>STATE CARRIAGE<（贵宾马车）成为原型的下位范畴……最后，在图(c)中，为了帮助>MOTOR COACH<（公共汽车）成为新的原型，>STAGE COACH<（公共马车）被推向了范畴边缘",zh:"原型转移：贵宾马车 → 公共马车 → 公共汽车"},
+  coachAttrs:{page:"7.2",quote:"大多数重要属性，如“用于客运”，“大而封闭的车厢”，“有四个轮子”，“里面有座位”，都从老的范畴原型转到了新的范畴原型上了。在这些属性中，最重要的是“用于客运”这一功能属性。",zh:"重要属性整体转移到新原型，'用于客运'最关键"},
+  powerChange:{page:"7.2",quote:"该属性从＞公共马车＜（＞STAGE COACH＜）的“马拉”，经过＞铁路客车＜（＞RAILWAY CARRIAGE＜）的“机车拖行”，再变到＞公共汽车＜（＞MOTOR COACH＜）的“自动推进”。",zh:"动力来源三代更替：马拉 → 机车拖行 → 自动推进"},
+  protoSplit:{page:"7.2",quote:"coach用于指>RAILWAY CARRIAGE<（铁路客车）的用法可以看作是分裂出了另一个原型。",zh:"铁路客车不能公路独立使用，分裂出另一原型；抽象范畴更常见"},
+  ideaProto:{page:"7.2",quote:"原型>CONCEPT<（>概念<），和句法结构 the idea of 有紧密的联系。原型>BELIEF<（>信念<）和 the idea that 这个构式联系在一起，原型>AIM<（>目的<）和 the idea is to 有关，最后，原型>SUDDEN INSPIRATION<（>突发的灵感<）则和 have/get an idea 这一结构相联系",zh:"IDEA 的四个局部原型各系一种句法构式"},
+  meillet:{page:"7.3",quote:"研究语法化的目的在于探索“自主的词转变为语法成分的角色”(1912:133)，或者用较近的定义，是表明“词汇单位……在何处承担了一项语法功能，或一个语法单位在何处承担了一项更具语法性质的功能。”(Heine等1991:2)",zh:"语法化：自主的词转变为语法成分的角色"},
+  motionEvent:{page:"7.3",quote:"一个位移事件基本上可以看作是主体在背景上移动的路径。假设有一条从A通往B的开放路径，主体（或射体）的移动总是指向终点B，换句话说，它有目标取向的特点。",zh:"位移事件＝主体在背景上沿路径移动，具目标取向"},
+  windowing:{page:"7.3",quote:"汇集了路径-视窗开启所有的三种可能性：开启起始视窗(out of the cargo bay)，开启中间视窗(through the air)，开启结尾视窗(into the ocean)，但最后一种可能性更大",zh:"路径视窗：起始、中间、结尾三种开启，go 最常开结尾视窗"},
+  stage2:{page:"7.3",quote:"第二阶段可以理解为一种转喻转移，其基础是+目标取向的移动代表有意的行为+（+GOAL-ORIENTED MOVEMENT STANDS FOR INTENDED ACTION+）这种关系",zh:"第二阶段：转喻——目标取向的移动代表有意的行为"},
+  stage3:{page:"7.3",quote:"在这个扩展中，有意的将来行为(INTENDED FUTURE ACTION)这个源概念转移到断定的将来状态(PREDICTED FUTURE STATE)这一目标概念上——或者，用通常使用的给隐喻加标签的格式，可表示为+断定的状态是有意的行为+（+PREDICATED STATE IS INTENDED ACTION+）",zh:"第三阶段：隐喻——断定的状态是有意的行为"},
+  stage4:{page:"7.3",quote:"最后一个阶段(第四阶段，由例(7)和(8)代表，但不在图7.9中)不再改变其意义，而只是记录随着最后降格为助动词地位而发生的音系和书写的变化。",zh:"第四阶段只剩音系与书写变化（gonna）"},
+  traditionalView:{page:"7.3",quote:"传统的描写把第二阶段刻画为句法的重新分析（而不是转喻），把第三阶段刻画为类推（而不是隐喻）",zh:"传统说法：重新分析与类推；认知说法：转喻与隐喻"},
+  whyGo:{page:"7.3",quote:"只有像 go一样强调结尾路径视窗的动词才具有目标取向，才使得添加具有内在意图潜势的不定式(而不是分词或动名词)成为可能。",zh:"为什么是 go：强调结尾视窗→目标取向→容得下不定式"},
+  goingToLimit:{page:"7.3",quote:"这个映射限制解释了(6)You are going to be friends(你们会成为朋友的)这类例子为什么完全可以接受，而The earth is going to be round for ever(地球将永远是圆的)却不可接受。",zh:"going-to 只用于不排斥变化的状态；'地球永远是圆的'越界"},
+  schemas:{page:"7.3",quote:"这些图式可以分为两组：三个基本图式（即：方位(Location)，位移(Motion)，动作(Action)）和一些由这些基本图式派生出来的图式（即：等式(Equation)，伴随(Accompaniment)，拥有(Possession)，方式(Manner)，状态变化(Change of State)，意愿(Volution)）。",zh:"Heine 命题图式：三个基本图式加六个派生图式"},
+  fig711:{page:"7.3",quote:"意愿产生将来时(英语中的 will-将来时)，状态变化也产生将来时(德语中的 werden(＝“变成”)→将来时)；很多非洲语言记录了伴随发展成为进行体标记。",zh:"图式到语法范畴：will、werden、非洲语言伴随→进行体等"},
+  unidirection:{page:"7.3",quote:"就本节集中讨论的第一阶段来说，认知分析似乎证明了从词汇单位向语法单位的单向演化。",zh:"第一阶段支持单向演化；去语法化若出现也应能处理"},
+  twofold:{page:"7.4",quote:"认知语言学对这一领域的贡献是双重的：通过基本层次，转喻和隐喻，主体和背景以及完形等理论，它提出了习得外语的认知-经验途径(cognitive-experiential access)的新形式，并揭示了以这些理论为基础的认知网络(cognitive networks)。",zh:"教学贡献双支柱：认知-经验途径＋认知网络"},
+  westCriteria:{page:"7.4",quote:"为了预防这类失真，West 也使用了一些另外的标准，加上其他来源的后起的附加标准，汇集在下表中：· 覆盖率 · 对定义和构词的价值 风格中性化的程度 可用度（首先出现在脑子里的） · 学习的难易度",zh:"West 的附加标准：覆盖率、构词价值、风格中性、可用度、难易度"},
+  basicChannel:{page:"7.4",quote:"总而言之，你可以认为，词频表的编者所寻求的，总的来说是表达基本层次项目的词语；或者反过来说，基本层次范畴似乎提供了通向常用词汇的最佳通道。",zh:"基本层次范畴是通向常用词汇的最佳通道"},
+  protoTeach:{page:"7.4",quote:"范畴化的原型理论证实了一种长期存在的直觉：词义如果用典型的而不是用奇异的例子来说明，则较易掌握。",zh:"用典型例子讲词义更易掌握"},
+  breadPain:{page:"7.4",quote:"英语的 bread，法语的 pain 和德语的 Brot 这种表面上对应的词，其原型之间的差别为提高跨文化认识的水平提供了一个很好的机会。",zh:"bread/pain/Brot 原型差异是跨文化教学机会"},
+  semanticField:{page:"7.4",quote:"词汇场应用得非常成功，因为词汇场反映了我们的心理词库构建方式。这有一个条件，那就是词场不是像很多结构主义语言学家所提倡的那样，局限于特定的词类（名词、动词、形容词），而是打破了词类的界限，把语义上相关的所有项目都聚集起来。",zh:"词汇场反映心理词库，须打破词类界限"},
+  partwhole:{page:"7.4",quote:"按照部分-整体组织而不是按层级分类来思考才有帮助（见2.4节）。",zh:"安排词汇场：部分-整体组织优先于层级分类"},
+  greenLine:{page:"7.4",quote:"它收集了Green Line第一卷（所谓的“教室词汇”，排除desk（课桌）和blackboard（黑板）之类的词）中发现的用频率过滤的词汇项",zh:"Green Line 第一卷词汇场分析：ANIMAL 十二个、BODY 十一个等"},
+  esp:{page:"7.4",quote:"很显然，比如说，对外国植物学家或动物学家的词汇训练课程就不应该是关于tree(树)，flower(花)，horse(马)或bug(臭虫)这类基本层次术语的，而应使用更精细的术语区分单元。",zh:"专门用途英语要下钻到更细的基本层次"},
+  metaphorIdioms:{page:"7.4",quote:"给学生指出其中的隐喻会有助于习语的习得；表达一个相关的隐喻的习语集合能够帮助我们设想我们概念系统的结构。",zh:"指出底层隐喻有助于习语习得（+FIRE+ 隐喻网络）"},
+  overABC:{page:"7.4",quote:"他们提议用一本快速翻动的书或者用描绘一只猫跳过一堵墙的电影或动画片段，捕获先后出现的不同点上的画面来传达由 over 表达的运动的不同阶段。",zh:"over 的 A-B-C 轨迹可用翻页书/猫跳墙动画教"},
+  countMass:{page:"7.4",quote:"在英语语法中，一般区分可数名词和不可数名词，并把名词分派到这些相当抽象的范畴中，但是，问题在于，根据可完整地体验为完形的人、物概念来处理名词是不是就更不自然。",zh:"名词语法改走人/物概念的完形分类"},
+  tenseMarkers:{page:"7.4",quote:"过去时被认为以时间概念为标志，表达为 yesterday 或“名词短语+ago”。同样地，简单形式的用法被认为是由惯常概念(always, often)产生的，而进行体形式则常常得到同时概念(at this moment, at present)的支持。",zh:"时体标记原型：yesterday/ago、always/often、at this moment"},
+  infinitive:{page:"7.4",quote:"不定式的各种用法都可以归入这种意义：根据个别实例感知一个情景。",zh:"不定式图式：个别实例感知情景（含具体事件、习惯、意图）"},
+  gerund:{page:"7.4",quote:"动名词的图式(=“从单一事件剥离出来的情景”)可能看起来有些模糊，但它却可以包括诸如“一般”和“进行中的行为”(“情景的心理经验”)等各种传统概念。",zh:"动名词图式：从单一事件剥离出的情景（含一般、进行中）"},
+  gestaltLearner:{page:"7.4",quote:"外语学习者不得不逐渐培养的就是对这种“英语”特有的情景/实例对立的整体敏感性",zh:"学习者要整体培养'情景/实例'对立的敏感性"},
+  chunks:{page:"7.4",quote:"有的相当普通的句子，能够很容易地用词汇成分和语法功能加以分析，却似乎被整体概念化为“块”，也就是说，这些句子是在前语法模式中进行分析的。",zh:"整块处理：kick the bucket、white elephant 类熟语与前语法模式"},
+  paradigm:{page:"7.4",quote:"目标：交际的，最终是跨文化的能力 · 方法/策略：行为取向的，以学习者为中心的 · 途径：经由原型，基本层次，主体和背景以及完形等习得外语的认知体验途径",zh:"学习理论三件套：目标、方法/策略、途径"},
+  primary:{page:"7.4",quote:"这很可能在小学英语这一领域产生最有意义的结果。",zh:"认知途径最可能在小英课堂出成果"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序；JS 后注入的角标也会补编号） */
+const citeNo={};
+function numberCites(root){
+  $$(".cite",root||document).forEach(b=>{
+    if(b.dataset.no) return;
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    b.dataset.no="1";
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+}
+numberCites();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第七章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：象似性分类游戏 ================= */
+(function(){
+  const cats={sound:"语音象似（拟声）",seq:"顺序象似",prox:"邻近象似",qty:"量象似"};
+  const items=[
+    {t:"bow-wow（汪汪）",a:"sound",why:"拟声模仿的是依赖文化的概念化——狗叫在英语里是 bow-wow，在法语里是 ouaf ouaf。"},
+    {t:"swing、sway、swirl 的 /sw/",a:"sound",why:"/sw/ 辅音丛让人产生'摆动'的印象，是次要的声音象征效果。"},
+    {t:"He opened the bottle and poured himself a glass of wine.",a:"seq",why:"小句顺序跟着事件的自然时间顺序走；倒过来（先倒酒后开瓶）就违反象似顺序原则。"},
+    {t:"He jumped onto his horse and rode out into the sunset.",a:"seq",why:"先跳上马背、再骑出去——语序模仿的是动作的真实次序。"},
+    {t:"the famous delicious Italian pepperoni pizza",a:"prox",why:"固有成分 pepperoni 紧贴名词，Italian 第二接近，评价与特点最远。"},
+    {t:"体标记 -ing 紧贴动词词干",a:"prox",why:"体标记最近、时标记次之、情态标记最远——黏着距离模仿概念关系的远近。"},
+    {t:"This aggressively impertinent egghead is getting on my nerves.",a:"qty",why:"同样一句话，长主语承载更多描写信息——量对应信息量。"},
+    {t:"…I met this fair-haired, fragile, just unbelievably beautiful creature.",a:"qty",why:"表达式激增，匹配的是独特的概念重要性与意外性。"}
+  ];
+  const box=$("#iconItems"),catsBox=$("#iconCats"),fb=$("#iconFb");
+  let cur=null;
+  items.forEach((it,i)=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=it.t;b.dataset.i=i;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");cur=i;
+      fb.textContent="你选了「"+it.t+"」。现在选一个象似性类别。";
+    });
+    box.appendChild(b);
+  });
+  $$("#iconCats .btn").forEach(b=>b.addEventListener("click",()=>{
+    if(cur==null){fb.textContent="先点一个例子，再选类别。";return;}
+    const it=items[cur];
+    const ok=it.a===b.dataset.cat;
+    fb.innerHTML=(ok?"✓ 正确，属于":"✗ 不对，它属于")+cats[it.a]+"。"+it.why;
+    fb.style.color=ok?"var(--green)":"var(--red)";
+  }));
+})();
+
+/* ================= 场景一：索绪尔判断 ================= */
+(function(){
+  $$("#saussureOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#saussureOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#saussureRev").hidden=false;
+    $("#saussureRev").classList.toggle("wrong",b.dataset.opt!=="b");
+  }));
+})();
+
+/* ================= 场景二：比萨饼排序 ================= */
+(function(){
+  const words=["famous","delicious","Italian","pepperoni"];
+  const order=["famous","delicious","Italian","pepperoni"];
+  const pool=$("#pizzaPool"),out=$("#pizzaOut"),rev=$("#pizzaRev");
+  let picked=[];
+  function render(){
+    picked.forEach(w=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=w;
+      b.addEventListener("click",()=>{picked=picked.filter(x=>x!==w);render();});
+      pool.appendChild(b);
+    });
+    const blanks=[];
+    for(let i=0;i<4;i++) blanks.push(picked[i]||"____");
+    out.textContent=blanks.join(" ")+" pizza";
+  }
+  function reset(){
+    pool.innerHTML="";picked=[];rev.hidden=true;
+    words.forEach(w=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=w;
+      b.addEventListener("click",()=>{if(picked.length<4&&picked.indexOf(w)<0){picked.push(w);reset2();}});
+      pool.appendChild(b);
+    });
+    render();
+  }
+  function reset2(){
+    pool.innerHTML="";
+    picked.forEach(w=>{
+      const b=document.createElement("button");
+      b.className="chip sel";b.textContent=w;
+      b.addEventListener("click",()=>{picked=picked.filter(x=>x!==w);reset();});
+      pool.appendChild(b);
+    });
+    words.forEach(w=>{
+      if(picked.indexOf(w)>=0) return;
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=w;
+      b.addEventListener("click",()=>{if(picked.length<4){picked.push(w);reset2();}});
+      pool.appendChild(b);
+    });
+    render();
+  }
+  reset();
+  $("#pizzaReset").addEventListener("click",reset);
+  $("#pizzaCheck").addEventListener("click",()=>{
+    const ok=picked.length===4&&picked.every((w,i)=>w===order[i]);
+    rev.hidden=false;
+    rev.classList.toggle("wrong",!ok);
+    if(!ok){
+      rev.innerHTML="<p style='margin:0 0 6px'><strong>还不行。</strong>提示：离名词最近的是'固有组成成分'，最远的是'评价'；产地居中。<button type='button' class='cite' data-cite='proxEx' aria-label='查看出处'></button></p><p style='margin:0;font-size:.88rem;color:var(--ink-soft)'>可接受答案只有一种：the famous delicious Italian pepperoni pizza。</p>";
+      numberCites(rev);
+    }
+  });
+})();
+
+/* ================= 场景二：形态距离排序 ================= */
+(function(){
+  const marks=["体标记（-ing）","时标记","情态标记（could）"];
+  const pool=$("#morphPool"),rev=$("#morphRev");
+  let picked=[];
+  function render(){
+    pool.innerHTML="";
+    const remain=marks.filter(m=>picked.indexOf(m)<0);
+    picked.forEach((m,i)=>{
+      const b=document.createElement("button");
+      b.className="chip sel";b.textContent=(i+1)+". "+m;
+      pool.appendChild(b);
+    });
+    remain.forEach(m=>{
+      const b=document.createElement("button");
+      b.className="chip";b.textContent=m;
+      b.addEventListener("click",()=>{picked.push(m);render();check();});
+      pool.appendChild(b);
+    });
+  }
+  function check(){
+    if(picked.length<3){rev.hidden=true;return;}
+    rev.hidden=false;
+    rev.classList.toggle("wrong",picked[0]!=="体标记（-ing）"||picked[1]!=="时标记");
+  }
+  render();
+  $("#morphReset").addEventListener("click",()=>{picked=[];render();});
+})();
+
+/* ================= 场景三：动物拟声词 ================= */
+(function(){
+  const data={
+    "狗":{"英语":"bow-wow / woof-woof","法语":"ouah ouah / ouaf ouaf","德语":"wauwau","保加利亚语":"bau-bau","西班牙语":"guau","约鲁巴语":"waw-waw"},
+    "猫":{"英语":"miaow","法语":"miaou","德语":"miau","保加利亚语":"miau","西班牙语":"(moullar)","约鲁巴语":"miu"},
+    "公鸡":{"英语":"cock-a-doodle-do","法语":"—","德语":"kikeriki","保加利亚语":"kukuriguu","西班牙语":"cocorico / quiquiriqui","约鲁巴语":"kokorookoo"},
+    "牛":{"英语":"moo","法语":"meuh","德语":"muh","保加利亚语":"muu","西班牙语":"(mugir)","约鲁巴语":"broo"}
+  };
+  const abox=$("#animalChips"),lbox=$("#langChips"),fb=$("#animalFb");
+  let animal="狗",lang="英语";
+  const langs=Object.keys(data["狗"]);
+  Object.keys(data).forEach(a=>{
+    const b=document.createElement("button");
+    b.className="chip"+(a===animal?" sel":"");b.textContent=a;
+    b.addEventListener("click",()=>{
+      animal=a;$$(".chip",abox).forEach(c=>c.classList.toggle("sel",c===b));show();
+    });
+    abox.appendChild(b);
+  });
+  langs.forEach(l=>{
+    const b=document.createElement("button");
+    b.className="chip"+(l===lang?" sel":"");b.textContent=l;
+    b.addEventListener("click",()=>{
+      lang=l;$$(".chip",lbox).forEach(c=>c.classList.toggle("sel",c===b));show();
+    });
+    lbox.appendChild(b);
+  });
+  function show(){
+    const v=data[animal][lang];
+    fb.textContent=animal+"在"+lang+"里是："+v+"。换个语言看看——拟声词跟着文化的概念化走。";
+  }
+  show();
+})();
+
+/* ================= 场景三：Tolkien 猜谜 ================= */
+(function(){
+  $$("#tolkienOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#tolkienOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#tolkienRev").hidden=false;
+    $("#tolkienRev").classList.toggle("wrong",b.dataset.opt!=="a");
+  }));
+})();
+
+/* ================= 场景四：COACH 时间轴 ================= */
+(function(){
+  const NS="http://www.w3.org/2000/svg";
+  const stages=[
+    {era:"16 世纪",proto:0,
+     text:"coach 引入英语：大的、封闭的、四个轮子的、里外都有座位、马拉的车，主要供皇室与官员使用——原型是 STATE CARRIAGE（贵宾马车）。"},
+    {era:"17–18 世纪",proto:1,
+     text:"STAGE COACH（公共马车）投入常规跨乡村服务，普通公民用得越来越多，逐渐逼近原型位置。"},
+    {era:"19 世纪",proto:1,
+     text:"STAGE COACH 取代 STATE CARRIAGE 成为原型；铁路客车（机车拖行）登场，带来新的竞争。"},
+    {era:"20 世纪",proto:3,
+     text:"MOTOR COACH（公共汽车）成为新原型，STAGE COACH 被推向边缘；铁路客车不能在公路独立使用，分裂出另一个原型。"}
+  ];
+  const boxes=["STATE CARRIAGE\n贵宾马车","STAGE COACH\n公共马车","RAILWAY CARRIAGE\n铁路客车","MOTOR COACH\n公共汽车"];
+  const slider=$("#coachSlider"),fb=$("#coachFb"),svg=$("#coachSvg");
+  const nodes=[];
+  const W=164,GAP=16,x0=28;
+  const g=document.createElementNS(NS,"g");
+  g.setAttribute("filter","url(#rough2)");
+  g.setAttribute("fill","none");g.setAttribute("stroke","var(--ink)");g.setAttribute("stroke-width","2");
+  svg.appendChild(g);
+  boxes.forEach((label,i)=>{
+    const x=x0+i*(W+GAP);
+    const boxg=document.createElementNS(NS,"g");
+    const r=document.createElementNS(NS,"rect");
+    r.setAttribute("x",x);r.setAttribute("y",42);r.setAttribute("width",W);r.setAttribute("height",64);r.setAttribute("rx",10);
+    r.setAttribute("fill","var(--card)");r.setAttribute("stroke-width","2");
+    const lines=label.split("\n");
+    const t1=document.createElementNS(NS,"text");
+    t1.setAttribute("x",x+W/2);t1.setAttribute("y",66);t1.setAttribute("text-anchor","middle");
+    t1.setAttribute("font-size","11");t1.setAttribute("font-family","'Kaiti SC','STKaiti',KaiTi,serif");
+    t1.setAttribute("fill","var(--ink)");t1.textContent=lines[0];
+    const t2=document.createElementNS(NS,"text");
+    t2.setAttribute("x",x+W/2);t2.setAttribute("y",90);t2.setAttribute("text-anchor","middle");
+    t2.setAttribute("font-size","13");t2.setAttribute("font-weight","700");
+    t2.setAttribute("font-family","-apple-system,'PingFang SC',sans-serif");
+    t2.setAttribute("fill","var(--ink)");t2.textContent=lines[1];
+    boxg.appendChild(r);boxg.appendChild(t1);boxg.appendChild(t2);
+    g.appendChild(boxg);
+    nodes.push({rect:r,x:x});
+  });
+  const eraText=document.createElementNS(NS,"text");
+  eraText.setAttribute("x",380);eraText.setAttribute("y",24);eraText.setAttribute("text-anchor","middle");
+  eraText.setAttribute("font-size","13");eraText.setAttribute("font-family","-apple-system,'PingFang SC',sans-serif");
+  eraText.setAttribute("fill","var(--red)");eraText.setAttribute("font-weight","700");
+  g.appendChild(eraText);
+  const protoRing=document.createElementNS(NS,"ellipse");
+  protoRing.setAttribute("fill","none");protoRing.setAttribute("stroke","var(--red)");protoRing.setAttribute("stroke-width","3.4");
+  protoRing.setAttribute("rx",W/2+9);protoRing.setAttribute("ry",41);
+  g.appendChild(protoRing);
+  const note=document.createElementNS(NS,"text");
+  note.setAttribute("x",380);note.setAttribute("y",140);note.setAttribute("text-anchor","middle");
+  note.setAttribute("font-size","11");note.setAttribute("font-family","-apple-system,'PingFang SC',sans-serif");
+  note.setAttribute("fill","var(--ink-soft)");
+  g.appendChild(note);
+  function draw(){
+    const s=stages[Number(slider.value)];
+    eraText.textContent=s.era+"：粗线圈出的是当前原型";
+    const n=nodes[s.proto];
+    protoRing.setAttribute("cx",n.x+W/2);protoRing.setAttribute("cy",74);
+    nodes.forEach((nd,i)=>{
+      const isProto=i===s.proto;
+      nd.rect.setAttribute("stroke-width",isProto?"2.6":"1.6");
+      nd.rect.setAttribute("stroke",isProto?"var(--red)":"var(--ink)");
+    });
+    note.textContent=s.proto===3?"铁路客车（虚线圈）已分裂为另一原型":"属性整体转移：用于客运 · 大而封闭 · 四个轮子 · 有座位";
+    fb.textContent=s.text;
+  }
+  slider.addEventListener("input",draw);
+  draw();
+})();
+
+/* ================= 场景四：fugol / bryd 猜谜 ================= */
+(function(){
+  $$("#fugolOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#fugolOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#fugolRev").hidden=false;
+    $("#fugolRev").classList.toggle("wrong",b.dataset.opt!=="b");
+  }));
+})();
+
+/* ================= 场景五：语法化斜坡 ================= */
+(function(){
+  const stages=[
+    {n:"阶段一 · 实义位移",ex:"Susan's going to London next month.（苏珊下个月去伦敦。）",me:"位移事件开启结尾路径视窗，'终点'被前景化——目标取向、变化、视点三要素就位。",cite:"windowing"},
+    {n:"阶段二 · 转喻扩展",ex:"She's going to work at our office. / You're going to like her.",me:"转喻：目标取向的移动代表有意的行为（+GOAL-ORIENTED MOVEMENT STANDS FOR INTENDED ACTION+），is going 由此获得将来时特征。",cite:"stage2"},
+    {n:"阶段三 · 隐喻扩展",ex:"You're going to be friends.（你们会成为朋友的。）",me:"隐喻：断定的状态是有意的行为（+PREDICATED STATE IS INTENDED ACTION+）——从'打算做'扩展到'将会是'。",cite:"stage3"},
+    {n:"阶段四 · 音系缩写",ex:"You're gonna like her. → You gonna like her.（非标准英语）",me:"意义不再改变，只记录降格为助动词后的音系与书写变化。",cite:"stage4"}
+  ];
+  const chipsBox=$("#stageChips"),fb=$("#stageFb");
+  let cur=0;
+  function show(){
+    const s=stages[cur];
+    fb.innerHTML="<strong>"+s.n+"</strong><button type='button' class='cite' data-cite='"+s.cite+"' aria-label='查看出处'></button><br>"+s.ex+"<br><span style='font-size:.88rem;color:var(--ink-soft)'>"+s.me+"</span>";
+    numberCites(fb);
+  }
+  stages.forEach((s,i)=>{
+    const b=document.createElement("button");
+    b.className="chip"+(i===0?" sel":"");
+    b.textContent="阶段 "+(i+1);
+    b.addEventListener("click",()=>{
+      cur=i;$$(".chip",chipsBox).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");show();
+    });
+    chipsBox.appendChild(b);
+  });
+  show();
+})();
+
+/* ================= 场景六：教学对照卡 ================= */
+(function(){
+  const topics=[
+    {k:"选词",old:"词频表按文本频率统计选词，语料库频率表总由 the、of、and 等功能词领头，高频未必有用。",
+     new:"West 补了覆盖率、构词价值、风格中性、可用度、难易度等标准——编者实际想找的是基本层次词：基本层次范畴是通向常用词汇的最佳通道。"},
+    {k:"讲词义",old:"下定义、列义项，例子随意。",
+     new:"用典型例子而非奇异例子，词义更易掌握；bread/pain/Brot 原型各异，正好做跨文化比较。"},
+    {k:"名词语法",old:"可数/不可数二分，再记一串例外。",
+     new:"改走人/物概念的完形分类：单个物体、物质、'成对'物体、事物集合——可数性只与物概念有关。"},
+    {k:"非限定形式",old:"逐个义项背：意图、具体事件、习惯、过去行为、进行中、一般陈述……",
+     new:"不定式＝根据个别实例感知一个情景；动名词＝从单一事件剥离出来的情景。两种图式意义各自统摄一片用法。"},
+    {k:"时体标记",old:"规则加例外，反例无穷。",
+     new:"yesterday/ago（过去时）、always/often（简单式）、at this moment（进行体）是标记原型，充当用法的参照点。"}
+  ];
+  const chipsBox=$("#teachChips"),oldEl=$("#teachOld"),newEl=$("#teachNew");
+  topics.forEach((t,i)=>{
+    const b=document.createElement("button");
+    b.className="chip"+(i===0?" sel":"");
+    b.textContent=t.k;
+    b.addEventListener("click",()=>{
+      $$(".chip",chipsBox).forEach(c=>c.classList.remove("sel"));
+      b.classList.add("sel");
+      oldEl.textContent=t.old;
+      newEl.textContent=t.new;
+    });
+    chipsBox.appendChild(b);
+  });
+  oldEl.textContent=topics[0].old;
+  newEl.textContent=topics[0].new;
+})();
+
+/* ================= 场景六：West 猜谜 ================= */
+(function(){
+  $$("#westOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#westOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    $("#westRev").hidden=false;
+    $("#westRev").classList.toggle("wrong",b.dataset.opt!=="b");
+  }));
+})();
+
+/* ================= 场景七：路径策略排序 ================= */
+(function(){
+  const steps=[
+    "以邀请同行达到高潮的揭幕仪式",
+    "沿着路径行走",
+    "在不同路线中作出选择",
+    "指出行程中遇到的有趣事物",
+    "对它们进行解释",
+    "恰当的结束仪式"
+  ];
+  const scrambled=[4,0,3,5,1,2];
+  const box=$("#pathSteps"),fb=$("#pathFb"),rev=$("#pathRev");
+  let next=0;
+  function render(){
+    box.innerHTML="";
+    scrambled.forEach(idx=>{
+      const b=document.createElement("button");
+      b.className="chip";b.dataset.idx=idx;b.textContent=steps[idx];
+      b.addEventListener("click",()=>{
+        if(b.classList.contains("done")) return;
+        if(Number(b.dataset.idx)===next){
+          b.classList.remove("sel");b.classList.add("done");
+          next++;
+          if(next===steps.length){
+            fb.textContent="全对。这就是原著列出的路径策略成分——旅游手册的作者写、读者也期待找到的东西。";
+            rev.hidden=false;
+          }else{
+            fb.textContent="对，这是第 "+next+" 步。还剩 "+(steps.length-next)+" 步。";
+          }
+        }else{
+          fb.style.color="var(--red)";
+          fb.textContent="顺序不对——想想一次真实的参观：先发生什么，最后发生什么？";
+          setTimeout(()=>{fb.style.color="";},1200);
+        }
+      });
+      box.appendChild(b);
+    });
+  }
+  render();
+})();
+</script>
+</body>
+</html>

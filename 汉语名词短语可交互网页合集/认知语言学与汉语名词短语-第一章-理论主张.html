@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认知语言学的理论主张 · 《认知语言学与汉语名词短语》第一章可交互笔记</title>
+<meta name="description" content="把《认知语言学与汉语名词短语》第一章做成单文件交互网页：学派判别游戏、九条观点翻牌、形式与功能之争、非客观主义认知观。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 出处角标 ---------- */
+sup.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center;white-space:nowrap}
+thead th{background:var(--hl);font-weight:700}
+td.pos{color:var(--green);font-weight:800}
+td.neg{color:var(--red);font-weight:800}
+td.unk{color:var(--ink-faint)}
+
+/* ---------- 翻转卡 ---------- */
+.flip{cursor:pointer;margin:12px 0}
+.flip-inner{display:grid;transform-style:preserve-3d;transition:transform .45s;position:relative}
+.flip.on .flip-inner{transform:rotateY(180deg)}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{transform:rotateY(180deg)}
+.flip .card{margin:0}
+.flip-hint{font-size:.78rem;color:var(--ink-faint);text-align:right;margin:2px 2px 0}
+
+/* ---------- 九条观点翻牌 ---------- */
+.view9{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:10px 0}
+.v9{background:var(--card);border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  padding:10px 12px;box-shadow:var(--shadow);cursor:pointer}
+.v9:hover{background:color-mix(in srgb,var(--hl) 30%,var(--card))}
+.v9 .v9-no{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;
+  border:1.5px solid var(--red);color:var(--red);font-weight:800;font-size:.8rem;margin-right:6px}
+.v9 .v9-t{font-weight:700;font-size:.95rem}
+.v9 .v9-open{font-size:.75rem;color:var(--ink-faint);margin-left:4px}
+.v9-body{margin-top:8px;border-top:1.5px dashed var(--line);padding-top:8px;font-size:.9rem}
+.v9-body p{margin:.3em 0}
+.v9-body .q{font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- 判别游戏 ---------- */
+.verdict{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 0;border-bottom:1.5px dashed var(--line)}
+.verdict:last-child{border-bottom:0}
+.verdict .v-name{flex:1;min-width:180px;font-weight:700;font-size:.95rem}
+.verdict .v-resp{flex-basis:100%;font-size:.9rem}
+.v-ok{color:var(--green);font-weight:800}
+.v-no{color:var(--red);font-weight:800}
+
+/* ---------- 解释切换 ---------- */
+.switch-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.duo .col{border:1.5px dashed var(--line);border-radius:10px;padding:10px 12px;background:var(--card);font-size:.9rem}
+.duo .col h4{margin:0 0 6px;font-size:.9rem}
+.duo .col.f h4{color:var(--blue)}
+.duo .col.g h4{color:var(--green)}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+.sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:.95rem}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+  .flip-inner{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">理论主张 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第一章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">认知语言学的理论主张</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 + 论证拆解 ｜ 六场实验台 ｜ 第一章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>认知语言学是<span class="hl">学派</span>不是分支学科——从我们对世界的经验及其概念化方法出发研究语言；九条基本观点归结为两大主张：<span class="hl">功能主义的语言观</span>与<span class="hl">非客观主义的认知观</span>。<button type="button" class="cite" data-cite="defCL" aria-label="查看出处"></button><button type="button" class="cite" data-cite="twoAspects" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 236" role="img" aria-label="第一章结构图：一句话定义引出九条观点，汇成功能主义语言观与非客观主义认知观两大主张，通向下一章的经验基础">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M14 88 Q10 46 56 44 L196 42 Q238 40 236 84 Q234 124 192 126 L58 128 Q14 130 14 88 Z"/>
+        <path d="M244 84 L292 84"/>
+        <path d="M244 96 L292 96"/>
+        <path d="M244 108 L292 108"/>
+        <path d="M244 120 L292 120"/>
+        <path d="M244 132 L292 132"/>
+        <path d="M244 144 L292 144"/>
+        <path d="M244 156 L292 156"/>
+        <path d="M244 168 L292 168"/>
+        <path d="M244 180 L292 180"/>
+        <rect x="300" y="36" width="180" height="180" rx="10"/>
+        <path d="M486 96 L534 96"/>
+        <path d="M486 156 L534 156"/>
+        <rect x="542" y="52" width="200" height="64" rx="10"/>
+        <rect x="542" y="140" width="200" height="64" rx="10"/>
+        <path d="M672 122 L672 134"/>
+        <path d="M620 208 Q660 222 700 208" opacity=".6"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="125" y="76" font-size="16" font-weight="700">一句话定义</text>
+        <text x="125" y="98" font-size="11.5" fill="var(--ink-soft)">以我们对世界的经验</text>
+        <text x="125" y="114" font-size="11.5" fill="var(--ink-soft)">及其概念化方法、策略</text>
+        <text x="125" y="130" font-size="11.5" fill="var(--ink-soft)">为依据的语言研究学派</text>
+        <text x="390" y="62" font-size="15" font-weight="700">九条基本观点</text>
+        <text x="390" y="84" font-size="11" fill="var(--ink-soft)">语言观 · 句法观 · 语义观</text>
+        <text x="390" y="100" font-size="11" fill="var(--ink-soft)">语义语用连续统 · 形式须反映意义</text>
+        <text x="390" y="116" font-size="11" fill="var(--ink-soft)">共性体现为趋势 · 形式化只是模拟</text>
+        <text x="390" y="132" font-size="11" fill="var(--ink-soft)">原型与图式范畴化</text>
+        <text x="390" y="148" font-size="11" fill="var(--ink-soft)">构式是形式—意义配对</text>
+        <text x="390" y="176" font-size="11" fill="var(--ink-faint)">（第 [1]—[9] 条，见场景二）</text>
+        <text x="642" y="78" font-size="15" font-weight="700">功能主义的语言观</text>
+        <text x="642" y="100" font-size="11" fill="var(--ink-soft)">第二节</text>
+        <text x="642" y="166" font-size="15" font-weight="700">非客观主义的认知观</text>
+        <text x="642" y="188" font-size="11" fill="var(--ink-soft)">第三节</text>
+        <text x="380" y="226" font-size="11.5" fill="var(--ink-soft)">下一章：经验基础——范畴化、隐喻、意象图式</text>
+      </g>
+    </svg>
+    <figcaption>第一章的论证结构：定义 → 九条观点 → 两大主张（示意）</figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">什么是认知语言学</button>
+    <button class="chip" data-jump="s2">九条观点</button>
+    <button class="chip" data-jump="s3">功能主义语言观</button>
+    <button class="chip" data-jump="s4">禁区限制之争</button>
+    <button class="chip" data-jump="s5">非客观主义认知观</button>
+    <button class="chip" data-jump="s6">身体与经验</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>什么是认知语言学：先看它"不是"什么</h2>
+  </div>
+  <p class="point">自然语言是<span class="hl">人类心智的产物，也是观察心智的窗口</span>；认知语言学以"我们对世界的经验以及感知、概念化这个世界的方法、策略"为基础和依据。<button type="button" class="cite" data-cite="langMind" aria-label="查看出处"></button><button type="button" class="cite" data-cite="defCL" aria-label="查看出处"></button>它像"生成语法"一样是<strong>学派</strong>，而非"社会语言学"式分支：后者只研究语言某个特定方面，它却从认知角度研究语言各方面的组织原则，尤其是语法系统本身。<button type="button" class="cite" data-cite="schoolNotBranch" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">判别游戏：下面这些学派、学科和研究，算不算"通常意义上的认知语言学"？逐一点击你的判断。</p>
+    <div id="verdicts">
+      <div class="verdict" data-v="gg">
+        <span class="v-name">生成语法（乔姆斯基）</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>乔姆斯基曾明确指出"研究语言的主要贡献在于它能使人理解心智活动的性质以及由心智活动构成和影响的结构"，甚至偶尔也非正式地称自己的学说为"认知语言学"（见 Chomsky 1968）——"当然这不是我们所指的认知语言学"。<button type="button" class="cite" data-cite="chomskyQuote" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="psy">
+        <span class="v-name">心理语言学</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>心理语言学直接与认知相关，但研究对象、切入点、方法及关注的课题都较独特，主流的分析框架也往往是生成语法的，通常不被归入认知语言学。<button type="button" class="cite" data-cite="psycholing" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="cpsy">
+        <span class="v-name">认知心理学的语言研究</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>以信息加工模式为理论基础的认知心理学语言研究，尽管以认知作为研究的中心，但理论基础与认知语言学大相径庭，在很多基本问题上持有相反的立场。<button type="button" class="cite" data-cite="cogpsyAI" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="ai">
+        <span class="v-name">人工智能学派的自然语言理解</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>自然语言理解专家 Winograd 甚至把他所著教科书题名为《作为认知过程的语言（Language as a Cognitive Process）》，但同样以信息加工模式为基础，人们不认为这是通常意义上的认知语言学。<button type="button" class="cite" data-cite="cogpsyAI" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="jack">
+        <span class="v-name">Jackendoff 的概念语义学</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>概念语义学直接从认知角度研究句法里的语义现象，课题、术语与基本理念和认知语言学很大程度相通（《认知语言学》期刊还编过探讨二者同异的特辑）——但仍然没有人（包括他自己）将其学说称为认知语言学。<button type="button" class="cite" data-cite="jackendoff" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="croft">
+        <span class="v-name">W. Croft 对语言象似性的研究</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>算。不以认知语言学家自诩的人，研究也可以归入其范围：W. Croft 是语言类型学家，S. Thompson 是话语分析专家，但他（她）们对语言象似性、词类及句法关系的研究可算认知语言学的经典作品。<button type="button" class="cite" data-cite="croftThompson" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="frame">
+        <span class="v-name">Fillmore 的框架语义学</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>算——但属于广义的认知语言学：Fillmore 的"框架语义学"和"构造语法"被明确列入广义范围。<button type="button" class="cite" data-cite="wide" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-v="tai">
+        <span class="v-name">戴浩一的认知功能语法</span>
+        <button class="btn" data-a="1">算</button>
+        <button class="btn" data-a="0">不算</button>
+        <div class="v-resp reveal" hidden>算——戴浩一的"认知功能语法（cognition-based functional grammar）"被列入狭义认知语言学的类别。<button type="button" class="cite" data-cite="narrow" aria-label="查看出处"></button></div>
+      </div>
+    </div>
+    <p class="feedback" id="v1fb">提示：作者说"先来看一看什么不是认知语言学"。</p>
+  </div>
+
+  <details>
+    <summary>学派地图：狭义、广义与人物来源</summary>
+    <p><strong>狭义</strong>：Lakoff 与 Johnson 的认知语义学、Langacker 的认知语法、Rudzka-Ostyn、Taylor、Geeraerts 等欧洲学者、Haiman 以句法象似性为中心的"自然句法"、戴浩一的认知功能语法、谢信一的组成认知语法。<button type="button" class="cite" data-cite="narrow" aria-label="查看出处"></button></p>
+    <p><strong>广义</strong>：还可包括 Fillmore 的框架语义学和构造语法、Talmy、Hawkins、Croft 等类型学家的认知功能分析、Wierzbicka 的语义学、Fauconnier 的心理空间理论、Heine 等人的语法化研究、Dressler 的自然主义语言学模型——已成为功能主义阵营里的新潮流。<button type="button" class="cite" data-cite="wide" aria-label="查看出处"></button></p>
+    <p><strong>人物三个来源</strong>：从形式语法阵营分裂出来的前生成语法学家（Langacker、Fillmore、Lakoff）；注重共性与类型学的功能语言学家（Givón、Talmy、Haiman、Croft）；关注认知研究的哲学家和心理学家（Johnson、Gibbs）。<button type="button" class="cite" data-cite="threeSources" aria-label="查看出处"></button></p>
+    <p>背景：以 1957 年《句法结构》为转折点，五十年代末以来的语言学可以称作"认知的时代"；而认知语言学自身还处于初创阶段，没有公认的学术中心，也还没有乔姆斯基式的领袖人物——正因如此，它反而少束缚、更具开放性。<button type="button" class="cite" data-cite="cognitiveEra" aria-label="查看出处"></button><button type="button" class="cite" data-cite="emerging" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">判别标准：不是研不研究认知，而是是否持有那九条共同的原则。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：九条观点 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>九条基本理论观点</h2>
+  </div>
+  <p class="point">定义这个学派的不是"认知"一词，而是九条语言观、认识论和方法论原则。<button type="button" class="cite" data-cite="nineViews" aria-label="查看出处"></button><span class="hl">点开每张牌</span>，看原文怎么说、举一个例。</p>
+
+  <div class="view9" id="view9">
+    <div class="v9" data-k="1"><span class="v9-no">1</span><span class="v9-t">语言是认知活动的产物与工具</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"自然语言既是人类认知活动的产物，又是认知活动的工具……语言机制应该是普遍认知机制的一部分。"</p>
+        <p>例：句法不是自主、任意的，而是<strong>有动因</strong>的（motivated）——由语义、认知、功能、语用等句法之外的因素促动。<button type="button" class="cite" data-cite="v1" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="2"><span class="v9-no">2</span><span class="v9-t">表层结构直接对应语义</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"句法并不涉及任何转换的部分，表层句法结构是句法描写的基本单位，它直接对应于语义结构。"</p>
+        <p>例：这一观念来自生成语义学——Lakoff 曾说其认知语义学是生成语义学的自然延续。<button type="button" class="cite" data-cite="v2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="genSem" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="3"><span class="v9-no">3</span><span class="v9-t">语义对应投射世界</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"语义不是基于客观的真值条件……而是对应于非客观的投射世界(projected world)，并与其中约定俗成的概念结构(conceptual structure)直接相系。"</p>
+        <p>例：概念结构的形成与人的物质经验、认知策略密切相关（详见场景五、六）。<button type="button" class="cite" data-cite="v3" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="4"><span class="v9-no">4</span><span class="v9-t">语义语用是连续统</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"语义学和语用学形成一个连续统(continuum)，二者都作用于语言的意义……纯语义的知识和百科知识是不能截然分开的。"</p>
+        <p>例：意义植根于说话人的知识和信仰系统，语义不是完全独立的模组部分。<button type="button" class="cite" data-cite="v4" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="5"><span class="v9-no">5</span><span class="v9-t">形式区分须反映意义</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"由于语言的基本功能是传达意义，故在形式上所作的区分仅当它们反映语义或语用、话语上的分别时才是可取的。"</p>
+        <p>例：Hopper &amp; Thompson 从话语分析的角度，发现了控制名词性和动词性大小的功能因素。<button type="button" class="cite" data-cite="v5" aria-label="查看出处"></button><button type="button" class="cite" data-cite="hopperNoun" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="6"><span class="v9-no">6</span><span class="v9-t">共性体现为趋势</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"语言共性及语言里的一般规律往往体现为某种趋势，而不一定是绝对的规则。"</p>
+        <p>例：类型学家发现的语言共性，不少与人类认知心理中经得起独立检验的方面密切相关。<button type="button" class="cite" data-cite="v6" aria-label="查看出处"></button><button type="button" class="cite" data-cite="typoCog" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="7"><span class="v9-no">7</span><span class="v9-t">形式化只是模拟</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"对语言规律的形式化或以构造形式化模式作为对语言共性的解释，其实都不是严格意义上的解释，而只是描写或模拟(modeling)。"</p>
+        <p>例：真正的解释须到形式之外寻找——语义、交际功能、认知能力及策略（场景四的禁区限制即是一例）。<button type="button" class="cite" data-cite="v7" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="8"><span class="v9-no">8</span><span class="v9-t">原型与图式范畴化</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"语言里的范畴化(categorization)并不完全是由充分必要条件决定的，一个范畴内部常常包括中心的部分和扩展的边缘部分。"</p>
+        <p>例：Rosch 的原型效应与基本层次范畴理论，动摇了古典范畴理论的信念，催生了认知语言学的范畴观。<button type="button" class="cite" data-cite="v8" aria-label="查看出处"></button><button type="button" class="cite" data-cite="roschProto" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+    <div class="v9" data-k="9"><span class="v9-no">9</span><span class="v9-t">构式是形式—意义配对</span><span class="v9-open">▸ 点开</span>
+      <div class="v9-body" hidden>
+        <p class="q serif">"语法格式（grammatical construction）与词汇项目一样，是形式和意义的配对。它们有着真实的认知地位，而不是由生成规则或普遍原则的操作所产生的副现象。"</p>
+        <p>例：语法是一份由形式—意义结合物构成的象征符号清单；句法不是生成的，词汇项和语法结构项连为一体。<button type="button" class="cite" data-cite="v9" aria-label="查看出处"></button><span class="tag" data-label="例示">例示</span></p>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>认知语言学关心什么问题（Lakoff 1982）</summary>
+    <p>"认知语言学所关心的问题，是语言结构在何种程度上、在何处取决于人类所具有的一般感知机制、有限的记忆和加工能力，取决于人们试图利用有限的手段去理解世界的现实状态，取决于人们在社会生活中的交际行为。"<button type="button" class="cite" data-cite="lakoff82" aria-label="查看出处"></button></p>
+    <p>这句话反映了这门学科功能主义和经验论的取向。由此它的目标有"双向性"：语言是最重要的认知活动、观察一般认知能力的最方便的窗口；而一般认知能力又在很大程度上决定语言能力。<button type="button" class="cite" data-cite="twoWay" aria-label="查看出处"></button></p>
+    <p>研究方法上的根本特点：既不刻意追求形式化，也不以形式解释形式，而是以语义、概念为出发点观照其与形式的匹配——因而往往具有跨学科、跨领域的特点。<button type="button" class="cite" data-cite="method" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">认知语言学家多半持有全部或绝大部分上述观点；生成语法、主流认知心理学和人工智能，几乎在所有方面都持相反立场。<button type="button" class="cite" data-cite="opposite" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 学派边界</button>
+    <button class="btn" data-jump="s3">下一场：功能主义语言观 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>功能主义的语言观：两大阵营</h2>
+  </div>
+  <p class="point">当代各流派大多可归入<strong>形式主义</strong>与<strong>功能主义</strong>两大阵营；认知语言学是功能学派的一个分支，与其他功能学派共有的观点一般只有第 [1][4][5][6][7] 条。<button type="button" class="cite" data-cite="camps" aria-label="查看出处"></button><button type="button" class="cite" data-cite="funcBranch" aria-label="查看出处"></button><span class="hl">点卡片翻面</span>，看两派差别。</p>
+
+  <div class="duo">
+    <div class="flip" id="flipF" tabindex="0" role="button" aria-label="形式主义卡片，点击翻面">
+      <div class="flip-inner">
+        <div class="face front"><div class="card">
+          <h3 class="kai">形式主义 formalism</h3>
+          <p style="margin:.2em 0;font-size:.92rem">生成语法各变体：标准理论、管约理论、最小限度论；另有关系语法、短语结构语法、蒙塔古语法、词汇功能语法等。<button type="button" class="cite" data-cite="formalList" aria-label="查看出处"></button></p>
+          <p class="flip-hint">点我翻面 →</p>
+        </div></div>
+        <div class="face back"><div class="card">
+          <h3 class="kai">形式主义 · 四个层面</h3>
+          <p style="margin:.2em 0;font-size:.9rem"><strong>重心</strong>：语言的形式结构和特征刻划。<br>
+          <strong>语料</strong>：内省的、理想化的。<br>
+          <strong>表述</strong>：概括性极强的抽象形式化规则。<br>
+          <strong>语言观</strong>：语言是一种天赋的、自主的形式装置。<button type="button" class="cite" data-cite="surfaceDiff" aria-label="查看出处"></button></p>
+        </div></div>
+      </div>
+    </div>
+    <div class="flip" id="flipG" tabindex="0" role="button" aria-label="功能主义卡片，点击翻面">
+      <div class="flip-inner">
+        <div class="face front"><div class="card">
+          <h3 class="kai">功能主义 functionalism</h3>
+          <p style="margin:.2em 0;font-size:.92rem">语言类型学、话语语法、现出语法、系统功能语法、角色和指称语法、认知语法各门派等。<button type="button" class="cite" data-cite="funcList" aria-label="查看出处"></button></p>
+          <p class="flip-hint">点我翻面 →</p>
+        </div></div>
+        <div class="face back"><div class="card">
+          <h3 class="kai">功能主义 · 四个层面</h3>
+          <p style="margin:.2em 0;font-size:.9rem"><strong>重心</strong>：语言构造中的功能因素。<br>
+          <strong>语料</strong>：自然、实际的。<br>
+          <strong>表述</strong>：诉诸非形式化的、合乎直觉的外在解释。<br>
+          <strong>语言观</strong>：基于人类一般认知能力、负载交际功能的符号系统。<button type="button" class="cite" data-cite="surfaceDiff" aria-label="查看出处"></button></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 200" role="img" aria-label="自主性光谱：从乔姆斯基的强自主说到功能学派的批判，认知功能语法持最小限度论态度">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M40 108 L720 108"/>
+        <path d="M700 98 L722 108 L700 118"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)" text-anchor="middle">
+        <text x="96" y="92" font-size="13" font-weight="700">强自主说</text>
+        <text x="96" y="128" font-size="11" fill="var(--ink-soft)">乔姆斯基</text>
+        <text x="252" y="92" font-size="13" font-weight="700">弱自主说</text>
+        <text x="252" y="128" font-size="11" fill="var(--ink-soft)">Newmeyer · Jackendoff 等</text>
+        <text x="430" y="92" font-size="13" font-weight="700" fill="var(--red)">认知功能语法</text>
+        <text x="430" y="128" font-size="11" fill="var(--ink-soft)">最小限度论：任意性只是"最后的一招"</text>
+        <text x="620" y="92" font-size="13" font-weight="700">激进功能派</text>
+        <text x="620" y="128" font-size="11" fill="var(--ink-soft)">Hopper：只有言语过程</text>
+        <text x="40" y="170" font-size="11.5" fill="var(--ink-faint)">语法自主性 ◀━━ 自主是研究的首要承诺</text>
+        <text x="720" y="170" font-size="11.5" fill="var(--ink-faint)">语法很大程度上由句法外因素促动 ━━▶</text>
+      </g>
+      <g filter="url(#rough2)" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round">
+        <circle cx="96" cy="108" r="7"/><circle cx="252" cy="108" r="7"/><circle cx="430" cy="108" r="9" fill="var(--hl)"/><circle cx="620" cy="108" r="7"/>
+      </g>
+    </svg>
+    <figcaption>对"语法自主性"的不同立场（据 1.2 节整理，示意）<button type="button" class="cite" data-cite="minimalism" aria-label="查看出处"></button><button type="button" class="cite" data-cite="hopper" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：天赋说、普遍语法、自主说构成"三位一体"。功能语言学家最不赞成哪一个？<button type="button" class="cite" data-cite="threeInOne" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="triOpts">
+      <button class="btn" data-o="innate">天赋性</button>
+      <button class="btn" data-o="ug">普遍语法</button>
+      <button class="btn" data-o="auto">自主性</button>
+    </div>
+    <div class="reveal" id="triRev" hidden>
+      <p><strong>最不赞成的是"自主性"。</strong>原文："在上面两个命题中，功能语言学最不赞成的是语法自主性的说法。"多数功能语言学家（包括认知语言学家）把语法是否天赋与自主看作一个未有定论的经验问题，反对的是形式语言学把天赋论和自主论当作先验的命题、研究的首要承诺。<button type="button" class="cite" data-cite="openQuestion" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <details>
+    <summary>强、弱自主说与"最后的一招"</summary>
+    <p>乔姆斯基持强自主说：独立的句法是语法的中心部分，不必参照语法内其他层面，更遑论语法外因素；他近年更把普遍语法的本质看作没有动因的"物理原则"的任意性作用——天赋的普遍语法是生物发展的一种偶然副产品（Chomsky 1988）。<button type="button" class="cite" data-cite="chomskyPhysical" aria-label="查看出处"></button></p>
+    <p>弱自主说日渐增多：Bickerton、Pinker &amp; Bloom 承认语法起源有功能动因；Pinker 论证语义结构在句法规则习得中的关键作用；Jackendoff 因反对句法中心论、看重概念结构而著称。但代表人物仍坚守自主原则——理由是动词、名词、介词等范畴及成分统制（c-command）这样的概念找不到语义、功能上的定义。<button type="button" class="cite" data-cite="weakAuto" aria-label="查看出处"></button></p>
+    <p>功能学派内部也不一致：激进派如 Hopper 认为不存在固定的语法，只有语法过程，没有固定的语言，只有言语过程；温和派则认为句法在很大程度上具有非句法动因。<button type="button" class="cite" data-cite="hopper" aria-label="查看出处"></button></p>
+    <p>本书的总结：认知功能学派反对强自主说，却能接受一种弱自主说——相信句法里存在任意性成分，但不把任意性当作出发点，而是作为找不到动因时"最后的一招"（Lakoff 1986）；在自主性问题上，认知功能语言学持"最小限度论"态度，乔姆斯基学派则是"最大限度论者"。<button type="button" class="cite" data-cite="minimalism" aria-label="查看出处"></button></p>
+    <p>词类的例子：同样的概念可由不同词类表达（汉语"战争/战斗"，英语 explosion/explode），但这不等于词类无法从语义界定——功能语言学家认为这些对立表达的是根本不同的概念；Langacker 就用更精细系统的方法从认知角度给名词和动词作了语义定义。<button type="button" class="cite" data-cite="langackerNouns" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">戴浩一称其汉语认知语法为"以认知为基础的汉语功能语法"——恰如其分地概括了认知语法主流的特点。<button type="button" class="cite" data-cite="tai89" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 九条观点</button>
+    <button class="btn" data-jump="s4">下一场：禁区限制之争 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>实例：禁区限制之争</h2>
+  </div>
+  <p class="point">禁区限制（island constraints）由 Ross（1967）提出：<span class="hl">句法移动只作用于不被多于一个界限节点隔开的成分</span>——它被看作支持语法自主性最强硬的证据，却例外不断。<button type="button" class="cite" data-cite="island" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：四句话按领属条件都"应该"不合法。凭语感判断，哪些其实说得过去？</p>
+    <div id="sentQuiz">
+      <div class="verdict" data-s="s1">
+        <span class="v-name sent">The man who I read a statement about was sick.</span>
+        <button class="btn" data-a="1">合法</button>
+        <button class="btn" data-a="0">不合法</button>
+        <div class="v-resp reveal" hidden>合法。它违反复合名词词组限制却能成立——Ross 自己就发现了这类例外。<button type="button" class="cite" data-cite="gearsCar" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-s="s2">
+        <span class="v-name sent">Which car did you like [the gears in]?</span>
+        <button class="btn" data-a="1">合法</button>
+        <button class="btn" data-a="0">不合法</button>
+        <div class="v-resp reveal" hidden>不合法。与 Which car did you like [the girls in]? 结构条件相同，但 girls 和 car 没有本质的部分—整体关系。<button type="button" class="cite" data-cite="gearsCar" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-s="s3">
+        <span class="v-name sent">How much money are you making the claim that the company squandered?</span>
+        <button class="btn" data-a="1">合法</button>
+        <button class="btn" data-a="0">不合法</button>
+        <div class="v-resp reveal" hidden>合法。轻动词构造例外：make the claim 的意思大致等于 claim，成分可以移出。<button type="button" class="cite" data-cite="lightVerb" aria-label="查看出处"></button></div>
+      </div>
+      <div class="verdict" data-s="s4">
+        <span class="v-name sent">Who did you slip that John believes you saw?</span>
+        <button class="btn" data-a="1">合法</button>
+        <button class="btn" data-a="0">不合法</button>
+        <div class="v-resp reveal" hidden>不合法。动词 slip 比整个母句的信息量都大，不容许深度提取（Deane 1992）。<button type="button" class="cite" data-cite="deaneFocus" aria-label="查看出处"></button></div>
+      </div>
+    </div>
+    <p class="feedback" id="s4fb">点一句、选一个判断。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">同一处例外，两种解释——点一个例外对比看</p>
+    <div class="switch-row" id="expSwitch">
+      <button class="btn sel" data-e="gears">gears / car</button>
+      <button class="btn" data-e="claim">make the claim</button>
+      <button class="btn" data-e="say">say / slip</button>
+    </div>
+    <div id="expBox">
+      <div class="duo" data-e="gears">
+        <div class="col f"><h4>形式解释：重新分析</h4><p style="margin:.2em 0">把有问题的介词词组事先移走（"重新分析"），规则由词库里注明的特定动词触发：see 可触发而 destroy 不可。但同一个动词有时允许提取有时不允许——What does he see a picture of? 合法，What does he see a book about? 不合法，纯结构条件找不到分化条件。<button type="button" class="cite" data-cite="adhoc" aria-label="查看出处"></button></p></div>
+        <div class="col g"><h4>功能解释：语义与认知</h4><p style="margin:.2em 0">gears 和 car 之间具有本质的部分—整体关系，girls 和 car 却没有——决定能否提取的是语义关系特征，而非结构位置。<button type="button" class="cite" data-cite="gearsCar" aria-label="查看出处"></button></p></div>
+      </div>
+      <div class="duo" data-e="claim" hidden>
+        <div class="col f"><h4>形式解释：重新分析</h4><p style="margin:.2em 0">GB 理论把 make the claim 之类构造"重新分析"为一个单个动词，这样禁区限制就不适用了。<button type="button" class="cite" data-cite="adhoc" aria-label="查看出处"></button></p></div>
+        <div class="col g"><h4>功能解释：语义与认知</h4><p style="margin:.2em 0">make the claim（作出这个指责）的意思大致等于 claim；discuss the claim 既不等于 discuss 也不等于 claim。关键动词的语义区别决定了提取是否合法。<button type="button" class="cite" data-cite="lightVerb" aria-label="查看出处"></button></p></div>
+      </div>
+      <div class="duo" data-e="say" hidden>
+        <div class="col f"><h4>形式解释：重新分析</h4><p style="margin:.2em 0">把 (30) 中间 COMP 的位置当中转站，移位时像下跳棋一样一次跳一步（"COMP 到 COMP 移位"）。可说 saw 能一步步跳、slip 必须一步跳两格，只能归到词库注明（通行动词 / 不通行动词）。<button type="button" class="cite" data-cite="compHop" aria-label="查看出处"></button></p></div>
+        <div class="col g"><h4>功能解释：语义与认知</h4><p style="margin:.2em 0">(30) 的信息焦点落在补足语上，[saw t] 负载最大信息量，深度提取合法；(31) 的动词 slip 比整个母句信息量都大，不容许深度提取。Kuno 还指出子句修饰的 NP 须是潜在话题。<button type="button" class="cite" data-cite="deaneFocus" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kunoTopic" aria-label="查看出处"></button></p></div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>禁区限制、例外与 Deane 的统一解释</summary>
+    <p>Ross 提出的三类限制：复合名词词组限制（CNPC）、并列结构限制（CSC）、主语从句限制；后概括为领属条件（SC）。仅跨越一个界限节点的提取合法，超过则不合法。<button type="button" class="cite" data-cite="island" aria-label="查看出处"></button></p>
+    <p>例外类型：带介词词组的复合名词词组可移出（read a statement about that man）；轻动词构造可不受限制（make the claim 可以说，discuss the claim 不行）；连真正的并列结构上也有例外——Lakoff（1986）因此断言"一个所谓普遍有效的并列结构限制根本就是不存在的东西"。<button type="button" class="cite" data-cite="lightVerb" aria-label="查看出处"></button><button type="button" class="cite" data-cite="lakoffNoCSC" aria-label="查看出处"></button></p>
+    <p>形式学派的补救（重新分析、COMP 到 COMP 移位、语障理论）有两个毛病：难以预测哪些结构必须重新分析，规则带有明显的"特设（ad hoc）"特征；也无法说明所有例外——Deane 注意到跨越四个乃至六个界限节点的"深度提取"仍能得到合法的句子。<button type="button" class="cite" data-cite="adhoc" aria-label="查看出处"></button><button type="button" class="cite" data-cite="deaneDeep" aria-label="查看出处"></button></p>
+    <p>Deane（1991、1992）用<strong>以注意为中心</strong>的认知理论统一解释：提取要求语言使用者同时注意句法结构里的两个部分，给运作记忆带来压力；因此深度提取只有在能减轻处理压力的条件下才能成立——被提取成分和提取的母体须能以这样或那样的方式同时受到注意。控制提取的非句法因素包括语义关系特征、语义框架效应、"话题""焦点"之类话语变量。<button type="button" class="cite" data-cite="deaneAttention" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kunoTopic" aria-label="查看出处"></button></p>
+    <p>陈平（1991）的反问："不先从其他种种方面寻找原因，事先怎样能够知道哪些现象是可以从功能、语用、或者其他方面得到解释，哪些现象是无论如何也无法得到类似解释的呢？"<button type="button" class="cite" data-cite="chenPing" aria-label="查看出处"></button></p>
+    <p>公允地说，自主说为研究带来了精确性；Lakoff（1991）指出问题在于它已超出工作假设的范围，成为首要承诺。Newmeyer 的修正——普遍语法原则是"功能促动、结构表述"的——可视为对强自主说的扬弃。<button type="button" class="cite" data-cite="newmeyerFunc" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">功能语言学家把真实性而非精密性作为首要承诺——正是第 [7] 条"形式化只是模拟"的实战。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 两大阵营</button>
+    <button class="btn" data-jump="s5">下一场：非客观主义认知观 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>非客观主义的认知观</h2>
+  </div>
+  <p class="point">Lakoff（1987）和 Johnson（1987）把形式语言学背后的西方主流思潮称为<span class="hl">"客观主义范式"</span>，认为用在认知研究中本质上就错了；认知语言学则提出<strong>非客观主义</strong>——其重要的定义性特征。<button type="button" class="cite" data-cite="objectivist" aria-label="查看出处"></button><button type="button" class="cite" data-cite="nonObjectivist" aria-label="查看出处"></button></p>
+
+  <div class="card">
+    <p class="bench-label">三组对照，点卡翻面</p>
+    <div class="flip" id="flipA" tabindex="0" role="button" aria-label="符号与意义对照卡，点击翻面">
+      <div class="flip-inner">
+        <div class="face front"><div class="card">
+          <h3 class="kai">① 符号和意义什么关系？</h3>
+          <p class="flip-hint">点我翻面 →</p>
+        </div></div>
+        <div class="face back"><div class="card">
+          <p style="font-size:.9rem;margin:.2em 0"><strong>客观主义</strong>：符号本身没有意义，只能由一种方式获得意义——通过与外在世界事物的联系；为此必须把符号与其意义分割开来。<button type="button" class="cite" data-cite="objSymbols" aria-label="查看出处"></button><br>
+          <strong>非客观主义</strong>：意象图式这样的符号由人类感觉—运动经验赋予意义，本身就是有意义的符号，无法纳入算法操作的数学化概括。<button type="button" class="cite" data-cite="imageSchemas" aria-label="查看出处"></button></p>
+        </div></div>
+      </div>
+    </div>
+    <div class="flip" id="flipB" tabindex="0" role="button" aria-label="意义与真理对照卡，点击翻面">
+      <div class="flip-inner">
+        <div class="face front"><div class="card">
+          <h3 class="kai">② 意义和真理用什么界定？</h3>
+          <p class="flip-hint">点我翻面 →</p>
+        </div></div>
+        <div class="face back"><div class="card">
+          <p style="font-size:.9rem;margin:.2em 0"><strong>客观主义</strong>：真值条件意义的教条——意义基于指称和真理，等同于真值条件的配列；真理存在于符号和世界状态之间的对应。<button type="button" class="cite" data-cite="threeDogmas" aria-label="查看出处"></button><br>
+          <strong>非客观主义</strong>：语义并非对应客观的外在世界，而是对应<strong>非客观的投射世界</strong>，与其中约定俗成的概念结构直接相系（第 [3] 条）。<button type="button" class="cite" data-cite="v3" aria-label="查看出处"></button></p>
+        </div></div>
+      </div>
+    </div>
+    <div class="flip" id="flipC" tabindex="0" role="button" aria-label="心智与身体对照卡，点击翻面">
+      <div class="flip-inner">
+        <div class="face front"><div class="card">
+          <h3 class="kai">③ 心智和身体什么关系？</h3>
+          <p class="flip-hint">点我翻面 →</p>
+        </div></div>
+        <div class="face back"><div class="card">
+          <p style="font-size:.9rem;margin:.2em 0"><strong>客观主义</strong>：思维是抽象和离体的，独立于人类身体的任何限制；心智是自然的一面镜子，以映射的方式被动反映现实。<button type="button" class="cite" data-cite="objEssence" aria-label="查看出处"></button><br>
+          <strong>非客观主义</strong>：身体是认知的出发点、对象和工具；人类经验之外的客观现实与语言之间，隔着由经验促动的概念结构。<button type="button" class="cite" data-cite="bodyRoles" aria-label="查看出处"></button></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 216" role="img" aria-label="对比图：左侧客观主义范式，心智如镜子被动映射外在现实；右侧非客观主义，身体经验促动概念结构，投向投射世界">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M30 84 Q26 40 66 38 L188 36 Q228 34 226 82 Q224 126 186 128 L68 130 Q30 132 30 84 Z"/>
+        <path d="M232 84 L268 84"/>
+        <path d="M268 84 L268 84"/>
+        <path d="M286 60 L322 60 L322 108 L286 108 Z"/>
+        <path d="M338 84 L372 84"/>
+        <path d="M380 60 Q376 36 420 34 L520 32 Q560 30 556 66 Q552 100 514 102 L424 104 Q384 106 380 60 Z"/>
+        <path d="M480 30 Q484 8 520 10" opacity=".5"/>
+        <path d="M398 116 L398 152 L556 152 L556 116"/>
+        <path d="M420 152 Q424 172 448 174"/>
+        <path d="M398 128 Q380 130 378 146" opacity=".7"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="128" y="76" font-size="14" font-weight="700">客观主义</text>
+        <text x="128" y="96" font-size="11" fill="var(--ink-soft)">符号 ⇄ 真值条件</text>
+        <text x="128" y="112" font-size="11" fill="var(--ink-soft)">心智是镜子</text>
+        <text x="128" y="150" font-size="12" fill="var(--ink-soft)">映射 mapping</text>
+        <text x="304" y="86" font-size="12">外在现实</text>
+        <text x="468" y="64" font-size="13" font-weight="700">投射世界</text>
+        <text x="468" y="84" font-size="11" fill="var(--ink-soft)">概念结构 · 意象图式</text>
+        <text x="477" y="140" font-size="12" font-weight="700" fill="var(--red)">身体经验</text>
+        <text x="477" y="170" font-size="11" fill="var(--ink-soft)">感觉—运动 · 情感 · 社会经验</text>
+        <text x="620" y="180" font-size="11.5" fill="var(--ink-faint)">经验"促动"而非"决定"概念</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-faint)" text-anchor="middle">
+        <text x="128" y="192" font-size="11">被动反映</text>
+        <text x="304" y="192" font-size="11">集合论模型</text>
+        <text x="468" y="26" font-size="11">非客观的意义世界</text>
+      </g>
+    </svg>
+    <figcaption>两种认知观：镜子式映射 vs 身体经验促动的投射世界（示意）<button type="button" class="cite" data-cite="objEssence" aria-label="查看出处"></button><button type="button" class="cite" data-cite="experientialism" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>客观主义的十一条信条、三个教条与形而上学</summary>
+    <p>客观主义认知观的基本信条：思维是抽象符号的机械操作，具有算法性质；心智像计算机一样操纵符号；符号本身没有意义，只能靠与外在事物的联系获得意义；心智是自然的一面镜子；思维是离体的、原子的，其核心是逻辑。<button type="button" class="cite" data-cite="objTenets" aria-label="查看出处"></button></p>
+    <p>三个意义教条：真值条件意义的教条、真理的"对应理论"、客观指称的教条。与之配套的形而上学被 Putnam（1981）称作"形而上学现实主义"：实体有固定特性，特性关系一成不变；实体自然分入"自然类"，由成员共有基本特性定义；同类关系合乎逻辑（传递）。<button type="button" class="cite" data-cite="threeDogmas" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metaphysical" aria-label="查看出处"></button></p>
+    <p>历史根源有五：亚里士多德式的形而上学与范畴论；笛卡尔与康德加剧的一系列二元对立；Frege 的逻辑主义意义理论；Hilbert 式公理化方法（"点、线、面"可换成"桌子、椅子、啤酒"）；以及各门科学的"物理学的钦羡"与心智的计算机隐喻。<button type="button" class="cite" data-cite="roots" aria-label="查看出处"></button></p>
+    <p>Putnam（1981）用严格的数学方法证明：用算法与集合论模型相结合来解决意义问题的方案，存在致命的内部矛盾。<button type="button" class="cite" data-cite="putnamMath" aria-label="查看出处"></button></p>
+    <p>范畴分"人工类"（如数学里的平行线，人为设定）与"自然类"（老虎、鸟、鱼、桌子）；有问题的是后者——客观主义认为它们也绝对客观、与人类理解无关，认知语言学的回答则是否定的（见场景六"鱼"的实验）。<button type="button" class="cite" data-cite="artNatClass" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">非客观主义不等于主观主义——它否认的是"现实范畴的存在根据完全独立于人类心智"。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 禁区限制之争</button>
+    <button class="btn" data-jump="s6">下一场：身体与经验 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>身体、经验与经验主义现实论</h2>
+  </div>
+  <p class="point">Lakoff 和 Johnson 提出<strong>经验主义现实论</strong>：现实主义打底、经验性为本——概念系统是经验的产物，经验通过身体获得；"促动"不等于"决定"。<button type="button" class="cite" data-cite="experientialism" aria-label="查看出处"></button><button type="button" class="cite" data-cite="motivation" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：切换分类标准，看"鱼"的结论怎么变</p>
+    <div class="btn-row" id="stdBtns">
+      <button class="btn sel" data-std="phen">表现型标准（外在整体形态）</button>
+      <button class="btn" data-std="clad">进化枝标准（遗传特征）</button>
+    </div>
+    <p class="feedback" id="stdFb">表现型标准下：生活在水里、有鳞、有鳍的脊椎动物就是鱼——世上有两万多种。</p>
+    <div class="reveal" id="stdRev" hidden>
+      <p style="margin:0">进化枝标准下：这两万多种里的很多都不同类，即不算鱼（原文所举之例为肺鱼）。<strong>"鱼"这个自然类是否存在，有赖于人类设定的标准——客观主义范式里的"鱼"范畴并不存在。</strong><button type="button" class="cite" data-cite="fish" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：生物群 A—E 住在连续地区，相邻两两交配而同类（A~B、B~C、C~D、D~E）。A 和 E 同类吗？<button type="button" class="cite" data-cite="nontransitive" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="aeOpts">
+      <button class="btn" data-o="1">同类——传递呗</button>
+      <button class="btn" data-o="0">不同类</button>
+    </div>
+    <div class="reveal" id="aeRev" hidden>
+      <p><strong>不同类。</strong>Mayr 的研究里，A 和 E 不交配，因此完全不同类——"属于同一种类"这样的关系并不一定是传递的，客观主义信条 [18] 在生物界不成立。<button type="button" class="cite" data-cite="nontransitive" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">五种意象图式（Johnson 1987）</p>
+    <svg viewBox="0 0 760 150" role="img" aria-label="五种意象图式简图：容器、路径、连接、动力、部分与整体">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2.2" stroke-linecap="round">
+        <rect x="34" y="30" width="104" height="86" rx="14"/>
+        <circle cx="86" cy="72" r="11" fill="var(--hl)" stroke="none"/>
+        <path d="M206 34 Q240 30 238 74 Q236 112 206 110"/>
+        <path d="M244 72 L272 72"/>
+        <path d="M266 64 L274 72 L266 80"/>
+        <circle cx="330" cy="72" r="20"/><circle cx="426" cy="72" r="20"/>
+        <path d="M350 72 L406 72"/>
+        <rect x="490" y="52" width="52" height="42" rx="8"/>
+        <path d="M542 72 L586 72"/>
+        <path d="M578 62 L590 72 L578 82"/>
+        <path d="M626 96 Q664 24 700 96 Z"/>
+        <circle cx="663" cy="66" r="9" fill="var(--hl)" stroke="none"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle" font-size="14">
+        <text x="86" y="140">容器</text>
+        <text x="238" y="140">路径</text>
+        <text x="378" y="140">连接</text>
+        <text x="540" y="140">动力</text>
+        <text x="663" y="140">部分—整体</text>
+      </g>
+    </svg>
+    <figcaption>容器、路径、连接、动力、部分—整体（示意，据 1.3.2 节）<button type="button" class="cite" data-cite="imageSchemas" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <details>
+    <summary>经验主义现实论的四个描述方面与通俗知识</summary>
+    <p>四个方面：[1] 基本层次概念与意象图式——最重要的两类概念，其意义来自在身体经验中的地位；[2] 想象投射——通过图式化、隐喻、转喻、范畴化把身体经验转化为抽象认知模型；[3] 基本认知过程——聚焦、扫描、上置、前景—背景变换、视角变换；[4] 心灵空间。<button type="button" class="cite" data-cite="fourAspects" aria-label="查看出处"></button></p>
+    <p>经验的含义甚广：基本的感觉—运动经验、情感经验、社会经验，以及塑造这些经验的人类天赋认知能力——它不是被动印在白纸头脑中的感觉印象。<button type="button" class="cite" data-cite="experienceDef" aria-label="查看出处"></button></p>
+    <p>身体的三重角色：认知的出发点（主体是有身体的人）、认知的对象（人最先获得对自己身体的经验）、认知的工具（通过身体与世界的互动认识外在现实）。电脑有"身体"却不会产生关于自身的经验——人脑的作用很大程度上有赖于所依附的身体。<button type="button" class="cite" data-cite="bodyRoles" aria-label="查看出处"></button></p>
+    <p>句法观三个方面：描述由语义促动的语法范畴和构造；指明其语义、功能动因；从形式和意义两方面说明构造之间的关系——为句法提供动因的原则被 Lakoff 称为"生成语义原则"。<button type="button" class="cite" data-cite="syntaxView" aria-label="查看出处"></button></p>
+    <p>自然语言的意义并非植根于客观真值条件或精密科学知识，而是某个言语社团共有的日常经验——常识和背景知识（如"医生是穿内裤的"这类 Searle 举的例子）恰恰是百科全书不录的部分。<button type="button" class="cite" data-cite="folkKnowledge" aria-label="查看出处"></button></p>
+    <p>从七十年代的质疑到八十年代后的新研究模式，Lakoff 称之为"第二代认知科学"：认知语言学正处在这场"第二次认知革命"的革命阵营中。<button type="button" class="cite" data-cite="secondGen" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">两大主张讲完：语言观上功能主义，认知观上经验主义——经验基础留给下一章。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 非客观主义认知观</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>其一 · 为什么说认知语言学是"学派"而非分支学科？</h3>
+    <details><summary>看答案</summary>
+      <p>分支学科以语言的某个特定方面作为研究的切入点和主要对象；认知语言学大致研究语言的认知方面，实际上却是从认知的角度研究语言<strong>各个方面</strong>的组织原则，尤其是其核心部分——语法系统本身。<button type="button" class="cite" data-cite="schoolNotBranch" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其二 · 九条观点中，哪些也为其他功能语言学派所共有？</h3>
+    <details><summary>看答案</summary>
+      <p>一般只有第 [1]、[4]、[5]、[6]、[7] 条——即语言是认知活动的产物、语义语用连续统、形式区分须反映意义、共性体现为趋势、形式化只是模拟。<button type="button" class="cite" data-cite="funcBranch" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其三 · 客观主义的三个意义教条是什么？拿什么取代"真值条件语义"？</h3>
+    <details><summary>看答案</summary>
+      <p>三教条：真值条件意义的教条（意义等同于真值条件的配列）、真理的"对应理论"、客观指称的教条。取代它的是：语义对应<strong>非客观的投射世界</strong>，与其中约定俗成的概念结构直接相系；概念结构的形成与人的物质经验、认知策略密切相关。<button type="button" class="cite" data-cite="threeDogmas" aria-label="查看出处"></button><button type="button" class="cite" data-cite="v3" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>一句话定义：以我们对世界的经验以及感知、概念化世界的方法策略为基础和依据的语言研究学派；语言既是认知活动的产物又是工具，是观察心智的窗口。<button type="button" class="cite" data-cite="defCL" aria-label="查看出处"></button><button type="button" class="cite" data-cite="langMind" aria-label="查看出处"></button></li>
+    <li>学派而非分支：研究语言各方面的组织原则，尤其是语法系统本身；初创、开放、无领袖人物。<button type="button" class="cite" data-cite="schoolNotBranch" aria-label="查看出处"></button><button type="button" class="cite" data-cite="emerging" aria-label="查看出处"></button></li>
+    <li>判别口诀：生成语法、心理语言学、认知心理学语言研究、AI 自然语言理解、Jackendoff 概念语义学——都不算；不自称的人（Croft）和广义门派（框架语义学）可以算。<button type="button" class="cite" data-cite="jackendoff" aria-label="查看出处"></button><button type="button" class="cite" data-cite="croftThompson" aria-label="查看出处"></button></li>
+    <li>九条观点关键词：产物与工具；表层直接对语义；投射世界；语义语用连续统；形式反映意义；共性即趋势；形式化是模拟；原型与图式；构式形式—意义配对。<button type="button" class="cite" data-cite="nineViews" aria-label="查看出处"></button></li>
+    <li>两大阵营四层差：重心（形式结构 vs 功能因素）、语料（内省理想化 vs 自然实际）、表述（形式化规则 vs 直觉的外在解释）、语言观（天赋自主装置 vs 认知能力符号系统）。<button type="button" class="cite" data-cite="surfaceDiff" aria-label="查看出处"></button></li>
+    <li>三位一体：天赋说、普遍语法、自主说互相印证；功能学派最不赞成自主说，且把它当作经验问题而非先验承诺。<button type="button" class="cite" data-cite="threeInOne" aria-label="查看出处"></button><button type="button" class="cite" data-cite="openQuestion" aria-label="查看出处"></button></li>
+    <li>禁区限制：Ross 1967；CNPC、CSC、主语从句限制→领属条件 SC；例外靠重新分析补救→特设；Deane 用"注意"和运作记忆统一解释。<button type="button" class="cite" data-cite="island" aria-label="查看出处"></button><button type="button" class="cite" data-cite="deaneAttention" aria-label="查看出处"></button></li>
+    <li>客观主义：符号操作+真值条件+对应理论+形而上学现实主义；非客观主义：投射世界+概念结构+身体经验。<button type="button" class="cite" data-cite="objTenets" aria-label="查看出处"></button><button type="button" class="cite" data-cite="experientialism" aria-label="查看出处"></button></li>
+    <li>经验主义现实论：现实主义打底、经验性为本；经验经身体获得，促动而非决定概念；意象图式五种：容器、路径、连接、动力、部分—整体。<button type="button" class="cite" data-cite="motivation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="imageSchemas" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>认知语言学</strong>：以我们对世界的经验及其概念化方法、策略为基础的语言研究学派；是学派不是分支。<button type="button" class="cite" data-cite="defCL" aria-label="查看出处"></button><button type="button" class="cite" data-cite="schoolNotBranch" aria-label="查看出处"></button></li>
+    <li><strong>认知的时代</strong>：以 1957 年《句法结构》为转折点的五十年代末以来的语言学。<button type="button" class="cite" data-cite="cognitiveEra" aria-label="查看出处"></button></li>
+    <li><strong>投射世界 / 概念结构</strong>：语义所对应的非客观世界及其中约定俗成的概念结构。<button type="button" class="cite" data-cite="v3" aria-label="查看出处"></button></li>
+    <li><strong>连续统</strong>：语义学和语用学构成一个连续统，纯语义知识与百科知识不能截然分开。<button type="button" class="cite" data-cite="v4" aria-label="查看出处"></button></li>
+    <li><strong>有动因（motivated）</strong>：句法并非自主任意，而由语义、认知、功能、语用等句法外因素促动。<button type="button" class="cite" data-cite="v1" aria-label="查看出处"></button></li>
+    <li><strong>语言能力 / 语言运用</strong>：乔姆斯基学派的研究对象界定；能力指内在语法知识。<button type="button" class="cite" data-cite="competence" aria-label="查看出处"></button></li>
+    <li><strong>模组性（modularity）</strong>：人脑高度分化、各子系统各司其职；语法是其中独立自主的子系统。<button type="button" class="cite" data-cite="innateModular" aria-label="查看出处"></button></li>
+    <li><strong>天赋性 / 自主性</strong>：形式语言学两个核心假说；与普遍语法构成"三位一体"。<button type="button" class="cite" data-cite="threeInOne" aria-label="查看出处"></button></li>
+    <li><strong>强 / 弱自主说</strong>：乔姆斯基式强自主；弱自主承认部分功能动因但仍坚守语法自主原则。<button type="button" class="cite" data-cite="weakAuto" aria-label="查看出处"></button></li>
+    <li><strong>最小限度论 / 最大限度论</strong>：认知功能学派把任意性当"最后的一招"；乔姆斯基学派反之。<button type="button" class="cite" data-cite="minimalism" aria-label="查看出处"></button></li>
+    <li><strong>禁区限制 / 领属条件</strong>：句法移动只作用于不被多于一个界限节点隔开的成分。<button type="button" class="cite" data-cite="island" aria-label="查看出处"></button></li>
+    <li><strong>客观主义范式 / 非客观主义</strong>：Lakoff &amp; Johnson 对西方主流认识论的命名，及其对立面。<button type="button" class="cite" data-cite="objectivist" aria-label="查看出处"></button><button type="button" class="cite" data-cite="nonObjectivist" aria-label="查看出处"></button></li>
+    <li><strong>形而上学现实主义</strong>：Putnam 对客观主义本体论的命名：自然类、固定特性、传递关系。<button type="button" class="cite" data-cite="metaphysical" aria-label="查看出处"></button></li>
+    <li><strong>经验主义现实论</strong>：Lakoff &amp; Johnson 的替代理论：现实主义打底、经验性为本。<button type="button" class="cite" data-cite="experientialism" aria-label="查看出处"></button></li>
+    <li><strong>意象图式</strong>：容器、路径、连接、动力、部分—整体等，由感觉—运动经验赋予意义。<button type="button" class="cite" data-cite="imageSchemas" aria-label="查看出处"></button></li>
+    <li><strong>生成语义原则</strong>：为句法提供语义、语用、功能动因的原则（Lakoff 1988）。<button type="button" class="cite" data-cite="syntaxView" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学与汉语名词短语》（张敏 著）第一章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键说法请点开角标核对原句。仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 2026-10-24</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注（转录稿无页码，角标位置精确到节）；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第一章"},
+  langMind:{page:"1.1",quote:"自然语言作为人类最主要的交际工具，它在本质上是人类感知、认识世界，通过心智活动将经验到的外在现实加以概念化，并将其编码的结果；换言之，自然语言是人类心智的产物……因此自然语言又是观察人类心智的一个重要窗口。",zh:"自然语言是人类心智的产物，也是观察心智的重要窗口"},
+  defCL:{page:"1.1",quote:"若用一句话来定义，可以说认知语言学是一个以我们对世界的经验以及我们感知这个世界并将其概念化的方法、策略作为基础和依据进行语言研究的语言学学派。",zh:"认知语言学的一句话定义：以我们对世界的经验及其概念化方法、策略为基础的语言研究学派"},
+  schoolNotBranch:{page:"1.1",quote:"我们说认知语言学是一个语言学学派（正如“生成语法”一般被看作一个学派），而不是像“社会语言学”或“神经语言学”这样的语言学分支学科……它实际上是从认知的角度来研究语言各个方面的组织原则，尤其是其核心部分，即语法系统本身。",zh:"是学派而非分支学科：从认知角度研究语言各方面的组织原则，尤其是语法系统本身"},
+  emerging:{page:"1.1",quote:"由于它是近十几二十年来逐渐兴起的一个成长中的学派，和苦心经营了四十年的生成学派相比，认知语言学还处于初创阶段，缺乏整齐划一的分析模式，尚无一个公认的学术中心，更没有乔姆斯基式的领袖人物，甚至连它的名称都还不是很固定。但也正因为如此，它在探索范围和研究手段方面较少束缚，具有更大的开放性。",zh:"认知语言学处于初创阶段、开放无领袖，因而少束缚"},
+  cognitiveEra:{page:"1.1",quote:"若我们把本世纪初至五十年代末的语言学称作“结构的时代”，则五十年代末至今的语言学，以乔姆斯基于1957年发表的《句法结构》为转折点，可以称作“认知的时代”。",zh:"1957 年《句法结构》是“结构的时代”进入“认知的时代”的转折点"},
+  chomskyQuote:{page:"1.1",quote:"乔姆斯基曾明确指出，“研究语言的主要贡献在于它能使人理解心智活动的性质以及由心智活动构成和影响的结构”，他甚至偶尔也非正式地称自己的学说为“认知语言学”（见Chomsky 1968），当然这不是我们所指的认知语言学。",zh:"乔姆斯基称研究语言的主要贡献在于使人理解心智活动的性质；但他偶尔非正式使用的“认知语言学”不是本书所指"},
+  psycholing:{page:"1.1",quote:"心理语言学更是直接与认知相关，不过其研究对象、切入点、方法及关注的课题都较独特，主流的分析框架也往往是生成语法的，所以它通常也不被归入认知语言学。",zh:"心理语言学直接与认知相关，但主流框架往往是生成语法的，不归入认知语言学"},
+  cogpsyAI:{page:"1.1",quote:"以信息加工模式作为理论基础的认知心理学的语言研究，以及在同样基础上形成的人工智能学派的自然语言理解研究，尽管是以认知作为研究的中心……但其理论基础与我们所说的认知语言学大相径庭，它们在很多基本问题上持有相反的立场，人们也不认为这些是通常意义上的认知语言学。",zh:"认知心理学语言研究与 AI 自然语言理解以认知为中心，但理论基础大相径庭、基本问题上立场相反"},
+  jackendoff:{page:"1.1",quote:"乔姆斯基学派的 Jackendoff 的“概念语义学（conceptual semantics）”更是直接从认知的角度研究句法里的语义现象，它所关心的课题、所使用概念术语及某些基本理念与认知语言学在很大程度上是相通的……不过仍然没有人（包括他自己）将其学说称为认知语言学。",zh:"Jackendoff 的概念语义学与认知语言学很大程度相通，但没有人称其为认知语言学"},
+  croftThompson:{page:"1.1",quote:"不少语言学家并不以认知语言学家自诩或著称，但他们所作的某些研究完全可以归入认知语言学的范围。例如，W. Croft 是语言类型学家，S. Thompson 是话语分析专家，但他（她）们对语言象似性、词类及句法关系的研究可算作认知语言学的经典作品。",zh:"不自称认知语言学家者的研究也可归入其范围，如 Croft、Thompson 的象似性研究"},
+  narrow:{page:"1.1",quote:"狭义的认知语言学主要指 Lakoff 和 Johnson 等人的认知语义学（cognitive semantics）和 Langacker 的认知语法（cognitive grammar）……还可以包括 Haiman 以句法象似性为中心的“自然句法（natural syntax）”。汉语语言学家戴浩一的“认知功能语法（cognition-based functional grammar）”和谢信一最近提出的“组成认知语法（Compositional Cognitive Grammar）”也应属于这个类别。",zh:"狭义认知语言学：认知语义学、认知语法、自然句法、戴浩一与谢信一的语法"},
+  wide:{page:"1.1",quote:"广义的认知语言学范围就大了，举例来说，至少可以包括 Fillmore 的“框架语义学（frame semantics）”和“构造语法（construction grammar）”，Talmy、Hawkins、Croft 等语言类型学家从认知功能角度对语言普遍现象的分析，Wierzbicka 的语义学理论，Fauconnier 有关“心理空间（mental spaces）”的理论……可以说，从认知角度研究自然语言方方面面的现象已成为功能主义语言学阵营里的一个新潮流",zh:"广义认知语言学还包括框架语义学、构造语法、类型学分析、心理空间理论、语法化研究等"},
+  threeSources:{page:"1.1",quote:"它的代表人物主要有三个来源：(1)因对句法中意义地位认识的不同而从形式语法阵营中分裂出来的前生成语法学家，如R. Langacker、Fillmore及生成语义学的主将G. Lakoff；(2)功能语言学家，尤其是注重语言共性和类型学研究的学者，如T. Givón、L. Talmy、J. Haiman、W. Croft等；(3)关注认知研究的哲学家及心理学家，如M. Johnson、R. Gibbs等。",zh:"代表人物三个来源：前生成语法学家、功能语言学家、关注认知的哲学家与心理学家"},
+  nineViews:{page:"1.1",quote:"显然，定义认知语言学的，不仅仅是“认知”这个概念，也不是像生成语法那样严格界定出来的框架和套数，而是一些基本的语言观、认识论、方法论原则和理念……我们可将这些原则、理念大致归纳如下（参见Haiman 1985b、Geeraerts 1990、Goldberg 1996）：",zh:"九条原则、理念界定认知语言学的内涵（第 [1]—[9] 条）"},
+  v1:{page:"1.1",quote:"[1] 自然语言既是人类认知活动的产物，又是认知活动的工具，其结构和功能应视为人类一般认知活动的结果和反映，人类的语言能力不应当作人脑里独立于其他认知能力和知识的一个完全自主自足的天赋的部分……同样，句法也并不像生成语法学家所声称的那样是自主的、任意的，而是有动因的（motivated），即往往由语义、认知、功能、语用等句法之外的因素所促动。",zh:"第1条：语言是认知活动的产物与工具；句法有动因而非自主任意"},
+  v2:{page:"1.1",quote:"[2]句法并不涉及任何转换的部分，表层句法结构是句法描写的基本单位，它直接对应于语义结构。",zh:"第2条：句法不涉及转换，表层结构直接对应语义结构"},
+  v3:{page:"1.1",quote:"[3]语义不是基于客观的真值条件，语义结构也不能简单地化解为真值条件的配列，它并非对应于客观的外在世界，而是对应于非客观的投射世界(projected world)，并与其中约定俗成的概念结构(conceptual structure)直接相系。概念结构的形成与人的物质经验、认知策略等密切相关。",zh:"第3条：语义对应非客观的投射世界与约定俗成的概念结构，而非真值条件"},
+  v4:{page:"1.1",quote:"[4]语义学和语用学形成一个连续统(continuum)，二者都作用于语言的意义。语言的意义并不限于语言系统内部，而是植根于人类与世界互动过程中形成的物质经验，植根于说话人的知识和信仰系统。因此，纯语义的知识和百科知识是不能截然分开的。",zh:"第4条：语义语用连续统；纯语义知识与百科知识不能截然分开"},
+  v5:{page:"1.1",quote:"[5]由于语言的基本功能是传达意义，故在形式上所作的区分仅当它们反映语义或语用、话语上的分别时才是可取的。",zh:"第5条：形式上的区分仅当反映语义、语用、话语分别时才可取"},
+  v6:{page:"1.1",quote:"[6]语言共性及语言里的一般规律往往体现为某种趋势，而不一定是绝对的规则。",zh:"第6条：语言共性与一般规律往往体现为趋势，不一定是绝对规则"},
+  v7:{page:"1.1",quote:"[7]对语言规律的形式化或以构造形式化模式作为对语言共性的解释，其实都不是严格意义上的解释，而只是描写或模拟(modeling)。对语言共性更有意义的解释往往须在形式之外寻找，如从语义、表达交际功能、认知能力及策略等方面去探求。",zh:"第7条：形式化只是描写或模拟；有意义的解释须到形式之外寻找"},
+  v8:{page:"1.1",quote:"[8]语言里的范畴化(categorization)并不完全是由充分必要条件决定的，一个范畴内部常常包括中心的部分和扩展的边缘部分。因此范畴化的原则既有基于图式(schema)的，也有基于原型(prototype)的。",zh:"第8条：范畴化不全是充分必要条件；有中心部分和边缘部分；原则基于图式与原型"},
+  v9:{page:"1.1",quote:"[9] 语法格式（grammatical construction）与词汇项目一样，是形式和意义的配对。它们有着真实的认知地位，而不是由生成规则或普遍原则的操作所产生的副现象（epiphenomena）……也就是说，句法不是生成的，词汇项和语法结构项是连为一体的，其同并无绝对的界线。",zh:"第9条：构式是形式—意义配对，有真实认知地位，不是副现象"},
+  opposite:{page:"1.1",quote:"前面提到的涉及认知却不被当作认知语言学的多数学科和流派，尤其是生成语法、主流的认知心理学和人工智能科学，几乎在上述所有方面都持有不同的立场。",zh:"生成语法、主流认知心理学和 AI 几乎在所有这些方面持相反立场"},
+  lakoff82:{page:"1.1",quote:"用其创始人之一的Lakoff（1982）的话来说，认知语言学所关心的问题，是语言结构在何种程度上、在何处取决于人类所具有的一般感知机制、有限的记忆和加工能力，取决于人们试图利用有限的手段去理解世界的现实状态，取决于人们在社会生活中的交际行为。这句话很清楚地反映了这门学科的功能主义和经验论的取向。",zh:"Lakoff 1982：认知语言学关心语言结构如何取决于一般感知机制、记忆加工能力与交际行为"},
+  twoAspects:{page:"1.1",quote:"为了更深入地了解这个学派的特点，我们将其基本思想概括为两个方面，即功能主义的语言观和非客观主义的哲学观与认知观，在接下来的两个小节里，我们将结合认知语言学的具体研究实例对这些观念加以说明。",zh:"基本思想概括为两方面：功能主义的语言观与非客观主义的哲学观、认知观"},
+  genSem:{page:"1.1",quote:"认知语法中“句法结构与语义结构直接对应”的观念明显来自Lakoff等人曾倡导的生成语义学(Lakoff 1987曾指出其认知语义学是生成语义学的自然延续)。",zh:"表层直接对语义的观念来自生成语义学；Lakoff 称认知语义学是其自然延续"},
+  roschProto:{page:"1.1",quote:"七十年代以来，认知人类学家如Lounsbury、Berlin&Kay等人发现的各民族中亲属词及颜色词的共性以及心理学家Rosch等人提出的概念的原型效应(prototype effect)和基本层次范畴(basic-level categories)理论，动摇了人们对古典范畴理论的信念，这催生了认知语言学的范畴观。",zh:"Rosch 的原型效应与基本层次范畴理论催生认知语言学的范畴观"},
+  typoCog:{page:"1.1",quote:"人类语言学家和语言类型学家发现了人类语言中的大量共性现象，在试图为这些现象提供解释时，发现相当多的语言共性与人类认知心理的某些经得起独立检验的方面密切相关，而乔姆斯基的天赋说规避了对这些现象的解释",zh:"不少语言共性与人类认知心理中经得起独立检验的方面密切相关"},
+  hopperNoun:{page:"1.2",quote:"认知语法的创始人之一Langacker(1987b)就从认知的角度，用比传统语法更加精细、系统的方法对名词和动词作出了语义定义，Hopper & Thompson(1985)则从话语分析的角度发现了控制名词性……和动词性……大小的功能因素。",zh:"Langacker 从认知角度给名词动词作语义定义；Hopper & Thompson 发现控制名词性、动词性的功能因素"},
+  method:{page:"1.1",quote:"认知语法的上述理论来源决定了其研究方法上的根本特点，即既不刻意追求形式化，也不以形式解释形式，而是以语义、概念为出发点观照其与形式的匹配，探索语言范畴和语言结构的概念基础。",zh:"方法特点：不追求形式化、不以形式解释形式，以语义概念为出发点"},
+  twoWay:{page:"1.1",quote:"认知语言学的目标具有一种“双向性”：一方面，既然语言是人类最重要的一种认知活动，是观察一般认知能力的最方便的窗口，对语言的研究可以帮助揭示人类认知活动的奥秘；另一方面，既然人的一般认知能力在很大程度上决定了语言能力，对认知系统的研究也有助于对语言结构系统的研究。",zh:"目标的双向性：语言是认知的窗口，认知也反哺语言研究"},
+  camps:{page:"1.2",quote:"当代语言学里五花八门的各流派大多可归入形式主义(formalism)和功能主义(functionalism)这两大阵营。",zh:"当代语言学流派大多归入形式主义与功能主义两大阵营"},
+  funcBranch:{page:"1.2",quote:"从更高一个层次看，认知语言学可以视为功能语言学派的一个分支。并非所有功能语言学派都是认知语言学，上节归纳的九个方面的观点里，为认知语言学之外的其他功能语言学派共有的一般只有第[1]、[4]、[5]、[6]、[7]点。",zh:"认知语言学是功能学派分支；与其他功能学派共有的只有第[1][4][5][6][7]条"},
+  tai89:{page:"1.2",quote:"戴浩一（Tai 1989）将他所倡导的汉语认知语法称为“以认知为基础的汉语功能语法（a cognition-based functional grammar of Chinese）”，这个名称恰如其分地概括了认知语法主流的基本特点。",zh:"戴浩一称其汉语认知语法为“以认知为基础的汉语功能语法”"},
+  formalList:{page:"1.2",quote:"形式主义语言学派以乔姆斯基的生成语法(Generative Grammar)的各种变体[从早期的标准理论(Standard Theory)到近年的管约理论(Government and Binding Theory)及最近的最小限度论(Minimalist Program)等]为代表，还包括Perlmutter和Postal的关系语法(Relational Grammar)、Gazdar和Pullem的普遍短语结构语法(Generalized Phrase Structure Grammar)及Pollard和Sag的中心语驱动的短语结构语法(Head-driven Phrase Structure Grammar)、Zwicky的接口语法(Interface Grammar)、Partee和Dowty的蒙塔古语法(Montague Grammar)、Bresnan的词汇功能语法(Lexical Functional Grammar)等。",zh:"形式主义阵营：生成语法各变体及关系语法、GPSG、HPSG、蒙塔古语法、词汇功能语法等"},
+  funcList:{page:"1.2",quote:"功能主义语言学也有不少派别和门径，如以Greenberg为代表的语言类型学、Chafe和Thompson的话语语法(discourse grammar)、Hopper的现出语法(emergent grammar)、韩礼德(Haliday)的系统功能语法(Systemic Functional Grammar)、Foley 和 Van Valin 的角色和指称语法 (Role and Reference Grammar)、久野璋 (Kuno) 的功能句法 (functional syntax) 和 Dik 的功能语法 (Functional Grammar)，以及上小节提到的狭义和广义的认知语法各门派，还有不少功能语言学家没有自立特别的理论名目，如 Bolinger、Givón、Silverstein、Talmy 以及 Sweester 等人。",zh:"功能主义阵营：类型学、话语语法、现出语法、系统功能语法、角色和指称语法等及认知语法各门派"},
+  surfaceDiff:{page:"1.2",quote:"最外在的差别体现在研究重心、分析方法和表述方式方面，即前者把重点放在对语言的形式结构和特征的刻划上，在取材上注重内省的、理想化的语料，并用概括性极强的抽象的形式化规则表述出来；后者则主要着眼于语言构造中的功能因素，注重自然、实际的语料，重视语义、语用、话语的分析，并将形式上的规律诉诸非形式化的合乎直觉的外在解释。究其根本，二者的具体分歧多出自对语言的本质看法上的不同，或曰语言观上的差异，即到底是把语言看作一种天赋的、自主的形式装置，还是基于人类一般认知能力，负载交际功能的符号系统。",zh:"两大阵营四层差别；根本分歧在语言观：天赋自主的形式装置 vs 基于一般认知能力、负载交际功能的符号系统"},
+  competence:{page:"1.2",quote:"代表着形式语言学主流的乔姆斯基学派首先将语言研究的对象界定为语言能力(competence)，而非语言运用(performance)。语言能力指的是人类特有的内在语法知识(tacit knowledge)，即说本族语的人理解和构成从未听过或说过的数量无限的句子的能力。",zh:"形式学派研究对象是语言能力（内在语法知识）而非语言运用"},
+  innateModular:{page:"1.2",quote:"包含这部语法的人脑在结构上是高度分化的，即具有模组性(modularity)，其中不同的子系统虽相互联系，但却各司其职，各自独立。语法正是其中一个独立的子系统，它本身是自主自足的，独立于人类其他的认知系统；而语法本身也是模组化的，其中的句法也是自主的，其构造无需参照语言的其他层面（如语义）及语法之外的各种因素",zh:"人脑具有模组性；语法是独立自主的子系统，句法也是自主的"},
+  openQuestion:{page:"1.2",quote:"多数功能语言学家（包括认知语言学家）将语法是否天赋与自主看作一个未有定论的经验的问题（open empirical question），他们反对的是形式语言学将天赋论和自主论视为先验的命题，当作研究的首要承诺（commitment），即其前提和立足点。在上面两个命题中，功能语言学最不赞成的是语法自主性的说法。",zh:"功能学派把天赋与自主当作经验问题；最不赞成的是语法自主性说法"},
+  threeInOne:{page:"1.2",quote:"天赋说之所以引起功能语言学家的注意，主要是因为它与形式语言学另外两个假说，即普遍语法和自主说，有密切的关联，这三者构成一个互相印证、互相说明的“三位一体”的信念体系，而后两个假说是与语言的具体研究直接相关的。",zh:"天赋说、普遍语法、自主说构成“三位一体”的信念体系"},
+  chomskyPhysical:{page:"1.2",quote:"近年来乔姆斯基更进一步把普遍语法的本质看作没有动因的“物理原则（physical principles）”的任意性作用（Chomsky1988），也就是说，天赋地存在于大脑中的普遍语法是生物发展的一种偶然的副产品（a chance by-product），其背后并没有自然选择的功能动因。",zh:"乔姆斯基近年把普遍语法看作无动因物理原则的任意作用、生物发展的偶然副产品"},
+  weakAuto:{page:"1.2",quote:"不过，即使是Newmeyer和Jackendoff这种弱自主说的代表人物在关键问题上也仍然坚守语法自主的原则。其主要依据是，语法里毕竟还有很多范畴、原则和规则都找不到语义、功能方面的动因和解释，例如动词、名词、介词等语法范畴及成分统制(c-command)这样的概念无法从语义、功能上定义，所以语法应是自主的。",zh:"弱自主说代表仍坚守自主：动词名词介词、成分统制等找不到语义功能动因"},
+  hopper:{page:"1.2",quote:"功能语言学家内部对自主说的态度也并不完全一致。激进派（如 Hopper 等）不仅认为语法（或句法）不自主，甚至干脆认为不存在固定的语法，只有语法过程（grammaticization），没有固定的语言，只有言语过程（languaging）。温和派只是认为句法在很大程度上具有非句法的动因。",zh:"激进派 Hopper：没有固定语法只有语法过程；温和派：句法很大程度上有非句法动因"},
+  langackerNouns:{page:"1.2",quote:"对功能语言学家而言，像“战争”“战斗”、“explosion”“explode”这样对立的词类表达的根本就是不同的概念，关键在于不能像传统语法那样用“事物”“动作”这样的简单而含混的名称去概括其意义。",zh:"对立词类表达根本不同的概念；词类可从语义界定"},
+  minimalism:{page:"1.2",quote:"认知功能语言学在天赋性问题上承认人类语言的先天基础，但认为先天存在的不是自主的语言机制，而是一般认知中的概念和处理限制，而在自主性问题上，套用乔姆斯基近年来提出的一个术语，认知功能语言学采取的是一种“最小限度论（minimalistic）”的态度，而乔姆斯基学派在这个问题上则可以称作“最大限度论者（maximalist）”。更严格地说，认知功能学派反对的是形式语言学派的强自主说，却能够接受一种弱自主说，即相信句法里存在着任意性的成分，但他们不是把任意性当作出发点，而是作为找不到动因时“最后的一招（last resort）”（Lakoff 1986）。",zh:"认知功能学派持最小限度论：先天存在的是一般认知中的概念与处理限制；任意性只是“最后的一招”"},
+  island:{page:"1.2",quote:"禁区限制（island constraints，或译为孤岛限制、句法岛限制）是六十年代以来生成语法提出的对语法规则操作的纯句法限制之中最主要的一种，甚至某些认知语法学家（如Hsieh 1989）也承认它可能是某种自主的抽象逻辑—数学原则的反映。它首先是由Ross(1967)提出的……简言之，禁区限制指的是，句法移动规则仅仅作用于领属（subjacent）成分，即那些不被多于一个的界限结点（bounding node）所隔开的成分。",zh:"禁区限制：Ross 1967 提出；句法移动只作用于不被多于一个界限节点隔开的成分"},
+  lightVerb:{page:"1.2",quote:"Ross还发现的另一类例外涉及所谓“轻动词构造(light verb construction)”……(12b)和(13b)的句法构造相同，但前者中的成分可以移出，是一个明显的例外，后者则合乎Ross提出的限制。两者的区别仅在于关键动词的不同……前者是一个无特别实义的动词，带上一个抽象名词之后，在意义上相当于一个单独的动词，如make the claim（作出这个指责）的意思大致等于claim（指责）；而后者则不然，discuss the claim 既不等于discuss也不等于claim。",zh:"轻动词构造例外：make the claim 可移出，discuss the claim 不可；差别在关键动词的语义"},
+  gearsCar:{page:"1.2",quote:"上面例子里(a)(b)的结构条件是相同的，但只有(a)中的成分能够移出复合名词词组……(9a)中的gears和car之间具有本质的部分—整体关系，而(9b)中的girls和car却没有这种关系。",zh:"结构条件相同，但 gears 与 car 有本质部分—整体关系，girls 与 car 没有"},
+  lakoffNoCSC:{page:"1.2",quote:"在此，将(24a)重新分析为(24b)这样的构造，得到的句子是不通的。Lakoff的结论是，在这类动词性并列结构中，任何类型的提取模式都有可能出现……由此，Lakoff（1986）认为，一个所谓普遍有效的并列结构限制根本就是不存在的东西。",zh:"Lakoff 1986：真正并列结构上也有例外；普遍有效的并列结构限制根本不存在"},
+  adhoc:{page:"1.2",quote:"它们难以从纯句法的原则出发预测哪些结构必须进行重新分析，故所给出的重新分析规则具有明显的“特设（ad hoc）”的特征，因此实际上是回避了问题。",zh:"形式补救方案的毛病：重新分析规则难以预测，带有“特设”特征"},
+  compHop:{page:"1.2",quote:"乔姆斯基的解决方案是，把(30)中间COMP的位置当作一个中转站，移位时像下跳棋一样一次跳一步(称作“COMP到COMP移位”)，这样就不算一次跨越两个节点了。在功能语言学家看来，这样的分析犹如下跳棋走不通时就“审时度势”地改变游戏规则一般。",zh:"乔姆斯基方案：COMP 中转站、一次跳一步；功能学派视作改变游戏规则"},
+  deaneFocus:{page:"1.2",quote:"这样的解释并不是随机的，它也适用于其他情况……其差异可以用句子信息焦点(informational focus)的不同去分化(Deane 1992)。在含有补足语(complement)的句子里，正常的情况是短语的信息焦点落在补足语上，而不是其中心语上，而(30)反映的正是正常的情况……相反，(31)中的动词 slip比整个母句的信息量都大，因此不容许深度提取。",zh:"Deane 1992：信息焦点分化 say/slip；slip 比整个母句信息量大，不容许深度提取"},
+  kunoTopic:{page:"1.2",quote:"Kuno观察到，此类句子若能合法提取，其子句修饰的NP必须是一个潜在的话题，而(32)里的the child正是如此，因为整个句子谈的就是the child。既然这个NP是话题，其子句就可以充作信息的焦点了，故容许深度提取。",zh:"Kuno 1987：能合法提取时，子句修饰的 NP 须是潜在话题"},
+  deaneAttention:{page:"1.2",quote:"他进一步将限制提取的句法内外的各种因素归纳起来，用一种以注意(attention)为中心的认知理论作出了统一的解释：提取现象反映了这样一种情形，即语言使用者必须同时注意句法结构里的两个部分；这一情形给人们用来作句法自动处理的运作记忆(working memory)带来了压力。因此，深度提取必须在能减轻处理压力的条件下才能成立，也就是说，当被提取成分和提取的母体能以这样或那样的方式同时受到注意的时候，提取才是合法的。",zh:"Deane：以注意为中心的统一解释；深度提取须在能减轻运作记忆压力时成立"},
+  deaneDeep:{page:"1.2",quote:"Deane注意到不少“深度提取（deep extraction）”的例子，其中的提取都超过三个界限节点，甚至能达到六个，但仍能得到合法的句子",zh:"深度提取可越过四个乃至六个界限节点仍合法"},
+  chenPing:{page:"1.2",quote:"这就出现了一个让功能语言学家不得其解的悖论，即如陈平（1991）所说，“不先从其他种种方面寻找原因，事先怎样能够知道哪些现象是可以从功能、语用、或者其他方面得到解释，哪些现象是无论如何也无法得到类似解释的呢？”",zh:"陈平 1991：不先找别的原因，怎知哪些现象能由功能语用解释"},
+  newmeyerFunc:{page:"1.2",quote:"为化解两个学派的对立立场，他对自主说提出了一个重大修正，即认为自主的普遍语法原则是“功能促动、结构表述 (functional motivation, but structural formulation)”的。",zh:"Newmeyer 修正：普遍语法原则是“功能促动、结构表述”的"},
+  objectivist:{page:"1.3",quote:"认知语言学认为，形式语言学将语言视为抽象符号及其规则的运算操作系统这种语言观……是近几个世纪以来在西方哲学、科学、文化传统中占据支配地位的认识论和本体论主流思潮的反映，Lakoff（1987）和 Johnson（1987）将这种传统观念称为“客观主义范式（objectivist paradigm）”，认为把它用在认知研究中本质上就错了。",zh:"Lakoff & Johnson 把形式语言学背后的主流思潮称为“客观主义范式”，认为用在认知研究中本质上错了"},
+  nonObjectivist:{page:"1.3",quote:"与此相对，在近年来各个门类的认知科学经验观察的基础上，认知语言学提出一种“非客观主义（non-objectivist）”的理论，它在认知观、意义观乃至形而上学本体论方面都与客观主义的范式大异其趣……所以可以看作认知语言学的一个重要的定义性特征。",zh:"非客观主义：在认知观、意义观、本体论上与客观主义大异其趣，是认知语言学的定义性特征"},
+  objTenets:{page:"1.3.1",quote:"[1]思维（或曰认知过程、心理过程）是抽象符号的机械操作，它具有数学意义上的算法（algorithmic）性质。[2]心智(the mind)是一部抽象的机器，它操纵符号的方式本质上就像计算机……[7]既然人类心智是外在现实的内在表达，心智就是自然的一面镜子……[9]思维是抽象和离体的(disembodied)，因为它独立于人类身体的任何限制……[10]思维是原子的(atomistic)……[11] 思维的核心是逻辑",zh:"客观主义认知观信条：思维是符号机械操作；心智如计算机；心智是自然的镜子；思维离体而原子化"},
+  objSymbols:{page:"1.3.1",quote:"[4]心智活动所操纵的符号（即词和心理表征）本身是没有意义的，它们只能由一种方式获得意义，即通过与外在世界事物的联系。也就是说，意义是符号与客观现实之间的一种抽象的关系。",zh:"信条4：符号本身无意义，只能靠与外在事物的联系获得意义"},
+  objEssence:{page:"1.3.1",quote:"客观主义认知观的本质就在于其“客观”观念，也就是说，它认为人类心智是脱离主体的，是超验的(transcendental)，不依赖认知主体的身体经验及其与现实之间的相互作用，而仅仅是以映射(mapping)的方式被动地反映现实。",zh:"客观主义本质：心智脱离主体、超验，仅以映射方式被动反映现实"},
+  threeDogmas:{page:"1.3.1",quote:"[12]真值条件意义的教条：意义基于指称和真理，换言之，意义等同于真值条件的配列。[13]真理的“对应理论”：真理存在于符号和世界状态之间的对应。[14]客观指称的教条：存在着某种“客观上正确”的方式，可据以将符号和现实中的事物联系起来。",zh:"三个意义教条：真值条件意义、真理对应理论、客观指称"},
+  metaphysical:{page:"1.3.1",quote:"Putnam（1981）将它称作“形而上学现实主义（metaphysical realism）”。其基本信息包括：[15]世界是由这样的实体构成的：它们有着固定的特性……[16]世界上的实体自然地分入被称作“自然类”的各种类别中。所有的自然类都是由其成员共有的基本特性所定义出来的集合……[18]这个世界上的实体和范畴之间客观地存在着合乎逻辑的关系。例如，如果A和B同类，B和C同类，则A和C亦同类。",zh:"形而上学现实主义：固定特性、自然类由共有特性定义、同类关系传递"},
+  roots:{page:"1.3.1",quote:"客观主义的基本信念和教条是以下几个方面影响的积淀。（1）西方古典哲学本体论主流思想的影响……（2）西方近代哲学认识论主流，尤其是笛卡尔主义和康德主义的影响……(3)现当代分析哲学的意义理论主流，尤其是Frege逻辑主义的影响……(4)现代数学公理化方法的影响……(5)当代各门硬科学，尤其是物理学和计算机科学的影响",zh:"客观主义的五个历史根源：亚里士多德、笛卡尔与康德、Frege、Hilbert 公理化、物理学钦羡与计算机隐喻"},
+  putnamMath:{page:"1.3.2",quote:"哈佛大学数理逻辑教授Putnam(1981)曾用严格的数学方法证明，用算法与集合论模型相结合来解决意义问题的方案存在着致命的内部矛盾。",zh:"Putnam 1981：算法加集合论模型解决意义问题存在致命内部矛盾"},
+  artNatClass:{page:"1.3.2",quote:"世上的范畴或曰类别分“人工类(artificial class)”和“自然类(natural class)”两种(参见 Taylor 1995)，前者即人为地设定标准绝对地界定出来的类别，例如数学里的“平行线”……有问题的是所谓自然类，即日常所指的老虎、鸟、鱼、斑马、桌子、椅子这样的类。",zh:"人工类（如平行线）与自然类（老虎、鸟、鱼、桌子）；有问题的是自然类"},
+  fish:{page:"1.3.2",quote:"生物学普遍采用的两种标准，即根据外在整体形态的“表现型(phenetic)”标准和根据遗传特征的“进化枝(cladistic)”标准，这两种标准不尽重合。根据前一标准(也是世人常用的标准)，生活在水里、有鳞、有鳍的脊椎动物就是鱼，它在世上有两万多种；根据后一标准，这两万多种里的很多都不同类，即不算鱼，例如像鲸这样的肺鱼(lungfish)。显然，客观主义范式里的“鱼”范畴并不存在。",zh:"表现型标准下鱼有两万多种；进化枝标准下很多不算鱼；客观主义的“鱼”范畴并不存在"},
+  nontransitive:{page:"1.3.2",quote:"根据Mayr的研究，居住在连续的地区的生物群A,B,C,D和E中，A与B交配而同类，B与C、C与D，D与E都可交配而同类，但A和E不交配，因此完全不同类。",zh:"Mayr：A~B、B~C、C~D、D~E 同类，但 A 与 E 不交配完全不同类；同类关系不传递"},
+  experientialism:{page:"1.3.2",quote:"Lakoff（1987）和 Johnson（1987）针锋相对地提出了一种新的认知理论，称作“经验主义现实论（experientialist realism）”。它首先是现实主义的，即承认客观存在的现实性，相信真理并不只意味着内部一致，相信科学标准的客观性，摒弃纯粹的唯我论和唯心论。但更重要的是其经验性。",zh:"经验主义现实论：首先是现实主义的，更重要的是经验性"},
+  experienceDef:{page:"1.3.2",quote:"这里的“经验”含义甚广，包括人类基本的感觉—运动经验、情感经验、社会经验及一切正常人所具备的其他各种经验，还特别包括塑造这些经验并使之成为可能的人类天赋的认知能力……它主要指是人之所以为人，生活在这个地球上的人类社会中的普遍的经验方面",zh:"经验含义甚广：感觉—运动、情感、社会经验及天赋认知能力，是人类社会的普遍经验"},
+  motivation:{page:"1.3.2",quote:"“促动”在此并不等于“决定”，即不是说经验严格地决定了人类概念和推理方式，而是说人类经验的固有结构使概念理解成为可能，并限定了概念和理性结构的可能范围。这种经验主义理论提出，人类的概念系统是人类经验的产物，而经验是通过身体获得的",zh:"促动≠决定：经验的固有结构使概念理解成为可能并限定其范围；概念系统是经验的产物"},
+  imageSchemas:{page:"1.3.2",quote:"与使用语言、形成推理相关的理性心智过程往往是通过“意象图式（image-schemas）”而实现的，包括“容器（container）”图式、“路径（path）”图式、“连接（link）”图式、“动力（force dynamics）”图式、“部分—整体（part-whole）”图式等。这些图式是由人类的感觉—运动（sensory-motor）经验赋予意义的，它们本身就是无限性的有意义的符号，而这类符号根本就无法纳入算法操作的数学化概括（Johnson 1987）。",zh:"意象图式：容器、路径、连接、动力、部分—整体；由感觉—运动经验赋予意义"},
+  fourAspects:{page:"1.3.2",quote:"[1]基本层次概念(详见下节)和意象图式(包括上文提到的容器图式、路径图式等):这是最重要的两类概念。……[2]想象投射（imaginative projection）的心理过程……[3]基本认知过程，包括聚焦、扫描、上置、前景—背景变换、视角变换等（Langacker 1987）。[4]心灵空间(Fauconnier 1994).",zh:"经验主义认知理论四方面：基本层次概念与意象图式、想象投射、基本认知过程、心灵空间"},
+  bodyRoles:{page:"1.3.2",quote:"这是因为认知的基础一经验一首先就是身体的：它是认知的出发点（认知的主体是具有身体的人），也是认知的一个对象（人类最先获得的是对自己身体的经验），还是认知的工具（人类认识外在现实是通过身体与世界的互动）。",zh:"身体三重角色：认知的出发点、对象和工具"},
+  syntaxView:{page:"1.3.2",quote:"在它看来，句法研究包括以下三个方面：（1）描述由语义促动的语法范畴和语法构造（construction）；（2）指明这些范畴和构造之下的语义、功能动因；（3）从形式和意义两个方面说明语法构造之间的关系……其中，为句法提供语义、语用、功能动因的原则被称为“生成语义原则（generative semantic principles）”(Lakoff 1988)。",zh:"句法观三方面：描述语义促动的范畴构造、指明动因、说明构造关系；动因原则即“生成语义原则”"},
+  folkKnowledge:{page:"1.3.2",quote:"我们在下一章会谈到，自然语言里的意义及语义结构并非植根于客观的真值条件或严格、精密、符合科学认识的知识，而是某个言语社团（或整个人类）共有的日常经验……在人类认知中更重要的恰恰是那些百科全书不录、较少处于人们明确意识中的日常技能、背景知识或通俗信念系统",zh:"意义植根于社团共有的日常经验；重要的是百科全书不录的常识与背景知识"},
+  secondGen:{page:"1.3.2",quote:"它体现新一代的认知科学理论（Lakoff称之为“第二代认知科学”，参见Baumgartner&Payr1995）正处于整合成形的过程中，它试图超越甚至取代前述的经典范式。",zh:"Lakoff 称之为“第二代认知科学”；认知语言学处于“第二次认知革命”阵营中"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第一章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：判别游戏 ================= */
+(function(){
+  const oks={gg:0,psy:0,cpsy:0,ai:0,jack:0,croft:1,frame:1,tai:1};
+  const fb=$("#v1fb");
+  $$("#verdicts .verdict").forEach(row=>{
+    const ans=oks[row.dataset.v];
+    const resp=$(".v-resp",row);
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      const ok=Number(b.dataset.a)===ans;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+      resp.hidden=false;
+      resp.classList.toggle("wrong",!ok);
+      const mark=document.createElement("span");
+      mark.className=ok?"v-ok":"v-no";
+      mark.textContent=ok?("✓ 判断正确："+(ans?"算":"不算")+"。"):("✗ 正解是"+(ans?"算":"不算")+"。");
+      resp.prepend(mark);
+      fb.textContent="已判断："+$(".v-name",row).textContent+"。继续点下一个。";
+    }));
+  });
+})();
+
+/* ================= 场景二：九条观点翻牌 ================= */
+(function(){
+  $$("#view9 .v9").forEach(card=>{
+    const body=$(".v9-body",card);
+    const hint=$(".v9-open",card);
+    function toggle(){
+      const open=body.hidden;
+      body.hidden=!open;
+      hint.textContent=open?"▾ 收起":"▸ 点开";
+    }
+    card.addEventListener("click",toggle);
+    card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});
+  });
+})();
+
+/* ================= 场景三：翻转卡 + 三位一体 ================= */
+(function(){
+  ["#flipF","#flipG","#flipA","#flipB","#flipC"].forEach(sel=>{
+    const el=$(sel);
+    function toggle(){el.classList.toggle("on");}
+    el.addEventListener("click",toggle);
+    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});
+  });
+  const rev=$("#triRev");
+  $$("#triOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#triOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.o!=="auto");
+  }));
+})();
+
+/* ================= 场景四：句子判别 + 解释切换 ================= */
+(function(){
+  const oks={s1:1,s2:0,s3:1,s4:0};
+  $$("#sentQuiz .verdict").forEach(row=>{
+    const ans=oks[row.dataset.s];
+    const resp=$(".v-resp",row);
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      const ok=Number(b.dataset.a)===ans;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+      resp.hidden=false;
+      resp.classList.toggle("wrong",!ok);
+      const mark=document.createElement("span");
+      mark.className=ok?"v-ok":"v-no";
+      mark.textContent=ok?"✓ 判断正确。":"✗ 再想想。";
+      resp.prepend(mark);
+    }));
+  });
+  const box=$("#expBox");
+  $$("#expSwitch .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#expSwitch .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    $$(".duo",box).forEach(d=>{d.hidden=(d.dataset.e!==b.dataset.e);});
+  }));
+})();
+
+/* ================= 场景六：鱼的标准 + A-E ================= */
+(function(){
+  const fb=$("#stdFb"),rev=$("#stdRev");
+  const txt={
+    phen:"表现型标准下：生活在水里、有鳞、有鳍的脊椎动物就是鱼——世上有两万多种。",
+    clad:"进化枝标准下：标准不一，结果就不一样。"
+  };
+  $$("#stdBtns .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#stdBtns .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    fb.textContent=txt[b.dataset.std];
+    rev.hidden=(b.dataset.std!=="clad");
+  }));
+  const ae=$("#aeRev");
+  $$("#aeOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#aeOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    ae.hidden=false;
+    ae.classList.toggle("wrong",b.dataset.o!=="0");
+  }));
+})();
+</script>
+</body>
+</html>

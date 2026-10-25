@@ -1,0 +1,106 @@
+{
+  "batches": [
+    "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+    "a19a38dc-f03b-45d2-8f04-790a03195cd2"
+  ],
+  "submitted": {
+    "oxford_p01.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "oxford",
+      "seq": 1,
+      "page_start": 1,
+      "page_end": 180
+    },
+    "oxford_p02.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "oxford",
+      "seq": 2,
+      "page_start": 181,
+      "page_end": 360
+    },
+    "oxford_p03.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "oxford",
+      "seq": 3,
+      "page_start": 361,
+      "page_end": 425
+    },
+    "crystal_p01.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "crystal",
+      "seq": 1,
+      "page_start": 1,
+      "page_end": 180
+    },
+    "crystal_p02.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "crystal",
+      "seq": 2,
+      "page_start": 181,
+      "page_end": 360
+    },
+    "crystal_p03.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "crystal",
+      "seq": 3,
+      "page_start": 361,
+      "page_end": 459
+    },
+    "meidemin_p01.pdf": {
+      "batch_id": "b67d8cde-6dd4-4465-98aa-b9a51032a34b",
+      "book": "meidemin",
+      "seq": 1,
+      "page_start": 1,
+      "page_end": 180
+    },
+    "meidemin_p02.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 2,
+      "page_start": 181,
+      "page_end": 360
+    },
+    "meidemin_p03.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 3,
+      "page_start": 361,
+      "page_end": 540
+    },
+    "meidemin_p04.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 4,
+      "page_start": 541,
+      "page_end": 720
+    },
+    "meidemin_p05.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 5,
+      "page_start": 721,
+      "page_end": 900
+    },
+    "meidemin_p06.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 6,
+      "page_start": 901,
+      "page_end": 1080
+    },
+    "meidemin_p07.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 7,
+      "page_start": 1081,
+      "page_end": 1260
+    },
+    "meidemin_p08.pdf": {
+      "batch_id": "a19a38dc-f03b-45d2-8f04-790a03195cd2",
+      "book": "meidemin",
+      "seq": 8,
+      "page_start": 1261,
+      "page_end": 1363
+    }
+  }
+}

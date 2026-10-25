@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>范畴化层次 · 《认知语言学导论》第二章可交互笔记</title>
+<meta name="description" content="把《认知语言学导论》第二章做成单文件交互网页：七场实验台、出处角标、先猜再看。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.ok{border-color:var(--green);color:var(--green);font-weight:700}
+.chip.no{border-color:var(--red);color:var(--red)}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+.radio-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- 属性条 / 图例 / 进度条 ---------- */
+.attrchip{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:5px 12px;
+  border:1.5px solid var(--line);border-left-width:5px;border-radius:8px;background:var(--card);
+  font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.attrchip:hover{background:var(--hl)}
+.attrchip.sel{outline:2px solid var(--ink);outline-offset:1px}
+.attrchip.s-head{border-left-color:var(--blue)}
+.attrchip.s-mod{border-left-color:var(--red)}
+.attrchip.s-both{border-left-color:var(--green)}
+.attrchip.s-spec{border-left-color:#8a6d1f}
+.attrchip.s-new{border-left-color:var(--ink-faint)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--ink-soft);margin:6px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:14px;height:5px;border-radius:2px;display:inline-block}
+.legend .l-head{background:var(--blue)}
+.legend .l-mod{background:var(--red)}
+.legend .l-both{background:var(--green)}
+.legend .l-spec{background:#8a6d1f}
+.legend .l-new{background:var(--ink-faint)}
+.meter{height:14px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);overflow:hidden;margin:6px 0}
+.meter>i{display:block;height:100%;background:linear-gradient(90deg,var(--hl),var(--red));width:0;transition:width .35s}
+.scoreline{font-size:.95rem;font-weight:700;color:var(--red);margin:6px 0}
+
+/* ---------- 出处角标 ---------- */
+sup.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 / 目录 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.88rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:6px 9px;text-align:center}
+thead th{background:var(--hl);font-weight:700}
+th[scope=row]{text-align:left;white-space:nowrap}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.barg{cursor:pointer}
+.barg:hover rect{filter:brightness(.92)}
+svg text{user-select:none}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">范畴化层次 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学导论》第 2 版 · 第二章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">范畴化层次</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 材料：第二章转录稿</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>万物可以分层，但日常用法不按逻辑出牌——最得宠的是中间那层，"狗"比"动物"和"牧羊犬"都好用；上位范畴靠向基本层次"借"属性过活，下位范畴专门用来凸显差别；民间层级有缺层、可绕路；范畴焊成复合词，有时还能焊出一个新的基本层次。<span class="tag" data-label="解读">解读</span></p>
+    <p style="font-size:.88rem;color:var(--ink-soft);margin-bottom:0">七场实验各讲其中一块；每个关键说法都能点角标回查原句。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 260" role="img" aria-label="第二章结构图：从动物到牧羊犬的四层树，中间的基本层次最得宠，右侧三条批注">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="60" y="22" width="120" height="36" rx="8"/>
+        <rect x="60" y="82" width="120" height="36" rx="8"/>
+        <rect x="60" y="142" width="120" height="36" rx="8" stroke="var(--red)" stroke-width="3"/>
+        <rect x="60" y="202" width="120" height="36" rx="8"/>
+        <path d="M120 58 L120 82 M120 118 L120 142 M120 178 L120 202"/>
+        <path d="M186 140 L206 140 L206 200 L186 200"/>
+        <rect x="400" y="34" width="330" height="52" rx="10" stroke-dasharray="6 5"/>
+        <rect x="400" y="104" width="330" height="52" rx="10" stroke-dasharray="6 5"/>
+        <rect x="400" y="174" width="330" height="52" rx="10" stroke-dasharray="6 5"/>
+        <path d="M206 170 C300 170 330 60 396 60" stroke-dasharray="4 5"/>
+        <path d="M206 170 C300 170 330 130 396 130" stroke-dasharray="4 5"/>
+        <path d="M206 170 C300 170 330 200 396 200" stroke-dasharray="4 5"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="120" y="45" font-size="15">动物</text>
+        <text x="120" y="105" font-size="15">哺乳动物</text>
+        <text x="120" y="165" font-size="16" font-weight="700" fill="var(--red)">狗</text>
+        <text x="120" y="225" font-size="15">牧羊犬</text>
+        <text x="238" y="158" font-size="13" font-weight="700" fill="var(--red)">基本层次</text>
+        <text x="238" y="178" font-size="11" fill="var(--ink-soft)">属性集束最多</text>
+        <text x="238" y="194" font-size="11" fill="var(--ink-soft)">认知最经济</text>
+        <text x="565" y="55" font-size="14">上位范畴：向基本层次借完形与属性</text>
+        <text x="565" y="75" font-size="11" fill="var(--ink-soft)">寄生范畴化</text>
+        <text x="565" y="125" font-size="14">下位范畴：凸显特有差别</text>
+        <text x="565" y="145" font-size="11" fill="var(--ink-soft)">锯齿形叶子之于蒲公英</text>
+        <text x="565" y="195" font-size="14">复合词：范畴焊成一体，可自立门户</text>
+        <text x="565" y="215" font-size="11" fill="var(--ink-soft)">苹果汁 · 外衣领子 · 轮椅</text>
+      </g>
+    </svg>
+    <figcaption>从"动物"到"牧羊犬"：基本层次在最顺手的位置（示意）</figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">狗住三楼</button>
+    <button class="chip" data-jump="s2">植物账本</button>
+    <button class="chip" data-jump="s3">中间层</button>
+    <button class="chip" data-jump="s4">寄生借用</button>
+    <button class="chip" data-jump="s5">缺层</button>
+    <button class="chip" data-jump="s6">复合词</button>
+    <button class="chip" data-jump="s7">五种经验</button>
+    <button class="chip" data-jump="quiz">去自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">用法：点角标看原句出处 ｜ ← → 键换场景 ｜ 虚线框里是折叠的细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>狗住三楼：基本层次</h2>
+  </div>
+  <p class="point">壁炉前那只动物，可以叫"动物""哺乳动物""狗""牧羊犬"；<button type="button" class="cite" data-cite="hierDog" aria-label="查看出处"></button>而中性语境里最自然的是"狗"——不长不短，信息刚好。<button type="button" class="cite" data-cite="dogNatural" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogEcon" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：点一层楼，看它和邻居的差别</p>
+    <svg id="s1tree" viewBox="0 0 760 240" role="img" aria-label="四层范畴树：动物、哺乳动物、狗、牧羊犬，可点击">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M150 56 L150 78 M150 114 L150 136 M150 172 L150 194"/>
+      </g>
+      <g class="lv" id="lvAnimal" filter="url(#rough2)">
+        <rect x="80" y="20" width="140" height="36" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <text x="150" y="43" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="'Kaiti SC','STKaiti',KaiTi,serif">动物 ANIMAL</text>
+      </g>
+      <g class="lv" id="lvMammal" filter="url(#rough2)">
+        <rect x="80" y="78" width="140" height="36" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <text x="150" y="101" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="'Kaiti SC','STKaiti',KaiTi,serif">哺乳动物 MAMMAL</text>
+      </g>
+      <g class="lv" id="lvDog" filter="url(#rough2)">
+        <rect x="80" y="136" width="140" height="36" rx="9" fill="var(--hl)" stroke="var(--red)" stroke-width="3"/>
+        <text x="150" y="159" text-anchor="middle" font-size="16" font-weight="800" fill="var(--red)" font-family="'Kaiti SC','STKaiti',KaiTi,serif">狗 DOG</text>
+      </g>
+      <g class="lv" id="lvTerrier" filter="url(#rough2)">
+        <rect x="80" y="194" width="140" height="36" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <text x="150" y="217" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" font-family="'Kaiti SC','STKaiti',KaiTi,serif">牧羊犬 COLLIE</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="12" fill="var(--ink-faint)">
+        <text x="300" y="43">太概括：成员相差太远</text>
+        <text x="300" y="101">属性宽泛：狗猫更常跳过这一层</text>
+        <text x="300" y="159" fill="var(--red)">折中方案：形状、属性、行为都在这一层</text>
+        <text x="300" y="217">太细：彼此太像，区分近乎迂腐</text>
+      </g>
+    </svg>
+    <p class="feedback" id="s1fb">先点一层楼。红框那层就是全书的主角——基本层次范畴。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：层级怎么搭起来</summary>
+    <p>民间分类法以中心部分为起点得到不同的分类层级，注意力集中在狗和汽车这样的基本层次范畴上，分类层级也以它作为基点。<button type="button" class="cite" data-cite="folkTax" aria-label="查看出处"></button>等级结构的原则是<strong>种类包含</strong>：上位类包括下位层次的所有项目；从下往上看就是类属关系——"小猎犬是一种狗，狗是一种哺乳动物，哺乳动物是一种动物"。<button type="button" class="cite" data-cite="classIncl" aria-label="查看出处"></button><button type="button" class="cite" data-cite="typeOf" aria-label="查看出处"></button></p>
+    <p>语言证据也站中间层：描写交通事故的开场是"两辆车（cars）相撞"，不会说"两个交通工具"；孩子最先学的是狗、猪、汽车、卡车这些中间层名称，它们通常最短、用得最频繁。<button type="button" class="cite" data-cite="carCrash" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kidsFirst" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">上层太空、下层太碎，中间层"符合自然中最显著的离散性"。<button type="button" class="cite" data-cite="dogCompromise" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：植物账本 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>Tzeltal 人的植物账本</h2>
+  </div>
+  <p class="point">科学分类有 13 个主要层次，Tzeltal 人的民间植物分类只留 5 个；<button type="button" class="cite" data-cite="linnaeus" aria-label="查看出处"></button><button type="button" class="cite" data-cite="tzeltal5" aria-label="查看出处"></button>而属层次一层就装了至少 471 个范畴，"生命形式"却只有 4 个名字。<button type="button" class="cite" data-cite="generic471" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：你猜 Tzeltal 属层次至少有多少个范畴？</p>
+    <input type="range" id="s2guess" min="0" max="600" value="100" aria-label="猜测范畴数量">
+    <p style="margin:.2em 0"><output id="s2out">100</output> 个</p>
+    <button class="btn" id="s2reveal">揭晓</button>
+    <div class="reveal" id="s2rev" hidden>
+      <p>至少 <strong>471 个</strong>；而它上位的"生命形式"（第二层次）只有 <strong>4 个</strong>名字。松树更可能被叫作"松树"，而不是"树"或"红松"。<button type="button" class="cite" data-cite="generic471" aria-label="查看出处"></button><button type="button" class="cite" data-cite="pineName" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">原著还注明：种层次（第四层次）的成员身份受更多限制，变种层次（第五层次）的次类则微不足道。<button type="button" class="cite" data-cite="generic471" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">点一根条，看原著怎么说<span class="tag" data-label="读图">读图</span></p>
+    <svg viewBox="0 0 760 240" role="img" aria-label="对比条：科学分类 13 个主要层次，Tzeltal 只留 5 个；属层次 471 个范畴，生命形式 4 个">
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="13" fill="var(--ink-soft)">
+        <text x="30" y="26" font-weight="700">主要层次数</text>
+        <text x="30" y="140" font-weight="700">范畴数量（另一标尺）</text>
+      </g>
+      <g class="barg" id="barSci">
+        <text x="30" y="62" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">科学分类</text>
+        <rect x="120" y="48" width="234" height="20" rx="4" fill="var(--blue)" opacity=".75" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="364" y="63" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">13 个主要层次</text>
+      </g>
+      <g class="barg" id="barTz">
+        <text x="30" y="102" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">Tzeltal 民间分类</text>
+        <rect x="120" y="88" width="90" height="20" rx="4" fill="var(--red)" opacity=".75" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="220" y="103" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">只保留 5 个</text>
+      </g>
+      <g class="barg" id="barGen">
+        <text x="30" y="176" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">属层次</text>
+        <rect x="120" y="162" width="230" height="20" rx="4" fill="var(--green)" opacity=".7" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="360" y="177" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">至少 471 个范畴</text>
+      </g>
+      <g class="barg" id="barLife">
+        <text x="30" y="216" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">生命形式</text>
+        <rect x="120" y="202" width="8" height="20" rx="2" fill="var(--ink-faint)" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="138" y="217" font-size="13" fill="var(--ink)" font-family="-apple-system,'PingFang SC',sans-serif">只有 4 种植物的名称</text>
+      </g>
+    </svg>
+    <p class="feedback" id="s2fb">四根条都能点。属层次名称短而不可再分析，更低层是"形容词＋属名"（松树／红松、豆／扁豆／黑扁豆）。<button type="button" class="cite" data-cite="genericShort" aria-label="查看出处"></button></p>
+  </div>
+
+  <details>
+    <summary>原文细节：75% 与"不听话的实例"</summary>
+    <p>各自的上位范畴里，范畴包含程度都是 100%，属层次却是显著例外，只有 75%——四分之三的属层次项目与生命形式明显有关。<button type="button" class="cite" data-cite="incl75" aria-label="查看出处"></button></p>
+    <p>剩下 25% 不全是边界案例：97 个属范畴（20%）是"非隶属类的"，与任何生命形式都挂不上钩。玉米和豆正是其中两个——它们也是 Tzeltal 人食谱的基本成分：文化重要性压过了生物学逻辑。<button type="button" class="cite" data-cite="nonAffil" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cornBean" aria-label="查看出处"></button><button type="button" class="cite" data-cite="genericCultural" aria-label="查看出处"></button></p>
+    <p>科学分类则另一副脾气：层次多到塞进两百多万种动植物和数十万词语，且刻意客观，不偏好任何层次。Roget 1852 年的《英语词和短语辞典》把人类知识分成六个"类"，再依次分为门、目。<button type="button" class="cite" data-cite="sciLayers" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sciObj" aria-label="查看出处"></button><button type="button" class="cite" data-cite="roget" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">属层次的数量优势，是"文化上突出"最直观的证据。<span class="tag" data-label="解读">解读</span></p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 狗住三楼</button>
+    <button class="btn" data-jump="s3">下一场：中间层 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>中间层为什么最省心</h2>
+  </div>
+  <p class="point">三个心理因素都指向中间层：感知差异最明显、有共同完形形状、有真正带区别特征的行为；<button type="button" class="cite" data-cite="factorDiff" aria-label="查看出处"></button><button type="button" class="cite" data-cite="factorShape" aria-label="查看出处"></button><button type="button" class="cite" data-cite="factorAct" aria-label="查看出处"></button>用最小认知努力取最大信息量，即认知经济性。<button type="button" class="cite" data-cite="cogEcon" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：CAR、BUS、TRUCK 三个基本层次范畴的属性总数是多少？上位 VEHICLE 有几个共同属性？</p>
+    <p style="margin:.2em 0">基本三层合计：<input type="range" id="s3gA" min="0" max="30" value="12" aria-label="猜基本层次属性总数" style="max-width:220px;vertical-align:middle"> <output id="s3oA">12</output> 个</p>
+    <p style="margin:.2em 0">VEHICLE 共同属性：<input type="range" id="s3gB" min="0" max="10" value="3" aria-label="猜上位范畴属性数" style="max-width:220px;vertical-align:middle"> <output id="s3oB">3</output> 个</p>
+    <button class="btn" id="s3reveal">揭晓</button>
+    <div class="reveal" id="s3rev" hidden>
+      <p><strong>12 个</strong>对<strong>1 个</strong>——基本层次的属性集束大得多。水果也一样：苹果等基本层次平均 8 个属性，FRUIT（水果）只有 3 个。<button type="button" class="cite" data-cite="attrExp" aria-label="查看出处"></button></p>
+      <p style="margin-bottom:0">属性集束越多，区分彼此越省力：这正是"认知经济性"的实测版本。<button type="button" class="cite" data-cite="attrBundle" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">基本层次的属性集束长什么样（据原著图 2.3 演绘）<span class="tag" data-label="示意">示意</span></p>
+    <svg viewBox="0 0 760 250" role="img" aria-label="椅子和桌子各有一套属性集束，只在有腿、木制上少数共有">
+      <ellipse cx="215" cy="118" rx="150" ry="92" fill="color-mix(in srgb,var(--blue) 10%,var(--card))" stroke="var(--ink)" stroke-width="2" filter="url(#rough2)"/>
+      <ellipse cx="545" cy="118" rx="150" ry="92" fill="color-mix(in srgb,var(--green) 10%,var(--card))" stroke="var(--ink)" stroke-width="2" filter="url(#rough2)"/>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="150" y="58" font-size="16" font-weight="800">CHAIR 椅子</text>
+        <text x="150" y="92" font-size="13">有座位</text>
+        <text x="150" y="114" font-size="13">有靠背</text>
+        <text x="150" y="136" font-size="13">用于就座</text>
+        <text x="150" y="164" font-size="11" fill="var(--ink-soft)">厨房·客厅·花园椅子都符合</text>
+        <text x="610" y="58" font-size="16" font-weight="800">TABLE 桌子</text>
+        <text x="610" y="92" font-size="13">有上平面</text>
+        <text x="610" y="114" font-size="13">用于在上边写</text>
+        <text x="610" y="136" font-size="13">用于在上边吃</text>
+      </g>
+      <g filter="url(#rough2)">
+        <rect x="322" y="92" width="116" height="54" rx="10" fill="var(--hl)" stroke="var(--red)" stroke-width="2.5"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--red)" text-anchor="middle">
+        <text x="380" y="114" font-size="13" font-weight="700">共有</text>
+        <text x="380" y="134" font-size="12">有腿 · 木制</text>
+        <text x="380" y="212" font-size="12" fill="var(--ink-soft)">大部分属性不共有——所以椅子和桌子那么好分</text>
+      </g>
+    </svg>
+    <figcaption>两个基本层次范畴各拥有一大套属性，只有极少数彼此共有（据原著图 2.3 演绘）<button type="button" class="cite" data-cite="chairTable" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>原文细节：三因素与共生关系</summary>
+    <p>狗是折中方案：各种狗彼此相像，又因"狗性"（吠叫、摇尾）与猫狮有别；下位层内部太像——都摆尾巴、都吠叫、都追猫和邮递员，区分近乎迂腐；上位层又差太远——动物包括大象、老鼠、鲸鱼，哺乳动物根本没有共同形状。<button type="button" class="cite" data-cite="dogCompromise" aria-label="查看出处"></button><button type="button" class="cite" data-cite="alsatianPedantic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="animalDissimilar" aria-label="查看出处"></button><button type="button" class="cite" data-cite="shapeMammal" aria-label="查看出处"></button></p>
+    <p>行为也站在中间层：猫可以被抚摸，花可以闻到气味，球可以滚动弹跳；很难想像各种猫被各不相同地抚摸。<button type="button" class="cite" data-cite="factorAct" aria-label="查看出处"></button></p>
+    <p>两条共生原则：原型范畴在基本层次上发展得最完全；基本层次之所以有那些功能，正因为它们是像原型范畴那样构造的。<button type="button" class="cite" data-cite="symbiotic" aria-label="查看出处"></button></p>
+    <p>对美国心理学学生来说，TREE（树）、FISH（鱼）、BIRD（鸟）才是基本层次——文化模型连基本层次视角一起决定。<button type="button" class="cite" data-cite="bioBasic" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">属性最多、形状最整、动作最典型——中间层是认知上的"黄金中段"。<span class="tag" data-label="解读">解读</span></p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 植物账本</button>
+    <button class="btn" data-jump="s4">下一场：寄生借用 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>上层借形状，下层借清单</h2>
+  </div>
+  <p class="point">上位范畴没有共同整体形状，就从基本层次"借"完形与属性；<button type="button" class="cite" data-cite="superNoShape" aria-label="查看出处"></button><button type="button" class="cite" data-cite="parasitic" aria-label="查看出处"></button>给"家具"列举属性时，被试连一个共有属性都提不出来。<button type="button" class="cite" data-cite="furnitureNoAttr" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：家具的属性从哪来？点一条看来源</p>
+    <div class="legend">
+      <span><i class="l-head"></i>借自中心语（基本层次）</span>
+      <span><i class="l-mod"></i>借自修饰语</span>
+      <span><i class="l-both"></i>几个成员共有</span>
+      <span><i class="l-spec"></i>特有属性</span>
+      <span><i class="l-new"></i>非派生</span>
+    </div>
+    <div class="btn-row" id="s4attrs"></div>
+    <p class="feedback" id="s4fb">家具自己的直接属性少得可怜（"大而可移动的物体"），剩下的全靠椅子、桌子它们接济。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">三个层次对照（据 2.2 节整理）<button type="button" class="cite" data-cite="superNoShape" aria-label="查看出处"></button><span class="tag" data-label="解读">解读</span></p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">维度</th><th scope="col">上位范畴</th><th scope="col">基本层次</th><th scope="col">下位范畴</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">共同整体形状</th><td>没有，靠借</td><td>有，且能区分邻范畴</td><td>有，但类内互相太像</td></tr>
+          <tr><th scope="row">原型结构</th><td>弱</td><td>理想</td><td>不一定：蒲公英分不出好差</td></tr>
+          <tr><th scope="row">认知功能</th><td>汇集 + 凸显</td><td>参照点</td><td>凸显特有属性</td></tr>
+          <tr><th scope="row">语言形式</th><td>多非单音节，后学到</td><td>最短，最先学</td><td>单纯词或复合词</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <details>
+    <summary>原文细节：借多少、凸显什么</summary>
+    <p>说明"水果"时你会画橙子、香蕉——上位范畴的完形是从基本层次借来的；玩具只剩"用于玩耍"一个全范畴属性，游戏连一个都找不到。<button type="button" class="cite" data-cite="parasitic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="toyOneAttr" aria-label="查看出处"></button><button type="button" class="cite" data-cite="gameNoAttr" aria-label="查看出处"></button></p>
+    <p>卷毛狗、小猎犬、玫瑰这类下位范畴另有本事：它们有可识别的完形，围绕原型组成，有好成员差成员，还能汇集丰富的属性清单。<button type="button" class="cite" data-cite="subGestalt" aria-label="查看出处"></button>下位范畴反过来：蒲公英、雏菊、10 美分硬币分不出好差样本，但被试的属性清单比基本层次还细——大半是从"花""硬币"这些基本范畴借的；真正特有的只有几条（蒲公英的锯齿形叶子）。<button type="button" class="cite" data-cite="noProtoSub" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dimeNoProto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="subDetail" aria-label="查看出处"></button><button type="button" class="cite" data-cite="subBorrow" aria-label="查看出处"></button><button type="button" class="cite" data-cite="serrated" aria-label="查看出处"></button></p>
+    <p>上位范畴的凸显功能看 BUS：只有"把人和物运往各处""用于玩耍"两个属性生成了 vehicle 和 toy；seater、wheeler 只能进搭配。<button type="button" class="cite" data-cite="vehicleToy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="seater" aria-label="查看出处"></button></p>
+    <p>汇集功能看 TOY：公共汽车、球、秋千全被汇到一个标签下；科学分类也吃这份红利。<button type="button" class="cite" data-cite="collectFn" aria-label="查看出处"></button><button type="button" class="cite" data-cite="collectSci" aria-label="查看出处"></button></p>
+    <p>语言上也分得出层次：FURNITURE、VEHICLE、MUSICAL INSTRUMENT 都不是简单单音节词，孩子也先学会基本层次词语。<button type="button" class="cite" data-cite="superLang" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">下位范畴的存在是为了"凸显"：锯齿叶、黄花瓣，把蒲公英从"花"里认出来。<button type="button" class="cite" data-cite="highlightFn" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 中间层</button>
+    <button class="btn" data-jump="s5">下一场：缺层 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>民间层级有缺层</h2>
+  </div>
+  <p class="point">狗和猫的直接上位通常是"动物"而不是"哺乳动物"；<button type="button" class="cite" data-cite="mammalSuper" aria-label="查看出处"></button>鸟和鱼对很多使用者来说根本不是"动物"的下位。<button type="button" class="cite" data-cite="birdFish" aria-label="查看出处"></button></p>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：狗、猫的直接上位范畴，多数人选哪个？</p>
+    <div class="btn-row">
+      <button class="btn" data-opt="animal">动物 ANIMAL</button>
+      <button class="btn" data-opt="mammal">哺乳动物 MAMMAL</button>
+    </div>
+    <div class="reveal" id="s5rev" hidden>
+      <p>作为规则，是<strong>动物</strong>。原著还补一刀：英语里根本没有综合标记的词来表示相对于植物的"动物"，CREATURE（生物）又带着圣经联想。<button type="button" class="cite" data-cite="mammalSuper" aria-label="查看出处"></button><button type="button" class="cite" data-cite="noAnimalWord" aria-label="查看出处"></button><button type="button" class="cite" data-cite="creatureBible" aria-label="查看出处"></button></p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：这些关系，哪些是类属（type-of），哪些是部分-整体（part-whole）？</p>
+    <div class="btn-row" id="s5pairs"></div>
+    <div class="btn-row">
+      <button class="btn" data-cat="tax">类属关系</button>
+      <button class="btn" data-cat="part">部分-整体</button>
+    </div>
+    <p class="feedback" id="s5fb">先点一对范畴，再选关系类型。</p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">建立概念层级的两条路<span class="tag" data-label="示意">示意</span></p>
+    <svg viewBox="0 0 760 230" role="img" aria-label="类属链与部分整体链的对比示意图">
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="13" fill="var(--ink)">
+        <text x="30" y="30" font-weight="700">类属关系（靠相似性"汇集"）</text>
+        <text x="30" y="148" font-weight="700">部分-整体关系（靠时空同现"聚集"）</text>
+      </g>
+      <g filter="url(#rough2)">
+        <rect x="60" y="46" width="140" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="310" y="46" width="140" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="560" y="46" width="140" height="42" rx="9" fill="var(--hl)" stroke="var(--red)" stroke-width="2.5"/>
+        <rect x="40" y="164" width="140" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="230" y="164" width="140" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="420" y="164" width="140" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="610" y="164" width="120" height="42" rx="9" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+      </g>
+      <g fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M200 67 L306 67" stroke-dasharray="7 6"/>
+        <path d="M450 67 L556 67" stroke-dasharray="7 6"/>
+        <path d="M180 185 L226 185"/>
+        <path d="M370 185 L416 185"/>
+        <path d="M560 185 L606 185"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="130" y="72" font-size="15">动物</text>
+        <text x="380" y="72" font-size="15">狗</text>
+        <text x="630" y="72" font-size="15" fill="var(--red)" font-weight="700">牧羊犬</text>
+        <text x="110" y="190" font-size="15">手指</text>
+        <text x="300" y="190" font-size="15">手</text>
+        <text x="490" y="190" font-size="15">手臂</text>
+        <text x="670" y="190" font-size="15">躯体</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-soft)" text-anchor="middle">
+        <text x="253" y="58">是一种</text>
+        <text x="503" y="58">是一种</text>
+        <text x="203" y="176">组成</text>
+        <text x="393" y="176">组成</text>
+        <text x="583" y="176">组成</text>
+      </g>
+    </svg>
+    <figcaption>类属靠相似性汇集事物，部分-整体靠时空同现聚集事物；后者是转喻的基础<button type="button" class="cite" data-cite="assemble" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metonymy" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>原文细节：跳层、绕路与儿童</summary>
+    <p>民间分类三特征：有缺层、非一致性、有可选路径——狗和猫同时拥有"哺乳动物"和"动物"两个上位。<button type="button" class="cite" data-cite="folkFeat" aria-label="查看出处"></button></p>
+    <p>昆虫通常不被看作甲虫的自然上位；鸟和鱼在很多使用者心里也不是动物的下位，只好另找 CREATURE，而它又有圣经联想。<button type="button" class="cite" data-cite="insectSuper" aria-label="查看出处"></button><button type="button" class="cite" data-cite="birdFish" aria-label="查看出处"></button><button type="button" class="cite" data-cite="creatureBible" aria-label="查看出处"></button></p>
+    <p>儿童长期拒绝"马既是一匹马，同时也是一个动物"；反过来，部分-整体关系以身体经验为基础，连孩子都觉得自然而然。<button type="button" class="cite" data-cite="childrenTax" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partBody" aria-label="查看出处"></button></p>
+    <p>厨房既能概念化为一种房间，也能概念化为房子的一部分——想到客厅、卧室、厨房，就自然会联系到"房子"这个整体；the university needs more clever heads 这类转喻，正以"脑袋是身体的一部分"为基础。<button type="button" class="cite" data-cite="kitchenBoth" aria-label="查看出处"></button><button type="button" class="cite" data-cite="houseRoom" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metonymy" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">两条路都能建层级，日常用法在两条路之间来回横跳。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 寄生借用</button>
+    <button class="btn" data-jump="s6">下一场：复合词 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>复合词实验室</h2>
+  </div>
+  <p class="point">传统分析把复合词看作"修饰语＋中心语"；<button type="button" class="cite" data-cite="modHead" aria-label="查看出处"></button>认知实验却发现属性常来自"错"的那一半：apple juice 大半属性借自果汁，coat collar 反倒借自大衣。<button type="button" class="cite" data-cite="appleJuice" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coatCollar" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：选一个复合词，点它的属性看来源</p>
+    <div class="legend">
+      <span><i class="l-head"></i>借自中心语</span>
+      <span><i class="l-mod"></i>借自豪修饰语</span>
+      <span><i class="l-both"></i>两边共有</span>
+      <span><i class="l-spec"></i>特有属性</span>
+      <span><i class="l-new"></i>非派生 / 额外范畴</span>
+    </div>
+    <div class="btn-row" id="s6chips"></div>
+    <p class="feedback" id="s6type"></p>
+    <div class="btn-row" id="s6attrs"></div>
+    <p class="feedback" id="s6fb">先选复合词，再点属性。</p>
+    <p style="font-size:.82rem;color:var(--ink-soft);margin-bottom:2px">自立程度：从寄生依赖到自立门户<span class="tag" data-label="示意">示意</span></p>
+    <div class="meter"><i id="s6meter"></i></div>
+    <p class="feedback" id="s6foot" style="margin-top:4px"></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">APPLE JUICE 的属性从两边流进来（据原著图 2.12 演绘）<span class="tag" data-label="示意">示意</span></p>
+    <svg viewBox="0 0 760 300" role="img" aria-label="苹果汁属性来源图：多数属性借自果汁，少量借自苹果，另有共有与非派生属性">
+      <g filter="url(#rough2)">
+        <rect x="24" y="30" width="180" height="180" rx="12" fill="color-mix(in srgb,var(--blue) 8%,var(--card))" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="556" y="30" width="180" height="96" rx="12" fill="color-mix(in srgb,var(--red) 8%,var(--card))" stroke="var(--ink)" stroke-width="2"/>
+        <ellipse cx="380" cy="120" rx="92" ry="66" fill="var(--hl)" stroke="var(--ink)" stroke-width="2.5"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">
+        <text x="114" y="56" text-anchor="middle" font-size="15" font-weight="800">JUICE 果汁</text>
+        <text x="114" y="78" text-anchor="middle" font-size="11" fill="var(--ink-soft)">（中心语）</text>
+        <text x="114" y="106" text-anchor="middle" font-size="12">液体</text>
+        <text x="114" y="128" text-anchor="middle" font-size="12">无酒精</text>
+        <text x="114" y="150" text-anchor="middle" font-size="12">解渴</text>
+        <text x="114" y="172" text-anchor="middle" font-size="12">瓶装或纸盒装</text>
+        <text x="114" y="194" text-anchor="middle" font-size="12">用玻璃杯供应</text>
+        <text x="646" y="56" text-anchor="middle" font-size="15" font-weight="800">APPLE 苹果</text>
+        <text x="646" y="78" text-anchor="middle" font-size="11" fill="var(--ink-soft)">（修饰语）</text>
+        <text x="646" y="104" text-anchor="middle" font-size="12">黄色或类黄色</text>
+        <text x="646" y="126" text-anchor="middle" font-size="12">水果味的</text>
+        <text x="380" y="114" text-anchor="middle" font-size="16" font-weight="800" fill="var(--ink)">APPLE</text>
+        <text x="380" y="134" text-anchor="middle" font-size="16" font-weight="800" fill="var(--ink)">JUICE</text>
+      </g>
+      <g fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M206 120 L284 120"/>
+        <path d="M556 84 L470 104"/>
+        <path d="M556 140 L470 140" stroke="var(--red)" stroke-width="3.5"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" font-size="11" fill="var(--ink-soft)">
+        <text x="245" y="110" text-anchor="middle">多数属性</text>
+        <text x="513" y="92" text-anchor="middle">少数属性</text>
+        <text x="513" y="160" text-anchor="middle" fill="var(--red)" font-weight="700">特有：用苹果制作</text>
+        <text x="380" y="222" text-anchor="middle">共有：味甜或酸甜 · 有益于健康 · 味道好</text>
+        <text x="380" y="248" text-anchor="middle">非派生：自然浑浊 · 与苏打水混合</text>
+      </g>
+    </svg>
+    <figcaption>苹果汁的属性大多借自果汁；与苹果的联系先由"用苹果制作"建立，合计可能多达五项<button type="button" class="cite" data-cite="appleJuice" aria-label="查看出处"></button><button type="button" class="cite" data-cite="appleFive" aria-label="查看出处"></button><span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+
+  <details>
+    <summary>原文细节：谁压倒谁，谁升了格</summary>
+    <p>外衣领子的属性大半与"外衣"挂钩：保暖、防风防雨防雪、冬天穿着；与"领子"只共享材料，最显著的私有属性是"容易弄脏"。<button type="button" class="cite" data-cite="coatCollar" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coatAttrs" aria-label="查看出处"></button></p>
+    <p>雨衣更极端：它与"雨"的共同点（湿、水、暴雨强风、冷而坏的天气）比与"外衣"多得多——它是"雨"这个综合认知模型的组成部分，不是大衣的一种。<button type="button" class="cite" data-cite="raincoat" aria-label="查看出处"></button><button type="button" class="cite" data-cite="rainModel" aria-label="查看出处"></button></p>
+    <p>轮椅的大量属性不借自轮子和椅子，而来自残疾人、医院、引擎、车闸等额外范畴；报纸、飞机已升格为基本层次，常缩成 paper、plane。<button type="button" class="cite" data-cite="wheelchair" aria-label="查看出处"></button><button type="button" class="cite" data-cite="wheelchairModels" aria-label="查看出处"></button><button type="button" class="cite" data-cite="newBasic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dropFirst" aria-label="查看出处"></button></p>
+    <p>形式输给经验：黑板如今多是绿的；假日（holy+day）也用来指非宗教的非工作日。<button type="button" class="cite" data-cite="blackboard" aria-label="查看出处"></button><button type="button" class="cite" data-cite="holiday" aria-label="查看出处"></button></p>
+    <p>雏菊来自 day's eye，蒲公英来自法语的"狮子的牙"：所谓单纯下位词，其实藏着个没出场的中心语；quarter、dime 则是一美元的分数。<button type="button" class="cite" data-cite="daisy" aria-label="查看出处"></button><button type="button" class="cite" data-cite="quarter" aria-label="查看出处"></button></p>
+    <p>饭馆里 two apples 就是两杯苹果汁——文化模型把没出场的中心语补上了。玫瑰却是例外：单纯词，却接近基本层次。从 25 美分、蒲公英（明显下位）到卷毛狗、雏菊（不那么明显）再到玫瑰（接近或实际属于基本层次），本是渐变；使用者还能并列使用几个相互竞争的基本层次——牛仔裤与裤子、飞机与喷气机就在竞争中共存。<button type="button" class="cite" data-cite="restaurant" aria-label="查看出处"></button><button type="button" class="cite" data-cite="roseEx" aria-label="查看出处"></button><button type="button" class="cite" data-cite="gradation" aria-label="查看出处"></button><button type="button" class="cite" data-cite="compete" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coexist" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">源范畴越多，单个源范畴越轻——脚手架拆掉时，新范畴自立门户。<button type="button" class="cite" data-cite="scaffold" aria-label="查看出处"></button></p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 缺层</button>
+    <button class="btn" data-jump="s7">下一场：五种经验 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>行为、事件、特性、状态、处所</h2>
+  </div>
+  <p class="point">不只有物体分层：吃和撒谎能建原型范畴，早餐把物体和行为焊成事件，颜色靠物体特征被体验，位置关系是直接来自身体的意象图式。<button type="button" class="cite" data-cite="eatProto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="event" aria-label="查看出处"></button><button type="button" class="cite" data-cite="colorObj" aria-label="查看出处"></button><button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></p>
+
+  <div class="card taped">
+    <p class="bench-label">实验台：把例子点到正确的类里（先点例子，再点类别）</p>
+    <div class="btn-row" id="s7items"></div>
+    <div class="btn-row" id="s7cats"></div>
+    <p class="scoreline" id="s7score">已答对 0 题</p>
+    <p class="feedback" id="s7fb">点一个例子开始。</p>
+  </div>
+
+  <details>
+    <summary>原文细节：五类经验各有过硬证据</summary>
+    <p><strong>行为</strong>：Rosch 为基本层次加的三条标准——"丰富的相互联系的属性集束"、"构建为原型范畴"、"很强的完形感知潜力"——对行为同样可行。<button type="button" class="cite" data-cite="roschCriteria" aria-label="查看出处"></button>Coleman 和 Kay 给"撒谎"定了三条标准——事实上假、信念上假、有欺骗意图；符合全部三条的实例（孩子否认吃了蛋糕）就是原型。"吃"的属性（拿起、张嘴、咬、嚼、咽）几乎为它独有，咬嚼咽还是"吃"的组成部分。<button type="button" class="cite" data-cite="lieDims" aria-label="查看出处"></button><button type="button" class="cite" data-cite="lieProto" aria-label="查看出处"></button><button type="button" class="cite" data-cite="eatAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="eatStages" aria-label="查看出处"></button></p>
+    <p>"杀"的原型是"用枪射死"，被试为它列举举枪、瞄准、开枪、搏斗、倒下、流血这一串属性；CAUSE（致使）、BECOME（变成）这类宽泛动词更像上位行为范畴，靠寄生范畴化回到杀、投、放这些基本行为。<button type="button" class="cite" data-cite="kill" aria-label="查看出处"></button><button type="button" class="cite" data-cite="killAttrs" aria-label="查看出处"></button><button type="button" class="cite" data-cite="causeSuper" aria-label="查看出处"></button></p>
+    <p>英语几乎不用动词复合词，跛行、缓行、漫步这些"下位"反而接近基本层次，和玫瑰一个地位。<button type="button" class="cite" data-cite="walkSub" aria-label="查看出处"></button></p>
+    <p><strong>事件</strong>：早餐把面包、黄油、刀、勺、杯、桌、椅和吃、喝、切、涂组合成复杂的基本层次范畴；它的上位"餐"结构贫乏，而"开胃菜—主菜—甜点"的部分-整体比类属更重要。<button type="button" class="cite" data-cite="event" aria-label="查看出处"></button><button type="button" class="cite" data-cite="eventSuper" aria-label="查看出处"></button><button type="button" class="cite" data-cite="mealPart" aria-label="查看出处"></button></p>
+    <p><strong>特性</strong>：深红、鲜红、朱红是"红"的可识别色调，樱桃红、砖红更直接把颜色挂到物体上；"高"的样本合格性等级靠与名词搭配排出；酸甜辣咸直接连着舌头上的感受器。<button type="button" class="cite" data-cite="colorWords" aria-label="查看出处"></button><button type="button" class="cite" data-cite="colorObj" aria-label="查看出处"></button><button type="button" class="cite" data-cite="tall" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sensory" aria-label="查看出处"></button></p>
+    <p><strong>状态与处所</strong>：be、exist、resemble、contain 带静态意义；in、up、out、off 这类介词意义增殖，Lakoff 认为位置关系是直接来自身体经验的基本意象图式。<button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></p>
+    <p>本章小结：行为层级里有一个心理突显的基本层次，其他层次发展得不那么完全，下位范畴往往表示行为的不同阶段或组成部分，而不是行为的次类。<button type="button" class="cite" data-cite="summary25" aria-label="查看出处"></button></p>
+  </details>
+
+  <p class="scene-foot">行为、事件可以像物体一样分层；特性和位置关系，更像另一种基本经验。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 复合词</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>1. 为什么"狗"比"动物"或"牧羊犬"更适合当中性语境的第一反应？</h3>
+    <details><summary>看答案</summary>
+      <p>狗是折中方案：各种狗彼此相像，又与猫狮有别；有共同完形形状；有真正带区别特征的行为；属性集束最多、认知最经济；而且名字最短，孩子最先学。<button type="button" class="cite" data-cite="dogCompromise" aria-label="查看出处"></button><button type="button" class="cite" data-cite="factorShape" aria-label="查看出处"></button><button type="button" class="cite" data-cite="factorAct" aria-label="查看出处"></button><button type="button" class="cite" data-cite="attrBundle" aria-label="查看出处"></button><button type="button" class="cite" data-cite="kidsFirst" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>2. 什么叫寄生范畴化？书里有哪些例子？</h3>
+    <details><summary>看答案</summary>
+      <p>非基本层次向基本层次"借"完形和属性：说明水果就画橙子香蕉；家具连一个共有属性都列不出，大量属性借自椅子、桌子；蒲公英的属性清单比基本层次还细，大半却是从"花"借的。<button type="button" class="cite" data-cite="parasitic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="furnitureNoAttr" aria-label="查看出处"></button><button type="button" class="cite" data-cite="subBorrow" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>3. coat collar 和 apple juice 的属性来源为什么相反？</h3>
+    <details><summary>看答案</summary>
+      <p>apple juice 是类属复合词，属性主要借自中心语"果汁"；coat collar 是部分-整体复合词——领子首先是大衣的部件，属性大半借自第一个成分"大衣"。前者中心语支配，后者修饰语压倒。<button type="button" class="cite" data-cite="appleJuice" aria-label="查看出处"></button><button type="button" class="cite" data-cite="coatCollar" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partWholeComp" aria-label="查看出处"></button></p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>基本层次三因素：感知差异最明显、共同完形形状、真正带区别特征的行为；属性集束最多，认知最经济。<button type="button" class="cite" data-cite="factorDiff" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cogEcon" aria-label="查看出处"></button></li>
+    <li>共生两原则：原型范畴在基本层次上发展最完全；基本层次因像原型范畴而获得功能。<button type="button" class="cite" data-cite="symbiotic" aria-label="查看出处"></button></li>
+    <li>属性计数：苹果等基本层次平均 8 个、水果 3 个；车公交卡车合计 12 个、交通工具只有 1 个。<button type="button" class="cite" data-cite="attrExp" aria-label="查看出处"></button></li>
+    <li>Tzeltal 账本：科学 13 层只留 5 层；属层次至少 471 个范畴，生命形式 4 个；属层次包含度 75%，97 个（20%）非隶属类。<button type="button" class="cite" data-cite="tzeltal5" aria-label="查看出处"></button><button type="button" class="cite" data-cite="generic471" aria-label="查看出处"></button><button type="button" class="cite" data-cite="incl75" aria-label="查看出处"></button><button type="button" class="cite" data-cite="nonAffil" aria-label="查看出处"></button></li>
+    <li>上位范畴：无共同形状，靠寄生范畴化借完形与属性；功能是凸显与汇集（vehicle/toy；TOY 汇球与秋千）。<button type="button" class="cite" data-cite="superNoShape" aria-label="查看出处"></button><button type="button" class="cite" data-cite="collectFn" aria-label="查看出处"></button></li>
+    <li>下位范畴：清单更细但大半是借的，特有属性才立得住（锯齿叶之于蒲公英）；蒲公英和硬币分不出好差样本。<button type="button" class="cite" data-cite="subBorrow" aria-label="查看出处"></button><button type="button" class="cite" data-cite="serrated" aria-label="查看出处"></button><button type="button" class="cite" data-cite="noProtoSub" aria-label="查看出处"></button></li>
+    <li>民间层级三特征：缺层、非一致性、可选路径；狗猫的直接上位是动物而非哺乳动物。<button type="button" class="cite" data-cite="folkFeat" aria-label="查看出处"></button><button type="button" class="cite" data-cite="mammalSuper" aria-label="查看出处"></button></li>
+    <li>两条层级路：类属（相似性汇集）与部分-整体（时空同现聚集，身体经验为基础，转喻的基础）。<button type="button" class="cite" data-cite="assemble" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partBody" aria-label="查看出处"></button><button type="button" class="cite" data-cite="metonymy" aria-label="查看出处"></button></li>
+    <li>复合词两型：类属复合词属性借自中心语（apple juice），部分-整体复合词借自修饰语（coat collar、shoelace）。<button type="button" class="cite" data-cite="partWholeComp" aria-label="查看出处"></button></li>
+    <li>升格通道：轮椅借残疾人医院等额外范畴；报纸飞机已成基本层次并缩称；脚手架拆掉即自立。<button type="button" class="cite" data-cite="wheelchairModels" aria-label="查看出处"></button><button type="button" class="cite" data-cite="newBasic" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scaffold" aria-label="查看出处"></button></li>
+    <li>行为可分三层但下位常表阶段（咬嚼咽是吃的组成部分）；事件是物体＋行为的熔合；特性靠物体与搭配；位置关系是意象图式。<button type="button" class="cite" data-cite="eatStages" aria-label="查看出处"></button><button type="button" class="cite" data-cite="event" aria-label="查看出处"></button><button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>基本层次范畴</strong>：层级中间层，属性集束最多、有共同形状与标志行为（狗、椅子）。<button type="button" class="cite" data-cite="attrBundle" aria-label="查看出处"></button></li>
+    <li><strong>属层次 / 生命形式</strong>：Tzeltal 民间分类的中间层与其上位；属层次至少 471 个范畴，生命形式只有 4 个名字。<button type="button" class="cite" data-cite="generic471" aria-label="查看出处"></button></li>
+    <li><strong>种类包含 / 类属关系</strong>：上位类包括下位全部项目；从下往上看即"是一种"。<button type="button" class="cite" data-cite="classIncl" aria-label="查看出处"></button></li>
+    <li><strong>认知经济性</strong>：以最小认知努力取得关于一个项目的最大信息量。<button type="button" class="cite" data-cite="cogEcon" aria-label="查看出处"></button></li>
+    <li><strong>寄生范畴化</strong>：非基本层次从基本层次借完形与属性。<button type="button" class="cite" data-cite="parasitic" aria-label="查看出处"></button></li>
+    <li><strong>凸显功能 / 汇集功能</strong>：下位强调特有属性；上位把大量范畴汇到一个标签之下。<button type="button" class="cite" data-cite="highlightFn" aria-label="查看出处"></button><button type="button" class="cite" data-cite="collectFn" aria-label="查看出处"></button></li>
+    <li><strong>部分-整体层级（分体层级）</strong>：手指-手-手臂-躯体；靠时空同现聚集，以身体经验为基础。<button type="button" class="cite" data-cite="partWhole" aria-label="查看出处"></button><button type="button" class="cite" data-cite="partBody" aria-label="查看出处"></button></li>
+    <li><strong>类属复合词 / 部分-整体复合词</strong>：apple juice 型（中心语支配）/ coat collar 型（修饰语支配）。<button type="button" class="cite" data-cite="partWholeComp" aria-label="查看出处"></button></li>
+    <li><strong>意象图式</strong>：直接来自日常身体经验的基本认知结构（里-外、上-下）。<button type="button" class="cite" data-cite="imageSchema" aria-label="查看出处"></button></li>
+    <li><strong>混合词</strong>：motel、heliport 一类，两个认知范畴的交叉被象似地表达出来。<button type="button" class="cite" data-cite="blends" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学导论》第 2 版第二章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键数字与规则，请点开角标对一下原句。本页仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 可离线双击打开</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"文件头",quote:"本文件由 PaddleOCR-VL-1.6 转录的电子书 OCR 文本轻量清理而成，保留原书正文",zh:"《认知语言学导论》第 2 版 OCR 转录稿（作者：弗里德里希·温格瑞尔等）"},
+  folkTax:{page:"2.1",quote:"所谓的民间分类法认为，我们以中心部分为起点得到不同的分类层级，我们把注意力集中在狗和汽车这样的基本层次范畴上，而分类的层级也以这种基本层次范畴作为基点",zh:"民间分类以基本层次范畴为基点"},
+  hierDog:{page:"2.1",quote:"狗被看作是小猎犬的上位概念，小猎犬又是苏格兰小猎犬和斗牛犬的上位概念；在另一个方向上，狗被认为是哺乳动物的下位概念，哺乳动物又是动物的下位概念",zh:"同一动物可归入四个上下位范畴"},
+  classIncl:{page:"2.1",quote:"存在于这种等级结构中的原则，是种类包含(class inclusion)概念，它认为，上位类包括下位层次的所有项目",zh:"种类包含：上位类包括下位层次所有项目"},
+  typeOf:{page:"2.1",quote:"如果从下往上看，种类包含看起来像是一种类属关系(type-of relationship)：小猎犬是一种狗，狗是一种哺乳动物，哺乳动物是一种动物",zh:"从下往上看即类属关系"},
+  linnaeus:{page:"2.1",quote:"科学分类法的最好的实例是以18世纪中期瑞典植物学家Linnaeus(Carl von Linné)的建议为基础的植物和动物的分类……今天已形成一个非常复杂的，具有13个主要的普遍性层次的系统",zh:"Linnaeus 科学分类有 13 个主要普遍性层次"},
+  roget:{page:"2.1",quote:"Mark Roget 在他初版于 1852 年，现在还在广泛使用的《英语词和短语辞典》里提出的分类法……世界的知识被分为六个“类”，这些类又严格地依次分成门、目和更下位的类",zh:"Roget 1852 年辞典把知识分为六个类"},
+  sciLayers:{page:"2.1",quote:"一般来讲，建立这种科学分类法的唯一目的，在于将现有的“物体”，即世界上发现的两百多万种动物和植物，或一种语言的数十万个词语进行分类",zh:"科学分类层次多到要覆盖两百多万种动植物"},
+  sciObj:{page:"2.1",quote:"与这种主观判断相反，科学分类追求尽可能的客观；它们并不对被分类的一个项目或某一分类层次有所偏好",zh:"科学分类追求客观，不偏好任何层次"},
+  dogNatural:{page:"2.1",quote:"就壁炉前小地毯上的生物来说，最自然选择的认知范畴可能是DOG（狗），而不是SCOTCH TERRIER（苏格兰小猎犬）或者ANIMAL（动物），更不用说MAMMAL（哺乳动物）了",zh:"中性语境里最自然的范畴是狗"},
+  carCrash:{page:"2.1",quote:"人们描写交通事故时，可能这样开场：“两辆车（cars）相撞。”而不会说“两个交通工具”，或“一辆旅行车和一辆吉普车”",zh:"交通事故开场用基本层次词"},
+  kidsFirst:{page:"2.1",quote:"孩子最先学的，也是狗、猪、汽车、卡车等中间层次的范畴名称，在层级中，这些名称通常也是最短的，使用也最频繁（Brown 1958，1965）",zh:"孩子最先学中间层名称：最短、最频繁"},
+  tzeltal5:{page:"2.1",quote:"除了明显地降低了分类上的复杂性以外（在科学分类的 13 个主要层次当中，在 Tzeltal 植物分类中只保留了 5 个）",zh:"Tzeltal 植物分类只保留 5 个层次"},
+  generic471:{page:"2.1",quote:"图 2.2 中最引人注目的是所谓的属层次(generic level)的多数地位，这个层次总共至少包含了 471 个范畴。相反，上位范畴，即所谓“生命形式”(第二层次)项目的数量却少得可怜，仅包含了 4 种植物的名称",zh:"属层次至少 471 个范畴，生命形式仅 4 个名字"},
+  pineName:{page:"2.1",quote:"因此，某种松树更可能被称为“松树”而不被称为“树”或“红松”",zh:"松树优先于树和红松"},
+  genericShort:{page:"2.1",quote:"还有，属层次范畴的Tzeltal语名称往往是很短而不可再分析的词位（lexeme），而更低的层次的名称一般由形容词+属名称组成，我们的英语翻译也是这样。比较一下“松树”和“红松”，或更复杂的例子，如，“豆”（属）、“扁豆”（种）和“黑扁豆”（变种）",zh:"属名短而不可分析，更低层是形容词＋属名"},
+  incl75:{page:"2.1",quote:"如图 2.2 所示，在各自的上位范畴里，范畴包含的程度为 100%，但属层次则是个显著的例外，其范畴包含程度只有 75%",zh:"属层次范畴包含程度只有 75%"},
+  nonAffil:{page:"2.1",quote:"属层次的 97 个范畴，或者说 20% 被发现是“非隶属类的”，这说明在 Tzeltal 人的眼里它们与任何上位层次的生命形式都没有关系",zh:"97 个（20%）属范畴不隶属任何生命形式"},
+  cornBean:{page:"2.1",quote:"比如说，这些实例中就有玉米和豆，当然，它们也正是 Tzeltal 人食谱中两个基本的成分",zh:"玉米和豆因文化重要性成为例外"},
+  genericCultural:{page:"2.1",quote:"就如 CORN(玉米)和 BEAN(豆)这种范畴所表明的那样，属层次之所以突显，最重要的似乎是因为它具有文化上的重要性；这种突显有时候甚至是植根于生物学上的需要",zh:"属层次突显靠文化重要性"},
+  factorDiff:{page:"2.1",quote:"第一，属层次或基本层次是我们感知世界上的生物体和物体之间最明显差异之所在",zh:"基本层次是感知差异最明显之处"},
+  factorShape:{page:"2.1",quote:"一是共同的整体形状，它被整体地感知，并被看作是完形感知的一种重要的指标（请看第一章1.2节）",zh:"基本层次有共同整体形状"},
+  factorAct:{page:"2.1",quote:"正如 Brown 提出的那样，生物体和物体只有在基本层次上才为真正带有区别特征的行为所标记。猫可以被抚摸，花可以闻到其气味，球可以滚动、弹跳",zh:"基本层次才有真正带区别特征的行为"},
+  dogCompromise:{page:"2.1",quote:"每一种狗显示出与其他种类的狗大量的相似性，但是所有的狗都因那些看似“狗性”的特征(吠叫、摇尾之类)而与猫、狮子等区别开来。换句话说，认知范畴DOG(狗)和基本层次在总体上通常“符合自然中最显著的离散性”(Kay 1971:878)",zh:"狗是折中方案，符合自然最显著的离散性"},
+  alsatianPedantic:{page:"2.1",quote:"例如，阿尔萨斯狗、牧羊狗、灰狗中所有的狗在高兴的时候都要摆尾巴，都吠叫，也都喜欢追赶猫和邮递员。因此区分这种范畴，可能看起来近乎迂腐",zh:"下位层次内部太像，区分近乎迂腐"},
+  animalDissimilar:{page:"2.1",quote:"而另一方面，上位范畴ANIMAL(动物)包括迥然不同的许多项目(大象、老鼠、鲸鱼)，它们之间的相似性的确很少",zh:"上位范畴成员间相似很少"},
+  attrBundle:{page:"2.1",quote:"基本层次是这样一种层次，在这个层次上，可得到最多的分类所需的自然地相互联系的属性集束（例如，所有表示“狗性”和“椅子特性”的属性）",zh:"基本层次的属性集束最多"},
+  chairTable:{page:"2.1",quote:"因此，所有种类的椅子（厨房椅子、客厅椅子、花园椅子）都会符合“有座位、有靠背、用于就座”这些属性。只有某些属性会为两个范畴所共有，例如“有腿”、“木制”（在图中这种属性以箭头连接），而大部分属性不是这样，这也反映了我们区分椅子和桌子时容易的程度",zh:"椅子桌子各有一套属性，仅少数共有"},
+  cogEcon:{page:"2.1",quote:"因此，可以这样说，基本层次是以最小的认知努力而能取得关于一个项目的最大量信息的地方。这种原则被称为认知经济性(cognitive economy)原则",zh:"认知经济性原则"},
+  shapeMammal:{page:"2.1",quote:"以MAMMAL（哺乳动物）为例，它没有适用于狗、大象、老鼠、鲸鱼的共同形状。由于哺乳动物这个范畴的成员不存在共同形状，当然就不能用以把哺乳动物与爬行动物和昆虫区别开来",zh:"哺乳动物没有共同形状"},
+  attrExp:{page:"2.1",quote:"基本层次范畴（APPLE（苹果）、PEACH（梨子）等）平均共有8个属性，而上位范畴FRUIT（水果）只有3个。CAR(汽车)、BUS(公共汽车)、TRUCK(卡车)(基本层次的属性总数是12个，而VEHICLE(交通工具)(上位范畴)只有一个共同属性",zh:"属性计数：苹果等 8 个、水果 3 个；车公交卡车合计 12 个、交通工具 1 个"},
+  bioBasic:{page:"2.1",quote:"正如结果所示，这些范畴的属性总数与MAPLE(枫树)、BIRCH(白桦树)、BASS(鲈鱼)、TROUT(鳟鱼)、EAGLE(鹰)、SPARROW(麻雀)等设想的基本层次范畴的属性平均总数一样高，因此TREE(树)、FISH(鱼)、BIRD(鸟)应该被看作是真正的基本层次范畴",zh:"树鱼鸟对美国学生是真正的基本层次"},
+  symbiotic:{page:"2.1",quote:"1. 原型范畴在基本层次上发展得最完全。2. 基本层次范畴之所以具有它们所具备的功能，是因为它们是像原型范畴那样构造的。",zh:"原型与基本层次共生两原则"},
+  superNoShape:{page:"2.2",quote:"首先，上位范畴最明显的缺点是，它没有共同整体形状，因此也就没有适用于所有成员的共同的内在完形",zh:"上位范畴没有共同整体形状"},
+  parasitic:{page:"2.2",quote:"你会从基本层次范畴包含的完形特征那儿“借”来上位范畴的完形特征",zh:"寄生范畴化：从基本层次借完形"},
+  furnitureNoAttr:{page:"2.2",quote:"实际上，就家具而言，Rosch的被试没有提出任何一个共有的属性",zh:"家具没有共有的属性"},
+  toyOneAttr:{page:"2.2",quote:"家族相似性原则的这种影响，对玩具这种上位范畴甚至更为重要，对于玩具，我们只能找到唯一的一个全范畴属性（我们的认为是“用于玩耍”）",zh:"玩具只有一个全范畴属性"},
+  gameNoAttr:{page:"2.2",quote:"Wittgenstein 的范畴 GAME（游戏）这个极端的例子就更不用说了，在这个实例中，甚至难以找到一个全范畴的属性",zh:"游戏连一个全范畴属性都找不到"},
+  superLang:{page:"2.2",quote:"上位范畴的许多词汇不是简单的单音节词，例如 FURNITURE（家具）、VEHICLE（交通工具）、MUSICAL INSTRUMENT（乐器）就不是简单的单音节词，而这类单音节词在基本层次范畴词汇中则占多数",zh:"上位词多非单音节"},
+  subGestalt:{page:"2.2",quote:"POODLE（卷毛狗）、TERRIER（小猎犬）、ROSE（玫瑰）之类的范畴具有可识别的完形，它们围绕原型组成，存在好成员和差成员，能汇集丰富的属性清单，并用简单的词表示",zh:"部分下位范畴有完形有原型"},
+  noProtoSub:{page:"2.2",quote:"的确，一般的语言使用者几乎不会试图去区分原型的蒲公英和雏菊和它们较不原型的范畴成员，不管是根据个体样本还是根据变种",zh:"蒲公英雏菊分不出好差样本"},
+  dimeNoProto:{page:"2.2",quote:"从自然物种转到人造物体，比如硬币，我们发现 DIME(10 美分)和 QUARTER(25 美分)这种下位范畴也不产生能易于跟那些更边缘的样本区别开来的原型。所有10美分硬币和25 美分硬币非常相像，都同样可以看作是这个范畴的好样本",zh:"硬币下位范畴也分不出原型"},
+  subDetail:{page:"2.2",quote:"Rosch 发现，被试在为这些范畴编制冗长的属性清单时没有困难，而且这些清单甚至比提供给基本层次范畴的属性清单更加详细",zh:"下位范畴属性清单更详细"},
+  subBorrow:{page:"2.2",quote:"正像 Rosch 自己观察到的那样，这些属性中只有一些属性对讨论中的下位范畴来说是特有的，而大多数属性与各自的基本范畴的属性一样",zh:"下位属性大半借自基本范畴"},
+  serrated:{page:"2.2",quote:"锯齿形叶子是蒲公英的特有的属性，而不是DAISY(雏菊)、ROSE(玫瑰)、TULIP(郁金香)属性清单的组成部分",zh:"锯齿叶是蒲公英特有属性"},
+  highlightFn:{page:"2.2",quote:"我们使用下位范畴的原因在于我们想强调或“凸显”(highlight)它们具有的特殊属性",zh:"下位范畴的功能是凸显"},
+  vehicleToy:{page:"2.2",quote:"只有“把人和物运往各处”、“用于玩耍”这两个属性生成了可自由使用的词汇",zh:"只有两个属性生成上位词"},
+  seater:{page:"2.2",quote:"只能用在某些搭配中，如a 30 - seater（一辆三十座）或a 6 - wheeler（一辆六轮）（似乎多用于货车或卡车）",zh:"seater、wheeler 只能进搭配"},
+  collectFn:{page:"2.2",quote:"正是在TOY（玩具）这种范畴身上，上位范畴的这种我们称之为汇集功能（collecting function）的巨大潜力变得真正明显起来：这种能力把大量范畴汇集在一个标签之下，并使得整个可及范畴的集合易于把握",zh:"上位范畴的汇集功能"},
+  collectSci:{page:"2.2",quote:"这种潜在能力已经用于科学的目的，而把众多项目汇集到一个共同的名目也已经成为科学工作的一个关键部分，这就一点也不足为奇了",zh:"汇集功能服务科学分类"},
+  folkFeat:{page:"2.3",quote:"概括一下普通的语言使用者所应用的词汇层级的认知观，人们可以说，这些“民间分类法”的特征是：有缺层、非一致性、有可选路径（即为DOG（狗）和CAT（猫）提供了MAMMEL（哺乳动物）和ANIMAL（动物）这两种上位范畴）",zh:"民间分类：缺层、非一致、可选路径"},
+  mammalSuper:{page:"2.3",quote:"但是，像一个规则，语言使用者会把ANIMAL（动物）而不是MAMMAL（哺乳动物）看作DOG（狗）和CAT（猫）的直接上位范畴",zh:"狗猫的直接上位是动物"},
+  insectSuper:{page:"2.3",quote:"同样，通常也不把INSECT（昆虫）看作是BEETLE（甲虫）的自然上位范畴，尽管可能更容易把它接受为FLY（苍蝇）、MOSQUITO（蚊子）、WASP（黄蜂）、BEE（蜜蜂）的上位范畴",zh:"昆虫不是甲虫的自然上位"},
+  birdFish:{page:"2.3",quote:"如果考虑到对很多语言使用者而言，BIRD（鸟）和FISH（鱼）不是ANIMAL（动物）的下位范畴，问题就变得更复杂",zh:"鸟鱼不是动物的下位（对很多使用者）"},
+  noAnimalWord:{page:"2.3",quote:"或者换句话说，在英语里，没有一个综合标记的范畴可用来表示相对于植物的“动物”",zh:"英语没有综合标记的动物上位范畴"},
+  creatureBible:{page:"2.3",quote:"因为CREATURE（生物）对许多语言使用者会产生圣经的联想（“上帝的创造物”），或者说，它至少突出创造性的一面，却牺牲了“动物性”的其他方面",zh:"CREATURE 有圣经联想"},
+  partWhole:{page:"2.3",quote:"没有人会否认，在手指与手、手与手臂、手臂与身体之间存在一种密切的联系，这种关系对其他身体部位也一样。同样，轮胎与轮子、轮子与小汽车（及汽车的其他部件）只是人工制品的众多的部分与整体关系中的一种",zh:"部分-整体关系无处不在"},
+  partBody:{page:"2.3",quote:"认知语言学关于部分-整体关系的观点强调，这些关系是以我们对自己的身体及其部位的熟悉程度为基础的，而这显然是一种基本经验",zh:"部分-整体以身体经验为基础"},
+  houseRoom:{page:"2.3",quote:"如果人们想到客厅、卧室和厨房，自然会把这些部分范畴与它们共同的“整体”，即房子这一范畴联系起来",zh:"房间部分-整体于房子"},
+  assemble:{page:"2.3",quote:"类的上位范畴以概念化了的相似关系为基础汇集（collect）事物，而部分-整体范畴则是以事物的概念化了的时间和空间上的同现关系为基础聚集（assemble）事物",zh:"类属汇集 vs 部分-整体聚集"},
+  childrenTax:{page:"2.3",quote:"因此，儿童难于理解类属关系，并长期拒绝接受马既是一匹马同时也是一个动物这种说法，也就一点也不足为奇了(Aitchison 2003:196以次)",zh:"儿童难以接受类属关系"},
+  metonymy:{page:"2.3",quote:"部分-整体联系是转喻必不可少的基础。一个像the university needs more clever heads(这个大学需要更多聪明的脑袋)这样的表达，显然是以脑袋是身体的一部分这种关系为基础的；在这里，部分用来“代”整体",zh:"部分-整体是转喻的基础"},
+  kitchenBoth:{page:"2.3",quote:"例如，随着说话场合的变化，厨房这一范畴既可以概念化为一种房间，也可以概念化为房子的一部分",zh:"厨房可类属可部分-整体"},
+  modHead:{page:"2.4",quote:"这些发现完全符合已被认可的构词法分析，这种分析把blackbird(黑鸟)这种复合词看作是第一个成分修饰第二个成分的修饰语-中心语结构",zh:"传统分析：修饰语-中心语"},
+  appleJuice:{page:"2.4",quote:"如图所示，被试为 APPLE JUICE（苹果汁）列出的大多数属性，也用来指中心词范畴 JUICE（果汁），其中就有“液体”，“无酒精”，“解渴”，“瓶装或纸盒装”，“用玻璃杯供应”（请看图2.12中的(a)）",zh:"苹果汁属性大多借自果汁"},
+  appleFive:{page:"2.4",quote:"这样，APPLE JUICE（苹果汁）这个下位范畴的属性中，可能有多至五个是来自苹果这个范畴的",zh:"多达五个属性来自苹果"},
+  coatCollar:{page:"2.4",quote:"COAT COLLAR（外衣领子）的属性清单中，大部分的属性项目与 COAT（外衣）（修饰语范畴）而不是与 COLLAR（领子）（中心语范畴）建立了联系",zh:"大衣领子属性多借自大衣"},
+  coatAttrs:{page:"2.4",quote:"除了突出的限定属性“外衣的组成部分”外（见图2.13里的(a)），大衣的领子用布料制作（这一属性也与 COLLAR（领子）共有），保暖、防风、防雨、防雪，穿着于冬天（见(b)）——所有这些属性都被看作是外衣和外衣领子二者的本质特性",zh:"领子的保暖防风等属性属于大衣"},
+  partWholeComp:{page:"2.4",quote:"从认知视角看，这种结果可以做部分-整体复合词（part-whole compounds）（相对于类属复合词（type-of compounds））",zh:"部分-整体复合词与类属复合词之分"},
+  raincoat:{page:"2.4",quote:"正如属性清单所示，雨衣和雨一般来讲都与湿、水、暴雨和强风、冷而坏的天气有联系。从数量上来看，RAINCOAT（雨衣）和“修饰语”范畴RAIN（雨）之间的属性重合，比RAINCOAT（雨衣）和“中心语”范畴COAT（外衣）之间的重合大得多",zh:"雨衣与雨的重合更大"},
+  rainModel:{page:"2.4",quote:"对于普通的语言使用者来说，RAINCOAT（雨衣）是RAIN（雨）这一综合认知模型的组成部分，而不是（其他大衣之外的）大衣的一种",zh:"雨衣是雨认知模型的组成部分"},
+  wheelchair:{page:"2.4",quote:"例如，就 WHEELCHAIR(轮椅)之类的项目而言，被试给这个范畴不只是列出了一些而实际上是列出了大量的属性，而这些属性都不是借自源范畴 WHEEL(轮子)和 CHAIR(椅子)的",zh:"轮椅大量属性不借自轮子椅子"},
+  wheelchairModels:{page:"2.4",quote:"因此，我们可以假设，在轮椅的范畴化中，在WHEEL（轮子）和CHAIR（椅子）以外，还涉及这些范畴（以及其他范畴）",zh:"轮椅借助残疾人医院等额外范畴"},
+  newBasic:{page:"2.4",quote:"但是这种情况已经发生在其他复合范畴身上，如NEWSPAPER(报纸)和 AIRPLANE(飞机)，二者现在一般都被公认为基本层次范畴，这一点表现为，被试显然不用考虑其他范畴，就能轻而易举地为它们提供大量的属性",zh:"报纸飞机升格为基本层次"},
+  dropFirst:{page:"2.4",quote:"从下位层次到基本层次地位的变化在语言上的反映，就是 newspaper(报纸)和 airplane(飞机)常常脱落第一个成分，同化成为 paper(纸)、plane(飞机)这样的基本层次范畴的简单形式，这是(motor)car(（马达）汽车)早就已经达到的阶段",zh:"报纸飞机常缩称为 paper、plane"},
+  blackboard:{page:"2.4",quote:"同样，blackboard(黑板)所指称的物体，如今更多是绿色的，而不是修饰成分所表示的黑色的",zh:"黑板如今多是绿色"},
+  holiday:{page:"2.4",quote:"holiday(假日)(源自holy+day)就是一个这样的著名的例子，它当然也用来指非宗教的非工作日",zh:"假日失去宗教义"},
+  daisy:{page:"2.4",quote:"词源分析表明，daisy（雏菊）是从“day's eye”（白天的眼睛）衍生出来的，指的是像太阳的花盘，而 dandelion（蒲公英）则来自法语的“狮子的牙”，显然是指它的叶子的锯齿形状",zh:"雏菊蒲公英的词源"},
+  quarter:{page:"2.4",quote:"再看看 quarter(25 美分硬币)和 dime(10 美分硬币)，我们发现这二者指的都是一美元的分数(dime源自拉丁语的 decimus，意为“十分之一”)，所以，通过建立一种转喻关系，与美元有关的价值就“代表”了那个硬币",zh:"硬币名来自一美元的分数"},
+  restaurant:{page:"2.4",quote:"在饭馆语境中，像 APPLE JUICE（苹果汁）或 LIGHT BEER（淡啤）这种下位范畴被表示为 two apples（两杯苹果）或 two lights（两杯淡的）",zh:"饭馆行话 two apples 指两杯苹果汁"},
+  roseEx:{page:"2.4",quote:"以ROSE(玫瑰)这个范畴为例：它很被认为是一个源自希腊语的单纯词，它有易于识别的完形和丰富的属性清单，因此，即使在逻辑上这个认知范畴是FLOWER(花)的下位概念，我们也试图承认它的基本层次地位",zh:"玫瑰是接近基本层次的例外"},
+  gradation:{page:"2.4",quote:"QUERTER(25美分)或者DANDELION（蒲公英）（或BLACK BEAN（黑豆）、BLACKBIRD（黑鸟）这样的合成词）显然被看作是其基本层次范畴的下位范畴，而POODLE（卷毛狗）、TERRIER（小猎犬）、DAISY（雏菊）可能就没那么明显，但是它们比ROSE（玫瑰）这种接近或实际上就属于基本层次的范畴则还要更处于下位层次",zh:"下位到基本层次是渐变"},
+  compete:{page:"2.4",quote:"普通的语言使用者好像完全能并列地使用几个相互竞争的基本层次范畴。DANDELION（蒲公英），也许还有DAISY（雏菊）依赖FLOWER（花）作为源范畴，但玫瑰则可以独立地范畴化（也可以充当各种玫瑰和类似于玫瑰的其他花的源范畴）",zh:"竞争的基本层次范畴并存"},
+  coexist:{page:"2.4",quote:"基本层次范畴之间相似的共存现象在其他领域里也可以观察得到，例如BUILDING（建筑）和HOUSE（房屋）之间、JEANS（牛仔裤）和TROUSERS（裤子）、PLANE（飞机）和JET（喷气式飞机）之间的共存",zh:"建筑房屋、牛仔裤裤子等共存"},
+  scaffold:{page:"2.4",quote:"用 Langecker 的隐喻来说，成分范畴和额外范畴充当了一种脚手架，当不再需要时，它就被拆除了",zh:"脚手架隐喻：盖好房子就拆"},
+  blends:{page:"2.4",quote:"从认知的角度看，复合过程在 motel(汽车旅馆)或 heliport(直升机机场)等混合词中能得到最好的反映，因为包含各种属性的两个认知范畴的交叉在这里可以象似地表达出来(Ungerer 1999:313以次)",zh:"混合词象似表达范畴交叉"},
+  lieDims:{page:"2.5",quote:"他们给认知范畴LIE（撒谎）选出的维度是：(a) 事实上的假（一句话语或命题是假的）（b） 信念的虚假（说话人相信这句话是假的）(c) 欺骗的意图（说出一句话的时候，说话人有意去欺骗听话人）",zh:"撒谎的三条标准"},
+  lieProto:{page:"2.5",quote:"这些故事与符合所有三种标准的原型实例形成对比，这个原型实例是，有一个孩子明目张胆地否认自己吃了蛋糕(实际上是她吃了)",zh:"撒谎的原型实例"},
+  roschCriteria:{page:"2.5",quote:"她的研究成果给基本层次范畴的定义至少加上了三条重要标准：“丰富的相互联系的属性集束”、“构建为原型范畴”、“很强的完形感知潜力”",zh:"行为范畴沿用的三条标准"},
+  eatAttrs:{page:"2.5",quote:"另外，我们不难收集很多几乎为这一认知范畴所独有的属性，如“从盘子里拿起食物”、“张开嘴巴”，“把食物放进嘴里”、“咬”、“嚼”、“咽”等",zh:"吃的属性清单"},
+  eatStages:{page:"2.5",quote:"例如“咬”，“嚼”，“咽”这些阶段可以看作是“吃”这种更复杂的行为的组成部分",zh:"咬嚼咽是吃的组成部分"},
+  eatProto:{page:"2.5",quote:"至于原型性，则有可能把＞EATING A SANDWICH（吃三明治）＜或＞EATING AN APPLE（吃苹果）＜这种较原型的实例、与＞BEING SPOONED BY ANOTHER PERSON（让他人用匙子喂）＜这种较不原型的实例及＞SIPPING SOUP WITH A STRAW（用吸管吸汤）＜（例如牙科手术之后）这种相当边缘的实例区分开来",zh:"吃的原型实例与边缘实例"},
+  kill:{page:"2.5",quote:"举第二个例子，KILL(杀)……也似乎符合所有的三个标准：在依赖媒体的西方社会里，这个范畴的原型实例可能是>SHOOTING DEAD(WITH A GUN)(（用枪）射死）<，它也可以充当这一行为的完形意象的基础",zh:"杀的原型是用枪射死"},
+  killAttrs:{page:"2.5",quote:"被试可能列举的 KILL(杀)的属性包括：举起枪或相似的武器、瞄准、开枪以及电影里熟悉的其他行为，如搏斗、打、倒下、翻倒、流血",zh:"杀的属性清单"},
+  causeSuper:{page:"2.5",quote:"我们认为，可以把像cause(致使)或become(变成)这样的动词看作是表征了上位行为范畴，因为他们的主要功能是突显一种非常宽泛的属性，而这些属性则又是一系列基本层次行为范畴的组成部分",zh:"cause、become 是上位行为范畴"},
+  walkSub:{page:"2.5",quote:"LIMP(跛行)、AMBLE(缓行)、WANDER(漫步)之类的许多行为范畴似乎都拥有相当于 ROSE(玫瑰)的那种地位，这使得他们接近基本层次，而不是我们所预期的那样，来自严格意义上的下位范畴",zh:"跛行缓行接近基本层次"},
+  event:{page:"2.5",quote:"范畴BREAKFAST（早餐）把基本层次物体范畴（如BREAD（面包）、BUTTER（黄油）、KNIFE（刀子）、SPOON（匙子）、CUP（杯子）、TABLE（桌子）、CHAIR（椅子））和基本层次行为范畴（如EAT（吃）、DRINK（喝）、CUT（切）、SPREAD（涂））组合了起来，因此可以看作是复杂的基本层次范畴",zh:"早餐熔合物体范畴和行为范畴"},
+  eventSuper:{page:"2.5",quote:"至于有关的(类属关系)上位范畴 MEAL（餐）、ENTERTAINMENT（娱乐）、HYGIENIC ACTIVITY（卫生活动）和 CRIME（犯罪），它们的范畴结构则贫乏得多",zh:"事件的上位范畴结构贫乏"},
+  mealPart:{page:"2.5",quote:"MEAL（餐）与STARTER（开味菜）、MAIN COURSE（主菜）及DESSERT（甜点）之间、PARTY（聚会）与WELCOMING（欢迎）、SMALL TALK（聊天）、BUFFET MEAL（冷餐）、DRINKING（喝）、DANCING（跳舞）及FAREWELL（告别）之间的整体与部分关系在范畴化中比任何类属关系都显得更重要",zh:"事件里部分-整体胜过类属"},
+  colorWords:{page:"2.5",quote:"crimson（深红）、purple（紫）、scarlet（鲜红）、vermilion（朱红）之类的词都是指RED(红)的可识别的色调；这样的例子还有 cherry(樱桃红)和复合词 brick-red(砖红)",zh:"颜色词指红的可识别色调"},
+  colorObj:{page:"2.5",quote:"正如最后两个例子所示，RED(红)的种类往往是作为某种物体的特征来识别的，例如樱桃的特征和红砖的特征",zh:"颜色作为物体特征被体验"},
+  tall:{page:"2.5",quote:"正如两位学者所看到的那样，TALL(高)的结构，是它与某些名词的搭配问题。正是在搭配的基础上，Rosch 的样本合格性等级排定程序才能应用到高度这种形容词性的特征上",zh:"高的结构靠与名词搭配"},
+  sensory:{page:"2.5",quote:"举一些更显而易见的例子，如，我们可以建立“甜”、“酸”、“辣”和“咸”等特征与我们舌头上的各个生理感受器之间的联系，建立“温暖”、“冷”等特征和皮肤上感知温度的感受器官之间的联系",zh:"特性连着感官感受器"},
+  imageSchema:{page:"2.5",quote:"他认为，这些位置关系应该看作基本意象图式(image schema)，而这种意象图式是直接来自日常的身体经验的(Lakoff 1987: 267; 又见 4.1 节)",zh:"位置关系是基本意象图式"},
+  summary25:{page:"2.5",quote:"在这个层级中存在一个心理突显的行为范畴的基本层次……下位范畴往往表示行为的不同阶段或组成部分，而不是行为的次类",zh:"行为层级的小结"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序，可重复调用以覆盖动态插入的角标） */
+const citeNo={};
+function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+}
+numberCites();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第二章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：四层范畴树 ================= */
+(function(){
+  const levels={
+    lvAnimal:{name:"动物 ANIMAL",html:"成员相差太远：大象、老鼠、鲸鱼，彼此相似很少；没有共同形状；名字最概括。",cites:["animalDissimilar","shapeMammal"]},
+    lvMammal:{name:"哺乳动物 MAMMAL",html:"突出“产自母体的子宫”“喂以来自母亲身体的乳汁”这类宽泛属性；狗和猫更常把“动物”当作直接上位。",cites:["mammalSuper"]},
+    lvDog:{name:"狗 DOG",html:"基本层次：各种狗彼此相像，又因吠叫、摇尾与猫狮有别；属性集束最多，名字最短，孩子最先学。",cites:["dogCompromise","kidsFirst","attrBundle"]},
+    lvTerrier:{name:"牧羊犬 COLLIE",html:"下位层次：和灰狗、阿尔萨斯狗都摆尾巴、都吠叫、都追猫和邮递员，区分近乎迂腐。",cites:["alsatianPedantic"]}
+  };
+  const fb=$("#s1fb");
+  Object.keys(levels).forEach(id=>{
+    const g=document.getElementById(id);
+    if(!g) return;
+    g.style.cursor="pointer";
+    g.addEventListener("click",()=>{
+      const L=levels[id];
+      $$("#s1tree .lv rect").forEach(r=>{r.setAttribute("stroke","var(--ink)");r.setAttribute("stroke-width","2");});
+      const rect=g.querySelector("rect");
+      rect.setAttribute("stroke","var(--red)");rect.setAttribute("stroke-width","3.5");
+      let html="<strong>"+L.name+"</strong>："+L.html;
+      L.cites.forEach(c=>{html+="<button type='button' class='cite' data-cite='"+c+"' aria-label='查看出处'></button>";});
+      fb.innerHTML=html;
+      numberCites();
+    });
+  });
+})();
+
+/* ================= 场景二：猜数量 + 对比条 ================= */
+(function(){
+  const slider=$("#s2guess"),out=$("#s2out");
+  slider.addEventListener("input",()=>{out.textContent=slider.value;});
+  $("#s2reveal").addEventListener("click",()=>{$("#s2rev").hidden=false;});
+  const notes={
+    barSci:"原著说科学分类“包含的层次简直太多了”——为把两百多万种动植物和数十万词语塞进去，只能不断加层。",
+    barTz:"Tzeltal 民间分类只保留 5 个层次，复杂性明显降低。",
+    barGen:"属层次至少 471 个范畴：数量最多、名称最短、最先出现在脑子里。",
+    barLife:"“生命形式”（第二层次）只有 4 种植物的名称，少得可怜。"
+  };
+  const fb=$("#s2fb");
+  Object.keys(notes).forEach(id=>{
+    const g=document.getElementById(id);
+    if(g) g.addEventListener("click",()=>{fb.textContent=notes[id];});
+  });
+})();
+
+/* ================= 场景三：猜属性数 ================= */
+(function(){
+  const a=$("#s3gA"),oa=$("#s3oA"),b=$("#s3gB"),ob=$("#s3oB");
+  a.addEventListener("input",()=>{oa.textContent=a.value;});
+  b.addEventListener("input",()=>{ob.textContent=b.value;});
+  $("#s3reveal").addEventListener("click",()=>{$("#s3rev").hidden=false;});
+})();
+
+/* ================= 场景四：家具的属性从哪来 ================= */
+(function(){
+  const data=[
+    {t:"大而可移动的物体",s:"new",note:"家具自己为数不多的直接属性之一（宽泛到不值一提）。"},
+    {t:"使房子适于生活",s:"new",note:"同上，另一个直接来自“家具”的属性。"},
+    {t:"有腿",s:"both",note:"椅子和桌子共有——所以你觉得它“很多家具都有”。"},
+    {t:"有靠背",s:"head",note:"借自基本层次范畴“椅子”。"},
+    {t:"用于就坐",s:"head",note:"借自“椅子”，是它最核心的属性之一。"},
+    {t:"有上平面",s:"head",note:"借自基本层次范畴“桌子”。"},
+    {t:"用于在上边吃",s:"head",note:"同样借自“桌子”（原著图 2.5）。"}
+  ];
+  const name={head:"借自基本层次（中心语一侧的成员范畴）",mod:"借自修饰语",both:"几个成员范畴共有",spec:"特有属性",new:"直接来自家具自己"};
+  const box=$("#s4attrs"),fb=$("#s4fb");
+  data.forEach(d=>{
+    const b=document.createElement("button");
+    b.className="attrchip s-"+d.s;b.textContent=d.t;
+    b.addEventListener("click",()=>{
+      $$(".attrchip",box).forEach(x=>x.classList.remove("sel"));
+      b.classList.add("sel");
+      fb.textContent="“"+d.t+"”："+name[d.s]+"——"+d.note;
+    });
+    box.appendChild(b);
+  });
+})();
+
+/* ================= 场景五：猜上位 + 关系分类 ================= */
+(function(){
+  $$("[data-opt]").forEach(b=>b.addEventListener("click",()=>{
+    $$("[data-opt]").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    const rev=$("#s5rev");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.opt!=="animal");
+  }));
+  const pairs=[
+    {a:"麻雀",b:"鸟",ans:"tax",why:"麻雀是一种鸟——类属关系（自下而上的“是一种”）。"},
+    {a:"手指",b:"手",ans:"part",why:"手指是手的组成部分——部分-整体关系。"},
+    {a:"轮胎",b:"汽车",ans:"part",why:"轮胎是汽车的部件——部分-整体关系。"},
+    {a:"牧羊犬",b:"狗",ans:"tax",why:"牧羊犬是一种狗——类属关系。"},
+    {a:"房间",b:"房子",ans:"part",why:"客厅、卧室、厨房都自然而然地联系到“房子”这个整体。"},
+    {a:"椅子",b:"家具",ans:"tax",why:"椅子是一种家具——类属关系（上位靠借属性过活）。"}
+  ];
+  const box=$("#s5pairs"),fb=$("#s5fb");
+  let cur=null;
+  pairs.forEach(p=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=p.a+" — "+p.b;
+    b.addEventListener("click",()=>{
+      $$(".chip",box).forEach(x=>{x.classList.remove("sel");x.classList.remove("ok");x.classList.remove("no");});
+      b.classList.add("sel");cur=p;
+      fb.textContent="你选了“"+p.a+" — "+p.b+"”。它是类属关系，还是部分-整体？";
+    });
+    box.appendChild(b);
+  });
+  $$("[data-cat]").forEach(b=>b.addEventListener("click",()=>{
+    if(!cur){fb.textContent="先点一对范畴，再选关系类型。";return;}
+    const ok=cur.ans===b.dataset.cat;
+    const chip=$$(".chip",box).find(x=>x.textContent===cur.a+" — "+cur.b);
+    if(chip){chip.classList.remove("sel");chip.classList.add(ok?"ok":"no");}
+    fb.textContent=(ok?"✓ ":"✗ ")+cur.why;
+    fb.style.color=ok?"var(--green)":"var(--red)";
+    cur=null;
+  }));
+})();
+
+/* ================= 场景六：复合词实验室 ================= */
+(function(){
+  const compounds={
+    appleJuice:{
+      label:"apple juice 苹果汁",type:"类属复合词：属性主要借自中心语“果汁”",meter:15,
+      attrs:[
+        {t:"液体",s:"head"},{t:"无酒精",s:"head"},{t:"解渴",s:"head"},
+        {t:"瓶装或纸盒装",s:"head"},{t:"用苹果制作",s:"spec"},
+        {t:"黄色或类黄色",s:"mod"},{t:"水果味的",s:"mod"},
+        {t:"味甜或酸甜",s:"both"},{t:"自然浑浊",s:"new"}
+      ],
+      foot:"结论：大半属性借自果汁；但来自苹果的可能多达五项——比传统假定的“仅限限定属性”宽得多。"
+    },
+    coatCollar:{
+      label:"coat collar 外衣领子",type:"部分-整体复合词：属性主要借自修饰语“外衣”",meter:15,
+      attrs:[
+        {t:"外衣的组成部分",s:"spec"},{t:"保暖",s:"mod"},{t:"防风、防雨、防雪",s:"mod"},
+        {t:"冬天穿着",s:"mod"},{t:"布料制作",s:"both"},{t:"容易弄脏或沾油污",s:"head"}
+      ],
+      foot:"结论：领子首先是大衣的部件——保暖防风这些“大衣属性”压过了“领子属性”。"
+    },
+    raincoat:{
+      label:"raincoat 雨衣",type:"逻辑上是类属，认知上却归“雨”管",meter:45,
+      attrs:[
+        {t:"与湿、水相联系",s:"mod"},{t:"暴雨与强风",s:"mod"},{t:"冷而坏的天气",s:"mod"},
+        {t:"形状与面料",s:"head"}
+      ],
+      foot:"结论：与“雨”的共同点比与“外衣”多得多——它是“雨”这个综合认知模型的组成部分。"
+    },
+    wheelchair:{
+      label:"wheelchair 轮椅",type:"正在升格：大量属性来自额外认知模型",meter:70,
+      attrs:[
+        {t:"与残疾有关",s:"new"},{t:"与医院有关",s:"new"},{t:"引擎与车闸",s:"new"}
+      ],
+      foot:"结论：属性不借自轮子和椅子，而借自残疾人、医院、引擎、车闸等额外范畴。"
+    },
+    blackboard:{
+      label:"blackboard 黑板",type:"形式输给了经验",meter:85,
+      attrs:[
+        {t:"如今更多是绿色",s:"new"},{t:"常缩略为 the board",s:"new"}
+      ],
+      foot:"结论：物体早已不是修饰语表示的黑色；它还脱落第一个成分，走向基本层次。"
+    },
+    newspaper:{
+      label:"newspaper 报纸",type:"已升格为基本层次范畴",meter:90,
+      attrs:[
+        {t:"能轻松列出大量属性",s:"new"},{t:"常缩略为 paper",s:"new"}
+      ],
+      foot:"结论：和 airplane（常缩为 plane）一样，已被公认为基本层次范畴。"
+    }
+  };
+  const srcName={head:"借自中心语范畴",mod:"借自修饰语范畴",both:"两个源范畴共有",spec:"下位范畴的特有属性",new:"非派生：来自额外范畴或认知模型"};
+  const chips=$("#s6chips"),attrBox=$("#s6attrs"),fb=$("#s6fb"),typeP=$("#s6type"),meter=$("#s6meter"),footP=$("#s6foot");
+  let curKey=null;
+  Object.keys(compounds).forEach(k=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=compounds[k].label;
+    b.addEventListener("click",()=>{
+      curKey=k;
+      $$(".chip",chips).forEach(x=>x.classList.toggle("sel",x===b));
+      const c=compounds[k];
+      typeP.innerHTML="<strong>"+c.label+"</strong>（"+c.type+"）";
+      attrBox.innerHTML="";
+      c.attrs.forEach(a=>{
+        const ab=document.createElement("button");
+        ab.className="attrchip s-"+a.s;ab.textContent=a.t;
+        ab.addEventListener("click",()=>{
+          $$(".attrchip",attrBox).forEach(x=>x.classList.remove("sel"));
+          ab.classList.add("sel");
+          fb.textContent="“"+a.t+"”："+srcName[a.s]+"。";
+        });
+        attrBox.appendChild(ab);
+      });
+      meter.style.width=c.meter+"%";
+      footP.textContent=c.foot;
+    });
+    chips.appendChild(b);
+  });
+})();
+
+/* ================= 场景七：五种经验分类游戏 ================= */
+(function(){
+  const items=[
+    {t:"吃 EAT",c:"act",why:"行为范畴：拿起、张嘴、咬、嚼、咽，属性几乎为它独有。"},
+    {t:"撒谎 LIE",c:"act",why:"行为范畴：Coleman 和 Kay 用三条标准建起了它的原型结构。"},
+    {t:"行走 WALK",c:"act",why:"行为范畴：原型实例（正常走路）最容易整体感知。"},
+    {t:"早餐 BREAKFAST",c:"evt",why:"事件范畴：把面包黄油刀勺和吃喝切涂组合成一个整体。"},
+    {t:"聚会 PARTY",c:"evt",why:"事件范畴：欢迎、聊天、冷餐、喝酒、跳舞、告别。"},
+    {t:"看电影",c:"evt",why:"事件范畴：Rifkin 实验清单里的基本层次事件。"},
+    {t:"高 TALL",c:"prop",why:"特性：靠与名词的搭配排出样本合格性等级。"},
+    {t:"红 RED",c:"prop",why:"特性：作为樱桃、红砖这类物体的特征被体验。"},
+    {t:"甜",c:"prop",why:"特性：直接连着舌头上的生理感受器。"},
+    {t:"属于",c:"state",why:"静态关系：和 be、exist、resemble、contain 同一家族。"},
+    {t:"存在",c:"state",why:"静态关系：不涉及位移与相互作用。"},
+    {t:"在……里 in",c:"loc",why:"处所关系：in、up、out、off 一类介词的增殖意义。"},
+    {t:"上 up",c:"loc",why:"处所关系：Lakoff 视为直接来自身体经验的意象图式。"}
+  ];
+  const cats=[["act","行为"],["evt","事件"],["prop","特性"],["state","状态"],["loc","处所"]];
+  const itemBox=$("#s7items"),catBox=$("#s7cats"),fb=$("#s7fb"),score=$("#s7score");
+  let cur=null,right=0;
+  items.forEach(it=>{
+    const b=document.createElement("button");
+    b.className="chip";b.textContent=it.t;
+    b.addEventListener("click",()=>{
+      $$(".chip",itemBox).forEach(x=>{x.classList.remove("sel");x.classList.remove("ok");x.classList.remove("no");});
+      b.classList.add("sel");cur=it;
+      fb.textContent="你选了“"+it.t+"”，它属于哪类经验？";
+    });
+    itemBox.appendChild(b);
+  });
+  cats.forEach(([k,label])=>{
+    const b=document.createElement("button");
+    b.className="btn";b.textContent=label;b.dataset.cat2=k;
+    b.addEventListener("click",()=>{
+      if(!cur){fb.textContent="先点一个例子，再点类别。";return;}
+      const ok=cur.c===k;
+      const chip=$$(".chip",itemBox).find(x=>x.textContent===cur.t);
+      if(chip){chip.classList.remove("sel");chip.classList.add(ok?"ok":"no");}
+      if(ok){right++;score.textContent="已答对 "+right+" 题";}
+      fb.textContent=(ok?"✓ ":"✗ ")+cur.why;
+      fb.style.color=ok?"var(--green)":"var(--red)";
+      cur=null;
+    });
+    catBox.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>

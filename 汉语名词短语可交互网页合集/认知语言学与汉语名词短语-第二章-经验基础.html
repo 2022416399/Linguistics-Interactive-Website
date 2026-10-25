@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>认知语言学的经验基础 · 《认知语言学与汉语名词短语》第二章可交互笔记</title>
+<meta name="description" content="把《认知语言学与汉语名词短语》第二章做成单文件交互网页：范畴化与原型、概念隐喻映射、意象图式库，七场实验台加出处角标。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+input[type=range]{width:100%;max-width:420px;accent-color:var(--red);height:36px}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 表格 ---------- */
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;font-size:.85rem;min-width:100%}
+th,td{border:1.5px solid var(--line);padding:5px 8px;text-align:center}
+thead th{background:var(--hl);font-weight:700}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.hier-node{cursor:pointer}
+.hier-node.on circle{fill:var(--hl)}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">经验基础 · 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第二章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">认知语言学的经验基础</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：概念探索 ｜ 七场实验台 ｜ 转录稿正文</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>三种经验支撑这个学派：<span class="hl">范畴化</span>不靠充要条件，靠原型与家族相似<button type="button" class="cite" data-cite="classicTheory" aria-label="查看出处"></button>；<span class="hl">概念隐喻</span>不是修辞，是思维方式<button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button>；<span class="hl">意象图式</span>是身体经验形成的基本认知结构<button type="button" class="cite" data-cite="embodiedSchema" aria-label="查看出处"></button>。<span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 262" role="img" aria-label="第二章结构图：身体与互动经验为根基，长出范畴化、概念隐喻、意象图式三支，分别通向原型范畴、隐喻映射与图式结构">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M60 206 L700 206 Q712 206 712 190 L712 168 Q712 152 700 152 L60 152 Q48 152 48 168 L48 190 Q48 206 60 206 Z"/>
+        <path d="M150 152 L150 108"/>
+        <path d="M380 152 L380 108"/>
+        <path d="M610 152 L610 108"/>
+        <rect x="56" y="34" width="188" height="74" rx="10"/>
+        <rect x="286" y="34" width="188" height="74" rx="10"/>
+        <rect x="516" y="34" width="188" height="74" rx="10"/>
+      </g>
+      <g filter="url(#rough2)" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round">
+        <circle cx="150" cy="62" r="26" stroke-dasharray="5 4"/>
+        <circle cx="150" cy="62" r="6" fill="var(--hl)" stroke="none"/>
+        <circle cx="172" cy="82" r="4"/><circle cx="128" cy="82" r="4"/>
+        <circle cx="380" cy="58" r="15"/><circle cx="380" cy="80" r="15"/>
+        <path d="M398 69 L440 69"/><path d="M432 62 L442 69 L432 76"/>
+        <rect x="596" y="46" width="42" height="34" rx="8"/>
+        <circle cx="617" cy="63" r="4" fill="var(--hl)" stroke="none"/>
+        <path d="M600 92 L636 92"/><path d="M628 86 L638 92 L628 98"/>
+        <circle cx="600" cy="92" r="3"/><circle cx="636" cy="92" r="3"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="150" y="130" font-size="14.5" font-weight="700">范畴化</text>
+        <text x="150" y="150" font-size="10.5" fill="var(--ink-soft)">2.1 · 原型 · 家族相似</text>
+        <text x="380" y="130" font-size="14.5" font-weight="700">概念隐喻</text>
+        <text x="380" y="150" font-size="10.5" fill="var(--ink-soft)">2.2 · 始源域 → 目标域</text>
+        <text x="610" y="130" font-size="14.5" font-weight="700">意象图式</text>
+        <text x="610" y="150" font-size="10.5" fill="var(--ink-soft)">2.3 · 容器 · 路径</text>
+        <text x="380" y="184" font-size="13.5" font-weight="700">身体与互动经验（感觉—运动 · 情感 · 社会）</text>
+        <text x="380" y="238" font-size="11.5" fill="var(--ink-faint)">三大经验基础 → 语言里的范畴、意义与句法（下一章：句法的象似性）</text>
+      </g>
+    </svg>
+    <figcaption>第二章的根基与三支（示意）<button type="button" class="cite" data-cite="expBasis" aria-label="查看出处"></button><button type="button" class="cite" data-cite="schemaDef" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">古典 vs 原型</button>
+    <button class="chip" data-jump="s2">颜色词</button>
+    <button class="chip" data-jump="s3">原型效应</button>
+    <button class="chip" data-jump="s4">ICM 与多义</button>
+    <button class="chip" data-jump="s5">概念隐喻</button>
+    <button class="chip" data-jump="s6">三类隐喻</button>
+    <button class="chip" data-jump="s7">意象图式</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>范畴化：从"容器"到"家族相似"</h2>
+  </div>
+  <p class="point">范畴化是在歧异的现实中看到相似性，据以分类、形成概念的过程和能力<button type="button" class="cite" data-cite="catDef" aria-label="查看出处"></button>；Labov 说，语言学可用一句话概括为"对范畴的研究"<button type="button" class="cite" data-cite="labovCat" aria-label="查看出处"></button>；Lakoff 称这方面的研究促使他由生成学派转向认知学派<button type="button" class="cite" data-cite="lakoffTurn" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">经典理论四假设（Lakoff 概括为"容器"隐喻<button type="button" class="cite" data-cite="containerMeta" aria-label="查看出处"></button>）——点一条，看原型理论手里的反例。</p>
+    <div class="btn-row" id="assumeBtns">
+      <button class="btn" data-a="1">① 充要条件定义</button>
+      <button class="btn" data-a="2">② 特征二元</button>
+      <button class="btn" data-a="3">③ 边界明确</button>
+    </div>
+    <div class="reveal" id="assumeRev" hidden><p id="assumeTxt" style="margin:0"></p></div>
+    <p class="feedback">第 ④ 条"成员地位相等"留给你先猜。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看："鸟"这个范畴，四个里哪个是<strong>最好</strong>的成员？</p>
+    <div class="btn-row" id="bestBird">
+      <button class="btn" data-b="robin">知更鸟</button>
+      <button class="btn" data-b="sparrow">麻雀</button>
+      <button class="btn" data-b="ostrich">鸵鸟</button>
+      <button class="btn" data-b="penguin">企鹅</button>
+    </div>
+    <div class="reveal" id="birdRev" hidden>
+      <p style="margin:0"><strong>知更鸟和麻雀都是较好的典型成员</strong>，鸵鸟、企鹅则处于范畴的边缘，是较差的成员——自然类各成员地位并不平等，最好的成员即最具原型性（prototypicality）的成员<button type="button" class="cite" data-cite="birdMembers" aria-label="查看出处"></button>。</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>"原型"的确切意思与经典理论的边界</summary>
+    <p>"原型"有时被用来指范畴内的最佳成员，但其更确切的意思是指作为范畴核心的<strong>图式化的心理表征</strong>，或说是一种认知参照点；最佳成员只是原型的例示（instantiation）<button type="button" class="cite" data-cite="protoMeaning" aria-label="查看出处"></button>。</p>
+    <p>传统理论若说明数学、逻辑或严格科学意义上的类别，并没有错——描述客观规律、构造抽象理论模式时，离散的、内部同质的范畴不可或缺。它的问题是：忽视了经典范畴之外其他类型的范畴；也不能很好地解释日常概念范畴<button type="button" class="cite" data-cite="classicScope" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">维特根斯坦的"游戏"：下棋、玩纸牌、打球、奥运会都被叫作 game，竞争性、输赢、娱乐、技巧运气——没有一条是所有 game 共有的<button type="button" class="cite" data-cite="gameExample" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：颜色词的启示 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>颜色词的启示：焦点色与蕴涵层级</h2>
+  </div>
+  <p class="point">颜色词曾被结构语言学当作语言对连续光谱"任意切分"的典型；Berlin &amp; Kay（1969）研究 <strong>98 种语言</strong>，发现各语言共有 <strong>11 种基本颜色词</strong>，构成严格的蕴涵层级<button type="button" class="cite" data-cite="bk98" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bkFind1" aria-label="查看出处"></button>。</p>
+
+  <figure class="figbox" data-figure>
+    <p class="bench-label">蕴涵层级（点一个颜色词，看它"要求"哪些更基础的词；示意）</p>
+    <svg viewBox="0 0 760 292" role="img" aria-label="基本颜色词蕴涵层级：第一层黑、白；第二层红；第三层黄、蓝、绿；第四层棕、紫、粉红、橙、灰，内层蕴含外层">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="40" y="18" width="220" height="54" rx="12"/>
+        <rect x="40" y="86" width="220" height="54" rx="12"/>
+        <rect x="40" y="154" width="340" height="54" rx="12"/>
+        <rect x="40" y="222" width="500" height="54" rx="12"/>
+        <path d="M272 45 Q296 72 272 99"/>
+        <path d="M272 113 Q296 140 272 167"/>
+        <path d="M392 181 Q416 208 392 235"/>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)">
+        <g class="hier-node" data-c="黑"><circle cx="86" cy="45" r="20" fill="var(--card)"/><text x="86" y="50" text-anchor="middle" font-size="13">黑</text></g>
+        <g class="hier-node" data-c="白"><circle cx="160" cy="45" r="20" fill="var(--card)"/><text x="160" y="50" text-anchor="middle" font-size="13">白</text></g>
+        <g class="hier-node" data-c="红"><circle cx="140" cy="113" r="20" fill="var(--card)"/><text x="140" y="118" text-anchor="middle" font-size="13">红</text></g>
+        <g class="hier-node" data-c="黄"><circle cx="86" cy="181" r="20" fill="var(--card)"/><text x="86" y="186" text-anchor="middle" font-size="13">黄</text></g>
+        <g class="hier-node" data-c="蓝"><circle cx="180" cy="181" r="20" fill="var(--card)"/><text x="180" y="186" text-anchor="middle" font-size="13">蓝</text></g>
+        <g class="hier-node" data-c="绿"><circle cx="274" cy="181" r="20" fill="var(--card)"/><text x="274" y="186" text-anchor="middle" font-size="13">绿</text></g>
+        <g class="hier-node" data-c="棕"><circle cx="86" cy="249" r="20" fill="var(--card)"/><text x="86" y="254" text-anchor="middle" font-size="13">棕</text></g>
+        <g class="hier-node" data-c="紫"><circle cx="172" cy="249" r="20" fill="var(--card)"/><text x="172" y="254" text-anchor="middle" font-size="13">紫</text></g>
+        <g class="hier-node" data-c="粉红"><circle cx="258" cy="249" r="20" fill="var(--card)"/><text x="258" y="254" text-anchor="middle" font-size="13">粉红</text></g>
+        <g class="hier-node" data-c="橙"><circle cx="344" cy="249" r="20" fill="var(--card)"/><text x="344" y="254" text-anchor="middle" font-size="13">橙</text></g>
+        <g class="hier-node" data-c="灰"><circle cx="430" cy="249" r="20" fill="var(--card)"/><text x="430" y="254" text-anchor="middle" font-size="13">灰</text></g>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-soft)">
+        <text x="560" y="60" font-size="12">x（y 的意思是：</text>
+        <text x="560" y="80" font-size="12">若一种语言包含 y，</text>
+        <text x="560" y="100" font-size="12">则一定也包含 x</text>
+        <text x="560" y="140" font-size="12">例：有"绿"的语言</text>
+        <text x="560" y="160" font-size="12">必有 红、黑、白</text>
+        <text x="560" y="230" font-size="12" fill="var(--red)">后人对层级细节</text>
+        <text x="560" y="250" font-size="12" fill="var(--red)">颇多争议，作者后来</text>
+        <text x="560" y="270" font-size="12" fill="var(--red)">也作过一些调整</text>
+      </g>
+    </svg>
+    <figcaption>11 个基本颜色词的四层蕴涵层级<button type="button" class="cite" data-cite="bkFind1" aria-label="查看出处"></button>（层级细节争议<button type="button" class="cite" data-cite="bkDispute" aria-label="查看出处"></button>）</figcaption>
+  </figure>
+
+  <p class="feedback" id="hierFb">点图上的圆点，或点下面的词。</p>
+  <div class="btn-row" id="hierBtns">
+    <button class="chip" data-c="黑">黑</button><button class="chip" data-c="白">白</button><button class="chip" data-c="红">红</button>
+    <button class="chip" data-c="黄">黄</button><button class="chip" data-c="蓝">蓝</button><button class="chip" data-c="绿">绿</button>
+    <button class="chip" data-c="棕">棕</button><button class="chip" data-c="紫">紫</button><button class="chip" data-c="粉红">粉红</button>
+    <button class="chip" data-c="橙">橙</button><button class="chip" data-c="灰">灰</button>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：各语言颜色词边界各异，焦点色为什么能跨语言落在相同的区域？</p>
+    <div class="btn-row" id="focalWhy">
+      <button class="btn" data-o="a">各民族碰巧选中了相同的区段</button>
+      <button class="btn" data-o="b">焦点色有独立于具体语言的感觉—认知显著性</button>
+      <button class="btn" data-o="c">近代文化传播拉齐了各语言</button>
+    </div>
+    <div class="reveal" id="focalRev" hidden>
+      <p style="margin:0">是后者。和非焦点色相比，焦点色在感知上更加显著，在短时记忆中记得更准确，在长时记忆中更容易保持，在辨认实验中反应时更短，在儿童语言习得中出现得更早<button type="button" class="cite" data-cite="focalSalience" aria-label="查看出处"></button>。颜色范畴由三方面因素决定：神经生理机制（眼部颜色锥体及神经联系）、普遍的认知机制、特定文化对认知机制处理结果所作的选择<button type="button" class="cite" data-cite="colorFactors" aria-label="查看出处"></button>。</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p style="margin:0"><strong>启示：</strong>范畴不是对客观现实的被动反映，而是身体及心智能动处理的结果<button type="button" class="cite" data-cite="notPassive" aria-label="查看出处"></button>；颜色中心区说明成员地位并不平等——这直接引导出原型理论<button type="button" class="cite" data-cite="unequalMembers" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <p class="scene-foot">Rosch 等继而对 cup、bird、fruit、furniture、vegetable、toy、vehicle、clothing 等概念作了一系列定量实验<button type="button" class="cite" data-cite="roschExp" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 古典 vs 原型</button>
+    <button class="btn" data-jump="s3">下一场：原型效应 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>原型效应与基本层次</h2>
+  </div>
+  <p class="point">范畴化依据是<strong>属性</strong>而非基本特征：bowl 宽而浅、cup 宽深相当、vase 窄而深；但器皿装了食物往往被称作 bowl，插上花即使不深也叫 vase<button type="button" class="cite" data-cite="labovVessel" aria-label="查看出处"></button>——划类属性与认知互动密切相关，不是与主体无关的客观特征<button type="button" class="cite" data-cite="attrsNotFeatures" aria-label="查看出处"></button>。</p>
+
+  <div class="card">
+    <p class="bench-label">原型成员"占的属性"更多</p>
+    <p style="margin:.2em 0;font-size:.95rem">"鸟"的普遍属性中，原型性的<strong>知更鸟占 10 项</strong>，<strong>鸵鸟仅三四项</strong><button type="button" class="cite" data-cite="prototypicalityShare" aria-label="查看出处"></button>；chair 靠<strong>完形感知</strong>评估——靠背、座板、四条腿及比例<button type="button" class="cite" data-cite="gestalt" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看："动物、猫、波斯猫"哪个是人类概念层级中最重要的基本层次范畴？</p>
+    <div class="btn-row" id="blOpts">
+      <button class="btn" data-o="animal">动物</button>
+      <button class="btn" data-o="cat">猫</button>
+      <button class="btn" data-o="persian">波斯猫</button>
+    </div>
+    <div class="reveal" id="blRev" hidden>
+      <p style="margin:0 0 6px"><strong>是居中的"猫"。</strong>Rosch（1977、1978）证实，最重要的不是较高层的"动物、家具、交通工具"，也不是较低层的"波斯猫、扶手椅、敞篷跑车"，而是居中的"猫、椅子、汽车"——即基本层次范畴<button type="button" class="cite" data-cite="basicLevel" aria-label="查看出处"></button>。</p>
+      <p style="margin:.3em 0;font-size:.9rem"><strong>感知</strong>：成员有相似的整体外形，能形成单个心灵意象，辨认最快<button type="button" class="cite" data-cite="basicPerception" aria-label="查看出处"></button>。<strong>功能</strong>：能用类似运动机制打交道的最高层次——对"椅子"的反应是"坐在上面"，对"家具"则没有共同反应<button type="button" class="cite" data-cite="basicFunction" aria-label="查看出处"></button>。<strong>言语交际</strong>：较短、较简单、常用、中性，产生时代早，儿童习得最早<button type="button" class="cite" data-cite="basicComm" aria-label="查看出处"></button>。<strong>知识组织</strong>：人类大部分知识都在这个层次上组织<button type="button" class="cite" data-cite="basicKnowledge" aria-label="查看出处"></button>。</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>线索有效性与"经典理论为何看起来那么流行"</summary>
+    <p>基本层次是人们对真实世界分类分得最为精确的层次，具有最大的线索有效性（cue validity）：更高层次的范畴成员共有属性少；更低层次的成员共有属性虽多，却大多与相邻范畴共有（如"电脑桌"之于"书桌"）<button type="button" class="cite" data-cite="cueValidity" aria-label="查看出处"></button>。</p>
+    <p>经典理论常用来说明"离散、边界清晰、充要条件定义"的例子，往往正是这个层次上的范畴（桌子、椅子、猫、汽车）——它们共有属性最多、原型性最强，所以容易给人"概念类是清晰离散"的印象；但基本层次范畴同样存在原型效应，脱离不了主观经验和认知取向<button type="button" class="cite" data-cite="basicPrecise" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">鸵鸟之为鸟，不光因它有羽毛、生蛋，还因它像红鹤、鹤一样有长颈，像孔雀一样有装饰性羽毛——共有属性与家族相似属性交织成网<button type="button" class="cite" data-cite="birdAttrs" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 颜色词的启示</button>
+    <button class="btn" data-jump="s4">下一场：ICM 与多义 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>认知模式与多义范畴</h2>
+  </div>
+  <p class="point">Lakoff（1987）的"理想化认知模式（ICM）"：语言形式的意义无法靠特征分解界定，其基础是涉及认知域背景知识的复杂认知结构<button type="button" class="cite" data-cite="icmDef" aria-label="查看出处"></button>；原型效应只是现象，可到 ICM 里找来源<button type="button" class="cite" data-cite="protoPhenomenon" aria-label="查看出处"></button>。</p>
+
+  <div class="card">
+    <p class="bench-label">四种 ICM——点开看是什么</p>
+    <div class="btn-row" id="icmBtns">
+      <button class="btn sel" data-k="p">命题模式</button>
+      <button class="btn" data-k="i">意象—图式模式</button>
+      <button class="btn" data-k="m">隐喻模式</button>
+      <button class="btn" data-k="y">转喻模式</button>
+    </div>
+    <div class="reveal" id="icmBox" style="margin-bottom:0"><p id="icmTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">bachelor： [+成年][+男性][+未婚] 为什么不够用<button type="button" class="cite" data-cite="bachelorDef" aria-label="查看出处"></button></p>
+    <p style="margin:.2em 0;font-size:.95rem">神父、和尚、长期同居者都"符合条件"，说英语的人通常却不叫他们 bachelor。它相对于理想化的 BACHELORHOOD 模式界定：<strong>去掉"到年龄就该结婚"，教皇便能勉强入围</strong><button type="button" class="cite" data-cite="bachelorICM" aria-label="查看出处"></button>；"不爱孩子、流连单身酒吧"的老套则是<strong>转喻</strong>——以偏概全，用最典型的成员理解整个范畴<button type="button" class="cite" data-cite="bachelorStereotype" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">climb 的七个义项：点一句，看它保留或转换了什么<button type="button" class="cite" data-cite="climbCore" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="climbBtns">
+      <button class="btn" data-c="1">男孩爬上树</button>
+      <button class="btn" data-c="2">火车爬上山坡</button>
+      <button class="btn" data-c="3">飞机爬到三万英尺</button>
+      <button class="btn" data-c="4">温度爬到 90 度</button>
+      <button class="btn" data-c="5">男孩爬下树</button>
+      <button class="btn" data-c="6">费力脱下衣服</button>
+      <button class="btn" data-c="7">爬到最高的位置</button>
+    </div>
+    <p class="feedback" id="climbFb">核心语义属性有二：(a) [ascend] 上升，(b) [clamber] 费力地攀爬。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">量词"本"的扩展：规约，但有动因</p>
+    <p style="margin:.2em 0;font-size:.95rem">日语"本"从细长物扩展到武术比赛（剑棍是主要功能物件，转喻）、棒球安全打（球的轨迹是细长线——图式转换）<button type="button" class="cite" data-cite="honMotivation" aria-label="查看出处"></button>；汉语"条"从"一条腿"到"一条新闻"，"张"从"一张纸"到"一张桌子"——桌面是二维的，转喻<button type="button" class="cite" data-cite="tiaoZhang" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <details>
+    <summary>mother 集束、over 与词类（折叠细节）</summary>
+    <p>mother 是五种模式的<strong>集束</strong>：遗传、生殖、养育、谱系、婚姻<button type="button" class="cite" data-cite="motherCluster" aria-label="查看出处"></button>——所以才有"我有四个 mother：供卵者、生我的人、把我养大的人、父亲现在的妻子"<button type="button" class="cite" data-cite="motherFourMothers" aria-label="查看出处"></button>；working mother 成立而 working father 别扭，正反映"母亲应在家照顾孩子"的养育模式与"父亲应外出工作"的责任模式<button type="button" class="cite" data-cite="workingMother" aria-label="查看出处"></button>。</p>
+    <p>Taylor（1989）分析出 over 的 17 种空间意义并不由一个语义核心导出，而是四个核心意义集束：(1) 居上关系、(2) 覆盖关系、(3) 弧形运动路径、(4) 路径终点，四者可链结起来<button type="button" class="cite" data-cite="overFour" aria-label="查看出处"></button>；非空间引申义都是空间意义的隐喻扩展："He has no authority over me"是居上的隐喻，"He got over his parents' death"是克服障碍的隐喻，"The lesson is over"来自路径终点<button type="button" class="cite" data-cite="overMetaphor" aria-label="查看出处"></button>。</p>
+    <p>词类也有原型效应：toe、breath、way、time 四个确定无疑的名词，经代词化、空位、复数化、被动分词修饰四套句法转换测试，呈现 toe &lt; breath &lt; way &lt; time 的名词性递减序列，语义抽象度则递增——两个序列完全一致<button type="button" class="cite" data-cite="nouniness" aria-label="查看出处"></button>。名词性大小更与话语功能相关：hunted him 里的 fox 实指，能加冠词、变复数；went for hunting 里的 fox 不实指，一概不能<button type="button" class="cite" data-cite="foxExample" aria-label="查看出处"></button>；汉语"在图书馆读书"的书可实指，"在大学读书"的"书"已凝固为"学习"<button type="button" class="cite" data-cite="dushuExample" aria-label="查看出处"></button>。</p>
+    <p>从意义界定词类的两条路：Givón 主张语法形式类反映现象的<strong>时间稳定性</strong>，名词、动词居两端，形容词居中<button type="button" class="cite" data-cite="givonTemporal" aria-label="查看出处"></button>；Langacker 用<strong>基底—侧面</strong>：名词标示"事物"（有界子域），动词标示"过程"，形容词标示"非时间关系"<button type="button" class="cite" data-cite="langackerBase" aria-label="查看出处"></button>。Croft 则用标记理论说明：特性之间无标记的关联是原型性关联（名词表"事物"且用于"指称"即无标记）<button type="button" class="cite" data-cite="croftMarked" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">多义子范畴以家族相似连成意义链条，不相邻的节点未必共有属性——辐射状范畴<button type="button" class="cite" data-cite="polysemyRadial" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 原型效应</button>
+    <button class="btn" data-jump="s5">下一场：概念隐喻 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>概念隐喻：我们靠隐喻生活</h2>
+  </div>
+  <p class="point">隐喻观三结论：<strong>普遍性</strong>、<strong>系统性</strong>、<strong>观念性</strong>——第三个最根本：思维过程本身就是隐喻性的<button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button>；最有生命力的，是规约化到毫无察觉的无意识隐喻<button type="button" class="cite" data-cite="unconsciousMeta" aria-label="查看出处"></button>。</p>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 224" role="img" aria-label="TIME IS MONEY 隐喻映射图：金钱、有限资源、有价商品三个来源域相互蕴含，结构映射到时间这一目标域">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="36" y="26" width="210" height="46" rx="10"/>
+        <rect x="36" y="88" width="210" height="46" rx="10"/>
+        <rect x="36" y="150" width="210" height="46" rx="10"/>
+        <path d="M256 49 L318 49"/><path d="M310 42 L320 49 L310 56"/>
+        <path d="M256 111 L318 111"/><path d="M310 104 L320 111 L310 118"/>
+        <path d="M256 173 L318 173"/><path d="M310 166 L320 173 L310 180"/>
+        <path d="M336 49 L404 49"/><path d="M396 42 L406 49 L396 56"/>
+        <path d="M336 173 L404 173"/><path d="M396 166 L406 173 L396 180"/>
+        <rect x="414" y="40" width="180" height="144" rx="12"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="141" y="54" font-size="13.5" font-weight="700">金钱 MONEY</text>
+        <text x="141" y="116" font-size="13.5" font-weight="700">有限资源 LIMITED RESOURCE</text>
+        <text x="141" y="178" font-size="13.5" font-weight="700">有价商品 VALUABLE COMMODITY</text>
+        <text x="370" y="34" font-size="11.5" fill="var(--ink-soft)">蕴含</text>
+        <text x="370" y="196" font-size="11.5" fill="var(--ink-soft)">蕴含</text>
+        <text x="504" y="106" font-size="16" font-weight="700">时间 TIME</text>
+        <text x="504" y="130" font-size="11" fill="var(--ink-soft)">目标域</text>
+        <text x="286" y="214" font-size="11.5" fill="var(--ink-faint)">结构映射 structural mapping</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink-faint)">
+        <text x="620" y="60" font-size="11">spend · budget · cost</text>
+        <text x="620" y="112" font-size="11">use · run out of</text>
+        <text x="620" y="164" font-size="11">have · give · thank you for</text>
+        <text x="620" y="200" font-size="11">（原文所举例词）</text>
+      </g>
+    </svg>
+    <figcaption>三个相互蕴含的概念隐喻构成有关"时间"的概念系统<button type="button" class="cite" data-cite="threeTime" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：据 Lakoff &amp; Johnson（1980），英语里隐喻性表达大约占几成？拖滑块猜一个数。</p>
+    <input type="range" id="metaPct" min="0" max="100" value="30" aria-label="猜测百分比"> <output id="metaOut">30%</output>
+    <button class="btn" id="metaBtn">揭晓</button>
+    <div class="reveal" id="metaRev" hidden>
+      <p style="margin:0"><strong>约 70%。</strong>隐喻不是一种特殊的语言表达手段，它代表了语言的常态，在日常语言中的运用相当普遍；传统隐喻观只注意到外显的比喻和词汇化的"死隐喻"（如"山脚"）<button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button>。</p>
+    </div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">点一句日常用语，看"时间"被当成了什么<button type="button" class="cite" data-cite="timeExamples" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="timeBtns">
+      <button class="btn" data-c="1">You're wasting my time.</button>
+      <button class="btn" data-c="2">Can you give me a few minutes?</button>
+      <button class="btn" data-c="3">How do you spend your time?</button>
+      <button class="btn" data-c="4">We are running out of time.</button>
+      <button class="btn" data-c="5">This gadget will save you hours.</button>
+      <button class="btn" data-c="6">Is that worth your while?</button>
+      <button class="btn" data-c="7">Do you have much time left?</button>
+      <button class="btn" data-c="8">You need to budget your time.</button>
+      <button class="btn" data-c="9">Thank you for your time.</button>
+    </div>
+    <p class="feedback" id="timeFb">这些说法显示：时间被理解成可花、可浪费、可节省、可计划开支的东西。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">导管隐喻：交际像送包裹</p>
+    <p style="margin:.2em 0;font-size:.95rem">Reddy（1979）：观念是物体，语句是容器，通讯是发送——交际像送包裹<button type="button" class="cite" data-cite="conduit" aria-label="查看出处"></button>；汉语"你话里的意思我听不出来""这些话里包含了很多深刻的内容"<button type="button" class="cite" data-cite="conduitExamples" aria-label="查看出处"></button>。由"观念是物体"还可长出 IDEAS ARE FOOD（半生熟的观念）<button type="button" class="cite" data-cite="ideasFood" aria-label="查看出处"></button>、IDEAS ARE PEOPLE / PLANTS 等——同一概念的不同隐喻互相补充成系统<button type="button" class="cite" data-cite="ideasSystem" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <details>
+    <summary>LIFE IS JOURNEY 与结构映射（折叠细节）</summary>
+    <p>人的生命周期被构想为三阶段的旅行：出生是来临，走过一生，死亡是离开<button type="button" class="cite" data-cite="lifeJourney" aria-label="查看出处"></button>。主要阶段包含一组子隐喻：度过一生的人是旅行者，其目标是目的地，达到目标的方式是路径，生活中的困难是旅行的障碍物，进步是走过的距离，估算进程的东西是地标，人生的选择是交叉路口<button type="button" class="cite" data-cite="lifeSub" aria-label="查看出处"></button>。它通过<strong>结构映射</strong>形成：来源模式"旅行"的结构映射到目标模式"人生"，前者的每个点对应后者的一个点<button type="button" class="cite" data-cite="structuralMapping" aria-label="查看出处"></button>。</p>
+    <p>这正是<strong>结构隐喻</strong>的定义：通过一个概念建构另一个概念，两个认知域不同，结构保持不变，构成成分存在有规律的对应<button type="button" class="cite" data-cite="structuralMetaphor" aria-label="查看出处"></button>。Lakoff &amp; Johnson 分析得最细致的 ARGUMENT 概念就含四个结构隐喻：论争是旅行（过程）、是战争（方法与结果）、是容器（内容）、是建筑物（质量）<button type="button" class="cite" data-cite="argumentWar" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">导管隐喻的启示：隐喻不只是把一个范畴扩展到另一个，更是两个概念领域之间系统的对应关系。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← ICM 与多义</button>
+    <button class="btn" data-jump="s6">下一场：三类隐喻 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>三类概念隐喻</h2>
+  </div>
+  <p class="point">三种类型：<strong>结构隐喻</strong>（用一个概念建构另一个）、<strong>方位隐喻</strong>（借上下内外组织）、<strong>本体隐喻</strong>（把抽象经验视为有形实体）<button type="button" class="cite" data-cite="structuralMetaphor" aria-label="查看出处"></button><button type="button" class="cite" data-cite="orientational" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ontological" aria-label="查看出处"></button>；总规律：用较具体的概念理解较抽象的<button type="button" class="cite" data-cite="concreteToAbstract" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">ARGUMENT IS WAR：论争的每个环节都挂得上战争的某个阶段，点开看<button type="button" class="cite" data-cite="warLinks" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="warBtns">
+      <button class="btn" data-w="a">初始位置</button>
+      <button class="btn" data-w="b">进攻</button>
+      <button class="btn" data-w="c">防御</button>
+      <button class="btn" data-w="d">撤退</button>
+      <button class="btn" data-w="e">反攻</button>
+      <button class="btn" data-w="f">胜负</button>
+      <button class="btn" data-w="g">停战</button>
+    </div>
+    <div class="reveal" id="warBox" hidden><p id="warTxt" style="margin:0"></p></div>
+    <p class="feedback">四成分各突出论争一面：旅行说过程，战争说方法结果，容器说内容，建筑物说质量<button type="button" class="cite" data-cite="argumentWar" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">方位隐喻：九组"上下"，点一组看例句<button type="button" class="cite" data-cite="orientExamples" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="orientBtns">
+      <button class="chip" data-o="a">高兴上下</button>
+      <button class="chip" data-o="b">意识上下</button>
+      <button class="chip" data-o="c">健康上下</button>
+      <button class="chip" data-o="d">施控上下</button>
+      <button class="chip" data-o="e">多少上下</button>
+      <button class="chip" data-o="f">地位高低</button>
+      <button class="chip" data-o="g">好坏上下</button>
+      <button class="chip" data-o="h">道德上下</button>
+      <button class="chip" data-o="i">理性感性</button>
+    </div>
+    <p class="feedback" id="orientFb">点一组看例句。来源和目标的关系都不是任意的：基础一是共有的身体及物质经验，二是特定社会的文化经验<button type="button" class="cite" data-cite="orientBasis" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">本体隐喻：把抽象经验当成"东西"<button type="button" class="cite" data-cite="inflation" aria-label="查看出处"></button></p>
+    <p style="margin:.2em 0;font-size:.95rem">通货膨胀被处理为实体：Inflation is lowering our standard of living.（日益降低生活水平）。这类隐喻有五种作用：<strong>指称、量化、确认方面、确定原因、确定目标以促动行为</strong><button type="button" class="cite" data-cite="ontologicalRoles" aria-label="查看出处"></button>。心灵也可以是机器（脑子不转了）或易碎物（个性很脆弱）<button type="button" class="cite" data-cite="mindMachine" aria-label="查看出处"></button>；其中最重要的是<strong>容器隐喻</strong>——人体就是容器，皮肤是分界面<button type="button" class="cite" data-cite="containerBody" aria-label="查看出处"></button>。</p>
+  </div>
+
+  <p class="scene-foot">这些隐喻的心理基础不是具体视觉形象，而是抽象的意象图式："容器"之下是"里—外"图式，"路径"之下是"从一点到另一点"图式<button type="button" class="cite" data-cite="schemaNotImage" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 概念隐喻</button>
+    <button class="btn" data-jump="s7">下一场：意象图式 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>意象与意象图式</h2>
+  </div>
+  <p class="point">Langacker 的"意象"指以不同方式把握同一情景的能力：钟在桌上、横躺着、呆着、桌子托着——四种意象<button type="button" class="cite" data-cite="langackerImagery2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="clockSentences" aria-label="查看出处"></button>。enter 是次第扫描（如看电影），into 是总括扫描（如看一幅画）<button type="button" class="cite" data-cite="scanning" aria-label="查看出处"></button>。</p>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 224" role="img" aria-label="容器图式图解：人体作为容器以皮肤为边界不断摄取排出；抽象容器图式有内部、外部、边界三成分；基本逻辑为P或非P与传递性，并有视野、出国、陷入苦闷等语言例证">
+      <g filter="url(#rough2)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <circle cx="66" cy="42" r="14"/>
+        <path d="M66 58 Q56 62 54 92 L54 148 Q54 166 66 166 Q78 166 78 148 L78 92 Q76 62 66 58 Z"/>
+        <path d="M78 96 L112 82"/><path d="M108 76 L116 78 L110 88"/>
+        <path d="M78 130 L112 144"/><path d="M108 140 L116 142 L110 150"/>
+        <rect x="210" y="30" width="130" height="120" rx="10"/>
+        <circle cx="275" cy="90" r="9" fill="var(--hl)" stroke="none"/>
+        <path d="M430 30 L560 30 L560 150 L430 150 Z"/>
+        <circle cx="495" cy="90" r="9" fill="var(--hl)" stroke="none"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="66" y="192" font-size="12.5" font-weight="700">人体是容器</text>
+        <text x="66" y="210" font-size="10.5" fill="var(--ink-soft)">皮肤 = 边界</text>
+        <text x="128" y="70" font-size="10.5" fill="var(--green)">摄取</text>
+        <text x="128" y="152" font-size="10.5" fill="var(--green)">排出</text>
+        <text x="275" y="166" font-size="12.5" font-weight="700">容器图式</text>
+        <text x="275" y="184" font-size="10.5" fill="var(--ink-soft)">内部 · 外部 · 边界</text>
+        <text x="495" y="66" font-size="11" fill="var(--ink-soft)">内部（里）</text>
+        <text x="495" y="140" font-size="11" fill="var(--ink-soft)">外部（外）</text>
+      </g>
+      <g font-family="-apple-system,'PingFang SC',sans-serif" fill="var(--ink)">
+        <text x="590" y="52" font-size="11.5">P 或非 P：一物要么在里，要么在外</text>
+        <text x="590" y="76" font-size="11.5">A 在 B 里，X 在 A 中 ⇒ X 在 B 中</text>
+        <text x="590" y="100" font-size="11.5">（包容关系传递，布尔逻辑的基础）</text>
+        <text x="590" y="130" font-size="11.5" fill="var(--green)">视野：船"进入视野"</text>
+        <text x="590" y="152" font-size="11.5" fill="var(--green)">"出国" · "陷入苦闷"</text>
+      </g>
+    </svg>
+    <figcaption>容器图式：身体基础、结构成分与基本逻辑（示意）<button type="button" class="cite" data-cite="containerSchema" aria-label="查看出处"></button><button type="button" class="cite" data-cite="containerView" aria-label="查看出处"></button><button type="button" class="cite" data-cite="stateContainer" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">意象图式库：点一个图式，看身体经验、结构成分、基本逻辑与例证<button type="button" class="cite" data-cite="schemaList" aria-label="查看出处"></button></p>
+    <div class="btn-row" id="schemaBtns">
+      <button class="btn sel" data-k="container">容器</button>
+      <button class="btn" data-k="path">路径</button>
+      <button class="btn" data-k="partwhole">部分—整体</button>
+      <button class="btn" data-k="center">中心—边缘</button>
+      <button class="btn" data-k="link">系联</button>
+    </div>
+    <div class="reveal" id="schemaBox" style="margin-bottom:0"><div id="schemaTxt"></div></div>
+  </div>
+
+  <div class="card taped" data-guess>
+    <p class="bench-label">先猜再看：同一个 across——Sam walked <em>across</em> the street（走过街那边）和 Sam lives <em>across</em> the street（住在街那边），为什么一个指路径、一个指终点？</p>
+    <div class="btn-row" id="transOpts">
+      <button class="btn" data-o="a">语言演变遗留的偶然同形</button>
+      <button class="btn" data-o="b">路径图式到路径终点图式的自然转换</button>
+      <button class="btn" data-o="c">两个毫无内在联系的同音介词</button>
+    </div>
+    <div class="reveal" id="transRev" hidden>
+      <p style="margin:0">是图式转换。目光常沿路径追踪一个移动物体直到它停下来，注意的焦点自然落在终点；物体沿路径移动也往往是为了到达终点——日常经验使"路径 → 终点"成为自然的语义引申原则<button type="button" class="cite" data-cite="pathEndTransform" aria-label="查看出处"></button><button type="button" class="cite" data-cite="transformBasis" aria-label="查看出处"></button>。Lakoff 称这种关系为"意象图式的转换"，认为它对辐射范畴的形成起了关键作用<button type="button" class="cite" data-cite="schemaTransform" aria-label="查看出处"></button>。</p>
+    </div>
+  </div>
+
+  <details>
+    <summary>恒定性假说与形式的空间化假说（折叠细节）</summary>
+    <p><strong>恒定性假说</strong>（Lakoff 1990）：隐喻映射只是部分的，映射过去的部分保存来源域的认知拓扑结构，亦即意象图式结构；映射前后恒定不变的是认知拓扑结构<button type="button" class="cite" data-cite="invariance" aria-label="查看出处"></button>。时间在几乎所有已知语言里都以空间概念为基础建立<button type="button" class="cite" data-cite="timeSpace" aria-label="查看出处"></button>；描述时间的空间词语只能是一维的（长—短、远—近，如"远古、最近、近年"），不能是高—低、宽—窄<button type="button" class="cite" data-cite="timeOneDim" aria-label="查看出处"></button>。英语、汉语都有两种映射：时间在动（"星期五到了"）与自己在动（"到了星期五"）；Tai 认为汉语更倾向时间在动，这可解释"前天、前半天、后天、后半天"这类英语所无的说法<button type="button" class="cite" data-cite="movingTime" aria-label="查看出处"></button><button type="button" class="cite" data-cite="movingEgo" aria-label="查看出处"></button><button type="button" class="cite" data-cite="taiChinese" aria-label="查看出处"></button>。</p>
+    <p><strong>形式的空间化假说</strong>（Lakoff 1987）：抽象概念结构是物理空间到概念空间的隐喻映射的结果，句法结构同理——层级结构由部分—整体图式概括，中心语—修饰语由中心—边缘图式概括，语法关系及同指由系联图式代表，句法"距离"由线性刻度图式概括，句法范畴由容器图式概括<button type="button" class="cite" data-cite="sfh" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sfhFive" aria-label="查看出处"></button>。Deane（1991、1992）把它落实为句法理论：系联图式细分出共现依存（C—系联）、表述（P—系联）、含义依存（S—系联）、指称依存（R—系联）四类<button type="button" class="cite" data-cite="deaneLinks" aria-label="查看出处"></button>，并提出"大脑顶叶假说"：较抽象的语法能力由负责身体图式的下位顶叶负责<button type="button" class="cite" data-cite="parietal" aria-label="查看出处"></button>。</p>
+    <p>图式的解释力有实证支持：Lindner 用少量原型图式解释了英语 600 多个可带 out 的动词的意义<button type="button" class="cite" data-cite="lindner" aria-label="查看出处"></button>；Johnson 用迫动、除阻、使能等七种施力图式统一解释 must、may、can 的情态意义<button type="button" class="cite" data-cite="forceSchemas" aria-label="查看出处"></button>；事件、活动、状态也都被当成容器：He's out of the race（退出比赛）、I get a lot of satisfaction out of washing windows、He fell into a depression<button type="button" class="cite" data-cite="raceContainer" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">意象图式是"孕于身体的"动态模式：比心象更抽象，超越特定感知方式，且具有完形特性<button type="button" class="cite" data-cite="schemaTraits" aria-label="查看出处"></button><button type="button" class="cite" data-cite="dynamicSchema" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 三类隐喻</button>
+    <button class="btn" data-jump="quiz">去自测 →</button>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section id="quiz" data-quiz>
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="测" aria-hidden="true"></span>
+    <h2>你答得上来吗</h2>
+  </div>
+  <div class="card">
+    <h3>其一 · 经典范畴理论的四条假设是什么？原型理论逐条怎样回应？</h3>
+    <details><summary>看答案</summary>
+      <p>四条假设：范畴由充分特征和必要特征的合取定义；特征是二元的；范畴有明确边界；所有成员地位相等<button type="button" class="cite" data-cite="classicTheory" aria-label="查看出处"></button>。回应：游戏靠家族相似组织，没有一条共有特征；bowl/cup/vase 的归类随"装食物还是插花"而变，说明依据是与主体相关的互动属性；自然类边界模糊、边缘成员互混；鸟的内部有较好的成员（知更鸟、麻雀）和较差的成员（鸵鸟、企鹅）<button type="button" class="cite" data-cite="gameExample" aria-label="查看出处"></button><button type="button" class="cite" data-cite="labovVessel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="fuzzyBoundary" aria-label="查看出处"></button><button type="button" class="cite" data-cite="birdMembers" aria-label="查看出处"></button>。</p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其二 · TIME IS MONEY、TIME IS A LIMITED RESOURCE、TIME IS A VALUABLE COMMODITY 三者是什么关系？</h3>
+    <details><summary>看答案</summary>
+      <p>三个相互关联的概念隐喻，依次有蕴含（entailment）关系，密不可分，共同构成一个有关时间的概念系统：现代社会里时间的确是有限的资源，而有限的资源又确是有价商品。有些说法特别指金钱（spend、budget、cost），有些主要指资源（use、run out of），有些指商品（have、give、thank you for）<button type="button" class="cite" data-cite="threeTime" aria-label="查看出处"></button>。</p>
+    </details>
+  </div>
+  <div class="card">
+    <h3>其三 · 意象图式与心理学家所说的"心象"有哪三点区别？</h3>
+    <details><summary>看答案</summary>
+      <p>一、它比心象更加一般和抽象，与特定环境无关，其形成和呈现是无意识、毋需努力的；二、它可超越任何特定感知方式而独立存在，主要附丽于感觉运动层面，故 Lakoff 又称"动觉意象图式"；三、它虽由可辨识的部分和关系组成，却具有完形特性，是一个内部一致的、有意义的统一体<button type="button" class="cite" data-cite="schemaTraits" aria-label="查看出处"></button>。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 考前速记 ============ -->
+<details>
+  <summary>考前速记（折叠）</summary>
+  <ul>
+    <li>范畴化：在歧异的现实中看到相似性，据以分类并形成概念；Labov："如果语言学所作的可用一句话来概括，那它就是对范畴的研究"。<button type="button" class="cite" data-cite="catDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="labovCat" aria-label="查看出处"></button></li>
+    <li>经典理论四假设：充要条件合取定义；特征二元；边界明确；成员地位平等——源于亚里士多德的本质/非本质属性之分。<button type="button" class="cite" data-cite="classicTheory" aria-label="查看出处"></button></li>
+    <li>家族相似（维特根斯坦 1953）：游戏没有一条所有成员共有的特征；原型更确切的意思是图式化的心理表征、认知参照点。<button type="button" class="cite" data-cite="familyRes" aria-label="查看出处"></button><button type="button" class="cite" data-cite="protoMeaning" aria-label="查看出处"></button></li>
+    <li>Berlin &amp; Kay 1969：98 种语言；11 个基本颜色词四层蕴涵层级；焦点色清楚、边界模糊、跨语言重合。<button type="button" class="cite" data-cite="bkFind1" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bkFind2" aria-label="查看出处"></button></li>
+    <li>原型效应关键数字：知更鸟占"鸟"的 10 项普遍属性，鸵鸟仅三四项；英语约 70% 表达方式是隐喻性的。<button type="button" class="cite" data-cite="prototypicalityShare" aria-label="查看出处"></button><button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button></li>
+    <li>基本层次四原因：感知（单个心灵意象）、功能（共同运动反应）、言语交际（短、简单、早）、知识组织；最具线索有效性。<button type="button" class="cite" data-cite="basicPerception" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cueValidity" aria-label="查看出处"></button></li>
+    <li>ICM 四类型：命题（框架/脚本）、意象—图式、隐喻、转喻；bachelor、mother 是经典案例。<button type="button" class="cite" data-cite="icmFour" aria-label="查看出处"></button></li>
+    <li>多义：辐射状范畴；climb 核心二属性 [ascend]+[clamber]；over 四核心（居上、覆盖、弧形路径、路径终点）。<button type="button" class="cite" data-cite="polysemyRadial" aria-label="查看出处"></button><button type="button" class="cite" data-cite="overFour" aria-label="查看出处"></button></li>
+    <li>概念隐喻三结论：普遍性、系统性、观念性（最根本）；三类型：结构、方位、本体。<button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button></li>
+    <li>时间三隐喻相互蕴含：金钱→有限资源→有价商品；导管隐喻：观念是物体、语词是容器、通讯是发送。<button type="button" class="cite" data-cite="threeTime" aria-label="查看出处"></button><button type="button" class="cite" data-cite="conduit" aria-label="查看出处"></button></li>
+    <li>意象图式：身体经验为基础、动态模式；路径图式=A、B 与其间路径线；容器图式=内部、外部、边界。<button type="button" class="cite" data-cite="embodiedSchema" aria-label="查看出处"></button><button type="button" class="cite" data-cite="pathSchema" aria-label="查看出处"></button><button type="button" class="cite" data-cite="containerSchema" aria-label="查看出处"></button></li>
+    <li>图式转换：路径↔终点、复数↔不可数、零维↔一维、自反↔不自反；恒定性假说：映射保留认知拓扑结构。<button type="button" class="cite" data-cite="schemaTransform" aria-label="查看出处"></button><button type="button" class="cite" data-cite="invariance" aria-label="查看出处"></button></li>
+    <li>形式的空间化假说五条映射：层级←部分—整体；中心语—修饰语←中心—边缘；语法关系与同指←系联；距离←线性刻度；范畴←容器。<button type="button" class="cite" data-cite="sfhFive" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<!-- ============ 名词快查 ============ -->
+<details>
+  <summary>名词快查（折叠）</summary>
+  <ul>
+    <li><strong>范畴化</strong>：在歧异的现实中看到相似性，将可分辨的不同事物处理为相同，进而形成概念的过程和能力。<button type="button" class="cite" data-cite="catDef" aria-label="查看出处"></button></li>
+    <li><strong>经典范畴理论</strong>：亚里士多德根源；四假设；Lakoff 概括为"容器"隐喻。<button type="button" class="cite" data-cite="classicTheory" aria-label="查看出处"></button><button type="button" class="cite" data-cite="containerMeta" aria-label="查看出处"></button></li>
+    <li><strong>家族相似性</strong>：维特根斯坦 1953；成员环环相扣共有部分特征，几乎没有一条特征是全体共有的。<button type="button" class="cite" data-cite="familyRes" aria-label="查看出处"></button></li>
+    <li><strong>基本颜色词</strong>：往往由一个语素表达、所指不含在别的颜色词内、不局限于少数物体；共 11 种，四层蕴涵层级。<button type="button" class="cite" data-cite="bkFind1" aria-label="查看出处"></button></li>
+    <li><strong>焦点色</strong>：颜色词所指的中心区，跨语言大多落在相同区域，有独立于语言的感觉—认知显著性。<button type="button" class="cite" data-cite="bkFind2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="focalSalience" aria-label="查看出处"></button></li>
+    <li><strong>原型 / 原型性</strong>：范畴核心的图式化心理表征、认知参照点；最佳成员只是原型的例示。<button type="button" class="cite" data-cite="protoMeaning" aria-label="查看出处"></button></li>
+    <li><strong>互动属性</strong>：事物性质的心理体现，与人们的认知及与现实的互动模式密切相关；划类的依据。<button type="button" class="cite" data-cite="attrsNotFeatures" aria-label="查看出处"></button></li>
+    <li><strong>基本层次范畴</strong>：概念层级中居中的"猫、椅子、汽车"；感知、功能、言语交际、知识组织四方面基本。<button type="button" class="cite" data-cite="basicLevel" aria-label="查看出处"></button></li>
+    <li><strong>ICM（理想化认知模式）</strong>：认知域中构建的认知结构综合体；四种类型：命题、意象—图式、隐喻、转喻。<button type="button" class="cite" data-cite="icmDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="icmFour" aria-label="查看出处"></button></li>
+    <li><strong>辐射状范畴</strong>：多义范畴以家族相似连成意义链条，Lakoff 1987 命名；Taylor 称家族相似范畴。<button type="button" class="cite" data-cite="polysemyRadial" aria-label="查看出处"></button></li>
+    <li><strong>射体 / 地标（TR/LM）</strong>：关系中被勾勒的显著实体 / 参照物（Langacker 1987）。<button type="button" class="cite" data-cite="overFour" aria-label="查看出处"></button></li>
+    <li><strong>概念隐喻</strong>：体现在语言表达中的隐喻概念；三结论：普遍性、系统性、观念性。<button type="button" class="cite" data-cite="threeConclusions" aria-label="查看出处"></button></li>
+    <li><strong>结构 / 方位 / 本体隐喻</strong>：一概念建构另一概念；参照空间方位自相组织；把抽象经验视为实体。<button type="button" class="cite" data-cite="structuralMetaphor" aria-label="查看出处"></button><button type="button" class="cite" data-cite="orientational" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ontological" aria-label="查看出处"></button></li>
+    <li><strong>导管隐喻</strong>：Reddy 1979；观念是物体、语词是容器、通讯是发送。<button type="button" class="cite" data-cite="conduit" aria-label="查看出处"></button></li>
+    <li><strong>意象（Langacker）</strong>：以不同方式理解和把握同一情景的能力；总括扫描如看画，次第扫描如看电影。<button type="button" class="cite" data-cite="langackerImagery2" aria-label="查看出处"></button><button type="button" class="cite" data-cite="scanning" aria-label="查看出处"></button></li>
+    <li><strong>意象图式</strong>：日常互动经验中形成的简单而基本的认知结构；孕于身体、动态、完形。<button type="button" class="cite" data-cite="schemaDef" aria-label="查看出处"></button><button type="button" class="cite" data-cite="embodiedSchema" aria-label="查看出处"></button></li>
+    <li><strong>恒定性假说</strong>：Lakoff 1990；隐喻映射保存来源域的认知拓扑结构（意象图式结构）。<button type="button" class="cite" data-cite="invariance" aria-label="查看出处"></button></li>
+    <li><strong>形式的空间化假说（SFH）</strong>：Lakoff 1987；句法结构由意象图式经隐喻映射形成。<button type="button" class="cite" data-cite="sfh" aria-label="查看出处"></button></li>
+  </ul>
+</details>
+
+<footer class="site">
+  <p>材料来源：《认知语言学与汉语名词短语》（张敏 著）第二章 OCR 转录稿<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button>。转录稿无页码，角标位置精确到节；关键说法请点开角标核对。仅供个人学习研究使用。</p>
+  <p>由 pdf-to-interactive-web skill 制作 · 单文件 · 零外部依赖 · 2026-10-24</p>
+</footer>
+
+</main>
+
+<!-- 出处弹窗 -->
+<div id="citePop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <div class="cite-card">
+    <button class="cc-close" id="ccClose" aria-label="关闭">✕</button>
+    <p class="cc-loc" id="ccLoc"></p>
+    <p class="cc-quote serif" id="ccQuote"></p>
+    <p class="cc-zh" id="ccZh"></p>
+    <p class="cc-note">位置按转录稿节号标注（转录稿无页码，角标位置精确到节）；原句可回原始 md 文件核对。</p>
+  </div>
+</div>
+
+<div id="resumePill" hidden>↩ 接着读：<span id="resumeName"></span></div>
+
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第二章"},
+  expBasis:{page:"2.1",quote:"对认知语言学而言，范畴化问题还具有另一层意义：其理论基础的一个重要来源便是对这个问题的重新审核，可以说它在相当大的程度上催生了这门新兴学科。",zh:"对范畴化的重新审核是认知语言学理论基础的重要来源，催生了这门学科"},
+  catDef:{page:"2.1",quote:"从认知的角度看，范畴化（categorization）可说是人类高级认知活动中最基本的一种，它指的是人类在歧异的现实中看到相似性，并据以将可分辨的不同事物处理为相同的，由此对世界万物进行分类，进而形成概念的过程和能力。",zh:"范畴化是在歧异的现实中看到相似性，据以分类并形成概念的过程和能力"},
+  labovCat:{page:"2.1",quote:"这正如Labov（1973）所说的，“如果语言学所作的可用一句话来概括，那它就是对范畴的研究”。",zh:"Labov 1973：语言学可用一句话概括为对范畴的研究"},
+  lakoffTurn:{page:"2.1",quote:"Lakoff曾说过，认知科学家在这个问题上的新发现是促使他由生成学派转向认知学派的一个重要因素。",zh:"范畴化问题上的新发现是 Lakoff 转向认知学派的重要因素"},
+  classicTheory:{page:"2.1",quote:"被Lakoff称作范畴化的“经典理论”的传统观念肇始于亚里士多德对本质属性和非本质属性的形而上学的区分。它认为概念的类来源于客观世界里既定的范畴，与进行范畴化的主体无关；而范畴的归属是由概念的本质属性决定的。它包含以下的基本假设：（1）范畴是由充分特征和必要特征的合取定义的；（2）特征是二元的（binary）；（3）范畴有着明确的边界；（4）范畴的所有成员地位相等。",zh:"经典理论四假设：充要条件合取定义、特征二元、边界明确、成员地位平等；源于亚里士多德的形而上学区分"},
+  containerMeta:{page:"2.1.2",quote:"Lakoff（1987）曾形象地将经典的范畴化理论的实质概括为“容器”隐喻，即范畴像一个容器，具备定义性特征的个体就在里边，不具备的就在外边。",zh:"Lakoff 把经典范畴理论的实质概括为“容器”隐喻"},
+  familyRes:{page:"2.1.2",quote:"著名哲学家维特根斯坦（Wittgenstein 1953）却发现有一类概念范畴无法用经典的模式去概括，而是以一种他称作“家族相似性（family resemblance）”的原则组织起来的，其中类别的成员就如同一家族的成员，每个成员都和其他一个或数个成员共有一项或数项特征，但几乎没有一项特征是所有成员都共有的",zh:"维特根斯坦 1953：家族相似性——成员环环相扣共有部分特征，几乎没有一条全体共有"},
+  gameExample:{page:"2.1.2",quote:"他举了“游戏”（德语的 Spiel，英语的 game）一词为例：下棋、玩纸牌、打球、奥运会等都被叫作“game”，由它指称的活动有些具有竞争性，有些要论输赢，有些有娱乐的因素，有些要靠技巧和运气，但这些特征中没有一条是所有的 game 都共有的。",zh:"“游戏”例：没有一条特征是所有 game 共有的"},
+  roschExp:{page:"2.1.2",quote:"从七十年代初开始，Rosch等心理学家（以及语言学家Labov）对“cup、bird、fruit、furniture、vegetable、toy、vehicle、clothing”等概念作了一系列深入的定量实验研究，发现在范畴化中起到关键性作用的是认知上显著的“原型”。",zh:"Rosch 等对 cup、bird、fruit 等概念的定量实验发现关键作用是认知上显著的原型"},
+  attrsNotFeatures:{page:"2.1.2",quote:"(1)个体范畴化的依据是其属性(attributes)而非其基本特征(essential features)。二者的区别是，前者是事物性质的心理体现，与人们的认知及与现实的互动模式密切相关(Lakoff称之为 interactional properties，即互动属性)；后者则被理解为事物固有的本质特性，它们与主体无关的，是客观而独立地存在的。",zh:"范畴化依据是与认知互动相关的属性，而非与主体无关的客观本质特征"},
+  labovVessel:{page:"2.1.2",quote:"例如，根据Labov(1973)的实验，“bowl”往往指器皿中宽而浅者，“cup”为宽度深度大体相当者，“vase”则为窄而深者。但若一个形体方面不太典型的器皿装的是食物，则被试往往将它称作 bowl；若插上了花，即使深度并不大，也常被称作 vase。",zh:"Labov 器皿实验：同一器皿装食物称 bowl、插上花称 vase"},
+  fuzzyBoundary:{page:"2.1.2",quote:"(3)自然类的边界往往是模糊的，相邻范畴常常不是由严格的边界截然分开，其边缘成员往往混入对方的类别。例如Labov实验中的 cup 和 bowl 等。",zh:"自然类边界模糊，相邻范畴边缘成员往往互混"},
+  furnitureDef:{page:"2.1.2",quote:"著名的 Webster 英语词典定义为“movable articles used in readying an area as a room or patio for occupancy or use（用于装备房间、内院之类地方，使便于居住或使用的可移动物件）”，这只是勉强找出的非确定性的描述，根本谈不上是能据以确切分类的充分必要条件（比如，壁柜、电话、地毯算不算 furniture？）。",zh:"furniture 的词典定义只是勉强找到的非确定性描述，不是充要条件"},
+  birdMembers:{page:"2.1.2",quote:"(4)自然类各成员地位并不平等，其中有较好的和较差的成员之分。例如，在“鸟”的类别中，知更鸟和麻雀就是较好的典型成员，而鸵鸟、企鹅则处于范畴的边缘，是较差的成员。最好的成员即最具原型性（prototypicality）的成员，其与最差的成员之间，可有等级之别。",zh:"知更鸟、麻雀是鸟的较好典型成员；鸵鸟、企鹅处于边缘，是较差成员"},
+  prototypicalityShare:{page:"2.1.2",quote:"(5)范畴中原型性更高的成员具有更多的与同类其他成员共有的属性，并具有更少的与相邻类别的成员共有的属性……根据 Rosch 的实验，在列举出来的“鸟”范畴较普遍的属性中，原型性的知更鸟占10项，而边缘成员鸵鸟仅具有这10项中的三四项。",zh:"原型成员与同类共有属性更多：知更鸟占 10 项普遍属性，鸵鸟仅三四项"},
+  gestalt:{page:"2.1.2",quote:"(6)就实体的范畴化及好坏成员的评估而言，涉及的心理过程不光是属性的计算，而更是完形感知（gestalt perception），即将范畴化对象之功能重要、视觉显著的部分整合为一个整体视觉—心理表征。以“chair”为例，其显著部分是几个功能上重要的部件，即支撑身体背部的靠背、支撑臀部的座板和起稳固作用的四条腿，以及这些部件之间的比例。",zh:"好坏成员评估靠完形感知：chair 的显著部分是靠背、座板、四条腿及比例"},
+  protoMeaning:{page:"2.1.2",quote:"必须注意的是，尽管“原型”一词有时被用来指范畴内的最佳成员或典型代表，但其更确切的意思是指作为范畴核心的图式化的心理表征(mental representation)，或说是一种认知参照点。在这个意义上，最佳成员只是原型的例示(instantiation)。",zh:"原型更确切的意思是范畴核心的图式化心理表征、认知参照点；最佳成员只是例示"},
+  classicScope:{page:"2.1.2",quote:"传统的范畴化理论若说明的是数学、逻辑或严格的科学意义上的类别，那么它并没有错……传统理论的问题是：第一，它忽视了经典范畴之外其他类型的范畴；第二，它不能很好地解释在自然语言中表现出来的日常概念范畴。",zh:"经典理论对数学逻辑科学类别没错；问题是忽视其他范畴类型、解释不了日常概念"},
+  birdAttrs:{page:"2.1.2",quote:"鸵鸟之所以为鸟，不光是因为它和所有其他成员一样有羽毛，会生蛋等等，还因为它像红鹤和鹤一样有长颈，像孔雀一样有装饰性的羽毛，像鹦鹉一样有斑斓的颜色。",zh:"鸵鸟之为鸟靠家族相似属性：长颈像红鹤、装饰性羽毛像孔雀、颜色像鹦鹉"},
+  twoLessons:{page:"2.1.2",quote:"第一，即使能够用经典理论描述的边界清楚的类也存在原型效应……第二，自然范畴不应视作由所谓本质属性定义出来的集，而是认知上显著的所有属性的集束共同作用的结果",zh:"边界清楚的类也有原型效应；自然范畴是全部属性集束共同作用的结果"},
+  bk98:{page:"2.1.1",quote:"然而，根据 Berlin & Kay (1969) 对 98 种语言颜色词的研究，情况并非如此。",zh:"Berlin & Kay 1969 年研究 98 种语言的颜色词"},
+  bkFind1:{page:"2.1.1",quote:"第一，世界各语言里一共存在着 11 种被称作“基本颜色词”的颜色种类的普遍集合，它们构成一个严格的蕴涵层级 (implicational hierarchy)，即“黑、白（红（黄、蓝、绿（棕、紫、粉红、橙、灰）”，其中 x（y 的意思是若一种语言包含 y，则一定也包含 x）。",zh:"11 种基本颜色词构成严格蕴涵层级：黑、白（红（黄、蓝、绿（棕、紫、粉红、橙、灰）"},
+  bkFind2:{page:"2.1.1",quote:"第二，各个颜色词所指的中心区，即“焦点色 (focal colors)”，是非常清楚的，但其边界则往往不确定；而且，不同语言里相对应的颜色词的所指中心大多落在相同的区域。",zh:"焦点色中心清楚、边界模糊，跨语言大多落在相同区域"},
+  bkDispute:{page:"2.1.1",quote:"尽管后人对这项研究得出的蕴涵层级的细节颇多争议，作者在其后的研究中也作了一些调整，但其发现至少显明了这样一个不争的事实，即颜色词对现实的切割并不是完全任意的。",zh:"蕴涵层级细节有争议且作者后来作过调整，但颜色词非任意切分是不争事实"},
+  focalSalience:{page:"2.1.1",quote:"和非焦点色相比，焦点色在感知上更加显著，在短时记忆中记得更准确，在长时记忆中更容易保持，在辨认实验中反应时更短，在儿童语言习得中出现得更早。",zh:"焦点色感知更显著、记忆更准、反应时更短、习得更早"},
+  colorFactors:{page:"2.1.1",quote:"这些研究显示，颜色范畴是由以下三方面的因素决定的：(1) 神经生理机制，即与眼部颜色锥体的构造及作用方式，以及眼睛和大脑的神经联系有关；(2) 普遍的认知机制，即对接受的刺激所进行的感知处理和认知推算；(3) 特定文化对普遍认知机制的处理结果所作的选择。",zh:"颜色范畴三因素：神经生理机制、普遍认知机制、特定文化的选择"},
+  notPassive:{page:"2.1.1",quote:"范畴并非对客观现实的被动反映，它是通过我们的身体及心智对真实世界的特性进行能动处理的结果；在客观现实因素之外，更有生理、心理、文化因素的作用。",zh:"范畴不是对现实的被动反映，而是身体及心智能动处理的结果"},
+  unequalMembers:{page:"2.1.1",quote:"此外，颜色中心区的存在及其普遍性还说明，范畴内部各成员地位并不平等，某一颜色区域内的中心部分比边缘部分更具代表性，即是某个颜色的更典型的样例。这一发现进一步引导心理学家和语言学家提出了范畴化的原型理论（prototype theory）。",zh:"颜色中心区说明成员地位不平等，直接引导出原型理论"},
+  folkTaxonomy:{page:"2.1.3",quote:"很多民族语言在对生物分类时，焦点都是放在“属(genus, generic)”层次的概念上，其名称最丰富，形态最简单，区别最清楚",zh:"民族语言的通俗分类焦点在“属”层：名称最丰富、形态最简单、区别最清楚"},
+  basicLevel:{page:"2.1.3",quote:"心理学家Rosch (1977,1978)的实验研究也证实，人类概念层级中最重要的不是较高层的范畴如“动物、家具、交通工具”，也不是较低层的如“波斯猫、扶手椅、敞篷跑车”，而是位置居中的“猫、椅子、汽车”，由于这个层次的范畴在人类认知中的基本地位，它们被称作基本层次范畴(basic-level categories)。",zh:"基本层次范畴是居中的“猫、椅子、汽车”，而非“动物”或“波斯猫”"},
+  basicPerception:{page:"2.1.3",quote:"第一，感知方面，在这个层次上的范畴成员具有感知上相似的整体外形，能形成反映整个类别的单个心灵意象，人们能够最快地辨认其类属。",zh:"感知：基本层次成员有相似整体外形，能形成单个心灵意象，辨认最快"},
+  basicFunction:{page:"2.1.3",quote:"第二，功能方面，它是人们能运用类似的运动机制与其上的范畴成员打交道的最高层次……与“椅子”相关的运动反应是“坐在上面”，可是，人们对“家具”这样的高层次类别却并不产生共同的运动反应。",zh:"功能：能用类似运动机制打交道的最高层次；对椅子是“坐”，对家具没有共同反应"},
+  basicComm:{page:"2.1.3",quote:"第三，言语交际方面，这个层次上的范畴往往用较短、较简单、比较常用、独立于特定语境、比较中性的语词表达，这些语词在语言史上产生的时代一般也较早，也是儿童在语言习得时掌握得最早的。",zh:"言语交际：较短、较简单、常用、中性，产生早，儿童习得最早"},
+  basicKnowledge:{page:"2.1.3",quote:"第四，知识组织方面，人类的大部分知识都是在这个层次上组织起来的。",zh:"知识组织：人类大部分知识在基本层次上组织"},
+  basicPrecise:{page:"2.1.3",quote:"心理学、人类学和语言学的研究显示，基本层次是人们对真实世界分类分得最为精确的层次。",zh:"基本层次是分类最精确的层次"},
+  cueValidity:{page:"2.1.3",quote:"更高层次的范畴（如“家具”），其所有成员共有的属性比较少；更低层次的范畴（如“电脑桌”），其中所有成员共有的属性倒是不少，但这些属性大部分都是与相邻的其他范畴（如“书桌”）共有的。用心理学的术语说，这个层次的范畴具有最大的线索有效性（cue validity）。",zh:"基本层次范畴具有最大的线索有效性；下位范畴属性多却与相邻范畴共有"},
+  icmDef:{page:"2.1.4",quote:"根据这种理论，一个简单语言形式（如单词）的意义无法由基于经典范畴化理论的语义特征分解方法得以合适的界定……语义的基础应该是一个涉及各种相关的认知域（cognitive domains）里背景知识的复杂的认知结构。",zh:"ICM：语义的基础是涉及认知域背景知识的复杂认知结构"},
+  icmFour:{page:"2.1.4",quote:"根据结构原则的不同，ICM有以下四种类型。1. 命题模式……它大致对应于 Fillmore(1987)提出的“框架(frame)”概念……还类似计算机科学家 Schank & Abelson(1977)提出的“脚本(script)”概念……2. 意象——图式模式……3. 隐喻模式……4. 转喻模式",zh:"ICM 四类型：命题模式（框架/脚本）、意象—图式模式、隐喻模式、转喻模式"},
+  protoPhenomenon:{page:"2.1.4",quote:"心理学家早就指出，范畴化的原型效应只是一种现象而非本质(Rosch 1978)。Lakoff(1987)认为，这种效应的来源可以通过ICM找到。",zh:"原型效应只是现象而非本质，来源可到 ICM 中找"},
+  bachelorDef:{page:"2.1.4",quote:"传统语义学用成分分析法将这个词的意义分解为 [+成年][+男性][+未婚]，并声称这是界定此概念的充分必要条件……设想以下类型的人：（1）天主教神父或佛教出家男子（和尚、喇嘛）；（2）与某个女子有长期、稳定的未婚同居关系的男子……这些都是符合条件的成年未婚男性，但说英语的人通常不会将其称作 bacholar。",zh:"[+成年][+男性][+未婚] 不够用：神父、和尚、同居者都符合却不是 bachelor"},
+  bachelorICM:{page:"2.1.4",quote:"去掉(c)，便可以把教皇勉强拉进bacholar的行列；去掉(d)，便可把离婚者算进来。bacholar概念的原型效应正来自相关的ICM和真实世界之间的差距。",zh:"bachelor 相对于 BACHELORHOOD 模式界定；修改模式可纳入教皇、离婚者"},
+  bachelorStereotype:{page:"2.1.4",quote:"这一语用现象说明人们对bacholar的认识有一种以偏概全的老套(stereotype)，如bacholar往往是大男子主义的，不爱孩子，不喜欢做家务，喜欢追女人，常流连于单身酒吧等等",zh:" bachelor 的老套（大男子主义、不爱孩子）是转喻认知模式的结果"},
+  motherCluster:{page:"2.1.4",quote:"其涉及的模式包括：（1）遗传模式，即mother提供遗传基因；（2）生殖模式，即mother要生产孩子；（3）养育模式，即mother应抚养孩子；（4）谱系模式，即mother是最直接的女性祖先；（5）婚姻模式，即mother是father的配偶。",zh:"mother 的五模式集束：遗传、生殖、养育、谱系、婚姻"},
+  motherFourMothers:{page:"2.1.4",quote:"如果人可以说：“我有四个mother：一个是提供我基因的供卵者，一个是生我的人，一个是把我养大的人，一个是我父亲现在的妻子。”",zh:"“我有四个 mother”：供卵者、生者、养者、父亲现任妻子"},
+  workingMother:{page:"2.1.4",quote:"(4)成立而(5)不成立，这反映了mother的养育模式，即mother应在家照顾孩子而不出去工作，同时还体现了father的责任模式，即应该外出工作而不必直接照顾孩子。",zh:"working mother 成立而 working father 奇怪，反映养育模式与责任模式"},
+  polysemyRadial:{page:"2.1.5",quote:"这样形成的范畴Lakoff(1987)称之为“辐射状范畴(radial category)”，Taylor(1989)称为“家族相似范畴”。",zh:"多义范畴是辐射状范畴（Lakoff）／家族相似范畴（Taylor）"},
+  climbCore:{page:"2.1.5",quote:"Fillmore 将其核心语义属性概括为：(a)、[ascend](上升)，(b)、[clamber](费力地攀爬)，但它们显然不是climb所有义项共有的。",zh:"climb 核心语义属性：[ascend] 上升与 [clamber] 费力攀爬，并非所有义项共有"},
+  climbRadial:{page:"2.1.5",quote:"(1)里的climb由于最完整地包含了[ascend]和[clamber]属性的全部含义而成为这个语义范畴的原型成员，但其他成员并不共有这两个属性，而是从不同角度勾勒这两个属性（或其中一个）中的某个或某些方面，或在其基础上进行隐喻转换，这样构成了一个复杂的辐射状范畴。",zh:"climb 原型义完整包含两个核心属性；其余义项各勾勒其部分或经隐喻转换"},
+  honMotivation:{page:"2.1.5",quote:"(2)涉及两方面的动因，首先，棒球赛的一个显著的主要功能物件是细长形状的球棒……此外，另一个显著功能物件是球，它在被击后形成的运动轨迹是一条细长的线，这种扩展涉及意象图式的转换",zh:"量词“本”扩展到棒球安全打：球棒是转喻，球的细长轨迹是意象图式转换"},
+  tiaoZhang:{page:"2.1.5",quote:"以“条”为例，我们可看到由代表原型成员的细长形状的实体（如“一条腿”“一条鱼”）到较抽象的实体（如“一条新闻”“一条法律”）的转换……汉语量词“张”的扩展，即原型成员是二维平面实体（如“一张纸、一张地图、一张毛毯”），而其他成员还包括三维立体实体（如“一张桌子、一张床”），后者虽为三维，但其显著的功能部件是二维的",zh:"“条”从细长实体到新闻法律；“张”从纸到桌子，靠功能部件二维的转喻"},
+  overFour:{page:"2.1.5",quote:"这四个核心即：(1)TR以某种方式体现相对于LM的“居上”关系，(2)TR和LM之间的覆盖关系，(3)弧形的运动路径，(4)路径的终点。这四个核心之间可由(1)→(2)→(3)→(4)的方式链结起来，形成over这个复杂的语义范畴。",zh:"over 17 种空间意义形成四个核心意义集束：居上、覆盖、弧形路径、路径终点"},
+  overMetaphor:{page:"2.1.5",quote:"“He has no authority over me.（他无权管我）”是(a)体现的居上空间关系的隐喻。“He got over his parents' death.（他从父母双亡的痛苦中恢复过来，或，他克服了父母双亡的痛苦）”，这里的over是(e)克服空间障碍的隐喻。“The lesson is over.（下课了）”里的over则来源于表路径终点的(k)。",zh:"over 非空间引申义都是空间意义的隐喻扩展：居上、克服障碍、路径终点"},
+  nouniness:{page:"2.1.6",quote:"上述四个名词在体现名词特性的句法限制上呈现 toe < breath < way < time 的序列，也就是说，它们“象”典型名词的程度，或曰“名词性（nouniness）”是依次递减的。",zh:"toe、breath、way、time 的名词性依次递减，与语义抽象度序列一致"},
+  foxExample:{page:"2.1.6",quote:"(1) 里的 fox 突显特定话语里的某个具体的狐狸，它能加冠词、能受形容词修饰，能变换为复数；(2) 里的 fox 则没有实指，它只是高度整合的猎狐活动的一个成分，在形式上它不能变为复数，不能加冠词，不能再受形容词修饰。",zh:"实指的 fox 可加冠词变复数；不实指的 fox 一概不能"},
+  dushuExample:{page:"2.1.6",quote:"(3) 里的“书”可实指，这时能加上数量、指量词修饰成分；(4) 里的“读书”的意义凝固为一体，相当于学习的意思，其中的“书”并不实指，而它也不能像典型的名词那样加上各种修饰成分。",zh:"“在图书馆读书”的书可实指；“在大学读书”的书已凝固为学习"},
+  givonTemporal:{page:"2.1.6",quote:"他认为主要的语法形式类反映了它们所代表的现象在感知中的时间稳定性（temporal stability）方面的差异。这一尺度的两端在语法范畴上直接显现为名词和动词，而居于中间状态的则是形容词。",zh:"Givón：语法形式类反映时间稳定性；名词、动词居两端，形容词居中"},
+  langackerBase:{page:"2.1.6",quote:"意象分析中有两个重要概念，即基底（base）和侧面（profile）……名词标示的是“事物”，动词标示的是“过程（process）”，而形容词/副词标示的是“非时间关系（atemporal relations）”。",zh:"Langacker：名词标示事物、动词标示过程、形容词标示非时间关系"},
+  croftMarked:{page:"2.1.6",quote:"Croft指出，特性之间无标记的关联是原型性的关联，而原型性的关联与形式上的无标记性相对应，由此可定义出原型的形式类来。",zh:"Croft：特性间无标记关联即原型性关联"},
+  threeConclusions:{page:"2.2",quote:"（1）隐喻的普遍性：隐喻不是一种特殊的语言表达手段，它代表了语言的常态，在日常语言中的运用是相当普遍的。根据Lakoff & Johnson（1980），英语里大约有70%的表达方式是隐喻性的。……(3) 隐喻的观念性：隐喻不光是个语言的问题，它更是一种思维方式……这三个结论中，第三个最为根本",zh:"隐喻认知观三结论：普遍性（约 70%）、系统性、观念性（最根本）"},
+  unconsciousMeta:{page:"2.2",quote:"Lakoff & Turner（1989）指出，事实恰恰相反，最有生命力、最有效的正是那些确立已久以致于人们习以为常，不费力气便自动冒出来的无意识的东西。因此，最重要的隐喻是那些通过长期形成的规约而潜移默化地进入日常语言的无意识的隐喻。",zh:"最重要、最有生命力的是规约化的无意识隐喻"},
+  timeMoney:{page:"2.2",quote:"我们是通过“金钱”这个来源（source）范畴去构想“时间”这个目标（target）范畴，即前一范畴提供了一个结构模式，我们可据以建构（或曰范畴化）后一范畴。",zh:"通过“金钱”来源范畴构想“时间”目标范畴；汉语另有“一寸光阴一寸金”"},
+  timeExamples:{page:"2.2",quote:"(1) You're wasting my time. (你在浪费我的时间) (2) Can you give me a few minutes? (你能给我几分钟时间吗?) (3) How do you spend your time? (你的时间是怎么花的?) (4) We are running out of time. (我们的时间快用光了。) (5) This gadget will save you hours. (这个装置能给你节省不少时间。) (6) Is that worth your while? (值得在那上面花时间吗?) (7) Do you have much time left? (你还剩下很多时间吗?) (8) You need to budget your time. (你必须计划好你的时间。) (9)Thank you for your time. (谢谢您为我拔冗。)",zh:"九个日常用语显示时间被当作可花、可浪费、可节省、可计划开支的东西"},
+  threeTime:{page:"2.2",quote:"上面其实包含了三个相互关联的概念隐喻，即 +TIME IS MONEY +、+ TIME IS A LIMITED RESOURCE +（时间是一种有限的资源）、+TIME IS A VALUABLE COMMODITY +（时间是一种有价值的商品）……由于在现代社会里时间的确是有限的资源，而有限的资源又确是有价商品，故三者密不可分，依次有蕴含（entailment）的关系，共同构成一个有关时间的概念系统。",zh:"三个时间隐喻依次蕴含，共同构成有关时间的概念系统"},
+  conduit:{page:"2.2",quote:"语言交际的整个过程就像是送包裹：观念是物体，它被发送者放入容器（语句），送到接收者那里，后者把它从容器里取出来。这就是所谓导管隐喻",zh:"导管隐喻：观念是物体、语句是容器、通讯是发送；交际像送包裹"},
+  conduitExamples:{page:"2.2",quote:"汉语里的情况也大同小异……汉语里还可找到很多其他例子，如“你话里的意思我听不出来”“这些话里包含了很多深刻的内容”。",zh:"汉语的导管隐喻例：“你话里的意思我听不出来”“这些话里包含了很多深刻的内容”"},
+  ideasFood:{page:"2.2",quote:"英语里有关观念还有另一个隐喻，即 +IDEAS ARE FOOD+（观念是食物）。体现这一隐喻的例子有“half-baked ideas（半生熟的观念）、raw facts（未经加工的事实）……I just can't swallow that claim.（我无法接受这种说法）”",zh:"IDEAS ARE FOOD：半生熟的观念、难以消化的事实、swallow that claim"},
+  ideasSystem:{page:"2.2",quote:"Lakoff & Johnson 还举出了有关观念的其他类型的隐喻，如 +IDEAS ARE PEOPLE+（观念是人）、+IDEAS ARE PLANTS+（观念是植物）、+IDEAS ARE PRODUCTS-（观念是产品）、+IDEAS ARE COMMODITIES+（观念是商品）、+IDEAS ARE RESOURCES+（观念是资源）等等。这显示同一概念可以有完全不同的概念隐喻，它们虽有别，但并不矛盾，而是互相补充的，形成一个有关“观念”的概念隐喻系统",zh:"同一概念的不同隐喻互相补充，形成有关“观念”的概念隐喻系统"},
+  understanding:{page:"2.2",quote:"当我们感知一个具体实物时，首先是通过视觉去看，更可以通过触觉去感受，若把它抓紧，则认识会更深刻。感知实物的这些方式若映射到较抽象的“理解”模式中，便可形成上述两个概念隐喻。这两个隐喻的例子在汉语里有不少，例如“他的意思难道你看不出来？”“这一层意思我看不透”“我看出他不安好心”“这个要点我没有抓住”“很难把握其中的规律”“掌握了这个情况”。",zh:"理解是看见／理解是抓住：汉语“看不出来”“没有抓住”“掌握了这个情况”"},
+  lifeJourney:{page:"2.2",quote:"人的生命周期在英语里 (汉语其实也一样) 被构想为由三个阶段的旅行构成: (a) 我们来到这个世界 (arrive in the world), (b) 走过一生 (go through life), (c) 死时离开这个世界",zh:"LIFE IS JOURNEY：出生是来临、走过一生、死亡是离开"},
+  lifeSub:{page:"2.2",quote:"(16) + THE PERSON LEADING A LIFE IS A TRAVELLER + (度过一生的人是旅行者) 例: She went through life with a good heart. (她带着一颗善良的心走过了一生)……(22)+CHOICES IN LIFE ARE CROSSROADS+(人生的选择是交叉路口)例：There were two paths open to him. (有两条路由他选择)",zh:"人生是旅行的子隐喻：旅行者、目的地、路径、障碍物、距离、地标、交叉路口"},
+  structuralMapping:{page:"2.2",quote:"这个概念隐喻是通过一种“结构映射（structural mapping）”的方式形成的，也就是说，我们将来源模式“旅行”的结构映射到目标模式“人生”中去，前者里的某个点对应于后者里的某个点。",zh:"结构映射：来源模式的每个点对应目标模式的一个点"},
+  structuralMetaphor:{page:"2.2",quote:"“结构隐喻 (structural metaphor)”，它指的是通过一个概念来建构另一个概念……这两个概念的认知域自然是不同的，但它们的结构保持不变，即各自的构成成分存在着有规律的对应关系。",zh:"结构隐喻：通过一个概念建构另一个概念，结构保持有规律对应"},
+  argumentWar:{page:"2.2",quote:"它包含四个主要成分，即 +ARGUMENT IS JOURNEY +（论争是旅行）、+ ARGUMENT IS WAR +（论争是战争）、+ ARGUMENT IS CONTAINER +（论争是容器）、+ ARGUMENTS ARE BUILDINGS +（论争是建筑物），它们各自突出“论争”的某个或某些方面，如“旅行”隐喻说明其过程，“战争”隐喻说明其方法和结果，“容器”隐喻说明其内容，“建筑物”隐喻说明其质量。",zh:"ARGUMENT 含四个结构隐喻：旅行（过程）、战争（方法结果）、容器（内容）、建筑物（质量）"},
+  warLinks:{page:"2.2",quote:"(a)敌对双方的初始位置：They drew up their battle lines. (他们拉开了架式)；(b)进攻：She attacked every weak point in my argument. (她对我论证中的每一个弱点都进行了攻击)；(c)防御：They defended their position ferociously. (他们拼命维护自己的立场)；(d)撤退：He withdrew his offensive remarks. (他撤回了冒犯对方的言论)；(e)反攻：I hit back at his criticism. (我对他的批评进行了反击)；(f)胜负：O. K., you win. (得了，你赢了)；(g)停战：Let's call it a truce. (我们就此休战)。",zh:"论争是战争的七个环节：初始位置、进攻、防御、撤退、反攻、胜负、停战"},
+  concreteToAbstract:{page:"2.2",quote:"比较左边的目标概念和右边的来源概念，可以得出一个合乎人们直觉的结论，即我们往往是依赖较具体的概念（右边）去理解较抽象的概念（左边）。",zh:"总规律：依赖较具体概念理解较抽象概念"},
+  orientational:{page:"2.2",quote:"Lakoff & Johnson 归纳的第二种概念隐喻类型是“方位隐喻（orientational metaphor）”，它不是用一个概念构造另一个，而是在同一个概念系统内部，参照上下、内外、前后、深浅、中心一边缘之类的空间方位自相组织起来的。",zh:"方位隐喻：参照上下、内外、前后等空间方位在概念系统内部自相组织"},
+  orientExamples:{page:"2.2",quote:"(a) 高兴是上；难过是下 (b) 有意识是上；无意识是下 (c) 健康、存活是上；疾病、死亡是下 (d) 施控、施力是上；受控、受力是下 (e) 多是上；(f) 地位高是上地位低是下 (g) 好是上，坏是下 (h) 有道德是上，道德败坏是下 (i) 理性是上，感性是下",zh:"九组方位隐喻：高兴、意识、健康、施控、多、地位、好、道德、理性皆为上"},
+  orientBasis:{page:"2.2",quote:"这些隐喻中来源和目标之间的关系都不是任意的，它们的基础有两个：一是人类共有的身体及物质经验，这可以说明为什么类似隐喻在相当多语言中都是大体一致的；二是特定社会中形成的文化经验，因此隐喻的具体形式可能因社会和语言而不同。",zh:"方位隐喻基础：共有的身体及物质经验＋特定社会文化经验"},
+  ontological:{page:"2.2",quote:"人类对物理世界里的实体及物质的经验是一种非常基本的经验，我们可据以理解那些较抽象的经验，如事件、行为、感觉、观念等，将它们视为离散的、有形的实体，以便对之进行推理。",zh:"本体隐喻：把事件、行为、感觉、观念等抽象经验视为离散有形的实体"},
+  inflation:{page:"2.2",quote:"这样的隐喻可以拿“通货膨胀”为例，我们将物价上涨的经验处理为实体，形成+INFLATION IS AN ENTITY+（通货膨胀是实体）的本体隐喻。例如“Inflation is lowering our standard of living.（通货膨胀日益降低我们的生活水平）”",zh:"INFLATION IS AN ENTITY：把物价上涨的经验处理为实体"},
+  ontologicalRoles:{page:"2.2",quote:"这类隐喻的作用至少有以下一些：（a）指称，如“My fear of insects is driving my wife crazy.（我对昆虫的恐惧简直让我太太受不了）”；（b）量化……（c）确认其方面……（d）确定原因……（e）确定目标、促动行为",zh:"本体隐喻五种作用：指称、量化、确认方面、确定原因、确定目标以促动行为"},
+  mindMachine:{page:"2.2",quote:"在+THE MIND IS AN ENTITY+（心灵是个实体）的隐喻中，这个实体可以是机器，即有+THE MIND IS A MACHINE+（心灵是架机器）的隐喻，例子有“My mind just isn't operating today.（我今天脑子干脆不转了）”……它也可以是某种易碎物品，即有+THE MIND IS A BRITTLE OBJECT+（心灵是个易碎物），如“Her ego is very fragile.（她的个性很脆弱）”",zh:"心灵是机器／心灵是易碎物：脑子不转了、个性很脆弱"},
+  containerBody:{page:"2.2",quote:"这一隐喻的物质基础非常明显：人体就是一个容器，它有内外之分，皮肤作为分界面将它与外界隔开，我们不断地摄取某些东西（空气、食物、水等）进入这个容器中，也不断地从中排出（汗液、排泄物、血等）。",zh:"容器隐喻的物质基础：人体是容器，皮肤是分界面，不断摄取排出"},
+  containerView:{page:"2.2",quote:"视野就被概念化为容器：我们的视线界定了视野的边界，它就成为容器，故有“The ship is coming into view.（那艘船正进入我们的视野）”。",zh:"视野是容器：船“进入视野”"},
+  raceContainer:{page:"2.2",quote:"这个事件存在于一定的时间和空间，且有始有终（即有明确边界），所以就有了+RACE AS CONTAINER OBJECT+（赛跑是容器实体）的隐喻，可以说“He's out of the race now.（他已退出了比赛）”，“进入决赛”“在比赛当中”“比赛里面出了很多怪事”等等。",zh:"赛跑是容器实体：退出比赛、进入决赛、比赛当中"},
+  stateContainer:{page:"2.2",quote:"将状态视为容器的例子有“He's in love.（他处于热恋之中）”，“He's coming out of coma.（他从昏迷中苏醒过来）”，“He fell into a depression.（他陷入苦闷之中）”。",zh:"状态是容器：热恋之中、陷入昏迷、陷入苦闷"},
+  schemaNotImage:{page:"2.2",quote:"他们认为，这些隐喻的心理基础和表现不是具体的视觉形象，而是抽象的意象和意象图式……“容器”隐喻之下是一个基于“里—外”关系的抽象的“容器”图式，而“路径”隐喻之下是一个体现“从一点到另一点”关系的“路径”图式。",zh:"隐喻的心理基础是意象图式：容器图式基于里—外，路径图式基于从一点到另一点"},
+  imageryPsych:{page:"2.3",quote:"如Shepard等人(1971)对心理旋转（mental rotation）的研究，Kosslyn(1975)对心理扫描（mental scanning）的研究，Paivio(1975)的双重编码理论等……故他们把心象看作知觉（尤其是视觉）表征在头脑里的一种抽象类比物（abstract analog）（参见Anderson 1980），认为它与知觉的机能等价。",zh:"心象研究：心理旋转、心理扫描、双重编码；心象是知觉表征的抽象类比物"},
+  langackerImagery2:{page:"2.3.1",quote:"当用来分析具体语言现象时……其意象概念是他自己独有的（idiosyncratic），我们可称之为“意象2”，它指的是，为思维和表达的目的，我们所具备的以不同的方式（通过构成不同的意象）去理解和把握某个感知到的情景的能力。",zh:"Langacker 的意象：以不同方式理解和把握同一情景的能力"},
+  clockSentences:{page:"2.3.1",quote:"(1) a. The clock is on the table. (钟在桌子上) b. The clock is lying on the table. (钟横躺在桌子上) c. The clock is resting on the table. (钟在桌上呆着呢) d. The table is supporting the clock. (桌子托着那个钟)",zh:"钟表四句：同一情景的四种不同意象"},
+  scanning:{page:"2.3.1",quote:"一为“总括扫描(summary scanning)”，一为“次第扫描(sequential scanning)”……作一个简单的类比，总括扫描就像是看一幅静止的图片，而次第扫描就像是看电影。显然，(2a)里的动词“enter”勾勒的是过程，其意象是次第扫描的结果；(2b)里的介词“into”勾勒的是关系，是总括扫描的结果。",zh:"总括扫描如看静止图片，次第扫描如看电影；enter 是次第，into 是总括"},
+  schemaDef:{page:"2.3.1",quote:"这两个术语基本上是可以互换的，Ungerer & Schmid（1996）将其定义为“来源于我们在日常生活中与世界的互动经验的简单而基本的认知结构”。",zh:"意象图式：日常与世界的互动经验中形成的简单而基本的认知结构"},
+  dewArc:{page:"2.3.1",quote:"Dewell (1994) 认为 Lakoff 对这个多义范畴的分析过于繁复……他提出了一个简单而统一的修正方案。这一方案的关键是将射体的路径修改为弧形。(4c)勾勒的是射线的终点，解释的是“Sam lives over the bridge.（山姆住在桥的那一头）”。",zh:"Dewell：over 的中心图式是弧形射线；勾勒终点解释“住在桥那头”"},
+  embodiedSchema:{page:"2.3.2",quote:"意象图式正是在身体经验的基础上形成的基本认知结构，它是联系感觉与理性的一道桥梁。……为强调其身体基础，Johnson 也将意象图式称作“孕于身体的（embodied）图式”。",zh:"意象图式在身体经验基础上形成，是联系感觉与理性的桥梁"},
+  dynamicSchema:{page:"2.3.2",quote:"他尤其强调意象图式的动态（dynamic）特性，故将它严格地定义为“具有类似意象的抽象结构的功能的一种动态模式”。",zh:"意象图式是“具有类似意象的抽象结构的功能的一种动态模式”"},
+  pathSchema:{page:"2.3.2",quote:"它由三个成分组成，即源点A、终点B和其间代表路径的一条线，其中的关系是从A点移动到B点的动力向量关系。这个图式反映的是一种一再出现的结构，它可体现在一系列看来很不相同的事件里，如(a)从一处走到另一处，(b)把球扔给玩伴，(c)打入一拳，(d)送人一件礼物，(e)冰融化为水，等等。",zh:"路径图式：源点 A、终点 B 与其间路径线；体现在走路、扔球、打拳、送礼、冰融化中"},
+  schemaTraits:{page:"2.3.2",quote:"一、它比心理学家所说的心象更加一般和抽象……二、意象图式可超越任何特定感知方式而独立存在……Lakoff（1987）也将它称作“动觉（kinaesthetic）意象图式”。Gibbs & Colston（1995）则用心理学术语将它定义为“空间关系和空间位移的动态类比表征（dynamic analog representation）”……三、意象图式尽管由可辨识的部分和关系组成，却具有完形的特性，是一个内部一致的、有意义的统一体。",zh:"意象图式三特性：比心象更抽象、超越特定感知方式、具有完形特性"},
+  schemaList:{page:"2.3.2",quote:"Johnson 和 Lakoff 举例性地列举出了一些基本的意象图式，包括“容器”、“平衡”、“迫动（compulsion）”、“阻碍（blockage）”、“反作用（counter-force）”、“除阻（restraint removal）”、“使能（enablement）”、“吸引（attraction）”、“不可数物质—可数物体（mass-count）”、“路径”、“系联（link）”、“中心—边缘”、“环（cycle）”、“近—远”、“上—下”、“前—后”、“线性序列”、“刻度（scale）”、“部分—整体”、“合并（merging）”、“分裂（splitting）”、“满—空”、“匹配（matching）”、“叠加（superimposition）”、“反复（iteration）”、“接触”、“过程”、“表面”、“物体”、“集群（collection）”，等等。",zh:"基本意象图式清单：容器、平衡、迫动、阻碍、路径、系联、中心—边缘、部分—整体等"},
+  containerSchema:{page:"2.3.2",quote:"其结构成分有三个，即内部、外部和边界。其基本逻辑来自内部结构的配置方式……一个物体要么在容器里面，要么在外面，即 P 或非 P；若容器 A 在容器 B 里，X 在 A 中，则 X 也在 B 中，也就是说，包容关系是传递的，这正是布尔逻辑(Boolean logic)中类或集合概念的基础。",zh:"容器图式：内部、外部、边界三成分；P 或非 P；包容关系传递（布尔逻辑基础）"},
+  containerImplications:{page:"2.3.2",quote:"包容关系往往保护被包容的物体免受外力的影响，容器内的行为往往受到边界的制约，被容物的位置也固定在容器的位置，容器也会影响人们对被容物的观察",zh:"容器图式的逻辑蕴含：保护被容物、行为受边界制约、位置固定、影响观察"},
+  partWholeSchema:{page:"2.3.2",quote:"身体经验：人体就是由部分构成的整体。……结构成分：一个整体，若干部分，一个体现部分如何构成整体的构型（configuration）。基本逻辑：这个图式是不对称的：如果A是B的部分，B就不是A的部分。它是不自反的：A不是A的部分。",zh:"部分—整体图式：整体、部分与构型；不对称、不自反"},
+  partWholeMetaphor:{page:"2.3.2",quote:"家庭(以及其他社会机构)被理解为由部分构成的整体。例如，结婚被视为组成家庭(整体)，夫妇是其部分。离婚被视为分裂(split up)。",zh:"结婚是组成家庭，离婚是分裂"},
+  centerPeriphery:{page:"2.3.2",quote:"我们的身体被体验为具有中心成分(躯干和内脏)和边缘成分(手脚趾、头发等)……基本逻辑：边缘依赖并取决于中心，而不是相反。隐喻举例：理论有中心原则和边际原则，重要的被看作中心。",zh:"中心—边缘图式：边缘依赖中心；理论有中心原则与边际原则"},
+  linkSchema:{page:"2.3.2",quote:"我们出生时就由脐带与母体相连……结构成分：A 和 B 两个实体，其中的系联关系。基本逻辑：若A被系联于B，A就受制于B，取决于B。这种关系是对称的……汉语也往往把社会人际关系称作“纽带”。",zh:"系联图式：A、B 两实体及系联关系；A 受制于 B；汉语称人际关系为“纽带”"},
+  lindner:{page:"2.3.2",quote:"Johnson（1987）曾引述了 Lindner 对英语里 600 多个可带上“out”的动词的研究，它显示，只要用少量原型性的图式结构便可解释所有相关格式的意义，包括像“pick out（挑选）、spread out（陈列）、leave out（忽略）、pass out（昏厥）”之类似乎彼此毫无关系的隐喻意义。",zh:"Lindner：少量原型图式解释 600 多个可带 out 的动词的意义"},
+  forceSchemas:{page:"2.3.2",quote:"Johnson 归纳出代表施力结构的七种最主要的意象图式，即“迫动”、“阻碍”、“反作用”、“偏移(diversion)”、“除阻”、“使能”、“吸引”……“must”的基本含义是表示使某个主体发出某个行为的强制力量，它正好契合“迫动”图式。“may”则被理解为不存在内在或外在阻力，这个基本含义是基于“除阻”图式。“can”的基本含义体现了施动者实施某个行为的潜力或正面的能力，它可由“使能”图式得到解释。",zh:"七种施力图式；must 契合迫动、may 基于除阻、can 源于使能"},
+  schemaTransform:{page:"2.3.2",quote:"他把这种关系称为“意象图式的转换”，认为它对辐射范畴的形成起到了关键性的作用。",zh:"意象图式的转换对辐射范畴的形成起关键作用"},
+  pathEndTransform:{page:"2.3.2",quote:"(3)路径←→路径终点 a. Sam walked across the street. (山姆走过街那边) (路径) b. Sam lives across the street. (山姆住在街那边) (终点) c. Harry walked through that doorway.(哈里穿过门廊)(路径) d. The office is through the doorway.（办公室在门廊尽头）（终点）",zh:"路径↔路径终点：across/through 一会儿指路径一会儿指终点"},
+  transformBasis:{page:"2.3.2",quote:"我们的目光常常沿着其路径追踪一个移动物体直到它停下来，这时注意的焦点就自然地落在其终点上。此外，物体沿着某个路径移动也往往是为了到达某个终点。日常经验里这种较普遍的现象使路径到终点的图式转换成为一个非常自然的语义引申原则。",zh:"目光沿路径追到停下、移动为达终点——路径到终点的转换因此自然"},
+  invariance:{page:"2.3.3",quote:"Lakoff（1990）进一步提出了一个更具概括性的假说，称作“恒定性假说（the Invariance Hypothesis）”……既然从来源域到目标域的隐喻映射只是部分的，映射过去的部分保存了来源域的认知拓扑结构(cognitive topology)，亦即意象图式结构。换言之，映射前后恒定不变的是认知拓扑结构。",zh:"恒定性假说：隐喻映射保存来源域的认知拓扑结构（意象图式结构）"},
+  timeSpace:{page:"2.3.3",quote:"时间概念在几乎所有已知人类语言中都是(程度不等地)以空间概念为基础建立起来的，这早就为语言学家注意到(参见Anderson 1971, Lyons 1977)，汉语里的这种现象也有人提及(Tai 1989，游顺钊1994，Alverson 1994)。",zh:"时间概念在几乎所有已知语言里都以空间概念为基础建立"},
+  timeOneDim:{page:"2.3.3",quote:"描述时间的空间词语只能是表一维属性的，如英语的“long-short、far-near”和汉语的“长一短、远一近（远古、最近、近年等）”，不能是“高-低、宽一窄”之类蕴涵二维或三维属性的词。",zh:"描述时间的空间词语只能是一维的：长—短、远—近，不能是高—低、宽—窄"},
+  movingTime:{page:"2.3.3",quote:"第一种方式是：观察者的位置是固定的，时间是运动着的实体；它面向运动的方向……他把这种映射方式称作“时间在动的隐喻(the moving time metaphor)”。英语里“come、go、here、follow、precede、ahead、behind、fly、pass”及汉语里“到、过、来、来临、之前、之后”等词语的某些时间含义正是用这种隐喻方式形成的。",zh:"时间在动的隐喻：观察者固定、时间运动；“星期五到了”"},
+  movingEgo:{page:"2.3.3",quote:"第二种方式是：时间的位置是固定的，观察者在运动。其逻辑蕴含是：时间有广度，可以测量出来……这种方式被 Clark 称作“自己在动的隐喻(the moving ego metaphor)”。",zh:"自己在动的隐喻：时间固定、观察者运动；“到了星期五”"},
+  taiChinese:{page:"2.3.3",quote:"Tai认为，汉语虽和英语一样两种隐喻都用，但汉语似乎更倾向于时间在动的隐喻，英语则偏爱自己在动的隐喻，这可以解释汉语里“前天、前半天、后天、后半天”之类英语所无的说法。",zh:"Tai：汉语更倾向时间在动，英语偏爱自己在动；“前天、后天”英语所无"},
+  sfh:{page:"2.3.3",quote:"Lakoff（1987）提出了“形式的空间化假说（the Spatialization of Form Hypothesis，以下简称SFH）”，用来解释句法构造的形成及实质。这个假说提出，抽象的概念结构可看作从物理空间到概念空间的隐喻映射的结果",zh:"形式的空间化假说：抽象概念结构是物理空间到概念空间的隐喻映射结果"},
+  sfhFive:{page:"2.3.3",quote:"[1] 句法的层级结构（如成分结构）可由部分一整体图式概括：母节点是整体，子节点是部分。[2]中心语—修饰语结构可由中心—边缘图式概括。[3]语法关系及同指（coreference）关系在结构上可由系联图式代表。[4]句法里的“距离”可由线性刻度图式概括。[5]句法范畴和其他各种范畴一样：其结构可由容器图式概括。",zh:"SFH 五条映射：层级←部分—整体；中心语—修饰语←中心—边缘；关系同指←系联；距离←刻度；范畴←容器"},
+  deaneLinks:{page:"2.3.3",quote:"他将它视为系联的关系，可细分为以下四类：(a)共现依存关系(cooccurrence dependence)，简称C一系联(Clink)……(b)表述关系(predication)，简称P—系联(P-link)，它指的是对施事、受事之类论元(argument)空位的填充……(c)含义依存关系(sense dependence)，简称S—系联(S-link)……(d)指称依存关系(reference dependence)，简称R—系联(R-link)",zh:"Deane 四类系联：共现依存、表述、含义依存、指称依存"},
+  parietal:{page:"2.3.3",quote:"由此，Deane(1992)提出一个大胆的“大脑顶叶假说（the Parietal Hypothesis）”……故这个假说声称，语言能力中较抽象的语法部分由顶叶负责，而抽象性较弱的听觉和发声部分则分别由Wernicke区和Broca区负责。",zh:"大脑顶叶假说：较抽象的语法能力由负责身体图式的下位顶叶负责"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 角标编号（按首次出现顺序） */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#ccLoc").textContent="位置：第二章 · "+s.page+" 节";
+  $("#ccQuote").textContent="原文："+s.quote;
+  $("#ccZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#ccClose").focus();
+}
+function closeCite(){
+  citePop.hidden=true;
+  if(lastFocus&&lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#ccClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[];
+const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeName=$("#resumeName");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("prog",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("prog")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeName.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 场景一：四假设反例 + 最好成员 ================= */
+(function(){
+  const assume={
+    1:"反例在维特根斯坦的“游戏”：下棋、纸牌、打球、奥运会都叫 game，但没有一条特征是所有 game 共有的——类由叠合的相似性网络界定。",
+    2:"反例在 Labov 的器皿实验：同一个不太典型的器皿，装食物往往被称作 bowl，插上花即使不深也常被称作 vase——划类依据是与主体相关的互动属性，不是与主体无关的客观特征。",
+    3:"反例是模糊的边界：相邻范畴常常不是由严格的边界截然分开，其边缘成员往往混入对方的类别（Labov 实验里的 cup 和 bowl）。"
+  };
+  const rev=$("#assumeRev"),txt=$("#assumeTxt");
+  $$("#assumeBtns .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#assumeBtns .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    txt.textContent=assume[b.dataset.a];
+    rev.hidden=false;
+  }));
+  const birdRev=$("#birdRev");
+  $$("#bestBird .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#bestBird .btn").forEach(x=>x.disabled=true);
+    const good=b.dataset.b==="robin"||b.dataset.b==="sparrow";
+    b.classList.add("sel");
+    birdRev.hidden=false;
+    birdRev.classList.toggle("wrong",!good);
+    const mark=document.createElement("span");
+    mark.className=good?"v-ok":"v-no";
+    mark.textContent=good?"✓ 判断正确。":"✗ 再想想。";
+    birdRev.querySelector("p").prepend(mark);
+  }));
+})();
+
+/* ================= 场景二：蕴涵层级 + 焦点色 ================= */
+(function(){
+  const hier={
+    黑:[],白:[],红:["黑","白"],
+    黄:["红","黑","白"],蓝:["红","黑","白"],绿:["红","黑","白"],
+    棕:["绿","红","黑","白"],紫:["绿","红","黑","白"],粉红:["绿","红","黑","白"],橙:["绿","红","黑","白"],灰:["绿","红","黑","白"]
+  };
+  const fb=$("#hierFb");
+  function show(c){
+    const chain=hier[c];
+    $$(".hier-node").forEach(n=>n.classList.toggle("on",chain.indexOf(n.dataset.c)>=0||n.dataset.c===c));
+    $$("#hierBtns .chip").forEach(x=>x.classList.toggle("sel",x.dataset.c===c));
+    fb.textContent=chain.length?("若一种语言有“"+c+"”，则按蕴涵层级必也有："+chain.join("、")+"。"):("“"+c+"”位于层级最外层：有它不要求别的颜色词。");
+  }
+  $$(".hier-node").forEach(n=>n.addEventListener("click",()=>show(n.dataset.c)));
+  $$("#hierBtns .chip").forEach(b=>b.addEventListener("click",()=>show(b.dataset.c)));
+  const rev=$("#focalRev");
+  $$("#focalWhy .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#focalWhy .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.o!=="b");
+    const mark=document.createElement("span");
+    mark.className=b.dataset.o==="b"?"v-ok":"v-no";
+    mark.textContent=b.dataset.o==="b"?"✓ 判断正确。":"✗ 再想想。";
+    rev.querySelector("p").prepend(mark);
+  }));
+})();
+
+/* ================= 场景三：基本层次 ================= */
+(function(){
+  const rev=$("#blRev");
+  $$("#blOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#blOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.o!=="cat");
+    const mark=document.createElement("span");
+    mark.className=b.dataset.o==="cat"?"v-ok":"v-no";
+    mark.textContent=b.dataset.o==="cat"?"✓ 判断正确。":"✗ 再想想。";
+    rev.querySelector("p").prepend(mark);
+  }));
+})();
+
+/* ================= 场景四：ICM 四类型 + climb ================= */
+(function(){
+  const icms={
+    p:"概括某个语义范畴涉及的认知域里的背景知识和信仰，是数个认知域知识的网络；大致对应 Fillmore 的“框架”，涉及人的活动时类似 Schank & Abelson 的“脚本”（上饭馆、看病之类标准化、理想化的事件系列）。",
+    i:"体现为图式意象，如位移、细薄形状、容器等——我们对蜡烛的知识就涉及一个长、细物体的图式。",
+    m:"一个命题模式或意象—图式模式从某个认知域映射到另一个认知域里相应的结构上。",
+    y:"使模式中某个成分与另一个成分发生联系，如部分—整体结构里某一部分代表整体。"
+  };
+  const txt=$("#icmTxt");
+  function pick(k){
+    $$("#icmBtns .btn").forEach(x=>x.classList.toggle("sel",x.dataset.k===k));
+    txt.textContent=icms[k];
+  }
+  $$("#icmBtns .btn").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.k)));
+  pick("p");
+  const climb={
+    1:"(1) 原型义：完整包含 (a)[ascend] 上升与 (b)[clamber] 费力地攀爬。",
+    2:"(2) 含 (a)；(b) 变了——不含用四肢攀缘，只勾勒伴随而来的“费力地运动”。",
+    3:"(3) 含 (a)，几乎不含 (b)；但“通过自身较强的动力而运动”这一伴随义沿袭下来。",
+    4:"(4) 含 (a)，但经历隐喻转换：从空间维转换为数值等级；“逐渐”的伴随特性也出现了。",
+    5:"(5) 完整包含 (b) 却完全不含 (a)；运动方向交给后面的介词 down。",
+    6:"(6) 与 (5) 类似，但不含“攀缘”义，仅勾勒“费力地运动”的特性。",
+    7:"(7) 同时包含两个属性，且在 (4) 的隐喻转换基础上再进一层：从数值等级转到社会等级。"
+  };
+  const fb=$("#climbFb");
+  $$("#climbBtns .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#climbBtns .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    fb.textContent=climb[b.dataset.c];
+  }));
+})();
+
+/* ================= 场景五：70% + 时间例句 ================= */
+(function(){
+  const slider=$("#metaPct"),out=$("#metaOut"),rev=$("#metaRev");
+  slider.addEventListener("input",()=>{out.textContent=slider.value+"%";});
+  $("#metaBtn").addEventListener("click",()=>{
+    const guess=Number(slider.value);
+    rev.hidden=false;
+    rev.classList.toggle("wrong",Math.abs(guess-70)>10);
+    const p=rev.querySelector("p");
+    const mark=document.createElement("span");
+    mark.className=Math.abs(guess-70)<=10?"v-ok":"v-no";
+    mark.textContent=Math.abs(guess-70)<=10?"✓ 猜得很接近。":"✗ 差得有点远。";
+    p.prepend(mark);
+  });
+  const timeEx={
+    1:"“浪费”：时间是可以挥霍的东西。",
+    2:"“给”：时间是可以给出的东西（有价商品）。",
+    3:"“花”：时间是金钱。",
+    4:"“用完”（run out of）：时间是有限资源。",
+    5:"“节省”：时间是可以节俭着用的资源。",
+    6:"“值得”：时间是有价值的。",
+    7:"“剩下”：时间是可以计量的量（商品）。",
+    8:"“做预算”（budget）：时间是金钱。",
+    9:"“致谢占用”：时间是有价商品。"
+  };
+  const fb=$("#timeFb");
+  $$("#timeBtns .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#timeBtns .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    fb.textContent=timeEx[b.dataset.c];
+  }));
+})();
+
+/* ================= 场景六：论争是战争 + 方位隐喻 ================= */
+(function(){
+  const war={
+    a:["初始位置","They drew up their battle lines.（他们拉开了架式）"],
+    b:["进攻","She attacked every weak point in my argument.（她对我论证中的每一个弱点都进行了攻击）"],
+    c:["防御","They defended their position ferociously.（他们拼命维护自己的立场）"],
+    d:["撤退","He withdrew his offensive remarks.（他撤回了冒犯对方的言论）"],
+    e:["反攻","I hit back at his criticism.（我对他的批评进行了反击）"],
+    f:["胜负","O. K., you win.（得了，你赢了）"],
+    g:["停战","Let's call it a truce.（我们就此休战）"]
+  };
+  const box=$("#warBox"),txt=$("#warTxt");
+  $$("#warBtns .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#warBtns .btn").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    const w=war[b.dataset.w];
+    txt.textContent=w[0]+"："+w[1];
+    box.hidden=false;
+  }));
+  const orients={
+    a:"I'm feeling up. 我感觉好极了 ／ I'm feeling down. 我情绪很低 ／ My spirits sank. 我情绪低落",
+    b:"Wake up. 醒一醒 ／ He sank into a coma. 他陷入昏迷之中",
+    c:"He's in top shape. 他的身体处于最佳状况 ／ He fell ill. 他病倒了",
+    d:"His power rose. 他的权力上升了 ／ He is under my control. 他处于我的控制之下",
+    e:"My income rose last year. 我去年的收入涨了 ／ Turn the heat down. 把暖气调低一点",
+    f:"She rose to the top. 她爬到了最高层 ／ She fell in status. 她的地位降低了",
+    g:"Things are looking up. 情况看来不错 ／ It's been downhill ever since. 此后就走下坡路了",
+    h:"He is high minded. 他情操高尚 ／ I wouldn't stoop to that. 我不会堕落成那样",
+    i:"The discussion fell to the emotional level. 讨论落到了感情用事的地步 ／ I raised it back up to the rational plane. 我又使它回升到理性的层面"
+  };
+  const fb=$("#orientFb");
+  const base="来源和目标的关系都不是任意的：基础一是人类共有的身体及物质经验，二是特定社会形成的文化经验。";
+  $$("#orientBtns .chip").forEach(b=>b.addEventListener("click",()=>{
+    $$("#orientBtns .chip").forEach(x=>x.classList.remove("sel"));
+    b.classList.add("sel");
+    fb.textContent=orients[b.dataset.o]+"（"+base+"）";
+  }));
+})();
+
+/* ================= 场景七：意象图式库 + 图式转换 ================= */
+(function(){
+  const schemas={
+    container:{t:"容器",body:"人体就是容器：皮肤是分界面，不断摄取空气、食物、水，也不断排出。",parts:"内部、外部、边界。",logic:"一物要么在里要么在外（P 或非 P）；包容关系传递：A 在 B 里、X 在 A 中，则 X 在 B 中。",ex:"视野是容器（船“进入视野”）、“出国”、“陷入苦闷”。"},
+    path:{t:"路径",body:"从一处走到另一处、把球扔给玩伴、打入一拳、送人一件礼物，乃至冰融化为水。",parts:"源点 A、终点 B、其间代表路径的一条线；从 A 到 B 的动力向量关系。",logic:"一再出现的结构：事件千差万别，基本部分和关系相同。",ex:"over 的弧形路径；“从一点到另一点”。"},
+    partwhole:{t:"部分—整体",body:"人体由部分构成的整体；为生存还必须意识到其他物体的部分整体结构。",parts:"一个整体、若干部分、一个体现部分如何构成整体的构型。",logic:"不对称：A 是 B 的部分，B 就不是 A 的部分；不自反：A 不是 A 的部分；部分可全部存在而不构成整体。",ex:"结婚被视为组成家庭，离婚被视为分裂（split up）。"},
+    center:{t:"中心—边缘",body:"躯干和内脏是中心，手脚趾、头发是边缘；树木主干对枝桠叶片。",parts:"一个实体、一个中心、一个边缘。",logic:"边缘依赖并取决于中心，而不是相反。",ex:"理论有中心原则和边际原则；重要的被看作中心。"},
+    link:{t:"系联",body:"出生时由脐带与母体相连；幼儿被父母拥抱牵引；用绳子之类的系联物连接两个物体。",parts:"A 和 B 两个实体，及其间的系联关系。",logic:"若 A 被系联于 B，A 就受制于 B、取决于 B；这种关系是对称的。",ex:"“建立联系”“家族关系”“纽带”“松绑”“解脱”。"}
+  };
+  const box=$("#schemaTxt");
+  function pick(k){
+    $$("#schemaBtns .btn").forEach(x=>x.classList.toggle("sel",x.dataset.k===k));
+    const s=schemas[k];
+    box.innerHTML="<p style=\"margin:0 0 4px\"><strong>"+s.t+"图式</strong></p>"+
+      "<p style=\"margin:.2em 0;font-size:.92rem\"><strong>身体经验：</strong>"+s.body+"</p>"+
+      "<p style=\"margin:.2em 0;font-size:.92rem\"><strong>结构成分：</strong>"+s.parts+"</p>"+
+      "<p style=\"margin:.2em 0;font-size:.92rem\"><strong>基本逻辑：</strong>"+s.logic+"</p>"+
+      "<p style=\"margin:.2em 0;font-size:.92rem\"><strong>隐喻例：</strong>"+s.ex+"</p>";
+  }
+  $$("#schemaBtns .btn").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.k)));
+  pick("container");
+  const rev=$("#transRev");
+  $$("#transOpts .btn").forEach(b=>b.addEventListener("click",()=>{
+    $$("#transOpts .btn").forEach(x=>x.disabled=true);
+    b.classList.add("sel");
+    rev.hidden=false;
+    rev.classList.toggle("wrong",b.dataset.o!=="b");
+    const mark=document.createElement("span");
+    mark.className=b.dataset.o==="b"?"v-ok":"v-no";
+    mark.textContent=b.dataset.o==="b"?"✓ 判断正确。":"✗ 再想想。";
+    rev.querySelector("p").prepend(mark);
+  }));
+})();
+</script>
+</body>
+</html>

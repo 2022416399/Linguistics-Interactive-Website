@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第三章 · 句法的象似性 | 认知语言学与汉语名词短语</title>
+<style>
+/* ============================================================
+   自定义风格「工程蓝图」四项法（与全书各章旗舰页统一）
+   1. 配色：纸面米白（--paper）+ 靛蓝墨线（--line/--indigo）
+      + 琥珀黄警示（--amber，用于判据高亮、转折点）
+      + 朱红印章色（--seal，用于先猜/自测判定）
+   2. 字体：等宽体（mono，标注、图签、数据）+ 无衬线（正文），
+      衬线楷体仅用于原文引文；全部系统字体栈，零外部依赖
+   3. 质感：图纸网格底纹（双向 repeating-linear-gradient）、
+      图框标题栏（DWG·SHEET 编号）、尺寸线（虚线+箭头）、
+      角标坐标系刻度
+   4. 主视觉：四幅蓝图——象似观念时间轴（可点击）、
+      数字阶梯（契刻→门牌号）、图样三型（三栏）、
+      七动因星图（可点击）；场景五至七另配支撑详图
+   ============================================================ */
+:root{
+  --paper:#f3f0e7; --card:#fbf9f2; --ink:#182134; --ink-2:#4c5670;
+  --line:#1f3a93; --indigo:#1f3a93; --seal:#b3321f; --amber:#c8871a;
+  --grid:rgba(31,58,147,.06);
+  --mono:ui-monospace,"Cascadia Mono","JetBrains Mono",Consolas,"Courier New",monospace;
+  --sans:system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --kai:"Kaiti SC","KaiTi","STKaiti","Noto Serif CJK SC",serif;
+}
+html.dark{
+  --paper:#101827; --card:#182234; --ink:#e8e6df; --ink-2:#a4adc4;
+  --line:#7ea2ff; --indigo:#8fb4ff; --seal:#ff8a75; --amber:#f0b95c;
+  --grid:rgba(126,162,255,.08);
+}
+/* 系统偏好暗色时默认暗；用户手动选过明（html.light）则以手动为准 */
+@media (prefers-color-scheme: dark){
+  html:not(.light){
+    --paper:#101827; --card:#182234; --ink:#e8e6df; --ink-2:#a4adc4;
+    --line:#7ea2ff; --indigo:#8fb4ff; --seal:#ff8a75; --amber:#f0b95c;
+    --grid:rgba(126,162,255,.08);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.85;
+  background-image:
+    repeating-linear-gradient(0deg,var(--grid) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 28px);
+}
+main{max-width:860px;margin:0 auto;padding:0 18px 90px}
+p{margin:.7em 0}
+/* ---------- 顶栏 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px solid var(--line);
+}
+.topbar .brand{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .brand b{color:var(--line)}
+.topbar .sp{flex:1}
+.tb-btn{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:4px 9px;cursor:pointer;min-height:30px;
+}
+.tb-btn:hover{background:var(--line);color:var(--paper)}
+/* ---------- 进度条 ---------- */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:50;background:transparent;pointer-events:none}
+.progress i{display:block;height:100%;width:0;background:var(--amber)}
+/* ---------- 场景与图纸框 ---------- */
+section{margin:34px 0}
+.scene-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-bottom:14px}
+.scene-head .no{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.1em;white-space:nowrap}
+.scene-head h2{margin:0;font-size:21px;line-height:1.4}
+.scene-head .en{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-left:auto;white-space:nowrap}
+.dwg{
+  border:1.5px solid var(--line);background:var(--card);margin:16px 0;position:relative;
+}
+.dwg-head{
+  display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  color:var(--paper);background:var(--line);padding:4px 10px;letter-spacing:.06em;
+}
+.dwg-head .sheet{margin-left:auto;opacity:.85}
+.dwg-body{padding:12px 12px 14px}
+.dwg figcaption{padding:6px 12px 10px;font-size:13px;color:var(--ink-2);border-top:1px dashed var(--line)}
+/* ---------- 角标 ---------- */
+sup.cite{
+  font-family:var(--mono);font-size:10px;color:var(--indigo);cursor:pointer;
+  border:1px solid var(--indigo);border-radius:2px;padding:0 3px;margin-left:2px;
+  vertical-align:super;line-height:1;user-select:none;background:transparent;
+}
+sup.cite:hover{background:var(--indigo);color:var(--paper)}
+html.dark sup.cite{color:var(--indigo)}
+/* ---------- 标记 ---------- */
+.tag{
+  font-family:var(--mono);font-size:11px;border:1px dashed var(--amber);color:var(--amber);
+  padding:0 4px;border-radius:2px;white-space:nowrap;
+}
+.q{font-family:var(--kai);color:var(--ink)}
+.acc{color:var(--seal);font-weight:600}
+.bad{color:var(--seal)}
+.ok{color:var(--line);font-weight:600}
+.mono{font-family:var(--mono);font-size:.92em}
+.note{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  border-left:3px solid var(--amber);padding:2px 10px;margin:10px 0;
+}
+/* ---------- hero ---------- */
+.hero{border:1.5px solid var(--line);background:var(--card);position:relative;margin-top:18px}
+.hero .dwg-head{cursor:default}
+.hero-inner{padding:20px 18px 16px}
+.hero .kicker{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.14em;margin:0 0 4px}
+.hero h1{margin:2px 0 6px;font-size:27px;line-height:1.35}
+.hero .sub{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin:0 0 14px}
+.hero .ask{
+  border:1.5px solid var(--seal);background:color-mix(in srgb,var(--seal) 7%,transparent);
+  padding:10px 12px;margin:12px 0;font-size:15px;
+}
+.hero .ask .t{font-family:var(--mono);font-size:11px;color:var(--seal);letter-spacing:.1em;display:block;margin-bottom:2px}
+.hero .pillar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.hero .pillar div{border:1px solid var(--line);padding:8px 10px;font-size:13.5px;line-height:1.6;background:var(--paper)}
+.hero .pillar b{display:block;font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.08em}
+.mapchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mapchips button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:5px 10px;cursor:pointer;min-height:32px;
+}
+.mapchips button:hover{background:var(--line);color:var(--paper)}
+@media(max-width:560px){.hero .pillar{grid-template-columns:1fr}}
+/* ---------- 先猜 ---------- */
+.guess{border:1.5px dashed var(--seal);padding:12px 14px;margin:14px 0;background:color-mix(in srgb,var(--seal) 4%,transparent)}
+.guess .q-line{font-size:16px;font-weight:600}
+.guess .opts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.guess .opts button{
+  font-family:var(--mono);font-size:14px;border:1.5px solid var(--line);background:var(--card);
+  color:var(--ink);padding:8px 14px;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.guess .opts button.picked{border-color:var(--seal);color:var(--seal)}
+.guess .reveal-btn{
+  font-family:var(--mono);font-size:13px;border:1.5px solid var(--seal);color:var(--seal);
+  background:transparent;padding:7px 16px;cursor:pointer;border-radius:3px;min-height:40px;
+}
+.guess .reveal-btn:hover{background:var(--seal);color:var(--paper)}
+.guess .answer{margin-top:10px;border-top:1px dashed var(--seal);padding-top:8px;font-size:14.5px}
+/* ---------- 卡片索引 ---------- */
+.search{display:flex;gap:8px;align-items:center;margin:10px 0 14px}
+.search input{
+  flex:1;font-family:var(--mono);font-size:14px;padding:9px 12px;min-height:42px;
+  border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:3px;
+}
+.search .count{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+.cards{display:grid;gap:12px}
+.card{border:1.5px solid var(--line);background:var(--card)}
+.card>summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;
+  padding:10px 12px;font-weight:600;font-size:15.5px;min-height:46px;
+}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary::before{content:"▸";font-family:var(--mono);color:var(--amber);font-size:13px}
+.card[open]>summary::before{content:"▾"}
+.card>summary .k{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-left:auto;white-space:nowrap}
+.card .body{padding:2px 14px 12px;border-top:1px dashed var(--line);font-size:14px}
+.card .body dl{margin:8px 0}
+.card .body dt{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.05em;margin-top:8px}
+.card .body dd{margin:2px 0 0 0}
+.ex{font-family:var(--mono);font-size:13px;line-height:1.9}
+/* ---------- 序列轴（图一） ---------- */
+.axis-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.axis-wrap svg{display:block;min-width:640px;width:100%;height:auto}
+.seg{cursor:pointer}
+.seg rect{transition:fill .15s}
+.seg:hover rect.body,.seg.on rect.body{fill:color-mix(in srgb,var(--amber) 22%,transparent)}
+.axis-detail{
+  border:1px dashed var(--line);margin-top:10px;padding:10px 12px;font-size:14px;min-height:96px;
+}
+.axis-detail .dt{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.06em}
+/* ---------- 分类练习 ---------- */
+.cls-row{border:1.5px solid var(--line);background:var(--card);margin:8px 0;padding:10px 12px}
+.cls-row .it{font-weight:600;font-size:15px;margin:0}
+.cls-row .btns{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.cls-row .btns button{
+  font-family:var(--mono);font-size:13px;border:1px solid var(--line);background:var(--paper);
+  color:var(--ink);padding:6px 12px;cursor:pointer;border-radius:3px;min-height:38px;
+}
+.cls-row .btns button:hover{border-color:var(--amber)}
+.cls-row .btns button.right{border-color:var(--line);background:color-mix(in srgb,var(--line) 16%,transparent);font-weight:700}
+.cls-row .btns button.wrong{border-color:var(--seal);color:var(--seal)}
+.cls-row .cls-ans{margin:8px 0 0;font-size:13.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:6px}
+/* ---------- 预测器 ---------- */
+.sim{border:1.5px solid var(--line);background:var(--card)}
+.sim .sim-top{display:flex;flex-wrap:wrap;gap:8px;padding:12px}
+.sim input,.sim select{
+  font-family:var(--mono);font-size:14px;padding:9px 10px;min-height:44px;
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:3px;
+}
+.sim input.d{flex:1;min-width:110px}
+.sim input.n{flex:1.4;min-width:130px}
+.sim button.run{
+  font-family:var(--mono);font-size:14px;border:1.5px solid var(--amber);color:var(--amber);
+  background:transparent;padding:8px 18px;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.sim button.run:hover{background:var(--amber);color:var(--paper)}
+.sim .samples{padding:0 12px 10px;display:flex;flex-wrap:wrap;gap:6px}
+.sim .samples button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--ink-2);
+  background:transparent;border-radius:3px;padding:4px 9px;cursor:pointer;min-height:32px;
+}
+.sim .samples button:hover{border-color:var(--amber);color:var(--amber)}
+.sim .out{border-top:1.5px dashed var(--line);padding:12px;font-size:14.5px;min-height:80px}
+.sim .out .verdict{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.04em}
+.sim .out .why{margin-top:6px;color:var(--ink-2);font-size:13.5px}
+.sim .out .why b{color:var(--ink)}
+/* ---------- 自测 ---------- */
+.quiz{border:1.5px solid var(--line);background:var(--card);padding:12px 14px;margin:12px 0}
+.quiz .qh{font-weight:600;font-size:15.5px;margin-bottom:8px}
+.quiz .opt{
+  display:block;width:100%;text-align:left;font-family:var(--sans);font-size:14.5px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  padding:9px 12px;margin:6px 0;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.quiz .opt:hover{border-color:var(--amber)}
+.quiz .opt.right{border-color:var(--line);background:color-mix(in srgb,var(--line) 14%,transparent);font-weight:600}
+.quiz .opt.wrong{border-color:var(--seal);color:var(--seal)}
+.quiz .exp{margin-top:8px;font-size:13.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px}
+/* ---------- 引文弹窗 ---------- */
+.pop{
+  position:fixed;z-index:60;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(560px,92vw);border:1.5px solid var(--line);background:var(--card);
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+.pop .pop-id{font-family:var(--mono);font-size:11px;color:var(--paper);background:var(--line);padding:5px 12px;display:flex}
+.pop .pop-id span{margin-left:auto;cursor:pointer;font-family:var(--mono)}
+.pop .pop-p{padding:12px 14px 4px;font-size:13px;color:var(--ink-2);font-family:var(--mono)}
+.pop .pop-q{margin:0 14px 10px;padding:10px 12px;border-left:3px solid var(--amber);background:var(--paper);font-family:var(--kai);font-size:15px;line-height:1.9}
+.pop .pop-z{padding:0 14px 14px;font-size:14px;color:var(--ink)}
+.veil{position:fixed;inset:0;background:rgba(10,14,24,.45);z-index:55}
+/* ---------- 场景脚注导航 ---------- */
+.scene-foot{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
+.scene-foot button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:8px 12px;cursor:pointer;min-height:40px;
+}
+.scene-foot button:hover{background:var(--line);color:var(--paper)}
+.scene-foot button:disabled{opacity:.35;cursor:default}
+.scene-foot button:disabled:hover{background:transparent;color:var(--line)}
+footer{max-width:860px;margin:0 auto;padding:20px 18px 40px;font-family:var(--mono);font-size:11px;color:var(--ink-2);border-top:1px dashed var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress"><i id="pbar"></i></div>
+<header class="topbar">
+  <a class="tb-btn" href="index.html" style="text-decoration:none">← 目录</a>
+  <span class="brand"><b>CH·03</b> 句法的象似性</span>
+  <span class="sp"></span>
+  <button class="tb-btn" id="fs-down" type="button">字－</button>
+  <button class="tb-btn" id="fs-up" type="button">字＋</button>
+  <button class="tb-btn" id="theme" type="button">明暗</button>
+</header>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section data-hero class="hero">
+  <div class="dwg-head">DWG·SHEET 00/08 · 第三章总装图 <span class="sheet">SCALE 1:1 · 张敏《认知语言学与汉语名词短语》</span></div>
+  <div class="hero-inner">
+    <p class="kicker">第三章 · ICONICITY · 七种动因</p>
+    <h1>句法的象似性</h1>
+    <p class="sub">语言的形式，有多少是「道理」，有多少只是「规定」？</p>
+
+    <div class="ask">
+      <span class="t">全章缘起 · 争了两千年的问题</span>
+      词与物的联系是 <b>phusei</b>（按性质）还是 <b>thesei</b>（按规定）？古希腊人争过，先秦争过「名实」。索绪尔任意性大胜之后，象似性被挤到拟声词一类的边缘——本书要把它请回句法的中心<sup class="cite" data-cite="c3-02">02</sup>。
+    </div>
+
+    <p>工作定义一句：<span class="q">「感知到的现实的形式与语言成分及结构之间的相似性」</span><sup class="cite" data-cite="c3-01">01</sup>。全书三步：两种看法 → 含义与类型 → 跨语言证据<sup class="cite" data-cite="c3-04">04</sup>。</p>
+
+    <div class="pillar">
+      <div><b>① 不是二元对立</b>索绪尔本人就区分绝对与相对任意性<sup class="cite" data-cite="c3-06">06</sup></div>
+      <div><b>② 主要是图样</b>语言象似性重在结构关系的临摹<sup class="cite" data-cite="c3-16">16</sup></div>
+      <div><b>③ 是趋势非规则</b>动因只要求统计上有意义<sup class="cite" data-cite="c3-73">73</sup></div>
+    </div>
+
+    <div class="mapchips" id="mapchips">
+      <button type="button" data-go="1">① 千年之争</button>
+      <button type="button" data-go="2">② 皮尔士三种关系</button>
+      <button type="button" data-go="3">③ 图样三类型</button>
+      <button type="button" data-go="4">④ 七动因地图</button>
+      <button type="button" data-go="5">⑤ 形式规模</button>
+      <button type="button" data-go="6">⑥ 次序动因</button>
+      <button type="button" data-go="7">⑦ 对称与重叠</button>
+      <button type="button" data-go="closing">⑧ 竞争与收尾</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 场景① ==================== -->
+<section data-scene="1">
+  <div class="scene-head"><span class="no">SCENE 01</span><h2>千年之争：按性质，还是按规定</h2><span class="en">PHUSEI · THESEI · 名实之辩</span></div>
+
+  <p>这个问题有两千五百年了。索绪尔以后任意性原则深入人心，象似性被挤到边缘——人们以为它只体现在拟声词一类偶发现象里<sup class="cite" data-cite="c3-02">02</sup><sup class="cite" data-cite="c3-05">05</sup>。</p>
+
+  <p>定义先钉死。Haiman(1985a)：表达式在外形、长度、复杂性及成分关系上平行于所编码的概念、经验或交际策略，即具有象似性<sup class="cite" data-cite="c3-12">12</sup>。</p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·ICO-01 · 两种立场的时间轴（点击各站查看文献）<span class="sheet">DWG·SHEET 01/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 330" role="img" aria-label="象似性观念史时间轴：柏拉图、索绪尔、乔姆斯基、皮尔士、功能主义先声、句法象似性纲领，点击各站查看详情">
+          <defs>
+            <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="22" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">两派拉锯 · 两千五百年 · 一条主轴两个支流</text>
+          <!-- 两条支流弧线 -->
+          <path d="M 60 143 C 80 52, 260 52, 280 143" fill="none" stroke="var(--indigo)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text x="170" y="66" font-family="var(--mono)" font-size="11" fill="var(--indigo)" text-anchor="middle">任意性传统（蓝）</text>
+          <path d="M 60 157 C 110 258, 560 258, 610 157" fill="none" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text x="340" y="282" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">象似性传统（琥珀）——本书立场</text>
+          <!-- 主轴 -->
+          <line x1="40" y1="150" x2="640" y2="150" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <!-- 六站 -->
+          <g class="seg on" data-seg="0">
+            <circle cx="60" cy="150" r="7" fill="var(--ink-2)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="60" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">柏拉图</text>
+            <text x="60" y="134" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">《Cratylus》</text>
+            <text x="60" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">自然派 vs 规定派</text>
+            <text x="60" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">名实之辩同源</text>
+          </g>
+          <g class="seg" data-seg="1">
+            <circle cx="170" cy="150" r="7" fill="var(--indigo)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="170" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">索绪尔</text>
+            <text x="170" y="134" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">《教程》</text>
+            <text x="170" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">绝对 vs 相对</text>
+            <text x="170" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">vingt / dix-neuf</text>
+          </g>
+          <g class="seg" data-seg="2">
+            <circle cx="280" cy="150" r="7" fill="var(--indigo)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="280" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">乔姆斯基</text>
+            <text x="280" y="134" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">天赋性假说</text>
+            <text x="280" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">任意性推到极处</text>
+            <text x="280" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">嘲笑与难堪</text>
+          </g>
+          <g class="seg" data-seg="3">
+            <circle cx="390" cy="150" r="8" fill="var(--amber)" stroke="var(--seal)" stroke-width="2"/>
+            <text x="390" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">皮尔士 ★</text>
+            <text x="390" y="134" font-family="var(--mono)" font-size="10" fill="var(--amber)" text-anchor="middle">符号学三分</text>
+            <text x="390" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">句法象似符</text>
+            <text x="390" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">最早系统表述</text>
+          </g>
+          <g class="seg" data-seg="4">
+            <circle cx="500" cy="150" r="7" fill="var(--amber)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="500" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">功能先声</text>
+            <text x="500" y="134" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">Behaghel 等</text>
+            <text x="500" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">零星但关键</text>
+            <text x="500" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">veni vidi vici</text>
+          </g>
+          <g class="seg" data-seg="5">
+            <circle cx="610" cy="150" r="7" fill="var(--amber)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="610" y="116" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">Cooper &amp; Ross</text>
+            <text x="610" y="134" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">句法象似性</text>
+            <text x="610" y="178" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">Haiman / 戴浩一</text>
+            <text x="610" y="196" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">谢信一跟进</text>
+          </g>
+        </svg>
+      </div>
+      <div class="axis-detail" id="axisDetail"></div>
+    </div>
+    <figcaption>点击六个站点查看每一次转折的代表人物与核心文献<sup class="cite" data-cite="c3-05">05</sup><sup class="cite" data-cite="c3-08">08</sup><sup class="cite" data-cite="c3-11">11</sup></figcaption>
+  </figure>
+
+  <div class="guess" data-guess>
+    <div class="q-line">先猜一下：语言的「象似性」，主要体现在哪里？</div>
+    <div class="opts">
+      <button type="button" data-v="a">a. 拟声词、语音象征这类边缘现象</button>
+      <button type="button" data-v="b">b. 句法结构对概念关系的临摹</button>
+    </div>
+    <button class="reveal-btn" type="button" data-reveal>先猜再看 →</button>
+    <div class="answer" hidden>答案是 <span class="acc">b</span>。索绪尔之后，人们对象似性的印象长期停在拟声词层面；但皮尔士早就断言「在每一语言的句法里，都存在着由约定俗成的规则所辅佐的合乎逻辑的象似符」<sup class="cite" data-cite="c3-08">08</sup>，Haiman 更明确：人类语言里的象似符主要是图样，即结构关系的临摹，「工艺图、地图及由指事和会意方式造成的汉字是其绝好的例子」<sup class="cite" data-cite="c3-16">16</sup>。</div>
+  </div>
+
+  <p>另一极是生成语法：表现系统「并不以任何直接的方式反映外部世界的事物的形式」，非任意性课题一度「会引起『嘲笑和难堪』」<sup class="cite" data-cite="c3-07">07</sup>。功能学派并不否认任意性，只反对把它绝对化——而他们对所有原则的态度，全书开篇就讲明白了：<b>它们只是促动，而非决定语言形式</b><sup class="cite" data-cite="c3-11">11</sup><sup class="cite" data-cite="c3-73">73</sup>。</p>
+
+  <details class="card">
+    <summary>深一层 · 第三人称为什么常常「缺席」<span class="k">c3-10</span></summary>
+    <div class="body">
+      <p>Benveniste(1946) 注意到，不少语言里单数第三人称代词与第一、二人称形式不平行——匈牙利语、Hua 语的人称附缀各有取舍。古代阿拉伯语言学家的命名最传神：第一人称叫「说话者」，第二人称叫「听话者」，第三人称叫<b>「缺席者」</b>。</p>
+      <p>郭锡良(1980) 进一步发现，上古汉语只有第一、第二人称代词；日语、朝鲜语、蒙古语的第三人称代词则来自指示代词并与之同形。形式的「有」对应概念领域的「在场」，「无」对应「缺席」——零形式与非零形式的对立，本身就是象似的。这是独立性动因（场景五）的先声。</p>
+      <p>研究队伍的谱系：Cooper &amp; Ross(1975) 最早明确提出「句法象似性(syntactic iconicity)」，Haiman 的「自然句法」、戴浩一的时间顺序原则、谢信一「汉语是一种图画语言」相继跟进<sup class="cite" data-cite="c3-11">11</sup>。功能学派承认语素（或单纯词）具有最高程度的任意性，反对的只是把任意性绝对化。三条学术史线索——功能学派崛起、类型学发现形式—意义匹配、认知语言学的经验结构论——汇成了这场翻身<sup class="cite" data-cite="c3-03">03</sup>。</p>
+    </div>
+  </details>
+
+  <div class="scene-foot">
+    <button type="button" data-go="0">← 章首总装图</button>
+    <button type="button" data-go="2">场景 02 · 皮尔士三种关系 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景② ==================== -->
+<section data-scene="2">
+  <div class="scene-head"><span class="no">SCENE 02</span><h2>皮尔士三种关系：象似、引得、标志</h2><span class="en">ICON · INDEX · SYMBOL</span></div>
+
+  <p>先得有一把尺子。皮尔士把符号与对象的关系分成三种：<b>象似的关系</b>靠性质相似（地图之于地形）；<b>引得的关系</b>靠时空相邻或因果（水兵服、湿马路提示下过雨）；<b>标志的关系</b>完全靠规约（英语 book 之于「书」）<sup class="cite" data-cite="c3-13">13</sup>。绝大多数单词是标志符——这正是任意性一说的立足点。</p>
+
+  <p>但「相似性」是<b>心理事实</b>而非客观事实——只要前者看起来像后者，任何东西都可以是任何东西的象似符。世上没有「纯象似符」，三类之别是程度而非种类<sup class="cite" data-cite="c3-14">14</sup>。</p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·ICO-02 · 数字阶梯：单词像标志，语法像图样<span class="sheet">DWG·SHEET 02/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 230" role="img" aria-label="数字阶梯四格图：契刻计数线条对应物体、罗马数字III与L对照、阿拉伯数字3与门牌45号对照、结论单词像标志语法像图样">
+          <defs>
+            <marker id="ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <!-- 格一：契刻 -->
+          <g>
+            <rect x="8" y="30" width="156" height="150" rx="3" fill="color-mix(in srgb,var(--line) 8%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="86" y="52" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">① 契刻计数</text>
+            <text x="86" y="96" font-family="var(--mono)" font-size="26" fill="var(--ink)" text-anchor="middle" letter-spacing="6">||||</text>
+            <text x="86" y="122" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">线条数目 = 物体数目</text>
+            <rect x="44" y="136" width="84" height="20" rx="2" fill="var(--amber)"/>
+            <text x="86" y="150" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">象似</text>
+          </g>
+          <!-- 格二：罗马 III vs L -->
+          <g>
+            <rect x="176" y="30" width="156" height="150" rx="3" fill="color-mix(in srgb,var(--line) 8%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="254" y="52" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">② 罗马数字</text>
+            <text x="204" y="96" font-family="var(--mono)" font-size="24" fill="var(--ink)" text-anchor="middle">III</text>
+            <text x="304" y="96" font-family="var(--mono)" font-size="24" fill="var(--ink-2)" text-anchor="middle">L</text>
+            <text x="204" y="122" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">三画对三物</text>
+            <text x="304" y="122" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">五十与形无关</text>
+            <rect x="184" y="136" width="72" height="20" rx="2" fill="var(--amber)"/>
+            <text x="220" y="150" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">III 象似</text>
+            <rect x="262" y="136" width="64" height="20" rx="2" fill="var(--seal)"/>
+            <text x="294" y="150" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">L 标志</text>
+          </g>
+          <!-- 格三：阿拉伯 3 vs 门牌 45 -->
+          <g>
+            <rect x="344" y="30" width="156" height="150" rx="3" fill="color-mix(in srgb,var(--line) 8%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="422" y="52" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">③ 阿拉伯数字</text>
+            <text x="372" y="96" font-family="var(--mono)" font-size="24" fill="var(--ink-2)" text-anchor="middle">3</text>
+            <text x="422" y="96" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">44–45–46</text>
+            <text x="372" y="122" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">字形无道理</text>
+            <text x="440" y="122" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">门牌序列合道理</text>
+            <rect x="352" y="136" width="64" height="20" rx="2" fill="var(--seal)"/>
+            <text x="384" y="150" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">单词标志</text>
+            <rect x="422" y="136" width="72" height="20" rx="2" fill="var(--amber)"/>
+            <text x="458" y="150" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">序列图样</text>
+          </g>
+          <!-- 格四：结论 -->
+          <g>
+            <rect x="512" y="30" width="160" height="150" rx="3" fill="color-mix(in srgb,var(--amber) 12%,transparent)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="592" y="52" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">④ 结论</text>
+            <text x="592" y="92" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">单词像标志符</text>
+            <text x="592" y="116" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">语法像图样</text>
+            <text x="592" y="146" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">语言类似图样</text>
+            <text x="592" y="164" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">（Haiman）</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <figcaption>契刻的线条数目完全对应于所数物体的数目；罗马 I/II/III 是象似的，L 是标志符；门牌「45 号应在 44 号和 46 号之间，正像 45 在 44 和 46 之间」<sup class="cite" data-cite="c3-17">17</sup></figcaption>
+  </figure>
+
+  <p>下面八项，请判定它们各属哪种关系——<span class="mono">象似 / 引得 / 标志</span>。判完再看解释。</p>
+  <div data-cls>
+    <div class="cls-row">
+      <span class="it">照片之于被拍摄的对象</span>
+      <span class="btns"><button type="button" data-ok="1">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>影像(image)：在某些特性上与其所指事物相像的单个符号——这是象似符里最弱的一类。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">地图之于它所画的地形</span>
+      <span class="btns"><button type="button" data-ok="1">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>图样(diagram)：成分之间的关系与指称对象成分之间的关系相似——语言象似性的主要形式。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">指事字「上」「下」之于方位关系</span>
+      <span class="btns"><button type="button" data-ok="1">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>皮尔士与 Haiman 都举这类汉字：由指事、会意方式造成的字，是图样象似的绝好例子。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">罗马数字 III 之于「三」</span>
+      <span class="btns"><button type="button" data-ok="1">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>三画对三物，与契刻计数同理——线条数目完全对应所数物体的数目。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">罗马数字 L 之于「五十」</span>
+      <span class="btns"><button type="button" data-ok="0">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="1">标志</button></span>
+      <span class="cls-ans" hidden>「五十」与 L 的形状毫无关系，全靠规约——单个符号多为标志符。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">水兵服之于「此人属于某条船」</span>
+      <span class="btns"><button type="button" data-ok="0">象似</button><button type="button" data-ok="1">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>引得(index)：不靠相像，靠时空相邻——制服提示其人所在的船。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">湿马路之于「下过雨」</span>
+      <span class="btns"><button type="button" data-ok="0">象似</button><button type="button" data-ok="1">引得</button><button type="button" data-ok="0">标志</button></span>
+      <span class="cls-ans" hidden>湿路面并不像雨，但它是雨的结果——因果相邻，故为引得。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">英语 book 之于「书」</span>
+      <span class="btns"><button type="button" data-ok="0">象似</button><button type="button" data-ok="0">引得</button><button type="button" data-ok="1">标志</button></span>
+      <span class="cls-ans" hidden>标志(symbol)：能指与所指的联系完全靠规约。换个语言就整个换掉——这是任意性的正面案例。</span>
+    </div>
+  </div>
+
+  <p class="note">NOTE · 皮尔士把象似符再分为影像（照片）、图样（地图）、隐喻（平行性）。Haiman：人类语言里的象似符主要是图样——「工艺图、地图及由指事和会意方式造成的汉字是其绝好的例子」<sup class="cite" data-cite="c3-15">15</sup><sup class="cite" data-cite="c3-16">16</sup>。</p>
+
+  <div class="scene-foot">
+    <button type="button" data-go="1">← 场景 01 · 千年之争</button>
+    <button type="button" data-go="3">场景 03 · 图样三类型 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景③ ==================== -->
+<section data-scene="3">
+  <div class="scene-head"><span class="no">SCENE 03</span><h2>图样三类型：同构、自同构、动因</h2><span class="en">ISO · AUTO · MOTIVATION</span></div>
+
+  <p>影像象似符代表单个简单事物，图样象似符代表复杂事物或复杂概念：成分单独看未必相像——图样的每个成分甚至可能都是标志符——<b>但成分之间的关系却和指称对象成分之间的关系是相似的</b>。工艺图、地图及由指事和会意方式造成的汉字，是其绝好的例子<sup class="cite" data-cite="c3-18">18</sup>。</p>
+
+  <p>数字系统可见其妙：契刻的线条数目完全对应所数物体，罗马 I/II/III 象似而 L 是标志符，阿拉伯数字单个全是标志符；但编排成门牌号码，<b>排列方式却具有图样象似性</b>——四十五号应在四十四和四十六之间，正像基数四十五在四十四和四十六之间一样<sup class="cite" data-cite="c3-17">17</sup><sup class="cite" data-cite="c3-18">18</sup>。语言平行：<b>单词往往是标志符，语法却如图样</b>——Haiman 因此提出「语言类似图样」，本章只讨论此类。</p>
+
+  <p>按 Haiman(1980, 1985a)，图样象似性又分三型：<b>同构</b>（成分对成分）、<b>自同构</b>（部分对部分）、<b>动因</b>（关系对关系）<sup class="cite" data-cite="c3-18">18</sup>。</p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·ISO-03 · 图样三型：成分对成分 · 部分对部分 · 关系对关系<span class="sheet">DWG·SHEET 03/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 300" role="img" aria-label="图样象似性三种类型对照图：同构是形式与意义一一对应并列出四种例外，自同构是同一系统内不同部分之间的结构映射，动因是形式关系与概念关系的对应">
+          <defs>
+            <marker id="ar3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="20" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">图样三型 · 成分对成分 / 部分对部分 / 关系对关系</text>
+          <!-- 三栏框 -->
+          <rect x="8" y="42" width="216" height="232" rx="4" fill="color-mix(in srgb,var(--line) 5%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="232" y="42" width="216" height="232" rx="4" fill="color-mix(in srgb,var(--line) 5%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="456" y="42" width="216" height="232" rx="4" fill="color-mix(in srgb,var(--line) 5%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="116" y="34" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--line)" text-anchor="middle">① 同构 ISO</text>
+          <text x="340" y="34" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--line)" text-anchor="middle">② 自同构 AUTO</text>
+          <text x="564" y="34" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--line)" text-anchor="middle">③ 动因 MOT</text>
+          <!-- 栏① 同构：三对一一对应 -->
+          <text x="53" y="64" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">形式</text>
+          <text x="173" y="64" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">意义</text>
+          <rect x="20" y="72" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="140" y="72" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="86" y1="85" x2="140" y2="85" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="53" y="89" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">形式甲</text>
+          <text x="173" y="89" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">意义甲</text>
+          <rect x="20" y="106" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="140" y="106" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="86" y1="119" x2="140" y2="119" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="53" y="123" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">形式乙</text>
+          <text x="173" y="123" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">意义乙</text>
+          <rect x="20" y="140" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <rect x="140" y="140" width="66" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="86" y1="153" x2="140" y2="153" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="53" y="157" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">形式丙</text>
+          <text x="173" y="157" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">意义丙</text>
+          <text x="116" y="186" font-family="var(--mono)" font-size="10" font-weight="700" fill="var(--amber)" text-anchor="middle">四种例外</text>
+          <text x="116" y="202" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">空语素：形式 → 零意义</text>
+          <text x="116" y="216" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">零语素：零形式 → 意义</text>
+          <text x="116" y="230" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">同义：多形式 → 一意义</text>
+          <text x="116" y="244" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">同形：一形式 → 多意义</text>
+          <text x="116" y="264" font-family="var(--mono)" font-size="10" fill="var(--line)" text-anchor="middle">「一个形式对一个意义」</text>
+          <!-- 栏② 自同构：一组指代词，三个域 -->
+          <rect x="282" y="128" width="116" height="40" rx="4" fill="color-mix(in srgb,var(--amber) 14%,transparent)" stroke="var(--amber)" stroke-width="1.4"/>
+          <text x="340" y="152" font-family="var(--sans)" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">同一组指代词</text>
+          <line x1="340" y1="128" x2="290" y2="96" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="128" x2="390" y2="96" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="168" x2="340" y2="212" stroke="var(--line)" stroke-width="1.2"/>
+          <rect x="240" y="64" width="100" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="290" y="77" font-family="var(--sans)" font-size="11" font-weight="700" fill="var(--ink)" text-anchor="middle">第一人称</text>
+          <text x="290" y="90" font-family="var(--mono)" font-size="9" fill="var(--ink-2)" text-anchor="middle">言谈指称</text>
+          <rect x="340" y="64" width="100" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="390" y="77" font-family="var(--sans)" font-size="11" font-weight="700" fill="var(--ink)" text-anchor="middle">密切关系</text>
+          <text x="390" y="90" font-family="var(--mono)" font-size="9" fill="var(--ink-2)" text-anchor="middle">人际距离</text>
+          <rect x="278" y="212" width="124" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="340" y="225" font-family="var(--sans)" font-size="11" font-weight="700" fill="var(--ink)" text-anchor="middle">较近的未来</text>
+          <text x="340" y="238" font-family="var(--mono)" font-size="9" fill="var(--ink-2)" text-anchor="middle">时间指称</text>
+          <text x="340" y="264" font-family="var(--mono)" font-size="10" fill="var(--line)" text-anchor="middle">空间结构 → 时间与言谈</text>
+          <!-- 栏③ 动因：三行关系对关系 -->
+          <rect x="466" y="66" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="548" y1="82" x2="572" y2="82" stroke="var(--line)" stroke-width="1.4" marker-end="url(#ar3)"/>
+          <rect x="576" y="66" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="506" y="86" font-family="var(--mono)" font-size="10" fill="var(--ink)" text-anchor="middle">A 的 B</text>
+          <text x="616" y="86" font-family="var(--sans)" font-size="10" fill="var(--ink)" text-anchor="middle">属性贴近实体</text>
+          <rect x="466" y="118" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="548" y1="134" x2="572" y2="134" stroke="var(--line)" stroke-width="1.4" marker-end="url(#ar3)"/>
+          <rect x="576" y="118" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="506" y="138" font-family="var(--mono)" font-size="10" fill="var(--ink)" text-anchor="middle">A 和 B</text>
+          <text x="616" y="138" font-family="var(--sans)" font-size="10" fill="var(--ink)" text-anchor="middle">并列等距</text>
+          <rect x="466" y="170" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <line x1="548" y1="186" x2="572" y2="186" stroke="var(--line)" stroke-width="1.4" marker-end="url(#ar3)"/>
+          <rect x="576" y="170" width="80" height="32" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="506" y="190" font-family="var(--mono)" font-size="10" fill="var(--ink)" text-anchor="middle">A 比 B 高</text>
+          <text x="616" y="190" font-family="var(--sans)" font-size="10" fill="var(--ink)" text-anchor="middle">差异被拉开</text>
+          <line x1="470" y1="224" x2="630" y2="224" stroke="var(--amber)" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <text x="564" y="218" font-family="var(--mono)" font-size="10" font-weight="700" fill="var(--amber)" text-anchor="middle">形式关系 ⇔ 概念关系</text>
+          <text x="564" y="248" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">成分间关系的对应</text>
+        </svg>
+      </div>
+    </div>
+    <figcaption>同构：一个形式对一个意义（有四类例外）；自同构：系统内部的结构映射；动因：形式关系临摹概念关系<sup class="cite" data-cite="c3-18">18</sup><sup class="cite" data-cite="c3-23">23</sup>。</figcaption>
+  </figure>
+
+  <p><b>同构</b>指能指和所指成分之间的一一对应，体现为「一个形式对一个意义」的趋势——Humboldt 称之为「最理想原则」，Bolinger 认为这是「语言里自然的情况」。违反者有四类例外（空语素、零语素、同义、同形），Haiman 认为都可以解释，不能据以否定象似性<sup class="cite" data-cite="c3-19">19</sup>。</p>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">自测 · 按同构假说，下面哪种预测最符合 Haiman 的理论？</p>
+    <button type="button" class="opt">语言里应该能找到大批意义完全相同的表达式</button>
+    <button type="button" class="opt" data-ok="1">一对「同义」表达式在语感上总有些细微差别，绝对等同的难找</button>
+    <button type="button" class="opt">同一个形式用在不同的语法范畴里纯属偶然，与意义无关</button>
+    <button type="button" class="opt">同形现象应该比同义现象更少见</button>
+    <div class="exp" hidden>同构假说的头一部分正是「不同的形式总是蕴含了意义或交际功能上的不同」——绝对同义被预言为不存在；第二部分则预言形式相同反映意义相似，故同形、多义不但允许存在，而且可以得到解释<sup class="cite" data-cite="c3-20">20</sup>。语料事实正是不对称的：同形极普遍，同义极少——因为完全同义的形式既不符合经济原则也不符合象似原则，两种原则携手导致同义形式的贫乏；多义符合经济原则但不符合象似原则，两种原则竞争的结果是一种妥协<sup class="cite" data-cite="c3-21">21</sup>。</div>
+  </section>
+
+  <p><b>自同构</b>是系统内部自己跟自己对得上：Greenberg(1985) 发现同一组指代词可用于言谈、人际、时间三个域——空间的结构以象似的方式映射到了时间与言谈<sup class="cite" data-cite="c3-22">22</sup>。</p>
+
+  <details class="card">
+    <summary>深一层 · 一组指代词，三个域<span class="k">c3-22</span></summary>
+    <div class="body">
+      <p>Greenberg (1985) 的观察是：同一个形式，可指<b>第一人称</b>（言谈指称：说话者自己），可代表<b>与说话人的密切关系</b>（人际距离：自己人），还可指示<b>较近的未来时间</b>（时间指称：眼下、快要）。</p>
+      <p>三个域的对应关系十分严整：言谈域的「说话者」、人际域的「密切」、时间域的「较近」，共享同一个「近」的结构。这不是巧合，而是来自空间感知的结构以象似的方式从空间映射到实际时间及言谈时间的结果——第二章讲的概念隐喻及其隐喻映射，都是这种自同构的反映。</p>
+    </div>
+  </details>
+
+  <p><b>动因</b>就是成分之间关系的对应<sup class="cite" data-cite="c3-23">23</sup>。Givón 的「象似性元原则」：若其他条件相同，编码最大限度地与被编码的经验同构，经验才最容易储存、调出与交际。本书采用 Haiman 的概念，只在他的「动因」之前加「象似」一词以别于其他的动因——本章所谓「动因」皆指<b>象似动因</b>。</p>
+
+  <p class="note">NOTE · 讨论得较多的有复杂性、独立性、距离、次序、对称、重叠、范畴化等动因；距离动因是下篇主场，本章不论，末节谈动因与经济性的竞争<sup class="cite" data-cite="c3-24">24</sup>。</p>
+
+  <div class="scene-foot">
+    <button type="button" data-go="2">← 场景 02 · 皮尔士三种关系</button>
+    <button type="button" data-go="4">场景 04 · 七动因地图 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景④ ==================== -->
+<section data-scene="4">
+  <div class="scene-head"><span class="no">SCENE 04</span><h2>七动因地图：先看全貌，再逐一攻</h2><span class="en">MOTIVATION MAP · 六灯一环</span></div>
+
+  <p>本章逐一介绍六种象似动因，外加一个竞争场面。星图中心是「形式关系 ⇕ 概念关系」的中枢，六灯分别是<b>复杂性、独立性、次序、对称、重叠、范畴化</b>；第七种动因<b>距离</b>是下篇主场，以灰色虚线标出。<b>点击任一节点</b>读一句话总览<sup class="cite" data-cite="c3-24">24</sup>。</p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·MOT-04 · 七动因星图（点击节点读总览）<span class="sheet">DWG·SHEET 04/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 410" role="img" aria-label="七动因星图：中心为形式关系与概念关系的对应中枢，周围六个节点分别是复杂性、独立性、次序、对称、重叠、范畴化，第七个距离动因以灰色虚线节点留给下篇，点击节点查看总览">
+          <defs>
+            <marker id="ar4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="20" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">六动因星图 · 点击节点读总览 · 灰色虚线为下篇主场</text>
+          <!-- 辐条 -->
+          <line x1="340" y1="180" x2="96" y2="76" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="180" x2="584" y2="76" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="250" y1="207" x2="146" y2="207" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="430" y1="207" x2="534" y2="207" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="234" x2="96" y2="300" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="234" x2="584" y2="300" stroke="var(--line)" stroke-width="1.2"/>
+          <line x1="340" y1="234" x2="340" y2="352" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="5 4"/>
+          <!-- 中枢 -->
+          <rect x="250" y="180" width="180" height="54" rx="4" fill="color-mix(in srgb,var(--amber) 14%,transparent)" stroke="var(--amber)" stroke-width="1.5"/>
+          <text x="340" y="204" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">形式关系</text>
+          <text x="340" y="222" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">⇕ 概念关系</text>
+          <!-- 六节点 -->
+          <g class="seg mot" data-mot="0">
+            <rect class="body" x="30" y="30" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="96" y="50" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·01</text>
+            <text x="96" y="66" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">复杂性</text>
+          </g>
+          <g class="seg mot" data-mot="1">
+            <rect class="body" x="518" y="30" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="584" y="50" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·02</text>
+            <text x="584" y="66" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">独立性</text>
+          </g>
+          <g class="seg mot" data-mot="2">
+            <rect class="body" x="14" y="184" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="80" y="204" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·03</text>
+            <text x="80" y="220" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">次序</text>
+          </g>
+          <g class="seg mot" data-mot="3">
+            <rect class="body" x="534" y="184" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="600" y="204" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·04</text>
+            <text x="600" y="220" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">对称</text>
+          </g>
+          <g class="seg mot" data-mot="4">
+            <rect class="body" x="30" y="300" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="96" y="320" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·05</text>
+            <text x="96" y="336" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">重叠</text>
+          </g>
+          <g class="seg mot" data-mot="5">
+            <rect class="body" x="518" y="300" width="132" height="46" rx="4" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.2"/>
+            <text x="584" y="320" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·06</text>
+            <text x="584" y="336" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">范畴化</text>
+          </g>
+          <!-- 下篇主场 -->
+          <g>
+            <rect x="265" y="352" width="150" height="42" rx="4" fill="none" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="5 4"/>
+            <text x="340" y="371" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">MOT·07 距离</text>
+            <text x="340" y="386" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">留下篇 · 下篇主场</text>
+          </g>
+        </svg>
+      </div>
+      <div class="axis-detail" id="motDetail"></div>
+    </div>
+    <figcaption>中枢六向＋距离（虚线）。点击节点展开一句话总览<sup class="cite" data-cite="c3-24">24</sup>。</figcaption>
+  </figure>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">自测 · 「河流＜最长的河流＜中国最长的河流」——修饰语一级级叠加上去，形式一级级变长，意义一级级变复杂。这最直接地体现哪种动因？</p>
+    <button type="button" class="opt">次序动因</button>
+    <button type="button" class="opt" data-ok="1">复杂性动因</button>
+    <button type="button" class="opt">重叠动因</button>
+    <button type="button" class="opt">对称动因</button>
+    <div class="exp" hidden>复杂性动因：X 修饰 A 时，XA 在概念上一定比 A 复杂，XYA 又比 XA 复杂——修饰语的叠加同时拉长形式、加重概念，二者同步<sup class="cite" data-cite="c3-25">25</sup>。这是复杂性动因最直观的例子，场景五展开。</div>
+  </section>
+
+  <div class="scene-foot">
+    <button type="button" data-go="3">← 场景 03 · 图样三类型</button>
+    <button type="button" data-go="5">场景 05 · 形式规模 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑤ ==================== -->
+<section data-scene="5">
+  <div class="scene-head"><span class="no">SCENE 05</span><h2>形式规模：复杂与独立</h2><span class="en">COMPLEXITY · INDEPENDENCE</span></div>
+
+  <p><b>复杂性动因</b>：相对简单的概念普遍由相对简单的形式表达——早就是标记理论的一个重要方面，有标记形式在结构和语义上都更复杂<sup class="cite" data-cite="c3-25">25</sup>。跨语言证据整齐：印欧语形容词原级、比较级、最高级的语素音素数目依次递增，珞巴语三级由零语素、yong、yongjup 表达，四县客话 ton、ton ton、ton ton ton 表「短、很短、非常非常短」<sup class="cite" data-cite="c3-26">26</sup><sup class="cite" data-cite="c3-27">27</sup>。Greenberg(1966)：复数在所有语言里都用非零形式表示，单数有时仅用零形式，双数三数几乎从不零形式<sup class="cite" data-cite="c3-28">28</sup>。</p>
+
+  <figure class="dwg">
+    <div class="dwg-head">FIG·CPX-05 · 四级「形式长度 ⇔ 概念程度」对照<span class="sheet">DWG·SHEET 05/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 268" role="img" aria-label="四级形式长度与概念程度对照：印欧语形容词三级、珞巴语三级、四县客话重叠三级、汉语名词短语修饰层级，形式一级级变长，概念一级级变复杂">
+          <defs>
+            <marker id="ar5" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="18" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">形式长度一级级拉长 · 概念程度一级级加重</text>
+          <!-- 行一：印欧语 -->
+          <text x="14" y="52" font-family="var(--mono)" font-size="11" fill="var(--amber)">① 印欧语形容词</text>
+          <rect x="150" y="36" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="193" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">原级 -0</text>
+          <rect x="244" y="36" width="112" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="300" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">比较级 -er</text>
+          <rect x="364" y="36" width="140" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="434" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">最高级 -est</text>
+          <text x="516" y="53" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">语素音素数目依次递增</text>
+          <!-- 行二：珞巴语 -->
+          <text x="14" y="98" font-family="var(--mono)" font-size="11" fill="var(--amber)">② 珞巴语</text>
+          <rect x="150" y="82" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="193" y="99" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">零语素</text>
+          <rect x="244" y="82" width="112" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="300" y="99" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">yong</text>
+          <rect x="364" y="82" width="140" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="434" y="99" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">yongjup</text>
+          <text x="516" y="99" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">三级程度各有其形</text>
+          <!-- 行三：四县客话 -->
+          <text x="14" y="144" font-family="var(--mono)" font-size="11" fill="var(--amber)">③ 四县客话</text>
+          <rect x="150" y="128" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="193" y="145" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">ton</text>
+          <rect x="244" y="128" width="112" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="300" y="145" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">ton ton</text>
+          <rect x="364" y="128" width="140" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="434" y="145" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">ton ton ton</text>
+          <text x="516" y="145" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">短 / 很短 / 非常非常短</text>
+          <!-- 行四：汉语名词短语 -->
+          <text x="14" y="190" font-family="var(--mono)" font-size="11" fill="var(--amber)">④ 汉语名短语</text>
+          <rect x="150" y="174" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="193" y="191" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">河流</text>
+          <rect x="244" y="174" width="112" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="300" y="191" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">最长的河流</text>
+          <rect x="364" y="174" width="140" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="434" y="191" font-family="var(--sans)" font-size="11" fill="var(--ink)" text-anchor="middle">中国最长的河流</text>
+          <text x="516" y="191" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">形式与意义同步升级</text>
+          <!-- 尺寸线 -->
+          <line x1="150" y1="222" x2="504" y2="222" stroke="var(--amber)" stroke-width="1.4" marker-end="url(#ar5)"/>
+          <text x="327" y="240" font-family="var(--mono)" font-size="10" font-weight="700" fill="var(--amber)" text-anchor="middle">形式一级级变长 → 概念一级级变复杂（复杂性动因）</text>
+          <text x="327" y="258" font-family="var(--mono)" font-size="9" fill="var(--ink-2)" text-anchor="middle">Jakobson 1965 · 王辅世 1985 · 罗肇锦 1988 · Greenberg 1966</text>
+        </svg>
+      </div>
+    </div>
+    <figcaption>程度、数量、规模的加重，一律由更长更繁的形式承担<sup class="cite" data-cite="c3-26">26</sup><sup class="cite" data-cite="c3-29">29</sup>。</figcaption>
+  </figure>
+
+  <p><b>独立性动因</b>：形式的分离性对应概念的独立性——一个独立的词表示一个独立的实体，一个独立的子句表达一个独立的命题<sup class="cite" data-cite="c3-30">30</sup>。汉语动宾复合词与短语的对立最干净：「我在图书馆读书」能扩展、能焦点化、能作话题；「我在图书馆学系读书」是复合词，名词成分都不能——复合词里的名词性成分「在形式上通常都是『残废』的」，格、性、数、有定标记都不能带<sup class="cite" data-cite="c3-31">31</sup><sup class="cite" data-cite="c3-32">32</sup>。</p>
+
+  <details class="card">
+    <summary>深一层 · 子句边界就是事件边界<span class="k">c3-33~34</span></summary>
+    <div class="body">
+      <p>Givón(1990)：「独立的事件倾向于编码为独立的子句」——「John and Mary left in a Cadillac」是一辆车、单事件，不能换成两个各自有车的子句<sup class="cite" data-cite="c3-33">33</sup>。</p>
+      <p>「补足语子句的删略程度大致与其真值由母句所蕴含的程度相应」：朝鲜语使役「动词#ha-」不蕴含补足命题为真（可接「但我没吃」），「动词+I(使)」蕴含（不可接）——形式的融合度对应概念的蕴含度<sup class="cite" data-cite="c3-34">34</sup>。</p>
+    </div>
+  </details>
+
+  <div class="scene-foot">
+    <button type="button" data-go="4">← 场景 04 · 七动因地图</button>
+    <button type="button" data-go="6">场景 06 · 次序动因 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑥ ==================== -->
+<section data-scene="6">
+  <div class="scene-head"><span class="no">SCENE 06</span><h2>次序动因：先发生的先说</h2><span class="en">SEQUENCE · PTS · PTSC</span></div>
+
+  <p><b>次序动因</b>：成分的排列次序临摹事件或概念加工的次序。Greenberg(1966)：成分次序与物理经验或认识次序平行，「没有一个已知语言在讲一件事时是以倒叙为常的」；Jakobson 更早举「veni, vidi, vici」<sup class="cite" data-cite="c3-35">35</sup><sup class="cite" data-cite="c3-09">09</sup>。戴浩一(1985) 的<b>时间顺序原则（PTS）</b>最干脆：两个句法单位的相对次序决定于它们所表示的状态的时间顺序。汉语是这方面最常被引述的语言。</p>
+
+  <figure class="dwg">
+    <div class="dwg-head">FIG·SEQ-06 · 时间地址：汉语从大到小，英语从小到大<span class="sheet">DWG·SHEET 06/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 236" role="img" aria-label="时间地址语序对照：汉语从大到小年月至时刻，英语从小到大时刻至年份；汉语地点地址同式从大到小，附移动自我与移动客体两种认知策略说明">
+          <defs>
+            <marker id="ar6" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="18" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">整体先于局部 vs 局部先于整体 · 两种认知策略都是象似的</text>
+          <!-- 汉语行 -->
+          <text x="14" y="52" font-family="var(--mono)" font-size="11" font-weight="700" fill="var(--amber)">汉语 · 移动自我</text>
+          <rect x="150" y="36" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="193" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">1994年</text>
+          <line x1="236" y1="49" x2="252" y2="49" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ar6)"/>
+          <rect x="256" y="36" width="70" height="26" rx="3" fill="color-mix(in srgb,var(--line) 12%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="291" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">12月</text>
+          <line x1="326" y1="49" x2="342" y2="49" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ar6)"/>
+          <rect x="346" y="36" width="70" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="381" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">24日</text>
+          <line x1="416" y1="49" x2="432" y2="49" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ar6)"/>
+          <rect x="436" y="36" width="104" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="488" y="53" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">上午10点</text>
+          <text x="556" y="53" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">从大到小</text>
+          <!-- 英语行 -->
+          <text x="14" y="102" font-family="var(--mono)" font-size="11" font-weight="700" fill="var(--indigo)">英语 · 移动客体</text>
+          <rect x="150" y="86" width="104" height="26" rx="3" fill="color-mix(in srgb,var(--amber) 18%,transparent)" stroke="var(--amber)" stroke-width="1.2"/>
+          <text x="202" y="103" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">at 10 a.m.</text>
+          <line x1="254" y1="99" x2="270" y2="99" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ar6)"/>
+          <rect x="274" y="86" width="112" height="26" rx="3" fill="color-mix(in srgb,var(--line) 14%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="330" y="103" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">on Dec. 24</text>
+          <line x1="386" y1="99" x2="402" y2="99" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ar6)"/>
+          <rect x="406" y="86" width="86" height="26" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="449" y="103" font-family="var(--mono)" font-size="11" fill="var(--ink)" text-anchor="middle">in 1994</text>
+          <text x="510" y="103" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">从小到大</text>
+          <!-- 地点行 -->
+          <text x="14" y="152" font-family="var(--mono)" font-size="11" font-weight="700" fill="var(--amber)">汉语 · 地点同式</text>
+          <rect x="150" y="136" width="440" height="26" rx="3" fill="color-mix(in srgb,var(--line) 8%,transparent)" stroke="var(--line)" stroke-width="1"/>
+          <text x="370" y="153" font-family="var(--sans)" font-size="11.5" fill="var(--ink)" text-anchor="middle">美国 · 俄亥俄州 · 哥伦布市 · 西九街 · 63号</text>
+          <text x="14" y="182" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">英语：63 West Ninth St., Columbus, Ohio, USA —— 顺序整个倒过来</text>
+          <!-- 底部注 -->
+          <line x1="20" y1="198" x2="660" y2="198" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 4"/>
+          <text x="340" y="216" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">Clark 1973 · Tai 1989 · Hsieh 1989：汉语「移动自我」，英语「移动客体」</text>
+          <text x="340" y="230" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">Linde &amp; Labov 1975：97% 的被试用「假想的旅行」描述住所格局</text>
+        </svg>
+      </div>
+    </div>
+    <figcaption>时间范围原则（PTSC）：X 在 Y 的时间范围之中，语序是 YX——大范围先于小范围；辖域越宽，位置越前<sup class="cite" data-cite="c3-39">39</sup><sup class="cite" data-cite="c3-41">41</sup><sup class="cite" data-cite="c3-42">42</sup>。</figcaption>
+  </figure>
+
+  <div class="sim" id="simAddr">
+    <div class="dwg-head">SIM·ADDR · 时间地址重组器（输入日期与时刻，看两种语言的语序）<span class="sheet">RUN</span></div>
+    <div class="sim-top">
+      <input class="d" id="simD" type="text" value="1994年12月24日" aria-label="日期">
+      <input class="n" id="simN" type="text" value="上午10点" aria-label="时刻">
+      <button class="run" id="simRun" type="button">重组 →</button>
+    </div>
+    <div class="samples" id="simSamples"></div>
+    <div class="out" id="simOut"><div class="verdict">待输入</div><div class="why">输入日期与时刻，看汉语式与英语式语序。</div></div>
+  </div>
+
+  <p>生成学派曾试图消解它。Newmeyer(1992) 以合作原则把英语并列句顺序解释为会话含义，却不得不承认汉语连谓结构「给他带来很大的麻烦」——「生成语法提不出什么解释来」<sup class="cite" data-cite="c3-36">36</sup><sup class="cite" data-cite="c3-37">37</sup>。要害在否定范围：「他去图书馆见朋友」一个否定词覆盖全部，子句式需两个——次序是蕴含的，不可取消；这正是汉语比英语体现更强次序象似性的原因之一<sup class="cite" data-cite="c3-38">38</sup>。带「后、之后」的子句只能按时间序排列，条件子句先于结果子句是所有语言的正常语序<sup class="cite" data-cite="c3-39">39</sup><sup class="cite" data-cite="c3-43">43</sup>。</p>
+
+  <details class="card">
+    <summary>深一层 · PTS 统一解释的一族语料<span class="k">c3-40</span></summary>
+    <div class="body">
+      <p>戴浩一的时间顺序原则统一解释了一族汉语语序：你给他钱，他才给你书｜张三上楼睡觉｜我们开会解决问题｜他打死了一只苍蝇｜他从旧金山坐长途公共汽车经过芝加哥到纽约｜他往南看｜他用筷子吃了那碗饭｜小猴子在马背上跳｜他病了三天了｜他累得不能说话了——数字标序的事件顺序与语言成分次序一致<sup class="cite" data-cite="c3-40">40</sup>。</p>
+    </div>
+  </details>
+
+  <div class="scene-foot">
+    <button type="button" data-go="5">← 场景 05 · 形式规模</button>
+    <button type="button" data-go="7">场景 07 · 对称与重叠 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑦ ==================== -->
+<section data-scene="7">
+  <div class="scene-head"><span class="no">SCENE 07</span><h2>对称与重叠：一式对一义</h2><span class="en">SYMMETRY · REDUPLICATION</span></div>
+
+  <p><b>对称动因</b>：概念上对称的事物，形式上也对称。Haiman 的判据：A r B 与 B r A 同时为真，概念关系即对称；「语言里的对称性和音乐里的对称性一样，常用结构的平行性表达出来」<sup class="cite" data-cite="c3-44">44</sup><sup class="cite" data-cite="c3-45">45</sup>。「S1x and S2x」表对称、「S1x and S2y」表不对称——<b>形式上的（不）对称性对应于概念上的（不）对称性</b><sup class="cite" data-cite="c3-46">46</sup>；并列项还须同范畴、同语义功能<sup class="cite" data-cite="c3-47">47</sup>。</p>
+
+  <figure class="dwg">
+    <div class="dwg-head">FIG·SYM-07 · 跨语言对照：不对称用 AxBy，对称用 AxBx<span class="sheet">DWG·SHEET 07/08</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 258" role="img" aria-label="AxBy与AxBx跨语言对照：巴布亚新几内亚诸语言依次因果条件用不对称标记AxBy，相互、同时义用对称标记AxBx；底部为Haiman假说">
+          <defs>
+            <marker id="ar7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <text x="340" y="18" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">形态标记的对称性 ⇔ 概念关系的对称性 · 巴布亚新几内亚诸语言</text>
+          <!-- 左栏 AxBy -->
+          <rect x="16" y="30" width="310" height="150" rx="6" fill="color-mix(in srgb,var(--line) 6%,transparent)" stroke="var(--line)" stroke-width="1.4"/>
+          <text x="171" y="50" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--line)" text-anchor="middle">AxBy · 不对称</text>
+          <text x="171" y="68" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">依次 · 因果 · 条件</text>
+          <text x="36" y="92" font-family="var(--mono)" font-size="11" fill="var(--ink)">Kobon</text>
+          <text x="120" y="92" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">A-em B-in</text>
+          <text x="36" y="116" font-family="var(--mono)" font-size="11" fill="var(--ink)">Gende</text>
+          <text x="120" y="116" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">A-xo B-i</text>
+          <text x="36" y="140" font-family="var(--mono)" font-size="11" fill="var(--ink)">Hua</text>
+          <text x="120" y="140" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">A-ga-na B-e</text>
+          <text x="36" y="166" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">标记各异 → 两个成分不对等</text>
+          <!-- 右栏 AxBx -->
+          <rect x="354" y="30" width="310" height="150" rx="6" fill="color-mix(in srgb,var(--amber) 10%,transparent)" stroke="var(--amber)" stroke-width="1.4"/>
+          <text x="509" y="50" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--amber)" text-anchor="middle">AxBx · 对称</text>
+          <text x="509" y="68" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">相互 · 同时 · 各自</text>
+          <text x="374" y="92" font-family="var(--mono)" font-size="11" fill="var(--ink)">Kato</text>
+          <text x="440" y="92" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">ba-bafi'e（相互帮助）</text>
+          <text x="374" y="116" font-family="var(--mono)" font-size="11" fill="var(--ink)">Kewa</text>
+          <text x="440" y="116" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">A-O B-O（同时）</text>
+          <text x="374" y="140" font-family="var(--mono)" font-size="11" fill="var(--ink)">Hua</text>
+          <text x="440" y="140" font-family="var(--mono)" font-size="11" fill="var(--ink-2)">A-ro B-ro（各自看见对方）</text>
+          <text x="374" y="166" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">标记相同 → 两个成分对等</text>
+          <!-- 假说 -->
+          <line x1="171" y1="180" x2="509" y2="180" stroke="var(--amber)" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar7)"/>
+          <rect x="150" y="196" width="380" height="46" rx="4" fill="color-mix(in srgb,var(--seal) 8%,transparent)" stroke="var(--seal)" stroke-width="1.4"/>
+          <text x="340" y="216" font-family="var(--sans)" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">若 AxBy 和 AxBx 都能成立：AxBy 表概念上的不对称</text>
+          <text x="340" y="234" font-family="var(--sans)" font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">AxBx 结构总是表达 A、B 之间的某种概念上的对称性</text>
+        </svg>
+      </div>
+    </div>
+    <figcaption>both...and、et A et B、A da B da、NP-gi NP-gi 均为对称格式；主从构造蕴含显著性的不对称<sup class="cite" data-cite="c3-49">49</sup><sup class="cite" data-cite="c3-51">51</sup><sup class="cite" data-cite="c3-52">52</sup>。</figcaption>
+  </figure>
+
+  <div class="guess" data-guess>
+    <div class="q-line">先猜一下：Kobon 语里「A 然后 B」（依次）和「互相帮助」，用的标记方式会一样吗？</div>
+    <div class="opts">
+      <button type="button" data-v="a">a. 一样，都是同样的并列格式</button>
+      <button type="button" data-v="b">b. 不一样——依次义用不对称的 AxBy，互相义用对称的 AxBx</button>
+    </div>
+    <button class="reveal-btn" type="button" data-reveal>先猜再看 →</button>
+    <div class="answer" hidden>答案是 <span class="acc">b</span>。Kobon 语依次、因果、条件用 A-em B-in（不对称标记），相互义用 ba-bafi'e（对称标记）；Kewa 语同时义用 A-O B-O，Tauya 语用 A-te B-te，Hua 语「我和你各自看见了对方」用 A-ro B-ro<sup class="cite" data-cite="c3-50">50</sup>。形态标记的对称性与概念关系的对称性严整对应。</div>
+  </div>
+
+  <p><b>重叠动因</b>：戴浩一（Tai 1992）基于汉语首先明确提出——<b>语言形式的重叠（重复）对应于概念领域的重叠（重复）</b><sup class="cite" data-cite="c3-54">54</sup>。Sapir(1921) 早说过重叠含有「不证自明的象征性」<sup class="cite" data-cite="c3-55">55</sup>。体词重叠含「每」（个个都很好）或「逐一」（一首一首地唱），数量结构重叠还表量多（一串串葡萄）——共同点是「相同的事物或动作在量上的迭加或重现」<sup class="cite" data-cite="c3-56">56</sup>。</p>
+
+  <p>动词能否重叠由概念特征决定：能延续能反复的（吃、看、睡）与不能延续但能反复的（眨、关、碰）都可以重叠；既不能延续又不能反复的（死、懂、看见）不能——*死死、*懂懂、*看见看见<sup class="cite" data-cite="c3-57">57</sup>。下面五项，请判定能否重叠。</p>
+  <div data-cls>
+    <div class="cls-row">
+      <span class="it">吃 → 吃吃</span>
+      <span class="btns"><button type="button" data-ok="1">能重叠</button><button type="button" data-ok="0">不能重叠</button></span>
+      <span class="cls-ans" hidden>能延续能反复，表同质过程复现——「吃吃」可说，表时量短。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">眨 → 眨眨</span>
+      <span class="btns"><button type="button" data-ok="1">能重叠</button><button type="button" data-ok="0">不能重叠</button></span>
+      <span class="cls-ans" hidden>不能延续但能反复，同样可感知为同质复现——「眨眨」可说。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">死 → *死死</span>
+      <span class="btns"><button type="button" data-ok="0">能重叠</button><button type="button" data-ok="1">不能重叠</button></span>
+      <span class="cls-ans" hidden>既不能延续又不能反复的即时状态变化——「死死」不说，动词拷贝也禁止（*他发现这件事发现很久了）。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">懂 → *懂懂</span>
+      <span class="btns"><button type="button" data-ok="0">能重叠</button><button type="button" data-ok="1">不能重叠</button></span>
+      <span class="cls-ans" hidden>同属第三类——心理活动的瞬时达成，无复现可言。</span>
+    </div>
+    <div class="cls-row">
+      <span class="it">看见 → *看见看见</span>
+      <span class="btns"><button type="button" data-ok="0">能重叠</button><button type="button" data-ok="1">不能重叠</button></span>
+      <span class="cls-ans" hidden>动结式表状态变化，不能延续也不能反复；可重叠性由动作概念特征决定，而非纯形式。</span>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary>深一层 · AABB、动词拷贝与跨语言重叠<span class="k">c3-59~61</span></summary>
+    <div class="body">
+      <p>AABB 式「大大小小」「进进出出」是重叠动因的另一幅面孔——「这类重叠式所修饰或描述的事物必须是多于两个的」，只有一盏亮灯一盏暗灯不能说「明明暗暗的灯光」<sup class="cite" data-cite="c3-60">60</sup>。</p>
+      <p>动词拷贝同样受概念制约：「他到美国到了三次」可说，「*到了三年」不行——延续性与反复性的分别是概念原则而非纯形式<sup class="cite" data-cite="c3-59">59</sup>。Langacker(1987b) 的扫描模式给出解释：延续与反复动作「都被感知为同质过程的复现」，都能带「着」、都能受「不停」「不断」修饰——重叠的本质是同质形式的复现<sup class="cite" data-cite="c3-58">58</sup>。</p>
+      <p>重叠动因的普遍性还写在汉藏语里：20 多种汉藏语、台语都有重叠；怒语、门巴语疑问代词重叠表复数；纳西语 lala（打架＝互相打）；壮语后附音节构成层级系列 hin → hin hinjan → hin hinjan hinjan<sup class="cite" data-cite="c3-61">61</sup>。并列句则同时具备次序与对称两重性格——「人不犯我，我不犯人」换位意义就变<sup class="cite" data-cite="c3-48">48</sup>；持续体常是背景子句标志，「他吃着饭看书」的第一个动词表同时且从属<sup class="cite" data-cite="c3-53">53</sup>。</p>
+    </div>
+  </details>
+
+  <div class="scene-foot">
+    <button type="button" data-go="6">← 场景 06 · 次序动因</button>
+    <button type="button" data-go="closing">场景 08 · 竞争与收尾 →</button>
+  </div>
+</section>
+
+<!-- ==================== 收尾：竞争 ==================== -->
+<section id="closing">
+  <div class="scene-head"><span class="no">CLOSING 08</span><h2>竞争与收尾：动因不是规则</h2><span class="en">COMPETITION · CETERIS PARIBUS</span></div>
+
+  <p><b>范畴化动因</b>收束六灯：同一形式范畴的单位在认知上也有相似之处，主要词类「都有各自的概念基础」<sup class="cite" data-cite="c3-62">62</sup>。「属的概念由单纯词表达，种的概念由属名加区别性特征的复合词表达」——汉语的「杉」对「红杉」<sup class="cite" data-cite="c3-64">64</sup>。</p>
+
+  <p>动因之间还会竞争。Borges《Funes》里主人公给三点十四分和三点十五分看到的狗各起一个名——<b>象似到极端，「象似」本身也就消失了</b>；抽象、简化和规约化正是经济原则的体现<sup class="cite" data-cite="c3-65">65</sup>。Haiman：象似性和经济性「呈一种倒转的相关关系」——一处过强，另一处就出来削它<sup class="cite" data-cite="c3-66">66</sup>。</p>
+
+  <p>语序原则是竞争的经典案例：旧信息先新信息后、紧密相关的观念放在一起、最紧要的内容首先表达——三条相互冲突，类型学却能给出硬预测<sup class="cite" data-cite="c3-70">70</sup>。DuBois(1985) 据此预言「第一二人称带上作格标记而第三人称带上宾格标记的语言是不可能存在的」，得到经验支持<sup class="cite" data-cite="c3-71">71</sup>。Hsieh(1989)：抽象原则与象似原则「并肩作用，互相竞争，互相平衡，以达到语法的均衡态」<sup class="cite" data-cite="c3-72">72</sup>。</p>
+
+  <details class="card">
+    <summary>深一层 · 洋泾浜语：词汇贫乏处，象似性强<span class="k">c3-67~69</span></summary>
+    <div class="body">
+      <p>新几内亚洋泾浜语 he/him → em、I/me → mi，斯瓦希里语代词 O 前置的 SOV 在肯尼亚洋泾浜语回返 SVO，一致关系削减——词汇贫乏故象似性强；缩略语 radar、laser 则消溶象似性，「词汇量的增加伴随着象似性的降低」<sup class="cite" data-cite="c3-68">68</sup>。洋泾浜→克里奥尔语，象似特性丧失。</p>
+      <p>并列删除是经济原则驱动的象似性减损：AxBx 重组为 (AB)x 象似不减，不重组则得不对称的 AxB——「一方面，象似原则要求形式最大限度地概念上的对称性，另一方面经济原则又要求尽量减少重复成分的再现」<sup class="cite" data-cite="c3-69">69</sup>。</p>
+      <p>竞争解释还要过 Croft(1990) 的可验证性关口：非空解释须同时满足四个条件——两种机制逻辑上不可同时满足、某些类型归于一机制、另一些归于另一机制、不能出现的类型对两机制都不能满足；同构假说与标记理论的解释均满足<sup class="cite" data-cite="c3-67">67</sup>。</p>
+    </div>
+  </details>
+
+  <h3 style="font-size:17px;margin:20px 0 4px;">自测：三题</h3>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">一、AxBx 重组为 (AB)x——并列删除让形式变短了，象似性减损。驱动它的是什么原则？</p>
+    <button type="button" class="opt">象似原则——形式仍要最大限度地临摹概念</button>
+    <button type="button" class="opt" data-ok="1">经济原则——尽量减少重复成分的再现</button>
+    <button type="button" class="opt">范畴化原则——按典型性重新分组</button>
+    <div class="exp" hidden>「一方面，象似原则要求形式最大限度地概念上的对称性，另一方面经济原则又要求尽量减少重复成分的再现」——AxBx 重组为 (AB)x 象似不减，不重组则得不对称的 AxB，并列删除正是经济原则驱动<sup class="cite" data-cite="c3-69">69</sup>。</div>
+  </section>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">二、按 DuBois(1985) 的竞争解释，下面哪种语言被预言不可能存在？<sup class="cite" data-cite="c3-71">71</sup></p>
+    <button type="button" class="opt">第一、二人称带作格标记而第三人称带宾格标记的语言</button>
+    <button type="button" class="opt">第一、二人称带宾格标记而第三人称带作格标记的语言</button>
+    <button type="button" class="opt">作格与宾格完全同形的语言</button>
+    <div class="exp" hidden>DuBois(1985) 作格/宾格模式均由象似原则促动，据此预测「第一二人称带上作格标记而第三人称带上宾格标记的语言是不可能存在的」，并得到经验支持——竞争解释由此获得类型学验证<sup class="cite" data-cite="c3-71">71</sup>。</div>
+  </section>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">三、高元音表人、低元音表小的语音象征「具有相当大的普遍性」，但例外不少。作者的态度是？</p>
+    <button type="button" class="opt">普遍性不够高，应当放弃这一概括</button>
+    <button type="button" class="opt">例外太多，说明语音象征纯属巧合</button>
+    <button type="button" class="opt" data-ok="1">这是趋势或动因的描述而非规则；它混淆了例外和反例的区别</button>
+    <div class="exp" hidden>「这个概括不是规则，只是对某种趋势或动因的描述……只要某分布高于统计上有意义的某个值，它就是有动因的」——动因只要求统计上有意义，例外不构成反例。这是读全章的方法论前提<sup class="cite" data-cite="c3-73">73</sup>。</div>
+  </section>
+
+  <div class="scene-foot">
+    <button type="button" data-go="7">← 场景 07 · 对称与重叠</button>
+    <button type="button" data-go="0">回到章首 ↑</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>依据：张敏《认知语言学与汉语名词短语》第三章全文（研读底本 L1460–2126）。角标弹窗可逐条回查原文。单文件零外部依赖；进度、字号、明暗仅存本机 localStorage。</p>
+</footer>
+
+<!-- 引文弹窗 -->
+<div class="veil" id="veil" hidden></div>
+<div class="pop" id="pop" hidden>
+  <div class="pop-id"><span id="pop-id-text">SOURCE</span><span id="pop-close">✕ 关闭</span></div>
+  <p class="pop-p" id="pop-p">研读底本</p>
+  <blockquote class="pop-q" id="pop-q"></blockquote>
+  <p class="pop-z" id="pop-z"></p>
+</div>
+
+<script>
+/* ================= 数据：SOURCES 事实账本 ================= */
+const SOURCES = {
+  "c3-01":{page:"研读底本 L1462",quote:"语言的象似性指的是感知到的现实的形式与语言成分及结构之间的相似性（Dotter 1995）；语言的形式和内容（或者说，语言符号的能指和所指）之间的联系有着非任意、有理据、可论证的一面。",zh:"象似性＝形式与意义/经验之间的非任意、有理据的联系——全章的工作定义。"},
+  "c3-02":{page:"研读底本 L1464",quote:"最早可追溯到古希腊哲学家对『词』与『物』之间的关系到底是 phusei（按性质）还是 thesei（按规定）的争辩，以及我国先秦哲学家对『名实』关系的讨论；人们以为它只体现在偶发性的、对整个系统影响不大的拟声词和『语音象征现象』等方面。",zh:"问题古已有之；象似性长期被片面理解为拟声词一类边缘现象。"},
+  "c3-03":{page:"研读底本 L1466–1468",quote:"功能学派崛起不再将语言视为自足自主的纯形式系统；类型学与共性研究发现在毫无亲缘关系的众多语言里一再出现某些相似的形式——意义匹配关系；认知语言学认为语言结构直接映照经验的结构。",zh:"三条学术史线索汇成象似性研究。"},
+  "c3-04":{page:"研读底本 L1470",quote:"本章先介绍任意性与象似性两种看法；再介绍象似性含义与类型；再用跨语言证据说明句法里几种主要的象似原则。",zh:"本章路线图。"},
+  "c3-05":{page:"研读底本 L1475",quote:"柏拉图《对话录》(Cratylus)：一派认为名称和事物之间存在着自然的联系，正确的名称描摹(imitate)了现实的本质属性，另一派认为二者的联系完全是由人们规定的；『柏拉图范式』与『亚里士多德范式』（Simone 1995）。",zh:"克拉底鲁问题——名与物的自然联系还是规定联系。"},
+  "c3-06":{page:"研读底本 L1477",quote:"索绪尔：符号的能指和所指的结合是任意的；但他区分绝对任意性（法语 vingt『二十』）与相对任意性（die-neuf『十九』，可想起 dix+neuf）；可论证性包含在要素之间相互组合的句段关系及要素与要素聚合成类的联想关系里。",zh:"索绪尔本人并不绝对化，他给「相对可论证」留了门。"},
+  "c3-07":{page:"研读底本 L1481",quote:"乔姆斯基(1981)：我们对这个世界的解释部分地植根于从心智结构本身衍生出来的表现系统，它并不以任何直接的方式反映外部世界的事物的形式；天赋性假说；Pharies(1985)：非任意性课题在美国语言学界会引起『嘲笑和难堪』。",zh:"生成语法把任意性推到极处，象似性研究长期边缘化。"},
+  "c3-08":{page:"研读底本 L1485",quote:"皮尔士(C. S. Peirce 1932 [1902])：在每一语言的句法里，都存在着由约定俗成的规则所辅佐的合乎逻辑的象似符 (icon)。",zh:"句法象似性观念在符号学里的最早系统表述。"},
+  "c3-09":{page:"研读底本 L1487",quote:"Behaghel(1932) 德语『第一定律』——语言距离由概念距离促动；Jakobson(1965)『veni, vidi, vici』子句语序决定于事件时间顺序；Greenberg(1966) 子句在叙述中的顺序一定和它们所描述的事件的次序相同，没有一个已知语言在讲一件事时是以倒叙为常的。",zh:"功能主义之前的零星但关键的观察。"},
+  "c3-10":{page:"研读底本 L1489",quote:"Benveniste(1946) 不少语言单数第三人称代词与第一、二人称不平行（匈牙利语、Hua 语人称附缀有无）；古代阿拉伯语言学家命名：第一人称『说话者』、第二人称『听话者』、第三人称『缺席者』；郭锡良(1980) 上古汉语只有第一、第二人称代词；日语、朝鲜语、蒙古语第三人称代词来自指示代词并同形。",zh:"零形式/非零形式的对立象似于概念领域的在场/缺席。"},
+  "c3-11":{page:"研读底本 L1491–1501",quote:"Cooper & Ross(1975) 最早明确提出句法象似性(syntactic iconicity)；Haiman(1980、1983、1985a)『自然句法(natural syntax)』；戴浩一（Tai 1985）时间顺序原则；谢信一（Hsieh 1978、1989）『汉语是一种图画语言』。语素（或单纯词）在语言中具有最高程度的任意性和最低程度的象似性；它们只是促动，而非决定语言形式。",zh:"研究队伍与代表成果；功能学派不否认任意性，只反对夸大。"},
+  "c3-12":{page:"研读底本 L1510",quote:"Haiman(1985a)：当某一语言表达式在外形、长度、复杂性以及构成成分之间的各种相互关系上平行于这一表达式所编码的概念、经验或交际策略时，我们就说这一语言表达式具有象似的性质。",zh:"象似性的工作定义。"},
+  "c3-13":{page:"研读底本 L1512",quote:"皮尔士三种关系：象似的关系（性质相似，如地图之于地形）；引得性的关系（时空相邻或因果，如水兵服、湿马路代表下过雨）；标志性的关系（完全靠规约，如英语 book 之于『书』）。",zh:"icon / index / symbol 三分。"},
+  "c3-14":{page:"研读底本 L1514–1516",quote:"界定象似符的『相似性』是心理事实(mental fact)而非客观事实；任何东西都可以是代表任何东西的象似符，只要前者看起来像后者；没有『纯象似符(pure icon)』，所有象似符号都是『亚象似符号(hypoicon)』。",zh:"象似性是感知中的相似；三类的界线是程度差别。"},
+  "c3-15":{page:"研读底本 L1518",quote:"皮尔士象似符三小类：影像(image)（某些属性上相似，如照片）、图样(diagram)（结构或关系上相似，如地图）、隐喻（通过平行性反映所指物特征）。",zh:"影像—图样—隐喻。"},
+  "c3-16":{page:"研读底本 L1520–1522",quote:"Haiman：人类自然语言里的象似符主要是影像和图样，尤其图样；影像象似符是在某些特性上与其所指称的事物相像的单个符号；图样象似符代表复杂事物或复杂概念，其成分之间的关系与指称对象成分之间的关系相似，工艺图、地图及由指事和会意方式造成的汉字是其绝好的例子。",zh:"语言象似性的主要形式是图样象似性。"},
+  "c3-17":{page:"研读底本 L1524",quote:"契刻计数系统线条的数目完全对应于所数物体的数目；罗马数字 I、II、III 是象似的，L 是标志符；阿拉伯数字单个都是标志符，但门牌号码 45 号应在 44 号和 46 号之间，正像阿拉伯数字串上 45 在 44 和 46 之间。",zh:"单词常是标志符，语法却如图样——「语言类似图样」。"},
+  "c3-18":{page:"研读底本 L1528",quote:"图样象似性分为同构(isomorphism)、自同构(automorphism)、动因(motivation) 三种类型。",zh:"本章类型框架。"},
+  "c3-19":{page:"研读底本 L1530",quote:"『同构』指图样象似符的能指和所指成分之间的一一对应；Humboldt『最理想原则』、Vendryes『单义性原则』、Bolinger『语言里自然的情况』。四种例外：(1) 空语素（一个形式对应零意义）；(2) 零语素（零形式对应一个意义）；(3) 同义现象（多形式对一意义）；(4) 同形现象（一形式对多意义）。",zh:"一一对应趋势及其四类反例。"},
+  "c3-20":{page:"研读底本 L1530",quote:"同构假说：不同的形式总是蕴含了意义或交际功能上的不同；相反，若相同的形式一再出现在不同的语法范畴之间，则这种形式上的相同总是反映了意义或交际功能上某种感知到的相似性。",zh:"形式差别蕴含意义差别；形式相同反映意义相似。"},
+  "c3-21":{page:"研读底本 L1532",quote:"同形现象丰富全然是经济原则的产物，而多义形式丰富、同义形式缺乏都是经济原则加上象似原则的产物；完全同义的形式既不符合经济原则的要求，也不符合象似原则的要求；空语素严格地说也并不『空』。",zh:"两类原则携手与竞争的产物。"},
+  "c3-22":{page:"研读底本 L1534",quote:"自同构（Haiman 1985b）指同一系统两个或多个部分之间的对应；Greenberg(1985) 同一组指代词可用于时间、空间和言谈指称（第一人称/与说话人密切关系/较近未来）；我们在第二章谈到的概念隐喻及其隐喻映射都是『自同构』象似性的反映。",zh:"系统内部的平行映射。"},
+  "c3-23":{page:"研读底本 L1536–1538",quote:"『动因』指语言结构的构成成分之间的关系以图样象似的方式反映了意义或概念结构的元素之间的关系；Givón(1985) 象似性元原则；Croft(1990) 认为动似应包括经济的但经济机制并非象似性；我们仍采用 Haiman 的概念，只是在他的『动因』一词之前加上『象似』一词。",zh:"关系与关系的对应；术语分歧。"},
+  "c3-24":{page:"研读底本 L1540",quote:"认知功能语言学家讨论得较多的包括复杂性、独立性、距离、次序、对称、重叠、范畴化等动因。由于距离动因是本书下篇需要详细探讨的主要概念，这一章就不谈了。",zh:"本章讲六种，距离动因留下篇。"},
+  "c3-25":{page:"研读底本 L1545–1547",quote:"相对简单概念普遍由相对简单的形式表达，而相对的复杂概念则普遍由相对复杂的语言结构表达（Croft 1990）；标记理论中有标记形式通常在结构和语义上都更复杂（Bybee 1985, Battistella 1990）。",zh:"复杂性动因的总趋势。"},
+  "c3-26":{page:"研读底本 L1549",quote:"Jakobson(1965) 印欧语形容词原级、比较级、最高级语素音素数目依次递增（英语 -0、-er、-est）；珞巴语三级由零语素、yong、yongjup 表达；苗语增音变化表程度加深（王辅世1985）。",zh:"跨语言的形式长度与概念程度对应。"},
+  "c3-27":{page:"研读底本 L1553",quote:"四县客话形容词 A、AA、AAA 三种形式表程度递增：ton（短）、ton ton（很短）、ton ton ton（非常非常短）（罗肇锦1988）。",zh:"汉语方言里的复杂性+重叠双重证据。"},
+  "c3-28":{page:"研读底本 L1557",quote:"Greenberg(1966) 复数在所有的语言里都用某种非零形式的语素表示，而单数在有些语言中仅用零形式表示。双数和三数几乎从不采取零形式；英语 book+0 / book+s；俄语拉丁语复数语素音素更多（Matthews 1991）。",zh:"单复数的形式—概念对应普遍特征。"},
+  "c3-29":{page:"研读底本 L1566",quote:"河流＜最长的河流＜中国最长的河流——无论是在形式上还是在意义上都是能成立的。",zh:"修饰结构逐层叠加，形式与意义同步复杂化。"},
+  "c3-30":{page:"研读底本 L1571",quote:"Haiman(1983) 一个表达式在语言形式上的分离性与它所表示的物体或事件在概念上的独立性相对应；一个独立的词表示一个独立的实体，一个粘着语素则不大可能如此。一个独立的子句表达一个独立的命题，一个简缩的子句则不大可能如此。",zh:"分离性动因；个体化对应。"},
+  "c3-31":{page:"研读底本 L1573–1585",quote:"我在图书馆学系读书（复合词）不能说『我在图书馆学系读一本书』『书我在图书馆学系读了』『我在图书馆学系把书又读了一遍』『我在图书馆学系读的是书』；我在图书馆读书（短语）都可以说。",zh:"汉语动宾复合词 vs 短语：名词成分不能分离、不能焦点化、不能作话题。"},
+  "c3-32":{page:"研读底本 L1587",quote:"Hopper & Thompson(1984,1985) 复合词中名词性成分在形式上通常都是『残废』的，格、性、数、有定标记都不能带；认知上和话语中的『非个体化(de-individuation)』决定了语法特征上的『非范畴化(de-categorization)』。",zh:"概念个体化程度决定形式范畴化程度。"},
+  "c3-33":{page:"研读底本 L1589–1591",quote:"Givón(1990) 独立的事件倾向于编码为独立的子句；John and Mary left in a Cadillac（一辆车，单事件）与 John left in a Cadillac, and Mary left in a Cadillac（各自一辆车，两事件）不可互换。",zh:"子句边界＝事件边界。"},
+  "c3-34":{page:"研读底本 L1593–1601",quote:"Givón(1980) 补足语子句的删略程度大致与其真值由母句所蕴含的程度相应；朝鲜语使役『动词#ha-』不蕴含补足命题为真（可接『但我没吃』），『动词+I(使)』蕴含（不可接）。",zh:"形式融合度对应概念蕴含度。"},
+  "c3-35":{page:"研读底本 L1606–1608",quote:"Greenberg(1966) 语言中成分的次序与物理经验的次序或对事物的认识的次序是平行的；Haiman 时间象似性(tense iconicity)；Givón(1990) 线性次序原则；戴浩一(1985) 时间顺序原则（PTS）：两个句法单位的相对次序决定于它们所表示的概念领域里的状态的时间顺序。",zh:"次序动因的代表表述。"},
+  "c3-36":{page:"研读底本 L1610–1622",quote:"英语 Mary bought ___ and went to the supermarket、She got married and had a baby 中 S1 事件先于 S2；Newmeyer(1992) 以合作原则解释为会话含义而非结构蕴含，并举汉语(3)(4)反例。",zh:"生成学派用语用原则消解结构象似性的尝试。"},
+  "c3-37":{page:"研读底本 L1632–1638",quote:"戴浩一(1985) 张三到图书馆拿书与张三拿书到图书馆语序不可互换；Newmeyer 承认汉语这一现象给他带来很大的麻烦，只能解释为汉语将这一语用原则语法化了，且生成语法提不出什么解释来。",zh:"连谓结构的次序是蕴含的，不可取消。"},
+  "c3-38":{page:"研读底本 L1644–1646",quote:"(7a) 他去了(一趟)图书馆，还见了(一个)朋友（子句，时间顺序可取消）vs (7b) 他去图书馆见朋友（连谓，蕴含）；否定范围不同：否定(7b)一个否定词覆盖全部，否定(7a)需两个否定词；汉语里的这种连谓结构在英语并没有，这也是汉语比英语体现出更强的次序象似性的原因之一。",zh:"独立性动因与次序动因联手解释并列/连谓之别。"},
+  "c3-39":{page:"研读底本 L1648–1673",quote:"戴浩一 时间范围原则（PTSC）：如果句法单位 X 表示的概念状态在句法单位 Y 所表示的概念状态的时间范围之中，那么语序是 YX；汉语带『前、之前、以后』的子句不能按自然时间序排列，带『后、之后、以后』的只能按时间序排列。",zh:"时距大小决定语序；外显时间标记成分必须居动词前。"},
+  "c3-40":{page:"研读底本 L1675–1699",quote:"PTS 统一解释汉语并列复合句、连谓结构、结果补语、状态补语、介—动状中、动—介述补等语序：(12)你给他钱，他才给你书 (13)张三上楼睡觉 (14)我们开会解决问题 (15)他打死了一只苍蝇 (16)他从旧金山坐长途公共汽车经过芝加哥到纽约 (17)他往南看 (18)他用筷子吃了那碗饭 (19)(20)小猴子在马背上跳/跳在马背上 (21)他病了三天了 (22)他累得不能说话了。",zh:"数字标序的事件顺序与语言成分次序一致。"},
+  "c3-41":{page:"研读底本 L1701–1717",quote:"汉语时间地址从大到小：(23)1994年12月24日上午10点 (24)美国，俄亥俄州，哥伦布市，西九街，63号 (25)(26)在厨房里的桌子的上面的盒子里；英语相反（小范围在前）；汉语移动自我(moving-ego)策略，英语移动客体(moving-object)策略（Clark 1973, Tai 1989, Hsieh 1989）；Linde & Labov(1975) 97% 的被试用假想的旅行描述住所格局。",zh:"整体先于局部是汉语系统性的认知次序；两种语序都是象似的，只是认知策略相反。"},
+  "c3-42":{page:"研读底本 L1719–1725",quote:"Jackendoff(1972) 英语中前置逻辑量词或否定成分辖域更大；沈家煊(1985) 汉语同样；克里奥尔语时体态标记语序(完成体)(情态)(持续体)动词，持续体辖域最窄、完成体最宽，辖域越宽，其形式的位置就越前。",zh:"语义辖域大小与线性次序对应。"},
+  "c3-43":{page:"研读底本 L1727",quote:"Greenberg(1966) 在表条件的陈述句中，条件子句先于结果子句是所有语言的正常语序；原因子句先于结果子句。",zh:"先因后果是跨语言常态。"},
+  "c3-44":{page:"研读底本 L1736–1744",quote:"Haiman 对称定义：A r B 和 B r A 同时为真，或 A r C 和 B r C 同时为真，则概念关系是对称的。",zh:"可逆或同指即对称。"},
+  "c3-45":{page:"研读底本 L1746–1754",quote:"(2)张三和李四各自打了对方 (3)张三和李四同时离开了 (4)张三和李四长相相似；语言里的对称性和音乐里的对称性一样，常用结构的平行性表达出来……一如贝多芬《第五交响乐》的前两个乐句（3331，2227）。",zh:"交替、同时、互相依存的概念需对称形式。"},
+  "c3-46":{page:"研读底本 L1756–1764",quote:"三种结合方式：(5)S1x (and) S2y；(6)S1 (and) S2；(7)S1x (and) S2x；(7)表对称，(5)表不对称，(6)居中——形式上的(不)对称性对应于概念上的(不)对称性。",zh:"附加标记的对称性直接临摹概念对称性。"},
+  "c3-47":{page:"研读底本 L1766",quote:"Schachter(1977) 并列构造限制(CCC)：并列构造的成分必须属于同一个语法范畴，并且具备相同的语义功能；与 Ross(1967) 并列结构限制(CSC)互补。",zh:"并列项句法语义必须平行。"},
+  "c3-48":{page:"研读底本 L1768–1796",quote:"(8)他不来，我不去（条件—结果）；(11)人不犯我，我不犯人vs我不犯人，人不犯我意义不同；(13)因为他很听话，大家都喜欢他主从句换位意义不变；并列句是具备时间象似性的，其子句顺序对应于概念上事件出现的顺序；而主从句则不一定。",zh:"并列句的双重性格——既对称又有序。"},
+  "c3-49":{page:"研读底本 L1798–1810",quote:"英语用融合(15b Max and Harry hit each other)和穿插(16b John and Mary changed the tire and washed the car, respectively)消除时间顺序暗示；假说：若 AxBy 和 AxBx 都能成立，则 AxBy 结构会表达 A、B 之间概念上的不对称性，而 AxBx 结构总是表达 A、B 之间的某种概念上的对称性。",zh:"AxBy/AxBx 假说——本书可引为核心规律。"},
+  "c3-50":{page:"研读底本 L1812–1846",quote:"巴布亚新几内亚语言 AxBy 型：Kobon [A-em B-in]、Gende [A-xo B-i]、Hua [A-ga-na B-e] 表依次、因果、条件；对称概念用 AxBx：Kato ba-bafi'e（相互帮助）与 na-pe-ng ga-pe-ng e-（相互跟从）；Kewa A-O B-O 表同时；Tauya A-te B-te；Hua A-ro B-ro（我和你各自看见了对方）。",zh:"形态标记对称性与概念对称性的跨语言严整对应。"},
+  "c3-51":{page:"研读底本 L1864–1885",quote:"英语 both...and 减小并列成分感知不对称性（the President and the Secretary of State）；法语 et A et B、土耳其语 A da B da、Hua 语 NP-gi NP-gi 均为对称格式，且 Hua 语动词与两个名词成分都一致。",zh:"并列短语同样两分；对称概念有专门格式。"},
+  "c3-52":{page:"研读底本 L1887",quote:"Haiman：对称/不对称在两个向度上展开——时间接续性或同时性、显著性；带对称的中性化标记的并列构造（如 AxBx）同时表达了时间和显著性方面的对称关系；主从构造蕴含了显著性方面的不对称。",zh:"双向度模型。"},
+  "c3-53":{page:"研读底本 L1887–1904",quote:"Hopper & Thompson(1980) 持续体/同时体常是背景子句标志（英语 -ing）；戴浩一(1992) 汉语连谓结构中第一个动词带着表同时且从属（他吃着饭看书）；S1时，S2 表同时；近代汉语时表假设（老乞大 你既往北京去时……）。",zh:"同时性标记与主从标记互通。"},
+  "c3-54":{page:"研读底本 L1911–1913",quote:"戴浩一（Tai 1992）基于汉语首先明确提出：语言表达形式的重叠(重复)对应于概念领域的重叠(重复)。",zh:"重叠动因定义——汉语学者的原创贡献。"},
+  "c3-55":{page:"研读底本 L1915",quote:"Sapir(1921) 重叠含有不证自明的象征性；Lakoff & Johnson(1980) He ran and ran and ran 动作量更大；Hiraga(1994) 将重叠看作数量象似性(quantity iconicity)的一种体现。",zh:"前史与理论定位。"},
+  "c3-56":{page:"研读底本 L1917–1919",quote:"单个量词重叠含每（个个都很好、次次都参加）；数量结构重叠含逐一（一首一首地唱）或多次重复（一趟一趟地去）、数量很多（一串串葡萄）；这几种意思有一个明显的共同点：它们都表示相同的事物或动作在量上的迭加或重现。",zh:"汉语体词重叠的量意义。"},
+  "c3-57":{page:"研读底本 L1921–1933",quote:"动词重叠可表时量短（陪我看聊天=聊一会儿天）与动量小（你试试这个）；动词三类：(1)能延续能反复（吃看睡坐学洗）；(2)不能延续但能反复（眨关碰见插摔、戴）；(3)既不能延续又不能反复（死上吊结婚、懂忘明白批准发现、看见打开缩小）；不能重叠的正是第(3)类（*死死、*懂懂、*看见看见）。",zh:"可重叠性由动作概念特征决定。"},
+  "c3-58":{page:"研读底本 L1935–1951",quote:"Langacker(1987b) 扫描模式：延续动作与反复动作都被感知为同质过程的复现，只不过在前一种情况下复现的过程之间没有可感知的边界，后一种情况下则有可感知的边界；动词表延续和反复都能带着、都能受不停不断一直修饰。",zh:"重叠的本质是同质形式复现；语法行为独立论证。"},
+  "c3-59":{page:"研读底本 L1953–1975",quote:"动词拷贝（Tai 1993）：(7)*他发现这件事发现很久了（即时状态变化禁止拷贝）；(8a)我给他写信已经一个月了 vs (8b)写了一个月了；(9)他到美国到了三次 vs (10)*到了三年；(11)他跳水跳了三个钟头 vs (12)*他跳河跳了三个钟头。",zh:"动词拷贝受动作延续性/反复性制约——概念原则而非纯形式。"},
+  "c3-60":{page:"研读底本 L1977–1979",quote:"AABB 式大大小小长长短短进进出出；这类重叠式所修饰或描述的事物必须是多于两个的——只有一盏亮灯一盏暗灯不能说明明暗暗的灯光。",zh:"AABB 的类同物复现图式。"},
+  "c3-61":{page:"研读底本 L1981–2027",quote:"20 多种汉藏语、台语有重叠现象；怒语、门巴语疑问代词重叠表复数；纳西语 lala（打架=互相打）、pupu（互赠）；景颇语 tin me tin（所有跑的）；台语系（壮语、傣语、泰语）后附音节构成层级系列：柳江壮语 hin→hin hinjan（很多石头）→hin hinjan hinjan（很多很多石头）；元音交替表程度（[i][e] 轻、[a][u][o] 重）。",zh:"重叠动因的跨语言普遍性与层级叠加。"},
+  "c3-62":{page:"研读底本 L2032–2034",quote:"属于同一形式范畴的语言单位在认知上也有相似之处；主要的词类，如名词、动词、形容词等，都有各自的概念基础，可以在认知上加以界定（Hopper & Thompson 1984, Langacker 1987）。",zh:"形式范畴对应概念范畴。"},
+  "c3-63":{page:"研读底本 L2036–2042",quote:"西班牙语 Contestar la pregunta（宾格，圆满回答）与 Contestar a la pregunta（与格，提供了一个答案但不一定满意）；和与格相比，宾格提示了动词和宾语之间在概念上有一种更为直接的联系。",zh:"格标记的形式距离对应概念距离。"},
+  "c3-64":{page:"研读底本 L2044–2048",quote:"Rosch(1978) 基本感知范畴层面心理显著；在大量语言中，属的概念是由单纯词表达的，而种的概念是由包含一个属名以及一个区别性特征的复合词表达的（试比较汉语里的杉和红杉）。",zh:"词汇范畴的象似基础。"},
+  "c3-65":{page:"研读底本 L2053–2055",quote:"Borges《Funes the Memorious》：主人公给三点十四分看左面的狗和三点十五分看右面的狗各起一个名；Swift《格列佛游记》巨人背袋子装山指称；象似到极端，『象似』本身也就消失了，符号系统也消失了；抽象、简化和规约化正是经济原则的一种体现。",zh:"两个思想实验说明象似性极端化的荒谬。"},
+  "c3-66":{page:"研读底本 L2057–2059",quote:"Haiman：象似性和经济性呈一种倒转的相关关系；在象似性过强的地方，经济原则会出来发挥作用，导致象似性的降低……在经济性过强的地方，象似原则也可能出来作用；在不同语言中，以及在同一语言的不同结构、不同历史时期，竞争会导致不同的结果。",zh:"倒转相关；竞争导致类型差异。"},
+  "c3-67":{page:"研读底本 L2061–2071",quote:"Croft(1990) 非空解释四条件：(a)同时满足两种机制逻辑上不可能；(b)某些可能类型归于一机制；(c)另一些类型归于另一机制；(d)不能出现的类型对两机制都不能满足；同构假说与标记理论的解释均满足。",zh:"竞争解释的可验证性标准。"},
+  "c3-68":{page:"研读底本 L2073–2077",quote:"洋泾浜语象似性强：新几内亚洋泾浜语 he/him→em、I/me→mi；斯瓦希里语代词 O 前置 SOV 在肯尼亚洋泾浜语回返 SVO；一致关系削减；wok gaden（农事）、wok dokta（医事）；洋泾浜→克里奥尔语象似特性丧失；Zipf(1935) 最小努力；词汇量的增加伴随着象似性的降低；新几内亚洋泾浜语 gutpela/no gutpela（好/不好）；缩略语 radar、laser。",zh:"词汇贫乏=象似性强；缩略语消溶象似性。"},
+  "c3-69":{page:"研读底本 L2077–2079",quote:"并列删除有时降低象似性：AxBx 重组为 (AB)x 象似不减，不重组则得不对称的 AxB；一方面，象似原则要求形式最大限度地概念上的对称性，另一方面经济原则又要求尽量减少重复成分的再现。",zh:"并列删除是经济原则驱动。"},
+  "c3-70":{page:"研读底本 L2081–2091",quote:"三种语序原则：(2a)旧信息先新信息后；(2b)紧密相关的观念放在一起；(2c)最紧要的内容首先表达；三者相互冲突；Haiman 假设 (2c) 仅作用于特指问焦点，关系代词受(2b)吸引前移；关系代词不前移的语言是不存在的；匈牙利语焦点在动词前。",zh:"动因间竞争的经典案例与类型学预测。"},
+  "c3-71":{page:"研读底本 L2093",quote:"DuBois(1985) 作格/宾格模式均由象似原则促动；预测第一二人称带上作格标记而第三人称带上宾格标记的语言是不可能存在的，得到经验支持。",zh:"竞争解释的又一类型学验证。"},
+  "c3-72":{page:"研读底本 L2095–2097",quote:"Hsieh(1989) 抽象原则与象似原则并肩作用，互相促进，互相竞争，互相平衡，以达到语法的均衡态；解释汉语完成体标记了的位置；Givón(1990) 两类原则并合作用结果仍可是象似的。",zh:"象似—抽象互动的补充视角。"},
+  "c3-73":{page:"研读底本 L2106 附注①",quote:"高元音表人、低元音表小的语音象征具有相当大的普遍性；它混淆了例外和反例的区别；这个概括不是规则，只是对某种趋势或动因的描述……只要某分布高于统计上有意义的某个值，它就是有动因的。",zh:"动因=统计趋势，例外不构成反例——读全章的方法论前提。"}
+};
+
+/* ================= 时间轴六站 ================= */
+const SEG_DATA=[
+  {t:"柏拉图《Cratylus》",p:"自然派认为名称描摹了现实的本质属性，规定派认为联系完全由人们规定——与先秦名实之辩同源。",c:["c3-05"]},
+  {t:"索绪尔《普通语言学教程》",p:"「符号的能指和所指的结合是任意的」，但他区分绝对任意性（vingt）与相对任意性（dix-neuf）——可论证性藏在句段与联想关系里。",c:["c3-06"]},
+  {t:"乔姆斯基(1981)",p:"天赋性假说把任意性推到极处：表现系统「并不以任何直接的方式反映外部世界的事物的形式」；非任意性课题一度「会引起嘲笑和难堪」。",c:["c3-07"]},
+  {t:"皮尔士(1932 [1902]) ★",p:"「在每一语言的句法里，都存在着由约定俗成的规则所辅佐的合乎逻辑的象似符」——句法象似性最早的符号学表述。",c:["c3-08"]},
+  {t:"功能主义先声",p:"Behaghel 德语「第一定律」：语言距离由概念距离促动；Jakobson 举 veni, vidi, vici；Greenberg：子句顺序=事件顺序，无一语言以倒叙为常。",c:["c3-09"]},
+  {t:"Cooper & Ross (1975) →",p:"最早明确提出「句法象似性(syntactic iconicity)」；Haiman「自然句法」、戴浩一时间顺序原则、谢信一「汉语是一种图画语言」相继跟进。",c:["c3-11"]}
+];
+
+/* ================= 七动因总览 ================= */
+const MOT_DATA=[
+  {t:"MOT·01 复杂性",p:"形式的复杂反映概念的复杂——有标记形式在结构和语义上都更复杂；「河流＜最长的河流＜中国最长的河流」同步升级。场景五展开。",c:["c3-25","c3-29"]},
+  {t:"MOT·02 独立性",p:"形式的分离性对应概念的独立性——独立的词表独立的实体，独立的子句表独立的命题；子句边界就是事件边界。场景五展开。",c:["c3-30","c3-33"]},
+  {t:"MOT·03 次序",p:"成分次序临摹事件或认知加工的次序——时间顺序原则（PTS）与时间范围原则（PTSC）是代表表述。场景六展开。",c:["c3-35","c3-39"]},
+  {t:"MOT·04 对称",p:"概念上对称的事物用对称的形式表达——AxBy 表不对称，AxBx 表对称。场景七展开。",c:["c3-44","c3-49"]},
+  {t:"MOT·05 重叠",p:"概念领域的重叠用形式的重叠表达——戴浩一(1992)基于汉语首先明确提出。场景七展开。",c:["c3-54"]},
+  {t:"MOT·06 范畴化",p:"形式范畴对应概念范畴——属用单纯词、种用复合词表达；格标记的距离对应概念距离。收尾节展开。",c:["c3-62","c3-64"]},
+  {t:"MOT·07 距离（灰色虚线）",p:"形式距离对应概念距离——本书下篇主场，本章不论。",c:["c3-24"]}
+];
+
+/* ================= 渲染工具 ================= */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const scenes=()=>$$("[data-scene]");
+
+/* 字号 */
+let fs=parseFloat(store.get("c3-fs")||"1");
+function applyFs(){document.body.style.fontSize=(16*fs).toFixed(1)+"px";store.set("c3-fs",String(fs));}
+applyFs();
+$("#fs-up").addEventListener("click",()=>{fs=Math.min(1.3,fs+0.1);applyFs();});
+$("#fs-down").addEventListener("click",()=>{fs=Math.max(0.85,fs-0.1);applyFs();});
+
+/* 明暗（手动覆盖系统偏好） */
+const themeBtn=$("#theme");
+function applyTheme(dark){
+  document.documentElement.classList.toggle("dark",dark);
+  document.documentElement.classList.toggle("light",!dark);
+  store.set("c3-theme",dark?"dark":"light");
+  themeBtn.textContent=dark?"明色":"暗色";
+}
+let savedTheme=store.get("c3-theme");
+if(savedTheme) applyTheme(savedTheme==="dark");
+else themeBtn.textContent="明暗";
+themeBtn.addEventListener("click",()=>{
+  const dark=!document.documentElement.classList.contains("dark");
+  applyTheme(dark);
+});
+
+/* 进度条 + 进度记忆 */
+const pbar=$("#pbar");
+function onScroll(){
+  const h=document.documentElement;
+  const p=h.scrollTop/Math.max(1,(h.scrollHeight-h.clientHeight));
+  pbar.style.width=(p*100).toFixed(2)+"%";
+  let y=parseFloat(store.get("c3-scroll")||"0");
+  if(Math.abs(y-h.scrollTop)>200){store.set("c3-scroll",String(h.scrollTop));}
+}
+addEventListener("scroll",onScroll,{passive:true});
+(function restoreScroll(){
+  const y=parseFloat(store.get("c3-scroll")||"0");
+  if(y>0) scrollTo(0,y);
+})();
+onScroll();
+
+/* 引文弹窗 */
+const veil=$("#veil"),pop=$("#pop");
+function openPop(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#pop-id-text").textContent=id+" · "+s.page;
+  $("#pop-q").textContent="「"+s.quote+"」";
+  $("#pop-z").textContent=s.zh;
+  veil.hidden=false;pop.hidden=false;
+}
+function closePop(){veil.hidden=true;pop.hidden=true;}
+veil.addEventListener("click",closePop);
+$("#pop-close").addEventListener("click",closePop);
+document.addEventListener("click",e=>{
+  const c=e.target.closest("sup.cite");
+  if(c) openPop(c.getAttribute("data-cite"));
+});
+
+/* 先猜 */
+$$("[data-guess]").forEach(g=>{
+  const ans=g.querySelector(".answer");
+  const opts=g.querySelectorAll(".opts button");
+  opts.forEach(b=>b.addEventListener("click",()=>{
+    opts.forEach(x=>x.classList.remove("picked"));
+    b.classList.add("picked");
+  }));
+  const rev=g.querySelector("[data-reveal]");
+  rev.addEventListener("click",()=>{
+    ans.hidden=!ans.hidden;
+    rev.textContent=ans.hidden?"先猜再看 →":"收起答案 ↑";
+  });
+});
+
+/* 分类练习 */
+$$("[data-cls]").forEach(box=>{
+  box.querySelectorAll(".cls-row").forEach(row=>{
+    const ans=row.querySelector(".cls-ans");
+    row.querySelectorAll(".btns button").forEach(b=>{
+      b.addEventListener("click",()=>{
+        row.querySelectorAll(".btns button").forEach(x=>x.classList.remove("right","wrong"));
+        if(b.dataset.ok==="1"){b.classList.add("right");ans.hidden=false;}
+        else{b.classList.add("wrong");
+          const ok=row.querySelector('.btns button[data-ok="1"]');if(ok)ok.classList.add("right");
+          ans.hidden=false;}
+      });
+    });
+  });
+});
+
+/* 自测 */
+$$("[data-quiz]").forEach(q=>{
+  const exp=q.querySelector(".exp");
+  q.querySelectorAll(".opt").forEach(b=>{
+    b.addEventListener("click",()=>{
+      q.querySelectorAll(".opt").forEach(x=>{x.classList.remove("right","wrong");});
+      if(b.hasAttribute("data-ok")){b.classList.add("right");}
+      else{b.classList.add("wrong");
+        const ok=q.querySelector(".opt[data-ok]");if(ok)ok.classList.add("right");}
+      exp.hidden=false;
+    });
+  });
+});
+
+/* 图一：时间轴 */
+const axisDetail=$("#axisDetail");
+function showSeg(i){
+  $$(".seg:not(.mot)").forEach((s,j)=>s.classList.toggle("on",i===j));
+  const d=SEG_DATA[i];
+  axisDetail.innerHTML='<span class="dt">'+d.t+'</span><p>'+d.p+
+    d.c.map(x=>'<sup class="cite" data-cite="'+x+'">'+x.slice(3)+'</sup>').join("")+'</p>';
+}
+$$(".seg:not(.mot)").forEach(s=>s.addEventListener("click",()=>showSeg(+s.getAttribute("data-seg"))));
+showSeg(0);
+
+/* 图四：七动因星图 */
+const motDetail=$("#motDetail");
+function showMot(i){
+  $$(".seg.mot").forEach((s,j)=>s.classList.toggle("on",i===j));
+  const d=MOT_DATA[i];
+  motDetail.innerHTML='<span class="dt">'+d.t+'</span><p>'+d.p+
+    d.c.map(x=>'<sup class="cite" data-cite="'+x+'">'+x.slice(3)+'</sup>').join("")+'</p>';
+}
+$$(".seg.mot").forEach(s=>s.addEventListener("click",()=>showMot(+s.getAttribute("data-mot"))));
+
+/* ================= 时间地址重组器 ================= */
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const SAMPLES=[["1994年12月24日","上午10点"],["明年","春季"],["上个月","月初"],["19世纪","上半叶"],["95年年底","春节"]];
+const samplesEl=$("#simSamples");
+SAMPLES.forEach(p=>{
+  const b=document.createElement("button");
+  b.type="button";b.textContent=p[0]+" · "+p[1];
+  b.addEventListener("click",()=>{$("#simD").value=p[0];$("#simN").value=p[1];runAddr();});
+  samplesEl.appendChild(b);
+});
+function parseCN(d,n){
+  const m=d.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  if(m&&n){
+    const h=n.match(/(上午|下午|中午|晚上)?\s*(\d{1,2})点/);
+    if(h){
+      const ap=h[1]==="下午"&&+h[2]<12?"p.m.":(h[1]==="上午"||h[1]==="中午"?"a.m.":(+h[2]<12?"a.m.":"p.m."));
+      const hh=(h[1]==="下午"&&+h[2]<12)?+h[2]+12:+h[2];
+      return {ok:true,zh:d+n,en:"at "+hh+" "+(ap==="p.m."?"p.m.":"a.m.")+" on "+MONTHS[(+m[2])-1]+" "+m[3]+", "+m[1]};
+    }
+  }
+  return {ok:false,zh:d+" "+n};
+}
+function runAddr(){
+  const d=$("#simD").value.trim(),n=$("#simN").value.trim();
+  const out=$("#simOut");
+  if(!d){out.innerHTML='<div class="verdict">待输入</div><div class="why">请先输入日期。</div>';return;}
+  const r=parseCN(d,n);
+  const refs='<sup class="cite" data-cite="c3-41">41</sup><sup class="cite" data-cite="c3-39">39</sup>';
+  if(r.ok){
+    out.innerHTML='<div class="verdict" style="color:var(--line)">汉语：'+r.zh+'（从大到小）</div>'+
+      '<div class="verdict" style="color:var(--amber);margin-top:4px">英语：'+r.en+'（从小到大）</div>'+
+      '<div class="why"><b>依据：</b>汉语用「移动自我」策略，整体先于局部——年→月→日→时刻；英语用「移动客体」策略，局部先于整体——时刻→日→月→年。两种语序都是象似的，只是认知策略相反。'+refs+'</div>';
+  }else{
+    out.innerHTML='<div class="verdict" style="color:var(--line)">汉语：'+r.zh+'（从大到小）</div>'+
+      '<div class="why"><b>依据：</b>汉语时间地址从大到小（年→月→日→时刻），英语相反。此例非标准年月日格式，英语镜像需按具体格式转换；汉语一侧照组。'+refs+'</div>';
+  }
+}
+$("#simRun").addEventListener("click",runAddr);
+$("#simD").addEventListener("keydown",e=>{if(e.key==="Enter")runAddr();});
+$("#simN").addEventListener("keydown",e=>{if(e.key==="Enter")runAddr();});
+runAddr();
+
+/* 场景导航 + backStack */
+const backStack=[];
+const sceneMap={};
+$$("section[data-scene]").forEach(s=>{sceneMap[s.getAttribute("data-scene")]=s;});
+function jumpTo(id){
+  let el;
+  if(id==="0") el=null;
+  else if(sceneMap[id]) el=sceneMap[id];
+  else el=document.getElementById(id);
+  if(id!=="0"&&!el) return;
+  backStack.push(scrollY);
+  history.pushState({y:scrollY},"");
+  const y=id==="0"?0:el.getBoundingClientRect().top+scrollY-70;
+  scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+function goBack(){const y=backStack.pop();if(y!=null)scrollTo({top:y});}
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo(0,e.state.y);}
+});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-go]");
+  if(b) jumpTo(b.getAttribute("data-go"));
+});
+
+/* 键盘：←→ 切场景，Esc 关弹窗 */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"){closePop();return;}
+  if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
+  if(/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||""))return;
+  const list=scenes();
+  let cur=0;
+  list.forEach((s,i)=>{if(s.getBoundingClientRect().top>=-80&&s.getBoundingClientRect().top<window.innerHeight/2)cur=i;});
+  const next=e.key==="ArrowRight"?Math.min(list.length-1,cur+1):Math.max(0,cur-1);
+  jumpTo(String(next+1));
+});
+</script>
+</body>
+</html>

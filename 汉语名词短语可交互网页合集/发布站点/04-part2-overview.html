@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一个虚词，二十年难题 —— 《认知语言学与汉语名词短语》第四章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+.constellation{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:720px){.constellation{grid-template-columns:repeat(2,1fr)}}
+.constellation a{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper);text-decoration:none;color:var(--ink);display:block}
+.constellation a:hover{border-color:var(--red);background:color-mix(in srgb,var(--red) 7%,var(--card))}
+.constellation a b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;color:var(--red)}
+.constellation a small{display:block;color:var(--muted);font-size:.8rem;margin-top:.25em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* SVG 主题适配：硬编码属性色 → 主题变量（CSS 覆盖 SVG 呈现属性） */
+svg [fill="#29241d"]{fill:var(--ink)}
+svg [fill="#6f675a"]{fill:var(--muted)}
+svg [fill="#9d4938"]{fill:var(--red)}
+svg [fill="#3d5a6c"]{fill:var(--blue)}
+svg [fill="#a87f24"]{fill:var(--gold)}
+svg [fill="#fffdf6"],svg [fill="#f6f1e5"]{fill:var(--card)}
+svg [stroke="#9d4938"]{stroke:var(--red)}
+svg [stroke="#3d5a6c"]{stroke:var(--blue)}
+svg [stroke="#a87f24"]{stroke:var(--gold)}
+svg [stroke="#6f675a"]{stroke:var(--muted)}
+svg [stroke="#dcd2bd"]{stroke:var(--line)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">名词短语深读 · 下篇概述<small>《认知语言学与汉语名词短语》张敏 ｜ 第四章</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">的</text></svg>
+  <p class="eyebrow">《认知语言学与汉语名词短语》张敏 著 ｜ 第四章「下篇概述」 ｜ 下篇五章之一</p>
+  <h1>一个虚词，二十年难题</h1>
+  <p class="lead">「的」是汉语里出现频率最高的虚词，可它在定中之间何时出现、何时隐身，自五十年代起难住了几代语法学家。吕叔湘（1963）说「两可的也不少」，Li & Thompson（1981）说「没有规则能够预测」<sup class="cite" data-cite="lu-lt"></sup>。本书下篇的全部工作，就是找一个能独立论证的原则来收编这些乱象——答案是<strong>距离象似动因</strong>：定语与中心语之间的形式距离，平行于它们之间的概念距离。这一章先铺开问题：为什么认知语言学适合汉语、难题难在哪、领属结构里还藏着一个悖论。</p>
+  <ul class="chips">
+    <li><b>一个中心</b>　de 字隐现规律</li>
+    <li><b>三个问题</b>　语义差别 · 领属共性 · 定语语序</li>
+    <li><b>一个悖论</b>　汉语惹恼了 Haiman</li>
+    <li><b>三个取向</b>　解释 · 意义 · 共性</li>
+  </ul>
+
+  <figure class="figure">
+    <svg viewBox="0 0 680 250" role="img" aria-label="下篇问题链与路线图">
+      <rect x="60" y="40" width="150" height="58" rx="11" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="2"/>
+      <text x="135" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#29241d">de 字隐现</text>
+      <text x="135" y="86" text-anchor="middle" font-size="11.5" fill="#6f675a">中心问题（第五、六章）</text>
+      <path d="M210 69 L252 69" stroke="#a87f24" stroke-width="2.2" marker-end="url(#darr)"/>
+      <rect x="255" y="40" width="170" height="58" rx="11" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="2"/>
+      <text x="340" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#29241d">DN / DdN 语义差别</text>
+      <text x="340" y="86" text-anchor="middle" font-size="11.5" fill="#6f675a">称谓 · 分类 · 述谓（第五章）</text>
+      <path d="M425 69 L467 69" stroke="#a87f24" stroke-width="2.2" marker-end="url(#darr)"/>
+      <rect x="470" y="40" width="150" height="58" rx="11" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="2"/>
+      <text x="545" y="66" text-anchor="middle" font-size="13.5" font-weight="700" fill="#29241d">领属与共性</text>
+      <text x="545" y="86" text-anchor="middle" font-size="11.5" fill="#6f675a">解开 Haiman 悖论（第七章）</text>
+      <rect x="265" y="150" width="150" height="58" rx="11" fill="#3d5a6c" opacity=".1" stroke="#3d5a6c" stroke-width="2"/>
+      <text x="340" y="176" text-anchor="middle" font-size="13.5" font-weight="700" fill="#29241d">多项定语语序</text>
+      <text x="340" y="196" text-anchor="middle" font-size="11.5" fill="#6f675a">同一条原则的扩展（第八章）</text>
+      <path d="M545 98 L545 125 L415 125 L415 150" stroke="#3d5a6c" stroke-width="2" fill="none" marker-end="url(#darr2)"/>
+      <rect x="60" y="150" width="150" height="58" rx="11" fill="#a87f24" opacity=".12" stroke="#a87f24" stroke-width="2"/>
+      <text x="135" y="176" text-anchor="middle" font-size="13.5" font-weight="700" fill="#29241d">距离象似动因</text>
+      <text x="135" y="196" text-anchor="middle" font-size="11.5" fill="#6f675a">贯穿四章的共同原则</text>
+      <path d="M135 150 L135 98" stroke="#a87f24" stroke-width="2" marker-end="url(#darr)"/>
+      <defs><marker id="darr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker><marker id="darr2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#3d5a6c"/></marker></defs>
+    </svg>
+    <figcaption>示意：下篇四章的问题链，以及贯穿其间的距离象似动因（据 4.2、4.3 节重绘）。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景 1 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 适配性</p>
+  <h2>外来理论用在汉语上，有两类坑</h2>
+  <p>作者先给「借鉴」划清界限：一种是<strong>应用者的局限</strong>——搬用外国理论分析西方语言得出的具体结论，或戴着其他语言的有色眼镜看汉语，即「外国理论加上汉语例子」；一种是<strong>理论本身的偏向</strong>——以某类语言为观察对象开发出的模式容易 language-biased，传统的形态学来自屈折语言，用在汉语上就拧巴<sup class="cite" data-cite="two-limits"></sup>。而认知语言学与汉语的适配性较高，理由有六条。</p>
+  <div class="lab">
+    <h3>六条适配理由 · 点开看</h3>
+    <div class="wordpool" id="fitPool"></div>
+    <div class="result" id="fitOut" hidden>
+      <p class="sent" id="fitT"></p>
+      <p class="small muted" id="fitD"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 2 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 难题铺开</p>
+  <h2>「的」字三选一实验台</h2>
+  <p>先看没有争议的部分：子句和动词性成分作定语<strong>必须带</strong>「的」（我昨天买的书、开车的人）；数量词和指代词<strong>一定不带</strong>（一本书、那个人）；领属名词定语一般需带（张三的书）；复杂形式形容词<strong>一定带</strong>（非常漂亮的花园）<sup class="cite" data-cite="de-rules"></sup>。麻烦全在最后一类——表属性的名词和形容词：有时不能带（数学老师、好朋友），有时一定要带（奇怪的声音），有时两可（木头（的）房子、详细（的）计划）<sup class="cite" data-cite="stuck-cases"></sup>。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">同是「单音节形容词＋名词」，为什么「白衬衫」能说，「白家具」不能说？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">「白家具」音节不搭配</button>
+      <button data-ans="b">家具的规约分类方式不是颜色——「白」不是「家具」的规约分类指标</button>
+      <button data-ans="c">「家具」是抽象名词</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">b。</span>这是朱德熙（1956、1982）留下的一组著名对立：重担子／*重箱子、脏衣服／*脏鞋子、贵东西／*贵手绢、白衬衫／*白家具、凉水／*凉脸、长辫子／*短辫子、粗线条／*细线条<sup class="cite" data-cite="zhu-dexi"></sup>。句法、音节全同，差别藏在认知—语义里——正是下篇要挖的东西。英语里 heavy load 与 heavy suitcase、dirty clothes 与 dirty shoes 可没这些讲究<sup class="cite" data-cite="english-no-diff"></sup>。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>定语类型 · 点一类看规律</h3>
+    <div class="wordpool" id="dePool"></div>
+    <div class="result" id="deOut" hidden>
+      <p class="sent" id="deVerdict"></p>
+      <dl class="rows">
+        <dt>例词</dt><dd id="deEx"></dd>
+        <dt>说明</dt><dd id="deNote"></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 3 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 迷雾</p>
+  <h2>音节、语体、惯用法——都不够</h2>
+  <p>前人也找到过一些线索。吕叔湘（1963）：单音词加单音词以不带「的」为常（「布的鞋」「好的书」很难遇到），双音加单音以带「的」为常（「详细的图」「重要的事」）；语体色彩也像有关系（「著名（的）学者」对「有名的学者」）<sup class="cite" data-cite="stuck-cases"></sup>。可这些因素一碰硬骨头就失灵：「谦虚的人—老实（的）人」「聪明（的）孩子—聪明的动物」「干净（的）衣服—干净的椅子」，两两对立的形式在语法、语义、音节、文体上毫无区别，对「的」的要求却不同<sup class="cite" data-cite="stuck-cases"></sup>。Li & Thompson（1981）干脆断言：没有规则能预测<sup class="cite" data-cite="lu-lt"></sup>。Chappell & Thompson（1992）用统计方法确认，起作用的是句法、语义、认知、语用多种复杂因素的交织<sup class="cite" data-cite="lu-lt"></sup>。</p>
+</section>
+
+<!-- ============ 场景 4 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 悖论</p>
+  <h2>汉语惹恼了 Haiman</h2>
+  <p>类型学里有一条诱人的等级：不可让渡性构成连续序列——<strong>身体部位＞亲属关系＞一般物件</strong>。语言距离上，表不可让渡关系的形式应比可让渡的更紧密（Haiman 1985a）<sup class="cite" data-cite="haiman-scale"></sup>。可汉语好像专门来拆台的：「他妹妹」「我爸爸」能省「的」，更不可让渡的「*你手」「*他肚子」反而不能——身体部位词竟和一般物件词坐了一条板凳。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">按 Haiman 的序列猜：汉语里「妹妹」和「手」，哪个更可能省掉「的」？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">手（身体部位最不可让渡）</button>
+      <button data-ans="b">妹妹（亲属关系）</button>
+      <button data-ans="c">都不能省</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">妹妹。</span>实际语料：<strong>「他妹妹」「我爸爸」✓</strong>，而<strong>「*你手」「*他肚子」「*我汽车」✗</strong><sup class="cite" data-cite="haiman-scale"></sup>。Haiman 视之为「令人困惑的」例外，只能含糊提议把序列改粗；戴浩一（1993）拿「心理经验优先于物理经验」解释，作者不同意——第七章会给出更好的答案。这个悖论是全篇的关节点：<strong>它直接考验「距离动因解释 de 字隐现」这条路线可不可信</strong>。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>三类领属物 · 看汉语的实际表现</h3>
+    <div class="ladder" id="posLadder">
+      <button class="rung" data-p="0"><b>亲属关系</b><small>妹妹 · 爸爸</small></button>
+      <button class="rung" data-p="1"><b>身体部位</b><small>手 · 肚子</small></button>
+      <button class="rung" data-p="2"><b>一般物件</b><small>汽车 · 房子</small></button>
+    </div>
+    <div class="result">
+      <p class="sent" id="posSent"></p>
+      <p class="small muted" id="posNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 5 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 研究取向</p>
+  <h2>解释、意义、共性</h2>
+  <p>全书下篇的方法论可以压成三个选择：<strong>在描写和解释之间，取解释；在形式和意义之间，取意义；在个性和共性之间，取共性</strong><sup class="cite" data-cite="three-orientations"></sup>。作者对「好的解释」定了两条硬标准：<strong>独立论证</strong>（不为每个现象特设一套解释）和<strong>有限明确</strong>（适用范围清楚，不是「无所不能而无所能」的空解释）<sup class="cite" data-cite="good-explanation"></sup>。共性取向也不是忽视汉语特点——用沈家煊的话说，从世界语言反观汉语，恰恰是为了更深刻地了解汉语的特点<sup class="cite" data-cite="shen-jiaxuan"></sup>；自 1898 年《马氏文通》以来，汉语语法学一百年就是探索汉语特点的历史，而参照系该换一幅更辽阔的世界地图了<sup class="cite" data-cite="ma-shi-wentong"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">解释取向</p>
+      <p class="small muted">不止于把规律列出来，还要追问成因；解释须独立论证、有限明确。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">意义取向</p>
+      <p class="small muted">把语义当作促动、限制形式的基本要素——先有概念结构，后有表层形式。</p>
+    </div>
+  </div>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">共性取向</p>
+      <p class="small muted">在跨语言比较的参照系里看汉语；同中求异，异中求同。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">下一步</p>
+      <p class="small muted">第五章引入距离象似动因，先证明 DN 与 DdN 的语义差别平行于形式差别。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>你答得上来吗</h2>
+  <div class="q">
+    <p>1. 「外国理论加上汉语例子」属于作者说的哪类局限？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="0" data-ans="a">理论本身的客体局限（语言偏向）</button>
+      <button data-q="0" data-ans="b">应用者主体的局限，与理论本身无关</button>
+      <button data-q="0" data-ans="c">不是局限，是正常研究</button>
+    </div>
+    <p class="why" hidden>答案：b。简单搬用现成结论、戴着其他语言的有色眼镜，是应用者的局限；语言偏向才是理论客体的局限<sup class="cite" data-cite="two-limits"></sup>。</p>
+  </div>
+  <div class="q">
+    <p>2. 下列哪项是「没有争议」的 de 字规律？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="1" data-ans="a">单音节形容词作定语一般不带「的」</button>
+      <button data-q="1" data-ans="b">数量词和指代词作限定关系的定语时一定不带「的」</button>
+      <button data-q="1" data-ans="c">名词作定语都要带「的」</button>
+    </div>
+    <p class="why" hidden>答案：b。「一本书」「那个人」一定不带；a 恰恰是争议最大的地带（限制极强），c 与事实相反<sup class="cite" data-cite="de-rules"></sup>。</p>
+  </div>
+  <div class="q">
+    <p>3. Haiman 的等级序列与汉语事实的冲突在于？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="2" data-ans="a">汉语根本没有领属结构</button>
+      <button data-q="2" data-ans="b">汉语里亲属词可比身体部位词更自由地省「的」，身体部位词反而和一般物件词一类</button>
+      <button data-q="2" data-ans="c">汉语里所有领属都必须带「的」</button>
+    </div>
+    <p class="why" hidden>答案：b。「他妹妹」「我爸爸」✓，「*你手」「*他肚子」✗——与「身体部位＞亲属＞一般物件」的预测相反<sup class="cite" data-cite="haiman-scale"></sup>。</p>
+  </div>
+</section>
+
+<!-- ============ 系列导航 ============ -->
+<section class="scene">
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="01-theory.html">01 理论主张</a>
+    <a href="02-categorization.html">02 范畴化</a>
+    <a href="03-reduplication.html">03 重叠动因</a>
+    <a class="cur" href="04-part2-overview.html">04 下篇概述</a>
+  </nav>
+  <footer>
+    <p>本页范围：研读底本第四章「下篇概述」（底本 L2127–L2273）。底本为 OCR 转录，无原书页码，角标中的「底本 Lx」指该行在研读底本中的行号；关键引文请点开角标核对原句后再引用。</p>
+    <p>未覆盖：第四至八章的具体论证，见系列深读页。原书：《认知语言学与汉语名词短语》，张敏著。</p>
+  </footer>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "two-limits":    { page:"底本 L2132-2134", quote:"有必要清楚地认识到，外来理论在运用于汉语的分析时是可能存在一定局限的。这一方面是应用者主体的局限，即运用某种理论的人简单搬用这种理论分析其他语言（尤其是西方语言）里的现象得出的具体结论，或不自觉地带上来自对其他语言的认识的眼光去看汉语，这也就是通常所说的“外国理论加上汉语例子”的做法……另一方面，理论本身也可能存在客体的局限……以某种类型的语言作为基本观察对象而开发出来的语言分析模式极容易出现语言偏向（language-biased）的情况，其普遍有效性自然就较低。", zh:"两类局限：应用者局限（外国理论＋汉语例子）与理论的语言偏向。" },
+  "six-reasons":   { page:"底本 L2136-2152", quote:"我们认为，以汉语语法学的现状和汉语自身的特点观之，认知语言学的路子看来与汉语研究有很高的适配性。这样的看法是基于以下几点理由。(1)……汉语语法学的当务之急之一就是摆脱长期以来形成的印欧语语法观念和分析模式的某些负面影响……(2)出于其经验承诺，认知语言学高度强调语言科学的经验性质……(3)与上一点相关，认知语言学所谈的语言共性是经验地概括出来的共性……(4)认知语言学提供的主要是一套观念和取向，而不是严格构造出来的形式规则系统……(5)当代各形式语言学理论的出发点和来源是对特定语言(主要是英语)形式结构的分析……(6)认知语言学在形式和意义之间，着重于意义，强调概念结构的中心地位。", zh:"六条适配理由：摆脱印欧语观念、经验承诺、经验共性、观念而非规则、语言偏向较弱、重意义。" },
+  "lu-lt":         { page:"底本 L2166", quote:"正如吕叔湘先生（1963）所说的，“如果是领属关系，有de的比较多，没有的也不少。如果不是领属关系，没有de的较多，两可的也不少。”Li & Thompson（1981）也指出，“没有规则能够预测什么情况下修饰名词的形容词可以不接名词化助词‘的’。”Chappell & Thompson（1992）近来用统计方法研究了实际话语里领属标记de字的隐现情况，说明其中起作用确实的是句法、语义、认知及语用等多种复杂因素。", zh:"吕叔湘 1963「两可的也不少」；Li & Thompson 1981「没有规则能够预测」；Chappell & Thompson 1992 统计确认多因素交织。" },
+  "de-rules":      { page:"底本 L2168", quote:"汉语里修饰名词的成分带 de 与否大致有以下的规律。子句及动词性成分（某些双音节动词、动名词除外，如“研究资料”“管理方法”）必须带 de，如“我昨天买的书”“开车的人”。数量词和指代词作表示限定关系的定语时一定不带 de，如“一本书”“那个人”。表领属关系的名词定语一般需带 de，如“张三的书”。复杂形式的形容词作定语一定带 de，如“非常漂亮的花园”“漂漂亮亮的裙子”。", zh:"大致规律：子句/动词性必须带；数量词/指代词一定不带；领属名词一般需带；复杂形容词一定带。" },
+  "stuck-cases":   { page:"底本 L2168-2170", quote:"有问题的是在意义上表中心语所指事物的属性的名词和形容词作定语的情况，它们有时不能带 de，如“数学老师”“好朋友”；有时一定要带 de，如“奇怪的声音”；有时既可带 de 也可不带，如“木头（的）房子”“详细（的）计划”……试比较下面的几组说法：“谦虚的人一老实（的）人”“聪明（的）孩子一聪明的动物”“便宜（的）东西一便宜的衣服”“干净（的）衣服一干净的椅子”。这些两两对立的形式在语法、语义、音节、文体等因素上都无区别，故它们对de字要求的不同不能归于这些因素。", zh:"属性名词/形容词三态：不能带／必须带／两可；干净的衣服—干净的椅子等因素全同却要求不同。" },
+  "zhu-dexi":      { page:"底本 L2170", quote:"朱德熙（1956、1982）和吕叔湘（1982）注意到汉语里形容词复杂形式及带de的形式作定语非常自由，而形容词简单形式（即单音节的性质形容词）不带de直接作定语往往有很强的限制。试比较：“重担子*重箱子”、“脏衣服—*脏鞋子”、“贵东西—*贵手绢”、“白衬衫—*白家具”、“凉水—*凉脸”、“长头发/短头发一长辫子/*短辫子”、“粗线条—*细线条”。它们在句法、音节等因素上都无差别，其不同表现也不能归因为语义搭配的限制，例如，虽然我们不说“*重箱子”，却能说“箱子很重”。", zh:"朱德熙 1956/1982 著名对立组：重担子/*重箱子、脏衣服/*脏鞋子、贵东西/*贵手绢、白衬衫/*白家具、凉水/*凉脸、长辫子/*短辫子、粗线条/*细线条。" },
+  "english-no-diff": { page:"底本 L2172", quote:"不过，这样的问题在别的语言里不一定存在，如英语里“heavy load heavy suitcase”“dirty clothes—dirty shoes”都没有区别，因此汉语里定中之间带 de 与否可能反映了汉语名词短语的一条特有的重要结构原则，若权宜地处理，等于是放弃了对其中可能存在的规律的探索。", zh:"英语 heavy load/suitcase、dirty clothes/shoes 无区别——汉语或有自己的结构原则。" },
+  "haiman-scale":  { page:"底本 L2187-2189", quote:"Haiman（1985a）指出，“不可让渡性”构成从左到右的一个连续等级序列，即：身体部位＞亲属关系＞一般物件，其中身体部位代表最原型的不可让渡关系，而一般人工制品则代表最典型的可让渡关系。可让渡关系往往用语言距离较大的可让渡领属形式表达，而表达不可让渡关系的领属形式的内部语言距离一定比前者小。Haiman声称这是一个具有普遍意义的蕴含序列。……不过，Haiman却发现汉语似乎构成这个规律的一个“令人困惑的”例外……亲属词可出现在不带“的”的不可让渡的领属构造里，如“他的妹妹”“我的爸爸”可以说成“他妹妹”“我爸爸”，而身体部位词却意外地和一般物件词一样，不能出现在不带“的”的领属构造里，如不可以说“*你手”“*他肚子”“*我汽车”“*你房子”。", zh:"Haiman 1985a 序列：身体部位＞亲属＞一般物件；汉语例外：他妹妹/我爸爸 ✓，*你手/*他肚子/*我汽车 ✗。" },
+  "three-orientations": { page:"底本 L2211", quote:"本书在讨论上述问题时，所秉持的研究宗旨及所采纳的研究方法与取向可以概括为以下三点：在描写和解释之间，采取解释的取向；在形式和意义之间，采取意义的取向；在个性和共性之间，采取共性的取向。", zh:"三个取向：解释、意义、共性。" },
+  "good-explanation": { page:"底本 L2220", quote:"我们还力求对具体现象所作的解释够得上是“好的解释”，也就是说，尽量满足以下几点要求：第一，提出的解释最好是能独立论证的(independently motivated)，而不是特设的(ad hoc)。若同样一条规律（或较少的规律）能解释较多的、表面上似乎不相干的问题，这样的解释自然比为每个不同的现象特别提出一种性质不同的解释（特设的解释）要好。第二，提出的解释应该是有限而明确的，而非空解释。也就是说，解释的适用范围是有限的，条件是清楚的，而非过于空泛以致“无所不能而无所能”。", zh:"好解释两标准：独立论证（非特设）＋有限明确（非空解释）。" },
+  "shen-jiaxuan":  { page:"底本 L2240", quote:"沈家煊先生最近在给张伯江、方梅（1996）一书所作的序中就说得很清楚，“某些看上去是汉语特点的东西其实是语言共性在汉语里的具体体现，”“我们不要老是从汉语出发来看别的语言，也应从世界语言来反观汉语，这样做不是要忽视汉语的特点，恰恰相反是为了对汉语的特点有更深刻的了解”。", zh:"沈家煊：从世界语言反观汉语，才能更深刻地了解汉语特点。" },
+  "ma-shi-wentong": { page:"底本 L2242", quote:"自《马氏文通》于1898年发表以来，汉语语法学整整一百年的历史若用一句话概括，可以说是努力探索汉语语法特点的历史。", zh:"1898《马氏文通》以来百年＝探索汉语语法特点的历史。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《认知语言学与汉语名词短语》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景一：六条适配理由 ================= */
+const FIT = [
+  { t:"① 摆脱印欧语观念", d:"认知语言学与传统印欧语语法传统的决裂更彻底——它在本体论、理性论、认知观层面解除西方主流思维方式的禁锢，而非只在操作层面修修补补。" },
+  { t:"② 经验承诺", d:"高度强调语言科学的经验性质：规律必须可直接观察，理论好坏取决于经验验证，宁可牺牲完备性也要保住真实性。" },
+  { t:"③ 经验共性", d:"所谈共性是从广泛语言材料归纳出来的（Comrie 1981：取样有局限、抽象度低），但正因不预设分析框架，才能对汉语提供独立的经验参照。" },
+  { t:"④ 观念而非规则", d:"提供的是一套观念和取向，不是现成的形式规则系统——想生搬硬套也无处下手，天然抵制「汉语例子套现成结论」。" },
+  { t:"⑤ 语言偏向较弱", d:"不倚重外在形式结构，着眼人类共同的基本认知能力；即便有偏向也较轻（对比：Jackendoff 的「路径」元素来自英语介词，硬套汉语会扭曲事实）。" },
+  { t:"⑥ 重意义", d:"在形式与意义之间着重意义，强调概念结构的中心地位；汉语缺乏形态、不强求形式标记，正倚重概念与象似原则——谢信一（1978）称之为「图画」式的语言。" }
+];
+const fitPool = document.getElementById("fitPool"), fitOut = document.getElementById("fitOut"),
+      fitT = document.getElementById("fitT"), fitD = document.getElementById("fitD");
+FIT.forEach((f, i) => {
+  const b = document.createElement("button");
+  b.textContent = f.t;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => {
+    document.querySelectorAll("#fitPool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    fitT.textContent = f.t;
+    fitD.textContent = f.d;
+    fitOut.hidden = false;
+  };
+  fitPool.appendChild(b);
+});
+fitPool.firstChild.click();
+
+/* ================= 场景二：de 字三选一 ================= */
+const DE = [
+  { t:"子句 / 动词性成分", v:"必须带", ex:"我昨天买的书 ｜ 开车的人 ｜ 非常漂亮的花园", n:"少数双音节动词、动名词除外，如「研究资料」「管理方法」。" },
+  { t:"数量词 / 指代词", v:"一定不带", ex:"一本书 ｜ 那个人", n:"作表示限定关系的定语时，中间不能插「的」。" },
+  { t:"领属名词", v:"一般需带", ex:"张三的书", n:"原型的领属定语——第七章的核心战场。" },
+  { t:"复杂形式形容词", v:"一定带", ex:"非常漂亮的花园 ｜ 漂漂亮亮的裙子", n:"状态形容词及形容词短语作定语，de 不可隐去。" },
+  { t:"属性名词 / 形容词", v:"三态并存", ex:"数学老师 · 好朋友（不能带）｜ 奇怪的声音（必须带）｜ 木头（的）房子 · 详细（的）计划（两可）", n:"本书的主战场：决定因素不在句法、音节、语体，而在更深的认知—语义层。" }
+];
+const dePool = document.getElementById("dePool"), deOut = document.getElementById("deOut"),
+      deVerdict = document.getElementById("deVerdict"), deEx = document.getElementById("deEx"), deNote = document.getElementById("deNote");
+DE.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.textContent = d.t;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => {
+    document.querySelectorAll("#dePool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    deVerdict.textContent = d.t + "　→　" + d.v;
+    deEx.textContent = d.ex;
+    deNote.textContent = d.n;
+    deOut.hidden = false;
+  };
+  dePool.appendChild(b);
+});
+dePool.children[4].click();
+
+/* ================= 场景四：领属三选一 ================= */
+const POS = [
+  { s:"他妹妹 ✓　我爸爸 ✓", n:"亲属词能出现在不带「的」的领属构造里——Haiman 序列里它排在身体部位之后，本该更可让渡。" },
+  { s:"* 你手　* 他肚子", n:"身体部位词竟和一般物件词一样，不能省「的」——最不可让渡的一类，反而要带更大的语言距离。" },
+  { s:"* 我汽车　* 你房子", n:"一般物件（可让渡）必须带「的」——这一条倒符合预测。" }
+];
+const posSent = document.getElementById("posSent"), posNote = document.getElementById("posNote");
+document.querySelectorAll("#posLadder .rung").forEach(b => {
+  b.onclick = () => {
+    const i = +b.dataset.p;
+    document.querySelectorAll("#posLadder .rung").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    posSent.textContent = POS[i].s;
+    posNote.textContent = POS[i].n;
+  };
+});
+posSent.textContent = "点一类领属物";
+posNote.textContent = "Haiman 预测：越不可让渡，形式越紧密。汉语偏偏不买账。";
+
+/* ================= 自测 ================= */
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const q = group.closest(".q");
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      q.querySelector(".why").hidden = false;
+    };
+  });
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

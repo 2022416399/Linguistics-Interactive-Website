@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>杯子是怎么变成碗的 —— 《认知语言学与汉语名词短语》第二章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+.constellation{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:720px){.constellation{grid-template-columns:repeat(2,1fr)}}
+.constellation a{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper);text-decoration:none;color:var(--ink);display:block}
+.constellation a:hover{border-color:var(--red);background:color-mix(in srgb,var(--red) 7%,var(--card))}
+.constellation a b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;color:var(--red)}
+.constellation a small{display:block;color:var(--muted);font-size:.8rem;margin-top:.25em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.slider{width:100%;max-width:340px;accent-color:var(--red)}
+
+/* SVG 主题适配：硬编码属性色 → 主题变量（CSS 覆盖 SVG 呈现属性） */
+svg [fill="#29241d"]{fill:var(--ink)}
+svg [fill="#6f675a"]{fill:var(--muted)}
+svg [fill="#9d4938"]{fill:var(--red)}
+svg [fill="#3d5a6c"]{fill:var(--blue)}
+svg [fill="#a87f24"]{fill:var(--gold)}
+svg [fill="#fffdf6"],svg [fill="#f6f1e5"]{fill:var(--card)}
+svg [stroke="#9d4938"]{stroke:var(--red)}
+svg [stroke="#3d5a6c"]{stroke:var(--blue)}
+svg [stroke="#a87f24"]{stroke:var(--gold)}
+svg [stroke="#6f675a"]{stroke:var(--muted)}
+svg [stroke="#dcd2bd"]{stroke:var(--line)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">名词短语深读 · 经验基础<small>《认知语言学与汉语名词短语》张敏 ｜ 第二章</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">类</text></svg>
+  <p class="eyebrow">《认知语言学与汉语名词短语》张敏 著 ｜ 第二章「认知语言学的经验基础」 ｜ 上篇三章之二</p>
+  <h1>杯子是怎么变成碗的</h1>
+  <p class="lead">两千年来的范畴观是个<strong>容器</strong>：具备定义特征的个体在里头，不具备的在外头，边界清楚、成员平等。可 Labov 1973 年的实验发现，一个器皿叫什么，不只看它的宽窄深浅，还要看<strong>里面装的是什么</strong>——装上食物就叫 bowl，插上花就叫 vase<sup class="cite" data-cite="labov-cup"></sup>。边界会漂移，成员有好坏，分类的标准藏在人与事物的互动里。这一章讲的就是这场颠覆：<strong>原型理论</strong>、<strong>基本层次</strong>与<strong>理想化认知模式</strong>。</p>
+  <ul class="chips">
+    <li><b>四假设</b>　经典范畴的容器观</li>
+    <li><b>一场实验</b>　杯 · 碗 · 瓶的渐变</li>
+    <li><b>一个层级</b>　猫比动物、波斯猫都「基本」</li>
+    <li><b>一个模式</b>　单身汉的隐藏前提</li>
+  </ul>
+
+  <figure class="figure">
+    <svg viewBox="0 0 680 260" role="img" aria-label="容器隐喻与家族相似对比示意">
+      <!-- 左：容器 -->
+      <rect x="40" y="52" width="240" height="170" rx="14" fill="none" stroke="#3d5a6c" stroke-width="2.5"/>
+      <text x="160" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#3d5a6c" font-family="KaiTi,STKaiti,serif">容器隐喻 · 经典理论</text>
+      <circle cx="105" cy="110" r="17" fill="#3d5a6c" opacity=".25"/>
+      <circle cx="150" cy="95" r="17" fill="#3d5a6c" opacity=".25"/>
+      <circle cx="205" cy="120" r="17" fill="#3d5a6c" opacity=".25"/>
+      <circle cx="140" cy="160" r="17" fill="#3d5a6c" opacity=".25"/>
+      <circle cx="205" cy="170" r="17" fill="#3d5a6c" opacity=".25"/>
+      <text x="160" y="238" text-anchor="middle" font-size="12" fill="#6f675a">合取定义 · 二元特征 · 边界清晰 · 成员平等</text>
+      <!-- 右：家族相似 -->
+      <rect x="400" y="52" width="240" height="170" rx="14" fill="none" stroke="#9d4938" stroke-width="2.5"/>
+      <text x="520" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#9d4938" font-family="KaiTi,STKaiti,serif">家族相似 · 原型理论</text>
+      <circle cx="455" cy="100" r="17" fill="#9d4938" opacity=".28"/><text x="455" y="105" text-anchor="middle" font-size="11" fill="#29241d">ab</text>
+      <circle cx="510" cy="85" r="17" fill="#9d4938" opacity=".28"/><text x="510" y="90" text-anchor="middle" font-size="11" fill="#29241d">bc</text>
+      <circle cx="565" cy="105" r="17" fill="#9d4938" opacity=".28"/><text x="565" y="110" text-anchor="middle" font-size="11" fill="#29241d">cd</text>
+      <circle cx="520" cy="150" r="17" fill="#9d4938" opacity=".28"/><text x="520" y="155" text-anchor="middle" font-size="11" fill="#29241d">de</text>
+      <circle cx="455" cy="165" r="17" fill="#9d4938" opacity=".28"/><text x="455" y="170" text-anchor="middle" font-size="11" fill="#29241d">ae</text>
+      <path d="M472 100 L493 85 M527 85 L548 105 M548 105 L527 133 M527 133 L472 165 M472 165 L472 117" stroke="#9d4938" stroke-width="1.4" fill="none" stroke-dasharray="4 3"/>
+      <text x="520" y="238" text-anchor="middle" font-size="12" fill="#6f675a">环环相扣 · 无一特征全体共有 · 边界模糊</text>
+    </svg>
+    <figcaption>示意：Lakoff（1987）「容器」隐喻与 Wittgenstein（1953）家族相似原则的对比（据 2.1.2 节重绘）。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景 1 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 老观念</p>
+  <h2>经典范畴理论的四条假设</h2>
+  <p>从亚里士多德沿袭到现代语言学主流的经典范畴观认为：概念的类来源于客观世界里既定的范畴，与认知主体无关；范畴归属由本质属性决定。它包含四个假设——<strong>充分特征与必要特征的合取定义、特征是二元的、范畴有明确边界、所有成员地位平等</strong><sup class="cite" data-cite="classical-4"></sup>。数学里的「平行线」确实是这么定义的；可日常概念呢？连「游戏」都找不到一条所有成员共有的特征<sup class="cite" data-cite="wittgenstein"></sup>，「家具」的词典定义也拦不住「壁柜、电话、地毯算不算」的追问<sup class="cite" data-cite="furniture"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">数学的类</p>
+      <p class="small muted">平行线：人为设定标准绝对界定，符合集合论模型——经典理论在这里没错。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">日常的类</p>
+      <p class="small muted">老虎、鸟、鱼、桌子、椅子：边界模糊、成员有好坏、定义找不全——原型理论的用武之地。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 2 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 明星实验</p>
+  <h2>器皿变形实验室</h2>
+  <p>Labov 给被试看一系列宽窄深浅渐变的器皿，同时操纵<strong>内容物</strong>：形体不太典型的器皿，装上食物往往被叫作 bowl；插上花，即使深度并不大，也常被叫作 vase<sup class="cite" data-cite="labov-cup"></sup>。自己拖一拖，看名字在哪里翻车。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">一个深度不大的器皿，插上了花，母语者最可能叫它什么？</p>
+    <div class="opts" data-correct="c">
+      <button data-ans="a">cup（杯子）</button>
+      <button data-ans="b">bowl（碗）</button>
+      <button data-ans="c">vase（花瓶）</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">vase。</span>Labov 的记录：插上花，即使深度并不大，也常被称作 vase<sup class="cite" data-cite="labov-cup"></sup>——<strong>归类不只由形体决定，用途与内容同样在分类</strong>。这正是「属性是互动属性，不是与主体无关的客观特征」的第一手证据。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>拖滑块 · 换内容 · 看判定</h3>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+      <svg id="vesselSvg" viewBox="0 0 220 220" style="flex:0 0 220px;max-width:220px;background:var(--card);border:1px dashed var(--line);border-radius:10px" role="img" aria-label="器皿形状随宽深比变化">
+        <line x1="30" y1="190" x2="190" y2="190" stroke="#6f675a" stroke-width="1.5"/>
+        <path id="vesselPath" d="" fill="#9d4938" fill-opacity=".14" stroke="#9d4938" stroke-width="2.5"/>
+        <g id="contentGroup"></g>
+        <text id="vesselLabel" x="110" y="30" text-anchor="middle" font-size="15" font-family="KaiTi,STKaiti,serif" fill="#9d4938"></text>
+      </svg>
+      <div style="flex:1;min-width:240px">
+        <p class="small muted" style="margin:.2em 0">宽深比（左＝宽而浅，右＝窄而深）</p>
+        <input class="slider" id="ratioSlider" type="range" min="1" max="5" step="1" value="3" aria-label="宽深比">
+        <p class="small muted" style="margin:.6em 0 .2em">内容物</p>
+        <div class="wordpool" id="contentPool">
+          <button data-c="0" aria-pressed="true">空的</button>
+          <button data-c="1" aria-pressed="false">装上食物</button>
+          <button data-c="2" aria-pressed="false">插上花</button>
+        </div>
+        <div class="result">
+          <p class="sent" id="vesselVerdict"></p>
+          <p class="small muted" id="vesselNote"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>细节：原文的形体判断基准与「临时属性」（默认折叠）</summary>
+    <ul>
+      <li>形体基准：「bowl」往往指器皿中<strong>宽而浅</strong>者，「cup」为<strong>宽度深度大体相当</strong>者，「vase」则为<strong>窄而深</strong>者<sup class="cite" data-cite="labov-cup"></sup>。</li>
+      <li>但形体不太典型的器皿：装的是食物 → 多叫 bowl；插上了花 → 多叫 vase。</li>
+      <li>结论：划类的属性是「事物性质的<strong>心理体现</strong>，与人们的认知及与现实的互动模式密切相关」（Lakoff 称之为互动属性），不是与主体无关的客观特征。</li>
+      <li>Rosch 的量化：知更鸟占「鸟」范畴 10 项较普遍属性，鸵鸟只占三四项——<strong>成员地位不平等</strong>有了度量<sup class="cite" data-cite="bird-attrs"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景 3 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 颜色词</p>
+  <h2>11 种基本颜色词的普遍序列</h2>
+  <p>颜色范畴曾被当成「任意切分光谱」的铁证。Berlin & Kay（1969）调查 98 种语言后推翻了这个图景：各语言的基本颜色词一共只有 <strong>11 种</strong>，构成严格的蕴涵层级——有后面的，一定有前面的<sup class="cite" data-cite="berlin-kay"></sup>。而且每种颜色的<strong>中心区（焦点色）</strong>跨语言高度一致，边界却模糊。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">猜猜看：全世界语言的基本颜色词，一共有多少种？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">3 种</button>
+      <button data-ans="b">11 种</button>
+      <button data-ans="c">无穷多种，各语言随便切</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">11 种。</span>黑、白、红、黄、蓝、绿、棕、紫、粉红、橙、灰——构成一个普遍集合与蕴涵层级<sup class="cite" data-cite="berlin-kay"></sup>。颜色词对光谱的切割<strong>不是完全任意的</strong>。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>蕴涵层级 · 点一层看规则</h3>
+    <svg id="hierSvg" viewBox="0 0 680 220" style="width:100%;height:auto;background:var(--card);border:1px dashed var(--line);border-radius:10px" role="img" aria-label="基本颜色词蕴涵层级"></svg>
+    <div class="result">
+      <p class="sent" id="hierT"></p>
+      <p class="small muted" id="hierD"></p>
+    </div>
+  </div>
+  <p class="small muted">焦点色还有一批心理优势：感知更显著、短时记忆更准、长时记忆更牢、辨认反应时更短、儿童习得中更早出现<sup class="cite" data-cite="focal"></sup>——范畴内部「中心比边缘更具代表性」由此可测。</p>
+</section>
+
+<!-- ============ 场景 4 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 层级</p>
+  <h2>猫、椅子、汽车：基本层次</h2>
+  <p>科学分类层层隶属，不分主次；日常概念不一样。认知人类学家发现，各民族通俗分类的焦点都放在<strong>「属」层次</strong>——不是「动物／家具／交通工具」，也不是「波斯猫／扶手椅／敞篷跑车」，而是「<strong>猫、椅子、汽车</strong>」<sup class="cite" data-cite="basic-level"></sup>。这个层次的范畴能形成单个心灵意象、触发共同的运动反应、用最短的词表达、组织大部分知识，还具有最大的<strong>线索有效性</strong><sup class="cite" data-cite="cue-validity"></sup>。</p>
+  <div class="lab">
+    <h3>三层阶梯 · 点一层看它「基本」在哪</h3>
+    <div class="ladder" id="levLadder">
+      <button class="rung" data-l="0"><b>动物 → 猫 → 波斯猫</b><small>上位层次</small></button>
+      <button class="rung" data-l="1"><b>家具 → 椅子 → 扶手椅</b><small>基本层次</small></button>
+      <button class="rung" data-l="2"><b>交通工具 → 汽车 → 敞篷跑车</b><small>下位层次</small></button>
+    </div>
+    <div class="result">
+      <p class="sent" id="levT"></p>
+      <p class="small muted" id="levD"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 5 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 词义的引擎</p>
+  <h2>拆掉一条前提，「单身汉」扩容</h2>
+  <p>生成学派用成分分析法把 bachelor 拆成［＋成年］［＋男性］［＋未婚］，声称这是充分必要条件。可神父、和尚、长期同居男、同性恋男、狼孩都符合这三条，说英语的人却不会叫他们 bachelor<sup class="cite" data-cite="bachelor-edges"></sup>。Lakoff 说，这个词参照的是一个<strong>理想化认知模式（ICM）</strong>：人人异性恋、婚姻一夫一妻、到年龄就该结婚、与同一对象保持婚姻、已婚男人赡养妻儿——bachelor 是相对于这个理想框架的未婚成年男性<sup class="cite" data-cite="bachelor-icm"></sup>。改一条前提，就有人进得来。</p>
+  <div class="lab">
+    <h3>前提开关 · 看谁能进入范畴</h3>
+    <div class="wordpool" id="icmPool">
+      <button data-i="0" aria-pressed="true">原型框架</button>
+      <button data-i="1" aria-pressed="false">去掉「到年龄就该结婚」</button>
+      <button data-i="2" aria-pressed="false">去掉「与同一对象保持婚姻」</button>
+      <button data-i="3" aria-pressed="false">加边界词「Technically」</button>
+    </div>
+    <div class="result">
+      <p class="sent" id="icmT"></p>
+      <p class="small muted" id="icmD"></p>
+    </div>
+  </div>
+  <div class="guess" data-guess>
+    <p class="q">哪句更自然？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">John is a bachelor, so he likes children.</button>
+      <button data-ans="b">John is a bachelor. That's why he doesn't like children.</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">b 自然，a 很奇怪。</span>英语使用者对 bachelor 有个<strong>老套（stereotype）</strong>：大男子主义、不爱孩子、喜欢单身酒吧——不符老套的成员就是「不像个单身汉」<sup class="cite" data-cite="bachelor-stereotype"></sup>。老套来自 ICM 的转喻：拿最典型的成员代替整个范畴。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 6 ============ -->
+<section class="scene" data-scene="6">
+  <p class="kicker">场景 6 ｜ 集束与辐射</p>
+  <h2>「母亲」不是一个定义，是一束模式</h2>
+  <p>mother 的传统分析是［＋parent］［−male］。可养母没有生育关系也是母亲。Lakoff 的答案是：mother 基于一个<strong>模式集束</strong>——遗传、生殖、养育、谱系、婚姻；完全符合五条的是原型，突显其中几条的成为各类边缘成员<sup class="cite" data-cite="mother-cluster"></sup>。点上模式，看谁靠什么留在范畴里。</p>
+  <div class="lab">
+    <h3>五模式 · 点开看成员构成</h3>
+    <div class="wordpool" id="momPool"></div>
+    <div class="result">
+      <p class="sent" id="momT"></p>
+      <p class="small muted" id="momD"></p>
+    </div>
+  </div>
+  <p>多义词也长这样：climb 从「男孩爬树」到「火车爬上山」「飞机爬到三万英尺」「温度爬到 90 度」，相邻节点共有属性，不相邻的未必——Lakoff 叫它<strong>辐射状范畴</strong><sup class="cite" data-cite="climb-radial"></sup>。上篇之后讲隐喻与意象图式，下篇就用这套工具拆汉语名词短语。</p>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>你答得上来吗</h2>
+  <div class="q">
+    <p>1. Labov 实验中最能反驳「范畴边界由客观特征决定」的事实是？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="0" data-ans="a">被试对同一器皿的命名不完全一致</button>
+      <button data-q="0" data-ans="b">装上食物多叫 bowl、插上花多叫 vase，内容物参与分类</button>
+      <button data-q="0" data-ans="c">器皿的宽深比是连续渐变的</button>
+    </div>
+    <p class="why" hidden>答案：b。形体不太典型时，内容物（食物／花）直接改变归类——属性是互动属性<sup class="cite" data-cite="labov-cup"></sup>。</p>
+  </div>
+  <div class="q">
+    <p>2. 为什么说「猫、椅子、汽车」比「动物」和「波斯猫」更「基本」？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="1" data-ans="a">它们最早被造出来</button>
+      <button data-q="1" data-ans="b">它们有单个心灵意象、共同运动反应、简短常用，且线索有效性最大</button>
+      <button data-q="1" data-ans="c">它们能用充分必要条件定义</button>
+    </div>
+    <p class="why" hidden>答案：b。感知、功能、言语交际、知识组织四方面的优势<sup class="cite" data-cite="basic-4"></sup>；c 恰是经典理论的执念，基本层次范畴同样有原型效应。</p>
+  </div>
+  <div class="q">
+    <p>3. 「Technically, John Paul II is a bachelor.」这句话能成立，靠的是什么？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="2" data-ans="a">教皇确实符合［＋成年］［＋男性］［＋未婚］</button>
+      <button data-q="2" data-ans="b">边界词（technically）临时松动了 ICM 的前提</button>
+      <button data-q="2" data-ans="c">bachelor 本来就没有边界</button>
+    </div>
+    <p class="why" hidden>答案：b。a 只是必要条件而非原因——符合三条的人很多（神父、和尚）却不被叫作 bachelor；是 loosely speaking、technically 这类边界词让人临时修改 ICM、把对象强纳入范畴<sup class="cite" data-cite="boundary-words"></sup>。</p>
+  </div>
+</section>
+
+<!-- ============ 系列导航 ============ -->
+<section class="scene">
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="01-theory.html">01 理论主张</a>
+    <a class="cur" href="02-categorization.html">02 范畴化</a>
+  </nav>
+  <footer>
+    <p>本页范围：研读底本第二章第一节「范畴化问题」（底本 L539–L719）。底本为 OCR 转录，无原书页码，角标中的「底本 Lx」指该行在研读底本中的行号；关键引文请点开角标核对原句后再引用。</p>
+    <p>未覆盖：第二章第二、三节（概念隐喻与隐喻概念系统、意象和意象图式）及第三至八章，见系列深读页。原书：《认知语言学与汉语名词短语》，张敏著。</p>
+  </footer>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "classical-4":  { page:"底本 L545", quote:"它认为概念的类来源于客观世界里既定的范畴，与进行范畴化的主体无关；而范畴的归属是由概念的本质属性决定的。它包含以下的基本假设：（1）范畴是由充分特征和必要特征的合取定义的；（2）特征是二元的（binary）；（3）范畴有着明确的边界；（4）范畴的所有成员地位相等。", zh:"经典范畴理论四假设：充分必要合取定义、二元特征、明确边界、成员平等。" },
+  "wittgenstein": { page:"底本 L561", quote:"著名哲学家维特根斯坦（Wittgenstein 1953）却发现有一类概念范畴无法用经典的模式去概括，而是以一种他称作“家族相似性（family resemblance）”的原则组织起来的……他举了“游戏”（德语的 Spiel，英语的 game）一词为例：下棋、玩纸牌、打球、奥运会等都被叫作“game”……但这些特征中没有一条是所有的 game 都共有的。", zh:"Wittgenstein 1953 家族相似：game 没有一条全体共有的特征，环环相扣成类。" },
+  "furniture":    { page:"底本 L588", quote:"又如 furniture，著名的 Webster 英语词典定义为“movable articles used in readying an area as a room or patio for occupancy or use（用于装备房间、内院之类地方，使便于居住或使用的可移动物件）”，这只是勉强找出的非确定性的描述，根本谈不上是能据以确切分类的充分必要条件（比如，壁柜、电话、地毯算不算 furniture？）。", zh:"furniture 找不到充分必要定义——壁柜、电话、地毯算不算都存疑。" },
+  "labov-cup":    { page:"底本 L586-588", quote:"根据Labov(1973)的实验，“bowl”往往指器皿中宽而浅者，“cup”为宽度深度大体相当者，“vase”则为窄而深者。但若一个形体方面不太典型的器皿装的是食物，则被试往往将它称作 bowl；若插上了花，即使深度并不大，也常被称作 vase。这时划类的属性显然不是与主体的认知无关的事物的客观特征。", zh:"Labov 1973：宽而浅→bowl、宽深相当→cup、窄而深→vase；装食物→bowl、插花→vase——内容物参与分类。" },
+  "bird-attrs":   { page:"底本 L588", quote:"例如，根据 Rosch 的实验，在列举出来的“鸟”范畴较普遍的属性中，原型性的知更鸟占10项，而边缘成员鸵鸟仅具有这10项中的三四项。", zh:"Rosch：知更鸟占 10 项鸟属性，鸵鸟仅三四项——成员地位可度量。" },
+  "berlin-kay":   { page:"底本 L554", quote:"根据 Berlin & Kay (1969) 对 98 种语言颜色词的研究……第一，世界各语言里一共存在着 11 种被称作“基本颜色词”的颜色种类的普遍集合，它们构成一个严格的蕴涵层级 (implicational hierarchy)，即“黑、白（红（黄、蓝、绿（棕、紫、粉红、橙、灰）”，其中 x（y 的意思是若一种语言包含 y，则一定也包含 x。", zh:"Berlin & Kay 1969：98 种语言；11 种基本颜色词的普遍集合；蕴涵层级黑、白→红→黄、蓝、绿→棕、紫、粉红、橙、灰。" },
+  "focal":        { page:"底本 L554", quote:"第二，各个颜色词所指的中心区，即“焦点色 (focal colors)”，是非常清楚的，但其边界则往往不确定……和非焦点色相比，焦点色在感知上更加显著，在短时记忆中记得更准确，在长时记忆中更容易保持，在辨认实验中反应时更短，在儿童语言习得中出现得更早。", zh:"焦点色：感知显著、记忆更准更牢、反应时更短、习得更早。" },
+  "basic-level":  { page:"底本 L634", quote:"心理学家Rosch (1977,1978)的实验研究也证实，人类概念层级中最重要的不是较高层的范畴如“动物、家具、交通工具”，也不是较低层的如“波斯猫、扶手椅、敞篷跑车”，而是位置居中的“猫、椅子、汽车”，由于这个层次的范畴在人类认知中的基本地位，它们被称作基本层次范畴(basic-level categories)。", zh:"Rosch 1977/1978：基本层次是猫、椅子、汽车，而非动物／波斯猫。" },
+  "basic-4":      { page:"底本 L638-646", quote:"第一，感知方面，在这个层次上的范畴成员具有感知上相似的整体外形，能形成反映整个类别的单个心灵意象……第二，功能方面，它是人们能运用类似的运动机制与其上的范畴成员打交道的最高层次……第三，言语交际方面，这个层次上的范畴往往用较短、较简单、比较常用、独立于特定语境、比较中性的语词表达……第四，知识组织方面，人类的大部分知识都是在这个层次上组织起来的。", zh:"基本层次四理由：感知整体意象、共同运动反应、简短常用中性语词、知识组织。" },
+  "cue-validity": { page:"底本 L648", quote:"更高层次的范畴（如“家具”），其所有成员共有的属性比较少；更低层次的范畴（如“电脑桌”），其中所有成员共有的属性倒是不少，但这些属性大部分都是与相邻的其他范畴（如“书桌”）共有的。用心理学的术语说，这个层次的范畴具有最大的线索有效性（cue validity）。", zh:"基本层次范畴具有最大的线索有效性（cue validity）。" },
+  "bachelor-icm": { page:"底本 L677-679", quote:"按照认知语言学的分析，bacholar 是参照类似下面这样的特定框架或理想化的社会认知模式(可标写为BACHOLORHOOD)界定出来的，其中，(a)每个人都是异性恋的，(b)婚姻是一夫一妻制的，(c)人们大致达到某个年龄就该结婚，(d)并和同一个结婚对象保持婚姻关系，(e)结了婚的男人赡养、照顾其妻儿，等等。", zh:"bachelor 的 ICM 前提：异性恋、一夫一妻、适婚年龄、同一结婚对象、赡养妻儿。" },
+  "bachelor-edges": { page:"底本 L675", quote:"设想以下类型的人：（1）天主教神父或佛教出家男子（和尚、喇嘛）；（2）与某个女子有长期、稳定的未婚同居关系的男子；（3）与同性同居的同性恋男子；（4）从小被抛弃在森林中成为狼孩，长大至成年都未与人类社会接触的男性，等等。这些都是符合条件的成年未婚男性，但说英语的人通常不会将其称作 bacholer。", zh:"神父、和尚、同居男、同性恋男、狼孩符合三条件，却不是 bachelor。" },
+  "boundary-words": { page:"底本 L675", quote:"不过，若加上一些 Lakoff 称作边界词（bedges）、体现范畴边界模糊性的词语如 “loosely speaking（大致说）、technically（按法律定义、技术上说）” 等，用这个词来指称其中某些对象就可以大体接受了，比如，可以说 “Technically, John Paul II is a bacholer.（按法律定义说，教皇是个单身汉）”。", zh:"边界词 loosely speaking／technically 临时扩展范畴——教皇「技术上是个单身汉」。" },
+  "bachelor-stereotype": { page:"底本 L681-687", quote:"(1) John is a bacholor. That's why he likes to hang out in single bars. / That's why he doesn't like children. (约翰是个单身汉，所以他喜欢去单身酒吧/不喜欢孩子。) (2)? John is a bacholor, so he likes children. (? 约翰是个单身汉，所以他喜欢孩子。) 上面(1)是正常的句子，(2)却十分奇怪，这一语用现象说明人们对bacholor的认识有一种以偏概全的老套(stereotype)", zh:"老套：单身汉不爱孩子、喜欢单身酒吧——不符老套就是「不像个单身汉」。" },
+  "mother-cluster": { page:"底本 L689-691", quote:"Lakoff 提出，这个概念基于一个复杂的 ICM，它是一组个别的认知模式综合起来形成的集束（cluster）。其涉及的模式包括：（1）遗传模式，即mother提供遗传基因；（2）生殖模式，即mother要生产孩子；（3）养育模式，即mother应抚养孩子；（4）谱系模式，即mother是最直接的女性祖先；（5）婚姻模式，即mother是father的配偶。", zh:"mother 五模式集束：遗传、生殖、养育、谱系、婚姻。" },
+  "mother-edges": { page:"底本 L693", quote:"符合上述第(3)个模式，但不符合(1)(2)(4)的母亲是养母（也可以不符合第5模式，如单身养母）；符合第(3)(5)而不符合其他模式的是继母；只符合(1)的也是一种非原型的母亲，即提供卵子给不孕症夫妇的女子也是孩子的某个意义上的母亲。", zh:"养母＝养育；继母＝养育＋婚姻；供卵者＝遗传——边缘成员靠部分模式留在范畴。" },
+  "mother-stereotype": { page:"底本 L693-695", quote:"若在上述模式的基础上加上一个转喻模式，则可以解释原型mother中原型性更强的典型的mother，这就是Lakoff所说的“主妇老套”，即最具原型性的母亲是不出外工作的家庭主妇（这是传统社会的典型情况）。", zh:"主妇老套：最具原型性的母亲是不出外工作的家庭主妇——转喻以偏概全。" },
+  "climb-radial": { page:"底本 L724-728", quote:"多义范畴常常难以用某个共同的语义特征或特征集束来概括，其数个子范畴中虽存在着一个核心子范畴，但其他子范畴往往不是通过上下位关系与它相联系，而是通过家族相似关系与之相连，形成一个意义链条，链上相邻的节点之间因语义扩展的关系(往往通过隐喻或转喻映射)而共有某些属性，但不相邻的节点却不一定有共同的属性。这样形成的范畴Lakoff(1987)称之为“辐射状范畴(radial category)”。", zh:"辐射状范畴：意义链条上相邻节点共有属性，不相邻未必——climb 一例。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《认知语言学与汉语名词短语》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景二：器皿变形实验室 ================= */
+const vesselPath = document.getElementById("vesselPath"),
+      contentGroup = document.getElementById("contentGroup"),
+      vesselLabel = document.getElementById("vesselLabel"),
+      vesselVerdict = document.getElementById("vesselVerdict"),
+      vesselNote = document.getElementById("vesselNote"),
+      ratioSlider = document.getElementById("ratioSlider");
+let vesselContent = 0;
+function vesselRender(){
+  const r = +ratioSlider.value;               // 1 宽浅 … 5 窄深
+  const halfW = 30 + (r - 1) * 9;             // 30..66
+  const top = 60, bottom = 170;
+  const depth = bottom - top;                 // 固定深度
+  // 形状：宽浅→高度压缩感；窄深→拉长感（用梯形+颈部表现）
+  let d;
+  if (r <= 2){
+    d = "M" + (110-halfW) + " " + top + " L" + (110+halfW) + " " + top +
+        " Q" + (110+halfW*0.9) + " " + ((top+bottom)/2) + " " + (110+halfW*0.82) + " " + bottom +
+        " L" + (110-halfW*0.82) + " " + bottom +
+        " Q" + (110-halfW*0.9) + " " + ((top+bottom)/2) + " " + (110-halfW) + " " + top + " Z";
+  } else if (r === 3){
+    d = "M" + (110-halfW) + " " + top + " L" + (110+halfW) + " " + top +
+        " L" + (110+halfW*0.92) + " " + bottom + " L" + (110-halfW*0.92) + " " + bottom + " Z";
+  } else {
+    const neck = 16;
+    d = "M" + (110-neck) + " " + (top-14) + " L" + (110+neck) + " " + (top-14) +
+        " L" + (110+halfW*0.7) + " " + (top+18) +
+        " L" + (110+halfW*0.72) + " " + bottom + " L" + (110-halfW*0.72) + " " + bottom +
+        " L" + (110-halfW*0.7) + " " + (top+18) + " Z";
+  }
+  vesselPath.setAttribute("d", d);
+  // 内容物
+  contentGroup.innerHTML = "";
+  const ns = "http://www.w3.org/2000/svg";
+  if (vesselContent === 1){
+    for (let i = 0; i < 5; i++){
+      const c = document.createElementNS(ns, "circle");
+      c.setAttribute("cx", 110 - 18 + i * 9); c.setAttribute("cy", bottom - 14);
+      c.setAttribute("r", 5.5); c.setAttribute("fill", "#a87f24"); c.setAttribute("opacity", ".85");
+      contentGroup.appendChild(c);
+    }
+  } else if (vesselContent === 2){
+    const stem = document.createElementNS(ns, "path");
+    stem.setAttribute("d", "M110 " + (bottom-6) + " C108 " + (top+34) + " 112 " + (top+18) + " 110 " + (top-2));
+    stem.setAttribute("stroke", "#3d5a6c"); stem.setAttribute("stroke-width", "2.5"); stem.setAttribute("fill", "none");
+    const head = document.createElementNS(ns, "circle");
+    head.setAttribute("cx", 110); head.setAttribute("cy", top - 8); head.setAttribute("r", 7);
+    head.setAttribute("fill", "#9d4938"); head.setAttribute("opacity", ".9");
+    contentGroup.appendChild(stem); contentGroup.appendChild(head);
+  }
+  // 判定（据 Labov 记录）
+  let verdict, note;
+  if (vesselContent === 1){
+    verdict = "多叫 bowl（碗）";
+    note = "装上食物：形体再不像碗，也往往被归入 bowl——「可食器」的分类压过形体。";
+  } else if (vesselContent === 2){
+    verdict = "多叫 vase（花瓶）";
+    note = "插上花：即使深度并不大，也常被称作 vase——用途改变了类名。";
+  } else if (r <= 2){
+    verdict = "多叫 bowl（碗）";
+    note = "宽而浅——形体的基准判定。";
+  } else if (r === 3){
+    verdict = "多叫 cup（杯子）";
+    note = "宽度深度大体相当——形体的基准判定。";
+  } else {
+    verdict = "多叫 vase（花瓶）";
+    note = "窄而深——形体的基准判定。";
+  }
+  vesselLabel.textContent = "宽深比 " + r + " / 5";
+  vesselVerdict.textContent = verdict;
+  vesselNote.textContent = note;
+}
+ratioSlider.oninput = vesselRender;
+document.querySelectorAll("#contentPool button").forEach(b => {
+  b.onclick = () => {
+    vesselContent = +b.dataset.c;
+    document.querySelectorAll("#contentPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    vesselRender();
+  };
+});
+vesselRender();
+
+/* ================= 场景三：颜色蕴涵层级 ================= */
+const HIER = [
+  { x:130, w:110, label:"黑 · 白", note:"最普遍：几乎每种语言先分化出黑与白（焦点色感知最显著）。" },
+  { x:255, w:90,  label:"红", note:"第三棒：有了黑白，接下来通常是红——血液与火焰的颜色。" },
+  { x:360, w:150, label:"黄 · 蓝 · 绿", note:"再往后：三种原色成批出现，次序不定。" },
+  { x:525, w:130, label:"棕 · 紫 · 粉红 · 橙 · 灰", note:"最后登场：五种「派生」色，靠前四种的混合得名。" }
+];
+const hierSvg = document.getElementById("hierSvg"), hierT = document.getElementById("hierT"), hierD = document.getElementById("hierD");
+HIER.forEach((h, i) => {
+  const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  g.style.cursor = "pointer";
+  const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rect.setAttribute("x", h.x); rect.setAttribute("y", 70 + i * 0); rect.setAttribute("width", h.w); rect.setAttribute("height", 44);
+  rect.setAttribute("rx", 10); rect.setAttribute("fill", "#9d4938"); rect.setAttribute("fill-opacity", ".12");
+  rect.setAttribute("stroke", "#9d4938"); rect.setAttribute("stroke-width", "2");
+  const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+  text.setAttribute("x", h.x + h.w/2); text.setAttribute("y", 98); text.setAttribute("text-anchor", "middle");
+  text.setAttribute("font-size", "14"); text.setAttribute("fill", "#29241d");
+  text.setAttribute("font-family", "KaiTi,STKaiti,serif");
+  text.textContent = h.label;
+  g.appendChild(rect); g.appendChild(text);
+  g.onclick = () => {
+    hierT.textContent = h.label;
+    hierD.textContent = h.note + "（蕴涵规则：有后面的，一定有前面的）";
+    hierSvg.querySelectorAll("rect").forEach(rr => rr.setAttribute("stroke-width", "2"));
+    rect.setAttribute("stroke-width", "4");
+  };
+  hierSvg.appendChild(g);
+});
+// 箭头串联
+const arrLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+arrLine.setAttribute("d", "M185 92 L255 92 M345 92 L360 92 M510 92 L525 92");
+arrLine.setAttribute("stroke", "#a87f24"); arrLine.setAttribute("stroke-width", "2.2");
+arrLine.setAttribute("marker-end", "url(#harr)");
+hierSvg.insertBefore(arrLine, hierSvg.firstChild);
+const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+defs.innerHTML = "<marker id='harr' markerWidth='9' markerHeight='9' refX='7' refY='4.5' orient='auto'><path d='M0 0 L9 4.5 L0 9 z' fill='#a87f24'/></marker>";
+hierSvg.appendChild(defs);
+const cap = document.createElementNS("http://www.w3.org/2000/svg", "text");
+cap.setAttribute("x", 340); cap.setAttribute("y", 150); cap.setAttribute("text-anchor", "middle");
+cap.setAttribute("font-size", "12.5"); cap.setAttribute("fill", "#6f675a");
+cap.textContent = "98 种语言 · 11 种基本颜色词 · 严格的蕴涵层级（Berlin & Kay 1969）";
+hierSvg.appendChild(cap);
+hierT.textContent = "点一层颜色";
+hierD.textContent = "蕴涵层级的含义：若一种语言包含右边的颜色词，则一定包含左边的。";
+
+/* ================= 场景四：三层阶梯 ================= */
+const LEV = [
+  { t:"动物 · 家具 · 交通工具", d:"上位层次：成员外形差异大，形不成单个心灵意象；对「家具」没有共同的运动反应；词最短却不常用；共有属性少——不基本。" },
+  { t:"猫 · 椅子 · 汽车", d:"基本层次：外形相似能成单个意象；有共同运动机制（坐椅子、逗猫）；简短、常用、中性、儿童早习得；大部分知识在此组织；线索有效性最大。" },
+  { t:"波斯猫 · 扶手椅 · 敞篷跑车", d:"下位层次：共有属性倒是多，但大部分与相邻范畴（书桌）共有；知识不会比「汽车」层面更多更清晰——也不基本。" }
+];
+const levT = document.getElementById("levT"), levD = document.getElementById("levD");
+document.querySelectorAll("#levLadder .rung").forEach(b => {
+  b.onclick = () => {
+    const i = +b.dataset.l;
+    document.querySelectorAll("#levLadder .rung").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    levT.textContent = LEV[i].t;
+    levD.textContent = LEV[i].d;
+  };
+});
+levT.textContent = "点一层看解释";
+levD.textContent = "三组词分别站在上层、中层、下层——中间的才是基本层次范畴。";
+
+/* ================= 场景五：ICM 拆模 ================= */
+const ICM = [
+  { t:"原型框架（五条全保留）", d:"能进来的只有「典型的未婚成年男性」。神父、和尚、同居男、同性恋男、狼孩都被挡在 ICM 之外——他们符合三条件，却不是 bachelor。" },
+  { t:"去掉「到年龄就该结婚」", d:"教皇进来了：他不是不结婚，而是因宗教原因「不该」结婚。前提一松，边缘成员就被强纳入范畴。" },
+  { t:"去掉「与同一对象保持婚姻」", d:"离婚者、丧偶者进来了：他们有过婚姻，不再符合「同一对象」的前提，于是被算进 bachelor。" },
+  { t:"加边界词「Technically」", d:"「Technically, John Paul II is a bachelor.」——不修改 ICM，只加 loosely speaking、technically 这类边界词，也能让范畴临时扩容。" }
+];
+const icmT = document.getElementById("icmT"), icmD = document.getElementById("icmD");
+document.querySelectorAll("#icmPool button").forEach(b => {
+  b.onclick = () => {
+    const i = +b.dataset.i;
+    document.querySelectorAll("#icmPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    icmT.textContent = ICM[i].t;
+    icmD.textContent = ICM[i].d;
+  };
+});
+icmT.textContent = ICM[0].t; icmD.textContent = ICM[0].d;
+
+/* ================= 场景六：mother 模式集束 ================= */
+const MOMS = [
+  { t:"遗传模式", d:"提供遗传基因。突显这一条的是供卵者——只符合模式(1)的非原型母亲。" },
+  { t:"生殖模式", d:"生产孩子。借卵受孕而生下孩子的女人符合这条，却不符合(1)。" },
+  { t:"养育模式", d:"抚养孩子。养母靠这条留在范畴（可不符合婚姻模式，如单身养母）。" },
+  { t:"谱系模式", d:"最直接的女性祖先。代代相传的「母亲」链条由此建立。" },
+  { t:"婚姻模式", d:"father 的配偶。继母＝养育＋婚姻；不符合其他模式。" },
+  { t:"五模式全合", d:"原型母亲。若再加一个转喻模式，就得到「主妇老套」——最具原型性的母亲是不出外工作的家庭主妇。" }
+];
+const momPool = document.getElementById("momPool"), momT = document.getElementById("momT"), momD = document.getElementById("momD");
+MOMS.forEach((m, i) => {
+  const b = document.createElement("button");
+  b.textContent = m.t;
+  b.setAttribute("aria-pressed", i === 5 ? "true" : "false");
+  b.onclick = () => {
+    document.querySelectorAll("#momPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    momT.textContent = m.t;
+    momD.textContent = m.d;
+  };
+  momPool.appendChild(b);
+});
+momT.textContent = MOMS[5].t; momD.textContent = MOMS[5].d;
+
+/* ================= 自测 ================= */
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const q = group.closest(".q");
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      q.querySelector(".why").hidden = false;
+    };
+  });
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

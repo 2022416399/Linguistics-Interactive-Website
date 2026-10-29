@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>“的”字隐现的一般规律 · 《认知语言学与汉语名词短语》第六章可交互笔记</title>
+<meta name="description" content="《认知语言学与汉语名词短语》第六章可交互笔记：限定序列与转折点、三条层层蕴含的语义限制、区别词、单音节形容词三类、ICM 与“脏 N”、双音节形容词与动因竞争、动词定语、名词定语与属性领属对立，含序列图、五格式鉴别表与点选交互。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn.wrong{outline:2.5px dashed var(--red);outline-offset:1px}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.right{border-color:var(--green);color:var(--green);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+.v-ok{color:var(--green);font-weight:800;margin-right:.4em}
+.v-no{color:var(--red);font-weight:800;margin-right:.4em}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:center;vertical-align:middle}
+.tbl th{background:var(--hl);font-weight:700}
+.tbl td.l,.tbl th.l{text-align:left}
+.tbl td.hi{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
+.tbl td.lo{color:var(--ink-faint)}
+input[type=range]{width:100%;max-width:460px;accent-color:var(--red);height:36px}
+
+/* ---------- 时间线（场景一） ---------- */
+.tl{list-style:none;margin:12px 0 6px;padding:2px 0 2px 28px;border-left:2.5px dashed var(--line)}
+.tl li{position:relative;margin:0 0 9px}
+.tl li::before{content:"";position:absolute;left:-34px;top:11px;width:11px;height:11px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--red)}
+.tl .btn{min-height:42px;text-align:left;font-size:.9rem;padding:6px 12px;line-height:1.5}
+.tl .tl-y{font-weight:800;color:var(--red);margin-right:.45em}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.inline-svg{background:var(--card);border:1.5px dashed var(--line);border-radius:10px;padding:10px 8px 6px;margin:10px 0}
+#balBeam,#panL,#panR{transition:transform .18s ease}
+@media (prefers-reduced-motion: reduce){
+  #balBeam,#panL,#panR{transition:none}
+}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a href="index.html" title="返回全书导览" style="position:fixed;left:12px;bottom:14px;z-index:9999;display:inline-flex;align-items:center;gap:4px;font:13px/1.4 system-ui,'Microsoft YaHei',sans-serif;color:#5a5348;background:rgba(255,253,246,.94);border:1px solid #d8d1c2;border-radius:999px;padding:6px 13px;text-decoration:none;box-shadow:0 2px 10px rgba(35,32,28,.12);backdrop-filter:blur(2px)">← 返回全书导览</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">《认知语言学与汉语名词短语》· 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第六章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">“的”字隐现的一般规律</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：限定序列 ｜ 三条限制 ｜ 区别词 ｜ 单音形容词 ｜ ICM ｜ 双音形容词 ｜ 动词 ｜ 名词</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>本章要回答范继淹（1958）提出的经典问题——定中间 <span class="hl">de 字何时隐、何时现</span><button type="button" class="cite" data-cite="fanQuestion" aria-label="查看出处"></button>。本书的答案不是一串形式规则，而是三条层层蕴含的语义限制：D 是 N 的<span class="hl">属性</span>，能充当<span class="hl">分类标准</span>，且分出的是<span class="hl">稳定的规约类别</span>——三条越往后越严，DN 成立的可能性就越大<button type="button" class="cite" data-cite="threeCond" aria-label="查看出处"></button>。背后的总原则仍然是<span class="hl">距离象似</span>。<span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 196" role="img" aria-label="汉语限定序列图：自左向右依次为领属语、指代词、数量词，其右侧以虚线标出转折点，转折点右侧依次为状态形容词、新旧、形体、颜色、质料、功能、名词定语，最右端为中心语 N；序列上方左侧标注确定指称作用于外延，右侧标注刻划概念作用于内涵；下方左侧标注 de 或量词倾向出现，右侧标注 de 倾向隐去">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="40" y="34" width="58" height="46" rx="9"/>
+        <rect x="102" y="34" width="58" height="46" rx="9"/>
+        <rect x="164" y="34" width="58" height="46" rx="9"/>
+        <rect x="226" y="34" width="58" height="46" rx="9"/>
+        <rect x="288" y="34" width="58" height="46" rx="9"/>
+        <rect x="350" y="34" width="58" height="46" rx="9"/>
+        <rect x="412" y="34" width="58" height="46" rx="9"/>
+        <rect x="474" y="34" width="58" height="46" rx="9"/>
+        <rect x="536" y="34" width="58" height="46" rx="9"/>
+        <rect x="598" y="34" width="58" height="46" rx="9"/>
+        <rect x="662" y="34" width="52" height="46" rx="9"/>
+        <path d="M224 26 L224 90" stroke-dasharray="5 4"/>
+        <path d="M40 96 L714 96"/><path d="M706 88 L714 96 L706 104"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="131" y="18" font-size="12" font-weight="700" fill="var(--red)">确定指称 · 作用于外延</text>
+        <text x="472" y="18" font-size="12" font-weight="700" fill="var(--green)">刻划概念 · 作用于内涵</text>
+        <text x="69" y="62" font-size="11.5">领属语</text>
+        <text x="131" y="62" font-size="11.5">指代词</text>
+        <text x="193" y="62" font-size="11.5">数量词</text>
+        <text x="255" y="56" font-size="10.5">状态</text>
+        <text x="255" y="70" font-size="10.5">形容词</text>
+        <text x="317" y="62" font-size="11.5">新旧</text>
+        <text x="379" y="62" font-size="11.5">形体</text>
+        <text x="441" y="62" font-size="11.5">颜色</text>
+        <text x="503" y="62" font-size="11.5">质料</text>
+        <text x="565" y="62" font-size="11.5">功能</text>
+        <text x="627" y="56" font-size="10.5">名词</text>
+        <text x="627" y="70" font-size="10.5">定语</text>
+        <text x="688" y="62" font-size="13" font-weight="700">N</text>
+        <text x="224" y="112" font-size="11" font-weight="700" fill="var(--red)">转折点</text>
+        <text x="131" y="136" font-size="11.5" fill="var(--red)">de（或量词）倾向出现</text>
+        <text x="472" y="136" font-size="11.5" fill="var(--green)">de 倾向隐去</text>
+        <text x="380" y="166" font-size="11.5" fill="var(--ink-soft)">越靠右，D 与 N 的概念距离越小 ｜ 序列右半部分据张敏 (2)</text>
+      </g>
+    </svg>
+    <figcaption>汉语限定序列与转折点（读图）<button type="button" class="cite" data-cite="seqRight" aria-label="查看出处"></button><button type="button" class="cite" data-cite="cnSeq" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">限定序列与转折点</button>
+    <button class="chip" data-jump="s2">三条语义限制</button>
+    <button class="chip" data-jump="s3">区别词</button>
+    <button class="chip" data-jump="s4">单音形容词三类</button>
+    <button class="chip" data-jump="s5">ICM 与“脏 N”</button>
+    <button class="chip" data-jump="s6">双音形容词</button>
+    <button class="chip" data-jump="s7">动词定语</button>
+    <button class="chip" data-jump="s8">名词定语</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>限定序列、概念距离和定语的类</h2>
+  </div>
+  <p class="point">在正面讨论之前，有必要先从概念距离的角度对定语的类别作一番概括性的探讨。Seiler（1978）主张把名词短语中的各种修饰、限定成分都视为<strong>限定语</strong>（determiner，简称 D），中心语则视为受限语（determinatum）；D 的作用可分为两个类型——<strong>确定指称</strong>与<strong>刻划概念</strong><button type="button" class="cite" data-cite="seilerCont" aria-label="查看出处"></button><button type="button" class="cite" data-cite="twoFunc" aria-label="查看出处"></button>。这两端构成一个连续统，各类 D 分布在其中，形成"限定序列"。</p>
+
+  <div class="card taped">
+    <p class="bench-label">限定序列十个位置——点一级，看它的表义功能与 de 的倾向。</p>
+    <div class="btn-row" id="seqBtns">
+      <button class="btn" data-sq="1">领属语</button>
+      <button class="btn" data-sq="2">指代词</button>
+      <button class="btn" data-sq="3">数量词</button>
+      <button class="btn" data-sq="4">状态形容词</button>
+      <button class="btn" data-sq="5">新旧</button>
+      <button class="btn" data-sq="6">形体</button>
+      <button class="btn" data-sq="7">颜色</button>
+      <button class="btn" data-sq="8">质料</button>
+      <button class="btn" data-sq="9">功能</button>
+      <button class="btn" data-sq="10">名词定语</button>
+    </div>
+    <div class="reveal" id="seqBox" hidden><p id="seqTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">汉语里的"分隔物"x——定语含转折点左端成分时，x 的出现是强制性的<button type="button" class="cite" data-cite="dxnForce" aria-label="查看出处"></button>。点一类看它是什么。</p>
+    <div class="btn-row" id="dxnBtns">
+      <button class="btn" data-x="de">x ＝ de</button>
+      <button class="btn" data-x="clf">x ＝ 量词</button>
+    </div>
+    <div class="reveal" id="dxnBox" hidden><p id="dxnTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>转折点放在哪里（折叠细节）</summary>
+    <p>Seiler 从德语出发把转折点放在"冠词、领属语"处；本书认为，从 Hawkins(1983) 给出的类型学证据看，这个转折点应放在<strong>"数词"</strong>处。转折点左边大体上就是传统所说的限定语（Det），是确定指称的类；其右边大致为刻划概念的类。这样重新设置转折点有重大的理论意义：绝大多数定语前置型语言（汉语、英语、德语、芬兰语、印地语等）的多项定语语序都显现出高度的一致性——(i) 转折点右边的定语语序在这些语言中几乎完全相同（试比较英语的 "ten fine old stone houses" 和汉语的"十座漂亮的老石头房子"）；(ii) 转折点左边的定语在这些语言的无标记语序序列中都不能越界和右边的定语换位；(iii) 这类语言在定语语序上的分歧基本上都出现在转折点左边<button type="button" class="cite" data-cite="turnPoint" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <details>
+    <summary>右端定语为什么容易和中心语融合（折叠细节）</summary>
+    <p>在包括印欧语在内的许多语言里普遍存在着这样的趋势，即越靠近限定序列右端的定语往往就越有潜力和中心语名词融合起来成为一个复合名词。德语里 "holzerne Kugeln（木头的球）"的定语表质料，比 "rote Kugeln（红色的球）"的定语更靠右；相应，德语就有 "Holzkugeln（木球）"这样的复合词，而没有 "Rotkugeln（红球）"<button type="button" class="cite" data-cite="mergeTrend" aria-label="查看出处"></button>。英语里表中心语稳固属性（质料、来源、用途等）的名词往往与中心语结合成类似复合词的形式，如 "pork pie, iron rod, concrete floor, life story, cupboard door"，甚至成为不可扩展的地道复合名词，如 "bird-house, apple-core, mail-man, silkworm, gaslight"。显然，定中短语和复合名词的差别正是语言距离的差别。</p>
+  </details>
+
+  <p class="scene-foot">限定序列中靠近右端的定语在印欧语的单项定语式里同样有与中心语名词紧密结合的趋势；这些定语在汉语里也多可不带 de 修饰名词，其间的平行性十分明显。de 字隐现看似汉语里的个别现象，其实它是隐藏于其后的共性规律在汉语里的一种独特体现<button type="button" class="cite" data-cite="mergeTrend" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：三条语义限制 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>三条层层蕴含的语义限制</h2>
+  </div>
+  <p class="point">在前一章谈到的三类定中结构中，乙式中的 de 必须出现，故不存在 de 字的隐现条件问题；要探讨的实际上是甲₁、甲₂ 两式的形成条件<button type="button" class="cite" data-cite="jiaFormat" aria-label="查看出处"></button>。含 de 的甲₂ 式定语具有分类性和述谓性，但整个构造没有称谓性；不含 de 的甲₁ 式除了分类性之外还有称谓性，但其定语没有述谓性。de 作为定中之间的标记成分，其语义作用是将 D 对 N 的分类意义<strong>置于前景</strong>；隐去 de，则 D 的分类意义就<strong>隐入背景</strong><button type="button" class="cite" data-cite="deForeground" aria-label="查看出处"></button>。在此基础上，本书提出以下三条层层蕴含的语义限制<button type="button" class="cite" data-cite="threeCond" aria-label="查看出处"></button>：</p>
+
+  <div class="card taped">
+    <p class="bench-label">三条限制——点一条看原文与蕴含关系。</p>
+    <div class="btn-row" id="condBtns">
+      <button class="btn" data-c="a">(3)a 属性条件</button>
+      <button class="btn" data-c="b">(3)b 分类属性条件</button>
+      <button class="btn" data-c="c">(3)c 规约分类属性条件</button>
+    </div>
+    <div class="reveal" id="condBox" hidden><p id="condTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">语境能让 DN 临时成立——点一个场景，看条件如何被逐条满足<button type="button" class="cite" data-cite="shenJia" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="wfBtns">
+      <button class="btn" data-w="white">白家具</button>
+      <button class="btn" data-w="heavy">重箱子</button>
+    </div>
+    <div class="reveal" id="wfBox" hidden><p id="wfTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>为什么用"可能性"而不是"必然"来描述规律（折叠细节）</summary>
+    <p>这出于两个方面的理由。第一，上述规律在本质上作为语义限制，只是反映了一定的概念结构内 de 字倾向于出现或不出现的大致趋势，不能据以作出绝对的预测。第二，这样描述可以将 de 字隐现条件与限定序列联系起来：限定序列预测，越靠右，de 隐去的可能性就越大；越靠左，de（或其他间隔成分）出现的可能性就越大。(3) 里概括的规律与限定序列的预测是一致的——作为属性的 D 越靠近限定序列的右端，它充任 N 概念分类标准的可能性就越高，分类的规约化程度也越大，故 DN 成立的可能性就越大<button type="button" class="cite" data-cite="condWhy" aria-label="查看出处"></button>。(3) 里的三个限制条件中，(c) 蕴含了 (b)，(b) 蕴含了 (a)，故严格地看只需要 (c) 就够了，它大致可说是 DN 得以成立的充分必要条件<button type="button" class="cite" data-cite="condImply" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">据此还可作出一些否定性的预测：原型性的领属定语不能隐去 de（"*张三书"），因为它的作用是确定指称，定语不表中心语的属性；状态形容词定语用于描绘情状，同时也带有一定程度的确定指称的作用，根据 (a) 和 (b) 它们也不能隐去 de。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 限定序列与转折点</button>
+    <button class="btn" data-jump="s3">下一场：区别词 →</button>
+  </div>
+</section>
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>区别词：最能不带 de 的一类词</h2>
+  </div>
+  <p class="point">汉语里不带 de 作定语能力最强的一类词是<strong>区别词</strong>。其实话应该倒过来讲：区别词本身就是由"只能在名词或'的'前面出现"这一特征定义出来的类（朱德熙 1982）<button type="button" class="cite" data-cite="qbDef" aria-label="查看出处"></button>。一般的名词和形容词多半也能带"的"作定语，但它们构成的 DdN 结构却并不一定能自由地转换为 DN；而由区别词构成的 DdN，除了极少数例外（如"心爱的 N"），都能隐去 de 形成 DN，而且这类词做定语以不带 de 为常<button type="button" class="cite" data-cite="qbAlways" aria-label="查看出处"></button>。</p>
+
+  <p class="point">人们论及这类词时往往只注意它们不能作谓语、通常不带 de 作定语的语法功能，却极少有人探讨其动因——为什么这类词具有这样的功能？从认知语言学的角度看，区别词在语法功能上的所有特点都可以从整体上由其意义特点推导出来：<strong>它在概念上位于限定序列的最右端</strong><button type="button" class="cite" data-cite="qbMotive" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">区别词的六个语义类（吕叔湘、饶长溶 1981 举例，张敏归类）<button type="button" class="cite" data-cite="qbSix" aria-label="查看出处"></button>——点一类看例子。</p>
+    <div class="btn-row" id="qbBtns">
+      <button class="btn" data-qb="1">式样型号</button>
+      <button class="btn" data-qb="2">品级等第</button>
+      <button class="btn" data-qb="3">用途功能</button>
+      <button class="btn" data-qb="4">颜色外观</button>
+      <button class="btn" data-qb="5">材料质地</button>
+      <button class="btn" data-qb="6">其他属性</button>
+    </div>
+    <div class="reveal" id="qbBox" hidden><p id="qbTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">吕叔湘、饶长溶(1981)把这类词称作<strong>非谓形容词、属性词</strong>，朱德熙(1982)称之为<strong>区别词</strong>，这些名称分别显示了它们在句法功能、语义特性和语义作用方面的特点<button type="button" class="cite" data-cite="qbName" aria-label="查看出处"></button>。它们的定中意义都可概括为"中心语的某一方面的属性"，如式样、功能、质料等方面的属性；其语义作用则是充任一种<strong>分类标准</strong>。和原型的形容词相比，区别词表示的属性有两个突出特点：</p>
+
+  <div class="card taped">
+    <p class="bench-label">区别词属性的两个特点——点一条看它与"规约性分类指标"的关系。</p>
+    <div class="btn-row" id="qbFeatBtns">
+      <button class="btn" data-qf="1">永久稳固、难以变易</button>
+      <button class="btn" data-qf="2">没有程度差别、较客观</button>
+    </div>
+    <div class="reveal" id="qbFeatBox" hidden><p id="qbFeatTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">区别词往往表示界限明确的属性，往往是成对的或成组的，如"正—副｜西式—中式｜低频—高频｜同步—异步"，这显示它们本质上就有明显的分类作用。这使得以区别词为定语的 DN 构造成为<strong>最具原型性的类名</strong><button type="button" class="cite" data-cite="qbClass" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>科技术语为什么爱用区别词（折叠细节）</summary>
+    <p>正如吕叔湘(1979)所说，"由于现代科学、技术的发展，这类词正在每日每时地大量产生"。科技术语正是对有关概念进行严格、精密，同时规约性最强的分类，这使得新兴的分类性专门术语（往往译自外语）经常采用区别词的形式，如"多媒体（multimedia）｜超高频（UHF）｜高密度（high-density）"<button type="button" class="cite" data-cite="qbTerm" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <details>
+    <summary>不能作谓语与 DN 自由形成，为何是同一枚硬币的两面（折叠细节）</summary>
+    <p>含区别词的 DN 构造是一种典型的类名，亦即它有很强的称谓性。而较强的称谓性相伴的应是较弱的述谓性。就句法位置而言，体现述谓作用的位置主要是谓语。吕叔湘、饶长溶（1981）将区别词称为"非谓形容词"，因为它完全不能独立作谓语<button type="button" class="cite" data-cite="qbPred" aria-label="查看出处"></button>。区别词的这种句法性质正好印证了我们对 DN 构造的分析——它和第三节要谈的"唯谓形容词"（渴、累、烦、慌）形成绝妙的反衬：在形式上，一个完全不能作谓语、能自由形成 DN，另一个主要作谓语、完全不能形成 DN；在表义功能上，一个倾向于表示事物稳定的固有属性、带有极弱的述谓性，另一个只能描述特定场景里的情状、带有很强的述谓性。二者形式特点和意义特点的对应十分整齐。</p>
+  </details>
+
+  <p class="scene-foot">区别词的例子提示：一个词类"能不能带 de"并不是句法部门里任意的一条规定，而是它的语义在限定序列上所占位置的句法投影。越靠右、越本质、越客观的属性，越不需要分隔物。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 三条语义限制</button>
+    <button class="btn" data-jump="s4">下一场：单音形容词三类 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>单音节形容词：三类与五格式鉴别</h2>
+  </div>
+  <p class="point">和区别词正好相反，在有能力直接作定语的三类词中，甲类形容词构成 DN 的能力最弱，限制最大，问题也最多。吕叔湘(1965)根据对 1400 个形容词用例的考察得出的结论是：<strong>"单音形容词不带 de 为多，带 de 是例外。双音形容词带 de 为多，但是不带 de 也常见。带 de 不带 de 有时候好像很随便。"</strong><button type="button" class="cite" data-cite="lv65" aria-label="查看出处"></button>本书认为，决定这类词带 de 不带 de的因素看似是音节数和惯用法，底下潜藏的仍是认知—语义动因。为此首先要作两种区分：一是区分有关<strong>"类（type）"的总的趋势</strong>和有关<strong>"例（token）"的个别条件</strong>；一是区分<strong>原型类和非原型类</strong><button type="button" class="cite" data-cite="typeToken" aria-label="查看出处"></button>。认知—语义因素只在原型类中才是主导性的，在非原型类中它容易为其他因素所压倒。</p>
+
+  <div class="card taped">
+    <p class="bench-label">按直接作定语的能力，单音形容词分三类（吕叔湘 1966 分法）<button type="button" class="cite" data-cite="monoClass" aria-label="查看出处"></button>——点一类看它的构成与限制。</p>
+    <div class="btn-row" id="monoBtns">
+      <button class="btn" data-m="1">第 1 类 · 无能的</button>
+      <button class="btn" data-m="2">第 2 类 · 有能的</button>
+      <button class="btn" data-m="3">第 3 类 · 全能的</button>
+    </div>
+    <div class="reveal" id="monoBox" hidden><p id="monoTxt" style="margin:0"></p></div>
+  </div>
+
+  <details open>
+    <summary>第 1 类"无能"的词表与语义（展开看）</summary>
+    <p>第 1 类的例子非常少，主要有：<strong>对｜够｜行｜悬（险）｜诡（鬼）｜呆｜逗｜差｜妥｜稳｜抠｜牢｜紧｜松｜勾｜忙｜乏｜累｜困｜痒｜渴｜干｜疼｜麻｜饱｜饿｜烦｜慌｜冷｜远｜近｜迟｜顺｜活｜静｜久｜准｜广｜灵｜散</strong><button type="button" class="cite" data-cite="class1" aria-label="查看出处"></button>。它们与其说明对象之间的语义联系包括四小类：</p>
+    <p>（a）表对特定的而非一般的事件、行为或实体的<strong>主观评价或判断</strong>，如"对｜妥｜行｜准"；（b）表实体在特定场合里出现的<strong>临时状况</strong>，如"牢｜匀｜稳"；（c）表<strong>临时性的身体、心理感觉</strong>，如"渴｜累｜烦｜慌"；（d）表对时间延续或空间距离的<strong>主观判断</strong>，如"远｜近｜久｜迟"<button type="button" class="cite" data-cite="class1Sem" aria-label="查看出处"></button>。这些性状往往只能与相关的事物产生临时性的联系，大都不能代表事物的稳定、固有的品质，更难以充当赖以对事物作出规约化分类的分类标准——上节给出的三个条件都不满足，故无法用来构成 DN 格式。</p>
+    <p>有意思的是，这些词中有些形式能出现在 DN 式复合词中，如"饿鬼｜饿汉｜饱汉｜大忙人"，这时其中的"饿｜饱｜忙"表示的不再是特定场合里出现的临时状况，它们在意念上已成为中心语非常本质的特征了（如"饿鬼"就是以"饿"为其基本特征的"鬼"）<button type="button" class="cite" data-cite="hungryGhost" aria-label="查看出处"></button>。在此我们再次看到形式和意义的平行性。</p>
+    <p>这些词的主干特点还在于它们的主要句法功能是作谓语，故赵元任(1968)把这类词称作"谓语性形容词（predicative adjectives）"，吕叔湘(1979)称之为"唯谓形容词"<button type="button" class="cite" data-cite="predAdj" aria-label="查看出处"></button>。在这一点上它们和区别词（非谓形容词）形成绝妙的反衬：一个只能描述特定场景里的情状而不能充任事物的稳固的分类属性，另一个则倾向于表示事物稳定的固有属性。此外，这类词带上 de 也难作定语（"？麻的手｜？紧的绳子｜？远的邮局"），若实在要将它们放在定语位置上，则须加入表特指的指量形式，如"麻的那只手"，其成分结构应分析为"[[麻的][那只]]手]"——须用特指成分去复指，这清楚地说明了这类词具有的确定指称的意蕴。</p>
+  </details>
+
+  <p class="point">绝大部分单音形容词都是第 2 类，即能和某些 N 直接组合构成 DN，但其中的 N 不能自由替换。朱德熙(1956)举了不少例子说明这种选择限制：<strong>"贵东西—贵手绢｜脏衣服—脏糖｜凉水—凉脸｜黄制服—黄汽船｜薄纸—薄灰尘｜重担子—重箱子"</strong><button type="button" class="cite" data-cite="zhu56Sel" aria-label="查看出处"></button>。这些例子的句法和音节条件多半相同，故可排除这两种因素，主要因素还是认知—语义方面的。要鉴别一个形容词能否构成 DN，可以用五种意义相关的格式：</p>
+
+  <div class="card">
+    <p class="bench-label">五格式鉴别表（朱德熙 1956 举例，张敏改制）<button type="button" class="cite" data-cite="fiveFormats" aria-label="查看出处"></button>——从左到右限制渐松，A 列（DN）限制最强。</p>
+    <table class="tbl">
+      <thead><tr><th class="l" style="width:12%">例</th><th class="l" style="width:16%">A · DN</th><th class="l" style="width:18%">b · DdN</th><th class="l" style="width:20%">c · N 是 D 的</th><th class="l" style="width:16%">d · N 很 D</th><th class="l">E · DD 的 N</th></tr></thead>
+      <tbody>
+        <tr><td class="l">(2)</td><td class="l hi">脏水</td><td class="l">脏的水</td><td class="l">水是脏的</td><td class="l">水脏乎乎的</td><td class="l">脏乎乎的水</td></tr>
+        <tr><td class="l">(3)</td><td class="l lo">*脏糖</td><td class="l">脏的糖</td><td class="l">糖是脏的</td><td class="l">糖脏兮兮的</td><td class="l">脏兮兮的糖</td></tr>
+        <tr><td class="l">(4)</td><td class="l hi">圆球</td><td class="l">圆的球</td><td class="l">球是圆的</td><td class="l">球圆滚滚的</td><td class="l">圆滚滚的球</td></tr>
+        <tr><td class="l">(5)</td><td class="l lo">*圆地球</td><td class="l">圆的地球</td><td class="l">地球是圆的</td><td class="l">地球很圆</td><td class="l">圆圆的地球</td></tr>
+        <tr><td class="l">(6)</td><td class="l hi">厚纸</td><td class="l">厚的纸</td><td class="l">纸是厚的</td><td class="l">纸很厚</td><td class="l">厚厚的纸</td></tr>
+        <tr><td class="l">(7)</td><td class="l lo">*厚雪</td><td class="l">厚的雪</td><td class="l">雪是厚的</td><td class="l">雪很厚</td><td class="l">很厚的雪</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--ink-faint)">* 号表示该形式不成立。(a)(b)(c) 式中的形容词性成分表事物的属性并都带有分类意味；(d)(e) 式含有形容词的复杂形式，都表情状，带描述意味。从左到右可观察到一个蕴含序列：左边能成立的，右边往往也能成立；右边能成立的，左边却不一定能成立。DN 式是最靠左的形式，故限制最强。这个序列提示使 DN 合法化的是层层深入的三层语义限制——违背其中任何一个条件便可造成不合法的形式，而合法的形式必须满足所有的条件。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">三条限制各自卡住了哪一对例子——点一组看它违背了哪一条<button type="button" class="cite" data-cite="condImply" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="pairBtns">
+      <button class="btn" data-pr="8">(8) 薄纸 ∶ *薄灰尘</button>
+      <button class="btn" data-pr="9">(9) 蓝墨水 ∶ *蓝天空</button>
+    </div>
+    <div class="reveal" id="pairBox" hidden><p id="pairTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>三条条件分别在哪里发力（折叠细节）</summary>
+    <p><strong>条件 (a) 属性条件</strong>要求 D 在汉语里必须能感知为 N 的一个相对稳固的品质而非临时的状态。纸的厚薄是纸本身稳固的属性，而雪的厚薄只是因下雪时间长短、降水量多少等因素而导致的临时性状态，这种状态可以用 (d)(e) 式去描述，但厚薄并不为说汉语的人认定为雪固有的属性，因此 (7c) 不大能成立；(7a)(7b) 也难成立——"厚雪"不能说，是因为它连 DN 赖以成立的最基本的条件也不能满足<button type="button" class="cite" data-cite="thickPaper" aria-label="查看出处"></button>。</p>
+    <p><strong>条件 (b) 分类属性条件</strong>要求属性能据以给 N 分出次类来。对地球而言，"圆"确实可以说是它的一个稳固的属性，这体现为 (5c) 能够成立；但 (5a)(5b) 都不大通，因为地球是一个独一无二的实体，圆即使是它的属性，也不能据以给地球分出次类来——若实在要说出 (a)(b) 式，便暗含着地球还有其他形状的（如方的、扁的）意味。同理，"冬天没有不冷的，海水没有不咸的"（吕叔湘语），故也没有"冷冬天｜咸海水"的 DN 格式。值得注意的是，构词可以没有这种限制，故有"蓝天｜绿草｜黑墨｜咸盐｜寒冬｜圆月｜红日｜大地"之类的词语——这是因为典型的 DN 式复合词中的 D 并不都是分类性的<button type="button" class="cite" data-cite="blueInk" aria-label="查看出处"></button>。</p>
+    <p><strong>条件 (c) 规约分类属性条件</strong>是最严的一条。汉语里不能成立的 DN 组合，大多数问题都出在它上面。"手"和"糖"都可以有"脏"的属性，都可出现在分类性的 DdN 构造里，但这一属性作为分类指标只是在和前者共现时才能被进一步规约化，即汉语里有一个规约性的"脏手"类，而没有一个"脏糖"类。正如"规约"一词所提示的，什么样的属性能用来对什么样的事物作出规约化的分类，这是"约定俗成"的，有时很难讲出道理来——球和西瓜一样都是圆的，但我们只有"圆球"而没有"圆西瓜"<button type="button" class="cite" data-cite="thirdCond" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <details>
+    <summary>第 3 类"全能"的八个词与语言类型学（折叠细节）</summary>
+    <p>第 3 类单音形容词能相当自由地构成 DN，这类词非常少，主要只有"<strong>大｜小｜新｜旧｜好｜坏｜真｜假</strong>"这几个（吕叔湘 1981）<button type="button" class="cite" data-cite="full8" aria-label="查看出处"></button>。说它们自由，并不是指任何在语义上能够配合的名词都能与之构成 DN，如我们能说"他脾气大"，但不能说"大脾气"。不过这样的情况还是很少的，其中的 N 往往是意义较为抽象的名词。为什么这类词能如此自由地构成 DN？本书认为，这首先可能与它们的使用频率较高有关——根据"现代汉语三千常用词表"，最常用的 50 个单音形容词中上述八个词都在其中，"大、新、好、真"的出现频率在单音形容词中都排在前 7 名之内<button type="button" class="cite" data-cite="freq9" aria-label="查看出处"></button>。不过，使用频率高与其说是原因，不如说是一种表现，真正的原因还应到认知—语义方面去找：这四对词体现了人类语言对事物从属性方面作出的最为概括的分类——空间属性上是大的和小的，时间属性上是新的和旧的，价值属性上是好的和坏的，真值属性上是真的和假的。它们对能具备这些属性的物体的先决条件的要求最少，本身较少蕴含着其他的属性，且两两相对，而二分正是最简单的分类格局，分出的类自然最容易成为规约性的类。</p>
+    <p>有意思的是，上述"全能"的单音形容词从语言类型学的角度看大多都是各语言中最核心的形容词（nuclear adjectives）。根据 Dixon(1982) 的研究，有些语言里完全没有形容词，有些语言的形容词是数量很少的封闭类，在后一类语言里这些词代表哪些属性并不是任意的，而是存在着高度的一致性：非洲的 Ibo 语只有四对形容词"大—小｜新—旧｜黑—白｜好—坏"；Dixon 统计了 20 种只含有极少量形容词的语言，"大"出现在所有 20 种语言里，19 个语言里有"小"，15 个语言里有"新"，14 个语言里有"短、旧、坏、白"，13 个语言里有"好、黑"。他由此归纳出具有普遍性的四个最典型的形容词概念范畴：度量（dimension）、年岁（age）、价值（value）和颜色（color）<button type="button" class="cite" data-cite="dixon" aria-label="查看出处"></button>。除"真、假"外，其他三组和汉语的"全能"形容词在概念上完全重合——汉语里的形容词虽不是封闭类，但上述八个词有别于其他词的特性，正可谓异曲同工地体现了人类对事物属性的认知上的共性。</p>
+  </details>
+
+  <p class="scene-foot">单音形容词的分布告诉我们：DN 的成立不取决于词类标签，而取决于 D 是否能在互动经验里充当 N 的规约分类指标。越临时、越主观、越依仗特定场合的属性，越离不开 de。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 区别词</button>
+    <button class="btn" data-jump="s5">下一场：ICM 与"脏 N" →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>ICM 与"脏 N"：理据在互动经验里</h2>
+  </div>
+  <p class="point">球和西瓜一样都是圆的，但我们只有"圆球"而没有"圆西瓜"——DN 组合看似是"熟语性"的、毫无理据的。对熟语性组合的研究恰好是认知语言学的一个特长：Cooper &amp; Ross(1975) 提出"语言凝结体（linguistic freezes）"的概念以来，这方面的研究成果甚丰，它们显示熟语性组合之下往往存在着认知上的理据<button type="button" class="cite" data-cite="freezes" aria-label="查看出处"></button>。本书认为，某种属性之所以能充任某种物体的规约化分类标准，并不完全取决于客观的语义条件，而常常取决于非客观的认知上的条件，并受制于特定社会文化环境中日常经验的模式。分析思路可概括为三个要点<button type="button" class="cite" data-cite="icmPoints" aria-label="查看出处"></button>：</p>
+
+  <div class="card">
+    <p class="bench-label">ICM 分析三要点<button type="button" class="cite" data-cite="icmPoints" aria-label="查看出处"></button></p>
+    <p style="margin:0">（10）i. 某事物 N 的属性 D 在相关概念结构中的地位取决于认知者（说话人）与此事物<strong>互动行为的模式</strong>；ii. 互动行为的模式可用特定的 <strong>ICM</strong>（理想化认知模型）描述；iii. 能够形成 DN 的属性 D 必须是特定 ICM 里与互动行为相关的<strong>显著属性</strong>，或曰显著的互动属性（salient interactional properties）。</p>
+  </div>
+
+  <p class="point">传统的分析路子只着眼于作为客体的事物和属性（球是圆的，西瓜同样也是圆的），却忽视了作为认知主体的人——对认知者而言，球的圆和西瓜的圆并不相同。相同的某个属性依附在不同物体之上时，物体背后的互动行为模式或认知路径的相异往往使得这个属性具有大相径庭的认知地位。一个独立的例证是：桌子、床、椅子客观上都具有"三维"的空间属性，但在日常生活中和它们打交道时，就其使用者而言这些东西在互动中的显著属性常常是<strong>二维的</strong>（即平面的）——我们在桌面上写字吃饭，在床面上睡觉，我们用椅子的座板支撑臀部。这种互动中有意义的显著属性很清楚地形之了自然语言的编码方式：英语可以说 "on the table, on the bed, on the chair"，汉语说"桌子上、床上、椅子上"而不说"*桌子里、*床里、*椅子里"，而跟量词"张"搭配的名词常具有"平面"的属性（"一张纸｜床单｜地毯"），桌子、床、椅子搭配的也是"张"<button type="button" class="cite" data-cite="tableBed" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">圆西瓜 vs 圆球——点一组看"圆"在两种互动模式中的不同地位。</p>
+    <div class="btn-row" id="roundBtns">
+      <button class="btn" data-rd="melon">(11) *圆西瓜</button>
+      <button class="btn" data-rd="ball">(12) 圆球</button>
+    </div>
+    <div class="reveal" id="roundBox" hidden><p id="roundTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">西瓜和球都可以具有相当稳固的"圆"的属性，这个属性也可对它们进行临时性的分类（体现为 DdN 能够成立）。但在它们与人的典型互动关系中，"圆"属性的概念地位完全不同：人与球互动时，圆属性在认知上是显著的，因为它在互动模式中起着关键性的作用；相反，人与西瓜的典型互动关系是前者食用后者，故后者的圆的属性在这种关系中几乎毫无意义。不过，尽管球的形状属性在人—球互动行为中是显著的，我们同样不能说"椭圆球、扁球"——最主要的原因是，"圆"被看作是球的<strong>缺省（default）属性</strong>，即球在正常情况下通常是圆的，通过范畴化过程中以偏概全的转喻效应，"圆"作为球的原型属性丧失了原本具有的区别性，其潜在的分类性在很大程度上就被中和了。DN 的词汇化程度越高，D 的分类性就越弱——《现代汉语词典》收录了"圆球"而未收录明显具有分类性、对比性的"大球、小球"<button type="button" class="cite" data-cite="defaultRound" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">标记性也能决定 DN——点一组看"生/熟"和"男/女"与事物的关联偏向。</p>
+    <div class="btn-row" id="markBtns">
+      <button class="btn" data-mk="ripe">(13) 生西瓜 ∶ 熟西瓜</button>
+      <button class="btn" data-mk="gender">(14)–(16) 男 N ∶ 女 N</button>
+      <button class="btn" data-mk="life">死 N ∶ 活 N</button>
+    </div>
+    <div class="reveal" id="markBox" hidden><p id="markTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">Croft(1990、1991) 提出的"关联的标记性"概念指出：共存于单个词、短语或构造里的不同范畴，其取值的组合有的是无标记的，这种无标记的关联又称作"自然关联（natural correlation）"，它定义出的是原型的情形。本书将这个观念扩展到概念结构的分析：若某事物可与相对立的一对或一组属性建立关联，而其中又有一个属性最频繁地与此事物相系，并被看作此事物的缺省属性或原型属性，则这一关联是无标记的，其他属性与此事物的关联则是有标记的<button type="button" class="cite" data-cite="croftMarked" aria-label="查看出处"></button>。在人与瓜果的典型互动行为模式里，"熟"属性与事物的概念关联是无标记的，而"生"属性则是有标记的——这可以由"这香蕉是熟的"往往含有对比、强调、辩解之类的意味，而"这香蕉是生的"则没有这类含义检验出来。</p>
+
+  <p class="point">以人的性别属性为例，当男女性别与特定社会角色并无显著的关联偏向时，"男 N""女 N"往往都能成立；但按一般的认知模式（Lakoff 所说的"老套 stereotype"），相当多的社会角色被看作是仅由或通常由男性充任的，如英雄、战士、将军、国王、强盗、流氓等。也就是说，"男"属性与这些事物之间的概念关联是无标记的、原型性的，而"女"属性的关联是有标记的、非原型的——这时能说的往往是"女 N"，而"男 N"不大能成立。当然，也有与"女"存在无标记关联的事物，这时"女 N"不能成立而"男 N"能成立（如"男保姆｜男妓"）；但总的来说"男"直接构成 DN 的能力远远低于"女"，这是社会上根深蒂固的"男性中心"（即"原型的人是男人"）的认识倾向的体现<button type="button" class="cite" data-cite="gender" aria-label="查看出处"></button>。</p>
+
+  <div class="card">
+    <p class="bench-label">标记性逆转现象 (17)<button type="button" class="cite" data-cite="markReverse" aria-label="查看出处"></button></p>
+    <p style="margin:0">若属性 D₁ 和 N 之间的关联是<strong>无标记</strong>的，D₂ 和 N 的关联是<strong>有标记</strong>的，则 D₁N 若能成立，它在意义上是有标记的，而 D₂N 则是无标记的。以"死、活"为例：对一般的动物和人类而言，"活"是正常的、缺省的无标记属性，故我们可以很自由地说"死人、死兔子、死猪、死鸽子"；但相应的"活人、活兔子"则较少使用，若说出来往往带有额外的对比、强调意味。这种现象在汉语里非常普遍，例如我们可以说"未婚妈妈"，但相应的"？已婚妈妈"只能在表对比时才能成立。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">"脏 N"的两组例子——点一组看 ICM 如何决定它们的成立。</p>
+    <div class="btn-row" id="dirtyBtns">
+      <button class="btn" data-dt="a">(22a) 脏衣服 · 脏碗</button>
+      <button class="btn" data-dt="b">(22b) *脏糖 · *脏书</button>
+    </div>
+    <div class="reveal" id="dirtyBox" hidden><p id="dirtyTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">下面两组形式里，所有物体都可以与"脏"的属性产生关联（都可以说成"N（弄）脏了"或"N 是脏的"），不过只有 (22a) 里的 DN 才能成立。(22a) 之所以能够成立，是因为其中"脏"的性质在人们与相关物品的互动行为模式中占据着显著的地位。由于"脏"是事物 N 的一个易变的属性，对它的认知因而更加依赖于与 N 相关的某个高度规约化的互动行为模式：若此属性的存在与否直接影响到相关的互动行为、若对此属性的判断存在着来自相关互动行为的明确标准、若消除此属性也依照一套规约程度较高较固定的行为模式，那么，此属性就应该是显著的<button type="button" class="cite" data-cite="dirtyIcm" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">(23) 概括可变属性—事物关系的"场景 ICM"——点一条看它在"脏衣服"里如何落实。</p>
+    <div class="btn-row" id="icmBtns">
+      <button class="btn" data-ic="1">a · 互动前要求干净</button>
+      <button class="btn" data-ic="2">b · 互动有周期性</button>
+      <button class="btn" data-ic="3">c · 互动后必然变脏</button>
+      <button class="btn" data-ic="4">d · 变脏后必须先去脏</button>
+      <button class="btn" data-ic="5">e · 去脏遵循固定模式</button>
+    </div>
+    <div class="reveal" id="icmBox" hidden><p id="icmTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">就 (22a) 而言：人与衣服及碗筷的原型性互动行为是人穿衣服、吃饭时用碗筷，我们预期或要求衣服和碗筷在被穿和被用之前应该是干净的；而经过一轮互动行为，即穿过、用过之后，衣服、碗筷必然会被认为带上"脏"的属性。在此必须区分作为状态的相对的"脏"和作为属性的绝对的"脏"——试比较"脏衣服—干净衣服"和"脏兮兮的衣服—干干净净的衣服"。作为属性，"脏"存在着一个最严格的判断标准，即衣服、碗筷经过一轮互动行为之后便可归入"脏"类，哪怕它们其实并不算太肮脏："脏衣服"等于是说"穿过一轮的衣服"。此外，脏衣服、脏碗筷必须在清洁之后才能再穿或再用，"洗衣服""洗碗筷"在说汉语的人的心目中是相当固定、高度规约化的，可以说构成一个整合程度较高的行为格式塔。相比之下，(22b) 里的物体和"脏"的关系偏离上述 ICM 甚远：糖如何获得这一属性并没有一定的模式，更不是原型的互动行为（人吃食物）的结果；带上脏属性的食物如何去除这一属性也没有约定的行为模式；食物更没有周而复始地由脏到干净又由干净到脏的典型过程<button type="button" class="cite" data-cite="dirtyIcm" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>"脏 N"的可接受性有程度差别（折叠细节）</summary>
+    <p>"脏 N"在可接受性上存在一定的差别，而其可接受的程度正好与事物—属性关系契合上述 ICM 的程度成正比。吕叔湘(1981) 曾指出，虽然"脏衣服"可以说，但"'脏鞋'却不能说。我们觉得"脏鞋"的说法虽然别扭，但还能勉强接受——这是因为它们比"脏糖"之类更贴近 ICM（其"脏"属性都是由人与 N 的原型性互动行为造成的），但在某些关键方面仍有偏离：第一，"衣服、袜子"等与人的互动行为的周期性比较明显，经过一轮（甚至一次）穿着就被视为脏的，两轮互动行为之间存在着一个规约程度较高的"换洗"行为模式；而"鞋、棉袄、大衣、被子"等极少有用过一次就被当作脏的放在一边等待清洗的情况<button type="button" class="cite" data-cite="dirtyGrad" aria-label="查看出处"></button>。第二，去掉"鞋、棉袄"之类衣物的"脏"属性的行为也没有一个规约程度高的固定模式（擦鞋？洗鞋？刷鞋？）。</p>
+    <p>还有一类反直觉的现象："？脏象牙筷子""？脏瓷碗""？脏丝袜"在音节长度上与"脏筷子、脏碗、脏袜子"并无不同，却不大能说。McCawley(1992) 曾引述蒋自新注意到的一个类似现象，即"一杯好酒"可以说，但随着 DN 里第二个成分长度的增加，整个形式的可接受性逐渐减弱。本书认为，这或许能从"基本层次范畴"的理论中找到答案："碗、筷子、衣服、袜子"等都是基本层次的概念，在这个层次上的范畴成员可引起人们在行为上大致相同的运动反应，即所涉及的互动行为具有较一致的模式；而对"瓷碗、丝袜"等物品我们却不存在有别于"洗碗、穿袜子"的规约行为模式，因此"脏瓷碗、脏丝袜"等难以形成一个稳固的次范畴<button type="button" class="cite" data-cite="basicLevel" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <div class="card taped">
+    <p class="bench-label">同样思路还能解释——点一组看"显著互动属性"如何决定空 N、凉 N、重 N。</p>
+    <div class="btn-row" id="propBtns">
+      <button class="btn" data-pp="1">(28) 空 N</button>
+      <button class="btn" data-pp="2">(29) 凉 N / 冷 N</button>
+      <button class="btn" data-pp="3">(30) 重 N</button>
+    </div>
+    <div class="reveal" id="propBox" hidden><p id="propTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">(28) 提到的物体都可以是空的，因此都可算作广义的容器；不过只有"空碗｜空瓶子｜空口袋｜空书包｜空房间"里的物体才可称作"原型的容器"，它们最主要、最显著的功能就是容纳，人们与它们原型性的互动行为就是用其他物品去填充它们或将这些物品从中取出，而且正常情况下我们期待它们不是空的。对"空山洞｜空汽车｜空飞机"而言，涉及它们的原型性互动行为并不仅仅是填充或取出——汽车、飞机和人的原型互动行为是"人驾驶或乘坐它们"，尽管在被使用时它们都有容纳的作用，但其主要功能是传输而非容纳，试比较相应的"空车厢、空机舱、空船舱"<button type="button" class="cite" data-cite="emptyN" aria-label="查看出处"></button>。(29) 里的"水"之所以能按"凉、冷、热"分出规约的类，是因为无论人和水有什么样的互动关系（喝水、用水洗涤等），都会涉及热感器官和水的直接接触；而"脸、手"和人的原型互动行为并不涉及热感器官与它们的必然接触，故不能由非显著的"凉、冷、热"属性分出规约的次类<button type="button" class="cite" data-cite="coolN" aria-label="查看出处"></button>。(30) 里的例子可接受性有三个等级："重担子"最好，"？重箱子"其次，"？重书架"最差——因为"重"属性在涉及这些物体的原型互动行为模式中地位不同：人和担子的唯一的互动行为模式是"人挑担子"，在这个模式中人一定会感受到其重量方面的属性<button type="button" class="cite" data-cite="heavyN" aria-label="查看出处"></button>。</p>
+
+  <p class="scene-foot">上述讨论只是举例性的说明，但足以显示 DN 格式的形成限制来源于认知—语义层面——这里的语义并非能抽离认知背景的客观的词语意义，而是处于更高一个层次的、蕴含在人与环境的互动关系以及人对世界的认知方式之中的语义。我们相信，最终的一条总原则一定是距离象似原则：分类属性和事物的概念距离比情状或一般属性更近，而显著的规约分类属性和事物的距离又近于一般的分类属性。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 单音形容词三类</button>
+    <button class="btn" data-jump="s6">下一场：双音形容词 →</button>
+  </div>
+</section>
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>双音节形容词：动因竞争与非空解释</h2>
+  </div>
+  <p class="point">单音形容词多半是原型的甲类形容词，它们构成 DN 的认知—语义条件比较明显。双音形容词既非原型的甲类，也非原型的乙类，所以情况复杂得多。我们面临的最大的困难是，双音 D 构成的 DN 似乎并不都符合前面作出的语义描述：<strong>"漂亮姑娘"</strong>里的"漂亮"完全可以看作是给姑娘分出规约类的一种分类属性，但<strong>"辉煌成就"</strong>里的"辉煌"则很难说具有这种分类意义，我们没有"不辉煌的成就"之类的说法——"辉煌"在此甚至不像成就的一种属性，而更像一个状态。按照前述的距离象似原则，此处的 de 不应隐去才是<button type="button" class="cite" data-cite="dsHard" aria-label="查看出处"></button>。</p>
+
+  <p class="point">本书认为，上述例外情况并不是对象似原则的否定，它的出现应该是由于其他因素对象似动因的<strong>干扰和覆盖</strong>。具体说，在此起扰乱作用的主要是<strong>语体因素</strong>：口语体的双音形容词和名词组合成的 DN 多半符合前面的描述；书面语色彩较强的 DN 组合则往往不符。另一个需要考虑的因素是<strong>音节数目</strong>。孤立开这些因素，DN 组合能否成立的规律就清楚多了<button type="button" class="cite" data-cite="dsReason" aria-label="查看出处"></button>。</p>
+
+  <details open>
+    <summary>6.4.1 双音形容词和单音名词组合：两条原则（展开看）</summary>
+    <p>吕叔湘(1963) 指出，这类组合一般都带 de，如"容易的字｜可笑的人｜普通的水｜现成的车"；可以不带 de 的，名词往往限于"人｜事儿｜话"等少数几个<button type="button" class="cite" data-cite="lv63" aria-label="查看出处"></button>：</p>
+    <p>（1）普通人｜一般人｜老实人｜规矩人｜聪明人｜明白人｜糊涂人｜有钱人｜年轻人｜机灵人<br>（2）要紧事儿｜新鲜事儿｜稀奇事儿｜麻烦事儿｜便宜事儿｜危险事儿｜正经事儿<br>（3）老实话｜客气话｜漂亮话｜现成话｜糊涂话｜实在话｜正经话｜外行话｜晦气话｜俏皮话｜下流话<br>（4）笼统的话｜悲观的话｜豪迈的话｜片面的话｜鲁莽的话｜尖刻的话｜难堪的话｜连贯的话</p>
+    <p>上面 (1)–(3) 里的 DN 都是口语体的形式，其形成限制大体和单音形容词一节所述的相同，必须同时满足两条原则性的要求：<strong>其一，DN 中的 D 带上 de 必须能够替代整个定中结构</strong>，即所谓可省略中心名词（"糊涂人—糊涂的｜有钱人—有钱的"）——这条限制实际上等于是说，D 必须具有分类性；<strong>其二，D 所代表的属性应该出现在汉语里事物 N 的规约分类模式中</strong>——(1) 里的各形式反映了汉语里"人"的规约性类别，(3) 里的某个"话"也都是汉语里规约性的某类话，(4) 里的则不是。上述这两条原则正是总的象似原则的反映<button type="button" class="cite" data-cite="dsRules" aria-label="查看出处"></button>。</p>
+    <p>值得一提的是，"人｜事儿｜话"之所以能与较多的双音形容词组合，其中恐怕也有认知上的原因：它们代表了人在与其所处环境互动的过程中最需要分类的三种最根本的事物——一是主体（人），一是主体的所言（话），一是主体的所行（事儿）<button type="button" class="cite" data-cite="renShiHua" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <div class="card taped">
+    <p class="bench-label">6.4.2 双音形容词和双音名词组合——点一组看语体如何改变规律。</p>
+    <div class="btn-row" id="dwBtns">
+      <button class="btn" data-dw="5">(5) 纯口语 DN</button>
+      <button class="btn" data-dw="6">(6) 书面 · 分类性</button>
+      <button class="btn" data-dw="7">(7) 书面 · 例外</button>
+    </div>
+    <div class="reveal" id="dwBox" hidden><p id="dwTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>分类性与描写性的形式鉴别（折叠细节）</summary>
+    <p>范继淹(1979) 把限制性改称区别性，认为能分类的都具有区别性，不能分类的则具有描写性；区别性的 DdN 中的 N 可省，描写性的则不可省。黄国营(1982) 提出一条形式上的鉴别方式，即"形 de 名"可变换为"不形 de 名"的，定语为区别性，中心语可省——如"正确的观点"可变换为"不正确的观点"，也可说"正确的"；"辉煌的成就"不可变换为"不辉煌的成就"，也不能单说"辉煌的"<button type="button" class="cite" data-cite="huang92" aria-label="查看出处"></button>。这的确是一个很管用的鉴别式，但若拿原型的区别性定语（单音形容词）和描写性定语（状态词）去测试，便可发现它也会错误地滤掉一些区别性定语：少数区别性定语尽管能带 de 省中心语，却也通不过这一变换（如"*不生的黄瓜｜生的""*不蓝的（墨水）｜蓝的""?不脏的（衣服）｜脏的"）。看来这一形式分别最终还是得落实到"分类性"这个语义特性上——具有分类意义的属性 X 在多数情况下可以将 N 分为"X 的"和"不 X 的"两大类，但有时 N 的分类模式不是将 X 和非 X 加以分别，而是将成对的 X 和 Y 加以分别（如"生的"区别于"熟的"），有时则是在成系列的属性间加以区分（如"墨水"分为"蓝的、红的、黑的"）。</p>
+  </details>
+
+  <details>
+    <summary>为什么 (7) 是例外而不是反例：动因竞争与非空解释（折叠细节）</summary>
+    <p>Haiman(1985a) 指出，自然语言的形式不可能、也不应该具有百分之百的象似性，因为一个具有高度象似性的系统往往会臃肿不堪，难以高效率地发挥作用；同时，语言里各种类型的动因常常处于竞争状态之中（DuBois 1985），而象似动因最大的竞争对手便是语言的经济性动因。回到 (7)，例外形式之所以多出现在书面语里恐怕不是偶然的：经济原则在书面语里的要求往往大于口语，现代汉语双音化的倾向在书面语里体现得比口语更为明显，经济动因的作用加上音节构造的压力，很容易在书面语里造成大量隐去 de 的四音节构造。至于这种例外形式里哪些能隐去 de，似乎与组合的常见程度有关——"伟大领袖｜？伟大祖国｜？伟大人民"，头一个例子的可接受性之所以最高，恐怕与近几十年来"伟大"在正式用语中常用来修饰"领袖"有关<button type="button" class="cite" data-cite="dsReason" aria-label="查看出处"></button>。</p>
+    <p>袁毓林(1994) 曾批评认知功能语法往往在一种解释行不通时便推给另一种解释。本书的回应是：基于动因竞争的具体解释并非是主观随意的，而是有着充分的证据和明确的条件。Croft(1990) 指出，对同一现象换用两种不同的解释原则而又无法提出换用的条件，这样的解释才是"空解释"；为避免空解释，必须对竞争的动因明确提出适用的条件。上述解释中，经济动因覆盖象似动因有较明确的范围——主要作用于书面语体形式，且只限于双音形容词和双音名词的组合，也就是说，(6)(7) 里的形式之所以不带 de 都应归于经济原则而非象似原则的作用，不管其定语是否具有分类性。证据是：作为经济原则作用的结果，DN 和 DdN 之间并无明显的概念差别，"独特风格"很难看作"风格"的一种，整个形式不带称谓性；而非书面语体的原型 DN（如"白纸""聪明人"）带 de 不带 de则有明显的概念上的对立<button type="button" class="cite" data-cite="nonvacuous" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">另一批双音形容词——"随便｜好看｜难过｜近乎｜含糊｜孤单｜周到｜糟糕｜显眼｜有用｜可惜｜可笑｜容易｜听话"——跟任何名词都不能直接构成 DN，它们最常出现的句法位置是谓语的位置，说明它们有很强的述谓性。这又一次印证了称谓性与述谓性呈互补格局的分析。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← ICM 与"脏 N"</button>
+    <button class="btn" data-jump="s7">下一场：动词定语 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>动词定语：表属性而非报道事件</h2>
+  </div>
+  <p class="point">汉语动词及动词短语一般不能直接作定语，若要置于定语位置往往须带 de，如"吃的东西""打架的学生"。不过，有些动词性成分（其中不少是所谓名动词）在一定条件下可以直接作定语。下面的 DN 只有少数不能换为 DdN，如"驾驶学校"；或换为 DdN 后所指与 DN 不大一致，如"出租的汽车、滚动的轴承"不一定等于"出租汽车、滚动轴承"。大多数的 DN 都能换为 DdN 而基本意义保持不变（"理发工具"就是"理发的工具"），二者的差别主要是整体的<strong>称谓性</strong>和定语<strong>述谓性</strong>的有无——不带 de 的形式更像一个整合性很高的类名（"煎鸡蛋"是个菜名，而"煎的鸡蛋"不是）<button type="button" class="cite" data-cite="verbEx" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两类动词定语——点一类看它们为什么不带 de。</p>
+    <div class="btn-row" id="verbBtns">
+      <button class="btn" data-vb="1">(1) 单音动词</button>
+      <button class="btn" data-vb="2">(2) 双音动词／动宾</button>
+    </div>
+    <div class="reveal" id="verbBox" hidden><p id="verbTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">长期以来汉语语法学家在归纳词类特性时总是说"汉语动词性成分不能直接作定语"，但 (2) 里的例子显示双音节的光杆动词（以及双音节的动宾构造）直接作定语的情况相当普遍，(2) 其实是一个近乎开放的清单中的一小部分，因此上述说法并不准确。我们在第二章介绍过 Hopper &amp; Thompson（1984）有关名词、动词的语法特性与语义、功能因素之间关系的一项研究：动词在语义上越是表具体可见的实际动作，在话语功能上越是用于报道特定场景中真实地发生在动作参与者身上的事件，它的动词性就越强；反之，就具有越少的原型动词形式特性。这项研究对我们的启示是：动词的形式特性及其实现的能力主要取决于其概念—功能属性<button type="button" class="cite" data-cite="hopthomp" aria-label="查看出处"></button>。</p>
+
+  <p class="point">再回过头来看汉语里到底什么样的动词性成分能够或不能直接作定语，其中的理据就非常清楚了：绝对不能直接作定语的是小句及含时体标记的复杂的动词性成分，它们必须带 de，如"昨天买的书""洗过一次的衣服"——从语义内容和话语功能上看，这些形式几乎都是用来报道涉及参与者的实际行为或事件，而定语在概念上是表中心语代表的事物的某种广义的属性（attributes），其动态特性自然而然地禁止它们直接作定语；带上名词化标记 de 后这些形式都指称事物，因此能以两类事物所指之交集的方式构造出一个新的事物类。而 (1)(2) 里能直接作定语的动词，它们的功能根本就不是报道特定场景中实际发生的事件，而是表达事物在某方面的属性——(1) 里的单音动词都不确指语境中的某个动作，"煎、炒"并不是实指发生在特定时空中的煎、炒动作，而是表示食物的烹饪方式；无法表示事物的定义性属性的单音动词，即使不含任何动态特性，如"是、有、姓"，也不能直接作定语。在这一点上看，直接作定语的动词与区别词颇为类似<button type="button" class="cite" data-cite="verbReason" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">"洗澡水｜洗脚水｜*洗手水"——点一组看盥洗模式如何决定分类。</p>
+    <div class="btn-row" id="washBtns">
+      <button class="btn" data-ws="1">洗澡水 · 洗脚水</button>
+      <button class="btn" data-ws="2">*洗手水</button>
+    </div>
+    <div class="reveal" id="washBox" hidden><p id="washTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>语体因素：驾驶技术 vs 开车技术（折叠细节）</summary>
+    <p>这类 DN 的形成限制还可以从音节、语体角度分析。首先，单音节动词直接作定语的能力和数目都远远小于双音节动词，双音节动词又以与双音节名词组合的居多。从语体特征上看，书面语色彩较强、正式用语里的动词更容易构成 DN："驾驶技术"就比"开车技术"更常见，可以说"用餐地点"，却不大说"吃饭地点"，类似的对比还有"发言提纲—讲话提纲""工作效率—干活效率""作战能力—打仗能力""节能汽车—省油汽车""捐款方式—捐钱方式"等等。上面两个因素的作用范围其实是大致叠合的：单音动词多为口语体，书面语则多用双音动词，两两组合的四音节形式更带有明显的书面色彩<button type="button" class="cite" data-cite="verbStyle" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">排除音节和语体因素后，起决定性作用的还是概念因素：能直接作定语的动词性成分表达的是事物的属性，必须带 de 的表达的是事件。这条界线与 Hopper &amp; Thompson 揭示的动词性强度完全对应。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 双音形容词</button>
+    <button class="btn" data-jump="s8">下一场：名词定语 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景八 ============ -->
+<section id="s8" data-scene="8">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="八" aria-hidden="true"></span>
+    <h2>名词定语：属性与领属的对立</h2>
+  </div>
+  <p class="point">下面讨论名词两两组合构成的 DN，我们记为 N₁N₂。除去非原型性的类（N₁ 表比喻的"铁的纪律"、准定语如"张三的篮球"、N₁ 表施事的如"上级的支持"），可以看到汉语名词不带 de 作定语是相当自由的。从语义关系上看，它们分为六类，而在构成 DN 的能力方面明显分为两类：(1)–(5) 为一类，作定语可以或一定不带 de；(6) 为另一类，必须带 de<button type="button" class="cite" data-cite="nnEx" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">名名组合的六类语义关系——点一类看例子。</p>
+    <div class="btn-row" id="nnBtns">
+      <button class="btn" data-nn="1">(1) 材料质地</button>
+      <button class="btn" data-nn="2">(2) 功能用途</button>
+      <button class="btn" data-nn="3">(3) 职业身份</button>
+      <button class="btn" data-nn="4">(4) 产地来源</button>
+      <button class="btn" data-nn="5">(5) 方面属性</button>
+      <button class="btn" data-nn="6">(6) 领属关系</button>
+    </div>
+    <div class="reveal" id="nnBox" hidden><p id="nnTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">第一类里面又有两种情况：一是 de 可有可无的，即表材料质地的 (1)、表其他属性的 (5b)；一是一般不带 de 的，即表功能用途的 (2)、表职业身份的 (3)、表一般属性的 (5a)，这类例子不少可看作复合词。从类的角度说，这些语义类的定语都有能力构成 N₁N₂，其中的 N₁ 无疑是 N₂ 的分类指标，整个构造是一个典型的类名。从例的角度说，哪些 N₁ 能跟哪些 N₂ 直接组合仍有一定的限制，不过跟形名组合相比，限制要小得多——其中几乎没有选择限制的是表质料的类，几乎任何"木头的 N"都可去掉 de 形成"木头 N"。有一定限制的反而是那些不能带 de 的类，如职业身份类、功能用途类等：可以说"体育老师（即教体育的老师）"，但不能说"体育学生（即学体育的学生）"<button type="button" class="cite" data-cite="nnTwo" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">朱德熙 (1957) 的经典对立——点一组看带 de 不带 de 造成的语义差别<button type="button" class="cite" data-cite="zhu57" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="zhuBtns">
+      <button class="btn" data-zt="7">(7) 带 de · 领属</button>
+      <button class="btn" data-zt="8">(8) 不带 de · 属性</button>
+    </div>
+    <div class="reveal" id="zhuBox" hidden><p id="zhuTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">用朱德熙(1957)的话说，(7) 里的定语都"表示领属关系"，(8) 都"表示某种性质"。这向我们提示，(1)–(5) 里定语的意义都可概括为"中心语的某种属性"，即分别表示中心语事物在质料、功能、身份、来源等方面的属性；这些属性对中心语代表的事物而言都具有分类意义，可据以分出规约性的类，故一般都可直接构成 DN。和形容词表示的属性相比，名词表示的属性往往是更稳固、更客观、更本质的——这恰好也说明了为什么名词不带 de 作定语比形容词自由得多的原因。而 (6) 所代表的领属类不能直接修饰名词，其形式特点之下显然也有充分的认知理据：事物的属性在概念上往往是其不可分的一部分，而能据之以分类、并且分出的类是事物普遍接受的规约类的属性，它们与事物的概念关系自然会更加紧密；相比之下，领有者和他所拥有的物体，不管是所谓可让渡的（如"钢笔"）还是不可让渡的（如"耳朵｜妹妹｜脾气"），都必须被感知为两个独立的个体，二者之间有一条明确的界线，即主客的对立，否则谈不上领属关系，故其间的概念距离相对较大<button type="button" class="cite" data-cite="nnPoss" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">类型学旁证——点一组看其他语言如何以形式距离区分领属与属性<button type="button" class="cite" data-cite="witt" aria-label="查看出处"></button><button type="button" class="cite" data-cite="tolai" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="typeBtns">
+      <button class="btn" data-ty="en">英语 (9)(10)</button>
+      <button class="btn" data-ty="tolai">Tolai 语 (11)</button>
+    </div>
+    <div class="reveal" id="typeBox" hidden><p id="typeTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">Seiler(1978) 认为，限定关系一般可以分为两个主要类型，即<strong>专化所指</strong>（specifying a reference）和<strong>表征概念</strong>（characterizing a concept）：前者的功能主要是确定指称的对象，因而它主要作用于中心语概念的外延；后者的主要功能是增加概念的内容，它主要作用于概念的内涵。从类型学的角度看，在不少语言里前者往往用组合性更强的方式编码，后者则往往用粘合性更强的方式。我们所讨论的属性定语和领属定语所分别代表的正是这两类不同的限定关系——桌子不管是谁的都是桌子，这个概念本身丝毫未受影响，区别只是在于它指的是哪张桌子；若加上"木头—大"之类的修饰语，概念的内容就不同了<button type="button" class="cite" data-cite="seiler" aria-label="查看出处"></button>。汉语、英语、Tolai 语这些既无亲缘关系又无地域关系的语言在编码领属关系时，其结构成分的语言距离都比属性构造中的大，若我们承认这不是巧合，则其中必有认知上的理据。</p>
+
+  <details>
+    <summary>本章小结：定语三大类型（折叠细节）</summary>
+    <p>综上所述，至此我们已初步回答了第五章提出的问题。我们可以肯定地说，距离象似动因在汉语定中结构的表层构造里有明确的反映，它体现在 de 字的隐现之上。汉语里由形容词、区别词和名词所充任的定语在语义上可概括地分为<strong>三大类型</strong>：1) <strong>表情状的</strong>，由复杂形式的形容词（包含状态形容词、形容词短语及部分双音性质形容词）构成；2) <strong>表属性的</strong>，由简单形式的形容词（包含单音形容词及部分双音性质形容词）、区别词和名词构成；3) <strong>表领域的</strong>，由名词和代词构成<button type="button" class="cite" data-cite="sum3" aria-label="查看出处"></button>。</p>
+    <p>从整体上说，表属性的定语大多有能力直接修饰中心语，亦即 de 可以隐去，促动这一形式特性的是认知语义上的因素，即这类定语多可充任中心语的规约分类指标，故定中之间的概念整合程度高，距离较小。这一类里那些不能构成 DN 的例，问题大都出在 D 因认知模式的限制而不能充任 N 的规约分类指标。表情状及表原型领属关系的定语都必须带 de 作定语，促动因素同样是认知语义方面的，即这些定语表达的概念和中心语概念之间距离较大——情状与事物之间的概念距离因其关系的不稳固性而较大，领属者与领属物之间的概念距离因各自的独立性而较大。</p>
+  </details>
+
+  <details>
+    <summary>本章附注（折叠细节）</summary>
+    <p>① 这里的规律只适用于定中结构单说的情况，在口语中，指示代词非单说时可直接修饰名词（如"这人"）。另外，有些领属语后面不必带 de，如"我妹妹"，这个问题会在第七章讨论。</p>
+    <p>② "我妹妹"之类领属构造不是反例，这个问题会在第七章讨论。</p>
+    <p>③ 以下若非特别指明，"形容词"仅指甲类形容词。</p>
+    <p>④ 人们往往把表示主观量的"多、少"也归入这类形容词（张宝林 1996），它们的确不能直接作定语（如不能说"多人""少书"），只能作谓语（如"僧多粥少"）。不过，带上修饰语之后它们反倒能够作定语了，如"很多人、不少书"——朱德熙(1982) 认为"很多、不少"带有体词性，跟数量词的功能相当。汉语里的数词不能直接与名词结合，必须带上分隔成分（即量词）才能作定语；在这一点上"多、少"的表现完全相同，它们带上分隔成分（这里是副词）就和数量词一样能作定语了。之所以说副词在此是分隔成分，是因为其结构为"[[很]多]书"，"很"的分隔作用与"[[一]本]书"里的量词相当。</p>
+    <p>⑤ 吕叔湘(1966) 也举了不少例子，除了"短头发／短辫子"这类 DN 词组之外，还有一些复合词的例子，如"闲工夫｜远道｜近道"等。由于复合词内部构造的限制涉及到更多的因素（如历史因素），我们的讨论对象只限于一般所说的 DN 短语，即能用 de 扩展的形式。</p>
+    <p>⑥ 必须指出的是，并非所有能成立的 (a) 式都能自由转换为右边的其他各类格式。我们在 5.2.3 小节就举过许多例子，如"老朋友、大学者"之类，它们转成 (b)–(e) 中的任何一种格式都很困难。这类例子的词汇化程度比一般的 DN 要高，它们和典型的 DN 复合词一样不能用这里的五种格式加以鉴别。能够用它们来鉴别的形容词至少应可进入 (d)(c) 式。</p>
+    <p>⑦ 英语也说 in the chair、in (the) bed 等。有趣的是，这些形式更多地用于非空间的意义；当它们用于空间意义时，in the chair 的说法往往限于 chair 是指有扶手的椅子时，而 in the bed 之所以能说，恐怕与西式的床常常是软垫的有关。</p>
+    <p>⑧ 这并不是说西瓜的形体特征完全无法取得显著的地位，例如，当提到果农培植出的一种新的方形西瓜品种时，"圆西瓜""方西瓜"之类说法在这种特定场合里的可接受性就大大增加。不过，即使在这种情况下，更加自然的说法应是"圆形西瓜、方形西瓜"。</p>
+    <p>⑨ 何克抗、李大魁主编《现代汉语三千常用词表》，北京师范大学出版社，1987。</p>
+    <p>⑩ 为什么"真、假"不包含在内，原因还不清楚。</p>
+    <p>⑪ DN 组合到底是口语体还是书面语体其实很难划出绝对的界限。我们在此所用的判别方法是看某个形式在极少受到书面语影响的说话人（如未受过多少教育的北京籍老人）口里是否能很自然地说出来，若能，就看作纯口语形式，否则就是带一定书面语色彩的形式。</p>
+    <p>⑫ 需要补充说明的是，由于书面语体和非书面语体的界线并非整齐划一，因此两种动因的作用范围是以原型为中心的。例 (7) 里的形式的原型性高于例 (6)。</p>
+    <p>⑬ 表面上看，非书面语体的 DN 组合符合象似动因的要求，它由于少了一个 de，因此似乎也同样满足经济原则的要求。其实不然。de 在这种组合中的隐去只是象似原则单独作用的结果，根本就与经济原则无关。证据是，若有经济原则作用于其间，带 de 不带 de 应无"称谓性／非称谓性"等概念上的对立（正如"我那本新书"和"我的那本新书"没有这种对立），但非书面语体的 DN 和 DdN 确有这些方面的对立。</p>
+    <p>⑭ 这里之所以说"狭义的复合词"，是因为我们把不带 de 的定中构造都看作复合名词。参见第七章。</p>
+  </details>
+
+  <p class="scene-foot">从限定序列到"脏 N"的 ICM，本章的全部材料都指向同一条原则：de 的有无以象似的方式反映 D 与 N 的概念距离。第七章将回到最麻烦的领属结构——"他的手"与"他妹妹"为什么不同。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s7">← 动词定语</button>
+    <button class="btn" data-jump="quiz">结尾自测 →</button>
+  </div>
+</section>
+<section id="quiz" data-scene="9">
+  <div class="scene-head"><span class="scene-num kai" data-n="测" aria-hidden="true"></span><h2>结尾自测</h2></div>
+  <div class="card"><p><strong>1.</strong> 本章认为，决定 de 字隐现的总原则是：</p><div class="btn-row" id="q1"><button class="btn" data-q="a">距离象似——de 的有无以象似方式反映定语与中心语的概念距离</button><button class="btn" data-q="b">音节数目——双音节组合一律不能隐去 de</button><button class="btn" data-q="c">惯用法——de 的隐现完全不可预测</button></div><p class="feedback" id="q1fb"></p></div>
+  <div class="card"><p><strong>2.</strong> Seiler 的"限定序列"中，D 的两个功能类型是：</p><div class="btn-row" id="q2"><button class="btn" data-q="a">确定指称（作用于外延）与刻划概念（作用于内涵）</button><button class="btn" data-q="b">限制性与描写性</button><button class="btn" data-q="c">称谓性与述谓性</button></div><p class="feedback" id="q2fb"></p></div>
+  <div class="card"><p><strong>3.</strong> 本书把限定序列的"转折点"放在哪里：</p><div class="btn-row" id="q3"><button class="btn" data-q="a">数词处——左边是确定指称的类，右边是刻划概念的类</button><button class="btn" data-q="b">冠词、领属语处（Seiler 原议）</button><button class="btn" data-q="c">状态形容词处</button></div><p class="feedback" id="q3fb"></p></div>
+  <div class="card"><p><strong>4.</strong> 三条层层蕴含的语义限制中，最严的一条是：</p><div class="btn-row" id="q4"><button class="btn" data-q="a">(c) 规约分类属性条件——D 分出的是稳定的、规约的类别</button><button class="btn" data-q="b">(a) 属性条件——D 是 N 的属性</button><button class="btn" data-q="c">三条限制互不相干</button></div><p class="feedback" id="q4fb"></p></div>
+  <div class="card"><p><strong>5.</strong> 为什么区别词最能自由地构成 DN：</p><div class="btn-row" id="q5"><button class="btn" data-q="a">它表示的属性永久稳固、没有程度差别、较客观，且它在概念上位于限定序列最右端</button><button class="btn" data-q="b">因为它不能作谓语，所以语法上必须带 de</button><button class="btn" data-q="c">因为它是封闭类，数量很少</button></div><p class="feedback" id="q5fb"></p></div>
+  <div class="card"><p><strong>6.</strong> 只有"圆球"没有"圆西瓜"，本书的解释是：</p><div class="btn-row" id="q6"><button class="btn" data-q="a">"圆"在人—球互动模式中是显著属性，而在人—瓜（食用）互动模式中不显著；且"圆"是球的缺省属性，词汇化程度高</button><button class="btn" data-q="b">"西瓜"是双音节词，所以不能进入 DN</button><button class="btn" data-q="c">"圆西瓜"不合逻辑，因为西瓜不圆</button></div><p class="feedback" id="q6fb"></p></div>
+  <div class="card"><p><strong>7.</strong> 标记性逆转现象 (17) 说的是：</p><div class="btn-row" id="q7"><button class="btn" data-q="a">若 D₁ 与 N 的关联无标记、D₂ 与 N 的关联有标记，则 D₁N 若能成立反而在意义上有标记，D₂N 无标记</button><button class="btn" data-q="b">有标记的属性一定不能构成 DN</button><button class="btn" data-q="c">无标记的属性一定不能构成 DN</button></div><p class="feedback" id="q7fb"></p></div>
+  <div class="card"><p><strong>8.</strong> "中国的朋友"表领属而"中国朋友"表属性，这说明：</p><div class="btn-row" id="q8"><button class="btn" data-q="a">领有者与领属物须被感知为两个独立个体，概念距离大，故须带 de；属性与事物的概念整合程度高，故可不带 de</button><button class="btn" data-q="b">"中国"和"朋友"都是名词，所以组合任意</button><button class="btn" data-q="c">带 de 的形式一定更短</button></div><p class="feedback" id="q8fb"></p></div>
+  <footer class="site"><p>材料来源：《认知语言学与汉语名词短语》第六章 OCR 转录稿；转录稿无页码，角标位置精确到节。页面仅供个人学习研究使用。</p><p>单文件 · 零外部依赖 · 视觉为内联 SVG/CSS 手绘示意。</p></footer>
+</section>
+</main>
+<div id="citePop" hidden><div class="cite-card"><button class="cc-close" id="citeClose" aria-label="关闭">×</button><div class="cc-loc" id="citeLoc"></div><div class="cc-quote" id="citeQuote"></div><div class="cc-zh" id="citeZh"></div><p class="cc-note">出处来自本章 OCR 转录稿；转录稿无页码，定位精确到节。</p></div></div>
+<button id="resumePill" hidden>继续阅读 <span id="resumeTxt"></span></button>
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{ch:"第六章",page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第六章"},
+  fanQuestion:{page:"6.1",quote:"本章旨在探讨范继淹（1958）提出的一个经典问题，即定中间de字的隐现条件。这是汉语语法学界的一个老大难问题，因为其中涉及的因素太多，除句法因素外还有非句法的音节、语体、语义、语用等因素",zh:"本章要解决范继淹（1958）提出的经典问题：定中间 de 字何时隐、何时现。"},
+  threeCond:{page:"6.1.2",quote:"在上述认识的基础上，我们提出以下三条层层蕴含的语义限制来概括de字隐现的一般规律。",zh:"三条层层蕴含的语义限制：属性条件、分类属性条件、规约分类属性条件。"},
+  seilerCont:{page:"6.1.1",quote:"Seiler认为限定作用实际上是一个连续统，其两端分别是“确定指称”和“刻划概念”，它们代表了相反的两种趋向，各种类别的D就分布在这个连续统的不同位置",zh:"限定作用是一个连续统，两端分别是“确定指称”与“刻划概念”。"},
+  twoFunc:{page:"6.1.1",quote:"D在名词短语中的作用可分为两个类型，即确定指称（specifying a reference）和刻划概念（characterizing a concept），前者的功能是确定指称的对象，因而它主要作用于中心语概念的外延，不会或较少对中心语概念的内涵有影响；后者的功能是增加概念的内容，它主要作用于概念的内涵。",zh:"确定指称作用于外延，刻划概念作用于内涵；刘月华理解的“限制性”主要指前者，朱德熙强调的是后者。"},
+  seqRight:{page:"6.1.1",quote:"(2)汉语限定序列（右半部分）",zh:"转折点右侧的汉语限定序列，用来描述定语语序。"},
+  cnSeq:{page:"6.1.1",quote:"尽管(1)呈现的限定序列具有一定的普遍性，但它毕竟是以印欧语为主要依据提出来的。结合汉语里的具体情况，我们将转折点右侧的序列重新界定如下：",zh:"以印欧语为依据的限定序列还须结合汉语重新界定。"},
+  turnPoint:{page:"6.1.1",quote:"Seiler从德语出发将转折点放在“冠词、领属语”处，我们认为，从Hawkins(1983)给出的类型学证据看，这个转折点应放在“数词”处。",zh:"本书主张把转折点放在“数词”处，左边是确定指称的类，右边是刻划概念的类。"},
+  dxnForce:{page:"6.1.1",quote:"定语中含有转折点左端成分的定中结构在汉语里必须是中间有分隔物的DxN，其中的 x 的出现是强制性的，它要么是 de（如“他的书”），要么是量词（如“一本书、这本书”），只有由逻辑量词（如“一切、所有、任何”等）充任的定语除外。",zh:"定语含转折点左端成分时，DxN 中的分隔物 x（de 或量词）强制出现。"},
+  mergeTrend:{page:"6.1.1",quote:"在包括印欧语在内的许多语言里普遍存在着这样的趋势，即越靠近限定序列右端的定语往往就越有潜力和中心语名词融合起来成为一个复合名词。",zh:"越靠近限定序列右端的定语越有潜力与中心语融合为复合名词。"},
+  jiaFormat:{page:"6.1.2",quote:"在前一章谈到的三类定中结构中，乙式中的 de 必须出现，故不存在 de 字的隐现条件问题，我们要探讨的实际上是甲 1 甲 2 两式的形成条件。",zh:"de 字隐现问题实质上是甲₁、甲₂ 两式的形成条件问题。"},
+  deForeground:{page:"6.1.2",quote:"de 作为定中之间的标记成分，其语义作用是将D对N的分类意义置于前景；隐去de，则D的分类意义就隐入背景。",zh:"de 将 D 的分类意义置于前景，隐去 de 则使其隐入背景。"},
+  condWhy:{page:"6.1.2",quote:"我们用“可能性”来描述 de 字隐现（即 DN 是否能成立）的规律，这是出于两个方面的理由。第一，上述规律在本质上作为语义限制，只是反映了一定的概念结构内de字倾向于出现或不出现的大致趋势，不能据以作出绝对的预测。",zh:"用“可能性”而非“必然”描述规律的两个理由。"},
+  condImply:{page:"6.1.2",quote:"(3) 里的三个限制条件中，(c) 蕴含了 (b)，(b) 蕴含了 (a)，故严格地看只需要 (c) 就够了，它大致可说是 DN 得以成立的充分必要条件。",zh:"(c) 蕴含 (b)，(b) 蕴含 (a)；分列三项是为了作否定性预测。"},
+  shenJia:{page:"6.1.2",quote:"沈家煊 (1997) 就觉得朱德熙 (1956) 认为不能说的“重箱子、凉脸、白手”在特定的说话环境里是可以成立的，之所以平常不大说这些形式，是因为“我们通常按……给……分类而不按……给……分类”",zh:"沈家煊指出这类 DN 可在特定场景中成立；本书用三条限制说明其临时满足 (b)(c) 的机制。"},
+  qbDef:{page:"6.2",quote:"其实话应该倒过来讲，因为区别词本身就是由“只能在名词或‘的’前面出现”这一特征定义出来的类（朱德熙 1982）。",zh:"区别词由“只能在名词或‘的’前出现”这一特征定义出来。"},
+  qbAlways:{page:"6.2",quote:"而由区别词构成的 DdN，除了极少数例外（如“心爱的 N”），都能隐去 de 形成 DN，而且这类词做定语以不带 de 为常（参见吕叔湘，饶长溶 1981）。",zh:"区别词构成的 DdN 几乎都能隐去 de 形成 DN，且以不带 de 为常。"},
+  qbMotive:{page:"6.2",quote:"从认知语言学的角度看，我们认为区别词在语法功能上的所有特点都可以从整体上由其意义特点推导出来，其中的动因是十分明显的：它在概念上位于限定序列的最右端。",zh:"区别词的句法特点可由其意义推导：它在概念上位于限定序列最右端。"},
+  qbName:{page:"6.2",quote:"吕叔湘、饶长溶(1981)把这类词称作非谓形容词、属性词，朱德熙(1982)称之为区别词，这些名称分别显示了它们在句法功能、语义特性和语义作用方面的特点。",zh:"三个名称分别突出其句法功能、语义特性和语义作用。"},
+  qbSix:{page:"6.2",quote:"（1）式样型号：男式衬衫|微型电机|重型机械|大号皮鞋|罐装啤酒|大陆性气候|填鸭式教学 品级等第：甲级公路|上等木材|高等数学|特级教师|同等学历|劣等产品|副主任 用途功能：内服药物|日用商品|家用电器|公共厕所|军用物资|保健器材|排灌机械 颜色外观：彩色电视|茶色玻璃|藏青棉袄|草绿军装|大红灯笼|多边形|印花毛巾 材料质地：呢大衣|绸衬衫|金首饰|银镯子|钢化玻璃|混纺布料|搪瓷茶杯|夹馅饼干 其他属性：母老虎|双眼皮|女教师|多元种族|立体电影|长途电话|活期户头|人造卫星|现任总统|慢性肝炎|中性反应|国产汽车|袖珍字典|自动步枪|远房亲戚",zh:"区别词的六个语义类及其例子。"},
+  qbClass:{page:"6.2",quote:"区别词往往表示界限明确的属性，往往是成对的或成组的，如“正一副|西式一中式|低频—高频|同步—异步”，这显示它们本质上就有明显的分类作用。这使得以区别词为定语的DN构造成为最具原型性的类名。",zh:"区别词成对成组，本质上有明显的分类作用，其 DN 是最具原型性的类名。"},
+  qbTerm:{page:"6.2",quote:"正如吕叔湘(1979)所说，“由于现代科学、技术的发展，这类词正在每日每时地大量产生”。科技术语正是对有关概念进行严格、精密，同时规约性最强的分类，这使得新兴的分类性专门术语(往往译自外语)经常采用区别词的形式，如“多媒体(multimedia)超高频(UHF)高密度(high-density)”。",zh:"科技术语规约性最强，新兴分类性术语常采用区别词形式。"},
+  qbPred:{page:"6.2",quote:"吕叔湘-饶长溶（1981）将区别词称为“非谓形容词”，因为它完全不能独立作谓语。区别词的这种句法性质正好印证了我们对 DN 构造的分析。",zh:"区别词完全不能独立作谓语，与其强称谓性、弱述谓性互补。"},
+  lv65:{page:"6.3.1",quote:"吕叔湘(1965)根据对1400个形容词用例的考察得出的结论是：“单音形容词不带de为多，带de是例外。双音形容词带de为多，但是不带de的也常见。带de不带de有时候好像很随便。”",zh:"吕叔湘 1400 例考察的结论：单音形容词不带 de 为多。"},
+  typeToken:{page:"6.3.1",quote:"必须首先作以下两种区分：一是区分有关“类(type)”的总的趋势和有关“例(token)”的个别条件；一是区分原型类和非原型类。",zh:"先区分类的趋势与例的条件、原型类与非原型类。"},
+  monoClass:{page:"6.3.1",quote:"下面我们参照吕叔湘（1966）的分法，根据单音形容词直接做定语的能力，将它们分为三类来考察：1）“无能的”，即跟任何N都无法构成DN结构的，2)“有能的”，即能跟某些N构成DN结构，但有较大限制的。3)“全能的”，即能相当自由地构成DN的。",zh:"单音形容词按直接作定语的能力分为无能、有能、全能三类。"},
+  class1:{page:"6.3.2",quote:"6.3.2. 第1类的例子非常少，主要有：(1)对|够|行|悬(险)|诡(鬼)|呆|逗|差|妥|稳|抠|牢|紧|松|勾|忙|乏|累|困痒|渴|干|疼|麻|饱|饿|烦|慌|冷|远|近|迟|顺|活|静|久|准|广|灵|散",zh:"第 1 类“无能”单音形容词的词表。"},
+  class1Sem:{page:"6.3.2",quote:"具体看，这些词与其说明对象之间的语义联系包括：(a)表对特定的而非一般的事件、行为或实体的主观评价或判断，如“对|妥|行|准”；(b)表实体在特定场合里出现的临时状况，如“牢|匀|稳”；(c)表临时性的身体、心理感觉，如“渴|累|烦|慌”；(d)表对时间延续或空间距离的主观判断，如“远|近|久|迟”，等等。",zh:"第 1 类形容词的四种语义联系：主观评价、临时状况、临时身心感觉、时空主观判断。"},
+  hungryGhost:{page:"6.3.2",quote:"有意思的是，(1)中有些形式能出现在DN式复合词中，如“饿鬼|饿汉|饱汉|大忙人”，这时其中的“饿|饱|忙”表示的不再是特定场合里出现的临时状况，它们在意念上已成为中心语非常本质的特征了（如“饿鬼”就是以“饿”为其基本特征的“鬼”）。",zh:"“饿鬼、大忙人”中这些临时性形容词已成中心语的本质特征——形式与意义的又一重平行。"},
+  predAdj:{page:"6.3.2",quote:"这些词还有一个特点值得注意，即它们的主要句法功能是作谓语（参见张宝林1996），故赵元任(1968)把这类词称作“谓语性形容词”(predicative adjectives)，吕叔湘(1979)称之为“唯谓形容词”。",zh:"第 1 类形容词主要作谓语，与区别词（非谓形容词）形成绝妙反衬。"},
+  zhu56Sel:{page:"6.3.3",quote:"朱德熙(1956)举了不少例子说明这种选择限制，如“贵东西—贵手绢|脏衣服—脏糖|凉水—凉脸|黄制服—黄汽船|薄纸—薄灰尘|重担子—重箱子”等。",zh:"第 2 类单音形容词与名词的选择限制，句法和音节条件相同，问题出在认知—语义。"},
+  fiveFormats:{page:"6.3.3",quote:"上面的例子包含了五种意义相关的格式。(a)(b)(c)式中的形容词性成分表事物的属性并都带有分类意味，但其分类意味并不相同。……(d)(e)式则含有形容词的复杂形式，它们都表情状，带描述意味。从左到右，我们可观察到这样一个蕴含序列：左边能成立的，右边往往也能成立；右边能成立的，左边却不一定能成立。DN式是最靠左的形式，故限制最强。",zh:"五种格式的蕴含序列：DN 限制最强，越往右限制越松。"},
+  thickPaper:{page:"6.3.3",quote:"第一个条件要求D在汉语里必须能感知为N的一个相对稳固的品质而非临时的状态，其作用可从例(6)(7)的对比中看出。纸的厚薄是纸本身稳固的属性，而雪的厚薄只是因下雪时间长短、降水量多少等因素而导致的临时性的状态",zh:"条件 (a) 属性条件：厚纸能说而厚雪不能说，因为雪的厚薄是临时状态。"},
+  blueInk:{page:"6.3.3",quote:"第二个条件的作用可以从(4)(5)的比较中看得很清楚。……这一限制还可以解释朱德熙、吕叔湘提出的这样一些例子：(9)蓝墨水：蓝天空|绿绸子：绿庄稼|冬天冷：冷冬天|海水咸：咸海水",zh:"条件 (b) 分类属性条件：圆地球不能说，因为独一无二者无法据以分次类。"},
+  thirdCond:{page:"6.3.3",quote:"汉语里不能成立的DN组合，大多数问题都出在第三个条件上，即难以满足最严格的“规约分类属性”的限制。如例（2）（3）所示，“手”和“糖”都可以有“脏”的属性，都可出现在分类性的DdN构造里，但这一属性作为分类指标只是在和前者共现时才能被进一步规约化",zh:"条件 (c) 规约分类属性条件：脏手有而脏糖无，规约与否是“约定俗成”的。"},
+  freezes:{page:"6.3.3",quote:"对熟语性组合的研究恰好是认知语言学的一个特长。自从Cooper & Ross(1975)提出所谓“语言凝结体(linguistic freezes)”的概念以来，这方面的研究成果甚丰，它们显示熟语性组合之下往往存在着认知上的理据(参见Landsberg 1995)。",zh:"语言凝结体研究显示：熟语性组合之下往往存在认知理据。"},
+  icmPoints:{page:"6.3.3",quote:"(10)i. 某事物 N 的属性 D 在相关概念结构中的地位取决于认知者（说话人）与此事物互动行为的模式；ii. 互动行为的模式可用特定的 ICM 描述；ii. 能够形成 DN 的属性 D 必须是特定 ICM 里与互动行为相关的显著属性，或曰显著的互动属性 (salient interactional properties)",zh:"ICM 分析三要点：属性地位取决于互动行为模式，模式可用 ICM 描述，能形成 DN 的必须是显著的互动属性。"},
+  tableBed:{page:"6.3.3",quote:"英语介词 in 编码的是三维空间关系，on 则是二维关系（如 in the room, on the paper），但我们却可以说 on the table, on the bed, on the chair（参见 Herskovits 1986）。这种互动属性同样也反映在汉语的编码方式里，它一方面体现在方位词的选择上，如我们说“桌子上、床上、椅子上”而不说“*桌子里、*床里、*椅子里”（Tai 1993）",zh:"桌子、床、椅子的显著互动属性是二维的：英语说 on the table，汉语说“桌子上”并搭配量词“张”。"},
+  defaultRound:{page:"6.3.3",quote:"最主要的原因是，“圆”被看作是球的缺省（default）属性，即球在正常情况下通常是圆的（尽管确实存在扁状的球如橄榄球等），或者说，原型的球都是圆的。这样，圆作为球的原型属性，通过Lakoff（1987）提到的范畴化过程中以偏（原型的球）概全（所有的球）的转喻效应，而丧失了原本具有的区别性，其潜在的分类性在很大程度上就被中和了。",zh:"“圆”是球的缺省属性，经以偏概全的转喻效应失去区别性，故无“椭圆球、扁球”。"},
+  croftMarked:{page:"6.3.3",quote:"Croft(1990)指出，共存于单个词、短语或构造里的不同范畴，其取值的组合有的是无标记的，这种无标记的关联又称作“自然关联（natural correlation）”，它定义出的是原型的情形；另一些组合则体现出程度不等的标记性。",zh:"关联的标记性：与事物最频繁相系的属性是无标记关联，定义原型情形。"},
+  gender:{page:"6.3.3",quote:"(14) 显示，当男女性别与特定社会角色并无显著的关联偏向时，“男 N”“女 N”往往都能成立……不过，按一般的认知模式（即 Lakoff 1987 所说的“老套 stereotype”），相当多的社会角色被看作是仅由或通常由男性充任的，如英雄、战士、将军、国王、强盗、流氓等。也就是说，“男”属性与这些事物之间的概念关联是无标记的，原型性的，而“女”属性的关联是有标记的，非原型的。",zh:"“男”与英雄、战士等角色的关联是无标记的，故能说“女英雄”而“男英雄”勉强。"},
+  markReverse:{page:"6.3.3",quote:"(17) 若属性 D1 和 N 之间的关联是无标记的， D2 和 N 的关联是有标记的，则 D1N 若能成立，它在意义上是有标记的，而 D2N 则是无标记的。",zh:"标记性逆转：无标记关联构成的 DN 反而意义上有标记，如“死人”无标记而“活人”有标记。"},
+  dirtyIcm:{page:"6.3.3",quote:"由前面的讨论及人们的一般经验可以推知，可变属性D对事物N而言的显著程度应取决于它关涉特定互动行为的程度，具体而言，a)若此属性的存在与否直接影响到相关的互动行为，或由此互动行为所决定，b)若对此属性的判断存在着明确的标准，而其标准来自相关的互动行为，c)若消除此属性也是依照一套规约程度较高，较固定的行为模式，那么，此属性就应该是显著的。",zh:"可变属性的显著性三条件：影响互动行为、判断标准来自互动行为、按固定模式消除。"},
+  dirtyGrad:{page:"6.3.3",quote:"我们注意到，“脏 N”在可接受性上也存在一定的差别，而其可接受的程度正好与事物一属性关系契合上述 ICM 的程度成正比，即越符合这个 ICM 的要求，就越容易构成合法的 DN。吕叔湘(1981)曾指出，虽然“脏衣服”可以说，但“‘脏鞋’却不能说。",zh:"“脏 N”可接受性与契合 ICM 的程度成正比：脏鞋比脏糖可接受，低于脏衣服。"},
+  basicLevel:{page:"6.3.3",quote:"我们认为，这或许能从认知心理学家提出的“基本层次范畴”的理论中找到答案(参见第二章)。(22a)里的“碗、筷子、衣服、袜子”等都是基本层次的概念，而“象牙筷子、瓷碗、丝袜”等则是低一个层次的概念。基本层次概念的一个显著特征就是，在这个层次上的范畴成员可引起人们在行为上大致相同的运动反应，即所涉及的互动行为具有较一致的模式",zh:"基本层次范畴引起一致的行为反应，故“脏瓷碗、脏丝袜”难以形成稳固次范畴。"},
+  emptyN:{page:"6.3.3",quote:"(28)提到的物体都可以有容纳他物的功能，也都可以是空的（“……是空的”的说法都能成立），因此它们都可算作广义的容器。不过，只有(28a)里的物体才可称作“原型的容器”，它们最主要、最显著的功能就是容纳，人们与它们原型性的互动行为就是用其他物品去填充它们或将这些物品从中取出",zh:"原型容器的首要功能是容纳，故“空碗、空房间”能说而“空汽车、空山洞”不能说。"},
+  coolN:{page:"6.3.3",quote:"(29)里的“水”之所以能按“凉、冷、热”的属性分出规约的类，是因为尽管人和水可以有各种各样的互动关系（喝水、用水洗涤等），但无论哪一种，都会涉及热感器官（如皮肤和口腔粘膜）和水的直接接触；“茶”也是一样，原型的互动行为是“人喝茶”",zh:"凉冷热属性的显著性取决于互动中是否必然涉及热感器官接触，故有“凉水”无“凉脸”。"},
+  heavyN:{page:"6.3.3",quote:"(30)里的例子的可接受性有三个等级：“重担子”最好，“？重箱子”其次，“重书架”最差。其原因很清楚，即“重”属性在涉及这些物体的原型互动行为模式中地位不同。",zh:"“重”在互动模式中的地位决定重 N 的等级：担子＞箱子＞书架。"},
+  full8:{page:"6.3.4",quote:"现在看第3类单音形容词，即能相当自由地构成DN的类。这类形容词非常少，主要只有“大，小，新，旧，好，坏，真，假”这几个（吕叔湘1981）。",zh:"“全能”单音形容词只有八个：大小新旧好坏真假。"},
+  freq9:{page:"6.3.4",quote:"我们根据北京师大统计中小学语文教材得出的“现代汉语三千常用词表”找出了最常用的50个单音形容词，上面的八个词都在其中。这些词实际上分为四对，其中“大、新、好、真”是无标记的，它们的出现频率在单音形容词中都排在前7名之内，分别为第3,7,1,6位。",zh:"八个词都在最常用 50 个单音形容词中，频率高是其外在表现而非根本原因。"},
+  dixon:{page:"6.3.4",quote:"根据Dixon(1982)的研究，有些语言里完全没有形容词，有些语言的形容词是数量很少的封闭类（如非洲的豪萨语），在后一类语言里，这些词代表的是哪些属性并不是任意的，而是存在着高度的一致性。例如，非洲的Ibo语只有四对形容词，它们是“大一小、新一旧、黑一白、好一坏”。",zh:"Dixon 的类型学研究：形容词封闭类语言中核心形容词高度一致，与汉语“全能”词概念重合。"},
+  dsHard:{page:"6.4",quote:"“漂亮姑娘”里的“漂亮”完全可以看作是给姑娘分出规约类的一种分类属性，区别于“不漂亮的（姑娘）”，但“辉煌成就”里的“辉煌”则很难说具有这种分类意义，我们没有“不辉煌的成就”之类的说法。",zh:"双音形容词的麻烦：漂亮姑娘符合规律，辉煌成就不符合。"},
+  dsReason:{page:"6.4",quote:"我们认为，上述例外情况并不是对象似原则的否定，它的出现应该是由于其他因素对象似动因的干扰和覆盖。具体说，在此起扰乱作用的主要是语体因素：口语体的双音形容词和名词组合成的DN多半符合我们上节的描述；书面语色彩较强的DN组合则往往不符。另一个需要考虑的因素是音节数目。",zh:"例外源于其他因素（语体、音节）对象似动因的干扰和覆盖。"},
+  dsRules:{page:"6.4.1",quote:"这样的DN的形成限制大体和上节所述的相同。具体说，能成立的DN必须同时满足以下两条原则性的要求：1)DN中的D带上de必须能够替代整个定中结构，即所谓可省略中心名词。……2)D所代表的属性应该出现在汉语里事物N的规约分类模式中。",zh:"口语双音 DN 两条原则：D 的须能替代整个结构；D 的属性须在 N 的规约分类模式中。"},
+  lv63:{page:"6.4.1",quote:"吕叔湘(1963)指出，这类组合一般都带de，如“容易的字|可笑的人|普通的水|现成的车|详细的图|奇怪的梦”等。可以不带de的，名词往往限于“人|事儿|话”等少数几个。",zh:"双音形容词和单音名词组合一般带 de，可不带 de 的名词往往限于“人、事儿、话”。"},
+  renShiHua:{page:"6.4.1",quote:"值得一提的是，“人|事儿|话”之所以能与较多的双音形容词组合，其中恐怕也有认知上的原因。若说上面的“大、小、好、坏”等形容词代表的是能给事物作出最为概括的规约分类的属性，此处的“人、事儿、话”则代表了人在与其所处环境互动的过程中最需要分类的三种最根本的事物：一是主体（人），一是主体的所言（话），一是主体的所行（事儿）。",zh:"人、事儿、话是互动中最需要分类的三种根本事物，故能与较多双音形容词构成 DN。"},
+  huang92:{page:"6.4.2",quote:"黄国营(1982)认为仅从语义上判断会有困难，故提出一条形式上的鉴别方式，即“形de名”可变换为“不形de名”的，定语为区别性，中心语可省。如“正确的观点”可变换为“不正确的观点”，也可说“正确的”；“辉煌的成就”不可变换为“不辉煌的成就”，也不能单说“辉煌的”。",zh:"黄国营的鉴别式：能否变换为“不 D 的”并省中心语。"},
+  nonvacuous:{page:"6.4.2",quote:"Croft(1990)指出过，对同一现象换用两种不同的解释原则，而又无法提出换用的条件，这样的解释才是“空解释”，为避免空解释，必须对竞争的动因明确提出适用的条件。上面提到，经济动因覆盖象似动因有着较明确的范围，即主要作用于书面语体形式，而且在此只限于双音形容词和双音名词的组合",zh:"非空解释的标准：须对竞争的动因明确提出适用条件。"},
+  verbEx:{page:"6.5",quote:"(1)剩饭|病猪|活鱼|死兔子|炒番茄|煎鸡蛋|冻豆腐|烂苹果|瞎眼睛 (2)飞行时间|实验设备|办公桌子|研究资料|学习文件|伪造证件|考试成绩|健身器材|理发工具|发言提纲|发展方针|攻击目标|开拓精神|作战部队|测量仪器|创作激情|分析方法|出租汽车|滚动轴承|驾驶学校|侵略行为|赞助单位|约会地点|交流计划|批判对象|制裁措施|洗澡水",zh:"动词定语的例子：单音动词多表烹饪方式或显著属性，双音动词多表功能属性。"},
+  hopthomp:{page:"6.5",quote:"他们引述的类型学证据显示，动词在语义上越是表具体可见的实际动作，在话语功能上越是用于报道特定场景中真实地发生在动作参与者身上的事件，它的动词性就越强，即在形式上就具有越多的动词特性，如可以有时、体和情态的变化；反之，就具有越少的原型动词形式特性。",zh:"Hopper & Thompson：动词的形式特性取决于其概念—功能属性。"},
+  verbReason:{page:"6.5",quote:"（1）里的单音动词都不确指语境中的某个动作，如“煎、炒”并不是实指发生在特定时空中的煎、炒动作，而是表示食物的烹饪方式，“病、活、死、冻、烂”等也都表示相关事物的某个显著属性。无法表示事物的定义性属性的单音动词，即使不含任何动态特性，如“是、有、姓”，也不能直接作定语。",zh:"能直接作定语的动词表属性而非事件；“是、有、姓”不能作定语正因不表定义性属性。"},
+  verbStyle:{page:"6.5",quote:"从语体特征上看，书面语色彩较强、正式用语里的动词更容易构成DN，例如，“驾驶技术”就比“开车技术”更常见，可以说“用餐地点”，却不大说“吃饭地点”，类似的对比还有“发言提纲—讲话提纲”、“工作效率—干活效率”“作战能力—打仗能力”“节能汽车—省油汽车”“捐款方式—捐钱方式”等等。",zh:"语体因素：正式、书面语色彩的动词更容易构成 DN。"},
+  nnEx:{page:"6.6.1",quote:"(1)木头桌子|缎子被面|水泥地板|塑料提包|洋瓷茶壶|柏油马路|玻璃窗子|杉木扁担 (2)胡桃夹子|酱油瓶子|羊毛剪子|黑板刷子|菜篮子|墨水瓶儿|笔记本儿|金鱼缸|皮鞋油 (3)石油工人|语文老师|哲学教授|喜剧演员|舞蹈专家|种子选手|体育委员|主任医师 (4)日本电器|瑞士手表|烟台苹果|热带水果|新疆西瓜|美国电影|青岛啤酒|金华火腿 (5)a. 生物化学|脊椎动物|细菌武器|电影票|电影制片厂|百货商店|商业社会|文艺节目|历史小说|工人阶级|广播电台|期刊阅览室|玩具手枪|商品经济|化学元素|光学元件 b. 煤气炉子|学术著作|科学知识|语法术语|科研项目|古代文化|民主权利|理论文章|医学文献|地理条件|英语词典|陶瓷工艺|经济基础|理论问题|历史事实 (6)张三的钢笔|李四的耳朵|王五的妹妹|妹妹的脾气|妹妹的生命|师傅的经验",zh:"名名组合六类语义关系：(1)–(5) 可或一定不带 de，(6) 必须带 de。"},
+  nnTwo:{page:"6.6.2",quote:"第一类里面又有两种情况，一是 de 可有可无的，即表材料质地的 (1)，表其他属性的 (5b)；一是一般不带 de 的，即表功能用途的 (2)，表职业身份的 (3)，表一般属性的 (5a)。……例如，可以说“体育老师（即教体育的老师）”，但不能说“体育学生（即学体育的学生）”（刘月华等 1983）",zh:"名名组合两类情况；体育老师能说而体育学生不能说，受制于认知模式。"},
+  zhu57:{page:"6.6.3",quote:"(7)中国的朋友|孩子的脾气|狐狸的尾巴|老虎的屁股|咖啡的味儿|和尚的头|班主任的老师 (8)中国朋友|孩子脾气|狐狸尾巴|老虎屁股|咖啡味儿|和尚头|班主任老师",zh:"朱德熙的对立：(7) 表领属关系，(8) 表某种性质。"},
+  nnPoss:{page:"6.6.3",quote:"事物 的属性在概念上往往是其不可分的一部分，而能据之以分类，并且分出的类是事物普遍接受的规约类的属性，它们与事物的概念关系自然会更加紧密，即概念的整合程度更高，或曰概念距离更小；相比之下，领有者和他所拥有的物体，不管是所谓可让渡的（如“钢笔）还是不可让渡的（如“耳朵|妹妹|脾气”），都必须被感知为两个独立的个体，二者之间有一条明确的界线，即主客的对立，否则谈不上领属关系，故其间的概念距离相对较大。",zh:"属性是事物不可分的一部分，领属双方须为独立个体，故前者不带 de 后者必须带 de。"},
+  seiler:{page:"6.6.4",quote:"Seiler(1978)认为，限定关系(determination)一般可以分为两个主要类型，即专化所指(specifying a reference)和表征概念(characterizing a concept)，前者的功能主要是确定指称的对象……后者的主要功能是增加概念的内容。从类型学的角度看，在不少语言里前者往往用组合性更强的方式编码，后者则往往用粘合性更强的方式。",zh:"专化所指多用组合性方式编码，表征概念多用粘合性方式编码。"},
+  witt:{page:"6.6.4",quote:"(9)a. Wittgenstein's argument b. a Wittgenstein argument (10)a. Jakobson's features b. The Jakobsonian features",zh:"英语的对立：(a) 前项一定表领属者，(b) 前项表属性，整个结构代表某个类。"},
+  tolai:{page:"6.6.4",quote:"(11)a. a bul ka-i ra lulai b. a bul na lulai",zh:"Tolai 语：(11a)“酋长的孩子”用可让渡领属标记，(11b)“酋长孩子”用表属性的连接成分。"},
+  sum3:{page:"6.6.5",quote:"汉语里由形容词、区别词和名词所充任的定语在语义上可概括地分为三大类型：1)表情状的，由复杂形式的形容词(包含状态形容词、形容词短语及部分双音性质形容词)构成，2)表属性的，由简单形式的形容词(包含单音形容词及部分双音性质形容词)、区别词和名词构成，3)表领域的，由名词和代词构成。",zh:"定语三大类型：表情状、表属性、表领域；前两类分别必须带 de 与大多可隐去 de。"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= 角标编号 ================= */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#citeLoc").textContent="位置："+(s.ch||"第六章")+" · "+s.page+(s.page==="附注"||s.page==="封面"?"":" 节");
+  $("#citeQuote").textContent="原文："+s.quote;
+  $("#citeZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#citeClose").focus();
+}
+function closeCite(){ citePop.hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#citeClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[]; const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id); if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("np6theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("np6theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("np6fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("np6fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeTxt=$("#resumeTxt");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("np6progress",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("np6progress")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeTxt.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 通用点选展开 ================= */
+function bindPick(listSel,attr,boxSel,txtSel,table){
+  const box=$(boxSel),txt=$(txtSel),list=$(listSel);
+  if(!box||!txt||!list) return;
+  $$(".btn",list).forEach(b=>b.addEventListener("click",()=>{
+    const k=b.getAttribute("data-"+attr);
+    if(!Object.prototype.hasOwnProperty.call(table,k)) return;
+    txt.textContent=table[k];
+    box.hidden=false;
+    box.classList.remove("wrong");
+    $$(".btn",list).forEach(x=>x.classList.toggle("sel",x===b));
+  }));
+}
+
+/* ================= 场景一：限定序列十个位置 ================= */
+bindPick("#seqBtns","sq","#seqBox","#seqTxt",{
+  "1":"领属语——位于限定序列最左端，作用是确定指称（如“我的桌子”），主要作用于中心语概念的外延，de 的出现是强制性的（“*我桌子”单说时不能说）。",
+  "2":"指代词——紧邻领属语，仍以确定指称为主（如“这本书”）。非单说时可直接修饰名词（如“这人”），单说时须带量词。",
+  "3":"数量词——本书主张的转折点所在处。它左边的成分是确定指称的类（传统限定语 Det），右边是刻划概念的类。",
+  "4":"状态形容词——右端成分中出于最左边的一类（德语、英语没有这个类别），它必须带 de，如“雪白的纸”“干干净净的屋子”。",
+  "5":"新旧——表属性的定语由此开始，其语义类别排序为“新旧、形体、颜色、质料、功能及其他”，恒定性与客观性从左到右依次增大。",
+  "6":"形体——如“大船|小船|大型船舶”。人们对“大型”与事物联系的判断比对“大”具有更强的客观性和规约性。",
+  "7":"颜色——如“蓝天|绿草”（构词）与“白纸|蓝墨水”。较之“新旧”，颜色属性更稳定、涉及的主观判断成分更小。",
+  "8":"质料——几乎完全不以主观判断为转移，是事物最稳固的属性之一，如“木头桌子|金首饰|钢化玻璃”。",
+  "9":"功能——反映事物的本质，排在最右端，如“实验设备|测量仪器|健身器材|注射器材|防水手表”。",
+  "10":"名词定语——最靠近中心语 N 的一类。名词定语倾向于表中心语更加本质的属性，故它离中心语的距离往往最近，也最能不带 de。"
+});
+bindPick("#dxnBtns","x","#dxnBox","#dxnTxt",{
+  de:"x ＝ de：如“他的书”。de 作为定中之间的标记成分，其语义作用是将 D 对 N 的分类意义置于前景；隐去 de，则 D 的分类意义就隐入背景。",
+  clf:"x ＝ 量词：如“一本书、这本书”。很多语言正是用量词的有无在形式上区别可让渡和不可让渡的领属关系，如 Croft (1990) 举到的 Kosraean 语的例子：“我的肚子”是 siy_k（肚子—第一人称后缀），“我的面包树”则是 mos s_n_k（面包树—表植物的量词—第一人称）。"
+});
+
+/* ================= 场景一：三条限制与语境 ================= */
+bindPick("#condBtns","c","#condBox","#condTxt",{
+  a:"(3)a. 属性条件：D 若是，或可感知为能据以刻划 N 概念的 N 的属性，则 DN 有成立的可能性。——这是最基本的条件，是“可能”与“不可能”之间的转折点：只要满足了这一条件，定语就具备了隐去 de 的潜能。",
+  b:"(3)b. 分类属性条件：D 作为 N 的属性，若可充当对 N 概念分类的标准，则 DN 成立有更大的可能性。——如地球虽是圆的，但圆不能据以给独一无二的地球分出次类，故无“*圆地球”。",
+  c:"(3)c. 规约分类属性条件：D 作为 N 的分类属性，若分出的是稳定的、规约的类别，则 DN 成立有最大的可能性。——(c) 蕴含 (b)，(b) 蕴含 (a)，严格地看只需要 (c) 就够了，它大致可说是 DN 得以成立的充分必要条件。"
+});
+bindPick("#wfBtns","w","#wfBox","#wfTxt",{
+  white:"“白家具”：家具店只买黑白两种颜色的家具时，店伙计大概可以说“白家具买光了”。——虽然“白”可以临时用来给某种家具分类，但这种分类标准不是规约性的；在特定场合它被临时规约化，条件 (b)(c) 得以暂时满足，DN 随之成立。",
+  heavy:"“重箱子”：车站站长对旅客说“我们把要托运的箱子根据重量分成两类，10 公斤以下算作轻的，10 公斤以上当作重的。轻箱子每人可以托运两个，重箱子每人只能托运一个。”——特设的分类标准＋交谈双方建立的特设规约，使 (b)(c) 临时得到满足。这正是不少人觉得“带 de 不带 de 好像很随便”的来源之一。"
+});
+
+/* ================= 场景三：区别词 ================= */
+bindPick("#qbBtns","qb","#qbBox","#qbTxt",{
+  "1":"式样型号：男式衬衫｜微型电机｜重型机械｜大号皮鞋｜罐装啤酒｜大陆性气候｜填鸭式教学",
+  "2":"品级等第：甲级公路｜上等木材｜高等数学｜特级教师｜同等学历｜劣等产物｜副主任",
+  "3":"用途功能：内服药物｜日用商品｜家用电器｜公共厕所｜军用物资｜保健器材｜排灌机械",
+  "4":"颜色外观：彩色电视｜茶色玻璃｜藏青棉袄｜草绿军装｜大红灯笼｜多边形｜印花毛巾",
+  "5":"材料质地：呢大衣｜绸衬衫｜金首饰｜银镯子｜钢化玻璃｜混纺布料｜搪瓷茶杯｜夹馅饼干",
+  "6":"其他属性：母老虎｜双眼皮｜女教师｜多元种族｜立体电影｜长途电话｜活期户头｜人造卫星｜现任总统｜慢性肝炎｜中性反应｜国产汽车｜袖珍字典｜自动步枪｜远房亲戚"
+});
+bindPick("#qbFeatBtns","qf","#qbFeatBox","#qbFeatTxt",{
+  "1":"特点一：一般为事物的永久稳固、难以变易的属性。事物在用途、材料、式样等方面的属性一般是恒定的，往往“与生俱来”。新的可以变旧，年轻的可以变老，而“男”一般不会变“女”，“金”一般不会变“银”，“彩色”不会变“黑白”。",
+  "2":"特点二：多为没有程度差别、不涉及主观判断的较绝对的属性。这些词都不能用“很”之类的程度副词修饰。和“好｜干净｜伟大｜漂亮”相比，区别词体现的属性一般是离散的、绝对的、较客观的：某台电视是否可归入“大电视”可能会因人而异，是否可归入“彩色电视”则没有质疑的余地。"
+});
+
+/* ================= 场景四：单音形容词三类 ================= */
+bindPick("#monoBtns","m","#monoBox","#monoTxt",{
+  "1":"第 1 类“无能的”：跟任何 N 都无法构成 DN 结构。如“渴、饱、饿、烦、远、近、久、迟”等——它们描述的是特定时刻的临时身心感受或主观判断，连最基本的属性条件也不满足，带上 de 也难作定语。这类词主要作谓语（“唯谓形容词”），与区别词形成绝妙反衬。",
+  "2":"第 2 类“有能的”：能和某些 N 直接组合构成 DN，但 N 不能自由替换，选择限制很强，所形成的 DN“是一种具有强烈的凝固趋势的结构”（朱德熙 1956），“基本上是熟语性组合”（吕叔湘 1966）。绝大部分单音形容词都属于这一类。",
+  "3":"第 3 类“全能的”：能相当自由地构成 DN。主要只有“大、小、新、旧、好、坏、真、假”几个（吕叔湘 1981）。它们体现了人类语言对事物从属性方面作出的最为概括的分类：空间上分大小，时间上分新旧，价值上分好坏，真值上分真假——二分是最简单的分类格局，故分出的类最容易规约化。"
+});
+bindPick("#pairBtns","pr","#pairBox","#pairTxt",{
+  "8":"(8) 薄纸∶*薄灰尘｜短袖子∶*短沉默（热酒）｜热力量（小自行车∶小报复——违背的是条件 (a)：灰尘的“薄”不是稳固属性，只是临时状态；短、热、小在这里修饰的都是抽象或临时的事物。",
+  "9":"(9) 蓝墨水∶*蓝天空｜绿绸子∶*绿庄稼｜冬天冷∶*冷冬天｜海水咸∶*咸海水——违背的是条件 (b)：墨水和绸子可分蓝的黑的、绿的，而天空和庄稼的原型性颜色已被感知为蓝的和绿的，其他颜色多是临时性的，不足以用作稳定的分类依据。"
+});
+
+/* ================= 场景五：ICM ================= */
+bindPick("#roundBtns","rd","#roundBox","#roundTxt",{
+  melon:"(11) *圆西瓜｜*椭圆西瓜｜*扁西瓜——人与西瓜的典型互动关系是食用，圆的属性在这种关系中几乎毫无意义；西瓜的任何形状属性在正常认知模式中都不显著。",
+  ball:"(12) 圆球｜*椭圆球｜扁球——人与球互动时，圆属性在认知上是显著的，它在互动模式中起着关键性作用；且“圆”是球的缺省属性，经以偏概全的转喻效应丧失了区别性，故无“椭圆球”。"
+});
+bindPick("#markBtns","mk","#markBox","#markTxt",{
+  ripe:"(13) ?生西瓜—熟西瓜｜生柿子—?熟柿子｜生香蕉—?熟香蕉——在人与瓜果的典型互动中，“熟”与事物的关联是无标记的（是人们对可食用瓜果的期待），“生”是有标记的。判别柿子、香蕉生熟有明确规约的线索（视觉、触觉），判别西瓜则否。",
+  gender:"(14) 男演员—女演员都能成立；(15) ?男英雄—女英雄、?男战士—女战士中能说的往往是“女 N”；(16) *男王—女王、*男兵—女兵——英雄、战士、国王等角色按“老套”认知模式被看作通常由男性充任，“男”的关联无标记、“女”的关联有标记，故“男 N”不大能成立。",
+  life:"死 N ∶ 活 N——对一般的动物和人类而言，“活”是正常的、缺省的无标记属性，故可以很自由地说“死人、死兔子、死猪”；相应的“活人、活兔子”则较少使用，说出来往往带有额外的对比、强调意味。这就是标记性逆转现象。"
+});
+bindPick("#dirtyBtns","dt","#dirtyBox","#dirtyTxt",{
+  a:"(22a) 脏衣服｜脏袜子｜脏毛巾｜脏被单｜脏手绢｜脏盘子｜脏筷子｜脏碗——完全符合“脏 N”的 ICM：预期穿用前干净（24a）、穿过用过一轮必然变脏且判断标准明确（24c）、再穿再用前必须清洗（24d）、清洗模式高度规约（24e）、周而复始（24b）。",
+  b:"(22b) *脏糖｜*脏馒头｜*脏黄瓜｜*脏肉｜*脏纸｜*脏书｜*脏汽车｜*脏墙壁——偏离 ICM：这些物品获得“脏”属性的方式没有一定模式，更不是原型互动行为（吃食物、用纸写字、看书）的结果；去除脏属性也没有约定的行为模式；更没有周而复始的脏—净周期。"
+});
+bindPick("#icmBtns","ic","#icmBox","#icmTxt",{
+  "1":"(24a) 人在与事物 N 发生原型的互动行为之前，明确要求或期待 N 不带“脏”属性——如我们预期衣服和碗筷在被穿、被用之前应该是干净的。",
+  "2":"(24b) 人与事物 N 的互动行为有特定的周期性——穿衣服、用碗筷的行为周期性出现，“脏”与“干净”的属性随之周期性地出现及消失。",
+  "3":"(24c) 一定的互动行为之后，事物 N 必然会带上“脏”属性——经过一轮互动（穿过一次、用过一次）便可归入“脏”类；判断标准是明确的，即是否经过特定互动行为。",
+  "4":"(24d) 若 N 已带上“脏”属性，为满足 (a) 的要求，下一轮互动行为之前必须去除此属性——脏衣服、脏碗筷必须在清洁之后才能再穿或再用。",
+  "5":"(24e) 去掉这一属性的行为遵循一个规约程度较高的固定行为模式——“洗衣服”“洗碗筷”在说汉语的人的心目中是相当固定、高度规约化的，构成一个整合程度较高的行为格式塔。"
+});
+bindPick("#propBtns","pp","#propBox","#propTxt",{
+  "1":"(28) 空碗｜空瓶子｜空口袋｜空书包｜空房间 vs *空山洞｜*空汽车｜*空飞机｜*空客厅——前者是“原型的容器”，其最显著的功能就是容纳，且我们期待它们不是空的；“汽车、飞机”的首要功能是传输（比较“空车厢、空机舱”），“山洞”没有固定的规约互动模式。",
+  "2":"(29) 凉水｜冷水｜热水｜凉茶｜冷茶｜热茶 vs *凉脸｜*热脸｜*冷手｜*热手——无论人和水有什么互动关系，都会涉及热感器官与水的直接接触；“脸、手”和人的原型互动行为不涉及热感器官的必然接触。",
+  "3":"(30) 重担子 vs ?重箱子｜?重书架——可接受性有三个等级，因为“重”在相关原型互动模式中的地位不同：人挑担子必然感受重量；箱子常被携带搬运，介乎其间；书架的原型功能是放书，极少有机会感受其重量。"
+});
+
+/* ================= 场景六：双音形容词 ================= */
+bindPick("#dwBtns","dw","#dwBox","#dwTxt",{
+  "5":"(5) 纯口语 DN：新鲜牛奶｜干净衣服｜漂亮衣服｜贵重东西｜便宜东西｜老实孩子｜机灵孩子｜聪明孩子｜年轻学生｜漂亮姑娘｜称心女婿｜孝顺儿子｜暖和地方｜简单法子｜正经职业｜公道价钱｜结实身子｜随和脾气——中间都可加 de，不带 de 时很像类名，其中 D 都可看作 N 的分类属性，这表现在“D 的”大多能替代整个结构。",
+  "6":"(6) 书面语·分类性定语：正确意见｜正确观点｜错误观点｜复杂情况｜简单问题｜老实态度｜严肃态度｜重要因素｜积极因素｜密切关系｜合适人选｜合理要求｜严重后果｜贵重物品｜正常渠道｜进步力量｜发达国家｜著名学者——大多能变换为“不 D 的”，定语是分类性的，符合象似原则。",
+  "7":"(7) 书面语·例外：壮丽河山｜高贵血统｜辉煌成就｜伟大领袖｜猛烈炮火｜悲惨命运｜热烈场面｜精辟见解｜渊博知识｜薄弱环节｜艰巨任务｜光荣使命｜深远意义｜远大理想｜神秘色彩｜灿烂阳光｜英明决策——其中的 D 都不是分类性的，都不能换为“不 D 的”，却也能形成 DN。本书认为这是经济动因（加双音化压力）覆盖象似动因的例外，而非反例。"
+});
+
+/* ================= 场景七：动词定语 ================= */
+bindPick("#verbBtns","vb","#verbBox","#verbTxt",{
+  "1":"(1) 单音动词定语：剩饭｜病猪｜活鱼｜死兔子｜炒番茄｜煎鸡蛋｜冻豆腐｜烂苹果｜瞎眼睛——它们都不确指语境中的某个动作，“煎、炒”表示食物的烹饪方式，“病、活、死、冻、烂”表示相关事物的某个显著属性。单音动词直接作定语的能力和数目都远小于双音动词。",
+  "2":"(2) 双音动词／动宾构造定语：飞行时间｜实验设备｜办公桌子｜研究资料｜学习文件｜伪造证件｜考试成绩｜健身器材｜理发工具｜作战部队｜测量仪器｜创作激情｜分析方法｜出租汽车｜滚动轴承｜驾驶学校｜侵略行为｜赞助单位｜洗澡水——它们无一指称实际的事件，不少表示事物稳固的功能属性，如“实验设备、测量仪器、理发工具”。在这一点上，直接作定语的动词与区别词颇为类似。"
+});
+bindPick("#washBtns","ws","#washBox","#washTxt",{
+  "1":"洗澡水｜洗脚水——洗澡或洗脚是一种特别的盥洗行为：时间特别（一般在睡前）、用具特别（有专门的澡盆或脚盆）、用水特别（通常须用热水）。因此“洗澡、洗脚”能给水作出规约性的分类。",
+  "2":"*洗手水——洗手没有这种模式，并不计较时间、用具，也不必专门去烧热水，故“洗手”不能用来给水作出规约性的分类。有意思的是，南方地区并无此等盥洗模式，故也无上述分别，如广州话都得说“冲凉[呒]水｜洗手[呒]水”。"
+});
+
+/* ================= 场景八：名词定语 ================= */
+bindPick("#nnBtns","nn","#nnBox","#nnTxt",{
+  "1":"(1) 材料质地：木头桌子｜缎子被面｜水泥地板｜塑料提包｜洋瓷茶壶｜柏油马路｜玻璃窗子｜杉木扁担——de 可有可无，几乎任何“木头的 N”都可去掉 de 形成“木头 N”，是限制最小的一类。",
+  "2":"(2) 功能用途：胡桃夹子｜酱油瓶子｜羊毛剪子｜黑板刷子｜菜篮子｜墨水瓶儿｜笔记本儿｜金鱼缸｜皮鞋油——一般不带 de，不少可看作复合词。",
+  "3":"(3) 职业身份：石油工人｜语文老师｜哲学教授｜喜剧演员｜舞蹈专家｜种子选手｜体育委员｜主任医师——一般不带 de。限制反在不能带 de 的类里：可以说“体育老师”，不能说“体育学生”。",
+  "4":"(4) 产地来源：日本电器｜瑞士手表｜烟台苹果｜热带水果｜新疆西瓜｜美国电影｜青岛啤酒｜金华火腿——不带 de 一般表产地来源；带 de 则可能有歧义，除产地来源义外还可有领属义（“美国的电影有些是从欧洲进口的”）。",
+  "5":"(5) 方面属性：a. 生物化学｜脊椎动物｜细菌武器｜电影票｜百货商店｜商业社会｜文艺节目｜历史小说｜广播电台｜玩具手枪｜化学元素；b. 煤气炉子｜学术著作｜科学知识｜语法术语｜科研项目｜民主权利｜英语词典｜陶瓷工艺｜经济基础——(5a) 一般不带 de，(5b) de 可有可无。",
+  "6":"(6) 领属关系：张三的钢笔｜李四的耳朵｜王五的妹妹｜妹妹的脾气｜妹妹的生命｜师傅的经验——必须带 de。领有者与领属物必须被感知为两个独立的个体，二者概念距离相对较大。"
+});
+bindPick("#zhuBtns","zt","#zhuBox","#zhuTxt",{
+  "7":"(7) 带 de·表领属：中国的朋友｜孩子的脾气｜狐狸的尾巴｜老虎的屁股｜咖啡的味儿｜和尚的头｜班主任的老师——用朱德熙(1957)的话说，定语“表示领属关系”。",
+  "8":"(8) 不带 de·表属性：中国朋友｜孩子脾气｜狐狸尾巴｜老虎屁股｜咖啡味儿｜和尚头｜班主任老师——定语“表示某种性质”，整个结构代表某个类，前项是分类指标。"
+});
+bindPick("#typeBtns","ty","#typeBox","#typeTxt",{
+  en:"英语 (9)(10)：(a) Wittgenstein's argument / Jakobson's features 中的前项一定表领属者（“维特根斯坦的论据｜雅各布逊的特征”）；(b) a Wittgenstein argument / The Jakobsonian features 中的前项则表一种属性（“维特根斯坦式论证｜雅各布逊式特征”），不一定是他本人提出的。",
+  tolai:"Tolai 语 (11)：(a) a bul ka-i ra lulai“酋长的孩子”，中介成分 ka-i 出现于可让渡的领属构造中，前项是领有者，确定后项的所指；(b) a bul na lulai“酋长孩子”，连接成分 na 出现在代表不可让渡关系的非原型领属构造中，前项表属性，整个结构指具有某种特别身份地位的孩子。"
+});
+
+/* ================= 结尾自测 ================= */
+(function(){
+  const QA=[
+    {n:1,
+     ok:'<span class="v-ok">✓ 正确。</span>de 的有无不是任意的句法规定，而是以象似的方式反映定语与中心语的概念距离——这是全书下篇的总原则。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：距离象似。音节、语体是干扰因素，惯用法只是未加解释的标签。'},
+    {n:2,
+     ok:'<span class="v-ok">✓ 正确。</span>确定指称作用于中心语概念的外延，刻划概念作用于内涵；二者构成一个连续统，各类定语分布其中形成限定序列。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：确定指称与刻划概念（Seiler 1978）。'},
+    {n:3,
+     ok:'<span class="v-ok">✓ 正确。</span>本书从 Hawkins(1983) 的类型学证据出发，主张把转折点放在“数词”处，左边是确定指称的类，右边是刻划概念的类。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：数词处。“冠词、领属语”是 Seiler 从德语出发的原议。'},
+    {n:4,
+     ok:'<span class="v-ok">✓ 正确。</span>(c) 蕴含 (b)，(b) 蕴含 (a)，故严格地看只需要 (c) 就够了，它大致可说是 DN 得以成立的充分必要条件。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：(c) 规约分类属性条件。'},
+    {n:5,
+     ok:'<span class="v-ok">✓ 正确。</span>区别词表示的属性永久稳固、离散、客观，且它在概念上位于限定序列最右端——句法特点（不能作谓语、以不带 de 为常）由其意义推导而来。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。区别词“不能作谓语”与其“能自由构成 DN”是同一枚硬币的两面。'},
+    {n:6,
+     ok:'<span class="v-ok">✓ 正确。</span>“圆”在人—球互动模式中是显著属性，在人—瓜（食用）模式中不显著；“圆”又是球的缺省属性，词汇化程度高，故只有“圆球”。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。这正是用 ICM 解释 DN 理据的范例。'},
+    {n:7,
+     ok:'<span class="v-ok">✓ 正确。</span>如“死人”无标记而“活人”有标记——因为“活”是人与动物的无标记关联属性。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。逆转指的是“形式上成立的无标记关联 DN，意义上反而有标记”。'},
+    {n:8,
+     ok:'<span class="v-ok">✓ 正确。</span>属性是事物不可分的一部分，概念整合程度高；领属双方必须被感知为独立个体，概念距离大——故前者可隐 de、后者必须带 de。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：属性与领属在概念距离上的对立。'}
+  ];
+  QA.forEach(q=>{
+    const row=$("#q"+q.n);
+    if(!row) return;
+    const fb=$("#q"+q.n+"fb");
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      if(row.dataset.done) return;
+      row.dataset.done="1";
+      const ok=b.dataset.q==="a";
+      b.classList.add(ok?"sel":"wrong");
+      fb.innerHTML=ok?q.ok:q.no;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+    }));
+  });
+})();
+</script>
+</body>
+</html>

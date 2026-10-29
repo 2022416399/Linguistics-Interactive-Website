@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第七章 领属结构 · 认知语言学与汉语名词短语 深读</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--line:#dcd2bd}
+html[data-theme="dark"]{--paper:#171512;--card:#211e19;--ink:#ece4d4;--muted:#a79c88;--red:#c9755f;--blue:#8fb2c4;--gold:#d3a94f;--line:#3b352b}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]){--paper:#171512;--card:#211e19;--ink:#ece4d4;--muted:#a79c88;--red:#c9755f;--blue:#8fb2c4;--gold:#d3a94f;--line:#3b352b}}
+body{background:var(--paper);color:var(--ink);font-family:"KaiTi","STKaiti","Kaiti SC","BiauKai",serif;line-height:1.9;font-size:17px;transition:background .3s,color .3s}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+header.top{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+.brand{font-size:15px;letter-spacing:.12em;color:var(--muted)}
+.brand b{color:var(--red);font-weight:400}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button,.quiz button,.lab button,.guess button,.pop button,#backBtn{font-family:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 14px;font-size:14px;transition:all .2s}
+.tools button:hover,.lab button:hover,.guess button:hover,.quiz button:hover{border-color:var(--red);color:var(--red)}
+main.wrap{padding:26px 22px 60px}
+.hero{padding:34px 0 8px;position:relative}
+.seal{position:absolute;right:6px;top:26px;width:60px;height:60px}
+.eyebrow{font-size:14px;letter-spacing:.3em;color:var(--red);margin-bottom:10px}
+h1{font-size:clamp(26px,4.6vw,38px);font-weight:600;line-height:1.35;margin-bottom:14px}
+.lead{font-size:18px;color:var(--muted);max-width:44em}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 13px;font-size:13.5px;color:var(--muted)}
+.figure{margin:22px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 16px 12px;overflow:hidden}
+.figure svg{display:block;width:100%;height:auto}
+.figure figcaption{font-size:13.5px;color:var(--muted);margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;line-height:1.7}
+section.scene{margin:44px 0 0;padding-top:8px}
+.kicker{font-size:13px;letter-spacing:.26em;color:var(--gold);margin-bottom:6px}
+section.scene h2{font-size:23px;font-weight:600;margin-bottom:12px}
+section.scene h2 small{font-size:14px;color:var(--muted);font-weight:400;margin-left:10px;letter-spacing:.05em}
+section.scene p{margin-bottom:12px;max-width:46em}
+section.scene p.tight{margin-bottom:8px}
+em{font-style:normal;color:var(--red);border-bottom:1px solid color-mix(in srgb,var(--red) 45%,transparent);padding-bottom:1px}
+b.k{color:var(--blue);font-weight:600}
+.guess{border:1px dashed var(--gold);background:color-mix(in srgb,var(--gold) 7%,var(--card));border-radius:14px;padding:16px 18px;margin:18px 0}
+.guess .tag{font-size:13px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px}
+.guess .q{font-size:17.5px;margin-bottom:10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.opts button{text-align:left}
+.opts button.right{border-color:var(--red);color:var(--red);background:color-mix(in srgb,var(--red) 8%,var(--card))}
+.opts button.wrong{opacity:.55}
+.why{display:none;font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:4px}
+.why.show{display:block}
+.why b{color:var(--red);font-weight:600}
+.lab{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:16px 18px;margin:18px 0}
+.lab .cap{font-size:13px;letter-spacing:.2em;color:var(--blue);margin-bottom:10px}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.result{font-size:15.5px;border-top:1px dashed var(--line);padding-top:10px;min-height:2.2em;color:var(--muted)}
+.result b{color:var(--red);font-weight:600}
+.result b.ok{color:var(--blue)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .vcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px}
+.vs .vcard h3{font-size:16.5px;margin-bottom:8px;color:var(--red);font-weight:600}
+.vs .vcard.b h3{color:var(--blue)}
+.vs .vcard ul{list-style:none}
+.vs .vcard li{font-size:14.5px;color:var(--muted);padding:4px 0 4px 14px;position:relative}
+.vs .vcard li::before{content:"";position:absolute;left:0;top:.78em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.ladder{margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.ladder .rung{display:flex;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.ladder .rung:last-child{border-bottom:none}
+.ladder .no{flex:0 0 auto;color:var(--gold);font-size:13px;letter-spacing:.1em;width:2.6em}
+.ladder .rung b{color:var(--blue);font-weight:600}
+.ladder .rung span{color:var(--muted);font-size:14px}
+.ladder .rung.top b{color:var(--red)}
+details.src{margin:40px 0 0;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:0 18px}
+details.src summary{cursor:pointer;padding:14px 0;font-size:14px;letter-spacing:.24em;color:var(--gold);list-style:none}
+details.src summary::-webkit-details-marker{display:none}
+details.src summary::before{content:"▸ ";}
+details.src[open] summary::before{content:"▾ ";}
+details.src ol{margin:0 0 14px;padding-left:22px}
+details.src li{font-size:13.5px;color:var(--muted);padding:5px 0;border-bottom:1px dotted var(--line);line-height:1.75}
+details.src li:last-child{border-bottom:none}
+details.src li code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--red);font-size:12.5px;margin-right:8px}
+.quiz{margin:46px 0 0;border-top:2px solid var(--red);padding-top:20px}
+.quiz h2{font-size:22px;margin-bottom:6px}
+.quiz .qitem{margin:18px 0}
+.quiz .q{font-size:16.5px;margin-bottom:8px}
+.quiz .q b{color:var(--gold);font-weight:600;margin-right:8px}
+.quiz .why{margin-top:8px}
+.series{display:flex;flex-wrap:wrap;gap:8px;margin:44px 0 0;border-top:1px solid var(--line);padding-top:18px}
+.series a{font-size:13.5px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 13px;transition:all .2s}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);background:color-mix(in srgb,var(--red) 8%,transparent)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 40px;font-size:13px;color:var(--muted)}
+#backBtn{position:fixed;right:18px;bottom:18px;z-index:20;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+svg [fill="#29241d"]{fill:var(--ink)}
+svg [fill="#6f675a"]{fill:var(--muted)}
+svg [fill="#9d4938"]{fill:var(--red)}
+svg [fill="#3d5a6c"]{fill:var(--blue)}
+svg [fill="#a87f24"]{fill:var(--gold)}
+svg [fill="#fffdf6"],svg [fill="#f6f1e5"]{fill:var(--card)}
+svg [stroke="#9d4938"]{stroke:var(--red)}
+svg [stroke="#3d5a6c"]{stroke:var(--blue)}
+svg [stroke="#a87f24"]{stroke:var(--gold)}
+svg [stroke="#6f675a"]{stroke:var(--muted)}
+svg [stroke="#dcd2bd"]{stroke:var(--line)}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:color-mix(in srgb,var(--red) 12%,transparent)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">名词短语深读 · <b>领属结构</b></div>
+  <div class="tools">
+    <button id="resumeBtn" type="button">回到进度</button>
+    <button id="fontDown" type="button">字−</button>
+    <button id="fontUp" type="button">字+</button>
+    <button id="themeBtn" type="button">暗色</button>
+  </div>
+</div></header>
+<main class="wrap">
+
+<section class="hero" data-hero>
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="2.6"/><text x="30" y="41" text-anchor="middle" font-size="30" fill="#9d4938" font-family="KaiTi,STKaiti,serif">属</text></svg>
+  <p class="eyebrow">第七章 · 领属结构</p>
+  <h1>他妹妹说得，他手说不得</h1>
+  <p class="lead">「他的手」的「的」说不得少，「他妹妹」的「的」却说丢就丢；「张三的哥哥」非得带上「的」，「我哥哥」却能省得干干净净。同是领属，为什么厚此薄彼？本章的答案：汉语「的」字隐现由<em>三个条件按次序</em>决定——类名条件作用面最广，独立性条件次之，可让渡条件最后才浮现。</p>
+  <ul class="chips">
+    <li>原型领属三标准</li><li>类名 · 独立 · 让渡</li><li>PdN 与 PN</li><li>类型学的呼应</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 252" font-family="KaiTi,STKaiti,serif" role="img" aria-label="领属构造三区带与三条件次序">
+      <defs>
+        <marker id="darr7" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#3d5a6c"/></marker>
+        <marker id="darr7b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker>
+      </defs>
+      <rect x="20" y="14" width="200" height="150" rx="12" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="1.8"/>
+      <text x="120" y="38" text-anchor="middle" font-size="13" fill="#9d4938">原型领属 · 单指确认</text>
+      <rect x="32" y="50" width="176" height="24" rx="7" fill="#fffdf6" stroke="#9d4938" stroke-width="1"/><text x="120" y="66" text-anchor="middle" font-size="12" fill="#9d4938">张三的鼻子</text>
+      <rect x="32" y="80" width="176" height="24" rx="7" fill="#fffdf6" stroke="#9d4938" stroke-width="1"/><text x="120" y="96" text-anchor="middle" font-size="12" fill="#9d4938">张三的哥哥</text>
+      <rect x="32" y="110" width="176" height="24" rx="7" fill="#fffdf6" stroke="#9d4938" stroke-width="1"/><text x="120" y="126" text-anchor="middle" font-size="12" fill="#9d4938">李四的信</text>
+      <rect x="32" y="140" width="176" height="24" rx="7" fill="#fffdf6" stroke="#9d4938" stroke-width="1"/><text x="120" y="156" text-anchor="middle" font-size="12" fill="#9d4938">曹雪芹的成就</text>
+      <rect x="240" y="14" width="200" height="150" rx="12" fill="#a87f24" opacity=".1" stroke="#a87f24" stroke-width="1.8"/>
+      <text x="340" y="38" text-anchor="middle" font-size="13" fill="#a87f24">规约的类 · 类指限定</text>
+      <rect x="252" y="50" width="176" height="24" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/><text x="340" y="66" text-anchor="middle" font-size="12" fill="#a87f24">牛鼻子</text>
+      <rect x="252" y="80" width="176" height="24" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/><text x="340" y="96" text-anchor="middle" font-size="12" fill="#a87f24">干部子女</text>
+      <rect x="252" y="110" width="176" height="24" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/><text x="340" y="126" text-anchor="middle" font-size="12" fill="#a87f24">研究生论文</text>
+      <rect x="252" y="140" width="176" height="24" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/><text x="340" y="156" text-anchor="middle" font-size="12" fill="#a87f24">北大学生</text>
+      <rect x="460" y="14" width="200" height="150" rx="12" fill="#3d5a6c" opacity=".1" stroke="#3d5a6c" stroke-width="1.8"/>
+      <text x="560" y="38" text-anchor="middle" font-size="13" fill="#3d5a6c">时空定位 · 相对确认</text>
+      <rect x="472" y="50" width="176" height="24" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/><text x="560" y="66" text-anchor="middle" font-size="12" fill="#3d5a6c">桌子上头</text>
+      <rect x="472" y="80" width="176" height="24" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/><text x="560" y="96" text-anchor="middle" font-size="12" fill="#3d5a6c">昨天上午</text>
+      <rect x="472" y="110" width="176" height="24" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/><text x="560" y="126" text-anchor="middle" font-size="12" fill="#3d5a6c">张三后边</text>
+      <rect x="472" y="140" width="176" height="24" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/><text x="560" y="156" text-anchor="middle" font-size="12" fill="#3d5a6c">95年年底</text>
+      <path d="M120 178 L 120 196" stroke="#9d4938" stroke-width="1.6" marker-end="url(#darr7)"/>
+      <path d="M340 178 L 340 196" stroke="#a87f24" stroke-width="1.6" marker-end="url(#darr7b)"/>
+      <path d="M560 178 L 560 196" stroke="#3d5a6c" stroke-width="1.6" marker-end="url(#darr7)"/>
+      <text x="120" y="212" text-anchor="middle" font-size="11.5" fill="#6f675a">「的」必现</text>
+      <text x="340" y="212" text-anchor="middle" font-size="11.5" fill="#6f675a">「的」可省</text>
+      <text x="560" y="212" text-anchor="middle" font-size="11.5" fill="#6f675a">「的」以省为常</text>
+      <text x="120" y="236" text-anchor="middle" font-size="11" fill="#9d4938">① 类名条件</text>
+      <text x="340" y="236" text-anchor="middle" font-size="11" fill="#a87f24">② 独立性条件</text>
+      <text x="560" y="236" text-anchor="middle" font-size="11" fill="#3d5a6c">③ 可让渡条件</text>
+    </svg>
+    <figcaption>领属构造的三块地盘与三个条件的出场次序：越是原型的领属，「的」字越动不得；偏离原型之后，「类名条件」先放行，轮到时空定位，「可让渡条件」才最后登场。</figcaption>
+  </figure>
+</section>
+
+<section class="scene" data-scene="1">
+  <p class="kicker">场景一 · 什么算领属</p>
+  <h2>先认一认领属的原型<small>原型三标准</small></h2>
+  <p>原型的领属，张敏给出三条标准：领有者是有生物、通常是人，最原型的是第一人称的<em>自我</em>；被领有者是看得见摸得着的具体东西；领有者是主动的、被领有者是被动的——受它支配控制，而且<b class="k">独占</b>，不与他人共有。「我的脑袋」「张三的钢笔」都踩在原型正中。</p>
+  <p>由这三条还能推出两条：原型的领有者常是定指、单指的代词或专名；被领有者本身应<b class="k">类指</b>——「鼻子」是一类东西，「张三的鼻子」却不是鼻子的一个次类，而是从这类里确认出的<b class="k">某一个</b>。领属定语是把所指确定为一个<em>例</em>，属性定语是把它缩小为一个<em>类</em>——这就是「的」字在原型领属中丢不得的根源。</p>
+  <div class="lab" data-lab="proto">
+    <p class="cap">判定台 · 点一组 p₁p₂，看它落在原型的哪个位置上</p>
+    <div class="pool" data-pool="proto"></div>
+    <div class="result" data-out="proto">点一组词，看它落在原型的哪个位置上。</div>
+  </div>
+</section>
+
+<section class="scene" data-scene="2">
+  <p class="kicker">场景二 · 名词作定语</p>
+  <h2>北大的学生，老张的学生 <small>类名条件</small></h2>
+  <p>同样是专名作定语，「老张的学生」非得带「的」，「北大的学生」就能省。差别不在定语本身——北大也是专名——而在组合整体：学生可以用所属学校作规约的分类指标，「中文系的学生」正指一类学生；可「老张的学生」只是从学生这个类里认出来的某位，认不出规约的类来<sup class="cite" data-cite="ident-vs-class"></sup>。</p>
+  <p>显著性管的是另一头。「马尾巴」「牛鼻子」都成，因为尾巴比鼻子显著；「猫的鼻子」「猴子的鼻子」都还只是鼻子的次类，唯独牛和象的鼻子能不带「的」——牛鼻子是人穿绳拉拽时唯一的抓手，象鼻子的长度又没有第二家比得上。还有一条常被忽略：只有指人的名词里才有绝对的专名，动植物不用专名指单一个体，「狗鼻子」才永远只能是类名<sup class="cite" data-cite="salience"></sup>。</p>
+  <p>反过来也有一路：定语和中心语合起来成了规约的类，「的」照样能省。「印度的音乐」「庄子哲学」是清清楚楚的种类；「爱因斯坦的相对论」省掉「的」也过得去，只是相对论并不靠爱因斯坦来分类——勉强说是物理理论的一种，名字叫作相对论，由爱因斯坦充任确认指标。同位结构把这区别摆到了明面上：「北大校长蔡元培」的前项是分类标签，「的」反不能出现；「老张的学生赵大明」的前项是认人的标签，「的」一定得来<sup class="cite" data-cite="identification-class"></sup>。</p>
+  <div class="guess" data-guess>
+    <p class="tag">先猜</p>
+    <p class="q">下面哪一组里，「的」字全能省？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">张三的鼻子 · 狗的鼻子 · 邻居的女儿</button>
+      <button data-ans="b">牛鼻子 · 北大学生 · 干部子女</button>
+      <button data-ans="c">两组都能省</button>
+      <button data-ans="d">两组都不能省</button>
+    </div>
+    <div class="why" hidden><p><b>b。</b>左边那一组全是确认指标：专名自不必说，「狗」「邻居」也都不是规约的类名，「的」字一省就不知道该说谁。右边那一组，牛鼻子是规约的类，北大的学生可用学校作分类指标，干部的子女也是规约的类——「的」都在可省之列。</p></div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 236" font-family="KaiTi,STKaiti,serif" role="img" aria-label="三类定语的指标分工图">
+      <defs>
+        <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9d4938"/></marker>
+        <marker id="a2g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a87f24"/></marker>
+        <marker id="a2b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d5a6c"/></marker>
+      </defs>
+      <rect x="16" y="8" width="648" height="62" rx="12" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="1.8"/>
+      <text x="36" y="34" font-size="14" font-weight="700" fill="#9d4938">① 确认指标</text>
+      <text x="36" y="54" font-size="11" fill="#6f675a">定住单独一例 · 的必现</text>
+      <text x="300" y="43" font-size="11.5" fill="#29241d">张三 → 张三的鼻子｜老张 → 老张的学生｜狗 → 狗的鼻子</text>
+      <rect x="16" y="80" width="648" height="62" rx="12" fill="#a87f24" opacity=".1" stroke="#a87f24" stroke-width="1.8"/>
+      <text x="36" y="106" font-size="14" font-weight="700" fill="#a87f24">② 分类指标</text>
+      <text x="36" y="126" font-size="11" fill="#6f675a">分出规约的类 · 的可省</text>
+      <text x="292" y="115" font-size="11.5" fill="#29241d">牛 → 牛鼻子｜中文系 → 中文系学生｜研究生 → 研究生论文</text>
+      <rect x="16" y="152" width="648" height="62" rx="12" fill="#3d5a6c" opacity=".1" stroke="#3d5a6c" stroke-width="1.8"/>
+      <text x="36" y="178" font-size="14" font-weight="700" fill="#3d5a6c">③ 确认式类名</text>
+      <text x="36" y="198" font-size="11" fill="#6f675a">组合成规约的类 · 的可省</text>
+      <text x="316" y="187" font-size="11.5" fill="#29241d">北大 → 北大学生｜爱因斯坦 → 爱因斯坦的相对论</text>
+      <text x="340" y="230" text-anchor="middle" font-size="11" fill="#6f675a">决定隐现的不只是定语的名目，而是定语加中心语能否构成汉语里规约的类</text>
+    </svg>
+    <figcaption>图 · 三类定语的指标分工：确认指标定住单独一例，分类指标分出规约的类，确认式类名让组合整体成为一个规约的类。</figcaption>
+  </figure>
+  <div class="lab" data-lab="class">
+    <p class="cap">判定台 · 点一组词，看「的」字是必现还是可省</p>
+    <div class="pool" data-pool="class"></div>
+    <div class="result" data-out="class">点一组词，看它是哪一类指标。</div>
+  </div>
+</section>
+
+<section class="scene" data-scene="3">
+  <p class="kicker">场景三 · 条件有次序</p>
+  <h2>谁先谁后，早有分工 <small>条件次序</small></h2>
+  <p>三种条件的作用是有次序的。作用面最广、限制力最强的是<b class="k">类名条件</b>：定语得是规约的分类指标，这是属性定语能省「的」的老规矩。类名条件使不上劲的时候，别的条件才登场<sup class="cite" data-cite="condition-order"></sup>。</p>
+  <p>当修饰关系不再给实体分类，而是要确认单独一例，便轮到<em>独立性条件</em>说话：被领有者脱开领有者还成不成东西。原型的领属构造由此一律要带「的」——「张三的手」明明是最不可让渡的，手就长在身上，可「的」一个字也省不得。</p>
+  <p>直到修饰关系表的是具体时空的确认，<em>可让渡条件</em>才浮出来，那时空定位构造反而不带「的」为常：「昨天上午」「明年春季」都是拿有定的参照点去确认时点。所以在汉语里，可让渡性这个在别的语言里最吃得开的条件，反倒被跨越了过去。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 300" font-family="KaiTi,STKaiti,serif" role="img" aria-label="三关漏斗图">
+      <defs>
+        <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9d4938"/></marker>
+        <marker id="a3g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a87f24"/></marker>
+        <marker id="a3b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d5a6c"/></marker>
+      </defs>
+      <rect x="24" y="14" width="632" height="62" rx="12" fill="#a87f24" opacity=".1" stroke="#a87f24" stroke-width="1.8"/>
+      <text x="44" y="42" font-size="14" font-weight="700" fill="#a87f24">第一关 · 类名条件</text>
+      <text x="44" y="62" font-size="11" fill="#6f675a">定语是规约的分类指标 · 作用面最广、限制力最强</text>
+      <text x="440" y="42" font-size="12" fill="#29241d">过得去 → 可不带「的」</text>
+      <text x="440" y="62" font-size="11" fill="#6f675a">木头桌子｜牛鼻子｜研究生论文</text>
+      <path d="M 324 76 L 324 94" stroke="#a87f24" stroke-width="1.6" marker-end="url(#a3g)"/>
+      <text x="338" y="90" font-size="10.5" fill="#6f675a">定语只作个体确认</text>
+      <rect x="24" y="96" width="632" height="62" rx="12" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="1.8"/>
+      <text x="44" y="124" font-size="14" font-weight="700" fill="#9d4938">第二关 · 独立性条件</text>
+      <text x="44" y="144" font-size="11" fill="#6f675a">被领有者脱开领有者，还成不成东西</text>
+      <text x="440" y="124" font-size="12" fill="#29241d">过不去 → 必带「的」</text>
+      <text x="440" y="144" font-size="11" fill="#6f675a">张三的手｜张三的哥哥｜桌子上头的书</text>
+      <path d="M 324 158 L 324 176" stroke="#9d4938" stroke-width="1.6" marker-end="url(#a3)"/>
+      <text x="338" y="172" font-size="10.5" fill="#6f675a">表的是时空确认</text>
+      <rect x="24" y="178" width="632" height="62" rx="12" fill="#3d5a6c" opacity=".1" stroke="#3d5a6c" stroke-width="1.8"/>
+      <text x="44" y="206" font-size="14" font-weight="700" fill="#3d5a6c">第三关 · 可让渡条件</text>
+      <text x="44" y="226" font-size="11" fill="#6f675a">时空定位构造，粘合得最紧</text>
+      <text x="440" y="206" font-size="12" fill="#29241d">可不带「的」</text>
+      <text x="440" y="226" font-size="11" fill="#6f675a">昨天上午｜明年春季｜上个月月初</text>
+      <text x="340" y="270" text-anchor="middle" font-size="11" fill="#6f675a">三关有次序：类名条件管得最宽，可让渡条件最后才露面——在别的语言里最吃得开的它，在汉语里被跨越了过去</text>
+    </svg>
+    <figcaption>图 · 三关漏斗：类名条件先筛，独立性条件拦住原型领属，可让渡条件只在时空定位构造上露面。</figcaption>
+  </figure>
+</section>
+
+<section class="scene" data-scene="4">
+  <p class="kicker">场景四 · 时空定位</p>
+  <h2>桌子离不开它的上头 <small>两层隐喻领属</small></h2>
+  <p>「桌子(的)上面」「院子(的)中间」「孩子(的)身上」，这些「的」都能省，而且以不省为常。它们既不表类，也不确认某一个「上面」——可理据和前头完全一致：汉语让实体隐喻地领有空间，也让空间隐喻地领有实体<sup class="cite" data-cite="two-layer"></sup>。</p>
+  <p>原型领属里本就蕴含着两类关系：<em>包含</em>（手包含在张三身上）与<em>邻接</em>（衣服常贴着张三）。空间不是实体，本不能真领有什么，可任何实体都与紧挨着它的那片空间邻接——实体要领有空间，能且只能领有紧邻并相触的那一块。反过来，书在桌子上头，就是书被包含在「桌子的上头」所划出的那片空间里<sup class="cite" data-cite="adjacency"></sup>。</p>
+  <p>于是「桌子上头的书」是两层领属套成的：桌子领有上头，这片上头再领有书。可这里的「的」偏偏省不得，道理与「张三的手」一样——中心语是实体，就受类名条件管着，「桌子上头的书」成不了书的规约类。汉语里没有「*桌上书」「*这里书」，因为实体一般不能拿相对位置作分类指标。认知上的缘由也摆着：桌子怎么挪都离不开它的上头，书却能打这片空间里搬出去。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 236" font-family="KaiTi,STKaiti,serif" role="img" aria-label="两层隐喻领属图">
+      <defs>
+        <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9d4938"/></marker>
+        <marker id="a4g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#a87f24"/></marker>
+        <marker id="a4b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d5a6c"/></marker>
+        <marker id="a4m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f675a"/></marker>
+      </defs>
+      <rect x="16" y="14" width="300" height="124" rx="12" fill="#a87f24" opacity=".1" stroke="#a87f24" stroke-width="1.8"/>
+      <text x="32" y="38" font-size="12.5" font-weight="700" fill="#a87f24">第一层 · 邻接</text>
+      <text x="32" y="56" font-size="11" fill="#6f675a">实体领有紧邻相触的空间</text>
+      <rect x="34" y="70" width="84" height="42" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/>
+      <text x="76" y="96" text-anchor="middle" font-size="13" fill="#29241d">桌子 R₀</text>
+      <path d="M 122 91 L 150 91" stroke="#a87f24" stroke-width="1.6" marker-end="url(#a4g)"/>
+      <rect x="158" y="70" width="84" height="42" rx="7" fill="#fffdf6" stroke="#a87f24" stroke-width="1"/>
+      <text x="200" y="96" text-anchor="middle" font-size="13" fill="#29241d">上头 S</text>
+      <text x="32" y="130" font-size="11" fill="#6f675a">？没了上头的桌子</text>
+      <text x="340" y="62" text-anchor="middle" font-size="12" fill="#29241d">两层套叠</text>
+      <path d="M 320 78 L 358 78" stroke="#6f675a" stroke-width="1.6" marker-end="url(#a4m)"/>
+      <text x="340" y="120" text-anchor="middle" font-size="10.5" fill="#6f675a">[R₀PS]PF₀</text>
+      <rect x="364" y="14" width="300" height="124" rx="12" fill="#3d5a6c" opacity=".1" stroke="#3d5a6c" stroke-width="1.8"/>
+      <text x="380" y="38" font-size="12.5" font-weight="700" fill="#3d5a6c">第二层 · 包含</text>
+      <text x="380" y="56" font-size="11" fill="#6f675a">空间领有其中的实体</text>
+      <rect x="382" y="70" width="104" height="42" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/>
+      <text x="434" y="96" text-anchor="middle" font-size="13" fill="#29241d">桌子的上头</text>
+      <path d="M 490 91 L 518 91" stroke="#3d5a6c" stroke-width="1.6" marker-end="url(#a4b)"/>
+      <rect x="526" y="70" width="76" height="42" rx="7" fill="#fffdf6" stroke="#3d5a6c" stroke-width="1"/>
+      <text x="564" y="96" text-anchor="middle" font-size="13" fill="#29241d">书 F₀</text>
+      <text x="380" y="130" font-size="11" fill="#6f675a">书却能搬出这片空间</text>
+      <rect x="16" y="152" width="648" height="64" rx="12" fill="#9d4938" opacity=".1" stroke="#9d4938" stroke-width="1.8"/>
+      <text x="340" y="178" text-anchor="middle" font-size="12" fill="#29241d">桌子上头的书 —— 中心语是实体，受类名条件管着，「的」省不得</text>
+      <text x="340" y="200" text-anchor="middle" font-size="11" fill="#6f675a">没有「*桌上书」「*这里书」；桌子怎么挪都离不开它的上头，书却能搬出去</text>
+    </svg>
+    <figcaption>图 · 两层隐喻领属：桌子邻接着上头，桌子的上头包含着书；可中心语一旦是实体，类名条件就把「的」锁住了。</figcaption>
+  </figure>
+</section>
+<section class="scene" data-scene="5">
+  <p class="kicker">场景五 · 代词作定语</p>
+  <h2>我的哥哥 ≠ 我哥哥 <small>PdN 与 PN</small></h2>
+  <p>领有者换作代词，书上的例词便分成三摊。亲属词「我(的)哥哥」「你(的)妹妹」与社会关系「我(的)朋友」「你(的)同学」，「的」都在可省之列；一到机构名词「我们学校」「你们车间」「他们单位」，「的」一般不能露面——「我们所」「你们组」听着就别扭，好些 N 简直是黏着的，整个 PN 就不妨看成一个复合词<sup class="cite" data-cite="pdN-pN"></sup>。分野藏在语义里：前两摊表个体对个体的领有，代词取单数的「我」「你」「他」；机构这摊表个体对群体的归依，代词只能用复数「我们」，哪怕心里指的是一个人。</p>
+  <p>语义上的分别更见骨。「我的学校」是说明领属，答的是「谁的学校？」；「我们学校」是确定所指，答的是「哪个学校？」。代词在这儿不像领有者，倒像「这」「那」——是个确认指标，只不过它借的是人际关系，不是空间关系<sup class="cite" data-cite="institution"></sup>。</p>
+  <p>指称上的分别还要硬。PdN 可以无指，「谁也不敢做他的老师」里的「他的老师」并不指向哪一位；也可以单而复指，「我的妹妹」能指好几个妹妹。PN 一定有指，而且只表单数指称——「我妹妹都很聪明」说不通，「我妹妹很聪明」才自然，「我」把单独一位锁得死死的。荒诞例最能说明问题：「他爷爷实际上是他的外公」说得通，「他爸爸其实不是他爸爸」却不成话——前者是两个头衔指着同一个人，后者成了「张三其实不是张三」。中心语若不是单称的亲属词，「的」反倒必现：「他的父母」「我的姐妹」都站得住，「他父母」「我姐妹」就接不上<sup class="cite" data-cite="plural-test"></sup>。</p>
+  <div class="guess" data-guess>
+    <p class="tag">先猜</p>
+    <p class="q">「我妹妹都很聪明」这句话别扭，关键卡在哪？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">「我」根本不能修饰亲属词</button>
+      <button data-ans="b">「我妹妹」只表单数指称，扛不住「都」的复数</button>
+      <button data-ans="c">「妹妹」前头只能带「的」字</button>
+      <button data-ans="d">这句话缺了谓语</button>
+    </div>
+    <div class="why" hidden><p><b>b。</b>PN 一定有指且只表单数指称，「我妹妹」把单独一位锁得死死的，「都」一上来就要求复数，两头对不上。PdN 却能单能复，「我的妹妹都很聪明」毫无问题。</p></div>
+  </div>
+  <div class="lab" data-lab="pdn">
+    <p class="cap">对照台 · 点一组说法，看它是 PdN 还是 PN</p>
+    <div class="pool" data-pool="pdn"></div>
+    <div class="result" data-out="pdn">点一组说法，看它落在哪一边。</div>
+  </div>
+</section>
+<section class="scene" data-scene="6">
+  <p class="kicker">场景六 · 理据</p>
+  <h2>为什么偏偏是「我哥哥」 <small>两步理据</small></h2>
+  <p>汉语的领属构造，为什么偏偏在定语为代词、中心语表人际关系或机构时才敢不带「的」？这不是句法上的硬性规定，里头有认知理据，而且理据得从 PN 的语义特性里推出来。论理据分两步：先给定语是人称代词，问 N 的构成有什么讲头——「我哥哥」「我们学校」都成，「我手」「我桌子」就不成；再给定中心是人际关系词和机构名词，问定语的构成有什么讲头——「我哥哥」成，「张三哥哥」就不成<sup class="cite" data-cite="PN-motivation"></sup>。</p>
+  <p>先答头一问。可否让渡在这儿说不上话——PN 的本分不在说明领属关系有多紧，而在靠 P 和 N 这两个关系指标，从同类里头确定一个独特的所指。要紧的是看哪些领有物更容易作为独特的个体被认出来。人可以给几乎任何离散实体贴上类名的标签，可只有个体特质足够显著的东西才配得上一个专名：每个人都有名字，北大、社科院语言所、首钢这样的机构团体也有；身体部位、钢笔、桌子却只有类名。所以「我哥哥」指张三，「我们学校」指北大，而「我手」「我钢笔」没人这么说。</p>
+  <p>可用专名指称只是头一道门。PN 的实质是在关系座标上拿确认指标把所指规约地固定下来，因此还须满足两样：其一，这个实体贴得上跟「你(们)／我(们)／他(们)」有关系的那类标签；其二，在这个类里，它的具体所指能照着与领有者的关系被规约地确定下来。常见而稳固的脚色过得了关——「我老师」「我哥哥」「我们学校」；偶发的脚色出局——「？她证婚人」「？我律师」「？我医生」。作过你老师的便永远是你的老师，作过你律师的却未必<sup class="cite" data-cite="PN-motivation"></sup>。</p>
+  <p>还有一层常被漏掉：<em>双向领属</em>。归属往往意味着唯一——一个人一回一般只归属于一个单位——加上密切的互动，「我们」和北大便互相打上烙印。「我们是北大的」说得通，「我们是北大图书馆的」「我们是那间教室的」说不通，除非说话人是图书馆职员。所以学生嘴里有「我们学校」「我们楼」，没有「我们图书馆」「我们教室」。指人的 PN 也归这管：「张三是我的哥哥」同时意味着「我是张三的弟弟」。从距离象似性看，双向领属比单层领属的概念距离更近，「的」也就省得下去<sup class="cite" data-cite="reciprocal"></sup>。</p>
+  <p>再答第二问。就算双向领属一样不少，「张三哥哥」「张三朋友」照样说不成。根子在整个结构的单指性质，落在「自我中心」上。PN 的后项是个类名，指称确定性本来低，得靠前项作确定性极强的限定；可专名的确定性只在名称与实体之间钉死，听话人还得先弄清「张三」指谁，再追「张三的哥哥」指谁。「我(的)哥哥」一步到位——当前指示以「我」为圆心，「我」是话语情景里最确定的指称，其余人称代词都是「我」的延伸<sup class="cite" data-cite="ego"></sup>。</p>
+  <p>Silverstein 的著名层级把这意思铺开了：人称代词在顶，专名随后，亲属词、表人地位的词、有生名词依次往下，抽象事物的名词垫底——整个层级就是一个「自我中心」的层级<sup class="cite" data-cite="silverstein"></sup>。</p>
+  <div class="ladder">
+    <div class="rung top"><span class="no">Ⅰ</span><b>第一人称包括式代词</b><span>咱们</span></div>
+    <div class="rung"><span class="no">Ⅱ</span><b>第一人称单数及排除式</b><span>我·我们</span></div>
+    <div class="rung"><span class="no">Ⅲ</span><b>第二人称代词</b><span>你·你们</span></div>
+    <div class="rung"><span class="no">Ⅳ</span><b>第三人称代词</b><span>他·他们</span></div>
+    <div class="rung"><span class="no">Ⅴ</span><b>专名</b><span>张三·北大</span></div>
+    <div class="rung"><span class="no">Ⅵ</span><b>亲属词</b><span>哥哥·朋友·老师</span></div>
+    <div class="rung"><span class="no">Ⅶ</span><b>反映人的地位的词</b><span>律师·医生·媒人</span></div>
+    <div class="rung"><span class="no">Ⅷ</span><b>有生名词</b><span>人·狗</span></div>
+    <div class="rung"><span class="no">Ⅸ</span><b>代表其他离散实体的词</b><span>桌子·钢笔·汽车</span></div>
+    <div class="rung"><span class="no">Ⅹ</span><b>表抽象事物的名词</b><span>思想·荣誉</span></div>
+  </div>
+  <p>Deane 在英语里看到，领属者前置与后置的合格程度正随着领属者在这层级上的位置而变：前置一路递减，后置一路递增<sup class="cite" data-cite="silverstein"></sup>。形式距离也跟着变——前置比后置近，代词又比其余 NP 近（my foot 短于 Bill's foot）；而日耳曼语的前置属格表确定的所指，后置属格表不确定的所指，德语的 Schiller's gedichte（席勒的诗）对 einige gedichte Schiller's（席勒的某些诗），英语的 my friend 对 a friend of mine，都是这个分野。形式距离越小，确指性越强；自我中心层级最顶的人称代词与中心语形式距离最小。这跟汉语相互印证：汉语 PN 省掉「的」，不是没来由的。</p>
+  <div class="vs">
+    <div class="vcard">
+      <h3>领属者前置 · 合格性递减</h3>
+      <ul>
+        <li>my foot · 我的脚</li>
+        <li>his foot · 他的脚</li>
+        <li>its foot · 它的脚</li>
+        <li>Bill's foot · 比尔的脚</li>
+        <li>my uncle's foot · 我叔叔的脚</li>
+        <li>the man's foot · 那人的脚</li>
+        <li>the dog's foot · 狗的脚</li>
+        <li>the bicycle's handle · 自行车的把手</li>
+        <li>the house's roof · 房子的顶</li>
+        <li>his honor's nature · 他的荣誉的本质</li>
+      </ul>
+    </div>
+    <div class="vcard b">
+      <h3>领属者后置 · 合格性递增</h3>
+      <ul>
+        <li>the foot of me · 我的脚</li>
+        <li>……</li>
+        <li>the nature of his honor · 他的荣誉的本质</li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted)">层级越往下，后置形式反而越顺；前置递减与后置递增，正是一条坡道的两面。</p>
+    </div>
+  </div>
+</section>
+<!-- ============ 你答得上来吗 ============ -->
+<section class="quiz" data-quiz>
+  <h2>你答得上来吗</h2>
+  <div class="qitem">
+    <p class="q"><b>1.</b>「老张的学生」非得带的，「北大的学生」就能省——张敏说三种条件的作用有先后，这个次序是？</p>
+    <div class="opts" data-correct="b">
+      <button type="button" data-ans="a">可让渡条件作用面最广，永远打头阵</button>
+      <button type="button" data-ans="b">类名条件最广，独立性条件次之，可让渡条件最后浮现</button>
+      <button type="button" data-ans="c">三个条件同时起作用，没有次序</button>
+      <button type="button" data-ans="d">全凭定语是不是专名，与条件无关</button>
+    </div>
+    <p class="why" hidden><b>b。</b>类名条件作用面最广、限制力最强；只有当它不起作用时，独立性条件才决定原型的领属构造一般应带de；可让渡条件要到修饰关系表对具体时空的确认时才浮现出来。</p>
+  </div>
+  <div class="qitem">
+    <p class="q"><b>2.</b>「我妹妹都很聪明」说不通，「我的妹妹都很聪明」却自然，关键卡在哪？</p>
+    <div class="opts" data-correct="a">
+      <button type="button" data-ans="a">PN 一定有指且只表单数指称，扛不住「都」的复数要求</button>
+      <button type="button" data-ans="b">PdN 不能表单数，只能表复数</button>
+      <button type="button" data-ans="c">「妹妹」前头必须带「的」，否则不成词</button>
+      <button type="button" data-ans="d">两句意思完全一样，说不通只是语体问题</button>
+    </div>
+    <p class="why" hidden><b>a。</b>PdN 可单可复还可无指，PN 一定有指且只能表确定的单数指称——「我妹妹」把单独一位锁得死死的，「都」一上来就要求复数，两头对不上；换成 PdN 或专名（「张三」）就顺了。</p>
+  </div>
+  <div class="qitem">
+    <p class="q"><b>3.</b>为什么有「我们学校」「我们楼」，却没有「我们图书馆」「我们教室」？</p>
+    <div class="opts" data-correct="c">
+      <button type="button" data-ans="a">图书馆、教室不是机构，字数也不对</button>
+      <button type="button" data-ans="b">「我们」不能修饰多音节词</button>
+      <button type="button" data-ans="c">只有双向领属关系才成 PN：学校能领有我们，图书馆不能</button>
+      <button type="button" data-ans="d">「图书馆」前头只能说「这个」，不能说「我们」</button>
+    </div>
+    <p class="why" hidden><b>c。</b>PN 要求 N 同时能领有 P：我们归北大领，北大也领有我们，互相打烙印；图书馆、教室只被我们领有却不能领有我们，只是单向领属，故「我们图书馆」「我们教室」无立锥之地。</p>
+  </div>
+</section>
+
+<!-- ============ 系列导航 ============ -->
+<section class="scene">
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="认知语言学与汉语名词短语-01深读-理论主张.html">01 理论主张</a>
+    <a href="认知语言学与汉语名词短语-02深读-范畴化.html">02 范畴化</a>
+    <a href="认知语言学与汉语名词短语-03深读-重叠动因.html">03 重叠动因</a>
+    <a href="认知语言学与汉语名词短语-04深读-下篇概述.html">04 下篇概述</a>
+    <a href="认知语言学与汉语名词短语-05深读-距离动因.html">05 距离动因</a>
+    <a href="认知语言学与汉语名词短语-06深读-的字隐现.html">06 的字隐现</a>
+    <a class="cur" href="认知语言学与汉语名词短语-07深读-领属结构.html">07 领属结构</a>
+    <a href="认知语言学与汉语名词短语-08深读-定语语序.html">08 定语语序</a>
+  </nav>
+  <footer>
+    <p>本页范围：研读底本第七章「领属结构的『的』与语言共性」（底本 L3240–L3602）。底本为 OCR 转录，无原书页码，角标中的「底本 Lx」指该行在研读底本中的行号；关键引文请点开角标核对原句后再引用。</p>
+    <p>未覆盖：多项定语语序（第八章），见系列深读页。原书：《认知语言学与汉语名词短语》，张敏著。</p>
+  </footer>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<details class="src">
+  <summary>出处清单 · 本页角标共 13 条</summary>
+  <ol>
+    <li><code>ident-vs-class</code>底本 L3269-3271｜汉语里用「Dde」形式表达的限定关系其实可分为「类指限定」和「单指限定」两种……我们可以把这种D称为「确认指标」。｜专名是确认指标，定住单独一例，的必现；能表类指的是分类指标，分出规约的类，的可省。</li>
+    <li><code>salience</code>底本 L3275-3277｜至于不能食、用者，带de与否也多半决定于认知上显著性的高低。拿「尾巴」和「鼻子」相比……｜尾巴显著故能自由构成 DN；牛因穿绳拉拽最显著、象因鼻子最长最显著，故可省 de。</li>
+    <li><code>identification-class</code>底本 L3271｜(1)中的 N₁ 都是充任确认指标，而（2）（3）中的 N₁ 则都是分类指标。(1)代表较为原型的领属构造……｜三类指标一个连续统：确认指标最原型，分类指标次之，确认式类名离原型最远。</li>
+    <li><code>condition-order</code>底本 L3380｜作用面最广、限制力最强的是上面所说的「类名条件」，只是在类名条件无法作用时，其他条件才发生作用……｜三条件有次序：类名条件最广，独立性条件次之，可让渡条件最后浮现。</li>
+    <li><code>two-layer</code>底本 L3350-3364｜汉语可以用隐喻的方式让实体领有空间，也让空间领有实体……首先实体 R₀ 隐喻地领有空间S……然后这片空间隐喻地领有实体 F₀……｜两层领属：实体靠邻接领有空间，空间靠包含领有实体。</li>
+    <li><code>adjacency</code>底本 L3362-3366｜(16)及(18a)里作为领有者的实体 R₀ 一定和它们所领有的空间S紧密邻接，这种邻接关系的紧密程度超过了任何一种其他关系……｜实体离不开邻接空间，空间却留不住实体；邻接最紧，故「桌子上头」可省 de。</li>
+    <li><code>pdN-pN</code>底本 L3405-3415｜(24)(25)可带de也可不带，(26)一般不能带de……「我的哥哥」和「我哥哥」是在构造和语义上迥然有别的两类形式……｜PdN 是代词带 de，PN 是代词直接修饰；亲属、社会关系词可省，机构名词不可省。</li>
+    <li><code>institution</code>底本 L3417｜「我们的学校」是说明领属关系，它可回答「谁的学校？」；「我们学校」是用「我们」来确定「学校」的所指……｜PdN 答「谁的」，PN 答「哪个」；PN 的「我」是类似这/那的指别者。</li>
+    <li><code>plural-test</code>底本 L3419-3421｜PdN可以有指，也可以无指……在有指时它既可表单数意义也可表复数意义……而PN一定是有指的，且只能表确定的单数指称……｜PdN 可单可复可无指，PN 一定有指且只表单数；复数谓语是试金石。</li>
+    <li><code>PN-motivation</code>底本 L3530-3534｜要探讨PN构成的理据，我们得分两步走。首先设定定语为人称代词，看N的构成有什么理据……｜两步理据：先给定语问 N，再给定语类型问定语；可用专名指称只是头一道门。</li>
+    <li><code>reciprocal</code>底本 L3552-3560｜北大的学生可领有的有专名的实体包括北大本身，北大图书馆……但能够领有他们的只有北大、某个特定的宿舍楼……｜双向领属才成 PN：我们和北大互相打烙印；我们学校、我们楼有，我们图书馆、我们教室无。</li>
+    <li><code>ego</code>底本 L3566｜当前指示是以「我(ego)」作为中心的，「我」一定是特定的话语情景中最为确定的指称……｜自我中心：我是最确定的指称，其余人称代词都是我的延伸。</li>
+    <li><code>silverstein</code>底本 L3568-3570｜Silverstein（1976）提出过一个著名的NP语义层级体系……显然，这个层级也可看作「自我中心」的层级。Deane（1992）注意到……｜Silverstein 十级层级即自我中心层级；Deane：前置递减、后置递增；形式距离越小确指性越强。</li>
+  </ol>
+</details>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "ident-vs-class": { page:"底本 L3269-3271", quote:"汉语里用「Dde」形式表达的限定关系其实可分为「类指限定」和「单指限定」两种。当D由能表类指的词语充任，而且整个构造也表类指时，这种限定关系是类指限定，其中的D就是前面所说的「分类指标」……而当D是只能表单指的专名时，其作用是单指限定，或说是对单一指称的「确认」(identification)，即在中心语所代表的类中确认出一个特定的例来作为指示的对象。我们可以把这种D称为「确认指标」。例如，「鼻子」自然是一类东西，但「张三的鼻子」不是鼻子的一个次类，而是某个特定的鼻子，它是通过「张三」这个指标而得以确认和专指。", zh:"专名D是确认指标：在中心语代表的类中确认出单独一例，故「的」必现；能表类指的D是分类指标：分出规约的次类，故「的」可省。" },
+  "salience": { page:"底本 L3275-3277", quote:"至于不能食、用者，带de与否也多半决定于认知上显著性的高低。拿「尾巴」和「鼻子」相比，前者在人们感知动物的整体轮廓时显著性更高，故能相当自由地与动物名构成DN，如「马/牛/猪/狗/猫/老鼠/老虎/兔子/狐狸尾巴」；后者在感知上不太显著，故有不少限制，如我们可以有「猫的/猴子的/兔子的/老虎的/狗的/牛的/象的鼻子」，它们都是鼻子的次类，但其中只有「牛」和「象」能不带de修饰「鼻子」……牛鼻子在与人的互动关系上最显著，因为它是人们用绳子贯穿其中用以拉拽的惟一的鼻子；象鼻子在形状上最显著，因为任何其他动物的鼻子都没有它长。", zh:"显著性决定带de与否：尾巴在整体轮廓上显著，故能自由构成DN；牛因穿绳拉拽在互动上最显著、象因鼻长在形状上最显著，故可省de。" },
+  "identification-class": { page:"底本 L3271", quote:"(1)中的 N₁ 都是充任确认指标，而（2）（3）中的 N₁ 则都是分类指标。(1)代表较为原型的领属构造，而（2）（3）都偏离原型，其中（3）离原型最远。", zh:"三类指标构成一个连续统：确认指标最接近原型领属，分类指标已偏离，确认式类名离原型最远。" },
+  "condition-order": { page:"底本 L3380", quote:"作用面最广、限制力最强的是上面所说的「类名条件」，只是在类名条件无法作用时，其他条件才发生作用：当修饰关系不表对实体的分类性限制，而表对实体的个体确认时，「独立性条件」决定原型的领属构造一般应带de；当修饰关系表对具体时空的确认时，「可让渡条件」才浮现出来……换言之，上述三种条件的作用是有次序的。", zh:"三种条件有明确次序：类名条件作用面最广，独立性条件次之，可让渡条件最后才浮现。" },
+  "two-layer": { page:"底本 L3350-3364", quote:"实体可以在物理—心理意义上领有另一个实体，而空间并非实体，空间和实体之间自然不可能建立真正的领有关系。不过我们认为，汉语可以用隐喻的方式让实体领有空间，也让空间领有实体。……汉语由空间位置确认实体可通过两层隐喻的领属关系来进行：首先实体 R₀ 隐喻地领有空间S，据以确定出一片特定的空间来，然后这片空间隐喻地领有实体 F₀，据以确认出一个特定的实体。", zh:"两层领属：实体靠邻接关系领有空间，空间靠包含关系领有实体；由空间位置确认一个实体要连过两层隐喻。" },
+  "adjacency": { page:"底本 L3362-3366", quote:"(16)及(18a)里作为领有者的实体 R₀ 一定和它们所领有的空间S紧密邻接，这种邻接关系的紧密程度超过了任何一种其他关系。……实体(如「桌子」)无论如何移动，它都脱离不开与之邻接的空间(如「桌子」总会有「上头」)；但一个特定的空间不一定能永远留住一个实体(如「书」可以从「桌子上头」这片空间里移出去)。", zh:"实体离不开与之邻接的空间，空间却留不住实体；邻接之紧超过任何其他关系，这正是「桌子上头」可省de的认知根基。" },
+  "pdN-pN": { page:"底本 L3405-3415", quote:"(24)(25)可带de也可不带，(26)一般不能带de。其中的N有三类：(24)中的都是亲属词，(25)中的都是表其他（人际）社会关系的词，(26)中的都是人所在（所归属）的社会机构，如单位、团体、组织、政区等。……我们认为「我的哥哥」和「我哥哥」是在构造和语义上迥然有别的两类形式。在构造上，前者是代词带de作修饰语；后者则是用代词直接修饰名词，中间并没有一个省略de的过程。", zh:"PdN＝代词带de作修饰语，PN＝代词直接修饰名词，中间没有省略de的过程；亲属词、社会关系词两类可省，机构名词一般不可省。" },
+  "institution": { page:"底本 L3417", quote:"「我们的学校」是说明领属关系，它可回答「谁的学校？」；「我们学校」是用「我们」来确定「学校」的所指，它不能回答「谁的学校？」，只能回答「哪个学校？」。", zh:"PdN答「谁的」，PN答「哪个」；PN里的「我」表层语义不是领有者，而是类似「这/那」的指别者。" },
+  "plural-test": { page:"底本 L3419-3421", quote:"PdN可以有指，也可以无指，无指的例子如「谁也不敢做他的老师」；在有指时它既可表单数意义也可表复数意义，如「我的妹妹」既可以指我唯一的妹妹或我的某个妹妹，也可以指我的几个妹妹。而PN一定是有指的，且只能表确定的单数指称，如「我妹妹」一定是确定地指我的某个妹妹。", zh:"PdN可单可复还可无指，PN一定有指且只表单数指称；复数谓语（如「都」）是区分二者的试金石。" },
+  "PN-motivation": { page:"底本 L3530-3534", quote:"要探讨PN构成的理据，我们得分两步走。首先设定定语为人称代词，看N的构成有什么理据，即为什么「我哥哥|我们学校」能说而「我手|我桌子」不能说；然后设定中心语为人际关系词和类事物……可否用专名指称可看作能否形成PN构造的一个首要条件：我们说「我哥哥|我们学校」，因为「我哥哥」指张三，「我们学校」指北大……不过，能用专名指称只是形成PN的一个充分条件而非必要条件，它是PN构造的实质的一种反映而非其实质本身。", zh:"两步理据：先给定语人称代词问N的构成，再给定语类型问定语为何必须是人称代词；可用专名指称只是头一道门，不是实质。" },
+  "reciprocal": { page:"底本 L3552-3560", quote:"北大的学生可领有的有专名的实体包括北大本身，北大图书馆，他们所居的宿舍楼，某个教室如301教室等等；但能够领有他们的只有北大、某个特定的宿舍楼（如32楼），而北大图书馆和301教室不能领有这些学生。……这样，学生的口里便可以有「我们学校|我们楼」的说法，没有「我们图书馆|我们教室」的说法。", zh:"双向领属关系才成PN：我们与北大互相打烙印；我们学校、我们楼有，我们图书馆、我们教室无。" },
+  "ego": { page:"底本 L3566", quote:"当前指示是以「我(ego)」作为中心的，「我」一定是特定的话语情景中最为确定的指称。设想「我」名叫张三，在某个言谈行为中「我」要提及自己的哥哥，若用「张三的哥哥」，听者要了解这一指称，需完成两个步骤……若用「我(的)哥哥」，听者无需经过第一个步骤就可直接理解整个构造的所指。从这个角度说，「我哥哥」和「这个人」一样是一种更为直接的指称方式。其他人称代词都可看作是由「我」延伸出来的，故其指称上的直示性质和「我」类似。", zh:"自我中心：我是话语情景中最确定的指称，其余人称代词都是「我」的延伸；「我哥哥」比「张三的哥哥」少一步解码。" },
+  "silverstein": { page:"底本 L3568-3570", quote:"Silverstein（1976）提出过一个著名的NP语义层级体系，被人称作「Silverstein层级」，它至上而下反映了NP在有生性，施事性，话题性，显著性等多个方面的强弱程度，如第1级是第1人称包括式代词，第2级是第1人称单数及排除式代词，以下依次是第2人称代词，第3人称代词，专名，亲属词，反映人的地位的词，有生名词，代表其他离散实体的词等等，排在最后的是表抽象事物的名词。显然，这个层级也可看作「自我中心」的层级。Deane（1992）注意到，英语里的两种属构造，即领属词前置和领属者后置的构造的合格程度因表领有者的NP在上述层级上的位置而有所不同。前置形式的合格性依次递减……后置形式的合格性则依次递增。", zh:"Silverstein十级层级就是自我中心的层级；Deane：领属词前置合格性沿层级递减、后置递增；形式距离越小，确指性越强。" }
+};
+
+/* ================= 出处弹窗与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《认知语言学与汉语名词短语》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜判定 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 三台判定 ================= */
+const LABS = {
+  proto: [
+    { t:"我的脑袋", v:"原型正中", ex:"有生物领具体物，主动控制且独占——三条标准全踩中。", ok:false },
+    { t:"张三的钢笔", v:"原型正中", ex:"具体物、主动控制独占，只差在有生物这一条上是专名，仍算原型。", ok:false },
+    { t:"老张的哥哥", v:"接近原型", ex:"被领有者不是具体物而是社会关系，偏离了「看得见摸得着」这一条。", ok:false },
+    { t:"桌子的上头", v:"偏离原型", ex:"空间隐喻：实体凭邻接领有一片空间，被领有者根本不是实体。", ok:false },
+    { t:"桌子上头的书", v:"偏离原型", ex:"空间隐喻领有实体：一片空间凭包含关系确认一个实体。", ok:false },
+    { t:"孩子的想法", v:"偏离原型", ex:"抽象物，靠包含关系领有，不具体、谈不上独占。", ok:false },
+    { t:"北大的校长", v:"偏离原型", ex:"机构对机构，归依关系而非支配占有。", ok:false }
+  ],
+  class: [
+    { t:"张三的鼻子", v:"的必现", ex:"确认指标：在鼻子这类里定住单独一例，不是次类。", ok:false },
+    { t:"老张的学生", v:"的必现", ex:"专名作确认指标，单指限定，省不得。", ok:false },
+    { t:"狗的鼻子", v:"的必现", ex:"狗不够显著，狗鼻子不成规约的类，带 de 才是次类。", ok:true },
+    { t:"牛鼻子", v:"的可省", ex:"分类指标：牛因穿绳拉拽在互动上最显著，牛鼻子是规约的类。", ok:true },
+    { t:"中文系学生", v:"的可省", ex:"分类指标：分出中文系学生这个规约的类。", ok:true },
+    { t:"研究生论文", v:"的可省", ex:"分类指标：按学业阶段分出规约的类。", ok:true },
+    { t:"北大学生", v:"的可省", ex:"确认式类名：北大整体成为一个规约类的名称。", ok:true },
+    { t:"爱因斯坦的相对论", v:"的可省（勉强）", ex:"确认式类名里离原型最远的一个，但已整体成类。", ok:true }
+  ],
+  pdn: [
+    { t:"我的学校", v:"PdN", ex:"代词带 de，答「谁的学校？」，可单可复。", ok:true },
+    { t:"我们学校", v:"PN", ex:"代词直接修饰，答「哪个学校？」，表单称专指。", ok:true },
+    { t:"我所", v:"PN", ex:"机构名词，de 插不进来（没有「我们所」的说法），PN 可看作复合词。", ok:true },
+    { t:"我们所", v:"说不通", ex:"「我们所」没有 de 式——机构名词根本不能插入 de。", ok:false },
+    { t:"我的妹妹都很聪明", v:"说得通", ex:"PdN 可单可复，「都」的复数要求能满足。", ok:true },
+    { t:"我妹妹都很聪明", v:"说不通", ex:"PN 一定有指且只表单数指称，扛不住「都」。", ok:false },
+    { t:"我的学校越办越多", v:"说得通", ex:"PdN 不表单称专指，教育部长也能说。", ok:true },
+    { t:"我们学校越办越好", v:"说得通", ex:"PN 是专名的替代名称，主语一定是单数机构。", ok:true }
+  ]
+};
+Object.keys(LABS).forEach(key => {
+  const pool = document.querySelector('[data-pool="' + key + '"]');
+  const out = document.querySelector('[data-out="' + key + '"]');
+  LABS[key].forEach(u => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.textContent = u.t;
+    b.setAttribute("aria-pressed", "false");
+    b.onclick = () => {
+      pool.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      out.innerHTML = "<b" + (u.ok ? ' class="ok"' : "") + ">" + u.v + "</b>｜" + u.ex;
+    };
+    pool.appendChild(b);
+  });
+  pool.firstChild.click();
+});
+
+/* =================  quiz 判定 ================= */
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const item = group.closest(".qitem");
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      const why = item.querySelector(".why");
+      why.hidden = false;
+      why.classList.add("show");
+    };
+  });
+});
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","17px","19px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("c7-fs") || "17px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; document.body.style.fontSize = SIZES[sizeIdx]; store.set("c7-fs", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("c7-theme") || "auto"));
+function applyTheme(){ document.documentElement.setAttribute("data-theme", THEMES[thIdx]); store.set("c7-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

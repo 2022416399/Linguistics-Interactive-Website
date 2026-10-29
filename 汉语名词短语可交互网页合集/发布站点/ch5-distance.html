@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>距离动因与语义差别 · 《认知语言学与汉语名词短语》第五章可交互笔记</title>
+<meta name="description" content="《认知语言学与汉语名词短语》第五章可交互笔记：三个命题与 DN／DdN 记号、距离象似动因四家界说、语言距离六级序列、概念距离四性质、Greenberg 28/39 与 Bybee 双序列、Givón 约束层级、Croft 蕴含共性(7)、领属六类表与汉语反例预告、粘合式组合式与甲乙类定语、称谓性分类性述谓性三项特征、预设与断定、Yoruba 焦点验证，含阶梯图、六类表与点选交互。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn.wrong{outline:2.5px dashed var(--red);outline-offset:1px}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.right{border-color:var(--green);color:var(--green);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+.v-ok{color:var(--green);font-weight:800;margin-right:.4em}
+.v-no{color:var(--red);font-weight:800;margin-right:.4em}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:center;vertical-align:middle}
+.tbl th{background:var(--hl);font-weight:700}
+.tbl td.l,.tbl th.l{text-align:left}
+.tbl td.hi{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
+.tbl td.lo{color:var(--ink-faint)}
+input[type=range]{width:100%;max-width:460px;accent-color:var(--red);height:36px}
+
+/* ---------- 时间线（场景一） ---------- */
+.tl{list-style:none;margin:12px 0 6px;padding:2px 0 2px 28px;border-left:2.5px dashed var(--line)}
+.tl li{position:relative;margin:0 0 9px}
+.tl li::before{content:"";position:absolute;left:-34px;top:11px;width:11px;height:11px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--red)}
+.tl .btn{min-height:42px;text-align:left;font-size:.9rem;padding:6px 12px;line-height:1.5}
+.tl .tl-y{font-weight:800;color:var(--red);margin-right:.45em}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.inline-svg{background:var(--card);border:1.5px dashed var(--line);border-radius:10px;padding:10px 8px 6px;margin:10px 0}
+#balBeam,#panL,#panR{transition:transform .18s ease}
+@media (prefers-reduced-motion: reduce){
+  #balBeam,#panL,#panR{transition:none}
+}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a href="index.html" title="返回全书导览" style="position:fixed;left:12px;bottom:14px;z-index:9999;display:inline-flex;align-items:center;gap:4px;font:13px/1.4 system-ui,'Microsoft YaHei',sans-serif;color:#5a5348;background:rgba(255,253,246,.94);border:1px solid #d8d1c2;border-radius:999px;padding:6px 13px;text-decoration:none;box-shadow:0 2px 10px rgba(35,32,28,.12);backdrop-filter:blur(2px)">← 返回全书导览</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">《认知语言学与汉语名词短语》· 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第五章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">距离动因与 DN、DdN 的语义差别</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：三个命题 ｜ 距离动因 ｜ 共性规律 ｜ 领属预告 ｜ 甲乙类定语 ｜ 三项特征</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>本章把下篇的主要结论压缩成三个层层推进的命题，核心只有一句——<span class="hl">定中之间因 de 字隐现而有别的形式距离，平行于其间的概念距离</span><button type="button" class="cite" data-cite="prop1" aria-label="查看出处"></button>。用来解释它的原则叫<span class="hl">距离象似动因</span>：语言成分之间的距离反映了所表达的概念的成分之间的距离<button type="button" class="cite" data-cite="haimanDef" aria-label="查看出处"></button>。本章主要证明命题 (1)。<span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 262" role="img" aria-label="三命题递进图：命题一形式距离平行概念距离，命题二 de 字隐现规律由距离象似动因促动，命题三汉语名词短语基本结构规律由距离象似动因促动，三者由箭头串联并标注层层推进">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="20" y="26" width="210" height="86" rx="12"/>
+        <rect x="275" y="26" width="210" height="86" rx="12"/>
+        <rect x="530" y="26" width="210" height="86" rx="12"/>
+        <path d="M232 69 L272 69"/><path d="M264 61 L272 69 L264 77"/>
+        <path d="M487 69 L527 69"/><path d="M519 61 L527 69 L519 77"/>
+        <path d="M90 114 L90 150"/><path d="M82 142 L90 150 L98 142"/>
+        <rect x="20" y="152" width="330" height="52" rx="10"/>
+        <rect x="410" y="152" width="330" height="52" rx="10"/>
+        <path d="M352 178 L407 178"/><path d="M399 170 L407 178 L399 186"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="125" y="52" font-size="14.5" font-weight="700">命题 (1)</text>
+        <text x="125" y="72" font-size="11.5">形式距离</text>
+        <text x="125" y="88" font-size="11.5">∥ 概念距离</text>
+        <text x="380" y="52" font-size="14.5" font-weight="700">命题 (2)</text>
+        <text x="380" y="72" font-size="11.5">de 隐现规律</text>
+        <text x="380" y="88" font-size="11.5">由距离动因促动</text>
+        <text x="635" y="52" font-size="14.5" font-weight="700">命题 (3)</text>
+        <text x="635" y="72" font-size="11.5">名词短语基本</text>
+        <text x="635" y="88" font-size="11.5">结构规律（扩展）</text>
+        <text x="185" y="174" font-size="12.5" font-weight="700">本章主要证明 (1)</text>
+        <text x="185" y="194" font-size="11" fill="var(--ink-soft)">先交代距离动因与语言共性</text>
+        <text x="575" y="174" font-size="12.5" font-weight="700">(1)(2) 是一体两面</text>
+        <text x="575" y="194" font-size="11" fill="var(--ink-soft)">侧重点不同：有无条件 vs 何时隐现</text>
+      </g>
+    </svg>
+    <figcaption>三个相互关联、层层推进的命题（示意）<button type="button" class="cite" data-cite="threeProp" aria-label="查看出处"></button><button type="button" class="cite" data-cite="propRel" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">三命题与记号</button>
+    <button class="chip" data-jump="s2">距离动因四家</button>
+    <button class="chip" data-jump="s3">Greenberg 与 Bybee</button>
+    <button class="chip" data-jump="s4">约束层级与使役</button>
+    <button class="chip" data-jump="s5">领属与汉语反例</button>
+    <button class="chip" data-jump="s6">粘合式与组合式</button>
+    <button class="chip" data-jump="s7">三项特征与述谓</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>三个命题与两个记号</h2>
+  </div>
+  <p class="point">为避免叙述含混，作者先把下篇的主要结论明确摆出来。它们可归纳为三个<strong>相互关联、层层推进</strong>的命题<button type="button" class="cite" data-cite="threeProp" aria-label="查看出处"></button>。点一张卡，看这一条原文怎么说。</p>
+
+  <div class="card taped">
+    <p class="bench-label">三个命题——点一条看原文。</p>
+    <div class="btn-row" id="propBtns">
+      <button class="btn" data-p="1">命题 (1) 形式 ∥ 概念</button>
+      <button class="btn" data-p="2">命题 (2) de 隐现由动因促动</button>
+      <button class="btn" data-p="3">命题 (3) 基本结构规律</button>
+    </div>
+    <div class="reveal" id="propBox" hidden><p id="propTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">两个记号——不带 de 的定中构造记作 <span class="mono">DN</span>，带 de 者记作 <span class="mono">DdN</span><button type="button" class="cite" data-cite="dnNote" aria-label="查看出处"></button>。N 指中心语名词，D 指定语。</p>
+    <div class="btn-row" id="dnaBtns">
+      <button class="btn" data-n="DN">DN（不带 de）</button>
+      <button class="btn" data-n="DdN">DdN（带 de）</button>
+    </div>
+    <div class="reveal" id="dnaBox" hidden><p id="dnaTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>D 为什么能同时是"定语"和"限定语"（折叠细节）</summary>
+    <p>这里的 D 既可理解为"定语"的汉语拼音缩写，也可理解为英语 "Determiner（限定语）"的缩写。后一个概念来自 Seiler(1978)，其意义比通常略写为 "Det" 的 "Determiner"（一般由冠词、逻辑量词和指示代词充任）更广，本书将在下一章解释这个概念<button type="button" class="cite" data-cite="dnNote" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">(1)(2) 直接与 de 字隐现的问题相关；(3) 是观察到多项定语语序的象似规律之后提出的扩展命题。其中 (1) 和 (2) 是一个问题的两面，本章主要证明 (1)<button type="button" class="cite" data-cite="propRel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="chGoal" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：距离动因四家 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>距离动因：四家界说与六级阶梯</h2>
+  </div>
+  <p class="point">距离象似动因并非当代功能语言学家的新发现。Haiman<button type="button" class="cite" data-cite="haimanDef" aria-label="查看出处"></button>、Givón<button type="button" class="cite" data-cite="givonDef" aria-label="查看出处"></button> 给了它当代的表述，而 Behaghel、Jespersen 等传统语言学家早已凭对个别语言的细致洞察提出过内容相仿的规律<button type="button" class="cite" data-cite="behaghel" aria-label="查看出处"></button><button type="button" class="cite" data-cite="jespersen" aria-label="查看出处"></button>。点一位学者，看他的原话。</p>
+
+  <div class="card taped">
+    <p class="bench-label">四家界说——点一位学者。</p>
+    <div class="btn-row" id="defBtns">
+      <button class="btn" data-d="1">Haiman 1983</button>
+      <button class="btn" data-d="2">Givón 1990</button>
+      <button class="btn" data-d="3">Behaghel 1932</button>
+      <button class="btn" data-d="4">Jespersen 1949</button>
+    </div>
+    <div class="reveal" id="defBox" hidden><p id="defTxt" style="margin:0"></p></div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 316" role="img" aria-label="语言距离六级阶梯：自上而下依次为 X#A#B#Y、X#A#Y、X+A#Y、X#Y、X+Y、Z，右侧箭头标注语言距离依次减小，X 与 Y 之间的空隙逐级收窄直至融合为单个语素 Z">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="52" y="14" width="330" height="42" rx="11"/>
+        <rect x="52" y="64" width="300" height="42" rx="11"/>
+        <rect x="52" y="114" width="272" height="42" rx="11"/>
+        <rect x="52" y="164" width="228" height="42" rx="11"/>
+        <rect x="52" y="214" width="196" height="42" rx="11"/>
+        <rect x="52" y="264" width="150" height="42" rx="11"/>
+        <path d="M430 30 L430 288"/><path d="M422 280 L430 288 L438 280"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">
+        <text x="20" y="41" font-size="13" font-weight="800" fill="var(--red)">a</text>
+        <text x="72" y="41" font-size="14">X # A # B # Y</text>
+        <text x="20" y="91" font-size="13" font-weight="800" fill="var(--red)">b</text>
+        <text x="72" y="91" font-size="14">X # A # Y</text>
+        <text x="20" y="141" font-size="13" font-weight="800" fill="var(--red)">c</text>
+        <text x="72" y="141" font-size="14">X + A # Y</text>
+        <text x="20" y="191" font-size="13" font-weight="800" fill="var(--red)">d</text>
+        <text x="72" y="191" font-size="14">X # Y</text>
+        <text x="20" y="241" font-size="13" font-weight="800" fill="var(--red)">e</text>
+        <text x="72" y="241" font-size="14">X + Y</text>
+        <text x="20" y="291" font-size="13" font-weight="800" fill="var(--red)">f</text>
+        <text x="72" y="291" font-size="14">Z（融合）</text>
+        <text x="452" y="164" font-size="12.5" font-weight="700" fill="var(--red)">语言距离依次减小</text>
+      </g>
+    </svg>
+    <figcaption>Haiman(1985a) 的形式距离序列（读图）<button type="button" class="cite" data-cite="haiman85" aria-label="查看出处"></button><button type="button" class="cite" data-cite="ladSeq" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">六级阶梯——点一级，看那一级的形式与含义。</p>
+    <div class="btn-row" id="ladBtns">
+      <button class="btn" data-g="a">a 级</button>
+      <button class="btn" data-g="b">b 级</button>
+      <button class="btn" data-g="c">c 级</button>
+      <button class="btn" data-g="d">d 级</button>
+      <button class="btn" data-g="e">e 级</button>
+      <button class="btn" data-g="f">f 级</button>
+    </div>
+    <div class="reveal" id="ladBox" hidden><p id="ladTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>线性距离之外，还有结构距离（折叠细节）</summary>
+    <p>形式距离在表层体现为线性距离——加在 X 和 Y 之间的成分越多，语言距离就越大。但更深一层看，它体现的应是<strong>结构距离</strong>，可从三个相互关联的角度理解：(a) X 和 Y 及其间的成分独立性越强，语言距离就越大；(b) X 和 Y 之间的组合方式越松散，语言距离就越大；(c) X 和 Y 在结构树上跨越的节点越多，语言距离就越大——如 X 和 Y 的距离在 [[AX]Y] 中比在 [A [XY]] 中要大，尽管其线性距离完全一样<button type="button" class="cite" data-cite="structDist" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <details>
+    <summary>概念距离的四个性质（折叠细节）</summary>
+    <p>Haiman 给概念距离下的定义是：若两个概念具有以下性质——a. 语义上有共同的特征、属性或组成部分；b. 互相影响；c. 在现实中不可分离；d. 被感知为一个概念单位，无论在现实中是否不可分离——则它们之间在概念领域里的距离更近<button type="button" class="cite" data-cite="conceptDist" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">通俗地说：元素之间的表层形式连接越紧密，其意义联系往往也越紧密，因而形式关系是意义关系的临摹。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 三命题与记号</button>
+    <button class="btn" data-jump="s3">下一场：Greenberg 与 Bybee →</button>
+  </div>
+</section>
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>共性规律：Greenberg 与 Bybee</h2>
+  </div>
+  <p class="point">形态和句法领域里大量研究证实，距离动因是人类语言结构的一种主要的象似动因，它能为不少语言共性规律提供合理解释<button type="button" class="cite" data-cite="grn28" aria-label="查看出处"></button>。先看 Greenberg（1963）两条常被引用的普遍特征。</p>
+
+  <div class="card taped">
+    <p class="bench-label">Greenberg 两条——点一条看原文与解释。</p>
+    <div class="btn-row" id="ggBtns">
+      <button class="btn" data-gg="28">第 28 条 · 派生 vs 屈折</button>
+      <button class="btn" data-gg="39">第 39 条 · 数 vs 格</button>
+    </div>
+    <div class="reveal" id="ggBox" hidden><p id="ggTxt" style="margin:0"></p></div>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 236" role="img" aria-label="Bybee 双序列平行图：上方为概念距离序列价、语态、体、时、语气、人称数的一致，越靠左概念距离越近；下方为形式距离序列屈折体、时、语气、人称和数，两行之间有连线表示大体平行">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="16" y="20" width="102" height="46" rx="10"/>
+        <rect x="130" y="20" width="102" height="46" rx="10"/>
+        <rect x="244" y="20" width="102" height="46" rx="10"/>
+        <rect x="358" y="20" width="102" height="46" rx="10"/>
+        <rect x="472" y="20" width="102" height="46" rx="10"/>
+        <rect x="586" y="20" width="158" height="46" rx="10"/>
+        <rect x="130" y="152" width="130" height="46" rx="10"/>
+        <rect x="272" y="20" width="0" height="0"/>
+        <rect x="272" y="152" width="130" height="46" rx="10"/>
+        <rect x="414" y="152" width="130" height="46" rx="10"/>
+        <rect x="556" y="152" width="188" height="46" rx="10"/>
+        <path d="M16 96 L16 118"/><path d="M360 96 L360 118"/>
+        <path d="M300 74 L300 146"/><path d="M292 138 L300 146 L308 138"/>
+        <path d="M410 74 L410 146"/><path d="M402 138 L410 146 L418 138"/>
+        <path d="M523 74 L523 146"/><path d="M515 138 L523 146 L531 138"/>
+        <path d="M665 74 L665 146"/><path d="M657 138 L665 146 L673 138"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="380" y="14" font-size="12" font-weight="700" fill="var(--red)">(3) 概念距离序列 · 越靠左概念距离越近</text>
+        <text x="67" y="48" font-size="13.5">价</text>
+        <text x="181" y="48" font-size="13.5">语态</text>
+        <text x="295" y="48" font-size="13.5">体</text>
+        <text x="409" y="48" font-size="13.5">时</text>
+        <text x="523" y="48" font-size="13.5">语气</text>
+        <text x="665" y="42" font-size="12.5">人称／数的</text>
+        <text x="665" y="60" font-size="12.5">一致</text>
+        <text x="24" y="112" font-size="11.5" fill="var(--ink-soft)">距离近</text>
+        <text x="380" y="112" font-size="11.5" fill="var(--ink-soft)">距离远</text>
+        <text x="380" y="142" font-size="12" font-weight="700" fill="var(--green)">(4) 形式距离序列 · 大体平行</text>
+        <text x="195" y="180" font-size="13">(屈折) 体</text>
+        <text x="337" y="180" font-size="13">时</text>
+        <text x="479" y="180" font-size="13">语气</text>
+        <text x="650" y="180" font-size="13">人称和数</text>
+        <text x="380" y="222" font-size="11.5" fill="var(--ink-soft)">与其用次序，不如用相对距离来描述</text>
+      </g>
+    </svg>
+    <figcaption>Bybee（1985）的双序列（读图）<button type="button" class="cite" data-cite="bybeeSeq3" aria-label="查看出处"></button><button type="button" class="cite" data-cite="bybeeSeq4" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">两条序列——点一条看原文。Bybee 考察了 50 种分属不同语系的语言<button type="button" class="cite" data-cite="bybeeConc" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="beeBtns">
+      <button class="btn" data-b="3">序列 (3) 概念距离</button>
+      <button class="btn" data-b="4">序列 (4) 形式距离</button>
+    </div>
+    <div class="reveal" id="beeBox" hidden><p id="beeTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>Bybee 的三条结论与 Croft 的推广（折叠细节）</summary>
+    <p>Bybee 的结论是：某个范畴和动词在概念上越相关，(1) 它就越有可能以综合或黏附的方式和动词结合，(2) 在形态和语音方面两者之间的并合程度就越高，(3) 它的位置就离动词词根越近<button type="button" class="cite" data-cite="bybeeConc" aria-label="查看出处"></button>。她进一步提出，子句结构的语序规则应该和词法领域里的一样。Croft(1990) 为这项假说提供了证据：类型学的材料显示，几乎所有语言都有形式完整的名词短语（即修饰语和被修饰的名词相邻的短语），大多数语言都把动词修饰语放在动词旁边，而整个句子的修饰语则经常放在句子的头一两个位置或句尾<button type="button" class="cite" data-cite="croftSub" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">Greenberg 那两条也能得到认知上的自然解释：派生构词法会影响到整个词的词汇意义，派生语缀代表的概念和词根的概念紧密相关；而这种意义的变化往往是非常显著的（如英语"read"和"reader"）；而屈折构形法所增加的意义只是附在词根之外的更大的语言片段上，并不影响词根本身的意义，如英语的"go"变为"went"，"去"的意义并无变化。同理，由于数语缀决定了所指的一组事物的量，因而影响到所指物的语义，它对整个词的意义的影响显然大于格语缀；格语缀的意义仅仅描述名词代表的所指物和动词代表的事件之间的关系，并不影响名词词根本身的意义。在此，语言距离以象似的方式反映了概念距离<button type="button" class="cite" data-cite="grn28" aria-label="查看出处"></button><button type="button" class="cite" data-cite="grn39" aria-label="查看出处"></button><button type="button" class="cite" data-cite="numCase" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 距离动因四家</button>
+    <button class="btn" data-jump="s4">下一场：约束层级与使役 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>Givón 的约束层级与 Croft 的使役</h2>
+  </div>
+  <p class="point">Givón（1980、1985、1990）从另一个角度论证句法里的距离象似动因。他考察多种语言中的动词补足语结构，发现带补足语结构的动词的语义特性和其补足语的句法构造之间有系统的联系，并提出补足语类型的"约束层级（binding hierarchy）"<button type="button" class="cite" data-cite="givonScale" aria-label="查看出处"></button>。下面六类补足语在约束尺度上<strong>由低到高</strong>排列，点一级看它的位置与特征。</p>
+
+  <div class="card taped">
+    <p class="bench-label">约束层级六级——点一级。</p>
+    <div class="btn-row" id="givBtns">
+      <button class="btn" data-v="1">① 直接引语</button>
+      <button class="btn" data-v="2">② 间接引语</button>
+      <button class="btn" data-v="3">③ 相信／懂得／怀疑</button>
+      <button class="btn" data-v="4">④ 感情动词</button>
+      <button class="btn" data-v="5">⑤ 企图或操纵</button>
+      <button class="btn" data-v="6">⑥ 使役或导致成功</button>
+    </div>
+    <div class="reveal" id="givBox" hidden><p id="givTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>设立约束尺度的三个语义标准与三个句法标准（折叠细节）</summary>
+    <p><strong>语义标准 (5)：</strong>a. "控制"——主句动词的施事对补足语从句的施事施加的影响越大，主句动词在约束尺度上的位置就越高；b. "独立性"——一个动词在约束尺度上的位置越高，其补足语从句的施事独立起作用的能力就越低；c. "成功"——补足语从句施事的独立性越小、主句动词在约束尺度上的位置越高，有意识的操纵就越有可能成功<button type="button" class="cite" data-cite="givonScale" aria-label="查看出处"></button>。</p>
+    <p><strong>句法标准 (6)：</strong>a. 一个动词在约束尺度上的位置越高，其补足语从句的施事体现主语／施事／主题的格标记特征的可能性就越低；b. 位置越高，其补足语从句的动词出现主句特有的时—体—态标记的可能性就越低；c. 位置越高，其补足语从句的动词被提升（比如和主句动词融合为一个词）的可能性就越高。</p>
+  </details>
+
+  <details>
+    <summary>Givón 发现的类型学规律（折叠细节）</summary>
+    <p>将两种尺度放在一起比较，Givón 发现这样一条规律：<strong>"若语义约束层级上的某一点由某一句法编码机制表达出来，则语义尺度上更高的点不能由语法尺度上更低的点表达。它或由句法尺度上位置相同的点表达，或由一个更高的点表达。"</strong>他在英语、西班牙语、芬兰语、希伯莱语、波斯语、阿拉伯语、Sherpa 语等十数种语言里找到了支持这一规律的证据。现代希伯莱语是一个最好的例子，其中句法语义两个尺度上的对应非常细密<button type="button" class="cite" data-cite="givonLaw" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <div class="card taped">
+    <p class="bench-label">Croft (7) 的蕴含性语言普遍特征——点一组使役式，看形式距离如何对应概念距离<button type="button" class="cite" data-cite="croft7" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="causBtns">
+      <button class="btn" data-cs="kill">凝固形式 kill</button>
+      <button class="btn" data-cs="cause">分析形式 cause to die</button>
+    </div>
+    <div class="reveal" id="causBox" hidden><p id="causTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>英语使役式的接受度限制（折叠细节）</summary>
+    <p>英语里形式复杂的使役式通常要求使役对象是有生命的或有知觉的；当使役对象是无生命或无知觉的物体时，复杂的使役式常常暗示使役者有某种超自然的魔力，更多情况下这种形式不大能成立：<span class="mono">(8)a. I caused the tree to fall.／b. I caused the chicken to die.（比较：I killed the chicken.）／c. I caused the cup to rise to my lips.／d. ? I caused the books to leave the room.</span><button type="button" class="cite" data-cite="caus8d" aria-label="查看出处"></button>　这个限制也只能从功能和认知上得到解释：和无生命、无知觉的使役对象不同，有知觉的使役对象可以通过某些间接方式受到影响，如通过命令，或某种意识上的能力<button type="button" class="cite" data-cite="causative" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot"> Croft 认为，若 Bybee 的假说能够成立，几乎所有的成分结构（constituency）都可从距离象似动因一举得到解释。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← Greenberg 与 Bybee</button>
+    <button class="btn" data-jump="s5">下一场：领属与汉语反例 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>领属结构：六类表与汉语反例预告</h2>
+  </div>
+  <p class="point">领属（possession）关系反映的是领属者（p₁）和领属物（p₂）这两个实体之间的某种附属关系<button type="button" class="cite" data-cite="possDef" aria-label="查看出处"></button>。很早就有学者注意到领属关系在语义上可分为"可让渡"与"不可让渡"两类，它们在不少语言里都有形式上的区别。两个物体若有不可让渡的领属关系，无论紧密联系是物理上的还是心理上的，它们在概念上的距离都比可让渡的更近。根据距离象似原则，表不可让渡关系的形式一定会比表可让渡关系的形式在结构上更为紧密<button type="button" class="cite" data-cite="grn9" aria-label="查看出处"></button>。</p>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 128" role="img" aria-label="可让渡与不可让渡对比图：左侧为可让渡领属关系采用靠前的形式、语言距离较大，右侧为不可让渡领属关系采用靠后的形式、语言距离较小，中间以距离递减箭头连接">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="16" y="30" width="290" height="66" rx="12"/>
+        <rect x="454" y="30" width="290" height="66" rx="12"/>
+        <path d="M310 63 L450 63"/><path d="M442 55 L450 63 L442 71"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="161" y="56" font-size="14" font-weight="700">可让渡 alienable</text>
+        <text x="161" y="78" font-size="11.5" fill="var(--ink-soft)">采用 (1) 序列中靠前的形式 · 距离大</text>
+        <text x="599" y="56" font-size="14" font-weight="700">不可让渡 inalienable</text>
+        <text x="599" y="78" font-size="11.5" fill="var(--ink-soft)">采用 (1) 序列中靠后的形式 · 距离小</text>
+        <text x="380" y="20" font-size="12" font-weight="700" fill="var(--red)">Greenberg (9)：表达不可让渡关系时，语言距离都不会更大</text>
+      </g>
+    </svg>
+    <figcaption>领属关系的形式编码趋势（示意）<button type="button" class="cite" data-cite="grn9" aria-label="查看出处"></button><button type="button" class="cite" data-cite="sixTypes" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card">
+    <p class="bench-label">六类领属形式对照表（据 Haiman 1985a；X＝表 p₁ 的成分，Y＝表 p₂ 的成分，A＝表领属的语缀、助词、介词或量词等）<button type="button" class="cite" data-cite="sixTypes" aria-label="查看出处"></button></p>
+    <table class="tbl">
+      <thead><tr><th style="width:34px">类</th><th>可让渡</th><th>不可让渡</th><th class="l">语言</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>X # Y</td><td class="hi">X + Y</td><td class="l">南岛语系 Nakanai、Hua、Mekeo，班图语系 Kpelle</td></tr>
+        <tr><td>2</td><td>X + A # Y</td><td class="hi">X # Y</td><td class="l">澳洲语系 Yidin、Wargamay，班图语系 Kinyarwanda、Swahili</td></tr>
+        <tr><td>3</td><td>X # A # Y</td><td class="hi">X + Y</td><td class="l">Maung 语</td></tr>
+        <tr><td>4</td><td>A + X # Y</td><td class="hi">Y + X</td><td class="l">南岛语系 Puluwat、Aroma、Mokilese</td></tr>
+        <tr><td>5</td><td>X # A # Y</td><td class="hi">X # Y</td><td class="l">摩洛哥阿拉伯语、Acooli、Papago</td></tr>
+        <tr><td>6</td><td>X + A + Y</td><td class="hi">X + Y</td><td class="l">（见表内原文）</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--ink-faint)"># 代表独立的词之间的界线，+ 代表胶着在一起的语素之间的界线。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">两类实证——点一例看原文。</p>
+    <div class="btn-row" id="sixBtns">
+      <button class="btn" data-s="1">第 1 类 · Nakanai</button>
+      <button class="btn" data-s="2">第 2 类 · Wargamay</button>
+    </div>
+    <div class="reveal" id="sixBox" hidden><p id="sixTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">汉语"反常"预告——点一类词，看汉语与预测如何相反<button type="button" class="cite" data-cite="cnException" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="cnBtns">
+      <button class="btn" data-cn="kin">亲属词</button>
+      <button class="btn" data-cn="body">身体部位词</button>
+      <button class="btn" data-cn="obj">一般物件词</button>
+    </div>
+    <div class="reveal" id="cnBox" hidden><p id="cnTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>"不可让渡"其实是个连续的概念（折叠细节）</summary>
+    <p>不少学者如 Haiman（1985）和 Nichols（1988）都注意到，"不可让渡"实为一个连续的概念，它构成一个具有普遍意义的等级序列：<strong>身体部位 ＞ 亲属关系 ＞ 一般物件</strong>，其中最不可让渡的是身体部位<button type="button" class="cite" data-cite="scaleBody" aria-label="查看出处"></button>。"不可让渡"的类在不同语言里的范围有所不同：有的语言（如 Yidin、Acooli 等）仅仅是身体部位词出现在不可让渡型的结构中；有的语言（如 Hua 语、Mekeo 语、阿拉伯语）身体部位和亲属关系均编码为不可让渡型，和一般物件相对立。这些语言都符合上述等级序列的概括，其区别仅在于<strong>切割点</strong>的位置不同。当然，也有不少语言（如英语）在形式上对这两类关系不作区别，但它们不构成上述规律的反例。</p>
+  </details>
+
+  <p class="scene-foot">汉语领属定中结构可有"p₁ 的 p₂"和"p₁ p₂"两种同义形式，根据距离象似原则，它们应分别为表可让渡和不可让渡关系的形式。然而在汉语里似乎身体部位词和一般物品词是一类，亲属词是另一类——这违反了 Haiman 提出的上述等级序列。Haiman 未能对此作进一步说明，只提出序列或许应改为更粗但绝无例外的"亲属关系或身体部位 ＞ 一般物件"<button type="button" class="cite" data-cite="haimanCoarse" aria-label="查看出处"></button>；戴浩一则认为这是 Greenberg 第 (9) 条的反例，并用"心理经验优先于物理经验"来解释<button type="button" class="cite" data-cite="tai93" aria-label="查看出处"></button>。本书不愿采取这种解释，于是回到最基础的问题：要解决上述难题，不能光看领属构造，而必须从对 de 字在各类定中结构里隐现情况的全面考察入手<button type="button" class="cite" data-cite="fanJi56" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 约束层级与使役</button>
+    <button class="btn" data-jump="s6">下一场：粘合式与组合式 →</button>
+  </div>
+</section>
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>粘合式与组合式：扩展法与甲乙类</h2>
+  </div>
+  <p class="point">无论是按传统观点把定中之间的 de 看作介接性的，还是按朱德熙(1961)的观点将它看作附缀性的，DN 和 DdN 之间在语言距离上的差异都是不证自明的。朱德熙将二者分别称作<strong>粘合式</strong>和<strong>组合式</strong>定中结构：组合式既能以粘合式为成分，也能以组合式为成分，粘合式只能以粘合式为成分<button type="button" class="cite" data-cite="zhu61Glue" aria-label="查看出处"></button>。这反映了两种形式在扩展能力上的分别，它正是其结构距离的一种体现。</p>
+
+  <div class="card taped">
+    <p class="bench-label">粘合式 vs 组合式——点一侧看分别。</p>
+    <div class="btn-row" id="glueBtns">
+      <button class="btn" data-gl="1">粘合式（DN）</button>
+      <button class="btn" data-gl="2">组合式（DdN）</button>
+    </div>
+    <div class="reveal" id="glueBox" hidden><p id="glueTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">扩展法——自陆志韦(1964)开始，人们常用能否插入 de 等成分来区分复合词和短语<button type="button" class="cite" data-cite="expandLaw" aria-label="查看出处"></button>。点一组例子，看扩展的结果。</p>
+    <div class="btn-row" id="expBtns">
+      <button class="btn" data-e="1">生姜 → 生的姜</button>
+      <button class="btn" data-e="2">大车 → 大的车</button>
+      <button class="btn" data-e="3">金笔 → 金的笔</button>
+      <button class="btn" data-e="4">生肉 → 生的肉</button>
+    </div>
+    <div class="reveal" id="expBox" hidden><p id="expTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">从形式上看，复合词一定是不含 de 的，也没有插入 de 扩展的潜在能力：扩展之后要么不通（如"汉语 → *汉的语"），要么意思有变化；从意义上看，传统的语法书常说复合词具有特定的专门意义，其组成成分的意义凝结在一起，形成一个单一的整体概念，它多半不是成分意义的简单加和。短语则相反，一般可插入 de，其意义常为组成部分的意义的加和<button type="button" class="cite" data-cite="expandLaw" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">甲乙两类形容词——朱德熙(1956)把形容词分为简单形式和复杂形式两类，二者在形式和意义上都有很大的不同<button type="button" class="cite" data-cite="zhu56Adj" aria-label="查看出处"></button>。点一类看它与中心语的距离。</p>
+    <div class="btn-row" id="abBtns">
+      <button class="btn" data-ab="1">甲类 · 简单形式</button>
+      <button class="btn" data-ab="2">乙类 · 复杂形式</button>
+    </div>
+    <div class="reveal" id="abBox" hidden><p id="abTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>为什么乙类形容词作定语必须带 de（折叠细节）</summary>
+    <p>朱德熙说，"在'白纸'里，我们用'白'这种属性来限制'纸'这个类名；加上限制之后，就出现了一个新的类名'白纸'。'白'是给纸分类的根据……'雪白的纸'、'挺白的纸'里头的'雪白的'、'挺白的'不是用来作为分类的根据，而是用来描写所论及的事物的状况或情态的"<button type="button" class="cite" data-cite="zhu56Adj" aria-label="查看出处"></button>。一般来说，乙类形容词无论出现在什么句法位置都以带 de 为常，但有时它们可以不带 de——不带的只能出现在谓语、补语和状语位置上（如"屋里干干净净／烧得通红／慢慢说"），而不能出现在定语位置上（如不能说"*干干净净屋子／*雪白纸"）。这从纯句法的角度不易解释，但若从认知上看，DN 构造具有 D 在概念上作为 N 概念的分类根据这一语义倾向，而乙类形容词表临时状态的固有特性使得它与表事物的 N 概念之间不可能建立分类性的紧密联系。D 和 N 中间出现 de 之后，形式距离在 DdN 中确比 DN 中大，形式结构和概念结构形成平行对应，故 DdN 得以成立。当数量结构介乎 DN 之中时，我们有时也可得到合法形式，如"厚厚一本书／干干净净一间屋／简简单单几句话／好端端一个人／脏兮兮一件衣服"——这给上述分析提供了很好的旁证。</p>
+  </details>
+
+  <div class="card">
+    <p class="bench-label">甲₁ ／ 甲₂ ／ 乙三种格式与插入测试（据朱德熙 1956）<button type="button" class="cite" data-cite="jia3Formats" aria-label="查看出处"></button></p>
+    <table class="tbl">
+      <thead><tr><th class="l" style="width:26%">格式</th><th class="l">例子</th><th class="l">插入不定指数量</th><th class="l">插入定指数量</th></tr></thead>
+      <tbody>
+        <tr><td class="l">甲₁ 白纸</td><td class="l">热水／脏衣服／好书</td><td class="l lo">* 好一本书</td><td class="l lo">* 好那本书</td></tr>
+        <tr><td class="l">甲₂ 白的纸</td><td class="l">的水／脏的衣服／好的书</td><td class="l lo">* 好的一本书</td><td class="l">? 好的那本书</td></tr>
+        <tr><td class="l">乙 雪白的纸</td><td class="l">热乎乎的水／脏脏的衣服／很好的书</td><td class="l">好好的一本书</td><td class="l lo">* 好好的那本书</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--ink-faint)">* 号表示该形式不成立；? 号表示勉强可以。甲₁ 式完全不能插入数量／指量成分，甲₂ 式居中，乙式不定指和定指成分大多可以插入。此外，甲式的中心语不能用乙式扩展（"小花 → *小红红的花"），而乙式的中心语却可用甲式扩展（"红红的花 → 红红的小花"）。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">三种格式的概念距离——点一种格式。</p>
+    <div class="btn-row" id="jiaBtns">
+      <button class="btn" data-j="1">甲₁ 式 · 白纸</button>
+      <button class="btn" data-j="2">甲₂ 式 · 白的纸</button>
+      <button class="btn" data-j="3">乙 式 · 雪白的纸</button>
+    </div>
+    <div class="reveal" id="jiaBox" hidden><p id="jiaTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">从语言距离上看，甲₁ 式、甲₂ 式和乙式在形式上构成一个距离依次增加的序列，即 (a)＜(b)＜(c)；它们在概念距离上也形成一个平行的序列。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 领属与汉语反例</button>
+    <button class="btn" data-jump="s7">下一场：三项特征与述谓 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>三项特征：称谓性、分类性、述谓性</h2>
+  </div>
+  <p class="point">以上只是简单化的通俗说明。更严格地，上述三种格式语法意义上的差别可以用以下三类特征去描述<button type="button" class="cite" data-cite="featTable" aria-label="查看出处"></button>。表中的"＋""－"不应理解为绝对的分别，只应看作对原型性成员特征的启发式描述。</p>
+
+  <div class="card">
+    <p class="bench-label">三类定语的三项特征分布（据张敏 (4)）</p>
+    <table class="tbl">
+      <thead><tr><th class="l" style="width:30%">格式</th><th>I. 称谓性</th><th>II. 分类性</th><th>III. 述谓性</th></tr></thead>
+      <tbody>
+        <tr><td class="l">甲₁（a）白纸</td><td class="hi">＋</td><td class="hi">＋</td><td class="lo">－</td></tr>
+        <tr><td class="l">甲₂（b）白的纸</td><td class="lo">－</td><td>(+)</td><td class="hi">＋</td></tr>
+        <tr><td class="l">乙（c）雪白的纸</td><td class="lo">－</td><td class="lo">－</td><td class="hi">＋</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--ink-faint)">第 I 和第 III 项互补：据此可把定语分为不带 de 的（甲₁）和带 de 的（甲₂、乙）两类。第 II 项将甲₁、甲₂ 归为一类，和乙对立。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">三项特征——点一项看它的含义与证据。</p>
+    <div class="btn-row" id="featBtns">
+      <button class="btn" data-f="1">I. 称谓性</button>
+      <button class="btn" data-f="2">II. 分类性</button>
+      <button class="btn" data-f="3">III. 述谓性</button>
+    </div>
+    <div class="reveal" id="featBox" hidden><p id="featTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">预设 vs 断定——"这座金(的)山其实不是金的"为何一个顺一个拗？点一组对比句<button type="button" class="cite" data-cite="presupAssert" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="preBtns">
+      <button class="btn" data-pr="1">金山 ／ 金的山</button>
+      <button class="btn" data-pr="2">白天鹅 ／ 白的天鹅</button>
+      <button class="btn" data-pr="3">铁锅 ／ 铁的锅</button>
+      <button class="btn" data-pr="4">假枪 ／ 假的枪</button>
+      <button class="btn" data-pr="5">旧书 ／ 旧的书</button>
+    </div>
+    <div class="reveal" id="preBox" hidden><p id="preTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>偏正复合词为什么完全合法（折叠细节）</summary>
+    <p>由于偏正复合词往往是意义高度整合的单名，它不会含有某种属性命题，故包含字面上相反的成分的句子是完全合法的：<strong>"白菜并不是白的。"</strong>（比较："*白的菜并不是白的""黑乎乎的白菜"）<button type="button" class="cite" data-cite="cabbage13" aria-label="查看出处"></button>　<strong>"臭豆腐一点也不臭。"</strong>（比较："*臭的豆腐一点也不臭""香喷喷的臭豆腐"）<button type="button" class="cite" data-cite="stinky14" aria-label="查看出处"></button>　我们在前面已多次提到 DN 式定中结构在形式和语义上都类似偏正复合词，上面的例子从述谓性的角度再度显示了其间的相似关系。</p>
+  </details>
+
+  <details>
+    <summary>两个述谓成分不能内容雷同（折叠细节）</summary>
+    <p> Giorgi &amp; Longobardi (1991) 注意到，印欧语里的复合名词即使包含一个类似主目的成分，以它为中心语的名词短语中也能出现另一个重复的主目，如 <span class="mono">the bartender of Bill's bar</span>。他们对汉语里类似现象的解释是以 θ 理论为根据的。本书的解释是：不带 de 的复合词修饰语在意义上与中心语高度整合，它本身不含述谓性，在它之上加一个有述谓性的带 de 成分也不会出现重复述谓之嫌：(19)a. 雪白的白衬衫／挺白的白衬衫；b. *雪白的白的衬衫／*挺白的白的衬衫。(20)a. 花梨木的木头桌子／有机玻璃的玻璃窗子；b. *花梨木的木头的桌子／*有机玻璃的玻璃的窗子<button type="button" class="cite" data-cite="double19" aria-label="查看出处"></button>。(b) 不能成立的原因十分直观：它包含了两个含义相近的带 de 的述谓成分，出现了内容部分雷同的两个断定。</p>
+  </details>
+
+  <details>
+    <summary>游客对话与"注重"的语感（折叠细节）</summary>
+    <p>从信息结构的角度也可看出带 de 定语的述谓性：预设成分负载的应是已知信息，陈述成分传达的应是新知信息。(a) 里的 D 若不带重音，负载的一般只是已知信息；(b) 里的 D 则可用来负载新知信息。笔者听到的两个游客的一段对话：甲："你今天有没有去看白老虎？"乙："什么白老虎？白的老虎啊？""白老虎"是赌城名胜之一，甲以为乙当然知道这个东西，故用了 DN 这个类名，而乙大概既未听说过这一名胜，也不知老虎竟然有"白的"，故用了 DdN，表示老虎之"白"对他而言是个新信息<button type="button" class="cite" data-cite="tiger21" aria-label="查看出处"></button>。一般的语法书总是说带 de 的结构往往有强调的意味，赵元任(1968)则认为 de 是一种"明显修饰的记号 (a marker of explicit modification)"<button type="button" class="cite" data-cite="zhaoYuanren" aria-label="查看出处"></button>。人们所感觉到的"强调""注重"意味正是带 de 定语述谓性的一种反映。</p>
+  </details>
+
+  <div class="card taped">
+    <p class="bench-label">述谓性序列——三种格式的述谓性由低到高，这个概念序列可理解为概念距离的序列<button type="button" class="cite" data-cite="predSeq" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="predBtns">
+      <button class="btn" data-pd="1">甲₁ 式 · 无述谓性</button>
+      <button class="btn" data-pd="2">甲₂ 式 · 有述谓性</button>
+      <button class="btn" data-pd="3">乙 式 · 更高述谓性</button>
+    </div>
+    <div class="reveal" id="predBox" hidden><p id="predTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>P 类与 A 类：潜在的述谓能力（折叠细节）</summary>
+    <p>Siegel(1979) 根据 [Adj N] 的意义可否分解为 Adj 意义和 N 意义的交集，将形容词分为"述谓形容词 (predicative adjectives)"和"属性形容词 (attributive adjectives)"两类<button type="button" class="cite" data-cite="paClass" aria-label="查看出处"></button>。有意思的是，这两类形容词作定语时在英语里并无形式上的区别，在汉语里却可以观察到一个从形式上加以分化的趋势，它正好和 de 字有关：所有作定语的乙类形容词都必须带 de，它们也几乎都可以简单地转到谓语位置上，即它们都是 P 类；而甲类形容词作定语时既有 P 类也有 A 类，A 类定语在汉语里几乎都是不带 de 的甲₁ 式，它们无法以简单的方式转为谓语，如"老朋友"不能转为"（*朋友）是老的""（*朋友）很老"之类<button type="button" class="cite" data-cite="laoTongxue" aria-label="查看出处"></button>。类似例子还有很多：老顾客、老地方、老毛病、大作家、大趋势、小商人、好邻居、臭脾气……从潜在的述谓能力上看，"甲₁ 式—甲₂ 式—乙式"正好形成一个述谓潜力由低到高、整合程度由高到低的概念序列。</p>
+  </details>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 216" role="img" aria-label="三格式平行序列图：甲一式、甲二式、乙式自左向右排列，上方标注语言距离依次增加，下方标注概念距离与述谓性依次增加，两侧以等号连接表示形式与意义平行">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="60" y="46" width="180" height="60" rx="12"/>
+        <rect x="290" y="46" width="180" height="60" rx="12"/>
+        <rect x="520" y="46" width="180" height="60" rx="12"/>
+        <path d="M244 76 L286 76"/><path d="M278 68 L286 76 L278 84"/>
+        <path d="M474 76 L516 76"/><path d="M508 68 L516 76 L508 84"/>
+        <path d="M40 60 L40 92"/><path d="M32 84 L40 92 L48 84"/>
+        <path d="M720 60 L720 92"/><path d="M712 84 L720 92 L728 84"/>
+        <path d="M60 132 L700 132"/>
+        <path d="M700 132 L60 132"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="150" y="72" font-size="14" font-weight="700">甲₁ 式</text>
+        <text x="150" y="94" font-size="11.5" fill="var(--ink-soft)">白纸</text>
+        <text x="380" y="72" font-size="14" font-weight="700">甲₂ 式</text>
+        <text x="380" y="94" font-size="11.5" fill="var(--ink-soft)">白的纸</text>
+        <text x="610" y="72" font-size="14" font-weight="700">乙 式</text>
+        <text x="610" y="94" font-size="11.5" fill="var(--ink-soft)">雪白的纸</text>
+        <text x="380" y="34" font-size="12.5" font-weight="700" fill="var(--red)">语言距离依次增加</text>
+        <text x="150" y="156" font-size="12" fill="var(--green)">无述谓性</text>
+        <text x="150" y="176" font-size="11" fill="var(--ink-soft)">高整合 · 称谓性</text>
+        <text x="380" y="156" font-size="12" fill="var(--green)">有述谓性</text>
+        <text x="380" y="176" font-size="11" fill="var(--ink-soft)">低整合 · 分类性 (+)</text>
+        <text x="610" y="156" font-size="12" fill="var(--green)">更高述谓性</text>
+        <text x="610" y="176" font-size="11" fill="var(--ink-soft)">最低整合</text>
+        <text x="380" y="206" font-size="12" font-weight="700">概念距离依次增加 ｜ 形式与意义平行</text>
+      </g>
+    </svg>
+    <figcaption>三类定中构造的形式—意义平行序列（示意）<button type="button" class="cite" data-cite="sumSeq" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="card taped">
+    <p class="bench-label">焦点验证：Yoruba 语的例子说明聚焦作用即是拉大相关成分之间的形式距离<button type="button" class="cite" data-cite="focusDistance" aria-label="查看出处"></button>。点一句看原文。</p>
+    <div class="btn-row" id="focBtns">
+      <button class="btn" data-fc="24">(24) 中性句</button>
+      <button class="btn" data-fc="25">(25) 主语焦点</button>
+      <button class="btn" data-fc="26">(26) 宾语焦点</button>
+    </div>
+    <div class="reveal" id="focBox" hidden><p id="focTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">述谓性高低和概念距离大小之间的对应可以从认知上得到独立验证：述谓的功能是说话人一方通过言语行为使得听话人一方确立起某种关联；非述谓的表达则假定听话人一方业已认识到这种关联。关联未定而距离大，关联确立而距离小。更强的述谓性对应于更大的结构距离<button type="button" class="cite" data-cite="focusDistance" aria-label="查看出处"></button><button type="button" class="cite" data-cite="retina" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 粘合式与组合式</button>
+    <button class="btn" data-jump="quiz">结尾自测 →</button>
+  </div>
+</section>
+
+<details>
+  <summary>附注：关于 DN／DdN 记号与状态形容词定语的说明（折叠细节）</summary>
+  <p>① 严格地说，带 de 的定中结构"A的 R"中的定语应是"A的"，因此将这类结构记为 DdN 并不确切。不过由于这里的 A 是定语概念的核心部分，用 DdN 的标记法便于在概念距离和语言距离之间作比较，我们不得不牺牲标记的严格性而换取称述的方便<button type="button" class="cite" data-cite="note1" aria-label="查看出处"></button>。</p>
+  <p>② 根据沈家煊(1997)的统计，状态形容词有 22% 可不加 de 作定语。他的材料中这类例子共有 39 例，但其中 35 例都跟"多""少"相关，如"很多点子、不少食品"等。真正是状态词直接作定语的只有"小小针线包、袅袅音乐"两例，而这两例也都很特别。因此，我们倾向于认为状态形容词完全不能直接作定语<button type="button" class="cite" data-cite="note2" aria-label="查看出处"></button>。</p>
+  <p>③ 应该说明的是，这三者并不是同一层面的概念。称谓性指的不是甲式定语的特性，而是含有这类定语的整个结构的特性；分类性则是一个关系性概念，即甲类定语相对于其中心语而言，在概念上前者可充任后者的分类指标；述谓性在此指的完全是定语 Dd 本身的属性，与中心语或整个构造无关。</p>
+  <p>⑨ 也有少数 de 字出现与否两可的例子，如"新（的）时期""新（的）阶段"。</p>
+</details>
+<section id="quiz" data-scene="8">
+  <div class="scene-head"><span class="scene-num kai" data-n="测" aria-hidden="true"></span><h2>结尾自测</h2></div>
+  <div class="card"><p><strong>1.</strong> 本书下篇的三个命题中，本章主要证明的是：</p><div class="btn-row" id="q1"><button class="btn" data-q="a">命题 (1)——定中之间的形式距离平行于其间的概念距离</button><button class="btn" data-q="b">命题 (3)——汉语名词短语的基本结构规律由距离象似动因促动</button><button class="btn" data-q="c">三个命题平均用力，一并证明</button></div><p class="feedback" id="q1fb"></p></div>
+  <div class="card"><p><strong>2.</strong> Haiman(1985a) 的语言距离序列中，距离最小的一级是：</p><div class="btn-row" id="q2"><button class="btn" data-q="a">f 级 Z——X 和 Y 融合产生的单个语素</button><button class="btn" data-q="b">a 级 X # A # B # Y</button><button class="btn" data-q="c">d 级 X # Y</button></div><p class="feedback" id="q2fb"></p></div>
+  <div class="card"><p><strong>3.</strong> Greenberg 第 28 条普遍特征说的是：</p><div class="btn-row" id="q3"><button class="btn" data-q="a">派生词缀一定比屈折词缀离词根更近</button><button class="btn" data-q="b">格语缀一定比数语缀离词根更近</button><button class="btn" data-q="c">数语缀和格语缀与词根等距</button></div><p class="feedback" id="q3fb"></p></div>
+  <div class="card"><p><strong>4.</strong> Bybee 构造的动词概念距离序列 (3) 是：</p><div class="btn-row" id="q4"><button class="btn" data-q="a">价 ＜ 语态 ＜ 体 ＜ 时 ＜ 语气 ＜ 人称／数的一致</button><button class="btn" data-q="b">人称／数的一致 ＜ 语气 ＜ 时 ＜ 体 ＜ 语态 ＜ 价</button><button class="btn" data-q="c">体 ＜ 时 ＜ 语气 ＜ 人称和数 ＜ 价 ＜ 语态</button></div><p class="feedback" id="q4fb"></p></div>
+  <div class="card"><p><strong>5.</strong> Givón 约束层级上位置最高的一类补足语是：</p><div class="btn-row" id="q5"><button class="btn" data-q="a">使役动词或导致成功的结果的动词的补足语</button><button class="btn" data-q="b">直接引语</button><button class="btn" data-q="c">表示相信、懂得、怀疑的动词的补足语</button></div><p class="feedback" id="q5fb"></p></div>
+  <div class="card"><p><strong>6.</strong> Croft(1990) 提出的蕴含性语言普遍特征 (7) 说的是：</p><div class="btn-row" id="q6"><button class="btn" data-q="a">两个语义相近的构造若在语言距离上有别，则在概念距离上也有平行的语义区别</button><button class="btn" data-q="b">语言距离越大的构造，使用频率一定越高</button><button class="btn" data-q="c">所有语言的定语都必须在中心语之前</button></div><p class="feedback" id="q6fb"></p></div>
+  <div class="card"><p><strong>7.</strong> 甲₁、甲₂、乙三种格式中，具有称谓性而没有述谓性的是：</p><div class="btn-row" id="q7"><button class="btn" data-q="a">甲₁ 式（如"白纸"）</button><button class="btn" data-q="b">甲₂ 式（如"白的纸"）</button><button class="btn" data-q="c">乙 式（如"雪白的纸"）</button></div><p class="feedback" id="q7fb"></p></div>
+  <div class="card"><p><strong>8.</strong> "这座金山其实不是金的"合法，而"这座金的山其实不是金的"拗口，原因是：</p><div class="btn-row" id="q8"><button class="btn" data-q="a">DN 中"D 是金的"是预设，后面的否定只是取消预设；DdN 中它是被断定的，再否定就形成两个矛盾的断定</button><button class="btn" data-q="b">带 de 的结构一定比不带 de 的长，所以不合语法</button><button class="btn" data-q="c">"金山"是词，"金的山"是短语，词一定比短语合法</button></div><p class="feedback" id="q8fb"></p></div>
+  <footer class="site"><p>材料来源：《认知语言学与汉语名词短语》第五章 OCR 转录稿；转录稿无页码，角标位置精确到节。页面仅供个人学习研究使用。</p><p>单文件 · 零外部依赖 · 视觉为内联 SVG/CSS 手绘示意。</p></footer>
+</section>
+</main>
+<div id="citePop" hidden><div class="cite-card"><button class="cc-close" id="citeClose" aria-label="关闭">×</button><div class="cc-loc" id="citeLoc"></div><div class="cc-quote" id="citeQuote"></div><div class="cc-zh" id="citeZh"></div><p class="cc-note">出处来自本章 OCR 转录稿；转录稿无页码，定位精确到节。</p></div></div>
+<button id="resumePill" hidden>继续阅读 <span id="resumeTxt"></span></button>
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{ch:"第五章",page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第五章"},
+  threeProp:{page:"5.1",quote:"我们已在前一章概括地介绍了本书下需要研究的问题。为叙述清楚起见，有必要先把这项研究的主要结论更明确地表述出来。这些结论可归纳为以下三个相互关联、层层推进的命题：",zh:"下篇的主要结论归纳为三个相互关联、层层推进的命题。"},
+  prop1:{page:"5.1",quote:"(1)定中之间因 de 字的隐现而有别的形式距离平行于其间的概念距离。",zh:"命题 (1)：两类名词短语的形式差别平行于意义差别，故其形式构造由象似动因促动。"},
+  propRel:{page:"5.1",quote:"(1)(2)直接与de字隐现的问题相关，(3)是我们观察到多项定语语序安排的象似规律之后提出的一个扩展的命题。其中，对(1)和(2)的证明是我们的重点所在。其实，(1)和(2)是一个问题的两个方面，但侧重点有所不同。",zh:"(1)(2) 直接关系 de 字隐现，(3) 是扩展命题；(1) 与 (2) 是一个问题的两面。"},
+  chGoal:{page:"5.1",quote:"本章主要证明的是命题(1)。由于距离象似动因是其中的关键性概念，所以我们先在下节对此作一个比较详细的说明，并介绍认知功能语言学家对这个问题的研究及他们发现的相关语言共性规律。",zh:"本章重点是命题 (1)，为此先详细说明距离象似动因并介绍相关语言共性规律。"},
+  dnNote:{page:"5.1",quote:"以下将不带 de 的定中构造记为 DN，将带 de 者记为 DdN。N 指中心语名词，D 指定语，它既可理解为“定语”的汉语拼音缩写，也可理解为英语“Determiner(限定语)”的缩写。",zh:"全书记号：不带 de 的定中构造记作 DN，带 de 者记作 DdN。"},
+  haimanDef:{page:"5.1",quote:"Haiman(1983)将距离动因表述为：语言成分之间的距离反映了所表达的概念的成分之间的距离。",zh:"距离动因最常被引用的界说：语言成分之间的距离反映概念成分之间的距离。"},
+  givonDef:{page:"5.1",quote:"Givón(1990)称之为“相邻原则(the proximity principle)”，定义为“在功能上、概念上或认知上更接近的实体在语码的层面也放得更近”。",zh:"Givón 的界说：功能、概念或认知上更接近的实体，在语码层面也放得更近。"},
+  behaghel:{page:"5.1",quote:"Behaghel(1932)在探讨德语语序时即提出过一条类似的“概念接近原则”，被后人称之为“Behaghel第一定律”",zh:"Behaghel 的“概念接近原则”被后人称为“Behaghel 第一定律”。"},
+  jespersen:{page:"5.1",quote:"Jespersen(1949)也提出过一条内容相仿的“粘合原则”。不过，当代语言学家是在试图为所发现的语言共性提供解释时重新发现这个规律的，人类语言里的普遍现象为它带来了新的意义。",zh:"Jespersen 提出过内容相仿的“粘合原则”；当代语言学家在为语言共性提供解释时重新发现了这一规律。"},
+  haiman85:{page:"5.1",quote:"根据Haiman(1985a)的定义，两个语言成分X和Y之间的形式距离在以下序列中依次减小：",zh:"Haiman 定义的形式距离六级序列，自上而下依次减小。"},
+  ladSeq:{page:"5.1",quote:"(1)a. X # A # B # Y；b. X # A # Y；c. X + A # Y；d. X # Y；e. X + Y；f. Z",zh:"六级序列：# 代表独立的词之间的界线，+ 代表胶着在一起的语素之间的界线，Z 是由 X 和 Y 融合产生的单个语素。"},
+  structDist:{page:"5.1",quote:"但更深一层看，它体现的应是结构距离，这可以从三个相互关联的角度去理解：(a) X 和 Y 及其间的成分独立性越强，语言距离就越大；(b) X 和 Y 之间的组合方式越松散，语言距离就越大；(c) X 和 Y 在结构树上跨越的节点越多，语言距离就越大，如 X 和 Y 的距离在[[AX]Y]中比在[A [XY]]中要大，尽管其线性距离完全一样。",zh:"结构距离的三个角度：成分独立性、组合方式松紧、结构树上跨越的节点数。"},
+  conceptDist:{page:"5.1",quote:"(2) 若两个概念具有以下性质：a. 语义上有共同的特征、属性或组成部分；b. 互相影响；c. 在现实中不可分离；d. 被感知为一个概念单位，无论在现实中是否不可分离；则它们之间在概念领域里的距离更近。",zh:"Haiman 的概念距离定义：具有共同特征、互相影响、不可分离或被感知为一个概念单位的两者，概念距离更近。"},
+  grn28:{page:"5.1",quote:"第28条特征是，若派生词缀和屈折词缀都出现在词根的同一侧，那么派生词缀一定是在词根和屈折词缀之间。换言之，派生词缀一定比屈折词缀离词根更近。",zh:"Greenberg 第 28 条：派生词缀一定比屈折词缀离词根更近。"},
+  grn39:{page:"5.1",quote:"第39条特征是，当表示数和格的语缀一起出现，并都前置或后置于名词词根时，表示数的成分总是出现在名词词根和表示格的成分之间。换言之，格形式和名词词根的语言距离大过数形式。",zh:"Greenberg 第 39 条：格形式与名词词根的语言距离大过数形式。"},
+  numCase:{page:"5.1",quote:"由于数语缀决定了所指的一组事物的量，因而影响到所指物的语义，它对整个词的意义的影响显然大于格语缀；格语缀的意义仅仅描述名词代表的所指物和动词代表的事件之间的关系，并不影响名词词根本身的意义。",zh:"数语缀影响所指物的语义，格语缀只描述名词与动词事件之间的关系，故前者离词根更近。"},
+  bybeeSeq3:{page:"5.1",quote:"(3) 价 < 语态 < 体 < 时 < 语气 < 人称 / 数的一致",zh:"Bybee 构造的动词及其屈折语缀之间概念距离的序列，越靠左概念距离越近。"},
+  bybeeSeq4:{page:"5.1",quote:"(4)( 屈折 ) 体 < 时 < 语气 < 人称和数",zh:"考察 50 种分属不同语系的语言之后，Bybee 发现的普遍语言形式距离序列。"},
+  bybeeConc:{page:"5.1",quote:"她的结论是，某个范畴和动词在概念上越相关，1)它就越有可能以综合或黏附的方式和动词结合，2)在形态和语音方面两者之间的并合程度就越高，3)它的位置就离动词词根越近。",zh:"Bybee 的三条结论：概念上越相关的范畴，越可能以综合或黏附方式结合、并合程度越高、位置离词根越近。"},
+  croftSub:{page:"5.1",quote:"Croft(1990)给Bybee的这项假说提供了一些证据。Croft指出，类型学的材料显示出这样一个明显的趋势：几乎所有语言都有形式完整的名词短语（即修饰语和被修饰的名词相邻的短语），大多数语言都把动词修饰语放在动词旁边，而整个句子的修饰语则经常放在句子的头一两个位置或句尾。",zh:"类型学材料支持 Bybee 的假说；Croft 认为几乎所有的成分结构都可从距离象似动因得到解释。"},
+  givonScale:{page:"5.1",quote:"他考察了多种语言中的动词补足语结构，发现带补足语结构的动词的语义特性和其补足语的句法构造之间有某种系统的联系。首先，他提出了补足语类型的“约束层级（binding hierarchy）”的观念，并从语义和句法两个角度将不同类型的补足语置于不同的层级上。",zh:"Givón 发现动词的语义特性与补足语的句法构造之间有系统联系，并提出约束层级的观念。"},
+  givonLaw:{page:"5.1",quote:"若语义约束层级上的某一点由某一句法编码机制表达出来，则语义尺度上更高的点不能由语法尺度上更低的点表达。它或由句法尺度上位置相同的点表达，或由一个更高的点表达。",zh:"Givón 在英语、西班牙语、芬兰语、希伯莱语等十数种语言里找到支持的类型学规律。"},
+  croft7:{page:"5.1",quote:"（7）如果某个语言有两个语义相近的构造，其结构在语言距离上有所区别，则它们在概念距离上也有平行的语义区别。",zh:"Croft 提出的蕴含性语言普遍特征：语言距离有别，则概念距离也有平行的语义区别。"},
+  causative:{page:"5.1",quote:"Comrie（1980）在考察了大量语言的基础上指出，这两类使役式在语义并不相同，前者通常暗示使役者和使役对象有某种物理上的直接接触，或对其造成的结果直接负责，而后者则暗示施事和受事的接触是间接的（试体会汉语里“我杀了他”和“我造成（导致）了他的死亡”的意义区别）。",zh:"凝固使役式暗示直接接触或直接负责，分析性使役式暗示间接接触。"},
+  caus8d:{page:"5.1",quote:"d. ? I caused the books to leave the room.",zh:"使役对象是无生命、无知觉的物体时，复杂的使役式常常不大能成立。"},
+  possDef:{page:"5.1",quote:"领属(possession)关系反映的是领属者(possessor，下称 p1)和领属物(possessum，下称 p2)这两个实体之间的某种附属关系。",zh:"领属关系是领属者与领属物这两个实体之间的某种附属关系。"},
+  grn9:{page:"5.1",quote:"(9)在任何语言里，X和Y在表达不可让渡的领属关系时，其语言距离都不会比表达可让渡的领属关系时大。",zh:"Greenberg 第 (9) 条：不可让渡领属关系的语言距离不会比可让渡时更大。"},
+  sixTypes:{page:"5.1",quote:"可让渡的领属关系倾向于采用(1)的序列中靠前的形式，不可让渡的领属关系则倾向于采用靠后的形式。我们至少可观察到以下几种类型：",zh:"六类领属形式的基本趋势：可让渡用靠前的形式，不可让渡用靠后的形式。"},
+  scaleBody:{page:"5.1",quote:"“不可让渡”实为一个连续的概念，它构成一个具有普遍意义的等级序列：身体部位＞亲属关系＞一般物件，其中最不可让渡的是身体部位。",zh:"不可让渡的普遍等级：身体部位＞亲属关系＞一般物件；各语言的区别只在切割点的位置。"},
+  cnException:{page:"5.1",quote:"根据 Haiman（1985），真正的反例似乎出现在极少的几个语言如汉语、Menya 语和 Mokilese 语里。",zh:"Haiman 认为真正的反例只出现在极少数语言里，汉语名列其中。"},
+  haimanCoarse:{page:"5.1",quote:"不过，Haiman 也未能对这一现象作出进一步的说明，只是提出这个等级序列或许得出某些相应的调整，即改为“亲属关系或身体部位＞一般物件”这样一个更粗一些，但绝无例外的序列。",zh:"Haiman 未能解释汉语现象，只建议把序列改为更粗但绝无例外的形式。"},
+  tai93:{page:"5.1",quote:"戴浩一(Tai 1993)虽明确提出汉语定中间de的有无确实反映了距离象似动因，但他也认为汉语领属结构中de字有无的规律比较特殊，甚至认为是Greenberg的上述第(9)条普遍特征的反例。",zh:"戴浩一认为汉语领属结构中 de 的有无是 Greenberg (9) 的反例，并以心理经验优先于物理经验来解释。"},
+  fanJi56:{page:"5.1",quote:"正如范继淹（1958）所指出的，讨论DN组合同de字的有无包含两个问题：1. DN结构和DdN结构有无区别，区别何在？2. 在什么情况下出现DN结构，什么情况下出现DdN结构？",zh:"范继淹把问题分成两个：两类结构有无区别、区别何在；何时出现哪一种。"},
+  zhu61Glue:{page:"5.2.1",quote:"朱德熙(1961)将 DN 和 DdN 分别称作粘合式和组合式定中结构，他指出，组合式既能以粘合式为成分，也能以组合式为成分，粘合式只能以粘合式为成分。这反映了两种形式在扩展能力上的分别，它正是其结构距离的一种体现。",zh:"粘合式只能以粘合式为成分，组合式既能以粘合式也能以组合式为成分——这正是结构距离的体现。"},
+  expandLaw:{page:"5.2.2",quote:"自陆志韦(1964)开始，人们常用所谓“扩展法”(主要指能否插入de等成分)来区分复合词和短语。",zh:"扩展法：以能否插入 de 等成分区分复合词和短语。"},
+  zhu56Adj:{page:"5.2.2",quote:"朱德熙将形容词分为简单形式和复杂形式两类，二者在形式和意义上都有很大的不同。前者（朱称之为甲类，即性质形容词）包括单音形容词和一般的双音形容词，后者（朱称之为乙类，即状态形容词）是在前者的基础上增加了更多的形式造出的。",zh:"甲类（简单形式）表性质，乙类（复杂形式）表状况或情态；二者作定语时与中心语的距离不同。"},
+  jia3Formats:{page:"5.2.2",quote:"(2)a. 白纸(甲1) b. 白的纸(甲2) c. 雪白的纸(乙)",zh:"甲乙两类成分修饰名词的三种格式，形式距离依次增加。"},
+  featTable:{page:"5.2.3",quote:"以上只是一个简单化的通俗说明，我们可以更严格地将上述三种格式语法意义上的差别用以下三类特征去描述",zh:"张敏用称谓性、分类性、述谓性三类特征描述三种格式的语法意义差别。"},
+  presupAssert:{page:"5.2.3",quote:"DdN 结构实际上包含着对 D 概念和 N 概念的逻辑—语义关系的一个含义微弱的断定(assertion)，如“N 是 D 的”或“N 是与 D 有关的”，而 DN 结构不含这样一个断定，其中 D 与 N 的逻辑—语义关系是设定的(presumed)或曰预设的(presupposed)。",zh:"DdN 含有一个含义微弱的断定，DN 中 D 与 N 的关系是预设的。"},
+  cabbage13:{page:"5.2.3",quote:"(13)白菜并不是白的。（比较：“*白的菜并不是白的”“黑乎乎的白菜”）",zh:"偏正复合词意义高度整合，不含属性命题，故字面相反的成分也能共处。"},
+  stinky14:{page:"5.2.3",quote:"(14)臭豆腐一点也不臭。（比较：“* 臭的豆腐一点也不臭”“香喷喷的臭豆腐”）",zh:"同上：高度整合的复合名不含属性命题。"},
+  double19:{page:"5.2.3",quote:"(19)a. 雪白的白衬衫。| 挺白的白衬衫。b. *雪白的白的衬衫。| *挺白的白的衬衫。",zh:"不带 de 的定语不含述谓性，可与其上加的带 de 述谓成分共存；两个带 de 述谓成分内容雷同则不成立。"},
+  tiger21:{page:"5.2.3",quote:"(21)甲：“你今天有没有去看白老虎？”乙：“什么白老虎？白的老虎啊？”",zh:"游客对话：甲用 DN 类名表示已知信息，乙用 DdN 表示“白”是新信息。"},
+  zhaoYuanren:{page:"5.2.3",quote:"赵元任(1968)则认为de是一种“明显修饰的记号(a marker of explicit modification)”。",zh:"赵元任认为 de 是“明显修饰的记号”；人们感觉到的“强调”“注重”正是带 de 定语述谓性的反映。"},
+  predSeq:{page:"5.2.4",quote:"甲1式定语无述谓性，甲2式定语有述谓性，乙式定语有更高的述谓性。这个序列可理解为概念距离的序列，因此三类定语的形式差别可证实是由距离动因促动的。",zh:"述谓性由低到高的序列可理解为概念距离的序列，据此可证三类定语的形式差别由距离动因促动。"},
+  paClass:{page:"5.2.4",quote:"Siegel(1979)根据这个特点将前一种形容词称作“述谓形容词(predicative adjectives)”，后一种称为“属性形容词(attributive adjectives)”。",zh:"Siegel 分出述谓形容词与属性形容词；汉语里正好用 de 字把这两类从形式上分化开。"},
+  laoTongxue:{page:"5.2.4",quote:"但A类定语在汉语里几乎都是不带de的甲1式，它们无法以简单的方式转为谓语，如“老朋友”不能转为“（*朋友）是老的”“（*朋友）很老”之类。",zh:"A 类（属性形容词）定语几乎都是不带 de 的甲₁ 式，无法简单转为谓语。"},
+  sumSeq:{page:"5.2.5",quote:"因此，分类性、称谓性和述谓性三项概念特征和关系的松紧也有一种明显的因果关联，因此5.2.3小节提到的意义序列可以阐释为概念距离的序列，即“甲1式<甲2式<乙式”。",zh:"三项特征的意义序列可阐释为概念距离的序列，与其形式距离序列完全平行。"},
+  focusDistance:{page:"5.2.4",quote:"换言之，聚焦作用即是拉大相关成分之间的形式距离。无论焦点提前或是挪后，焦点成分和与其关系最密切的成分之间的结构距离都增加了。",zh:"无论焦点提前、挪后还是位置不变而带额外标记，结构距离都增大了。"},
+  retina:{page:"5.2.4",quote:"注视点落在物体a上时，其像投落于视网膜的中央窝(fovea)，其背景物体的像则投在视网膜的其他位置，也就是说，前景和背景的像在视网膜上的位置存在着实际的距离。",zh:"焦点拉大概念距离有生理象似基础：前景与背景的像在视网膜上的位置存在实际距离。"},
+  note1:{page:"附注",quote:"①严格地说，带de的定中结构“A的R”中的定语应是“A的”，因此将这类结构记为DdN并不确切。不过由于这里的A是定语概念的核心部分，用DdN 的标记法便于在概念距离和语言距离之间作比较，我们不得不牺牲标记的严格性而换取称述的方便。",zh:"附注①：DdN 的记法牺牲了标记的严格性，以换取在概念距离与语言距离之间作比较的方便。"},
+  note2:{page:"附注",quote:"②根据沈家煊(1997)的统计，状态形容词有22%可不加de作定语。他的材料中这类例子共有39例，但其中35例都跟“多”、“少”相关，如“很多点子、不少食品”等。……因此，我们倾向于认为状态形容词完全不能直接作定语。",zh:"附注②：经逐例辨析，本书倾向于认为状态形容词完全不能直接作定语。"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= 角标编号 ================= */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#citeLoc").textContent="位置："+(s.ch||"第五章")+" · "+s.page+(s.page==="附注"||s.page==="封面"?"":" 节");
+  $("#citeQuote").textContent="原文："+s.quote;
+  $("#citeZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#citeClose").focus();
+}
+function closeCite(){ citePop.hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#citeClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[]; const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id); if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("np5theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("np5theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("np5fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("np5fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeTxt=$("#resumeTxt");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("np5progress",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("np5progress")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeTxt.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 通用点选展开 ================= */
+function bindPick(listSel,attr,boxSel,txtSel,table){
+  const box=$(boxSel),txt=$(txtSel),list=$(listSel);
+  if(!box||!txt||!list) return;
+  $$(".btn",list).forEach(b=>b.addEventListener("click",()=>{
+    const k=b.getAttribute("data-"+attr);
+    if(!Object.prototype.hasOwnProperty.call(table,k)) return;
+    txt.textContent=table[k];
+    box.hidden=false;
+    box.classList.remove("wrong");
+    $$(".btn",list).forEach(x=>x.classList.toggle("sel",x===b));
+  }));
+}
+
+/* ================= 场景一：三个命题 / 两个记号 ================= */
+bindPick("#propBtns","p","#propBox","#propTxt",{
+  "1":"命题 (1)：定中之间因 de 字的隐现而有别的形式距离平行于其间的概念距离。——这一条并不涉及 de 字隐现的具体条件，它说的是两类名词短语的形式差别平行于意义差别，故其形式构造由象似动因促动。",
+  "2":"命题 (2)：若其他条件相同（包括定语和中心语的词性、语体属性、音节数目等），de 字在定中之间的隐现规律由距离象似动因促动。——它在 (1) 的基础上进一步说明，de 字隐现的条件（即何时可用 de、必须用 de 或不能用 de）也可由距离象似动因得到解释。",
+  "3":"命题 (3)：汉语名词短语的基本结构规律由距离象似动因促动。——这是本书观察到多项定语语序安排的象似规律之后提出的一个扩展的命题。"
+});
+bindPick("#dnaBtns","n","#dnaBox","#dnaTxt",{
+  DN:"DN：不带 de 的定中构造。N 指中心语名词，D 指定语。例：白纸、木头桌子、瓷茶壶、他妹妹。朱德熙称之为“粘合式”定中结构。",
+  DdN:"DdN：带 de 的定中构造。例：白的纸、木头的桌子、瓷的茶壶、他的妹妹。朱德熙称之为“组合式”定中结构。严格地说，其中的定语应是“D 的”，故这个记法牺牲了标记的严格性而换取称述的方便。"
+});
+
+/* ================= 场景二：四家界说 / 六级阶梯 ================= */
+bindPick("#defBtns","d","#defBox","#defTxt",{
+  "1":"Haiman（1983）将距离动因表述为：语言成分之间的距离反映了所表达的概念的成分之间的距离。——这是最常被引用的界说。",
+  "2":"Givón（1990）称之为“相邻原则（the proximity principle）”，定义为“在功能上、概念上或认知上更接近的实体在语码的层面也放得更近”。通俗地说，元素之间的表层形式连接越紧密，其意义联系往往也越紧密，因而形式关系是意义关系的临摹。",
+  "3":"Behaghel（1932）在探讨德语语序时即提出过一条类似的“概念接近原则”，被后人称之为“Behaghel 第一定律”。",
+  "4":"Jespersen（1949）也提出过一条内容相仿的“粘合原则”。不过，当代语言学家是在试图为所发现的语言共性提供解释时重新发现这个规律的，人类语言里的普遍现象为它带来了新的意义。"
+});
+bindPick("#ladBtns","g","#ladBox","#ladTxt",{
+  a:"a 级 X # A # B # Y：X 和 Y 之间隔着两个独立成分 A、B，语言距离最大。",
+  b:"b 级 X # A # Y：X 和 Y 之间只有一个独立成分 A。",
+  c:"c 级 X + A # Y：A 与 X 胶着在一起，Y 仍是独立的词，距离比 b 级小。",
+  d:"d 级 X # Y：X 和 Y 直接相接，都是独立的词，中间没有任何成分。",
+  e:"e 级 X + Y：X 和 Y 胶着为一个词内的两个语素。",
+  f:"f 级 Z：X 和 Y 融合产生的单个语素。它可以是一个新的语素，也可为 X 或者 Y——语言距离最小。"
+});
+
+/* ================= 场景三：Greenberg / Bybee ================= */
+bindPick("#ggBtns","gg","#ggBox","#ggTxt",{
+  "28":"第 28 条：若派生词缀和屈折词缀都出现在词根的同一侧，那么派生词缀一定是在词根和屈折词缀之间。换言之，派生词缀一定比屈折词缀离词根更近。——认知解释：派生构词法会影响到整个词的词汇意义，派生语缀代表的概念和词根的概念紧密相关；这种意义的变化往往是非常显著的（如英语“read”和“reader”）。而屈折构形法所增加的意义只是附在词根之外的更大的语言片段上，并不影响词根本身的意义，如英语的“go”变为“went”，“去”的意义并无变化，形态所增加的意义附在整个句子上。",
+  "39":"第 39 条：当表示数和格的语缀一起出现，并都前置或后置于名词词根时，表示数的成分总是出现在名词词根和表示格的成分之间。换言之，格形式和名词词根的语言距离大过数形式。——认知解释：数语缀决定了所指的一组事物的量，因而影响到所指物的语义，它对整个词的意义的影响显然大于格语缀；格语缀的意义仅仅描述名词代表的所指物和动词代表的事件之间的关系，并不影响名词词根本身的意义。"
+});
+bindPick("#beeBtns","b","#beeBox","#beeTxt",{
+  "3":"序列 (3)：价 ＜ 语态 ＜ 体 ＜ 时 ＜ 语气 ＜ 人称／数的一致。——Bybee 构造的动词及其屈折语缀之间概念距离的序列，越靠左代表概念距离越近。她将概念距离定义为某个语缀的意义影响动词词根的意义而不影响句子其他部分的意义的程度。",
+  "4":"序列 (4)：（屈折）体 ＜ 时 ＜ 语气 ＜ 人称和数。——在考察了 50 种属于不同语系的语言之后，Bybee 发现的普遍语言形式距离序列。看得出，(3) 和 (4) 大体上是平行的。若某个语言使用后缀，那么其动词词形中语素的顺序具有“词根—体—时态—语态—人称”的倾向，而前缀型语言的相对语序则正好相反，是上述序列的镜象。它说明这种现象与其用次序，不如用相对距离来描述。"
+});
+
+/* ================= 场景四：约束层级 / 使役 ================= */
+bindPick("#givBtns","v","#givBox","#givTxt",{
+  "1":"① 直接引语——约束尺度上位置最低：补足语从句的施事独立起作用的能力最强，主句动词的施事对它的影响最小。",
+  "2":"② 间接引语——位置略高：主句动词的施事对补足语从句施事的影响增大，补足语内容经过转述，其施事独立起作用的能力相应降低。",
+  "3":"③ 表示相信、懂得、怀疑的动词的补足语——位置居中偏下：主句动词主要表达主体对补足语命题的认识态度，对补足语施事的控制较弱。",
+  "4":"④ 感情动词的补足语——位置居中：主句动词表达的是主体对补足语内容的情感态度，对补足语施事的控制力属中等，补足语从句仍保留较多主句特征。",
+  "5":"⑤ 表示企图或操纵的动词（如命令、请求等）的补足语——位置偏高。",
+  "6":"⑥ 使役动词或导致成功的结果的动词（如“finish”“succeed”等）的补足语——约束尺度上位置最高：主句动词施事对补足语从句施事施加的影响最大，后者的独立性最低，其动词被提升（比如和主句动词融合为一个词）的可能性也越高。"
+});
+bindPick("#causBtns","cs","#causBox","#causTxt",{
+  kill:"凝固的词汇形式 kill：形式距离小，通常暗示使役者和使役对象有某种物理上的直接接触，或对其造成的结果直接负责。汉语“我杀了他”同此。",
+  cause:"分析性的结构 cause to die：形式距离大，暗示施事和受事的接触是间接的。汉语“我造成（导致）了他的死亡”同此。早期某些生成语法学家曾主张两类使役式具有相同的深层结构，如可将 kill 分解为 cause become not alive，从而视为可转换的同义形式；Comrie（1980）指出它们在语义上并不相同。这里，形式上的距离显然对应于概念上的距离。"
+});
+
+/* ================= 场景五：两类实证 / 汉语反例 ================= */
+bindPick("#sixBtns","s","#sixBox","#sixTxt",{
+  "1":"第 1 类：可让渡 X # Y，不可让渡 X + Y。语言：南岛语系的 Nakanai、Hua、Mekeo，班图语系的 Kpelle。在 Nakanai 语里，luma taku（房子—我）“我的房子”中的 X 是一个独立的代词，而 lima-gu（手—我）“我的手”和 tama-mulua（父亲—我）“我的父亲”中的 X 是代词性的后缀（Haiman 1985a）。",
+  "2":"第 2 类：可让渡 X + A # Y，不可让渡 X # Y。语言：澳洲语系如 Yidin、Wargamay，班图语系的 Kinyarwanda、Swahili。在 Wargamay 语里，pulmburu bingany（女人—脚）“女人的脚”是将 X 和 Y 简单地排列在一起，而表可让渡关系的 pulmburu ny mindi（女人—属格后缀—袋子）“女人的袋子”中 X 后面则必须有一个后缀 nu（Dixon 1980）。"
+});
+bindPick("#cnBtns","cn","#cnBox","#cnTxt",{
+  kin:"亲属词：汉语可以说“他妹妹”“我爸爸”——亲属词能够进入不带 de 的 DN 领属构造。按 Haiman 的等级，亲属关系的不可让渡程度低于身体部位，本应比身体部位词更倾向带 de，汉语却正好相反。",
+  body:"身体部位词：*“你手”、*“他肚子”都不成话，必须补 de（“你的手”“他的肚子”）。较随便的口语里宾语位置可以说“别踢我肚子！”，但那是另一回事。",
+  obj:"一般物件词：*“我汽车”、*“你房子”都不成话，必须带 de（“我的汽车”“你的房子”）。汉语的位置与 Haiman 的预测正好相反：亲属词可不带 de，身体部位词却必须带。"
+});
+
+/* ================= 场景六：粘合组合 / 扩展法 / 甲乙类 / 三格式 ================= */
+bindPick("#glueBtns","gl","#glueBox","#glueTxt",{
+  "1":"粘合式（DN）：只能以粘合式为成分。这是其结构距离较小的一种体现——扩展能力受到限制。例：白纸、木头桌子、新房子。意义上是一个整体，概念上的整合程度较高。",
+  "2":"组合式（DdN）：既能以粘合式为成分，也能以组合式为成分。这是其结构距离较大的一种体现。例：白的纸、新的木头房子、新的白的纸。意义上两个部分保持着较大的独立性。"
+});
+bindPick("#expBtns","e","#expBox","#expTxt",{
+  "1":"生姜 ≠ 生的姜——“生姜”是复合词，插不插 de 意思有变化：“生姜”是一种特定的姜，“生的姜”只是“没有加工过的姜”。",
+  "2":"大车 ≠ 大的车——“大车”指用马或骡子拉的车，是一个有专门意义的类名；“大的车”只是“体积大的车”。",
+  "3":"金笔 ≠ 金的笔——“金笔”指自来水笔；“金的笔”是“金子做的笔”。",
+  "4":"生肉 = 生的肉——“生肉”是短语，插入 de 意思基本不变，其意义常为组成部分意义的加和。可见不可加 de 的紧密形式组合往往对应于紧密的意义组合。"
+});
+bindPick("#abBtns","ab","#abBox","#abTxt",{
+  "1":"甲类（简单形式）：包括单音形容词和一般的双音形容词，表示单纯的属性，或曰表示的是性质。作定语可不带 de 构成 DN 结构，是限制性的——“在‘白纸’里，我们用‘白’这种属性来限制‘纸’这个类名；加上限制之后，就出现了一个新的类名‘白纸’。‘白’是给纸分类的根据……”",
+  "2":"乙类（复杂形式）：在甲类基础上增加更多形式造出，如重叠（“小小儿｜老老实实”）、附上后加成分（“热乎乎｜通红”）、前加副词性修饰语（“挺好｜很大”）。“表示的属性都跟一种量的观念或是说话的人对于这种属性的主观估价作用发生联系”，是描写性的——“‘雪白的纸’、‘挺白的纸’里头的‘雪白的’、‘挺白的’不是用来作为分类的根据，而是用来描写所论及的事物的状况或情态的。”乙类作定语一定要带 de。"
+});
+bindPick("#jiaBtns","j","#jiaBox","#jiaTxt",{
+  "1":"甲₁ 式（白纸）：D 与 N 没有间隔，完全不能插入数量／指量成分，结合最紧密，形式距离最小。语义上“热水”是一个表达单个概念的类名，作为分类属性的“热”的概念和“水”的概念整合在一起，距离最近。具有称谓性而无述谓性。",
+  "2":"甲₂ 式（白的纸）：D 与 N 之间有一个 de，不能插入不定指数量成分，勉强可以插入定指成分（“?好的那本书”），形式距离居中。语义上“热的水”不是一个类名，其中“热”是说明“水”的属性，与“水”的概念距离在两极之间。有述谓性而无称谓性。",
+  "3":"乙 式（雪白的纸）：除了 de 之外还有另一个语素，不定指和定指成分大多可以插入，形式距离最大。语义上“热乎乎的水”中的“热”只是用来描述一种暂时的状况或说话人的主观估价，它与“水”的概念距离自然很远。有更高的述谓性。"
+});
+
+/* ================= 场景七：三项特征 / 预设断定 / 述谓序列 / 焦点 ================= */
+bindPick("#featBtns","f","#featBox","#featTxt",{
+  "1":"I. 称谓性：能构成一个类名去称谓某个或某类事物的定中结构的特性。这个术语首先由陈琼瓒(1955)提出，陆丙甫(1988)最先用称谓性和非称谓性的对立去概括朱德熙提出的粘合式与组合式定中结构的意义区别。它可说是一种“可命名性”——可用 DN 的语言形式给某一类事物赋予一个类名，其作用就像一个表类指的单个名词。生物学上拉丁语物种名的汉译若是复合形式，一定是不带 de 的 DN 构造（其实所有的专业术语都是如此），这不是偶然的。",
+  "2":"II. 分类性：能否作为给中心语概念分类的依据。形容词简单形式及名词作定语时无论带不带 de 往往都有分类性，而形容词复杂形式充任的定语一般没有分类性——“白衬衫”和“白的衬衫”都可以是对衬衫的一种有意义的分类，而“雪白的衬衫”或“白白的衬衫”则很难看成是衬衫的一类。甲₁ 式的分类是直接的；甲₂ 式则涉及两次分类过程：“白”先与事物概念发生直接联系形成“白色事物”的概念，然后“衬衫”作为白色事物的一个次类间接与“白”概念产生联系。",
+  "3":"III. 述谓性：DdN 结构实际上包含着对 D 概念和 N 概念的逻辑—语义关系的一个含义微弱的断定，而 DN 结构不含这样一个断定，其中 D 与 N 的逻辑—语义关系是预设的。这项特征的分布正好跟第 I 项互补：含 de 的甲₂ 式和乙式中的定语具有述谓性但没有称谓性，不含 de 的甲₁ 式有称谓性却没有述谓性。称谓和述谓是两个对立的概念，(4) 中特征的互补分布是很自然的。"
+});
+bindPick("#preBtns","pr","#preBox","#preTxt",{
+  "1":"(8)a. 这座金山其实不是金的。 ✓　b. ？这座金的山其实不是金的。 ✗——(8a) 中的“这座金山”是预设而非断定“这山是金的”，其后作为其非的断定只是取消了这一预设，故全句只包含一个逻辑断定，不形成矛盾。这类句子听起来有一种“纠偏”的意味。(8b) 中的“这座金的山”则包含对“这山是金的”的断定，后面若接一个作为其非的断定，两个矛盾的断定自然使得句子不可接受。",
+  "2":"(9)a. 白天鹅其实不是白的，(而是银灰色的)。 ✓　b. ? 白的天鹅其实不是白的。 ✗——(9a) 里“白天鹅”作为一个类名，其中天鹅的“白”的属性常被看作是理所当然的，即预设的。值得注意的是 (a) 式仍有点拗口，这恐怕与主语中仍有一个潜在的命题与后面的命题矛盾有关；相比之下，偏正复合词往往是意义高度整合的单名，不会含有某种属性命题，故“白菜并不是白的”完全合法。",
+  "3":"(10)a. 这个铁锅不是铁的，(而是铝的)。 ✓　b. ？这个铁的锅不是铁的。 ✗——同理：DN 中“铁”是预设的属性，DdN 中“铁”是被断定的属性。",
+  "4":"(11)a. 这支假枪原来是真的。 ✓　b. ? 这支假的枪原来是真的。 ✗——同理。陆丙甫(1988)举过一对很有启发性的例子：“一朵真的假花。｜*一朵真的假的花。”前一句能够成立，是因为其中的“真”“假”不在一个层次上；其实两句在可接受性上的差别与由 de 字隐现导致的述谓性的有无相关。",
+  "5":"(12)a. 这本旧书其实并不旧。 ✓　b. ？这本旧的书／旧的这本书其实并不旧。 ✗——同理。从信息结构的角度看，预设成分负载的应是已知信息，陈述成分传达的应是新知信息：DN 的 D 若不带重音，负载的一般只是已知信息；DdN 的 D 则可用来负载新知信息。"
+});
+bindPick("#predBtns","pd","#predBox","#predTxt",{
+  "1":"甲₁ 式定语无述谓性。它在现实中没有述谓作用，但具有较高的整合程度与称谓性；从潜在的述谓能力看，它既有 A 类也有 P 类，表具有低述谓潜力、高整合程度的属性。",
+  "2":"甲₂ 式定语有述谓性。它是带 de 的，转到谓语位置上多半还须加上额外的标记（主要是“是”，如“干净的衣服 → 衣服是干净的”）；它表具有一定述谓潜力、低整合程度的属性。",
+  "3":"乙式定语有更高的述谓性。作谓语是状态形容词（乙类形容词）的无标记的句法功能，是性质形容词（甲类）的有标记功能（沈家煊 1997）；几乎所有的乙式定语都可以原封不动地转到谓语位置上（如“黑乎乎的手 → 手黑乎乎的”）。它表具有较高述谓潜力、最低整合程度的状态。"
+});
+bindPick("#focBtns","fc","#focBox","#focTxt",{
+  "24":"(24) 中性句：ajú kpa adi e（狗杀鸡）“狗弄死了鸡。”——未附焦点的原有形式。",
+  "25":"(25) 主语焦点：ajá ni kpa adì e（狗是杀鸡）“是狗弄死的鸡。”——焦点成分提前，并带上额外标记 ni。",
+  "26":"(26) 宾语焦点：adie ni ajá kpa（鸡是狗杀）“狗弄死的是鸡。”——汉语的对比焦点不提前，但必须用上所谓的焦点标记“是”这样的额外形式。无论是提前、挪后，还是位置不变而带额外标记，焦点成分和与其关系最密切的成分之间的结构距离都增加了。"
+});
+
+/* ================= 结尾自测 ================= */
+(function(){
+  const QA=[
+    {n:1,
+     ok:'<span class="v-ok">✓ 正确。</span>本章主要证明命题 (1)。(1) 和 (2) 是一个问题的两面，侧重点不同；(3) 是看到多项定语语序的象似规律之后提出的扩展命题。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：命题 (1)——形式距离平行于概念距离。(1)(2) 是一体两面，(3) 是扩展命题。'},
+    {n:2,
+     ok:'<span class="v-ok">✓ 正确。</span>f 级 Z 是 X 和 Y 融合产生的单个语素，语言距离最小；a 级 X # A # B # Y 距离最大。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：f 级 Z。整个序列自上而下距离依次减小。'},
+    {n:3,
+     ok:'<span class="v-ok">✓ 正确。</span>派生词缀影响整个词的词汇意义，与词根概念紧密相关，所以离词根更近；屈折词缀增加的意义只附在词根之外。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：派生词缀一定比屈折词缀离词根更近。格与数的关系是第 39 条。'},
+    {n:4,
+     ok:'<span class="v-ok">✓ 正确。</span>价 ＜ 语态 ＜ 体 ＜ 时 ＜ 语气 ＜ 人称／数的一致——越靠左概念距离越近，位置也离动词词根越近。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。序列 (3) 与形式距离序列 (4) 大体平行。'},
+    {n:5,
+     ok:'<span class="v-ok">✓ 正确。</span>使役动词或导致成功的结果的动词位置最高：主句施事影响最大，补足语施事独立性最低，其动词被提升的可能性也越高。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。直接引语位置最低。'},
+    {n:6,
+     ok:'<span class="v-ok">✓ 正确。</span>这正是本书下篇反复调用的原则：语言距离上有别的两个近义构造，在概念距离上也有平行的语义区别。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。Croft (7) 是一条蕴含性语言普遍特征。'},
+    {n:7,
+     ok:'<span class="v-ok">✓ 正确。</span>甲₁ 式（白纸）有称谓性而无述谓性；甲₂、乙两式有述谓性而无称谓性——第 I、III 项特征互补分布。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：甲₁ 式。带 de 的甲₂ 式和乙式都有述谓性。'},
+    {n:8,
+     ok:'<span class="v-ok">✓ 正确。</span>DN 中属性关系是预设的，后面的否定只是取消预设，只含一个断定；DdN 中属性关系是被断定的，再否定就形成两个互相矛盾的断定。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：预设与断定的对立。这正是带 de 定语具有述谓性的证据。'}
+  ];
+  QA.forEach(q=>{
+    const row=$("#q"+q.n);
+    if(!row) return;
+    const fb=$("#q"+q.n+"fb");
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      if(row.dataset.done) return;
+      row.dataset.done="1";
+      const ok=b.dataset.q==="a";
+      b.classList.add(ok?"sel":"wrong");
+      fb.innerHTML=ok?q.ok:q.no;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+    }));
+  });
+})();
+</script>
+</body>
+</html>

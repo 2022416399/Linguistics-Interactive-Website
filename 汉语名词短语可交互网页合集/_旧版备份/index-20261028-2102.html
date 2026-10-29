@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>认知语言学与汉语名词短语 · 全书导览</title>
+<!--
+  ============ 美术方向（自定义风格四项法） ============
+  风格名：目录图册（catalog album）
+  ① 配色：米白纸面 #faf7ef / 浓墨 #23201c / 淡墨 #6b655c / 朱红印 #9e3b2e（只用于标记、进度、强调）/ 靛蓝 #2f4d6e（链接与图线）
+  ② 字体：标题用系统黑体栈；正文用系统宋体栈；标注用等宽栈。不引入任何外部字体。
+  ③ 质感：纸面 + 细网格 + 卡片左侧朱红竖标；分隔用发丝墨线；无投影、无圆角泡泡。
+  ④ 主视觉：两幅手绘风格 SVG——「全书论证地图」（上篇理论→下篇应用的主干流向）与
+    「距离象似动因」（概念距离与形式距离的对应示意）。不用几何拼人物、不用卡通脸、不用 emoji。
+  ============ 读法 ============
+  混合：导览层。先看地图，再按章节卡进入单章页。
+-->
+<style>
+:root{
+  --paper:#faf7ef; --ink:#23201c; --ink-2:#6b655c; --line:#d8d1c2;
+  --seal:#9e3b2e; --indigo:#2f4d6e; --card:#fffdf8; --grid:rgba(35,32,28,.055);
+  --serif:"Songti SC","Noto Serif CJK SC","Source Han Serif SC",SimSun,"STSong",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  --fs:17px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#191b1e;--ink:#e8e4da;--ink-2:#a09a8e;--line:#3a3d42;--seal:#d2685a;--indigo:#8fb3d9;--card:#22252a;--grid:rgba(232,228,218,.05);}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:var(--fs);line-height:1.85;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 90px}
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:9px 20px;background:color-mix(in srgb,var(--paper) 92%,transparent);
+  border-bottom:1px solid var(--line);backdrop-filter:blur(6px);font-family:var(--sans);font-size:13px}
+.topbar .tb-title{font-weight:600;letter-spacing:.06em;color:var(--ink);margin-right:auto}
+.tb-btn{font:inherit;font-family:var(--sans);color:var(--ink-2);background:transparent;border:1px solid var(--line);
+  border-radius:2px;padding:5px 11px;min-height:32px;cursor:pointer}
+.tb-btn:hover{color:var(--seal);border-color:var(--seal)}
+.tb-btn[aria-pressed="true"]{color:var(--seal);border-color:var(--seal)}
+/* ---------- 通用 ---------- */
+section{padding:34px 0 8px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.kicker{font-family:var(--sans);font-size:12px;letter-spacing:.22em;color:var(--seal);margin:0 0 6px}
+h1{font-family:var(--sans);font-size:31px;line-height:1.35;margin:0 0 6px;letter-spacing:.01em}
+h2{font-family:var(--sans);font-size:21px;margin:0 0 14px;line-height:1.5}
+h3{font-family:var(--sans);font-size:16px;margin:22px 0 8px}
+p{margin:0 0 14px}
+.sub{color:var(--ink-2);font-size:15px;margin:0 0 18px}
+.lead{font-size:18px}
+.muted{color:var(--ink-2)}
+.small{font-size:14px}
+mark{background:color-mix(in srgb,var(--seal) 16%,transparent);color:inherit;padding:0 2px}
+/* ---------- 引文角标 ---------- */
+sup.cite{font-family:var(--sans);font-size:11px;color:var(--seal);cursor:pointer;
+  border:1px solid color-mix(in srgb,var(--seal) 45%,transparent);border-radius:2px;padding:0 4px;margin-left:2px;
+  vertical-align:super;line-height:1;user-select:none}
+sup.cite:hover{background:color-mix(in srgb,var(--seal) 14%,transparent)}
+/* ---------- 标签 ---------- */
+.tag{font-family:var(--sans);font-size:11px;letter-spacing:.08em;padding:1px 6px;border:1px solid var(--line);
+  border-radius:2px;color:var(--ink-2);white-space:nowrap}
+.tag.zh{color:var(--indigo);border-color:color-mix(in srgb,var(--indigo) 40%,transparent)}
+.tag.cal{color:var(--seal);border-color:color-mix(in srgb,var(--seal) 40%,transparent)}
+/* ---------- 图 ---------- */
+figure{margin:18px 0 20px;border:1px solid var(--line);background:var(--card);padding:14px}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin-top:10px;line-height:1.7}
+/* ---------- 先猜 ---------- */
+.guess{border:1px dashed color-mix(in srgb,var(--seal) 55%,var(--line));background:var(--card);
+  padding:16px 18px;margin:0 0 16px;border-radius:2px}
+.guess .q{font-family:var(--sans);font-weight:600;font-size:15px;margin:0 0 4px}
+.guess .hint{font-size:13.5px;color:var(--ink-2);margin:0 0 10px}
+.guess textarea{width:100%;min-height:58px;font-family:var(--serif);font-size:15px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:8px 10px;resize:vertical}
+.guess .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.btn{font:inherit;font-family:var(--sans);font-size:13px;min-height:36px;padding:7px 14px;cursor:pointer;
+  border-radius:2px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+.btn:hover{border-color:var(--seal);color:var(--seal)}
+.btn.primary{background:var(--seal);border-color:var(--seal);color:#fff}
+.btn.primary:hover{filter:brightness(1.08);color:#fff}
+.answer{display:none;margin-top:12px;padding:12px 14px;border-left:3px solid var(--seal);
+  background:color-mix(in srgb,var(--seal) 7%,transparent);font-size:15px}
+.answer.open{display:block}
+/* ---------- 章节卡 ---------- */
+.chapters{display:grid;gap:12px;grid-template-columns:1fr}
+.ch{display:block;position:relative;border:1px solid var(--line);background:var(--card);
+  padding:14px 16px 14px 18px;text-decoration:none;color:inherit;border-radius:2px}
+.ch::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line)}
+.ch.up::before{background:var(--indigo)}
+.ch.down::before{background:var(--seal)}
+.ch.live{cursor:pointer}
+.ch.live:hover{border-color:var(--seal);background:color-mix(in srgb,var(--seal) 5%,var(--card))}
+.ch.soon{cursor:default;opacity:.62}
+.ch .no{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-2)}
+.ch .t{font-family:var(--sans);font-weight:600;font-size:16px;margin:3px 0 5px}
+.ch .d{font-size:14px;color:var(--ink-2);line-height:1.7}
+.ch .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.ch .st{font-family:var(--sans);font-size:11px;letter-spacing:.08em;color:var(--seal)}
+.ch .st.off{color:var(--ink-2)}
+@media(min-width:720px){.chapters{grid-template-columns:1fr 1fr}}
+/* ---------- 功能说明 ---------- */
+.feat{display:grid;gap:10px;grid-template-columns:1fr;margin:0;padding:0;list-style:none}
+.feat li{border:1px solid var(--line);background:var(--card);padding:11px 14px;font-size:14.5px;border-radius:2px}
+.feat b{font-family:var(--sans);font-size:14px}
+@media(min-width:720px){.feat{grid-template-columns:1fr 1fr}}
+/* ---------- 自测 ---------- */
+.quiz{border:1px solid var(--line);background:var(--card);padding:16px 18px;margin:0 0 14px;border-radius:2px}
+.quiz .q{font-family:var(--sans);font-weight:600;font-size:15px;margin:0 0 10px}
+.opts{display:grid;gap:8px}
+.opt{font:inherit;font-family:var(--serif);font-size:15px;text-align:left;min-height:44px;padding:9px 13px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:2px;cursor:pointer}
+.opt:hover{border-color:var(--indigo)}
+.opt.right{border-color:#2e7d5b;background:color-mix(in srgb,#2e7d5b 12%,transparent);color:inherit}
+.opt.wrong{border-color:var(--seal);background:color-mix(in srgb,var(--seal) 12%,transparent);color:inherit}
+.why{display:none;margin-top:11px;font-size:14.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px}
+.why.open{display:block}
+/* ---------- 引文弹窗 ---------- */
+.pop{position:fixed;inset:auto 16px 16px 16px;z-index:60;display:none;border:1px solid var(--seal);
+  background:var(--card);padding:14px 16px;max-width:560px;margin:0 auto;border-radius:2px;
+  box-shadow:0 8px 30px rgba(0,0,0,.14)}
+.pop.open{display:block}
+.pop .ph{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.pop .pid{font-family:var(--mono);font-size:11px;color:var(--seal)}
+.pop .pp{font-family:var(--sans);font-size:11.5px;color:var(--ink-2)}
+.pop .pq{font-size:15px;margin:0 0 8px}
+.pop .pz{font-size:14px;color:var(--ink-2);margin:0}
+.pop .x{position:absolute;top:8px;right:10px;font:inherit;font-family:var(--sans);font-size:12px;
+  background:transparent;border:0;color:var(--ink-2);cursor:pointer;padding:6px 8px;min-height:32px}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+.progress{height:2px;background:var(--line);position:fixed;top:0;left:0;z-index:50;width:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+<nav class="topbar">
+  <span class="tb-title">认知语言学与汉语名词短语</span>
+  <button class="tb-btn" id="fs-down" aria-label="缩小字号">字－</button>
+  <button class="tb-btn" id="fs-up" aria-label="放大字号">字＋</button>
+  <button class="tb-btn" id="theme" aria-pressed="false">明／暗</button>
+</nav>
+
+<div class="wrap">
+
+<!-- ================= HERO ================= -->
+<section data-hero>
+  <p class="kicker">张敏 · 认知语言学研究</p>
+  <h1>认知语言学与汉语名词短语</h1>
+  <p class="sub">全书导览 · 一条主线：<b>概念距离决定形式距离</b></p>
+  <p class="lead">这本书只回答一个问题：<mark>为什么汉语里有的定语能直接贴在名词前，有的中间非加个「的」不可？</mark>
+  作者张敏的答案是——这不是语法癖好，而是人类语言共有的<b>距离象似动因</b>在汉语里的投影：
+  定语和名词的概念关系越近，形式就越紧；越远，形式就越松。<sup class="cite" data-cite="c6-10">源</sup></p>
+  <p>全书分两篇。<b>上篇</b>（第一至四章）建立理论：认知语言学的立场、汉语名词短语为何是象似性的最佳试验场、
+  句法象似性的八种动因，以及下篇要用的核心工具。<b>下篇</b>（第五至八章）拿这把尺子量汉语：
+  距离动因如何解释 DN 与 DdN 的语义差别、「的」字隐现的一般规律、领属结构的跨语言共性、多项定语的语序。</p>
+
+  <figure data-figure>
+    <svg viewBox="0 0 680 372" role="img" aria-label="全书论证地图：上篇理论奠基到下篇汉语应用的主干流向">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#2f4d6e"/>
+        </marker>
+      </defs>
+      <rect x="0" y="0" width="680" height="372" fill="none"/>
+      <!-- 纸面分区 -->
+      <rect x="14" y="14" width="300" height="344" fill="none" stroke="#2f4d6e" stroke-dasharray="3 4" opacity=".5"/>
+      <rect x="366" y="14" width="300" height="344" fill="none" stroke="#9e3b2e" stroke-dasharray="3 4" opacity=".5"/>
+      <text x="30" y="36" font-family="var(--sans)" font-size="12" letter-spacing="3" fill="#2f4d6e">上篇 · 理论奠基</text>
+      <text x="382" y="36" font-family="var(--sans)" font-size="12" letter-spacing="3" fill="#9e3b2e">下篇 · 汉语名词短语</text>
+      <!-- 主干 -->
+      <path d="M164,62 L164,96" stroke="#2f4d6e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M164,132 L164,164" stroke="#2f4d6e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M164,200 L164,232" stroke="#2f4d6e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M164,268 L164,300" stroke="#2f4d6e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M320,318 L366,318" stroke="#9e3b2e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <!-- 上篇节点 -->
+      <g font-family="var(--sans)">
+        <rect x="60" y="40" width="208" height="26" fill="#fffdf8" stroke="#2f4d6e"/>
+        <text x="164" y="57" font-size="12.5" text-anchor="middle" fill="#23201c">第一章 理论主张</text>
+        <rect x="60" y="110" width="208" height="26" fill="#fffdf8" stroke="#2f4d6e"/>
+        <text x="164" y="127" font-size="12.5" text-anchor="middle" fill="#23201c">第二章 经验基础</text>
+        <rect x="60" y="178" width="208" height="26" fill="#fffdf8" stroke="#2f4d6e"/>
+        <text x="164" y="195" font-size="12.5" text-anchor="middle" fill="#23201c">第三章 句法的象似性</text>
+        <rect x="60" y="246" width="208" height="26" fill="#fffdf8" stroke="#2f4d6e"/>
+        <text x="164" y="263" font-size="12.5" text-anchor="middle" fill="#23201c">第四章 下篇概述</text>
+      </g>
+      <!-- 桥接 -->
+      <g>
+        <rect x="318" y="292" width="96" height="52" fill="#fffdf8" stroke="#9e3b2e"/>
+        <text x="366" y="312" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="#9e3b2e">核心工具</text>
+        <text x="366" y="332" font-family="var(--sans)" font-size="13" text-anchor="middle" fill="#23201c">距离动因</text>
+      </g>
+      <!-- 下篇节点 -->
+      <g font-family="var(--sans)">
+        <rect x="372" y="40" width="288" height="26" fill="#fffdf8" stroke="#9e3b2e"/>
+        <text x="516" y="57" font-size="12.5" text-anchor="middle" fill="#23201c">第五章 距离动因与 DN、DdN</text>
+        <rect x="372" y="110" width="288" height="26" fill="#fffdf8" stroke="#9e3b2e"/>
+        <text x="516" y="127" font-size="12.5" text-anchor="middle" fill="#23201c">第六章 的「字隐现」一般规律</text>
+        <rect x="372" y="178" width="288" height="26" fill="#fffdf8" stroke="#9e3b2e"/>
+        <text x="516" y="195" font-size="12.5" text-anchor="middle" fill="#23201c">第七章 领属结构的「的」</text>
+        <rect x="372" y="246" width="288" height="26" fill="#fffdf8" stroke="#9e3b2e"/>
+        <text x="516" y="263" font-size="12.5" text-anchor="middle" fill="#23201c">第八章 多项定语语序</text>
+      </g>
+      <path d="M516,66 L516,104" stroke="#9e3b2e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M516,136 L516,172" stroke="#9e3b2e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <path d="M516,204 L516,240" stroke="#9e3b2e" stroke-width="1.6" marker-end="url(#ar)"/>
+      <!-- 底部结论 -->
+      <text x="164" y="348" font-family="var(--sans)" font-size="11.5" fill="#6b655c">理论：人怎么想</text>
+      <text x="516" y="348" font-family="var(--sans)" font-size="11.5" text-anchor="middle" fill="#6b655c">应用：汉语怎么说</text>
+    </svg>
+    <figcaption><b>图一 · 全书论证地图。</b>上篇从理论立场走到句法象似性的诸动因，第四章把镜头对准名词短语；下篇以「距离动因」为唯一工具，
+    依次处理 DN／DdN 语义差别、「的」字隐现、领属结构、多项定语语序。第六、第八两章是全书的两个应用高峰。</figcaption>
+  </figure>
+</section>
+
+<!-- ================= 场景一：主线 ================= -->
+<section data-scene="1">
+  <p class="kicker">场景一 · 全书主线</p>
+  <h2>一把尺子：概念距离 ↔ 形式距离</h2>
+  <p>下篇所有章节共用同一个动作：<b>先量概念距离，再预测形式距离。</b>
+  什么是概念距离？作者借用了 Seiler 的「限定序列」——定语对名词的作用是一个连续统，
+  一端是<b>确定指称</b>（作用于外延，如「这、那、我、每」），另一端是<b>刻划概念</b>（作用于内涵，如颜色、质料、形状）。
+  中间按「离核心的远近」排成一条序列。<sup class="cite" data-cite="c6-06">源</sup></p>
+  <p>这条序列在汉语里有一道铁律：<mark>序列左端的成分与名词之间，必须插入一个分隔物</mark>——
+  要么是「的」，要么是量词。<sup class="cite" data-cite="c6-09">源</sup>
+  所以「他的书」「一本书」都能说，而「*他书」不能说（句中包孕等特殊环境另论）。
+  序列右端的成分则相反：越靠右，越倾向于不带「的」。</p>
+
+  <figure data-figure>
+    <svg viewBox="0 0 680 250" role="img" aria-label="限定序列剖面：左端确定指称到右端刻划概念，转折点在数词，de 出现倾向由强渐弱">
+      <defs>
+        <linearGradient id="seq" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#2f4d6e"/><stop offset=".5" stop-color="#6b655c"/><stop offset="1" stop-color="#9e3b2e"/>
+        </linearGradient>
+        <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#23201c"/>
+        </marker>
+      </defs>
+      <!-- 序列轴 -->
+      <line x1="30" y1="150" x2="640" y2="150" stroke="url(#seq)" stroke-width="3"/>
+      <path d="M640,150 L626,144 L626,156 z" fill="#9e3b2e"/>
+      <text x="30" y="176" font-family="var(--sans)" font-size="11.5" fill="#2f4d6e">确定指称 · 作用于外延</text>
+      <text x="640" y="176" font-family="var(--sans)" font-size="11.5" text-anchor="end" fill="#9e3b2e">刻划概念 · 作用于内涵</text>
+      <!-- 转折点 -->
+      <line x1="330" y1="96" x2="330" y2="150" stroke="#23201c" stroke-width="1.4" stroke-dasharray="4 3"/>
+      <text x="330" y="88" font-family="var(--sans)" font-size="12" text-anchor="middle" fill="#23201c">转折点：数词</text>
+      <text x="330" y="200" font-family="var(--sans)" font-size="10.5" text-anchor="middle" fill="#6b655c">Seiler 原置于冠词、领属语处</text>
+      <text x="330" y="214" font-family="var(--sans)" font-size="10.5" text-anchor="middle" fill="#6b655c">本书据类型学证据移至数词处</text>
+      <!-- 左端成分 -->
+      <g font-family="var(--serif)" font-size="13" fill="#23201c">
+        <text x="58" y="142" text-anchor="middle">这</text>
+        <text x="106" y="142" text-anchor="middle">那</text>
+        <text x="154" y="142" text-anchor="middle">我</text>
+        <text x="202" y="142" text-anchor="middle">每</text>
+        <text x="250" y="142" text-anchor="middle">所有</text>
+        <text x="298" y="142" text-anchor="middle">任何</text>
+        <text x="378" y="142" text-anchor="middle">数词</text>
+        <text x="430" y="142" text-anchor="middle">大小</text>
+        <text x="486" y="142" text-anchor="middle">新旧</text>
+        <text x="542" y="142" text-anchor="middle">颜色</text>
+        <text x="598" y="142" text-anchor="middle">质料</text>
+      </g>
+      <!-- 分隔物提示 -->
+      <g font-family="var(--sans)" font-size="10.5">
+        <text x="58" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="106" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="154" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="202" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="250" y="122" text-anchor="middle" fill="#6b655c">—</text>
+        <text x="298" y="122" text-anchor="middle" fill="#6b655c">—</text>
+        <text x="378" y="122" text-anchor="middle" fill="#9e3b2e">量词</text>
+        <text x="430" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="486" y="122" text-anchor="middle" fill="#9e3b2e">的</text>
+        <text x="542" y="122" text-anchor="middle" fill="#6b655c">可省</text>
+        <text x="598" y="122" text-anchor="middle" fill="#2e7d5b">常省</text>
+      </g>
+      <!-- de 倾向曲线 -->
+      <path d="M40,60 C 150,60 180,60 330,66 C 470,72 540,92 640,104" fill="none" stroke="#9e3b2e" stroke-width="1.6" stroke-dasharray="5 3"/>
+      <text x="640" y="52" font-family="var(--sans)" font-size="11" text-anchor="end" fill="#9e3b2e">de 出现倾向：由强渐弱</text>
+      <text x="30" y="44" font-family="var(--sans)" font-size="11" fill="#9e3b2e">左端：de 或量词强制出现</text>
+      <!-- 结论条 -->
+      <rect x="30" y="228" width="620" height="1" fill="#d8d1c2"/>
+      <text x="30" y="244" font-family="var(--sans)" font-size="11.5" fill="#6b655c">同一条序列，向右每走一步，「的」的出现概率就降一格——这是第六章整章要展开的规律。</text>
+    </svg>
+    <figcaption><b>图二 · 限定序列剖面（示意）。</b>横轴为 Seiler 的限定连续统，虚线为本书主张的转折点位置。
+    轴上标注的是各位置的典型成分与「的」的隐现倾向。<span class="tag" data-label="示意">示意</span></figcaption>
+  </figure>
+</section>
+
+<!-- ================= 场景二：先猜 ================= -->
+<section data-scene="2">
+  <p class="kicker">场景二 · 先猜再看</p>
+  <h2>两个全书级难题</h2>
+  <p>下面两题，作者在书中都给出了出人意料的答案。先写下你的判断，再看解释。</p>
+
+  <div data-guess>
+    <p class="q">先猜一：英语说 ten fine old stone houses，汉语说「十座漂亮的老石头房子」——语序几乎一模一样。这是巧合吗？</p>
+    <p class="hint">提示：想想限定成分的哪一端最容易跨语言对齐。</p>
+    <textarea id="g1" placeholder="把你的猜测写在这里……"></textarea>
+    <div class="row">
+      <button class="btn primary" data-reveal="a1">看解释</button>
+      <button class="btn" data-clear="g1">清空</button>
+    </div>
+    <div class="answer" id="a1">
+      <p><b>不是巧合。</b>在限定序列的<b>转折点右端</b>（数词及其右侧），各语言的语序几乎完全相同；
+      分歧集中在左端。<sup class="cite" data-cite="c6-06">源</sup>
+      作者据此把 Seiler 原置于「冠词、领属语」处的转折点<b>移到了「数词」处</b>——
+      「十座」在汉语里既指数量，又像英语的冠词一样承担指称功能。</p>
+      <p class="small muted">跨语言证据来自 Hawkins 的类型学考察；汉语对应的例子即 Hetzron 讨论过的英汉对照。</p>
+    </div>
+  </div>
+
+  <div data-guess>
+    <p class="q">先猜二：为什么「脏手」「脏衣服」都能说，「*脏糖」却不能说？</p>
+    <p class="hint">提示：问题不在「脏」这个词本身——换掉后面的名词，结论就跟着变。</p>
+    <textarea id="g2" placeholder="把你的猜测写在这里……"></textarea>
+    <div class="row">
+      <button class="btn primary" data-reveal="a2">看解释</button>
+      <button class="btn" data-clear="g2">清空</button>
+    </div>
+    <div class="answer" id="a2">
+      <p><b>因为「脏」是否构成对名词的规约分类指标。</b>「脏手」等于「没洗过的手」，而手在日常生活里就是会脏的、
+      「脏」是它的显著互动属性；糖却不同，「脏糖」不构成任何规约化的分类——我们不会凭「脏」把糖分成两类。
+      <sup class="cite" data-cite="c6-01">源</sup></p>
+      <p class="small muted">范继淹当年用「惯用法」「熟语性」作答，作者认为这等于不加解释；本书改用百科知识作答：
+      <b>衣服要穿干净的，穿过的衣服就是脏的</b>——DN 是常识推理的压缩。<sup class="cite" data-cite="c6-43">源</sup></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 场景三：分章入口 ================= -->
+<section data-scene="3">
+  <p class="kicker">场景三 · 分章入口</p>
+  <h2>八章，两种读法</h2>
+  <p>全书每章都有独立网页，共 <b>17 个页面，全部已上线</b>。<b>深读版</b>逐章细讲，带模拟器、实验室与案例库；
+  <b>简版</b>为 10.24 首批成品，只留章节主干，适合快速通读。点击任一卡片进入。</p>
+
+  <h3>深读页 · 九篇（推荐）</h3>
+  <div class="chapters">
+    <a class="ch up live" href="认知语言学与汉语名词短语-01深读-理论主张.html">
+      <span class="no">CH.01 · 上篇 · 底本 L142–535</span>
+      <span class="t">语法是天生的，还是长出来的</span>
+      <span class="d">第一章其实在讲一场对峙：生成语法学派的三件套——语法是天生的、自主的、普遍的——对阵认知语言学。语言到底是天生的官能，还是一般认知能力长出来的？</span>
+      <span class="meta"><span class="tag" data-label="论证拆解">论证拆解</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-02深读-范畴化.html">
+      <span class="no">CH.02 · 上篇 · 底本 L536–1459</span>
+      <span class="t">杯子是怎么变成碗的</span>
+      <span class="d">两千年来的范畴观是个容器：边界分明，非此即彼。从杯子与碗的连续过渡讲起，看认知语言学如何用原型、基本层次与意象图式重画范畴的边界。</span>
+      <span class="meta"><span class="tag" data-label="概念探索">概念探索</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-03深读-句法的象似性.html">
+      <span class="no">CH.03 · 上篇 · 底本 L1460–2126</span>
+      <span class="t">句法的象似性（全章新版）</span>
+      <span class="d">语言的形式，有多少是「道理」，有多少只是「规定」？全章新版：八种象似动因的完整清单——距离、顺序、重叠、数量、对称……下篇只取其一。</span>
+      <span class="meta"><span class="tag" data-label="全章">全章</span><span class="tag" data-label="概念探索">概念探索</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-03深读-重叠动因.html">
+      <span class="no">CH.03 · 上篇 · 底本 L1460–2126</span>
+      <span class="t">说两遍，意思就不一样（专题版）</span>
+      <span class="d">第三章专题：戴浩一（Tai 1992）基于汉语提出的重叠象似动因——叠词为什么偏偏表示「量变」：妈妈、看看、个个、家家。</span>
+      <span class="meta"><span class="tag" data-label="专题">专题</span><span class="tag" data-label="概念探索">概念探索</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-04深读-下篇概述.html">
+      <span class="no">CH.04 · 上篇 · 底本 L2127–2275</span>
+      <span class="t">一个虚词，二十年难题</span>
+      <span class="d">「的」是汉语里出现频率最高的虚词，可它在定中之间何时出现、何时隐身，自五十年代起难住了几代语法学家。过渡章：从象似性总论转向名词短语个案。</span>
+      <span class="meta"><span class="tag" data-label="论证拆解">论证拆解</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-05深读-距离动因.html">
+      <span class="no">CH.05 · 下篇 · 底本 L2276–2687</span>
+      <span class="t">一座金山的真假</span>
+      <span class="d">「这座金山其实不是金的」说得通，「这座金的山其实不是金的」说不通——差别全在一个「的」字：它把定语从「预设」变成了「断定」。DN 与 DdN 的语义差别，远不止标记性。</span>
+      <span class="meta"><span class="tag" data-label="论证拆解">论证拆解</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-06深读-的字隐现.html">
+      <span class="no">CH.06 · 下篇 · 底本 L2688–3239</span>
+      <span class="t">「的」字隐现的一般规律</span>
+      <span class="d">全书应用高峰。一条限定序列、三层语义条件、七类定语的规则卡，外加一个「的」字隐现预测器。</span>
+      <span class="meta"><span class="tag" data-label="查读">查读</span><span class="tag" data-label="含模拟器">含模拟器</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-07深读-领属结构.html">
+      <span class="no">CH.07 · 下篇 · 底本 L3240–3602</span>
+      <span class="t">他妹妹说得，他手说不得</span>
+      <span class="d">「他的手」的「的」少不得，「他妹妹」的「的」却说丢就丢；「张三的哥哥」非得带「的」，「我哥哥」却能省。同是领属，为什么厚此薄彼？答案通向语言共性。</span>
+      <span class="meta"><span class="tag" data-label="论证拆解">论证拆解</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-08深读-定语语序.html">
+      <span class="no">CH.08 · 下篇 · 底本 L3603–4278</span>
+      <span class="t">脏里叭唧的新绸子衬衫</span>
+      <span class="d">一句话里能塞进六个定语，还各有各的位子。全书第二个应用高峰：三个可操作实验室——谓词配对、属性选择、跨语言对照，逐层给出语序的判决。</span>
+      <span class="meta"><span class="tag" data-label="查读">查读</span><span class="tag" data-label="含实验室">含实验室</span><span class="st">已上线</span></span>
+    </a>
+  </div>
+
+  <h3>简版页 · 八章（10.24 版）</h3>
+  <div class="chapters">
+    <a class="ch up live" href="认知语言学与汉语名词短语-第一章-理论主张.html">
+      <span class="no">第一章 · 上篇 · 底本 L142–535</span>
+      <span class="t">理论主张</span>
+      <span class="d">认知语言学的理论立场：语言不是自主的官能，而是一般认知能力的一部分。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-第二章-经验基础.html">
+      <span class="no">第二章 · 上篇 · 底本 L536–1459</span>
+      <span class="t">经验基础</span>
+      <span class="d">为什么拿汉语名词短语开刀：它同时暴露句法自主论的多个难题。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-第三章-句法的象似性.html">
+      <span class="no">第三章 · 上篇 · 底本 L1460–2126</span>
+      <span class="t">句法的象似性</span>
+      <span class="d">八种象似动因的清单：距离、顺序、重叠、数量、对称……下篇只取其一。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch up live" href="认知语言学与汉语名词短语-第四章-下篇概述.html">
+      <span class="no">第四章 · 上篇 · 底本 L2127–2275</span>
+      <span class="t">下篇概述</span>
+      <span class="d">过渡章：从象似性总论转向名词短语个案，交代下篇的分析框架。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-第五章-距离动因与DN、DdN语义差别.html">
+      <span class="no">第五章 · 下篇 · 底本 L2276–2687</span>
+      <span class="t">距离动因与 DN、DdN 语义差别</span>
+      <span class="d">不带「的」的 DN 与带「的」的 DdN，差别只在标记性吗？作者说远不止于此。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-第六章-的字隐现的一般规律.html">
+      <span class="no">第六章 · 下篇 · 底本 L2688–3239</span>
+      <span class="t">「的」字隐现的一般规律</span>
+      <span class="d">定语与核心之间，隔不隔「的」，由什么决定？限定序列与三层条件。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-第七章-领属结构的的与语言共性.html">
+      <span class="no">第七章 · 下篇 · 底本 L3240–3602</span>
+      <span class="t">领属结构的「的」与语言共性</span>
+      <span class="d">「我的手」一定要「的」，「我妹妹」却可以不要——领属关系的两种面孔。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+    <a class="ch down live" href="认知语言学与汉语名词短语-第八章-多项定语的语序规律.html">
+      <span class="no">第八章 · 下篇 · 底本 L3603–4278</span>
+      <span class="t">多项定语的语序规律</span>
+      <span class="d">多个定语排队的问题：谁前谁后，由什么决定。</span>
+      <span class="meta"><span class="tag" data-label="简版">简版</span><span class="st">已上线</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= 场景四：功能与规范 ================= -->
+<section data-scene="4">
+  <p class="kicker">场景四 · 怎么用这些页面</p>
+  <h2>读者功能与引用规范</h2>
+  <ul class="feat">
+    <li><b>记住阅读进度</b><br><span class="muted small">每页自动记录上次读到的位置，下次打开接着读。</span></li>
+    <li><b>字号调节</b><br><span class="muted small">顶栏「字＋／字－」两档以上，选择会被记住。</span></li>
+    <li><b>明暗双模式</b><br><span class="muted small">跟随系统明暗设置，也可手动切换。</span></li>
+    <li><b>返回不迷路</b><br><span class="muted small">从规则卡跳到案例详情后，可用浏览器返回键回到原位。</span></li>
+    <li><b>键盘操作</b><br><span class="muted small">左右方向键切换场景，Esc 关闭弹窗。</span></li>
+    <li><b>引文可核</b><br><span class="muted small">点击正文里的角标，弹出原书引文与底本位置。</span></li>
+  </ul>
+  <h3>标注约定</h3>
+  <p>页面上每个说法都可能带四种标签之一：<span class="tag" data-label="原文">原文</span>原书字面；
+  <span class="tag" data-label="推算">推算</span>由原书结论推出；<span class="tag" data-label="示意">示意</span>为便于理解而画的简化图；
+  <span class="tag" data-label="解读">解读</span>整理者的说明。引用底本为《认知语言学与汉语名词短语》研读底本，
+  角标编号对应底本中的位置，可逐条回查。</p>
+</section>
+
+<!-- ================= 场景五：自测 ================= -->
+<section data-scene="5">
+  <p class="kicker">场景五 · 自测</p>
+  <h2>三题收束</h2>
+
+  <div class="quiz" data-quiz>
+    <p class="q">一、本书下篇解释汉语名词短语所用的核心工具是哪一项？</p>
+    <div class="opts">
+      <button class="opt" data-ok="0">格语法与题元角色</button>
+      <button class="opt" data-ok="1">距离动因（概念距离与形式距离的对应）</button>
+      <button class="opt" data-ok="0">优选论的制约条件等级</button>
+      <button class="opt" data-ok="0">管约论中的 X 杠结构</button>
+    </div>
+    <div class="why"><b>距离动因。</b>全书下篇只用这一把尺子：先判断定语与名词的概念距离，再预测它们在形式上的松紧——也就是「的」的隐现与定语语序。</div>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">二、限定序列左端的成分与名词组合时，形式上有何强制要求？</p>
+    <div class="opts">
+      <button class="opt" data-ok="0">必须紧贴名词，中间不能有任何成分</button>
+      <button class="opt" data-ok="1">中间必须插入分隔物，即「的」或量词</button>
+      <button class="opt" data-ok="0">必须变成双音节形式</button>
+      <button class="opt" data-ok="0">只能出现在动词之后</button>
+    </div>
+    <div class="why"><b>必须插入分隔物。</b>定语中含转折点左端成分的定中结构，必须是中间有分隔物的 DxN，x 的出现是强制性的——要么是「的」（他的书），要么是量词（一本书、这本书），逻辑量词除外。</div>
+  </div>
+
+  <div class="quiz" data-quiz>
+    <p class="q">三、「*脏糖」不能说而「脏手」可以，作者给出的最终解释层是？</p>
+    <div class="opts">
+      <button class="opt" data-ok="0">「脏」的词汇意义与「糖」不相容</button>
+      <button class="opt" data-ok="0">「脏糖」不合声调配合规律</button>
+      <button class="opt" data-ok="1">「脏」没有进入「糖」的规约分类模式，属百科知识问题</button>
+      <button class="opt" data-ok="0">「脏糖」违反了句法自主论的普遍原则</button>
+    </div>
+    <div class="why"><b>百科知识。</b>朱德熙早已指出这类现象「不能从词汇意义上去找解释」；作者改用常识推理作答——穿过一轮的衣服就是脏的，而糖没有「穿」这回事，DN 也就无从成立。</div>
+  </div>
+
+  <p class="small muted">全部答对，可以直接进第六章；有疑问，建议从第六章场景二「三层条件」看起。</p>
+</section>
+
+<footer>
+  <p>《认知语言学与汉语名词短语》张敏 · 互动网页一书一册。底本为研读底本，全部引文可在底本中逐条回查；
+  整理者的说明一律标注「解读」。本页为导览层，各章内容在分章页中展开。</p>
+</footer>
+</div>
+
+<!-- 引文弹窗 -->
+<div class="pop" id="pop" role="dialog" aria-modal="false" aria-labelledby="pop-q">
+  <button class="x" id="pop-x">关闭</button>
+  <div class="ph"><span class="pid" id="pop-id"></span><span class="pp" id="pop-p"></span></div>
+  <p class="pq" id="pop-q"></p>
+  <p class="pz" id="pop-z"></p>
+</div>
+
+<script>
+/* ---------- SOURCES：id → 底本位置 / 原句 / 中文转述 ---------- */
+var SOURCES = {
+  "c6-01": {page:"研读底本 · 第六章章首", quote:"脏的手、脏的糖……我们可以说『脏手』，不说『*脏糖』。", zh:"范继淹之问：同一形容词能否直接作定语，取决于它搭配的名词；作者认为『惯用法』『熟语性』的解释等于不加解释。"},
+  "c6-06": {page:"研读底本 · 第六章限定序列节", quote:"Seiler 从德语出发将转折点放在『冠词、领属语』处，我们认为，从 Hawkins(1983) 给出的类型学证据看，这个转折点应放在『数词』处。", zh:"本书修订 Seiler 的连续统模型：转折点定在数词处。右端（数词以右）语序跨语言高度一致。"},
+  "c6-09": {page:"研读底本 · 第六章 DxN 节", quote:"定语中含有转折点左端成分的定中结构在汉语里必须是中间有分隔物的 DxN，其中的 x 的出现是强制性的。", zh:"x 要么是 de（他的书），要么是量词（一本书、这本书），逻辑量词除外。这是汉语定中结构的形式铁律。"},
+  "c6-10": {page:"研读底本 · 第六章小结", quote:"人类语言倾向于将形式距离和概念距离对应起来的趋势。", zh:"全书主线的经典表述：概念关系越近，形式越紧。"},
+  "c6-43": {page:"研读底本 · 第六章 ICM 节", quote:"衣服要穿干净的，穿过的衣服就是脏的。", zh:"DN 的最终解释资源是百科知识（常识推理），而非词汇意义或句法自主规则。"}
+};
+
+/* ---------- 返回键 / 进度 ---------- */
+var backStack = [];
+function jumpTo(el){
+  if(!el) return;
+  backStack.push(scrollY);
+  history.pushState({y:scrollY}, "");
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+}
+function goBack(){
+  var y = backStack.pop();
+  if(y != null) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+}
+addEventListener("popstate", function(e){
+  if(e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); }
+});
+
+/* ---------- 存储 ---------- */
+var store = {
+  get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+var motionOK = function(){ return !matchMedia("(prefers-reduced-motion: reduce)").matches; };
+
+/* ---------- 进度条 ---------- */
+var bar = document.getElementById("bar");
+function onScroll(){
+  var h = document.documentElement;
+  var p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+  bar.style.width = (p*100).toFixed(2) + "%";
+  store.set("idx-y", String(Math.round(h.scrollTop)));
+}
+addEventListener("scroll", onScroll, {passive:true});
+
+/* ---------- 字号 ---------- */
+var FS_MIN = 15, FS_MAX = 21, FS_KEY = "idx-fs";
+function applyFs(v){
+  v = Math.max(FS_MIN, Math.min(FS_MAX, v));
+  document.documentElement.style.setProperty("--fs", v + "px");
+  store.set(FS_KEY, String(v));
+}
+(function(){
+  var v = parseInt(store.get(FS_KEY) || "", 10);
+  if(!isNaN(v)) applyFs(v);
+})();
+document.getElementById("fs-up").onclick = function(){
+  var cur = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fs")) || 17;
+  applyFs(Math.round(cur) + 1);
+};
+document.getElementById("fs-down").onclick = function(){
+  var cur = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fs")) || 17;
+  applyFs(Math.round(cur) - 1);
+};
+
+/* ---------- 明暗 ---------- */
+var themeBtn = document.getElementById("theme"), THEME_KEY = "idx-theme";
+function setTheme(dark){
+  document.documentElement.style.colorScheme = dark ? "dark" : "light";
+  themeBtn.setAttribute("aria-pressed", dark ? "true" : "false");
+  store.set(THEME_KEY, dark ? "dark" : "light");
+}
+themeBtn.onclick = function(){
+  setTheme(themeBtn.getAttribute("aria-pressed") !== "true");
+};
+(function(){
+  var saved = store.get(THEME_KEY);
+  if(saved) setTheme(saved === "dark");
+})();
+
+/* ---------- 先猜 ---------- */
+Array.prototype.forEach.call(document.querySelectorAll("[data-reveal]"), function(btn){
+  btn.onclick = function(){
+    var el = document.getElementById(btn.getAttribute("data-reveal"));
+    if(el) el.classList.toggle("open");
+  };
+});
+Array.prototype.forEach.call(document.querySelectorAll("[data-clear]"), function(btn){
+  btn.onclick = function(){
+    var el = document.getElementById(btn.getAttribute("data-clear"));
+    if(el) el.value = "";
+  };
+});
+
+/* ---------- 自测 ---------- */
+Array.prototype.forEach.call(document.querySelectorAll(".quiz"), function(quiz){
+  var opts = quiz.querySelectorAll(".opt");
+  var why = quiz.querySelector(".why");
+  Array.prototype.forEach.call(opts, function(opt){
+    opt.onclick = function(){
+      Array.prototype.forEach.call(opts, function(o){ o.classList.remove("right","wrong"); });
+      if(opt.getAttribute("data-ok") === "1"){
+        opt.classList.add("right");
+      }else{
+        opt.classList.add("wrong");
+        Array.prototype.forEach.call(opts, function(o){
+          if(o.getAttribute("data-ok") === "1") o.classList.add("right");
+        });
+      }
+      if(why) why.classList.add("open");
+    };
+  });
+});
+
+/* ---------- 引文弹窗 ---------- */
+var pop = document.getElementById("pop"),
+    popId = document.getElementById("pop-id"),
+    popP = document.getElementById("pop-p"),
+    popQ = document.getElementById("pop-q"),
+    popZ = document.getElementById("pop-z");
+function closePop(){ pop.classList.remove("open"); }
+document.getElementById("pop-x").onclick = closePop;
+Array.prototype.forEach.call(document.querySelectorAll("sup.cite"), function(sup){
+  sup.onclick = function(){
+    var id = sup.getAttribute("data-cite"), s = SOURCES[id];
+    if(!s) return;
+    popId.textContent = id;
+    popP.textContent = s.page;
+    popQ.textContent = "「" + s.quote + "」";
+    popZ.textContent = s.zh;
+    pop.classList.add("open");
+  };
+});
+
+/* ---------- 键盘 ---------- */
+var scenes = Array.prototype.slice.call(document.querySelectorAll("[data-scene]"));
+function curScene(){
+  var best = 0, bd = 1e9;
+  scenes.forEach(function(s, i){
+    var d = Math.abs(s.getBoundingClientRect().top - 80);
+    if(d < bd){ bd = d; best = i; }
+  });
+  return best;
+}
+addEventListener("keydown", function(e){
+  if(e.key === "Escape"){ closePop(); return; }
+  if(e.key === "ArrowRight"){
+    var n = Math.min(scenes.length - 1, curScene() + 1);
+    if(scenes[n]) scenes[n].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  }
+  if(e.key === "ArrowLeft"){
+    var p = Math.max(0, curScene() - 1);
+    if(scenes[p]) scenes[p].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  }
+});
+
+/* ---------- 恢复进度 ---------- */
+(function(){
+  var y = parseInt(store.get("idx-y") || "", 10);
+  if(!isNaN(y) && y > 40) scrollTo(0, y);
+  onScroll();
+})();
+</script>
+</body>
+</html>

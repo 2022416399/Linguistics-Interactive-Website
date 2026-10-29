@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第六章 · 「的」字隐现的一般规律 | 认知语言学与汉语名词短语</title>
+<style>
+/* ============================================================
+   自定义风格「工程蓝图」四项法
+   1. 配色：纸面米白（--paper）+ 靛蓝墨线（--line/--indigo）
+      + 琥珀黄警示（--amber，用于 de、转折点、判据高亮）
+      + 朱红印章色（--seal，用于先猜/自测判定）
+   2. 字体：等宽体（mono，标注、图签、数据）+ 无衬线（正文），
+      衬线楷体仅用于原文引文；全部系统字体栈，零外部依赖
+   3. 质感：图纸网格底纹（双向 repeating-linear-gradient）、
+      图框标题栏（DWG·SHEET 编号）、尺寸线（虚线+箭头）、
+      角标坐标系刻度
+   4. 主视觉：四幅蓝图——限定序列剖面（可点击轴）、
+      de 前景/背景开关与三层蕴含漏斗、ICM 换洗模式对照、
+      动因竞争与例外通道；等轴测图框、分层剖面、数据流箭头
+   ============================================================ */
+:root{
+  --paper:#f3f0e7; --card:#fbf9f2; --ink:#182134; --ink-2:#4c5670;
+  --line:#1f3a93; --indigo:#1f3a93; --seal:#b3321f; --amber:#c8871a;
+  --grid:rgba(31,58,147,.06);
+  --mono:ui-monospace,"Cascadia Mono","JetBrains Mono",Consolas,"Courier New",monospace;
+  --sans:system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  --kai:"Kaiti SC","KaiTi","STKaiti","Noto Serif CJK SC",serif;
+}
+html.dark{
+  --paper:#101827; --card:#182234; --ink:#e8e6df; --ink-2:#a4adc4;
+  --line:#7ea2ff; --indigo:#8fb4ff; --seal:#ff8a75; --amber:#f0b95c;
+  --grid:rgba(126,162,255,.08);
+}
+/* 系统偏好暗色时默认暗；用户手动选过明（html.light）则以手动为准 */
+@media (prefers-color-scheme: dark){
+  html:not(.light){
+    --paper:#101827; --card:#182234; --ink:#e8e6df; --ink-2:#a4adc4;
+    --line:#7ea2ff; --indigo:#8fb4ff; --seal:#ff8a75; --amber:#f0b95c;
+    --grid:rgba(126,162,255,.08);
+  }
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.85;
+  background-image:
+    repeating-linear-gradient(0deg,var(--grid) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 28px);
+}
+main{max-width:860px;margin:0 auto;padding:0 18px 90px}
+p{margin:.7em 0}
+/* ---------- 顶栏 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px solid var(--line);
+}
+.topbar .brand{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .brand b{color:var(--line)}
+.topbar .sp{flex:1}
+.tb-btn{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:4px 9px;cursor:pointer;min-height:30px;
+}
+.tb-btn:hover{background:var(--line);color:var(--paper)}
+/* ---------- 进度条 ---------- */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:50;background:transparent;pointer-events:none}
+.progress i{display:block;height:100%;width:0;background:var(--amber)}
+/* ---------- 场景与图纸框 ---------- */
+section{margin:34px 0}
+.scene-head{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--line);padding-bottom:6px;margin-bottom:14px}
+.scene-head .no{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.1em;white-space:nowrap}
+.scene-head h2{margin:0;font-size:21px;line-height:1.4}
+.scene-head .en{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-left:auto;white-space:nowrap}
+.dwg{
+  border:1.5px solid var(--line);background:var(--card);margin:16px 0;position:relative;
+}
+.dwg-head{
+  display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;
+  color:var(--paper);background:var(--line);padding:4px 10px;letter-spacing:.06em;
+}
+.dwg-head .sheet{margin-left:auto;opacity:.85}
+.dwg-body{padding:12px 12px 14px}
+.dwg figcaption{padding:6px 12px 10px;font-size:13px;color:var(--ink-2);border-top:1px dashed var(--line)}
+/* ---------- 角标 ---------- */
+sup.cite{
+  font-family:var(--mono);font-size:10px;color:var(--indigo);cursor:pointer;
+  border:1px solid var(--indigo);border-radius:2px;padding:0 3px;margin-left:2px;
+  vertical-align:super;line-height:1;user-select:none;background:transparent;
+}
+sup.cite:hover{background:var(--indigo);color:var(--paper)}
+html.dark sup.cite{color:var(--indigo)}
+/* ---------- 标记 ---------- */
+.tag{
+  font-family:var(--mono);font-size:11px;border:1px dashed var(--amber);color:var(--amber);
+  padding:0 4px;border-radius:2px;white-space:nowrap;
+}
+.q{font-family:var(--kai);color:var(--ink)}
+.acc{color:var(--seal);font-weight:600}
+.bad{color:var(--seal)}
+.ok{color:var(--line);font-weight:600}
+.mono{font-family:var(--mono);font-size:.92em}
+.note{
+  font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  border-left:3px solid var(--amber);padding:2px 10px;margin:10px 0;
+}
+/* ---------- hero ---------- */
+.hero{border:1.5px solid var(--line);background:var(--card);position:relative;margin-top:18px}
+.hero .dwg-head{cursor:default}
+.hero-inner{padding:20px 18px 16px}
+.hero .kicker{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.14em;margin:0 0 4px}
+.hero h1{margin:2px 0 6px;font-size:27px;line-height:1.35}
+.hero .sub{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin:0 0 14px}
+.hero .ask{
+  border:1.5px solid var(--seal);background:color-mix(in srgb,var(--seal) 7%,transparent);
+  padding:10px 12px;margin:12px 0;font-size:15px;
+}
+.hero .ask .t{font-family:var(--mono);font-size:11px;color:var(--seal);letter-spacing:.1em;display:block;margin-bottom:2px}
+.hero .pillar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.hero .pillar div{border:1px solid var(--line);padding:8px 10px;font-size:13.5px;line-height:1.6;background:var(--paper)}
+.hero .pillar b{display:block;font-family:var(--mono);font-size:11px;color:var(--amber);letter-spacing:.08em}
+.mapchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.mapchips button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:5px 10px;cursor:pointer;min-height:32px;
+}
+.mapchips button:hover{background:var(--line);color:var(--paper)}
+@media(max-width:560px){.hero .pillar{grid-template-columns:1fr}}
+/* ---------- 先猜 ---------- */
+.guess{border:1.5px dashed var(--seal);padding:12px 14px;margin:14px 0;background:color-mix(in srgb,var(--seal) 4%,transparent)}
+.guess .q-line{font-size:16px;font-weight:600}
+.guess .opts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.guess .opts button{
+  font-family:var(--mono);font-size:14px;border:1.5px solid var(--line);background:var(--card);
+  color:var(--ink);padding:8px 14px;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.guess .opts button.picked{border-color:var(--seal);color:var(--seal)}
+.guess .reveal-btn{
+  font-family:var(--mono);font-size:13px;border:1.5px solid var(--seal);color:var(--seal);
+  background:transparent;padding:7px 16px;cursor:pointer;border-radius:3px;min-height:40px;
+}
+.guess .reveal-btn:hover{background:var(--seal);color:var(--paper)}
+.guess .answer{margin-top:10px;border-top:1px dashed var(--seal);padding-top:8px;font-size:14.5px}
+/* ---------- 卡片索引 ---------- */
+.search{
+  display:flex;gap:8px;align-items:center;margin:10px 0 14px;
+}
+.search input{
+  flex:1;font-family:var(--mono);font-size:14px;padding:9px 12px;min-height:42px;
+  border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:3px;
+}
+.search .count{font-family:var(--mono);font-size:12px;color:var(--ink-2);white-space:nowrap}
+.cards{display:grid;gap:12px}
+.card{border:1.5px solid var(--line);background:var(--card)}
+.card>summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;
+  padding:10px 12px;font-weight:600;font-size:15.5px;min-height:46px;
+}
+.card>summary::-webkit-details-marker{display:none}
+.card>summary::before{content:"▸";font-family:var(--mono);color:var(--amber);font-size:13px}
+.card[open]>summary::before{content:"▾"}
+.card>summary .k{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-left:auto;white-space:nowrap}
+.card .body{padding:2px 14px 12px;border-top:1px dashed var(--line);font-size:14px}
+.card .body dl{margin:8px 0}
+.card .body dt{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.05em;margin-top:8px}
+.card .body dd{margin:2px 0 0 0}
+.ex{font-family:var(--mono);font-size:13px;line-height:1.9}
+/* ---------- 序列轴（图一） ---------- */
+.axis-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.axis-wrap svg{display:block;min-width:640px;width:100%;height:auto}
+.seg{cursor:pointer}
+.seg rect{transition:fill .15s}
+.seg:hover rect.body,.seg.on rect.body{fill:color-mix(in srgb,var(--amber) 22%,transparent)}
+.axis-detail{
+  border:1px dashed var(--line);margin-top:10px;padding:10px 12px;font-size:14px;min-height:96px;
+}
+.axis-detail .dt{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.06em}
+/* ---------- 预测器 ---------- */
+.sim{border:1.5px solid var(--line);background:var(--card)}
+.sim .sim-top{display:flex;flex-wrap:wrap;gap:8px;padding:12px}
+.sim input,.sim select{
+  font-family:var(--mono);font-size:14px;padding:9px 10px;min-height:44px;
+  border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:3px;
+}
+.sim input.d{flex:1;min-width:110px}
+.sim input.n{flex:1.4;min-width:130px}
+.sim button.run{
+  font-family:var(--mono);font-size:14px;border:1.5px solid var(--amber);color:var(--amber);
+  background:transparent;padding:8px 18px;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.sim button.run:hover{background:var(--amber);color:var(--paper)}
+.sim .samples{padding:0 12px 10px;display:flex;flex-wrap:wrap;gap:6px}
+.sim .samples button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--ink-2);
+  background:transparent;border-radius:3px;padding:4px 9px;cursor:pointer;min-height:32px;
+}
+.sim .samples button:hover{border-color:var(--amber);color:var(--amber)}
+.sim .out{border-top:1.5px dashed var(--line);padding:12px;font-size:14.5px;min-height:80px}
+.sim .out .verdict{font-family:var(--mono);font-size:17px;font-weight:700;letter-spacing:.04em}
+.sim .out .why{margin-top:6px;color:var(--ink-2);font-size:13.5px}
+.sim .out .why b{color:var(--ink)}
+/* ---------- 自测 ---------- */
+.quiz{border:1.5px solid var(--line);background:var(--card);padding:12px 14px;margin:12px 0}
+.quiz .qh{font-weight:600;font-size:15.5px;margin-bottom:8px}
+.quiz .opt{
+  display:block;width:100%;text-align:left;font-family:var(--sans);font-size:14.5px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  padding:9px 12px;margin:6px 0;cursor:pointer;border-radius:3px;min-height:44px;
+}
+.quiz .opt:hover{border-color:var(--amber)}
+.quiz .opt.right{border-color:var(--line);background:color-mix(in srgb,var(--line) 14%,transparent);font-weight:600}
+.quiz .opt.wrong{border-color:var(--seal);color:var(--seal)}
+.quiz .exp{margin-top:8px;font-size:13.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px}
+/* ---------- 引文弹窗 ---------- */
+.pop{
+  position:fixed;z-index:60;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(560px,92vw);border:1.5px solid var(--line);background:var(--card);
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+}
+.pop .pop-id{font-family:var(--mono);font-size:11px;color:var(--paper);background:var(--line);padding:5px 12px;display:flex}
+.pop .pop-id span{margin-left:auto;cursor:pointer;font-family:var(--mono)}
+.pop .pop-p{padding:12px 14px 4px;font-size:13px;color:var(--ink-2);font-family:var(--mono)}
+.pop .pop-q{margin:0 14px 10px;padding:10px 12px;border-left:3px solid var(--amber);background:var(--paper);font-family:var(--kai);font-size:15px;line-height:1.9}
+.pop .pop-z{padding:0 14px 14px;font-size:14px;color:var(--ink)}
+.veil{position:fixed;inset:0;background:rgba(10,14,24,.45);z-index:55}
+/* ---------- 场景脚注导航 ---------- */
+.scene-foot{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
+.scene-foot button{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--line);color:var(--line);
+  background:transparent;border-radius:3px;padding:8px 12px;cursor:pointer;min-height:40px;
+}
+.scene-foot button:hover{background:var(--line);color:var(--paper)}
+.scene-foot button:disabled{opacity:.35;cursor:default}
+.scene-foot button:disabled:hover{background:transparent;color:var(--line)}
+footer{max-width:860px;margin:0 auto;padding:20px 18px 40px;font-family:var(--mono);font-size:11px;color:var(--ink-2);border-top:1px dashed var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="progress"><i id="pbar"></i></div>
+<header class="topbar">
+  <a class="tb-btn" href="index.html" style="text-decoration:none">← 目录</a>
+  <span class="brand"><b>CH·06</b> 「的」字隐现的一般规律</span>
+  <span class="sp"></span>
+  <button class="tb-btn" id="fs-down" type="button">字－</button>
+  <button class="tb-btn" id="fs-up" type="button">字＋</button>
+  <button class="tb-btn" id="theme" type="button">明暗</button>
+</header>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section data-hero class="hero">
+  <div class="dwg-head">DWG·SHEET 00/07 · 第六章总装图 <span class="sheet">SCALE 1:1 · 张敏《认知语言学与汉语名词短语》</span></div>
+  <div class="hero-inner">
+    <p class="kicker">第六章 · DE · 隐现判据</p>
+    <h1>「的」字隐现的一般规律</h1>
+    <p class="sub">定语与核心之间，隔不隔「的」，由什么决定？</p>
+
+    <div class="ask">
+      <span class="t">全章缘起 · 范继淹(1958)之问</span>
+      同一个「脏」——<span class="ok">脏的手、脏的糖</span> 都说得过，可 <span class="ok">脏手</span> 说得过，<span class="bad">*脏糖</span> 说不过。换个名词，命运完全不同。范继淹自陈「这个问题目前恐怕很难找到圆满的答案」，只用「惯用法」「熟语性」作解——本书认为，这实际上等于不加解释。<sup class="cite" data-cite="c6-01">01</sup>
+    </div>
+
+    <p>本书的回答：de 隐不隐，不是词汇习惯，而是三件事的合谋——</p>
+    <div class="pillar">
+      <div><b>① 概念距离</b>定语在限定序列中的位置，决定形式距离<sup class="cite" data-cite="c6-06">06</sup></div>
+      <div><b>② 分类性</b>D 是不是 N 的规约分类指标<sup class="cite" data-cite="c6-12">12</sup></div>
+      <div><b>③ 认知互动</b>D 与 N 的显著互动，契不契合 ICM<sup class="cite" data-cite="c6-37">37</sup></div>
+    </div>
+    <p>还要先记住一对记号：<span class="mono">DdN</span>（带 de，如「我的书」）是无标记的基本式，<span class="mono">DN</span>（不带 de，如「脏手」）附有更多限制，是有标记的受限式。<sup class="cite" data-cite="c6-03">03</sup> 而且「de 隐去」的成立与否，还要分单说和句中两种情形来判。<sup class="cite" data-cite="c6-02">02</sup></p>
+
+    <div class="mapchips" id="mapchips">
+      <button type="button" data-go="1">① 限定序列与铁律</button>
+      <button type="button" data-go="2">② de 前景/背景开关</button>
+      <button type="button" data-go="3">③ 词类查读索引</button>
+      <button type="button" data-go="4">④ 个案：标记性与感知</button>
+      <button type="button" data-go="5">⑤ 个案：ICM 与脏 N</button>
+      <button type="button" data-go="6">⑥ de 隐现预测器</button>
+      <button type="button" data-go="7">⑦ 动因竞争与总结</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 场景① ==================== -->
+<section data-scene="1">
+  <div class="scene-head"><span class="no">SCENE 01</span><h2>限定序列：转折点在哪里</h2><span class="en">FIG·SEQ-01</span></div>
+
+  <p>限定作用是一个连续统：外延端「确定指称」，内涵端「刻划概念」，中间是渐变。<sup class="cite" data-cite="c6-05">05</sup> Seiler(1978) 从德语出发，把转折点放在「冠词、领属语」处；<b>本书认为</b>，从 Hawkins(1983) 给出的类型学证据看，这个转折点应放在<b>「数词」</b>处。<sup class="cite" data-cite="c6-06">06</sup> 转折点右端（含数词起），英汉语序几乎一致——英语 ten fine old stone houses，汉语「十座漂亮的老石头房子」。<sup class="cite" data-cite="c6-06">06</sup></p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·SEQ-01 · 限定序列剖面（点击各段查看判据）<span class="sheet">DWG·SHEET 01/07</span></div>
+    <div class="dwg-body">
+      <div class="axis-wrap">
+        <svg viewBox="0 0 680 250" role="img" aria-label="限定序列剖面图，从左到右为领属语、数词量词、状态形容词、颜色形体、质料功能，可点击">
+          <defs>
+            <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"></path>
+            </marker>
+          </defs>
+          <!-- 顶部距离标尺 -->
+          <text x="24" y="20" font-family="var(--mono)" font-size="10" fill="var(--ink-2)">外延端 · 确定指称</text>
+          <text x="656" y="20" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="end">内涵端 · 刻划概念</text>
+          <line x1="120" y1="30" x2="560" y2="30" stroke="var(--line)" stroke-width="1" marker-start="url(#ar)" marker-end="url(#ar)" stroke-dasharray="4 3"/>
+          <text x="340" y="26" font-family="var(--mono)" font-size="10" fill="var(--amber)" text-anchor="middle">形式距离 短 ←→ 长 · 概念距离 近 ←→ 远</text>
+          <!-- 五个区段（可点击） -->
+          <g class="seg" data-seg="0">
+            <rect class="body" x="10" y="52" width="124" height="86" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="72" y="76" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">领属语</text>
+            <text x="72" y="96" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">我的书</text>
+            <rect x="30" y="108" width="84" height="18" rx="2" fill="var(--seal)"/>
+            <text x="72" y="121" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">必须 de</text>
+          </g>
+          <g class="seg on" data-seg="1">
+            <rect class="body" x="134" y="52" width="124" height="86" rx="3" fill="color-mix(in srgb,var(--amber) 12%,transparent)" stroke="var(--amber)" stroke-width="2"/>
+            <text x="196" y="76" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">数词·量词</text>
+            <text x="196" y="96" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">三本书</text>
+            <rect x="146" y="108" width="100" height="18" rx="2" fill="var(--amber)"/>
+            <text x="196" y="121" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">必须量词 ★</text>
+            <text x="196" y="164" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">转折点（本书认为）</text>
+          </g>
+          <g class="seg" data-seg="2">
+            <rect class="body" x="258" y="52" width="124" height="86" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="320" y="76" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">状态形容词</text>
+            <text x="320" y="96" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">雪白的纸</text>
+            <rect x="278" y="108" width="84" height="18" rx="2" fill="var(--seal)"/>
+            <text x="320" y="121" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">必须 de</text>
+          </g>
+          <g class="seg" data-seg="3">
+            <rect class="body" x="382" y="52" width="124" height="86" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="444" y="76" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">颜色·形体</text>
+            <text x="444" y="96" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">白纸 / 圆的</text>
+            <rect x="402" y="108" width="84" height="18" rx="2" fill="var(--line)"/>
+            <text x="444" y="121" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">倾向 de</text>
+          </g>
+          <g class="seg" data-seg="4">
+            <rect class="body" x="506" y="52" width="164" height="86" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="588" y="76" font-family="var(--sans)" font-size="14" font-weight="700" fill="var(--ink)" text-anchor="middle">质料·功能·分类</text>
+            <text x="588" y="96" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">木头桌子 / 区别词</text>
+            <rect x="526" y="108" width="124" height="18" rx="2" fill="var(--line)"/>
+            <text x="588" y="121" font-family="var(--mono)" font-size="11" fill="#fff" text-anchor="middle">最能不带 de</text>
+          </g>
+          <!-- 底部刻度线 -->
+          <line x1="10" y1="210" x2="670" y2="210" stroke="var(--line)" stroke-width="1"/>
+          <g font-family="var(--mono)" font-size="10" fill="var(--ink-2)">
+            <line x1="72" y1="206" x2="72" y2="214" stroke="var(--line)"/><text x="72" y="228" text-anchor="middle">POSS</text>
+            <line x1="196" y1="206" x2="196" y2="214" stroke="var(--amber)" stroke-width="2"/><text x="196" y="228" text-anchor="middle" fill="var(--amber)">NUM</text>
+            <line x1="320" y1="206" x2="320" y2="214" stroke="var(--line)"/><text x="320" y="228" text-anchor="middle">STATE</text>
+            <line x1="444" y1="206" x2="444" y2="214" stroke="var(--line)"/><text x="444" y="228" text-anchor="middle">COLOR</text>
+            <line x1="588" y1="206" x2="588" y2="214" stroke="var(--line)"/><text x="588" y="228" text-anchor="middle">MATTER</text>
+          </g>
+        </svg>
+      </div>
+      <div class="axis-detail" id="axisDetail">
+        <span class="dt">当前选中：NUM · 数词·量词</span>
+        <p>必须 DxN，且分隔物 x 是<b>量词</b>：「一本书」「这本书」。这也是本书与 Seiler 的分歧所在——转折点从「冠词、领属语」移到「数词」，依据是 Hawkins(1983) 的类型学证据。<sup class="cite" data-cite="c6-09">09</sup><sup class="cite" data-cite="c6-06">06</sup></p>
+      </div>
+    </div>
+  </figure>
+
+  <div class="note">形式铁律：定语中含转折点左端成分的定中结构，汉语里必须是中间有分隔物的 DxN——x 要么是 de（「他的书」），要么是量词（「一本书、这本书」）；逻辑量词（「一切、所有、任何」）除外。<sup class="cite" data-cite="c6-09">09</sup></div>
+  <p>右端成分则不然：带不带 de 恰好取决于它们在限定序列中的位置，<b>越靠左，de 出现的倾向就越强；越靠右，不带 de 的倾向就越强</b>——是倾向，不是绝对规则。<sup class="cite" data-cite="c6-09">09</sup> 序列两端各有典型：状态形容词必须带 de；质料名词或区别词最能不带 de。<sup class="cite" data-cite="c6-09">09</sup></p>
+
+  <details>
+    <summary>类型学旁证（德语·英语·西班牙语·Kosraean 语）</summary>
+    <p>德语 Holzkugeln（木球）可说，*Rotkugeln（红球）不能说——质料近、颜色远，德语同样遵守。<sup class="cite" data-cite="c6-10">10</sup> 英语无标记 N-N 组合限于质料/功能/习性等紧密关系：pork pie, iron rod, bird-house, apple-core, mail-man, silkworm, gaslight。<sup class="cite" data-cite="c6-10">10</sup> 西班牙语 un hombre muy pobre 与 ?un muy pobre hombre 的例外，可由语体（标题/电报式压缩）解释。<sup class="cite" data-cite="c6-10">10</sup> 英语 the trouser leg 中，不可让渡领属也可无标记；Kosraean 语里，领属标在身体部件上与一般名词上形式有别——不可让渡领属的形式距离近于可让渡领属。<sup class="cite" data-cite="c6-10">10</sup><sup class="cite" data-cite="c6-09">09</sup></p>
+  </details>
+
+  <p>本节总纲一句话：<span class="q">「人类语言倾向于将形式距离和概念距离对应起来的趋势。」</span><sup class="cite" data-cite="c6-10">10</sup></p>
+
+  <div class="scene-foot">
+    <button type="button" data-go="2">下一场景 ② de 开关 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景② ==================== -->
+<section data-scene="2">
+  <div class="scene-head"><span class="no">SCENE 02</span><h2>de 一进一出：分类意义的前景与背景</h2><span class="en">FIG·SW-02</span></div>
+
+  <p>本章最重要的机制陈述只有一句：<span class="q">「de……其语义作用是将 D 对 N 的分类意义置于前景；隐去 de，则 D 的分类意义就隐入背景。」</span><sup class="cite" data-cite="c6-12">12</sup></p>
+  <p>于是同一批例子分成两半：<span class="mono">白的纸｜白的衬衫｜白的家具</span> 都说得过；<span class="mono">白纸｜白衬衫</span> 说得过，<span class="mono">白家具</span> 一般说不过。<sup class="cite" data-cite="c6-12">12</sup> 差别不在语法，在「白」是否构成对那个名词的<b>规约分类指标</b>——按 Givón(1990) 的说法，得是「习惯上是已知的」。<sup class="cite" data-cite="c6-12">12</sup> 而家具店语境里「白家具买光了」又能说了：分类性可以随语境临时建立。<sup class="cite" data-cite="c6-12">12</sup></p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·SW-02 · de 前景/背景开关与三层蕴含漏斗<span class="sheet">DWG·SHEET 02/07</span></div>
+    <div class="dwg-body">
+      <svg viewBox="0 0 680 300" role="img" aria-label="左侧为 DN 与 DdN 的前景背景对比，右侧为三层蕴含漏斗">
+        <!-- 左：前景背景 -->
+        <g>
+          <rect x="10" y="30" width="150" height="70" rx="3" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="85" y="24" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">DN · 不带 de</text>
+          <rect x="30" y="48" width="40" height="34" fill="color-mix(in srgb,var(--line) 12%,transparent)" stroke="var(--line)"/>
+          <text x="50" y="70" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">脏</text>
+          <rect x="100" y="48" width="40" height="34" fill="color-mix(in srgb,var(--line) 12%,transparent)" stroke="var(--line)"/>
+          <text x="120" y="70" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">手</text>
+          <text x="85" y="118" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">分类意义隐入背景</text>
+        </g>
+        <g>
+          <rect x="180" y="30" width="150" height="70" rx="3" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="255" y="24" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">DdN · 带 de</text>
+          <rect x="200" y="48" width="34" height="34" fill="color-mix(in srgb,var(--line) 12%,transparent)" stroke="var(--line)"/>
+          <text x="217" y="70" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">脏</text>
+          <rect x="238" y="48" width="34" height="34" fill="var(--amber)" stroke="var(--amber)"/>
+          <text x="255" y="70" font-family="var(--mono)" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">的</text>
+          <rect x="276" y="48" width="34" height="34" fill="color-mix(in srgb,var(--line) 12%,transparent)" stroke="var(--line)"/>
+          <text x="293" y="70" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">手</text>
+          <text x="255" y="118" font-family="var(--mono)" font-size="10" fill="var(--amber)" text-anchor="middle">分类意义置于前景</text>
+        </g>
+        <!-- 右：三层漏斗 -->
+        <g>
+          <text x="510" y="24" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">DN 的三层蕴含条件</text>
+          <path d="M370 40 L650 40 L600 108 L420 108 Z" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)"/>
+          <text x="510" y="72" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">(a) 属性条件</text>
+          <path d="M420 116 L600 116 L560 180 L460 180 Z" fill="color-mix(in srgb,var(--line) 16%,transparent)" stroke="var(--line)"/>
+          <text x="510" y="152" font-family="var(--mono)" font-size="13" fill="var(--ink)" text-anchor="middle">(b) 分类属性条件</text>
+          <path d="M460 188 L560 188 L525 250 L495 250 Z" fill="color-mix(in srgb,var(--amber) 26%,transparent)" stroke="var(--amber)" stroke-width="2"/>
+          <text x="510" y="226" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--amber)" text-anchor="middle">(c) 规约分类属性条件</text>
+          <text x="660" y="70" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="end">(c) 蕴含 (b)</text>
+          <text x="660" y="152" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="end">(b) 蕴含 (a)</text>
+          <text x="510" y="272" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">「张三书」一层都不满足 → 不能说</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>de 是开关：进，则分类意义前景化；出，则背景化。右侧漏斗自外而内三层递进，(c) 大致可说是 DN 得以成立的充分必要条件。</figcaption>
+  </figure>
+
+  <p>三层条件这样读：先得是个<b>属性</b>（a），还得是能<b>分类</b>的属性（b），还得是<b>规约化</b>的分类指标（c）。<sup class="cite" data-cite="c6-13">13</sup> (c) 蕴含 (b)，(b) 蕴含 (a)；(c) <b>大致可说是</b> DN 得以成立的充分必要条件。<sup class="cite" data-cite="c6-14">14</sup></p>
+  <p>「张三书」不能说，因为领属语一层都不满足。<sup class="cite" data-cite="c6-14">14</sup> 反常规的搭配也有条件性：沈家煊(1997) 举的「重箱子、凉脸、白手」<sup class="cite" data-cite="c6-14">14</sup>；车站站长托运「重箱子」的特殊语境下，临时条件被满足，又能说了。<sup class="cite" data-cite="c6-15">15</sup> 所以这三层条件<span class="q">「并不是语法上的限制」</span>，而是认知—语用条件。<sup class="cite" data-cite="c6-15">15</sup></p>
+
+  <div class="scene-foot">
+    <button type="button" data-go="3">下一场景 ③ 词类索引 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景③ ==================== -->
+<section data-scene="3">
+  <div class="scene-head"><span class="no">SCENE 03</span><h2>词类查读索引</h2><span class="en">IDX·CARD</span></div>
+
+  <p>按词类查条件、例外与主客体对照。输入词类名或例子关键词（如「区别词」「脏」「双音」），筛出来的卡片会自动展开。</p>
+
+  <div class="search">
+    <input type="search" id="cardSearch" placeholder="搜索词类或例子…" aria-label="搜索卡片">
+    <span class="count" id="cardCount"></span>
+  </div>
+
+  <div class="cards" id="cards">
+
+    <details class="card" data-k="区别词 男 女 金 银 正 副 西式 中式">
+      <summary>区别词 <span class="k">DN 能力最强</span></summary>
+      <div class="body">
+        <p>汉语里不带 de 作定语能力最强的一类词；除了极少数例外（如「心爱的 N」），都能隐去 de 形成 DN。<sup class="cite" data-cite="c6-16">16</sup></p>
+        <dl>
+          <dt>为什么强</dt>
+          <dd>永久稳固、难变易；无程度差别、不涉主观判断。「男」一般不会变「女」，「金」一般不会变「银」。<sup class="cite" data-cite="c6-17">17</sup></dd>
+          <dt>结构特点</dt>
+          <dd>成对成组：正—副｜西式—中式。二元对立、稳定、无程度——最纯粹的规约分类指标。<sup class="cite" data-cite="c6-17">17</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="单音形容词 贵 脏 凉 黄 薄 重 蓝天 绿草 厚雪 互动属性 缺省">
+      <summary>单音形容词 <span class="k">三分三级</span></summary>
+      <div class="body">
+        <p>按 DN 能力分三级：「无能的」「有能的」「全能的」。<sup class="cite" data-cite="c6-19">19</sup> 同一个形容词搭配不同名词，能力有别——朱德熙(1956)：贵东西｜贵手绢｜脏衣服｜脏糖｜凉水｜凉脸｜黄制服｜黄汽船｜薄纸｜薄灰尘｜重担子｜重箱子。<sup class="cite" data-cite="c6-20">20</sup></p>
+        <dl>
+          <dt>能力阶梯</dt>
+          <dd>从「能述谓」到「全能 DN」的五种格式构成蕴含序列；存在例外（如「厚雪」），需认知解释。<sup class="cite" data-cite="c6-21">21</sup><sup class="cite" data-cite="c6-22">22</sup></dd>
+          <dt>已词汇化的一类</dt>
+          <dd>蓝天｜绿草｜黑墨｜咸盐｜寒冬｜圆月｜红日｜大地——高度规约的 DN，部分已固化为词（Cooper &amp; Ross 1975「语言凝结体」）。<sup class="cite" data-cite="c6-23">23</sup><sup class="cite" data-cite="c6-24">24</sup></dd>
+          <dt>关键判据：显著互动属性</dt>
+          <dd>D 须是人与 N 显著互动的属性：on the table / on the bed / on the chair 成立而「*桌子里」不成立（Herskovits 1986；Tai 1993）。<sup class="cite" data-cite="c6-25">25</sup><sup class="cite" data-cite="c6-26">26</sup></dd>
+          <dt>陷阱：缺省属性</dt>
+          <dd>「圆」是球的缺省（default）属性——以偏概全的转喻效应，使它丧失了原本具有的区别性，所以「圆地球」难说而「大地球」可说。<sup class="cite" data-cite="c6-27">27</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="全能形容词 大 小 新 旧 好 坏 真 假 Dixon 类型学 Ibo">
+      <summary>全能形容词 <span class="k">大·小·新·旧·好·坏·真·假</span></summary>
+      <div class="body">
+        <p>八个「全能」词（吕叔湘 1981）也有不能 DN 的名词：*大脾气｜*小距离｜*旧内容｜*真事情。<sup class="cite" data-cite="c6-44">44</sup></p>
+        <dl>
+          <dt>两条能力不对称</dt>
+          <dd>能述谓不一定能 DN；能 DdN 几乎一定能 DN——DdN 是 DN 的充分条件。<sup class="cite" data-cite="c6-44">44</sup></dd>
+          <dt>频率佐证</dt>
+          <dd>《现代汉语三千常用词表》里最常用的单音形容词中，八个全能词全部在内；「大、新、好、真」为无标记项，频率居前。<sup class="cite" data-cite="c6-44">44</sup></dd>
+          <dt>四对分类</dt>
+          <dd>空间大小｜时间新旧｜价值好坏｜真值真假。「用大小定出来的物体的集合要大于用其他属性定出的集合」；能论高低须直立，能论圆扁须封闭。<sup class="cite" data-cite="c6-44">44</sup></dd>
+          <dt>跨语言普遍性</dt>
+          <dd>Dixon(1982) 考察约二十种语言：「大」见于全部二十种，「小」十九种，「短」「新」十五种，「长」「旧」「坏」「白」十四种，「好」「黑」十三种；Ibo 语四对「大—小、新—旧、黑—白、好—坏」。除「真、假」外，其他三组和汉语的全能形容词在概念上完全重合。<sup class="cite" data-cite="c6-45">45</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="双音形容词 漂亮 辉煌 聪明 姑娘 动物 口语 语体 音节">
+      <summary>双音形容词 <span class="k">语体 + 音节干扰</span></summary>
+      <div class="body">
+        <p>DN 能力受语体与音节数干扰：漂亮姑娘可分类，辉煌成就不可（无「不辉煌的成就」）。<sup class="cite" data-cite="c6-46">46</sup></p>
+        <dl>
+          <dt>两条原则</dt>
+          <dd>吕叔湘(1963)：容易的字｜可笑的人｜普通的水｜现成的车｜详细的图｜奇怪的梦。D 带 de 可替代整个定中结构；D 的属性应出现在 N 的规约分类模式中。「糊涂人—糊涂的」；「送信的」＝邮递员；「豪迈的」不能替代「豪迈的话」；人｜事儿｜话 ＝ 主体／所言／所行。<sup class="cite" data-cite="c6-47">47</sup></dd>
+          <dt>口语层</dt>
+          <dd>新鲜牛奶…窝囊样子 是纯口语 DN；聪明孩子—漂亮孩子 vs *聪明姑娘—漂亮姑娘；聪明的动物 vs *聪明动物（朱德熙 1956）。<sup class="cite" data-cite="c6-48">48</sup></dd>
+          <dt>排除名单</dt>
+          <dd>绝不能直接构成 DN 的双音形容词：随便｜好看｜难看｜近乎｜含糊｜孤单｜周到｜糟糕｜显眼｜有用｜可惜｜可笑｜容易｜听话。<sup class="cite" data-cite="c6-48">48</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="动词定语 剩饭 病猪 活鱼 煎鸡蛋 炒番茄 驾驶 开车 洗澡水 时体 单音 双音">
+      <summary>动词定语 <span class="k">分类/命名功能</span></summary>
+      <div class="body">
+        <p>剩饭｜病猪｜活鱼｜死兔子｜炒番茄｜煎鸡蛋｜冻豆腐｜烂苹果｜瞎眼睛——动词定语的核心功能是分类与命名。<sup class="cite" data-cite="c6-51">51</sup></p>
+        <dl>
+          <dt>命名性</dt>
+          <dd>「煎鸡蛋」是菜名，而「煎的鸡蛋」不是；「驾驶学校」不能换 DdN。<sup class="cite" data-cite="c6-51">51</sup></dd>
+          <dt>音节不对称</dt>
+          <dd>单音动词作定语能力远小于双音：「驾驶技术」vs「*开车技术」、「用餐地点」vs「*吃饭地点」（Hopper &amp; Thompson 1984 动词性强度）。<sup class="cite" data-cite="c6-52">52</sup></dd>
+          <dt>必须带 de 的情形</dt>
+          <dd>小句与时体标记：昨天买的书、洗过一次的衣服；「是、有、姓」不能直接作定语。<sup class="cite" data-cite="c6-52">52</sup></dd>
+          <dt>方言变体</dt>
+          <dd>洗澡水｜洗脚水｜*洗手水（盥洗三特别：时间／用具／用水）；广州话「冲凉[呒]水｜洗手[呒]水」。<sup class="cite" data-cite="c6-52">52</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="名词定语 质料 功能 身份 产地 木头桌子 胡桃夹子 石油工人 日本电器 体育老师 菜篮子">
+      <summary>名词定语 <span class="k">质料·功能·身份·产地</span></summary>
+      <div class="body">
+        <p>木头桌子…（质料）｜胡桃夹子…（功能）｜石油工人…（身份）｜日本电器…（产地）。<sup class="cite" data-cite="c6-53">53</sup></p>
+        <dl>
+          <dt>规约行为模式</dt>
+          <dd>体育老师 vs *体育学生（刘月华等 1983）；菜篮子｜饭盒子 vs *菜盒子｜*饭篮子。<sup class="cite" data-cite="c6-53">53</sup></dd>
+          <dt>属性 vs 领属</dt>
+          <dd>中国的朋友…（领属）vs 中国朋友…（性质）（朱德熙 1957）；美国电影 vs 「美国的电影有些是从欧洲进口的」。<sup class="cite" data-cite="c6-53">53</sup></dd>
+          <dt>组合性 vs 粘合性</dt>
+          <dd>Seiler(1978) 专化所指／表徵概念之分；英语 Wittgenstein's argument vs a Wittgenstein argument。<sup class="cite" data-cite="c6-54">54</sup></dd>
+          <dt>跨语言证据</dt>
+          <dd>Tolai 语（Mosel 1982）：a bul ka-i ra lulai（酋长的孩子，可让渡领属标记）vs a bul na lulai（酋长孩子，表属性）。汉语、英语、Tolai 语既无亲缘又无地域关系，却同样区分「领属」与「属性」。<sup class="cite" data-cite="c6-54">54</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+    <details class="card" data-k="领属 我妹妹 我书包 包孕 句中 独特风格 称谓性">
+      <summary>领属与句中包孕 <span class="k">边界条件</span></summary>
+      <div class="body">
+        <dl>
+          <dt>句中 vs 单说</dt>
+          <dd>「我妹妹」单说时（含句中）de 可隐；「我的手」「我的书包」单说时 de 一定要出现，句中往往可隐（不要打我手、不要碰我书包）。<sup class="cite" data-cite="c6-02">02</sup></dd>
+          <dt>包孕例外</dt>
+          <dd>「我书包」不能说，但「别碰我书包」能说——句法环境改变 DN 能力。<sup class="cite" data-cite="c6-50">50</sup>「我的那本崭新的故事书」可缩为「我那本崭新的故事书」。<sup class="cite" data-cite="c6-50">50</sup></dd>
+          <dt>称谓性</dt>
+          <dd>「独特风格」不带称谓性。<sup class="cite" data-cite="c6-50">50</sup></dd>
+          <dt>附注边界</dt>
+          <dd>指示代词非单说可说「这人」；「多/少」为主观量（*多人、很多人；朱德熙 1982「[[很]多]书」）；吕叔湘(1966)「短头发」「闲工夫」；「老朋友、大学者」已词汇化；in the chair / in bed 非空间义；方西瓜语境。<sup class="cite" data-cite="c6-56">56</sup></dd>
+        </dl>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="scene-foot">
+    <button type="button" data-go="4">下一场景 ④ 个案一 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景④ ==================== -->
+<section data-scene="4">
+  <div class="scene-head"><span class="no">SCENE 04</span><h2>个案一：标记性与感知</h2><span class="en">CASE·GENDER</span></div>
+
+  <div class="guess" data-guess>
+    <p class="q-line">先猜：给「英雄」「王」加性别定语，哪边更顺？</p>
+    <div class="opts">
+      <button type="button" data-pick="m">男演员｜男英雄｜男王</button>
+      <button type="button" data-pick="f">女演员｜女英雄｜女王</button>
+    </div>
+    <button class="reveal-btn" type="button" data-reveal>先猜再看 →</button>
+    <div class="answer" hidden>
+      <p>实际梯度：<span class="mono">男演员｜?男英雄｜*男王</span>，而 <span class="mono">女演员｜女英雄｜女王</span> 全都顺畅。<sup class="cite" data-cite="c6-29">29</sup> 理据是<span class="q">「男性中心（即『原型的人是男人』）的认识倾向」</span>：默认项无需标记，非默认项才需要定语标出。<sup class="cite" data-cite="c6-29">29</sup></p>
+      <p>Croft(1990、1991) 称之为「关联的标记性」「自然关联」——标记性要与名词的关联结构相配。<sup class="cite" data-cite="c6-28">28</sup></p>
+    </div>
+  </div>
+
+  <p>标记性还会<b>逆转</b>：<span class="mono">未婚妈妈</span> 说得过，<span class="mono">?已婚妈妈</span> 说不过——在「妈妈」的关联结构里，未婚才是需要标记的非默认项。<sup class="cite" data-cite="c6-30">30</sup></p>
+  <p>感知线索的难易同样参与：生柿子看颜色、摸把儿就能判断，生西瓜得敲打听声——线索越直接，DN 越容易。<sup class="cite" data-cite="c6-31">31</sup></p>
+
+  <div class="note">生/熟不对称：「生黄瓜」说得过，「*熟黄瓜」说不过（个体等同性讨论）；但「熟鸡蛋」、《水浒传》第 23 回「二斤熟牛肉」是反例——有历史用法与等同性两条解释。<sup class="cite" data-cite="c6-32">32</sup></div>
+
+  <details>
+    <summary>「空 / 凉 / 重」三组：原型容器、热感器官、唯一互动模式</summary>
+    <p><b>空</b>：空碗…空弹夹 说得过；*空山洞｜*空汽车｜*空飞机｜*空船｜*空客厅｜*空厨房｜*空卧室 说不过。碗是原型容器；窑洞是例外；「空车」是突显容纳义的例外通道，不是原型容器；另有「空车厢、空机舱、空船�舱」；旅馆可说「空客房」。<sup class="cite" data-cite="c6-42">42</sup></p>
+    <p><b>凉/热</b>：凉水｜冷水｜热水｜凉茶 vs *凉脸｜*热脸｜*冷手｜*热手——限于热感器官（皮肤和口腔粘膜）能直接接触的规约互动。<sup class="cite" data-cite="c6-42">42</sup></p>
+    <p><b>重</b>：重担子 最好、?重箱子 其次、*重书架 最差。人挑担子是唯一互动模式；书架的原型功能是放书；箱子常被携带搬运，故居中。<sup class="cite" data-cite="c6-42">42</sup></p>
+  </details>
+
+  <div class="scene-foot">
+    <button type="button" data-go="5">下一场景 ⑤ 个案二 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑤ ==================== -->
+<section data-scene="5">
+  <div class="scene-head"><span class="no">SCENE 05</span><h2>个案二：ICM 与「脏 N」</h2><span class="en">CASE·ICM</span></div>
+
+  <p>ICM（理想化认知模型）是<span class="q">「一套规约的认知路径及有关属性——事物关系的背景知识和假设」</span>（Minsky 1975 框架；Schank &amp; Abelson 1977 脚本）。<sup class="cite" data-cite="c6-33">33</sup> 本章的用法很直接：<span class="q">「脏衣服」等于是说「穿过一轮的衣服」</span>——DN 是 ICM 的压缩表达。<sup class="cite" data-cite="c6-37">37</sup></p>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·ICM-03 · 换洗模式对照（「脏」能否 DN 的分水岭）<span class="sheet">DWG·SHEET 03/07</span></div>
+    <div class="dwg-body">
+      <svg viewBox="0 0 680 320" role="img" aria-label="换洗模式对照图，左栏日抛型名词可 DN，右栏周抛型名词不可 DN">
+        <!-- 左栏 -->
+        <rect x="10" y="30" width="300" height="240" rx="3" fill="color-mix(in srgb,var(--line) 8%,transparent)" stroke="var(--line)" stroke-width="1.5"/>
+        <text x="160" y="54" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--line)" text-anchor="middle">a 类 · 日抛型（穿一天就该换了）</text>
+        <g font-family="var(--mono)" font-size="13" fill="var(--ink)">
+          <rect x="30" y="70" width="120" height="34" fill="var(--card)" stroke="var(--line)"/><text x="90" y="92" text-anchor="middle">脏袜子 ✓</text>
+          <rect x="170" y="70" width="120" height="34" fill="var(--card)" stroke="var(--line)"/><text x="230" y="92" text-anchor="middle">脏衬衫 ✓</text>
+          <rect x="30" y="112" width="120" height="34" fill="var(--card)" stroke="var(--line)"/><text x="90" y="134" text-anchor="middle">脏衣服 ✓</text>
+          <rect x="170" y="112" width="120" height="34" fill="var(--card)" stroke="var(--seal)"/><text x="230" y="134" text-anchor="middle" fill="var(--seal)">脏被—?脏被了</text>
+        </g>
+        <text x="160" y="176" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">被单用过一礼拜 → 居中，倾向存疑</text>
+        <text x="160" y="200" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">穿过一轮的衣服就是脏的</text>
+        <!-- 右栏 -->
+        <rect x="370" y="30" width="300" height="240" rx="3" fill="color-mix(in srgb,var(--seal) 6%,transparent)" stroke="var(--seal)" stroke-width="1.5"/>
+        <text x="520" y="54" font-family="var(--mono)" font-size="12" font-weight="700" fill="var(--seal)" text-anchor="middle">b 类 · 周抛型（穿一礼拜才换）</text>
+        <g font-family="var(--mono)" font-size="13" fill="var(--ink)">
+          <rect x="390" y="70" width="120" height="34" fill="var(--card)" stroke="var(--seal)"/><text x="450" y="92" text-anchor="middle" fill="var(--seal)">?脏鞋</text>
+          <rect x="530" y="70" width="120" height="34" fill="var(--card)" stroke="var(--seal)"/><text x="590" y="92" text-anchor="middle" fill="var(--seal)">?脏棉袄</text>
+          <rect x="390" y="112" width="120" height="34" fill="var(--card)" stroke="var(--seal)"/><text x="450" y="134" text-anchor="middle" fill="var(--seal)">?脏大衣</text>
+          <rect x="530" y="112" width="120" height="34" fill="var(--card)" stroke="var(--seal)"/><text x="590" y="134" text-anchor="middle" fill="var(--seal)">?脏被了</text>
+        </g>
+        <text x="520" y="176" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">鞋子棉袄大衣穿了一礼拜</text>
+        <text x="520" y="200" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">被子盖过一礼拜</text>
+        <!-- 中间判据 -->
+        <line x1="335" y1="40" x2="335" y2="260" stroke="var(--amber)" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="335" y="290" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">判据：换洗模式</text>
+      </svg>
+    </div>
+    <figcaption>吕叔湘指出「脏鞋」却不能说<sup class="cite" data-cite="c6-38">38</sup>。左栏名词日抛，右栏周抛——换洗模式决定「脏」能否成为规约分类指标。</figcaption>
+  </figure>
+
+  <div class="guess" data-guess>
+    <p class="q-line">先猜：「脏袜子」和「脏鞋」，哪个说得过？</p>
+    <div class="opts">
+      <button type="button" data-pick="w">脏袜子</button>
+      <button type="button" data-pick="x">脏鞋</button>
+    </div>
+    <button class="reveal-btn" type="button" data-reveal>先猜再看 →</button>
+    <div class="answer" hidden>
+      <p><span class="ok">脏袜子</span> 说得过，<span class="bad">?脏鞋</span> 存疑到不能说。整组对立：脏袜子—?脏鞋｜脏衬衫—?脏棉袄｜脏衣服—?脏大衣｜脏被—?脏被了。<sup class="cite" data-cite="c6-38">38</sup> 分水岭就是上面那幅图里的<b>换洗模式</b>。<sup class="cite" data-cite="c6-38">38</sup></p>
+    </div>
+  </div>
+
+  <p>还有两层过滤器。<b>基本层次</b>：脏筷子、脏碗、脏袜子 vs ?脏象牙筷子、?脏瓷碗、?脏丝袜——下位层次词破坏规约分类（McCawley 1992 引蒋自新「一杯好酒」vs「?一杯好葡萄酒」）；因为「用瓷碗、洗瓷碗、穿丝袜」没有规约行为模式。<sup class="cite" data-cite="c6-39">39</sup><sup class="cite" data-cite="c6-40">40</sup></p>
+  <p><b>互动的典型性与排他性</b>：脏手｜?脏脸｜?脏脚——手接触万物，脸暴露在外，脚只走路；脏水｜?脏茶｜?脏雪——人与水的互动（洗涤、喝水）是原型，扫雪、踏雪、赏雪都不是。例外照样有解释：「别拿你那脏脸蹭我」。<sup class="cite" data-cite="c6-41">41</sup></p>
+
+  <div class="scene-foot">
+    <button type="button" data-go="6">下一场景 ⑥ 预测器 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑥ ==================== -->
+<section data-scene="6">
+  <div class="scene-head"><span class="no">SCENE 06</span><h2>de 隐现预测器</h2><span class="en">SIM·DE</span></div>
+
+  <p>把本章规则装进一台机器：给定定语与名词，预测隔不隔「的」。判定依据全部来自本章规则与书中案例；<b>未收录的输入会如实回退到三层条件，不编造</b>。</p>
+
+  <div class="sim">
+    <div class="dwg-head" style="border:0;">SIM·DE-01 · 隐现判据引擎 <span class="sheet">DWG·SHEET 06/07</span></div>
+    <div class="sim-top">
+      <input class="d" id="simD" type="text" placeholder="定语 D（如 脏 / 白 / 木头）" aria-label="定语">
+      <input class="n" id="simN" type="text" placeholder="名词 N（如 手 / 家具 / 桌子）" aria-label="名词">
+      <button class="run" id="simRun" type="button">预测 →</button>
+    </div>
+    <div class="samples" id="simSamples"></div>
+    <div class="out" id="simOut">
+      <div class="verdict" style="color:var(--ink-2)">待输入</div>
+      <div class="why">输入一对「定语 + 名词」，或点上面的样例。案例库覆盖本章全部书例；新输入走规则引擎。</div>
+    </div>
+  </div>
+
+  <div class="scene-foot">
+    <button type="button" data-go="7">下一场景 ⑦ 动因与总结 →</button>
+  </div>
+</section>
+
+<!-- ==================== 场景⑦ ==================== -->
+<section data-scene="7">
+  <div class="scene-head"><span class="no">SCENE 07</span><h2>动因竞争、边界与总结</h2><span class="en">FIG·MOT-04</span></div>
+
+  <figure class="dwg" data-figure>
+    <div class="dwg-head">FIG·MOT-04 · 动因竞争与例外通道<span class="sheet">DWG·SHEET 04/07</span></div>
+    <div class="dwg-body">
+      <svg viewBox="0 0 680 310" role="img" aria-label="经济动因与距离象似动因相互竞争，下方四条例外通道">
+        <!-- 两个力 -->
+        <rect x="60" y="36" width="250" height="56" rx="3" fill="color-mix(in srgb,var(--line) 10%,transparent)" stroke="var(--line)"/>
+        <text x="185" y="60" font-family="var(--mono)" font-size="13" font-weight="700" fill="var(--line)" text-anchor="middle">经济动因 · 省掉 de</text>
+        <text x="185" y="80" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">拉向 DN</text>
+        <rect x="370" y="36" width="250" height="56" rx="3" fill="color-mix(in srgb,var(--seal) 8%,transparent)" stroke="var(--seal)"/>
+        <text x="495" y="60" font-family="var(--mono)" font-size="13" font-weight="700" fill="var(--seal)" text-anchor="middle">距离象似动因 · 概念远就隔开</text>
+        <text x="495" y="80" font-family="var(--mono)" font-size="11" fill="var(--ink-2)" text-anchor="middle">拉向 DdN</text>
+        <line x1="310" y1="64" x2="370" y2="64" stroke="var(--amber)" stroke-width="2" marker-end="url(#ar)" marker-start="url(#ar)"/>
+        <text x="340" y="30" font-family="var(--mono)" font-size="11" fill="var(--amber)" text-anchor="middle">竞争</text>
+        <text x="340" y="118" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">高度象似的系统臃肿不堪（Haiman 1985a）</text>
+        <!-- 四条通道 -->
+        <g font-family="var(--mono)" font-size="12">
+          <rect x="10" y="140" width="160" height="120" rx="3" fill="var(--card)" stroke="var(--line)"/>
+          <text x="90" y="164" font-weight="700" fill="var(--line)" text-anchor="middle">词汇化</text>
+          <text x="90" y="188" fill="var(--ink)" text-anchor="middle">蓝天·绿草·黑墨</text>
+          <text x="90" y="210" fill="var(--ink)" text-anchor="middle">咸盐·老朋友</text>
+          <text x="90" y="240" fill="var(--ink-2)" text-anchor="middle" font-size="10">已固化为词</text>
+          <rect x="180" y="140" width="160" height="120" rx="3" fill="var(--card)" stroke="var(--line)"/>
+          <text x="260" y="164" font-weight="700" fill="var(--line)" text-anchor="middle">语境临时分类</text>
+          <text x="260" y="188" fill="var(--ink)" text-anchor="middle">白家具</text>
+          <text x="260" y="210" fill="var(--ink)" text-anchor="middle">（家具店）</text>
+          <text x="260" y="240" fill="var(--ink-2)" text-anchor="middle" font-size="10">规约性被激活</text>
+          <rect x="350" y="140" width="160" height="120" rx="3" fill="var(--card)" stroke="var(--line)"/>
+          <text x="430" y="164" font-weight="700" fill="var(--line)" text-anchor="middle">句中包孕</text>
+          <text x="430" y="188" fill="var(--ink)" text-anchor="middle">别碰我书包</text>
+          <text x="430" y="210" fill="var(--ink)" text-anchor="middle">*我书包</text>
+          <text x="430" y="240" fill="var(--ink-2)" text-anchor="middle" font-size="10">句法环境改判</text>
+          <rect x="520" y="140" width="150" height="120" rx="3" fill="var(--card)" stroke="var(--line)"/>
+          <text x="595" y="164" font-weight="700" fill="var(--line)" text-anchor="middle">转喻</text>
+          <text x="595" y="188" fill="var(--ink)" text-anchor="middle">空车</text>
+          <text x="595" y="210" fill="var(--ink)" text-anchor="middle">空车厢</text>
+          <text x="595" y="240" fill="var(--ink-2)" text-anchor="middle" font-size="10">突显容纳义</text>
+        </g>
+        <text x="340" y="292" font-family="var(--mono)" font-size="10" fill="var(--ink-2)" text-anchor="middle">DuBois(1985) 动因竞争：规则是竞争的结果，不是单一原则的推演</text>
+      </svg>
+    </div>
+    <figcaption>两种动因相反相成；实际语料是竞争均衡的产物，于是有词汇化、语境、句法、转喻四条例外通道。</figcaption>
+  </figure>
+
+  <p><b>分类性 vs 表情状</b>：正确意见…清醒头脑 是分类性；壮丽河山…稀薄空气 是表情状。<sup class="cite" data-cite="c6-49">49</sup> 范继淹(1979) 的区别性／描写性之分、黄国营(1982)「形 de 名」→「不形 de 名」鉴别式，都是同一件事的不同刀法。<sup class="cite" data-cite="c6-49">49</sup></p>
+
+  <details>
+    <summary>鉴别式反例：否定式挡不住的 DN</summary>
+    <p>*不生的黄瓜｜生的；*不黑的（天鹅）｜黑的；*不蓝的（墨水）｜蓝的；*不空的箱子｜空的；?不脏的（衣服）｜脏的——「不形 de 名」说不通的，DN 反而成立。墨水分「蓝的、红的、黑的」，各是其类。<sup class="cite" data-cite="c6-49">49</sup></p>
+  </details>
+
+  <p>可接受度是三级渐变的：<span class="mono">伟大领袖｜?伟大祖国｜*伟大人民</span>。<sup class="cite" data-cite="c6-50">50</sup> 袁毓林(1994) 对这类解释有过批评；王士元(1969)、Hsieh(1991)、Her(1991) 提供了变异与竞取的视角；Croft(1990) 提醒要区分「空解释」与「非空的」标准。<sup class="cite" data-cite="c6-50">50</sup></p>
+
+  <div class="note">理论收束：朱德熙(1956) 说这类现象「不能从词汇意义上去找解释」<sup class="cite" data-cite="c6-43">43</sup>；本书改用百科知识——「衣服要穿干净的，穿过的衣服就是脏的」（Lenat &amp; Guha 1990）<sup class="cite" data-cite="c6-43">43</sup>。于是全书主线在此落地：分类属性和事物的概念距离，比情状或一般属性更近；显著的规约分类属性，距离又近于一般的分类属性。<sup class="cite" data-cite="c6-43">43</sup></div>
+
+  <p>定语三大类型收束全章：<b>表情状／表属性／表领域</b>。<span class="q">「表情状及表原型领属关系的定语都必须带 de」</span>；「我的手」和「他妹妹」两个难题，引向第七章。<sup class="cite" data-cite="c6-55">55</sup></p>
+
+  <h3 style="font-size:17px;margin:20px 0 4px;">自测：三题</h3>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">一、「白家具」一般不说，家具店里反而能说，为什么？</p>
+    <button class="opt" type="button" data-ok="0">分类性可以随语境临时建立</button>
+    <button class="opt" type="button">家具店有一套特殊语法</button>
+    <button class="opt" type="button">「白」在店里换了词性</button>
+    <div class="exp" hidden>de 隐现取决于 D 是否构成对 N 的规约分类指标；规约性可以在特定语境中被临时激活，「白家具买光了」即其例。<sup class="cite" data-cite="c6-12">12</sup></div>
+  </section>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">二、「煎鸡蛋」和「煎的鸡蛋」差在哪里？</p>
+    <button class="opt" type="button">一个能做，一个不能做</button>
+    <button class="opt" type="button" data-ok="1">前者是菜名（命名性），后者不是</button>
+    <button class="opt" type="button">前者指生的，后者指熟的</button>
+    <div class="exp" hidden>动词定语的核心功能是分类与命名：「煎鸡蛋」是菜名，而「煎的鸡蛋」不是；「驾驶学校」也不能换成 DdN。<sup class="cite" data-cite="c6-51">51</sup></div>
+  </section>
+
+  <section class="quiz" data-quiz>
+    <p class="qh">三、「伟大领袖」能说、「*伟大人民」不能说，和「?男英雄」的问题是不是同一回事？</p>
+    <button class="opt" type="button">完全不同，前者是政治问题</button>
+    <button class="opt" type="button" data-ok="1">是同一个道理：都关乎范畴原型的偏向与标记性</button>
+    <button class="opt" type="button">前者是音节问题，与认知无关</button>
+    <div class="exp" hidden>「男性中心（即『原型的人是男人』）的认识倾向」使默认项免标记<sup class="cite" data-cite="c6-29">29</sup>；伟大领袖｜?伟大祖国｜*伟大人民 的三级渐变，是同一机制在另一片资料上的投影。<sup class="cite" data-cite="c6-50">50</sup></div>
+  </section>
+
+  <div class="scene-foot">
+    <button type="button" data-go="0">回到章首 ↑</button>
+    <button type="button" data-go="1">再看一遍 ① ↓</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>依据：张敏《认知语言学与汉语名词短语》第六章全文。引文弹窗中的「页」字段为研读底本行号，可逐条回查。本页为单文件网页，零外部依赖；进度、字号、明暗设置仅存于本机 localStorage。</p>
+</footer>
+
+<!-- 引文弹窗 -->
+<div class="veil" id="veil" hidden></div>
+<div class="pop" id="pop" hidden>
+  <div class="pop-id"><span id="pop-id-text">SOURCE</span><span id="pop-close">✕ 关闭</span></div>
+  <p class="pop-p" id="pop-p">研读底本</p>
+  <blockquote class="pop-q" id="pop-q"></blockquote>
+  <p class="pop-z" id="pop-z"></p>
+</div>
+
+<script>
+/* ================= 数据：SOURCES ================= */
+const SOURCES = {
+  "c6-01":{page:"研读底本 L2690",quote:"「脏的手、脏的糖」可说，但只说「脏手」，不说「*脏糖」。",zh:"范继淹(1958)之问：同一形容词在不同名词上 DN 能力相反；他自陈难找到圆满答案，本书认为「惯用法」「熟语性」等于不加解释。朱德熙(1956)另提出甲类定语有选择性。"},
+  "c6-02":{page:"研读底本 L2692",quote:"「我妹妹」单说时（包括句中）的 de 可隐去；「我的手、我的书包」中的 de 单说时一定要出现，句中往往可隐去。",zh:"de 隐去的成立与否须分单说与句中两种情形。「不要打我手、不要碰我书包」是句中可隐的例证。"},
+  "c6-03":{page:"研读底本 L2694",quote:"『我的书包』和『我书包』两种说法，前者是无标记的，后者由于附有更多的限制，因而是有标记的。",zh:"DdN 是基本式（无标记），DN 是受限式（有标记）；作者以本调/变调为喻。"},
+  "c6-05":{page:"研读底本 L2703",quote:"限定作用实际上是一个连续统，其两端分别是『确定指称』和『刻划概念』。",zh:"Seiler(1978)：外延端作用于外延，内涵端作用于内涵，中间是连续统。"},
+  "c6-06":{page:"研读底本 L2708",quote:"Seiler 从德语出发将转折点放在『冠词、领属语』处，我们认为，从 Hawkins(1983) 给出的类型学证据看，这个转折点应放在『数词』处。",zh:"本书对 Seiler 的修订：限定序列的转折点定在「数词」处。试比较英语 ten fine old stone houses 与汉语「十座漂亮的老石头房子」，参见 Hetzron 1978。Behaghel(1932)「概念接近原则」、Gruber(1967)、Givón(1993) 为前导。"},
+  "c6-08":{page:"研读底本 L2712",quote:"「木头桌子」与「我的桌子」的概念距离对比。",zh:"质料定语离核心近，领属定语离核心远——同一限定序列上位置越靠右，形式越紧凑。"},
+  "c6-09":{page:"研读底本 L2714",quote:"定语中含有转折点左端成分的定中结构在汉语里必须是中间有分隔物的 DxN，其中的 x 的出现是强制性的。",zh:"x 要么是 de（他的书），要么是量词（一本书、这本书）；逻辑量词（一切、所有、任何）除外。右端成分带 de 与否取决于序列位置，越靠左 de 倾向越强，越靠右不带 de 倾向越强；状态形容词必须带 de，质料名词或区别词最能不带 de。Croft(1990) 考察 Kosraean 语，不可让渡领属的形式距离近于可让渡领属。"},
+  "c6-10":{page:"研读底本 L2716–2722",quote:"人类语言倾向于将形式距离和概念距离对应起来的趋势。",zh:"德语 Holzkugeln（木球）可说而 *Rotkugeln（红球）不能说；英语 pork pie, iron rod, bird-house, apple-core, mail-man, silkworm, gaslight 限于紧密关系；西班牙语例外可由语体解释；the trouser leg 中不可让渡领属无标记。「木头桌子」与「我的桌子」概念距离对比。"},
+  "c6-12":{page:"研读底本 L2739",quote:"de……其语义作用是将 D 对 N 的分类意义置于前景；隐去 de，则 D 的分类意义就隐入背景。",zh:"白的纸｜白的衬衫｜白的家具 vs 白纸｜白衬衫（无「白家具」）；家具店语境「白家具买光了」；「规约性的分类指标」「习惯上是已知的」(Givón 1990)。陆丙甫(1993)：反映事物稳定内在本质的定语越靠近核心；外延性定语在外层，内涵性在内层；「大型船舶、大型商场」比「大船、大商场」更客观规约。"},
+  "c6-13":{page:"研读底本 L2743/2745/2747",quote:"(a)「属性条件」；(b)「分类属性条件」；(c)「规约分类属性条件」。",zh:"DN 的三级蕴含条件，自外而内递进。"},
+  "c6-14":{page:"研读底本 L2753",quote:"(c) 蕴含了 (b)，(b) 蕴含了 (a)……它大致可说是 DN 得以成立的充分必要条件。",zh:"三层单向蕴含；(c) 大致可说是 DN 成立的充分必要条件。「张三书」不能说；沈家煊(1997)「重箱子、凉脸、白手」——反常规搭配也有条件性。"},
+  "c6-15":{page:"研读底本 L2755",quote:"并不是语法上的限制。",zh:"车站站长托运「重箱子」的场景：特殊语境可临时满足三层条件；三层条件是认知—语用条件，不是句法硬约束。"},
+  "c6-16":{page:"研读底本 L2762",quote:"汉语里不带 de 作定语能力最强的一类词是区别词。",zh:"除极少数例外（如「心爱的 N」），区别词都能隐去 de 形成 DN。"},
+  "c6-17":{page:"研读底本 L2782",quote:"『男』一般不会变『女』，『金』一般不会变『银』。",zh:"区别词两个特点：永久稳固、难变易；无程度差别、不涉主观判断；成对成组（正—副｜西式—中式）——最纯粹的规约分类指标。"},
+  "c6-19":{page:"研读底本 L2799",quote:"「无能的」「有能的」「全能的」。",zh:"单音形容词按 DN 能力分三级。"},
+  "c6-20":{page:"研读底本 L2816",quote:"贵东西｜贵手绢｜脏衣服｜脏糖｜凉水｜凉脸｜黄制服｜黄汽船｜薄纸｜薄灰尘｜重担子｜重箱子。",zh:"朱德熙(1956)：同一形容词搭配不同名词，DN 能力有别。"},
+  "c6-21":{page:"研读底本 L2822",quote:"五种格式的蕴含序列。",zh:"从「能述谓」到「全能 DN」的能力阶梯。"},
+  "c6-22":{page:"研读底本 L2824",quote:"厚雪反例。",zh:"阶梯存在例外，需认知解释。"},
+  "c6-23":{page:"研读底本 L2828–2834",quote:"蓝天｜绿草｜黑墨｜咸盐｜寒冬｜圆月｜红日｜大地。",zh:"已词汇化/高度规约的 DN；(8)(9) 两组对立。"},
+  "c6-24":{page:"研读底本 L2840",quote:"Cooper & Ross(1975)「语言凝结体」。",zh:"部分 DN 已固化为词。"},
+  "c6-25":{page:"研读底本 L2842–2846",quote:"(10) 三个要点——「显著的互动属性」。",zh:"DN 成立的另一关键：D 是人与 N 显著互动的属性。"},
+  "c6-26":{page:"研读底本 L2854",quote:"on the table / on the bed / on the chair（Herskovits 1986）；「*桌子里」（Tai 1993）。",zh:"空间关系的默认值（原型）决定可接受性。"},
+  "c6-27":{page:"研读底本 L2862",quote:"『圆』被看作是球的缺省（default）属性……以偏概全的转喻效应，而丧失了原本具有的区别性。",zh:"缺省属性失去区别性——「圆地球」难说、「大地球」可说的理据。"},
+  "c6-28":{page:"研读底本 L2872",quote:"Croft(1990、1991)「关联的标记性」「自然关联」。",zh:"标记性要与名词的关联结构相配。"},
+  "c6-29":{page:"研读底本 L2876–2886",quote:"男演员｜?男英雄｜*男王……男性中心（即『原型的人是男人』）的认识倾向。",zh:"范畴原型的性别偏向造成 DN 能力差；(14)(15)(16) 组对立。"},
+  "c6-30":{page:"研读底本 L2896–2898",quote:"(17) 标记性逆转；「未婚妈妈」vs「?已婚妈妈」。",zh:"默认项反而不能进入 DN。"},
+  "c6-31":{page:"研读底本 L2900–2902",quote:"生柿子的视觉/触觉线索 vs 生西瓜要敲打听声。",zh:"感知线索的难易决定 DN 能力。"},
+  "c6-32":{page:"研读底本 L2906–2910",quote:"(18)「生黄瓜」—「*熟黄瓜」；个体等同性讨论；「熟鸡蛋」；《水浒传》第 23 回「二斤熟牛肉」。",zh:"一对反义词中只有一侧可 DN；反例有解释（等同性、历史用法）。"},
+  "c6-33":{page:"研读底本 L2922",quote:"ICM 定义「一套规约的认知路径及有关属性——事物关系的背景知识和假设」。",zh:"Minsky(1975) 框架；Schank & Abelson(1977) 脚本——本章核心理论工具。"},
+  "c6-34":{page:"研读底本 L2928–2930",quote:"(22)「脏 N」对立组。",zh:"同一形容词在不同名词上的 DN 能力呈系统对立。"},
+  "c6-35":{page:"研读底本 L2932",quote:"显著属性三条件。",zh:"显著性的判定标准。"},
+  "c6-36":{page:"研读底本 L2936–2976",quote:"(23)(24) ICM 五条件。",zh:"D 与 N 的互动须契合 ICM 的五个条件。"},
+  "c6-37":{page:"研读底本 L2978",quote:"「脏衣服」等于是说「穿过一轮的衣服」。",zh:"DN 是 ICM 的压缩表达。"},
+  "c6-38":{page:"研读底本 L2984",quote:"吕叔湘(1981)「『脏鞋』却不能说」；(25)「脏袜子—?脏鞋｜脏衬衫—?脏棉袄｜脏衣服—?脏大衣｜脏被—?脏被了」。",zh:"换洗模式是「脏」能否 DN 的分水岭；(26) a1 衣服/袜子/衬衫穿了一天就该换了、a2 被单用过一礼拜、b1 ?鞋/棉袄/大衣穿了一礼拜、b2 ?被子盖过一礼拜。"},
+  "c6-39":{page:"研读底本 L3005",quote:"(22a)「脏筷子、脏碗、脏袜子」vs「?脏象牙筷子」「?脏瓷碗」「?脏丝袜」。",zh:"McCawley(1992) 引蒋自新「一杯好酒」vs「?一杯好葡萄酒」——下位层次词破坏规约分类。"},
+  "c6-40":{page:"研读底本 L3007",quote:"基本层次范畴；「用瓷碗、洗瓷碗、穿丝袜」无规约行为模式。",zh:"DN 偏好基本层次名词。"},
+  "c6-41":{page:"研读底本 L3011–3017",quote:"(27)「脏手｜?脏脸｜?脏脚」「脏水｜?脏茶｜?脏雪」。",zh:"手接触万物、脸暴露在外、脚走路；「别拿你那脏脸蹭我」；人—水互动（洗涤、喝水）vs 扫雪、踏雪、赏雪；「人喝茶」——互动的典型性/排他性决定 DN 能力。"},
+  "c6-42":{page:"研读底本 L3021–3033",quote:"(28)「空碗…空弹夹」vs「*空山洞｜*空汽车｜*空飞机｜*空船｜*空客厅｜*空厨房｜*空卧室」。",zh:"原型容器（碗）最能 DN；窑洞例外；「空车」突显容纳；「空车厢、空机舱、空船舱」；旅馆「空客房」。(29) 凉水｜冷水｜热水｜凉茶 vs *凉脸｜*热脸｜*冷手｜*热手，限于热感器官直接接触。(30) 重担子最好、?重箱子其次、*重书架最差——互动模式的唯一性/典型性排序。"},
+  "c6-43":{page:"研读底本 L3035–3037",quote:"分类属性和事物的概念距离比情状或一般属性更近，而显著的规约分类属性和事物的距离又近于一般的分类属性。",zh:"朱德熙(1956)「不能从词汇意义上去找解释」；百科知识「衣服要穿干净的，穿过的衣服就是脏的」（Lenat & Guha 1990）——全书主线的具体化。"},
+  "c6-44":{page:"研读底本 L3039–3045",quote:"6.3.4 全能形容词「大、小、新、旧、好、坏、真、假」（吕叔湘 1981）。",zh:"*大脾气｜*小距离｜*旧内容｜*真事情；能述谓不一定能 DN，能 DdN 几乎一定能 DN；三千常用词表中最常用单音形容词含八个全能词，「大、新、好、真」为无标记项且频率居前；四对分类：空间大小｜时间新旧｜价值好坏｜真值真假；「用大小定出来的物体的集合要大于用其他属性定出的集合」；能论高低须直立，能论圆扁须封闭。"},
+  "c6-45":{page:"研读底本 L3047",quote:"Dixon(1982) 类型学；Ibo 语四对「大—小、新—旧、黑—白、好—坏」；20 种语言统计。",zh:"「大」见于全部二十种、「小」十九种、「短」「新」十五种、「长」「旧」「坏」「白」十四种、「好」「黑」十三种；四范畴 dimension / age / value / color；「除『真、假』外，其他三组和汉语的『全能』形容词在概念上完全重合」。"},
+  "c6-46":{page:"研读底本 L3052–3056",quote:"第四节双音形容词；「漂亮姑娘」可分类 vs「辉煌成就」不可（无「不辉煌的成就」）。",zh:"双音形容词的 DN 能力受语体与音节数干扰象似动因。"},
+  "c6-47":{page:"研读底本 L3061–3075",quote:"吕叔湘(1963)「容易的字｜可笑的人｜普通的水｜现成的车｜详细的图｜奇怪的梦」。",zh:"两条原则：D 带 de 可替代整个定中结构；D 的属性应出现在 N 的规约分类模式中。「糊涂人—糊涂的」；「送信的」= 邮递员；「豪迈的」不能替代「豪迈的话」；人｜事儿｜话 = 主体／所言／所行。黄国营(1982)。"},
+  "c6-48":{page:"研读底本 L3080–3088",quote:"6.4.2；(5)「新鲜牛奶…窝囊样子」为纯口语 DN；「聪明孩子—漂亮孩子」vs「*聪明姑娘—漂亮姑娘」。",zh:"「聪明的动物」vs「*聪明动物」（朱德熙 1956）；绝不能直接构成 DN 的双音形容词：随便｜好看｜难看｜近乎｜含糊｜孤单｜周到｜糟糕｜显眼｜有用｜可惜｜可笑｜容易｜听话。"},
+  "c6-49":{page:"研读底本 L3092–3100",quote:"(6)「正确意见…清醒头脑」为分类性；(7)「壮丽河山…稀薄空气」为非分类性、表情状。",zh:"范继淹(1979) 区别性／描写性；黄国营(1982)「形 de 名」→「不形 de 名」鉴别式。反例：*不生的黄瓜｜生的；*不黑的（天鹅）｜黑的；*不蓝的（墨水）｜蓝的；*不空的箱子｜空的；?不脏的（衣服）｜脏的；墨水分「蓝的、红的、黑的」。"},
+  "c6-50":{page:"研读底本 L3102–3110",quote:"Haiman(1985a) 高度象似的系统臃肿不堪；DuBois(1985) 动因竞争。",zh:"「伟大领袖｜?伟大祖国｜*伟大人民」；袁毓林(1994) 批评；王士元(1969)、Hsieh(1991)、Her(1991)；Croft(1990)「空解释」与「非空的」标准。领属句中包孕：「我书包」不能说，但「别碰我书包」能说；「我的那本崭新的故事书」→「我那本崭新的故事书」；「独特风格」不带称谓性。"},
+  "c6-51":{page:"研读底本 L3115–3123",quote:"(1)「剩饭｜病猪｜活鱼｜死兔子｜炒番茄｜煎鸡蛋｜冻豆腐｜烂苹果｜瞎眼睛」。",zh:"动词定语的分类/命名功能；(2)「飞行时间…洗澡水」；「驾驶学校」不能换 DdN；「煎鸡蛋」是菜名而「煎的鸡蛋」不是。"},
+  "c6-52":{page:"研读底本 L3125–3131",quote:"单音动词作定语能力远小于双音；「驾驶技术」vs「*开车技术」、「用餐地点」vs「*吃饭地点」。",zh:"Hopper & Thompson(1984) 动词性强度；小句与时体标记必须带 de（「昨天买的书」「洗过一次的衣服」）；「是、有、姓」不能直接作定语；洗澡水｜洗脚水｜*洗手水（盥洗三特别：时间／用具／用水）；广州话「冲凉[呒]水｜洗手[呒]水」。"},
+  "c6-53":{page:"研读底本 L3136–3176",quote:"(1) 木头桌子…（质料）(2) 胡桃夹子…（功能）(3) 石油工人…（身份）(4) 日本电器…（产地）。",zh:"「体育老师」vs「*体育学生」（刘月华等 1983）；「菜篮子｜饭盒子」vs「*菜盒子｜*饭篮子」；(7) 中国的朋友…（领属）vs (8) 中国朋友…（性质）（朱德熙 1957）；「美国电影」vs「中国的电影有些是从欧洲进口的」。"},
+  "c6-54":{page:"研读底本 L3178–3196",quote:"6.6.4 Seiler(1978) 专化所指／表徵概念、组合性 vs 粘合性。",zh:"英语 Wittgenstein's argument vs a Wittgenstein argument；Tolai 语（Mosel 1982）a bul ka-i ra lulai（酋长的孩子，可让渡领属标记）vs a bul na lulai（酋长孩子，表属性）；汉语、英语、Tolai 语既无亲缘又无地域关系。"},
+  "c6-55":{page:"研读底本 L3198–3202",quote:"6.6.5 定语三大类型总结（表情状／表属性／表领域）。",zh:"「表情状及表原型领属关系的定语都必须带 de」；「我的手」和「他妹妹」难题引子（引向第七章）。"},
+  "c6-56":{page:"研读底本 L3207–3237",quote:"附注①：指示代词非单说可说「这人」；「我妹妹」留待第七章。",zh:"附注②「我妹妹」不是反例；附注③形容词仅指甲类；附注④多／少为主观量；附注⑤吕叔湘(1966)「短头发」「闲工夫」；附注⑥「老朋友、大学者」已词汇化；附注⑦ in the chair / in bed 非空间义；附注⑧方西瓜语境；附注⑨《现代汉语三千常用词表》1987；附注⑩真假原因不明、语体判别法；附注⑫原型性 (7)>(6)；附注⑭狭义复合词。"}
+};
+
+/* ================= 案例库（书中全部案例 + 判定） ================= */
+const CASES = [
+  {d:"脏",n:"手",v:"DN",why:"脏手：手接触万物，「脏」是人与手显著互动的规约分类指标。",c:["c6-01","c6-41"]},
+  {d:"脏",n:"糖",v:"NO",why:"*脏糖：糖的规约互动是吃/含，不经过「穿一轮」式的脏化路径。",c:["c6-01"]},
+  {d:"脏",n:"袜子",v:"DN",why:"脏袜子：日抛型衣物，换洗模式满足，「脏」直接成类。",c:["c6-38"]},
+  {d:"脏",n:"鞋",v:"NO",why:"?脏鞋：周抛型，穿一礼拜才换，换洗模式不满足。",c:["c6-38"]},
+  {d:"脏",n:"衬衫",v:"DN",why:"脏衬衫：同袜子，日抛型。",c:["c6-38"]},
+  {d:"脏",n:"棉袄",v:"NO",why:"?脏棉袄：周抛型。",c:["c6-38"]},
+  {d:"脏",n:"衣服",v:"DN",why:"脏衣服：「穿过一轮的衣服就是脏的」——ICM 的压缩表达。",c:["c6-37","c6-38"]},
+  {d:"脏",n:"大衣",v:"NO",why:"?脏大衣：周抛型。",c:["c6-38"]},
+  {d:"脏",n:"被",v:"MID",why:"脏被—?脏被了：两种形式并列，居中存疑。",c:["c6-38"]},
+  {d:"脏",n:"碗",v:"DN",why:"脏碗：基本层次 + 洗涤互动规约。",c:["c6-39","c6-40"]},
+  {d:"脏",n:"筷子",v:"DN",why:"脏筷子：基本层次，餐饮互动规约。",c:["c6-39"]},
+  {d:"脏",n:"脸",v:"MID",why:"?脏脸：脸暴露在外，但互动不排他；例外「别拿你那脏脸蹭我」。",c:["c6-41"]},
+  {d:"脏",n:"脚",v:"MID",why:"?脏脚：走路互动典型但不排他。",c:["c6-41"]},
+  {d:"脏",n:"水",v:"DN",why:"脏水：人—水互动（洗涤、喝水）是原型。",c:["c6-41"]},
+  {d:"脏",n:"茶",v:"MID",why:"?脏茶：「人喝茶」是规约，但脏化路径不典型。",c:["c6-41"]},
+  {d:"脏",n:"雪",v:"NO",why:"?脏雪：扫雪、踏雪、赏雪均非脏化互动。",c:["c6-41"]},
+  {d:"白",n:"纸",v:"DN",why:"白纸：颜色是纸的规约分类指标。",c:["c6-12"]},
+  {d:"白",n:"家具",v:"NO",why:"白家具一般不说；家具店语境「白家具买光了」可临时激活。",c:["c6-12"]},
+  {d:"白",n:"衬衫",v:"DN",why:"白衬衫：规约分类。",c:["c6-12"]},
+  {d:"木头",n:"桌子",v:"DN",why:"木头桌子：质料近核心，最能不带 de。",c:["c6-08","c6-53"]},
+  {d:"我",n:"书",v:"DXN",why:"领属语居左端，必须 DxN：我的书。",c:["c6-09"]},
+  {d:"我",n:"书包",v:"DXN",why:"我书包不能说；句中包孕「别碰我书包」能说。",c:["c6-02","c6-50"]},
+  {d:"张三",n:"书",v:"NO",why:"*张三书：领属语不满足三层条件中任何一层。",c:["c6-14"]},
+  {d:"男",n:"演员",v:"DN",why:"男演员：性别对立进入规约分类。",c:["c6-29"]},
+  {d:"男",n:"英雄",v:"MID",why:"?男英雄：男性中心倾向下默认项标记受限。",c:["c6-29"]},
+  {d:"男",n:"王",v:"NO",why:"*男王：默认项完全免标记。",c:["c6-29"]},
+  {d:"女",n:"英雄",v:"DN",why:"女英雄：非默认项，需要标记。",c:["c6-29"]},
+  {d:"女",n:"王",v:"DN",why:"女王：非默认项。",c:["c6-29"]},
+  {d:"生",n:"黄瓜",v:"DN",why:"生黄瓜：感知线索直接（颜色、把儿）。",c:["c6-31","c6-32"]},
+  {d:"熟",n:"黄瓜",v:"NO",why:"*熟黄瓜：反义词一侧受限（个体等同性）。",c:["c6-32"]},
+  {d:"熟",n:"鸡蛋",v:"DN",why:"熟鸡蛋：反例，有历史用法支撑。",c:["c6-32"]},
+  {d:"空",n:"碗",v:"DN",why:"空碗：原型容器。",c:["c6-42"]},
+  {d:"空",n:"山洞",v:"NO",why:"*空山洞：非原型容器。",c:["c6-42"]},
+  {d:"空",n:"汽车",v:"NO",why:"*空汽车：非原型容器；「空车」是突显容纳义的例外通道。",c:["c6-42"]},
+  {d:"空",n:"车",v:"DN",why:"空车：转喻突显容纳义。",c:["c6-42"]},
+  {d:"空",n:"客房",v:"DN",why:"旅馆「空客房」：行业语境临时建立分类。",c:["c6-42"]},
+  {d:"凉",n:"水",v:"DN",why:"凉水：口腔可直接接触。",c:["c6-42"]},
+  {d:"凉",n:"茶",v:"DN",why:"凉茶：可饮。",c:["c6-42"]},
+  {d:"凉",n:"脸",v:"NO",why:"*凉脸：热感器官互动不规约。",c:["c6-42"]},
+  {d:"重",n:"担子",v:"DN",why:"重担子：人挑担子是唯一互动模式。",c:["c6-42"]},
+  {d:"重",n:"箱子",v:"MID",why:"?重箱子：箱子常被携带搬运，故居中；特殊语境（站长托运）可满足。",c:["c6-42","c6-15"]},
+  {d:"重",n:"书架",v:"NO",why:"*重书架：书架原型功能是放书，不搬运。",c:["c6-42"]},
+  {d:"煎",n:"鸡蛋",v:"DN",why:"煎鸡蛋：菜名，命名性 DN。",c:["c6-51"]},
+  {d:"煎",n:"的鸡蛋",v:"DXN",why:"煎的鸡蛋：不是菜名，须带 de。",c:["c6-51"]},
+  {d:"驾驶",n:"技术",v:"DN",why:"驾驶技术：双音动词定语强。",c:["c6-52"]},
+  {d:"开车",n:"技术",v:"NO",why:"*开车技术：单音动词定语能力远小于双音。",c:["c6-52"]},
+  {d:"体育",n:"老师",v:"DN",why:"体育老师：有规约行为模式。",c:["c6-53"]},
+  {d:"体育",n:"学生",v:"NO",why:"*体育学生：无规约行为模式（刘月华等 1983）。",c:["c6-53"]},
+  {d:"中国",n:"朋友",v:"DN",why:"中国朋友：表性质（朱德熙 1957）。",c:["c6-53"]},
+  {d:"伟大",n:"领袖",v:"DN",why:"伟大领袖：称谓性成立。",c:["c6-50"]},
+  {d:"伟大",n:"祖国",v:"MID",why:"?伟大祖国：中间级。",c:["c6-50"]},
+  {d:"伟大",n:"人民",v:"NO",why:"*伟大人民：三级渐变的最低端。",c:["c6-50"]},
+  {d:"聪明",n:"孩子",v:"DN",why:"聪明孩子：口语层可接受。",c:["c6-48"]},
+  {d:"聪明",n:"姑娘",v:"NO",why:"*聪明姑娘：双音节组合同名词不搭。",c:["c6-48"]},
+  {d:"漂亮",n:"姑娘",v:"DN",why:"漂亮姑娘：可分类。",c:["c6-46"]},
+  {d:"辉煌",n:"成就",v:"NO",why:"辉煌成就不可 DN：无「不辉煌的成就」。",c:["c6-46"]},
+  {d:"容易",n:"字",v:"DN",why:"容易的字：吕叔湘(1963) 例。",c:["c6-47"]},
+  {d:"一杯好",n:"酒",v:"DN",why:"一杯好酒：McCawley 引蒋自新。",c:["c6-39"]},
+  {d:"一杯好",n:"葡萄酒",v:"MID",why:"?一杯好葡萄酒：下位层次词破坏规约分类。",c:["c6-39"]},
+  {d:"象牙",n:"筷子",v:"MID",why:"?脏象牙筷子：下位层次词（带「脏」时受限）。",c:["c6-39"]},
+  {d:"圆",n:"地球",v:"MID",why:"圆地球难说：「圆」是球的缺省属性，转喻使其失去区别性。",c:["c6-27"]},
+  {d:"大",n:"地球",v:"DN",why:"大地球可说：大小定出的物体集合大于其他属性。",c:["c6-44"]},
+  {d:"大",n:"脾气",v:"NO",why:"*大脾气：全能词也有不能 DN 的名词。",c:["c6-44"]},
+  {d:"雪白",n:"纸",v:"DXN",why:"雪白的纸：状态形容词必须带 de。",c:["c6-09"]},
+  {d:"昨天买",n:"书",v:"DXN",why:"昨天买的书：小句与时体标记必须带 de。",c:["c6-52"]},
+  {d:"他",n:"书",v:"DXN",why:"他的书：领属语必须 DxN，x 是 de。",c:["c6-09"]}
+];
+
+/* ================= 词类词典（规则引擎用） ================= */
+const POS = {
+  poss:["我","你","他","她","我们","他们","张三","李四","我的","你的","他的"],
+  num:["一","两","三","四","五","六","七","八","九","十","这","那","每","某"],
+  distinguish:["男","女","金","银","正","副","西式","中式","大型","小型","彩色","黑白","男式","女式","老式","新式","初级","中级","高级","国产","进口","长途","短途","公共","私家","全日制","业余","名牌","野生","家养","天然","人造","木质","铁质","电动","手动"],
+  stateAdj:["雪白","笔直","碧绿","通红","漆黑","滚烫","冰凉","煞白","粉碎","精光"],
+  monoAdj:["大","小","新","旧","好","坏","真","假","脏","白","黑","红","黄","蓝","绿","圆","方","长","短","高","低","厚","薄","重","轻","凉","热","冷","暖","生","熟","空","满","贵","贱","甜","苦","酸","辣","咸","涩","香","臭","硬","软","紧","松","快","慢","早","晚","远","近","深","浅","宽","窄","粗","细","亮","暗","静","闹","穷","富","忙","闲","懒","勤","笨","巧","乖","倔"],
+  biAdj:["漂亮","聪明","糊涂","辉煌","壮丽","新鲜","窝囊","机灵","普通","现成","详细","奇怪","容易","可笑","好看","难看","含糊","孤单","周到","糟糕","显眼","有用","可惜","听话","随便","近乎","要紧","正经","老实","下流","笼统","连贯","豪迈","独特","清醒","正确","奇怪","伟大","稀薄"],
+  verb:["剩","病","活","死","炒","煎","冻","烂","瞎","驾驶","开车","用餐","吃饭","飞行","洗澡","洗脚","洗手","冲凉","买","卖","看","写","做","用","穿","戴","住","吃","喝","拿","放","带","寄","托运","敲","听","扫","踏","赏","喝","蹭","挑","背","扛","抬","推","拉","搬","运","煮","蒸","烤","炸","腌","晒","缝","剪","修","建","盖","栽","种","养","喂","骑","开","关","锁","贴","挂","堆","装","包","裹","缠","绕","系","扎","绑","捆","编","织","染","印","抄","录","拍","照","画","刻","雕","铸","焊","铆","钉","锯","刨","磨","抛","光","削","切","剁","绞","搅拌","挤压","拉伸","压缩","冷却","加热","融化","凝固","蒸发","凝结","过滤","蒸馏","提炼","粉碎","筛选","分类","整理","清点","包装","运输","储存","保管","收藏","展示","陈列","摆设"],
+  noun:["木头","胡桃","石油","日本","中国","美国","塑料","玻璃","钢铁","水泥","陶瓷","竹","藤","草","纸","布","丝","棉","麻","毛","皮","骨","角","牙","铜","铁","锡","铝","铅","锌","镍","铬","钨","铀","石墨","金刚石","云母","石英","大理石","花岗岩","沙子","泥土","石头","砖","瓦","灰","漆","胶","蜡","油","脂","盐","糖","醋","酱","茶","咖啡","可可","牛奶","羊奶","豆浆","米","面","玉米","小麦","高粱","小米","黄豆","绿豆","红豆","芝麻","花生","核桃","松子","榛子","栗子","枣","柿","桃","杏","梨","苹果","葡萄","西瓜","香瓜","哈密瓜","柑橘","柚子","柠檬","香蕉","菠萝","荔枝","龙眼","枇杷","杨梅","樱桃","草莓","石榴","无花果","猕猴桃"]
+};
+
+/* ================= 引擎 ================= */
+const classify = d => {
+  for(const k of ["poss","num","distinguish","stateAdj","monoAdj","biAdj","verb","noun"]) if(POS[k].includes(d)) return k;
+  return null;
+};
+
+const RULES = {
+  poss:{v:"DXN",t:"领属语居限定序列左端，必须 DxN，且 x 是 de"},
+  num:{v:"DXN",t:"数词/量词在转折点上，必须 DxN，且 x 是量词"},
+  distinguish:{v:"DN",t:"区别词不带 de 能力最强（除「心爱的 N」等少数例外）"},
+  stateAdj:{v:"DXN",t:"状态形容词必须带 de"},
+  monoAdj:{v:"CHECK",t:"单音形容词：先过三层条件，再查 ICM 互动"},
+  biAdj:{v:"CHECK",t:"双音形容词：查可替换性与规约分类模式，注意语体与音节干扰"},
+  verb:{v:"CHECK",t:"动词定语：单音弱、双音强；时体小句必须带 de"},
+  noun:{v:"CHECK",t:"名词定语：质料/功能/身份/产地强，领属必须带 de"}
+};
+
+function judge(d,n){
+  d=(d||"").trim(); n=(n||"").trim();
+  if(!d||!n) return {verdict:"待输入",why:"请同时给定定语与名词。",refs:[]};
+  // 1. 案例库优先
+  const hit = CASES.find(c=>c.d===d&&c.n===n);
+  if(hit){
+    const map={DN:["DN 可说","ok"],NO:["DN 不说","bad"],MID:["DN 存疑","mid"],DXN:["必须 DxN","dxn"]};
+    const [txt,cls]=map[hit.v];
+    return {verdict:txt,cls,why:hit.why,refs:hit.c,case:true};
+  }
+  // 2. 规则引擎
+  const pos=classify(d);
+  if(pos&&RULES[pos]){
+    const r=RULES[pos];
+    if(r.v==="DN") return {verdict:"DN 倾向成立",cls:"ok",why:r.t+"。案例库未收此对组合，按词类通例推定。",refs:[],rule:true};
+    if(r.v==="DXN") return {verdict:"必须 DxN",cls:"dxn",why:r.t+"。案例库未收此对组合，按词类通例推定。",refs:[],rule:true};
+    return {verdict:"须逐项核查",cls:"mid",why:r.t+"。案例库未收此对组合——按书中三层条件自查：(a) 是不是属性；(b) 是不是分类属性；(c) 是不是规约分类属性；(c) 大致可说是充分必要条件。",refs:["c6-13","c6-14"],rule:true};
+  }
+  // 3. 诚实回退
+  return {verdict:"未收录 · 回退三层条件",cls:"mid",why:"该定语不在本章词类词典内。不编造判定——请按书中三层条件自查："+"(a) 属性条件 → (b) 分类属性条件 → (c) 规约分类属性条件；(c) 蕴含 (b)，(b) 蕴含 (a)。",refs:["c6-13","c6-14"],fallback:true};
+}
+
+/* ================= 渲染工具 ================= */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const scenes=()=>$$("[data-scene]");
+
+/* 字号 */
+let fs=parseFloat(store.get("c6-fs")||"1");
+function applyFs(){document.body.style.fontSize=(16*fs).toFixed(1)+"px";store.set("c6-fs",String(fs));}
+applyFs();
+$("#fs-up").addEventListener("click",()=>{fs=Math.min(1.3,fs+0.1);applyFs();});
+$("#fs-down").addEventListener("click",()=>{fs=Math.max(0.85,fs-0.1);applyFs();});
+
+/* 明暗（手动覆盖系统偏好） */
+const themeBtn=$("#theme");
+function applyTheme(dark){
+  document.documentElement.classList.toggle("dark",dark);
+  document.documentElement.classList.toggle("light",!dark);
+  store.set("c6-theme",dark?"dark":"light");
+}
+let savedTheme=store.get("c6-theme");
+if(savedTheme) applyTheme(savedTheme==="dark");
+themeBtn.addEventListener("click",()=>{
+  const dark=!document.documentElement.classList.contains("dark");
+  applyTheme(dark);
+});
+
+/* 进度条 + 场景判定 + 进度记忆 */
+const pbar=$("#pbar");
+function onScroll(){
+  const h=document.documentElement;
+  const p=h.scrollTop/Math.max(1,(h.scrollHeight-h.clientHeight));
+  pbar.style.width=(p*100).toFixed(2)+"%";
+  let y=parseFloat(store.get("c6-scroll")||"0");
+  if(Math.abs(y-h.scrollTop)>200){store.set("c6-scroll",String(h.scrollTop));}
+}
+addEventListener("scroll",onScroll,{passive:true});
+(function restoreScroll(){
+  const y=parseFloat(store.get("c6-scroll")||"0");
+  if(y>0) scrollTo(0,y);
+})();
+onScroll();
+
+/* 引文弹窗 */
+const veil=$("#veil"),pop=$("#pop");
+function openPop(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#pop-id-text").textContent=id+" · "+s.page;
+  $("#pop-q").textContent="「"+s.quote+"」";
+  $("#pop-z").textContent=s.zh;
+  veil.hidden=false;pop.hidden=false;
+}
+function closePop(){veil.hidden=true;pop.hidden=true;}
+veil.addEventListener("click",closePop);
+$("#pop-close").addEventListener("click",closePop);
+document.addEventListener("click",e=>{
+  const c=e.target.closest("sup.cite");
+  if(c) openPop(c.getAttribute("data-cite"));
+});
+
+/* 先猜 */
+$$("[data-guess]").forEach(g=>{
+  const ans=g.querySelector(".answer");
+  const opts=g.querySelectorAll(".opts button");
+  opts.forEach(b=>b.addEventListener("click",()=>{
+    opts.forEach(x=>x.classList.remove("picked"));
+    b.classList.add("picked");
+  }));
+  const rev=g.querySelector("[data-reveal]");
+  rev.addEventListener("click",()=>{
+    ans.hidden=!ans.hidden;
+    rev.textContent=ans.hidden?"先猜再看 →":"收起答案 ↑";
+  });
+});
+
+/* 卡片搜索 */
+const cards=$$("#cards .card");
+const countEl=$("#cardCount");
+function filterCards(){
+  const q=$("#cardSearch").value.trim().toLowerCase();
+  let shown=0;
+  cards.forEach(c=>{
+    const txt=(c.getAttribute("data-k")||"")+" "+c.textContent;
+    const hit=!q||txt.toLowerCase().includes(q);
+    c.hidden=!hit;
+    if(hit){shown++;if(q)c.open=true;}
+  });
+  countEl.textContent=shown+"/"+cards.length+" 张";
+}
+$("#cardSearch").addEventListener("input",filterCards);
+filterCards();
+
+/* 图一：可点击序列轴 */
+const SEG_DATA=[
+  {t:"POSS · 领属语",p:"必须 DxN，x 是 de。「他的手书」须作「他的书」；领属语不满足三层条件中任何一层（*张三书）。单说时 de 一定要出现，句中往往可隐（不要碰我书包）。",c:["c6-09","c6-14","c6-02"]},
+  {t:"NUM · 数词·量词（转折点）",p:"必须 DxN，x 是量词：「一本书」「这本书」。本书认为转折点应从 Seiler 的「冠词、领属语」移到「数词」，依据是 Hawkins(1983) 的类型学证据；转折点右端英汉语序几乎一致。",c:["c6-09","c6-06"]},
+  {t:"STATE · 状态形容词",p:"必须带 de：「雪白的纸」「*雪白纸」不说。",c:["c6-09"]},
+  {t:"COLOR · 颜色·形体",p:"倾向 de：白的纸 vs 白纸；白家具一般不说，家具店语境可临时激活。",c:["c6-09","c6-12"]},
+  {t:"MATTER · 质料·功能·分类",p:"最能不带 de：木头桌子、胡桃夹子；区别词是其中 DN 能力最强的一类。",c:["c6-09","c6-16","c6-53"]}
+];
+const axisDetail=$("#axisDetail");
+function showSeg(i){
+  $$(".seg").forEach((s,j)=>s.classList.toggle("on",i===j));
+  const d=SEG_DATA[i];
+  axisDetail.innerHTML='<span class="dt">'+d.t+'</span><p>'+d.p+
+    d.c.map(x=>'<sup class="cite" data-cite="'+x+'">'+x.slice(3)+'</sup>').join("")+'</p>';
+}
+$$(".seg").forEach(s=>s.addEventListener("click",()=>showSeg(+s.getAttribute("data-seg"))));
+
+/* 自测 */
+$$("[data-quiz]").forEach(q=>{
+  const exp=q.querySelector(".exp");
+  q.querySelectorAll(".opt").forEach(b=>{
+    b.addEventListener("click",()=>{
+      q.querySelectorAll(".opt").forEach(x=>{x.classList.remove("right","wrong");});
+      if(b.hasAttribute("data-ok")){b.classList.add("right");}
+      else{b.classList.add("wrong");
+        const ok=q.querySelector(".opt[data-ok]");if(ok)ok.classList.add("right");}
+      exp.hidden=false;
+    });
+  });
+});
+
+/* 场景导航 + backStack */
+const backStack=[];
+const sceneMap={};
+$$("section[data-scene]").forEach(s=>{sceneMap[s.getAttribute("data-scene")]=s;});
+function jumpTo(id){
+  const el=id==="0"?document.body:sceneMap[id];
+  if(!el) return;
+  backStack.push(scrollY);
+  history.pushState({y:scrollY},"");
+  const y=id==="0"?0:el.getBoundingClientRect().top+scrollY-70;
+  scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+function goBack(){const y=backStack.pop();if(y!=null)scrollTo({top:y});}
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo(0,e.state.y);}
+});
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-go]");
+  if(b) jumpTo(b.getAttribute("data-go"));
+});
+
+/* 键盘：←→ 切场景，Esc 关弹窗 */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"){closePop();return;}
+  if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight")return;
+  if(/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||""))return;
+  const list=scenes();
+  let cur=0;
+  list.forEach((s,i)=>{if(s.getBoundingClientRect().top>=-80&&s.getBoundingClientRect().top<window.innerHeight/2)cur=i;});
+  const next=e.key==="ArrowRight"?Math.min(list.length-1,cur+1):Math.max(0,cur-1);
+  jumpTo(String(next+1));
+});
+
+/* ================= 预测器 ================= */
+const SAMPLES=[["脏","手"],["脏","糖"],["脏","鞋"],["白","家具"],["木头","桌子"],["我","书"],["男","英雄"],["空","车"],["重","书架"],["煎","鸡蛋"],["雪白","纸"],["伟大","人民"],["聪明","姑娘"],["一杯好","葡萄酒"]];
+const samplesEl=$("#simSamples");
+SAMPLES.forEach(p=>{
+  const b=document.createElement("button");
+  b.type="button";b.textContent=p[0]+" + "+p[1];
+  b.addEventListener("click",()=>{$("#simD").value=p[0];$("#simN").value=p[1];run();});
+  samplesEl.appendChild(b);
+});
+const CLS_COLOR={ok:"var(--line)",bad:"var(--seal)",mid:"var(--amber)",dxn:"var(--amber)"};
+function run(){
+  const d=$("#simD").value,n=$("#simN").value;
+  const r=judge(d,n);
+  const out=$("#simOut");
+  const refs=(r.refs||[]).map(x=>'<sup class="cite" data-cite="'+x+'">'+x.slice(3)+'</sup>').join("");
+  out.innerHTML='<div class="verdict" style="color:'+(CLS_COLOR[r.cls]||"var(--ink)")+'">'+
+    (d&&n?("「"+d+" + "+n+"」 → "):"")+r.verdict+'</div>'+
+    '<div class="why"><b>依据：</b>'+r.why+refs+'</div>'+
+    (r.case?'<div class="why" style="margin-top:4px;">命中书中案例。</div>':
+     r.rule?'<div class="why" style="margin-top:4px;">规则引擎推定。</div>':
+     '<div class="why" style="margin-top:4px;">规则引擎未覆盖。</div>');
+}
+$("#simRun").addEventListener("click",run);
+$("#simD").addEventListener("keydown",e=>{if(e.key==="Enter")run();});
+$("#simN").addEventListener("keydown",e=>{if(e.key==="Enter")run();});
+</script>
+</body>
+</html>

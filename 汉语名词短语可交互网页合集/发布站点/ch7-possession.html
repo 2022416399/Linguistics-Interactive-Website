@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>领属结构的“的”与语言共性 · 《认知语言学与汉语名词短语》第七章可交互笔记</title>
+<meta name="description" content="《认知语言学与汉语名词短语》第七章可交互笔记：原型领属构造、类指限定与单指限定、确认指标与分类指标、身体部位与人际关系领属、空间时间定位的隐喻、PdN 与 PN 之别、双向领属关系与汉语复合名词假说，含原型构造图、三条件层级图与点选交互。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn.wrong{outline:2.5px dashed var(--red);outline-offset:1px}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.right{border-color:var(--green);color:var(--green);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+.v-ok{color:var(--green);font-weight:800;margin-right:.4em}
+.v-no{color:var(--red);font-weight:800;margin-right:.4em}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:center;vertical-align:middle}
+.tbl th{background:var(--hl);font-weight:700}
+.tbl td.l,.tbl th.l{text-align:left}
+.tbl td.hi{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
+.tbl td.lo{color:var(--ink-faint)}
+input[type=range]{width:100%;max-width:460px;accent-color:var(--red);height:36px}
+
+/* ---------- 时间线（场景一） ---------- */
+.tl{list-style:none;margin:12px 0 6px;padding:2px 0 2px 28px;border-left:2.5px dashed var(--line)}
+.tl li{position:relative;margin:0 0 9px}
+.tl li::before{content:"";position:absolute;left:-34px;top:11px;width:11px;height:11px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--red)}
+.tl .btn{min-height:42px;text-align:left;font-size:.9rem;padding:6px 12px;line-height:1.5}
+.tl .tl-y{font-weight:800;color:var(--red);margin-right:.45em}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.inline-svg{background:var(--card);border:1.5px dashed var(--line);border-radius:10px;padding:10px 8px 6px;margin:10px 0}
+#balBeam,#panL,#panR{transition:transform .18s ease}
+@media (prefers-reduced-motion: reduce){
+  #balBeam,#panL,#panR{transition:none}
+}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a href="index.html" title="返回全书导览" style="position:fixed;left:12px;bottom:14px;z-index:9999;display:inline-flex;align-items:center;gap:4px;font:13px/1.4 system-ui,'Microsoft YaHei',sans-serif;color:#5a5348;background:rgba(255,253,246,.94);border:1px solid #d8d1c2;border-radius:999px;padding:6px 13px;text-decoration:none;box-shadow:0 2px 10px rgba(35,32,28,.12);backdrop-filter:blur(2px)">← 返回全书导览</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">《认知语言学与汉语名词短语》· 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第七章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">领属结构的“的”与语言共性</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：原型与确认指标 ｜ 名词定语 ｜ 归属与同位 ｜ 时空定位 ｜ 代词定语 ｜ PdN 与 PN ｜ 双向领属 ｜ 共相与殊相</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>第五章留下的难题——为什么“他的手”必须带 de 而“他妹妹”可以不带——在本章得到解答。答案是：<span class="hl">“我哥哥”不是省略了 de 的领属结构，而是类似“这个人”的指别结构</span><button type="button" class="cite" data-cite="pnNature" aria-label="查看出处"></button>。带 de 的 PdN 表原型领属，须遵守“独立性条件”；不带 de 的 PN 表单称专指，背后是<span class="hl">双向领属关系</span>与“自我中心”的直指确定性。汉语并非 Greenberg 第 (9) 条的反例，而是距离象似原则“令人惊喜的证实”<button type="button" class="cite" data-cite="surprise" aria-label="查看出处"></button>。<span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="领属到属性的连续统图：最左端为张三的鼻子等原型领属构造，向右依次为他妹妹、我们学校、牛鼻子、木头桌子，越往右概念整合程度越高、越接近属性构造；下方标注类指限定与单指限定的分界">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <path d="M60 60 L700 60"/>
+        <rect x="60" y="40" width="96" height="40" rx="9"/>
+        <rect x="176" y="40" width="96" height="40" rx="9"/>
+        <rect x="292" y="40" width="96" height="40" rx="9"/>
+        <rect x="408" y="40" width="96" height="40" rx="9"/>
+        <rect x="524" y="40" width="96" height="40" rx="9"/>
+        <rect x="640" y="40" width="60" height="40" rx="9"/>
+        <path d="M172 50 L152 70" stroke-dasharray="4 4"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="108" y="64" font-size="12">张三的鼻子</text>
+        <text x="224" y="64" font-size="12">他妹妹</text>
+        <text x="340" y="64" font-size="12">我们学校</text>
+        <text x="456" y="64" font-size="12">牛鼻子</text>
+        <text x="572" y="64" font-size="12">猪耳朵</text>
+        <text x="670" y="64" font-size="12.5" font-weight="700">木头桌子</text>
+        <text x="108" y="26" font-size="11" font-weight="700" fill="var(--red)">原型领属 · 必须带 de</text>
+        <text x="670" y="26" font-size="11" font-weight="700" fill="var(--green)">原型属性 · 不带 de</text>
+        <text x="108" y="96" font-size="11" fill="var(--ink-soft)">单指限定</text>
+        <text x="108" y="112" font-size="10.5" fill="var(--ink-soft)">确认指标</text>
+        <text x="340" y="96" font-size="11" fill="var(--ink-soft)">指别 / 归属</text>
+        <text x="570" y="96" font-size="11" fill="var(--ink-soft)">类指限定</text>
+        <text x="570" y="112" font-size="10.5" fill="var(--ink-soft)">分类指标</text>
+        <path d="M60 132 L700 132" stroke="var(--ink-faint)" stroke-width="1.5"/>
+        <text x="380" y="158" font-size="11.5" fill="var(--ink-soft)">从原型的领属构造到原型的属性构造可看作一个连续统：</text>
+        <text x="380" y="176" font-size="11.5" fill="var(--ink-soft)">N₁ 部分及整个构造越是带非单指意义，偏离领属原型越远，离属性结构越近，隐去 de 的能力就越大</text>
+        <text x="380" y="212" font-size="11.5" fill="var(--green)">距离象似原则贯穿全章：形式结合的紧密程度反映概念整合程度</text>
+        <text x="380" y="232" font-size="10.5" fill="var(--ink-faint)">连续统示意据 7.0 与 7.1.4 概括绘制</text>
+      </g>
+    </svg>
+    <figcaption>从原型领属到原型属性的连续统<button type="button" class="cite" data-cite="continuum" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">原型与两类限定</button>
+    <button class="chip" data-jump="s2">身体部位领属</button>
+    <button class="chip" data-jump="s3">人际与物品</button>
+    <button class="chip" data-jump="s4">归属与同位</button>
+    <button class="chip" data-jump="s5">时空定位</button>
+    <button class="chip" data-jump="s6">代词定语</button>
+    <button class="chip" data-jump="s7">PdN 与 PN</button>
+    <button class="chip" data-jump="s8">双向领属与共相</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>原型的领属构造与两类限定</h2>
+  </div>
+  <p class="point">所谓领属关系其实是一个边界模糊、不易定义的庞杂的语义类：领有关系如“我的书”，隶属关系及整体部分关系如“孩子的手｜松树的叶子”，归属关系如“飞机的速度”，某些时间—空间关系如“今天的报纸｜院子的外边”等都被归入领属关系。不过，在这些形形色色的关系中，<strong>领有关系是较为原型的领属关系</strong>，其他各类关系大都处于其边缘。参照 Seiler(1983) 的定义，我们可将最原型的领属语义关系描述如下<button type="button" class="cite" data-cite="possDef" aria-label="查看出处"></button>：</p>
+
+  <div class="card taped">
+    <p class="bench-label">原型领属关系的三个条件 (1)——点一条看它的推论。</p>
+    <div class="btn-row" id="protoBtns">
+      <button class="btn" data-pr="a">a · 领有者</button>
+      <button class="btn" data-pr="b">b · 被领有者</button>
+      <button class="btn" data-pr="c1">c1 · 支配控制</button>
+      <button class="btn" data-pr="c2">c2 · 独占不共有</button>
+    </div>
+    <div class="reveal" id="protoBox" hidden><p id="protoTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">根据上述标准，像“我的脑袋｜张三的钢笔”之类都是最原型的领属构造。由这些标准可推出原型领属构造的一般性特点：原型的 p₁ 和 p₂ 多是<strong>有指的</strong>，其中 p₁ 常是定指的，更原型的是单指的，常由只能表单指的代词或专有名词表达；由 c2) 可推知，原型的 p₂ 本身应为<strong>类指的</strong>，在语境中它自然常表单指，但其单指并非直接实现的，而是通过从类指定下的类中挑出一个的方式来实现的，故它一般由普通名词表达——试比较“张三（单指名词）的儿子（类指名词）｜？张三的小宝（单指名词）”<button type="button" class="cite" data-cite="refGeneric" aria-label="查看出处"></button>。</p>
+
+  <p class="point">通名原本表成类的事物，对它的限定可以从两个方向进行：一是将其指类的意义缩小到指原来的类中的一个<strong>成员</strong>，一是将其意义缩小到指原来的类中的一个<strong>次类</strong>。原型的领属定语和原型的属性定语正分别是从这两个方向去限定中心语的。这一区别从另一个角度很好地说明了原型的领属定语不能隐去 de 的原因：DN 本质上是类名，D 为规约的分类指标，而原型的领属定语的限定作用是将中心语的所指确定为一个例而不是一个类，它在本质上和类指不相配。而且，一般来说物体很少会仅仅因其领有者不同的缘故而产生出不同的类别，故领有者也很难成为物体的规约分类指标<button type="button" class="cite" data-cite="whyNoDe" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">汉语“D de N”的两种限定——点一类看 D 扮演的角色。</p>
+    <div class="btn-row" id="defBtns">
+      <button class="btn" data-df="class">类指限定</button>
+      <button class="btn" data-df="indiv">单指限定</button>
+    </div>
+    <div class="reveal" id="defBox" hidden><p id="defTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">不过，我们时而也可以见到根据领属关系来区分类别的情况。实际上，从原型的领属构造到原型的属性构造可看作一个连续统——领属构造的 N₁ 部分及整个构造越是带非单指意义，它偏离原型的程度就越高，离属性结构就越近，隐去 de 的能力就越大。下面几节就沿着这个连续统逐段检查。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：身体部位领属 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>名词定语（一）：身体部位</h2>
+  </div>
+  <p class="point">先撇开人称代词作定语的麻烦情况，只看名词作定语的领属构造。下面三组例子里的 p₁ 和 p₂ 都是生物个体与其身体部位的关系<button type="button" class="cite" data-cite="bodyEx" aria-label="查看出处"></button>：(1) 中的 de 一定要出现，(3) 中的 de 可以隐去。其隐现条件可从这三组例子形成的三类对立中看出来。</p>
+
+  <div class="card">
+    <p class="bench-label">身体部位领属的三组例子<button type="button" class="cite" data-cite="bodyEx" aria-label="查看出处"></button></p>
+    <table class="tbl">
+      <thead><tr><th class="l" style="width:12%">组</th><th class="l" style="width:20%">p₁ 的指称</th><th class="l">例子</th><th class="l" style="width:22%">de 的隐现</th></tr></thead>
+      <tbody>
+        <tr><td class="l">(1)</td><td class="l">专名 · 只能单指</td><td class="l">张三的鼻子｜李四的脑袋｜老刘的耳朵｜小王的眼睛｜铁蛋儿的屁股｜黛玉的眼泪</td><td class="l hi">必须出现</td></tr>
+        <tr><td class="l">(2a)</td><td class="l">通名 · 可类指</td><td class="l">洋人的鼻子｜孩子的脑袋｜聋子的耳朵｜姑娘的眼睛｜孩子的屁股｜女人的眼泪</td><td class="l lo">必须出现</td></tr>
+        <tr><td class="l">(2b)</td><td class="l">通名 · 可类指</td><td class="l">狗的鼻子｜老鹰的翅膀｜狼的牙齿｜山羊的犄角｜狗熊的爪子｜松树的根｜柳树的叶子</td><td class="l lo">必须出现</td></tr>
+        <tr><td class="l">(3)</td><td class="l">通名 · 类指甚至无指</td><td class="l">牛（的）鼻子｜猪（的）耳朵｜金鱼（的）眼睛｜乌龟（的）壳｜鸡蛋（的）黄儿｜花生（的）壳｜椰子（的）壳</td><td class="l hi">可以隐去</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.85rem;color:var(--ink-faint)">“hi”列为各组的形式特点；(3) 中不带 de 的不少形式可看作复合词，如“鸡肉｜羊皮｜牛奶｜虎骨”。</p>
+  </div>
+
+  <p class="point">第一种对立是 (1) 与 (2)(3) 在<strong>能否类指</strong>方面的对立：(1) 中的 N₁ 是只能单指的专名，整个结构也只能单指；(2)(3) 中的 N₂ 都是能够类指的通名，整个结构也可用于类指。这就迫使我们对“D de N”的限定关系作出修正——汉语里用“D de N”形式表达的限定关系其实分为“类指限定”和“单指限定”两种。当 D 是只能表单指的专名时，其作用是单指限定，或说是对单一指称的“确认”，即在中心语所代表的类中确认出一个特定的例来作为指示的对象，我们可以把这种 D 称为<strong>“确认指标”</strong>：“鼻子”自然是一类东西，但“张三的鼻子”不是鼻子的一个次类，而是某个特定的鼻子，它是通过“张三”这个指标而得以确认和专指的<button type="button" class="cite" data-cite="twoLimit" aria-label="查看出处"></button>。</p>
+
+  <p class="point">第二种对立是 (3) 中带 de 和不带 de 的形式的对立。带 de 的形式仍可有接近原型的领属意义（如“牛的鼻子在流血”）；不带 de 的形式中的 N₁ 则多表类指，有时甚至是无指的（如“我喜欢吃猪耳朵”中的“猪”）。这时的 N₁ 与其说是 N₂ 的领属者，不如说更像其一种分类的属性，某些形式还产生了特别的意义，如“金鱼眼睛｜鳄鱼眼泪”——这里的 N₁ 就完全应该看成一种属性了。换言之，(3) 中不带 de 的形式大都是固定的类名。这种所谓的领属构造离领属的原型非常远：在“张三的鼻子”和“大鼻子”之间，“牛鼻子”显然更接近后者<button type="button" class="cite" data-cite="attributive" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">同样能表类指的 (2) 和 (3) 为何有别？——点一个部位，看认知显著性如何决定 de 的隐去<button type="button" class="cite" data-cite="salience" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="tailBtns">
+      <button class="btn" data-tl="tail">尾巴 · 可自由组合</button>
+      <button class="btn" data-tl="nose">鼻子 · 限制较多</button>
+    </div>
+    <div class="reveal" id="tailBox" hidden><p id="tailTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>为什么“牛鼻子、象鼻子”能说，其他动物的鼻子要带 de（折叠细节）</summary>
+    <p>决定 de 字隐现的原则和前面几节所谈的一样，即作为分类指标的 D 所分出的是否为汉语里规约的类；哪些类可以成为规约类，大多还是与互动认知模式有关。拿动物的身体部位为例，其中可以为人所食、用者，如“肉”和“皮”，与动物名构成 DN 的自由度较高，如“猪肉｜牛肉｜羊肉｜鸡肉｜牛皮｜羊皮｜狐狸皮”，但不能用或不常用的“皮”则多半要带 de，如“老鼠的皮”。至于不能食、用者，带 de 与否也多半决定于认知上显著性的高低：尾巴在人们感知动物的整体轮廓时显著性更高，故能相当自由地与动物名构成 DN（“马／牛／猪／狗／猫／老鼠／老虎／兔子／狐狸尾巴”）；鼻子在感知上不太显著，故有不少限制，其中只有“牛”和“象”能不带 de 修饰“鼻子”——牛鼻子在与人的互动关系上最显著，因为它是人们用绳子贯穿其中用以拉拽的惟一的鼻子；象鼻子在形状上最显著，因为任何其他动物的鼻子都没有它长<button type="button" class="cite" data-cite="salience" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">综上所述，p₂ 为身体部位词的领属结构里，当 p₁ 为只能表单指的专名时，de 一定不能隐去；当 p₁ 为可表类指的通名时，能隐去 de 的仅限于 p₁ 可充任规约分类指标的情况。能隐去 de 的似乎以 p₁ 指非人生物的为多——其实真正的限制并不在此，而在于指人名词中才有绝对单指的专名，我们不会用专名指称作为个体的动植物（宠物例外）。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 原型与两类限定</button>
+    <button class="btn" data-jump="s3">下一场：人际与物品 →</button>
+  </div>
+</section>
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>名词定语（二）：人际、物品与抽象</h2>
+  </div>
+  <p class="point">上面的观察在其他类型的领属构造里也可以得到证实。下面的例子里 p₁ 和 p₂ 都指人，其间的关系都是某种人际关系，包括 p₂ 为亲属词的情况<button type="button" class="cite" data-cite="kinEx" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">人际关系领属的三组例子——点一组看 de 隐现的条件。</p>
+    <div class="btn-row" id="kinBtns">
+      <button class="btn" data-kn="4">(4) 专名</button>
+      <button class="btn" data-kn="5">(5) 通名 · 非规约类</button>
+      <button class="btn" data-kn="6">(6) 通名 · 规约类</button>
+    </div>
+    <div class="reveal" id="kinBox" hidden><p id="kinTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">(4) 里的 p₁ 为专名，作用是单指限定，自然不能去掉 de。(5) 里的 p₁ 为通名，它既可有单指的用法，也可有类指的用法；在表类指时，整个构造所代表的并不被说汉语的人看成一个规约的类（如汉语里没有一类人可固定地贴上“邻居的女儿”这样的标签）。相比之下，(6) 里的形式所代表的都是汉语里规约的类（如我们可以给某类人贴上“干部（的）子女”的标签）。这些形式即使是带 de 的时候，其中的 p₁ 及整个结构也是以类指为常，甚至是无指的；<strong>不带 de 时，其中的 p₁ 及整个结构一定是类指或无指的</strong>，它构成一个规约的类名，可作为某类人的标签，而其中 p₁ 的领属者意味非常弱，而带有属性的意味<button type="button" class="cite" data-cite="kinEx" aria-label="查看出处"></button>。</p>
+
+  <p class="point">再看 p₂ 为具体物品的情况。(7) 里的 p₁ 既有专名也有通名，(8) 里的都是通名或集合名词。表单个领属者的专名自然要带 de，同样，通名单指时（如“学生／研究生的论文已经交了”）和专名一样是不能省 de 的；通名类指时，要看能否定义出规约的类——显然 (8) 里的形式能代表规约的类，如“研究生论文”是论文的一种规约类，但我们没有“学生论文”这种规约类<button type="button" class="cite" data-cite="objEx" aria-label="查看出处"></button>。p₂ 为抽象的须有物时，我们也能看到类似的现象：(9) 和 (10) 的对立非常清楚。</p>
+
+  <div class="card taped">
+    <p class="bench-label">物品与抽象物——点一组看例子的对立。</p>
+    <div class="btn-row" id="objBtns">
+      <button class="btn" data-ob="7">(7) 具体物品 · 专名</button>
+      <button class="btn" data-ob="8">(8) 具体物品 · 规约类</button>
+      <button class="btn" data-ob="9">(9) 抽象物 · 专名</button>
+      <button class="btn" data-ob="10">(10) 抽象物 · 规约类</button>
+    </div>
+    <div class="reveal" id="objBox" hidden><p id="objTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">实际上，单指的个体专名和抽象名词的领属组合大多都必须带 de，例如“张三的气质／脾气／心情／地位／观点／信仰／印象／经验／名声／胆量／感情／愿望／本事”。(1)(4)(7)(9) 等几组例子都是较为原型的领属构造，必须带 de；其他各组例子都在不同程度上偏离原型，它们只要满足“p₁ 可为 p₂ 分出规约的类”的条件，便有隐去 de 的能力。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 身体部位领属</button>
+    <button class="btn" data-jump="s4">下一场：归属与同位 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>归属、同位结构与“规约的类名”</h2>
+  </div>
+  <p class="point">偏离领属关系原型而能隐去 de 的，还有其他一些更为复杂的情况。(11) 里的 p₁ 和 p₂ 都是可类指的通名，其中的 p₂ 均表人的身份，p₁ 则表其归属。在此 p₁ 都可作为 p₂ 的规约分类指标——学生可根据其系属分出规约的类，故有“中文系／商科／法学院学生”等形式；军官可据其所属军种分为“陆军／空军／海军军官”等，故其中的 de 可以隐去是毫不足怪的。它们带 de 的时候领属意味更明显（其中的 p₁ 和 p₂ 在实际话语里都常用于单指、定指），而不带 de 的时候领属意味让位给属性意味（其中的 p₁ 和 p₂ 常常是无指的，整个结构仅表某类身份）<button type="button" class="cite" data-cite="belongEx" aria-label="查看出处"></button>。</p>
+
+  <div class="card">
+    <p class="bench-label">归属类领属举例<button type="button" class="cite" data-cite="belongEx" aria-label="查看出处"></button></p>
+    <p style="margin:0">（11）中文系（的）学生｜陆军（的）军官｜大学（的）教师｜邮局（的）职工｜工会（的）会员｜语文组（的）教员｜教研室（的）主任｜总统府（的）顾问｜委员会（的）成员｜宾馆（的）服务员｜车间（的）负责人</p>
+    <p style="margin:.5em 0 0">（12）上海（的）居民｜北大（的）学生｜北大（的）校长｜英国（的）女王｜美国（的）总统｜137 师（的）师长</p>
+  </div>
+
+  <p class="point">值得注意的是，(12) 里的 p₁ 都是单指的专名，其中有些例子整个结构亦表单指，如“英国女王”，而其中的 de 可以隐去，这似乎与前面的结论相左。仔细观察，这类形式在本质上并不与我们的归纳相冲突。前面提到隐去 de 的条件是“p₁ 可为 p₂ 分出规约的类”，似乎决定性的因素只在 p₁；其实，<strong>更为关键的因素在于 p₁ 和 p₂ 组合而成的整体是否具有规约的别类性</strong>。当 p₂ 的前面加上了修饰语 p₁，隐去 de 的要求便是这一结构体同样能够指称某种规约的类。一般来说，若 p₁ 也是可表类的通名时，满足这一要求的可能性比 p₁ 为专名时要大得多，如“中文系（的）学生”可规约地指称一类学生，而“老张的学生”则不能。不过，后者不能隐去 de，问题不出在 p₁ 是专名上，而出在“老张”这个专名不能使整个结构成为规约类之上——把它换为同样是专名的“北大”，由于学生可用其所属学校或科系作规约分类指标，我们就有了一个规约的“北大（的）学生”这个类<button type="button" class="cite" data-cite="wholeClass" aria-label="查看出处"></button>。</p>
+
+  <p class="point">“北大学生”这类形式在有指的时候通常表类指，若要表单指须加上“一个｜那个”等限定语；而“美国总统”之类形式一般表单指，不能说“？一个／那个美国总统”。但后一种形式毕竟不是专名，它其实仍带有规约的别类性——它表单指的方式是将其实际所指分派入“美国总统”这个规约类中去，即给他贴上“美国总统”的规约的身份标签。这表现在“美国总统”和“北大学生”一样，都能带上一个专名形成同位结构。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两类同位结构 (13)(14)——点一组看前项是“分类标签”还是“确认标签”。</p>
+    <div class="btn-row" id="appBtns">
+      <button class="btn" data-ap="13">(13) 规约分类标签</button>
+      <button class="btn" data-ap="14">(14) 确认标签</button>
+    </div>
+    <div class="reveal" id="appBox" hidden><p id="appTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">上面的例子说明 p₁ 为单指的专名时所形成的领属构造也有可能成为规约的类名：表 p₁ 的专名作为 p₂ 的确认指标，对 p₂ 进行单指限定，这种限定的方式是把所指称的单个对象看作由 p₁ 和 p₂ 结合起来定义出的规约类的一个例。当 p₂ 为非指人名词时也有类似的情况——“印度音乐”是音乐的一种，“庄子哲学”也是哲学的一种；不过“爱因斯坦相对论”不好说成是相对论的一种，我们只能勉强说它是物理理论的一种，名叫相对论，由其创始人爱因斯坦充任其确认指标。类似的例子还有“北大（的）西门｜颐和园（的）北门｜故宫（的）正门”之类的形式，其中 de 都可隐去，它们似乎也不能说是“西门｜北门｜正门”的一种，而是特定的某个门<button type="button" class="cite" data-cite="nonEntity" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>由单指形式定义的构造如何直接进行规约的单指（折叠细节）</summary>
+    <p>这些例子说明由单指形式定义出来的构造似乎也可以直接进行规约的单指，而无需首先构成类名，再以从中挑出一个例的方式去单指。上面谈到单个的通名反映的是我们对世界万物所作出的规约的分类，其实我们对世界的指称还有另一种方式，即用单个的专名对单个特定事物作出规约的确认。既然如此，名词性的 DN 结构既有分类式的（类似通名）也有确认式的（类似专名），这也就不难理解了。换句话说，“北大西门”之为一个可用名称，犹如一个专名；而“印度音乐”之为一个类名，犹如一个通名。</p>
+  </details>
+
+  <p class="scene-foot">从“干部子女”到“北大西门”，能隐去 de 的领属构造全都指向同一个条件：整个结构体能否指称一个规约的类（或作出规约的确认）。领属者能否成为分类指标，是表象；结构体有无规约的别类性，才是关键。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 人际与物品</button>
+    <button class="btn" data-jump="s5">下一场：时空定位 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>另一类特殊形式：空间与时间定位</h2>
+  </div>
+  <p class="point">现在看另一类与原型的领属构造相距甚远的特殊形式<button type="button" class="cite" data-cite="spaceEx" aria-label="查看出处"></button>：</p>
+
+  <div class="card">
+    <p class="bench-label">空间定位与时间定位举例<button type="button" class="cite" data-cite="spaceEx" aria-label="查看出处"></button><button type="button" class="cite" data-cite="timeEx" aria-label="查看出处"></button></p>
+    <p style="margin:0">（16）桌子（的）上面｜院子（的）中间｜盒子（的）里面｜村子（的）左边｜广场（的）北边｜讲台（的）前面｜学校（的）四周｜北京（的）南边｜张三（的）后边｜弟弟（的）脸上｜主任（的）手里｜孩子（的）身上｜老师（的）跟前</p>
+    <p style="margin:.5em 0 0">（21）昨天（的）上午｜明天（的）晚上｜星期天（的）白天｜明年（的）春季｜去年（的）春节｜90 年（的）2 月｜95 年（的）年底｜12 月（的）31 号｜19 世纪（的）上半叶｜明朝（的）末年</p>
+  </div>
+
+  <p class="point">上面例子里的 de 都可以不出现，而且以不出现为常。其中的 p₂ 及整个结构并不代表某种规约的类，而 p₁ 既非分类指标，亦非赖以确指某个特定物体的确认指标——“上面”并不代表一类东西，“桌子（的）上面”并不是“上面”的一种，“桌子”也不是帮助确定出某个特定的“上面”，故此处隐去 de 的条件似乎与前面所归纳的完全无关。不过，换个角度去认识，这里 de 之所以可隐去的理据在原则上和前面是一致的。</p>
+
+  <p class="point">首先，(16) 里的 p₂ 都是表示方位的形式，p₁ 或为专名或为定指的通名，整个结构在意义上都不是指称事物，而是确定另一个事物的空间位置，如“书在桌子（的）上面”是以“桌子”作为参照物确认“书”的空间位置。实体的空间位置只能确认，谈不上分类。若要将参照物明言出来，汉语里最常见的规约的方式是在形式上将它编码为修饰语，在意义上将它看作某个空间的领有者——正如 Hsieh（1989）和 Tai（1993）所指出的，<strong>用领属关系（或曰整体—部分关系）的图式来编码空间关系是汉语的一个很重要的特点</strong><button type="button" class="cite" data-cite="hsiehTai" aria-label="查看出处"></button>。空间并非实体，空间和实体之间自然不可能建立真正的领有关系；不过汉语可以用隐喻的方式让实体领有空间，也让空间领有实体。这种隐喻的理据来自原型的领属关系的以下显著特点<button type="button" class="cite" data-cite="metaphor" aria-label="查看出处"></button>：</p>
+
+  <div class="card">
+    <p class="bench-label">原型领属关系蕴含的两类关系 (17)</p>
+    <p style="margin:0">a) <strong>包含关系</strong>：某些领有物被领有者所包含，如“我的手｜我的想法”；b) <strong>邻接关系</strong>：某些领有物在物理上或心理上与其领有者相邻并有经常的接触，如“我的衣服｜我的哥哥”。空间和实体之间尽管不能相互领有，却可以有包含或邻接的关系，汉语里实体之间的相对空间关系正是以这两种关系为基础而编码成领属关系的。</p>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">两层隐喻的领属关系——点一组看实体如何隐喻地领有空间。</p>
+    <div class="btn-row" id="spaceBtns">
+      <button class="btn" data-sp="18">(18) 桌子的上头</button>
+      <button class="btn" data-sp="19">(19) 桌子的上头有两本书</button>
+      <button class="btn" data-sp="20">(20) 桌子上头的书</button>
+    </div>
+    <div class="reveal" id="spaceBox" hidden><p id="spaceTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">我们将需要定位的实体称作焦点物或 F₀（focal object），将据以定位的实体称为参照物或 R₀（reference object），将由方位词表达的空间形态记为 S，将领属关系记为 P。根据 Tai (1989) 的分析，“书在桌子的上头”这句话里的整体—部分关系首先存在于“桌子”和“上头”之间，然后存在于“桌子的上头”这个整体和“书”之间。本书将这种看法作进一步的引申，即把这三种东西的相互关系看作两层领属关系，即 <strong>[R₀ P S] P F₀</strong><button type="button" class="cite" data-cite="twoLayer" aria-label="查看出处"></button>。(18a) 可看作 (18b) 的隐喻，即实体“桌子”可以领有空间“上头”，这一隐喻的理据源于领属关系所蕴含的邻接关系；(19) 进一步显示空间也能以隐喻的方式领有实体，其理据在于领属关系所蕴含的包含关系；(20a) 显示汉语由空间位置确认实体可通过两层隐喻的领属关系来进行。</p>
+
+  <p class="point">弄清了这些关系之后，上面例子里 de 字隐现的理据也就清楚了。(16) 及 (18a) 里作为领有者的实体 R₀ 一定和它们所领有的空间 S 紧密邻接，这种邻接关系的紧密程度超过了任何一种其他关系。“张三的手／父亲／书”可以说和张三在概念上有程度不等的紧密关系，但我们还是可以设想肢体可以截断，父子关系可以脱离，财产可以转让（我们有“断了手的张三｜死了父亲的王冕｜丢了课本的学生”），不过我们无论如何也想不出“桌子”如何可以和它所邻接的“上头”这片空间脱离。正是这种认知上的紧密关系使得 (16) 及 (18a) 具有隐去 de 字的能力。话说回来，“张三的手／父亲／书”中的 de 不可隐去的原因不在于领有者和领有物的关系不够紧密，而在于隐去 de 的构造若表实体，这实体须构成一个规约的类。(16)(18a) 里的中心语不是实体而是空间，没有表类的限制，故底层的距离动因可以从另一个角度发挥作用<button type="button" class="cite" data-cite="spaceWhy" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">三条条件的次序——点一条看它在什么时候起作用。</p>
+    <div class="btn-row" id="condBtns">
+      <button class="btn" data-cd="class">类名条件</button>
+      <button class="btn" data-cd="indep">独立性条件</button>
+      <button class="btn" data-cd="alien">可让渡条件</button>
+    </div>
+    <div class="reveal" id="condBox" hidden><p id="condTxt" style="margin:0"></p></div>
+  </div>
+
+  <details>
+    <summary>时间定位与空间定位平行；形而上学的追问为何不是臆断（折叠细节）</summary>
+    <p>和 (16) 这类表空间定位的结构相似，汉语里表时间定位的结构也是可带 de，但以不带 de 为常。它们表示的都是对时间位置（时点）的确认。时间表达式也分为无需参照物的绝对时间词语（A 类）和依赖参照物的相对时间词语（B 类）两类；只有 B 类词能作中心语，这是因为 A 类的所指是确定的，正如汉语的专名一般不能作中心语。(21) 里 de 字可隐去的理据和表空间关系的 (16) 是平行的：结构里的前项代表整体，后项是其部分，二者之间的关系甚至比身体部位之间的关系还要紧密，因为我们完全不能从前项代表的整体中割舍掉后者代表的部分（？将晚上从今天割去？将春节从 95 年割去？）<button type="button" class="cite" data-cite="timeEx" aria-label="查看出处"></button>。</p>
+    <p>类似上面的分析很容易被指责为纯形而上的思辨（参见袁毓林 1994）。认知语法这种从意义出发解释形式的做法和主观臆断之间的重大区别在于，它的解释必须依据所谓“一再出现的形式上的相似性”（参见 Haiman 1985a）：其一，上述解释不是专为解释某个个案或汉语所特设的——形式距离和概念距离的对应还体现在汉语其他类型的构造里（Zhang 1995）；其二，类型学的证据显示，实体词和相对空间词紧密粘合的形式特征在其他语言里也“一再出现”：世界上几乎所有语言里的所属关系和空间定位关系的编码形式都有相通之处（Ultan 1978），Clark(1978) 对无亲属关系的 30 种语言的抽样考察充分显示了这一点。在那些从形式上区分可让渡与不可让渡领属关系的语言里，将空间定位关系用不可让渡形式编码的语言比率相当高<button type="button" class="cite" data-cite="typology" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">汉语定中结构能否隐去 de 首先并不取决于“可否让渡”这个条件。作用面最广、限制力最强的是“类名条件”，只是在类名条件无法作用时，其他条件才发生作用：当修饰关系表对实体的个体确认时，“独立性条件”决定原型的领属构造一般应带 de；当修饰关系表对具体时空的确认时，“可让渡条件”才浮现出来，决定时空定位构造可不带 de。换言之，上述三种条件的作用是有次序的。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 归属与同位</button>
+    <button class="btn" data-jump="s6">下一场：代词定语 →</button>
+  </div>
+</section>
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>代词定语（一）：指示、疑问与直指</h2>
+  </div>
+  <p class="point">上面讨论的都是定语为名词的情况，当定语为代词时，前面的结论大多仍能成立，例外似乎只有第 1 节便提到的“我（的）哥哥”这一类。在回答这两个关键问题之前，让我们先看指示代词和疑问代词（包括指量和疑量构造）作定语的情况。它们虽多不构成领属结构，但它们在和中心语结合的紧密程度上的区别可以给我们很大的启发——它们在带不带 de 上的表现完全符合上文的解释<button type="button" class="cite" data-cite="demEx" aria-label="查看出处"></button>：</p>
+
+  <div class="card taped">
+    <p class="bench-label">指示与疑问代词作定语——点一组看 de 的隐现。</p>
+    <div class="btn-row" id="demBtns">
+      <button class="btn" data-dm="22">(22) 必须带 de</button>
+      <button class="btn" data-dm="23">(23) 一般不带 de</button>
+    </div>
+    <div class="reveal" id="demBox" hidden><p id="demTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">(22) 一定要带 de，其理据十分清楚：“谁”作定语表原型的领属者，自然要带 de；“这样｜怎么样”等作定语表实体的情状，和形容词复杂形式一样也须带 de；“这里｜那儿”等作定语是以空间位置关系限定实体，上节说过，它们因类名限制的约束而必须带 de。(23) 一般都不能带 de，其中有些可带 de，但带 de 之后已非原意，比较“什么味儿｜什么的味儿？｜哪个孩子？｜哪个的孩子？”——其中不带 de 者表指示，带 de 者都表领属（朱德熙 1982）。“什么”作定语表实体的固定属性，和问情状的“什么样”相对立，自然不带 de。至于“这／那（哪）”，似乎还没有人问过表指示的这类代词为什么不带 de，大概觉得这是纯句法的限制，但我们相信其中一定有某种理据，因为所有已知语言里的这类指示成分和实体词的结合都相当紧密<button type="button" class="cite" data-cite="deictic" aria-label="查看出处"></button>。</p>
+
+  <p class="point">其中的理据与<strong>直指（deictic reference）的确定性</strong>有关。我们把能确定地指称某特定所指对象的词语称作有定指称语。汉语里的单个体词能作确定指称语的有以下几种：在语境中定指的类名（“老师来了”）、专名（“张三是我们的老师”）、人称代词和指示代词（指量形式）。若我们关心的不是某个形式能否固定地称呼某个实体，而是它能否从一群实体中确实无误地辨认出某个实体，则人称代词和指示代词的指称确定性甚至要高于专名——试比较对问题“写这篇文章的是谁？”的两类回答：“是张三”和“是我／你／他／这位／那位”。用“张三”指称时，听者能否辨认出所指的人，有赖于他是否知道张三是谁；用人称／指示代词指称时，听者无需依赖这种预先的知识，代词形式在当时的语境中可直接指示所指。专名在指称上的这种“非直指”“非亲知”的性质使得罗素认为它们不是真正的专名，而是有定摹状词的伪装形式或缩写；而真正的专名（他称为“逻辑专名”）应是“这”和“那”之类的成分，它们没有任何描述功能，只有指示功能<button type="button" class="cite" data-cite="russell" aria-label="查看出处"></button>。</p>
+
+  <p class="point">现在再看汉语里作确定指称语的定中构造，它们即是所谓有定摹状词，其中的定语可看作帮助确定中心语名词所指的确认指标。它们可分为两大类：以指示词作定语的（如“我的哥哥｜这个学生｜他的书”）和以非指示词作定语的（如“张三的哥哥｜李四的学生｜老师的书”）。由于指示词和非指示词相比在表当前指称方面具有更强的确定性，故以前者作为确认指标（即座标）而指认出的实体的指称确定性相应也会更高，即“这个学生”比“李四的学生”的当前指称更确定。</p>
+
+  <div class="card taped">
+    <p class="bench-label">“概念距离”的两种理解——点一类看距离藏在哪两者之间。</p>
+    <div class="btn-row" id="distBtns">
+      <button class="btn" data-dt="class">类指的 D(de)N</button>
+      <button class="btn" data-dt="indiv">单指的 D(de)N</button>
+    </div>
+    <div class="reveal" id="distBox" hidden><p id="distTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">这样，我们就可以说，汉语里确认所指的定中结构可隐去 de 的语义条件便是：定语必须是与认知主体具有规约性的密切概念关系的确认指标。显然，和主体有“规约性的密切概念关系”的正是以主体作为中心的指标，即表自我（ego）及由自我推导出的“我｜你｜他｜这｜那”等。而表达两种关系的定中结构（即摹状词）越靠近原型，隐去 de 的可能性就越大——“木头桌子”是以“桌子”为原型；而“这个人”是以“张三”为原型。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 时空定位</button>
+    <button class="btn" data-jump="s7">下一场：PdN 与 PN →</button>
+  </div>
+</section>
+
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>PdN 与 PN：两类迥然有别的形式</h2>
+  </div>
+  <p class="point">现在再看表确指的“我（的）哥哥”这类结构，我们发现其中 de 字不必出现的理据和上面一样，也是距离象似动因的作用。我们把“我的哥哥”之类结构记为 PdN，把“我哥哥”之类记为 PN<button type="button" class="cite" data-cite="pnNature" aria-label="查看出处"></button>。一般的说法是：带 de 不带 de 都表领属关系，不带 de 的结构中 de 字是被“省略”了；若带上 de，便是特别强调领属关系。我们不同意这种说法，认为“我的哥哥”和“我哥哥”是在构造和语义上<strong>迥然有别</strong>的两类形式。</p>
+
+  <div class="card taped">
+    <p class="bench-label">PN 能出现的三类中心语——点一类看它的结构与语义。</p>
+    <div class="btn-row" id="pnBtns">
+      <button class="btn" data-pn="24">(24) 亲属词</button>
+      <button class="btn" data-pn="25">(25) 社会关系词</button>
+      <button class="btn" data-pn="26">(26) 社会机构</button>
+    </div>
+    <div class="reveal" id="pnBox" hidden><p id="pnTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">在构造上，PdN 是代词带 de 作修饰语；PN 则是用代词直接修饰名词，中间并没有一个省略 de 的过程。这一点非常清楚地体现在 (26) 里，其中的形式多数根本就不能插入 de（如没有“我们的所｜你们的组”的说法），其中某些 N 甚至是黏着的（如“院｜室”等），这说明 PN 构造甚至可以看作复合词。在意义上，虽然二者在底层的格关系上都可以说是表领属关系，但这种底层的关系只是在 PdN 结构中才浮现为较表层的领属语义关系，而 <strong>PN 结构的表层语义关系是指别，而非领属</strong>——“我哥哥”类似“这个人”，其中“我”的表层语义脚色不是领有者，而是类似“这／那”的指别者，整个结构是在一个关系的框架中（“哥哥”代表某种亲属关系），用“我”作为确认指标，将所指确定为某个单称的实体。和“这／那”一样，“我”在此起的是一种定位确指的作用，只不过“这／那”是通过空间关系进行定位，“我”则是通过人际关系进行定位。由于“这／那”和“我”都是指示词，它们进行的定位都是当前的、直指的，故“我哥哥”不带 de 的理据和“这个人”一样<button type="button" class="cite" data-cite="pnNature" aria-label="查看出处"></button>。</p>
+
+  <p class="point">P 在 PN 构造里的指别作用在 (26) 里体现得更加明确：“我们的学校”是说明领属关系，它可回答“谁的学校？”；“我们学校”是用“我们”来确定“学校”的所指，它不能回答“谁的学校？”，只能回答“哪个学校？”。PdN 和 PN 的这种语义差别表现在多个方面，并且还可以得到形式上的验证。</p>
+
+  <div class="card taped">
+    <p class="bench-label">指称功能对比 (27)–(32)——点一组看复数谓语如何区分两类结构。</p>
+    <div class="btn-row" id="numBtns">
+      <button class="btn" data-nm="a">(a) 我的妹妹都很聪明</button>
+      <button class="btn" data-nm="b">(b) ?我妹妹都很聪明</button>
+      <button class="btn" data-nm="c">(c) 我妹妹很聪明</button>
+    </div>
+    <div class="reveal" id="numBox" hidden><p id="numTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">PdN 和 PN 在指称功能上的区别与通名和专名的区别是完全平行的：PdN 可以有指，也可以无指（如“谁也不敢做他的老师”）；在有指时既可表单数意义也可表复数意义。而 <strong>PN 一定是有指的，且只能表确定的单数指称</strong>——这说明以组合形式构造起来的 PdN 结构的限定语虽可缩小中心语的指称范围，却不能改变其指称能力；而在以粘合形式构造起来的 PN 结构中，粘合的 P 作为显示的确认指标，可以将整个结构的所指绝对地限定为某个单个实体。PN 结构在指称方面类似表单指的专名，我们可以借用罗素的概念，称它们为“逻辑专名”，或反罗素之道而称之为“伪装的、扩展的专名”——它们披上了摹状词的伪装，但在指称的实质上相当于专名<button type="button" class="cite" data-cite="logicName" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>“他爷爷实际上是他的外公”：一组巧妙的思想实验（折叠细节）</summary>
+    <p>在某些方言（如西南官话）里祖父和外公都可称为爷爷。若人们想弄清楚“他”称作爷爷的人和他的实质性的关系，则可以说出 (33a)“他爷爷实际上是他的外公”；若把其中的 de 调换一个位置，得到 (33b)“他的爷爷实际上是他外公”，这时“他”显然是误把祖父称为外公了。(33c)“？他爷爷实际上是他外公”不能成立，是因为“他”不会把某人既称为爷爷，又称为外公。(34)(35) 展示了同样的对立：“他爸爸其实是他的叔叔”可以说（“他爸爸”有指，“他的爸爸”无指，仅表某种关系），“？他爸爸其实不是他爸爸”则和“？张三其实不是张三”一样不能成立。再如 (36)“我（的）妹妹也是我的同学”可以说，而“？我妹妹也是我同学”犹如“？张三也是李四”<button type="button" class="cite" data-cite="logicName" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <div class="card taped">
+    <p class="bench-label">形式验证 (39)–(44)——点一组看专名同位结构与 PN 的平行。</p>
+    <div class="btn-row" id="formBtns">
+      <button class="btn" data-fm="39">(39)(40) 机构名词</button>
+      <button class="btn" data-fm="41">(41)(42) 复指同位</button>
+      <button class="btn" data-fm="43">(43)(44) “N 他”</button>
+    </div>
+    <div class="reveal" id="formBox" hidden><p id="formTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">PN 的单称特征还体现在：当领属构造的中心语为非单称亲属词时，de 字一定要出现，如可以说“他的父母｜我的姐妹｜你的儿女”，但不能说“？他父母｜？我姐妹｜？你儿女”。PN 结构类似专名的单称性质由此得到形式上的验证。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 代词定语</button>
+    <button class="btn" data-jump="s8">下一场：双向领属与共相 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景八 ============ -->
+<section id="s8" data-scene="8">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="八" aria-hidden="true"></span>
+    <h2>双向领属、理据与语言共性</h2>
+  </div>
+  <p class="point">本章剩下的最后一个、也是最为关键的一个问题是：为什么汉语里的领属构造只是当定语为代词、中心语为表（人际）社会关系和机构的词时才能不带 de？我们认为这不是由纯粹的句法限制决定的，其中必有认知理据，且其理据与 PN 结构本身的语义特性有关，前者可从后者推导而出<button type="button" class="cite" data-cite="pnWhy" aria-label="查看出处"></button>。</p>
+
+  <p class="point">PN 构造和其他的 DN 一样具有称谓性，不同的是，PN 构造在上下文中只能指称特定的单个实体，而其他多数 DN 构造的本质是类名。从这个角度看，前者类似专名，后者类似通名。不过 PN 构造既有类似专名的一面，也有类似通名的一面：第Ⅰ种指称方式是专名和罗素所说的“逻辑专名”的指称方式，即用“张三”“这”等形式去直接指称某个特定实体；第Ⅱ种是通名及一般的 DN 构造的指称方式，即直接指明的是一个类，然后靠上下文及语境蕴含地指称此类中的某个例；第Ⅲ种是指量定中结构（如“这个人”）和 PN 的指称方式，它们以从类中直接挑出一个例的方式来指称个体，故具有类的蕴含，但其对例的指称又是显性的<button type="button" class="cite" data-cite="threeWays" aria-label="查看出处"></button>。</p>
+
+  <p class="point">要探讨 PN 构成的理据，我们得分两步走：先设定定语为人称代词，看 N 的构成有什么理据——为什么“我哥哥｜我们学校”能说而“我手｜我桌子”不能说；然后设定中心语为人际关系词和表机构的名词，看定语的构成有何理据——为什么“我哥哥”能说而“张三哥哥”不能说。先回答头一个问题。<strong>有无专名可以看作反映在人的语言认知中的实体的个体特质明显与否的一个指标</strong>：人作为个体在世界万物中是最具有区别于其他同类实体的个体特质的，故每个人都有一个专名；由人构成的群体不少可看作规约的机构，它们有被独立地识别的必要，故也可有自己独特的专名。与此相反，多数其他事物（人的身体部位、一般的人工制品等）的个体特质对人没有普遍的、恒久的意义，没有必要用专名将它们的个体特质规约地固定下来。我们说“我哥哥｜我们学校”，因为“我哥哥”指张三，“我们学校”指北大；我们不说“我手｜我钢笔”，因为我的手或我的钢笔虽然一定有不同于其他人的手或钢笔的地方，但这类个体差异并没有重要或显著到能被人规约地意识到、并可以用独一无二的专名去指称的地步<button type="button" class="cite" data-cite="properName" aria-label="查看出处"></button>。</p>
+
+  <p class="point">不过，能用专名指称只是形成 PN 的一个充分条件而非必要条件。PN 构造的实质在于，它是在关系的座标上通过某个确认指标将某个特定对象的所指规约地固定下来。由于 PN 和其他类型的 DN 一样具有称谓性，可以作为一个规约名称使用，而 PN 又具有特指单称的语义性质，故它可以充任其特定所指物的专名的替代名称。这样，没有专名（或不可能加上一个专名）的实体便不具备拥有一个专名的替代名称的前提。有专名的实体若要取得这种替代名称，还须同时满足另外两个条件：<strong>一、它能否被贴上跟“你（们）／我（们）／他（们）”有关系的类的标签；二、在这个类里面，此个体的具体所指能否根据他与领有者的关系而规约地得以确定。</strong>我们会同意，张三与“你／我／他”在一起时更常见的脚色会是爸爸、丈夫、朋友、邻居等，而张三不大会以“她”的证婚人、舞伴或“他”的媒人的脚色时时与“她”“他”互动，故我们难以根据后者这样的脚色去给张三一个替代的名称——这正是“？她证婚人｜？他媒人｜？她舞伴”不大能成立的原因。</p>
+
+  <div class="card taped">
+    <p class="bench-label">双向领属 vs 单向领属——点一组看谁能领有谁。</p>
+    <div class="btn-row" id="bidirBtns">
+      <button class="btn" data-bd="46">(46)(47) 双向 · 可说</button>
+      <button class="btn" data-bd="48">(48)(49) 单向 · 不能说</button>
+      <button class="btn" data-bd="50">(50)–(52) 我们 N</button>
+    </div>
+    <div class="reveal" id="bidirBox" hidden><p id="bidirTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">像“北大｜社科院语言所｜首钢”这样的实体是有专名的，它们可以被贴上“学校｜研究所｜厂｜公司｜单位”之类的类标签，并与“你们／我们／他们”建立领属关系。进一步，由于“我们”等归属于这样的机构，因此“我们”与它们的互动关系多半是频繁的、较稳固的，故“我们”可以给这样的机构打上区别性的烙印，这些机构也可以给“我们”打上区别性的烙印——这就满足了形成 PN 的所有条件。这并不是说“北大”因为有了“我们”才成其为北大，而是说由于“我们”这些学生归属于一个叫作北大的学校，在话语中仅凭借着“我们”与这个学校的归属关系就可以确定地指称这个学校。我们可以把这种关系称之为<strong>“双向的领属关系”</strong>：它是一种可借以确定指称的对象的关系。而一般的领有关系则只能保证被领有者打上领有者的烙印，而领有者不会被打上被领有者的烙印，故只是单向的领属关系。由于双向领属关系体现在一个结构中，它代表了两种关系的所指的交集，因此在指称上比单一关系的所指要确定得多。这样，学生的口里便可以有“我们学校｜我们楼”的说法，没有“我们图书馆｜我们教室”的说法<button type="button" class="cite" data-cite="bidir" aria-label="查看出处"></button>。</p>
+
+  <p class="point">我们在这里所观察到的双向领属关系也可推广开来解释所有的 PN 形式的构成条件：“我的手｜脑袋｜钢笔”之所以不能隐去 de，正是因为不能满足这一条件——“手｜脑袋｜钢笔”只能被“我”领有而不能领有“我”；同样，“我（的）哥哥｜我（的）朋友｜我（的）老师”都蕴含了这样的双向领属关系：“张三是我的哥哥／朋友／老师”说明了我对张三的领有关系，这种关系同时意味着“我是张三的弟弟／朋友／学生”，即张三领有我。从距离象似性的角度看，具有双重领属关系的实体之间的距离会比只有单独一层关系的实体的距离更近。因此，距离象似动因在汉语的 PN 结构上有着相互联系的两方面的体现：第一，PN 所蕴含的双向领属关系是一种紧密的关系，它反映了两个实体之间更紧密的概念联系；第二，PN 结构中的 P 作为进行当前指认的确认指标，其中的 N 代表进行这种指认的座标，二者之间也有密切的概念关系。</p>
+
+  <p class="point">现在回答第二个问题：PN 结构中的定语为什么必须是人称代词，不能是指人的名词。即使其中的 N 是上面所说的人际关系词和表机构的名词，定语和中心语所指称的对象同样具有双向的领属关系，我们还是不能说“？张三哥哥｜？张三朋友｜？张三学校”。世界各语言中定语为代词的领属结构常常比定语为名词的结构结合得更紧密，这使我们相信其中必有某种理据——它决定于整个结构的单指性质及建立在“自我中心”的指称基础上的人称代词特有的指示性质。PN 结构在语义上指称的不是类，而是类似专名所指称的单个的特定实体；这种结构的后项是个类名，其本身的指称确定性相当低，这时若要使整个结构指称一个单一的对象，就有赖于其前项作出确定性很强的限定。专名指称的确定性固然很强，但它的确定性只表现为在某个实体和某个名称之间建立一种固定的、惟一的联系，而不是在说话人想指称的对象和实际的某个个体之间建立明确的联系——后一种指称的确定性只有指示词才具备。当前指示是以“我（ego）”作为中心的，“我”一定是特定的话语情景中最为确定的指称：设想“我”名叫张三，在某个言谈行为中“我”要提及自己的哥哥，若用“张三的哥哥”，听者要了解这一指称，需完成两个步骤；若用“我（的）哥哥”，听者无需经过第一个步骤就可直接理解整个构造的所指。从这个角度说，“我哥哥”和“这个人”一样是一种更为直接的指称方式<button type="button" class="cite" data-cite="egoCenter" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>Silverstein 层级与英语的旁证（折叠细节）</summary>
+    <p>Silverstein（1976）提出过一个著名的 NP 语义层级体系，它至下而上反映了 NP 在有生性、施事性、话题性、显著性等多个方面的强弱程度，如第 1 级是第 1 人称包括式代词，第 2 级是第 1 人称单数及排除式代词，以下依次是第 2 人称代词、第 3 人称代词、专名、亲属词……排在最后的是表抽象事物的名词。显然，这个层级也可看作“自我中心”的层级。Deane（1992）注意到，英语里的两种属格构造（领属词前置和领属者后置）的合格程度因表领有者的 NP 在上述层级上的位置而有所不同：前置形式的合格性依次递减（"my foot / his foot / its foot / Bill's foot / my uncle's foot / the man's foot / the dog's foot / the bicycle's handle / the house's roof / his honor's nature"），后置形式的合格性则依次递增。这有两点意义：第一，若从形式距离大小方面去看，领属前置的形式小于后置的形式，前置形式中代词形式的距离又小于其他 NP；而在 Silverstein 层级上越靠前的 NP，其前置形式就越可接受。第二，日耳曼语的前置所有格形式往往表确定的指称，后置形式则往往表不确定的指称（如德语的 Schiller's gedichte 和 einige gedichte Schiller's）。这说明，英语里领属结构的形式距离越小，其确指性越强，而处于自我中心层级最顶端的人称代词，其与中心语的形式距离最小——这正是距离象似动因在英语里的一个反映，它正好和汉语里的情形相互印证<button type="button" class="cite" data-cite="silverstein" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <details>
+    <summary>共相：Mende、Kusaie、Konkow、Tigak（折叠细节）</summary>
+    <p>近二十年来理论语言学界对语言普遍现象的研究显示，不少语言里不可让渡领属结构中的领属成分（p₁）都要求由人称代词形式充当，也有相当多语言和汉语一样，被领有成分（p₂）为人际／社会关系词的领属构造可采用语言距离较小的不可让渡形式，而 p₂ 为身体部位词时反而可采用距离较大的可让渡形式。Seiler（1983）注意到，在那些采用将 p₁ 和 p₂ 简单地排在一起、其间不用任何间隔成分的领属形式的语言里，表 p₁ 的最原型的成分是人称代词：西非的 Mende 语里不可让渡的领属构造是用 p₁ 和 p₂ 简单排列的方式形成的，其中 p₂ 为身体部位词、空间词和亲属词，而 p₁ 一定得是人称代词；大洋洲的 Kusaie 语里，不可让渡形式的 p₁ 是由代词后缀及名词加上黏附性的领属标志表达，可让渡形式里的 p₁ 则由独立的领属性量词表达；新几内亚的 Llava 语“我的头”为 pa'u-ku，“我的房子”为 nima inau。Ultan（1978）考察了 75 种语言的领属构造，也发现不少类似的情况。</p>
+    <p>再看 p₂ 的构成情况。本书第四章所引述的 Haiman (1985a) 的“不可让渡”等级序列的确需要修正——p₂ 为亲属（人际）关系名称的领属构造用不可让渡形式编码的可能性实际上远远高过含身体部位名称的构造。萨丕尔曾精辟地指出，“我的爸爸”和“我的手｜我的帽子”在本质上是不同的，前者只是代表我和另一个人的某种关系，不是真正的领有，后者才是实在的独占性的领有。他根据领属性代词的不同形式和不同名词的结合模式把美洲印第安语分为三类：所有的名词都是一类（如 Yana 语）、表人际（亲属）关系的名词和其他名词对立（如 Takelma 语）、身体部位词和亲属词是一类（如 Tunica 语）。在此我们可以看到，汉语和上述第 2 类语言有着惊人的相似之处——加州的 Konkow 语里的不可让渡领属形式中的 p₂ 全部为亲属词及其他几个人际关系词，比较“nik-nè（我母亲）”和“nik'i má（我的手）”。类似的远不止这些印第安语，还有大洋洲的 Tigak 语：当 p₁ 为代词而 p₂ 为亲属词时，采用的是结合最紧密的附缀形式（如“他兄弟”）；当 p₁ 为代词而 p₂ 为表实物的词时，则需要一个黏附在代词上的领属标记；当 p₁ 为名词时，则需要一个独立的领属标记，这是结合最松的一种形式<button type="button" class="cite" data-cite="typology2" aria-label="查看出处"></button>。这些语言和汉语既无亲缘关系又无地缘关系，它们在领属关系的表达方式上的一致性值得我们深思。</p>
+  </details>
+
+  <div class="card">
+    <p class="bench-label">本章总结：汉语复合名词假说 (Zhang 1996b)<button type="button" class="cite" data-cite="compound" aria-label="查看出处"></button></p>
+    <p style="margin:0">“汉语复合名词假说”：汉语里以名词为中心语的构造，若其修饰语是后面不带“的”的名词、区别词、形容词或动词，则这个构造是一个复合名词（nominal compound）。这个假说其实只是朱德熙(1982) 有关组合式偏正结构观念的扩展——朱先生曾明确指出这种偏正结构“功能相当于一个单个的名词，凡是单个的名词能出现的地方，它也能出现”；我们从认知的角度分析的结果是，它在意义上也相当于一个单个名词。定中组合可分为属性构造和领属构造两个大类，当它们不带 de 时，前者类似一个表类指的通名，后者类似一个表单指的专名。</p>
+  </div>
+
+  <details>
+    <summary>本章附注（折叠细节）</summary>
+    <p>① 当然，绝对的空间位置可不受此限制，如我们有“南方城市”，无“南边城市”，这是因为南方是一个固定的空间概念，南边则是相对的；有“左／右手”的说法，这是因为此处的左右是绝对的，即根据我们身体的中线定出的。</p>
+    <p>② 单数形式作定语只能出现在书面语里，如“我国｜我省｜我校”。例外只有一个，即当 N 为“家”时，口语里既可用单数形式，也可用复数形式作定语（“我家｜我们家”）。这大概也有语义上的理据：只有“家”是个体既能领有、也能归依的单位。含“家”的结构另一个例外之处是，名词也能和代词一样不带 de 作定语，如“张三家｜朋友家”，这大概也是同样的动因所促动的。</p>
+    <p>③ 这样的形式可以出现在句中，如“他父母不让他去”。正如朱德熙(1982) 指出的，很多单说的时候要用 de 字的定中结构，包含在句子里的时候都可以不用 de 字。本文的目的是要弄清单说的时候 de 字的隐现规律，故一般不考虑句中的情况。其实，定中结构用在句中，de 字到底在什么样的情况下倾向于出现或隐去同样是有动因的。Chappell &amp; Thompson (1992) 的文章找到了决定句中 de 字隐现的不少语义和语用规律。</p>
+  </details>
+
+  <p class="scene-foot">至此我们已圆满回答了第五章提出的问题。我们可以肯定地说，汉语领属结构中 de 字的隐现规律绝不是语言普遍现象的一个“令人困惑的例外”，相反，它是普遍的距离象似原则的一个“令人惊喜的证实”——它让我们了解到距离动因在不同语言的领属构造中的作用方式不会完全相同，也不仅仅体现为可让渡与不可让渡形式的区别。第八章将转向余论：多项定语的语序规律。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s7">← PdN 与 PN</button>
+    <button class="btn" data-jump="quiz">结尾自测 →</button>
+  </div>
+</section>
+<section id="quiz" data-scene="9">
+  <div class="scene-head"><span class="scene-num kai" data-n="测" aria-hidden="true"></span><h2>结尾自测</h2></div>
+  <div class="card"><p><strong>1.</strong> 本书认为最原型的领属语义关系是：</p><div class="btn-row" id="q1"><button class="btn" data-q="a">领有关系——p₁ 为有生物（通常是第一人称的自我），p₂ 为可感知的具体事物，p₁ 主动支配并独占 p₂</button><button class="btn" data-q="b">整体部分关系，如“松树的叶子”</button><button class="btn" data-q="c">时间—空间关系，如“今天的报纸”</button></div><p class="feedback" id="q1fb"></p></div>
+  <div class="card"><p><strong>2.</strong> “张三的鼻子”中的“张三”扮演的角色是：</p><div class="btn-row" id="q2"><button class="btn" data-q="a">确认指标——在“鼻子”所代表的类中确认出一个特定的例</button><button class="btn" data-q="b">分类指标——把鼻子分为“张三的”和“非张三的”两个规约类</button><button class="btn" data-q="c">属性定语——表示鼻子的某种属性</button></div><p class="feedback" id="q2fb"></p></div>
+  <div class="card"><p><strong>3.</strong> “牛鼻子”能说而“老鼠的皮”要带 de，背后的理据是：</p><div class="btn-row" id="q3"><button class="btn" data-q="a">前者是汉语里规约的类（牛鼻在互动中显著），后者所代表的类不够规约（老鼠皮不能用）</button><button class="btn" data-q="b">“牛”是单音节，“老鼠”是双音节</button><button class="btn" data-q="c">“牛鼻子”是词，“老鼠的皮”是短语，二者没有共同规律</button></div><p class="feedback" id="q3fb"></p></div>
+  <div class="card"><p><strong>4.</strong> “桌子（的）上面”可以隐去 de，本书的解释是：</p><div class="btn-row" id="q4"><button class="btn" data-q="a">实体与它所邻接的空间紧密到不可分离，且中心语是空间而非实体，不受类名条件约束；空间关系由领属图式隐喻编码</button><button class="btn" data-q="b">方位词是黏着语素，必须依附名词</button><button class="btn" data-q="c">这是口语中的随意省略</button></div><p class="feedback" id="q4fb"></p></div>
+  <div class="card"><p><strong>5.</strong> 决定汉语定中结构 de 字隐现的三条条件，其作用次序是：</p><div class="btn-row" id="q5"><button class="btn" data-q="a">类名条件最先，独立性条件次之，可让渡条件最后浮现</button><button class="btn" data-q="b">可让渡条件最先，类名条件最后</button><button class="btn" data-q="c">三条条件各自独立，没有次序</button></div><p class="feedback" id="q5fb"></p></div>
+  <div class="card"><p><strong>6.</strong> “我的哥哥”和“我哥哥”的本质区别在于：</p><div class="btn-row" id="q6"><button class="btn" data-q="a">PdN 表原型领属（可复数、可无指）；PN 表层语义是指别，只能表单称专指，类似“逻辑专名”</button><button class="btn" data-q="b">PN 是 PdN 省略 de 的形式，带 de 时只是更强调领属</button><button class="btn" data-q="c">二者毫无区别，可以自由互换</button></div><p class="feedback" id="q6fb"></p></div>
+  <div class="card"><p><strong>7.</strong> 为什么能说“我们学校”却不能说“我们图书馆”“我们教室”：</p><div class="btn-row" id="q7"><button class="btn" data-q="a">只有“学校”“楼”这类由人构成的机构才能与人建立双向领属关系；图书馆、教室只能被人领有而不能领有人</button><button class="btn" data-q="b">“图书馆”“教室”是双音节词</button><button class="btn" data-q="c">“我们图书馆”不合语法，没有理据可讲</button></div><p class="feedback" id="q7fb"></p></div>
+  <div class="card"><p><strong>8.</strong> 本章的最终结论是：</p><div class="btn-row" id="q8"><button class="btn" data-q="a">汉语领属结构中 de 的隐现不是语言普遍现象的“令人困惑的例外”，而是距离象似原则“令人惊喜的证实”；共相之中又有汉语的殊相</button><button class="btn" data-q="b">汉语是 Greenberg 第 (9) 条普遍特征的反例</button><button class="btn" data-q="c">汉语的 de 字隐现完全没有规律，只能用惯用法解释</button></div><p class="feedback" id="q8fb"></p></div>
+  <footer class="site"><p>材料来源：《认知语言学与汉语名词短语》第七章 OCR 转录稿；转录稿无页码，角标位置精确到节。页面仅供个人学习研究使用。</p><p>单文件 · 零外部依赖 · 视觉为内联 SVG/CSS 手绘示意。</p></footer>
+</section>
+</main>
+<div id="citePop" hidden><div class="cite-card"><button class="cc-close" id="citeClose" aria-label="关闭">×</button><div class="cc-loc" id="citeLoc"></div><div class="cc-quote" id="citeQuote"></div><div class="cc-zh" id="citeZh"></div><p class="cc-note">出处来自本章 OCR 转录稿；转录稿无页码，定位精确到节。</p></div></div>
+<button id="resumePill" hidden>继续阅读 <span id="resumeTxt"></span></button>
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{ch:"第七章",page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第七章"},
+  surprise:{page:"7.3",quote:"我们可以肯定地说，汉语领属结构中de字的隐现规律绝不是语言普遍现象的一个“令人困惑的例外”，相反，它是普遍的距离象似原则的一个“令人惊喜的证实”。",zh:"汉语领属结构 de 字隐现不是普遍现象的例外，而是距离象似原则的证实。"},
+  continuum:{page:"7.0",quote:"实际上，从原型的领属构造到原型的属性构造可看作一个连续统，领属构造的 N1 部分及整个构造越是带非单指意义，它偏离原型的程度就越高，离属性结构就越近，隐去de的能力就越大。",zh:"从原型领属到原型属性是一个连续统：越带非单指意义，越接近属性结构，隐去 de 的能力越大。"},
+  possDef:{page:"7.0",quote:"(1)a)领有者 p1 为有生物，通常是人，更为原型的是第一人称的自我(ego); b) 被领有者 p2 是可感知的、看得见的具体事物； c) p1 是主动的，p2 是被动的，这体现在：c1) p2 受到 p1 的支配和控制，c2) 领有关系是独占的，不与他人共有",zh:"原型领属关系三条件：领有者为有生物（原型为第一人称自我）、被领有者为可感知的具体事物、领有者主动支配且独占。"},
+  refGeneric:{page:"7.0",quote:"由 c2) 可推知，原型的 p2 本身应为类指的 (generic)，在语境中它自然常表单指，但其单指并非直接实现的，而是通过从类指定下的类中挑出一个的方式来实现的，故它一般由普通名词(common noun)表达，试比较“张三(单指名词)的儿子(类指名词)？张三的小宝(单指名词)”。",zh:"原型 p₂ 应作类指理解，其单指通过从类中挑出一个例来实现，故由普通名词表达。"},
+  whyNoDe:{page:"7.0",quote:"这一区别从另一个角度很好地说明了原型的领属定语不能隐去de的原因：前面说过，DN本质上是类名，D为规约的分类指标，而原型的领属定语的限定作用是将中心语的所指确定为一个例而不是一个类，它在本质上和类指不相配。",zh:"原型领属定语把所指确定为一个例而非一个类，与类指不相配，故不能隐去 de。"},
+  bodyEx:{page:"7.1.1",quote:"(1)张三的鼻子|李四的脑袋|老刘的耳朵|小王的眼睛|铁蛋儿的屁股|黛玉的眼泪 (2)a. 洋人的鼻子|孩子的脑袋|聋子的耳朵|姑娘的眼睛|孩子的屁股|女人的眼泪 b. 狗的鼻子|老鹰的翅膀|狼的牙齿|山羊的犄角|狗熊的爪子|松树的根|柳树的叶子 (3)牛(的)鼻子|象(的)鼻子|猪(的)脑袋|猪(的)耳朵|金鱼(的)眼睛|猴子(的)屁股|鳄鱼(的)眼泪|猫(的)尾巴|乌龟(的)壳|鸡蛋(的)黄儿|花生(的)壳",zh:"身体部位领属的三组例子：(1)(2) 的 de 必须出现，(3) 的 de 可以隐去。"},
+  twoLimit:{page:"7.1.1",quote:"汉语里用“DdeN”形式表达的限定关系其实可分为“类指限定”和“单指限定”两种。……而当D是只能表单指的专名时，其作用是单指限定，或说是对单一指称的“确认”(identification)，即在中心语所代表的类中确认出一个特定的例来作为指示的对象。我们可以把这种D称为“确认指标”。",zh:"D de N 分两类限定：类指限定（D 是分类指标）与单指限定（D 是确认指标）。"},
+  attributive:{page:"7.1.1",quote:"这时的 N1 与其说是 N2 的领属者，不如说更像其一种分类的属性，某些形式还产生了特别的意义，如“金鱼眼睛|鳄鱼眼泪”等，这里的 N1 就完全应该看成一种属性了。换言之，(3)中不带 de 的形式大都是固定的类名",zh:"(3) 中不带 de 的形式里 N₁ 更像属性而非领属者，整个形式是固定的类名。"},
+  salience:{page:"7.1.1",quote:"至于不能食、用者，带de与否也多半决定于认知上显著性的高低。拿“尾巴”和“鼻子”相比，前者在人们感知动物的整体轮廓时显著性更高，故能相当自由地与动物名构成DN……其中只有“牛”和“象”能不带de修饰“鼻子”",zh:"尾巴感知显著性高，可自由构成 DN；鼻子显著性低，只有牛、象例外。"},
+  kinEx:{page:"7.1.2",quote:"(4)张三的哥哥|宝钗的妈|王贵的媳妇儿|李四的亲戚|小王的导师|老刘的邻居|宋江的朋友 (5)孩子的老师|同学的同学|主任的儿子|爸爸的同事|邻居的女儿|朋友的太太|首长的秘书 (6)干部(的)子女|贵族(的)后裔|烈士(的)后代|军人(的)家属|博士生(的)导师|学生(的)家长",zh:"人际关系领属三组：(4) 专名须带 de；(5) 通名但非规约类，须带 de；(6) 规约类，de 可隐去。"},
+  objEx:{page:"7.1.3",quote:"(7) 李四的信 | 鲁迅的照片 | 学生的论文 | 张三的衣服 | 老师的收入 | 赵七的财产 | 老刘的手表 (8)名人(的)书信|明星(的)照片|研究生(的)论文|儿童(的)服装|职工(的)收入|国家(的)财产 (9)曹雪芹的成就|宝玉的性格|黛玉的形象|张三的利益|红楼梦的风格|水浒的情节 (10)个人(的)成就|人物(的)性格|人物(的)形象|群众(的)利益|作品(的)风格|故事(的)情节",zh:"具体物品与抽象物的领属：(7)(9) 专名须带 de；(8)(10) 规约类可隐去 de，如“研究生论文”是而“学生论文”非。"},
+  belongEx:{page:"7.1.4",quote:"(11) 中文系(的)学生 | 陆军(的)军官 | 大学(的)教师 | 邮局(的)职工 | 工会(的)会员 | 语文组(的)教员 | 教研室(的)主任 (12)上海(的)居民|北大(的)学生|北大(的)校长|英国(的)女王|美国(的)总统|137师(的)师长",zh:"归属类领属：p₁ 表 p₂ 的归属，可作规约分类指标，故 de 可隐去。"},
+  wholeClass:{page:"7.1.4",quote:"其实，更为关键的因素在于 p1 和 p2 组合而成的整体是否具有规约的别类性。……一般来说，若 p1 也是可表类的通名时，满足这一要求的可能性比 p1 为专名时要大得多，如“中文系（的）学生”可规约地指称一类学生，而“老张的学生”则不能。",zh:"关键在整体有无规约的别类性；“老张的学生”不能隐 de 不是因为 p₁ 是专名，而是整体不成规约类。"},
+  nonEntity:{page:"7.1.4",quote:"印度音乐是音乐的一种，庄子哲学也是哲学的一种。不过，爱因斯坦相对论不好说成是相对论的一种，我们只能勉强说它是物理理论的一种，名叫相对论，由其创始人爱因斯坦充任其确认指标。类似的例子还有“北大(的)西门(颐和园(的)北门(故宫(的)正门”",zh:"“爱因斯坦相对论”“北大西门”由单指形式直接作出规约确认，类似专名。"},
+  spaceEx:{page:"7.1.5",quote:"(16) 桌子（的）上面 | 院子（的）中间 | 盒子（的）里面 | 村子（的）左边 | 广场（的）北边 | 讲台（的）前面 | 学校（的）四周 | 北京（的）南边 | 张三（的）后边 | 弟弟（的）脸上 | 主任（的）手里 | 孩子（的）身上",zh:"空间定位构造中 de 以不出现为常，其理据与前面一致。"},
+  hsiehTai:{page:"7.1.5",quote:"正如Hsieh（1989）和Tai（1993）所指出的，用领属关系（或曰整体-部分关系）的图式来编码空间关系是汉语的一个很重要的特点。实体可以在物理—心理意义上领有另一个实体，而空间并非实体，空间和实体之间自然不可能建立真正的领有关系。不过我们认为，汉语可以用隐喻的方式让实体领有空间，也让空间领有实体。",zh:"汉语以领属图式隐喻编码空间关系：实体可领有空间，空间也可领有实体。"},
+  metaphor:{page:"7.1.5",quote:"(17) 原型的领属关系可蕴含下列两类关系: a) 包含关系, 即某些领有物被领有者所包含, 如 “我的手 | 我的想法”; b) 邻接关系, 即某些领有物在物理上或心理上与其领有者相邻并有经常的接触, 如 “我的衣服 | 我的哥哥”。",zh:"隐喻的理据：原型领属蕴含包含关系与邻接关系。"},
+  twoLayer:{page:"7.1.5",quote:"我们将这种看法作进一步的引申，即把这三种东西的相互关系看作两层领属关系，即 [R0 P S] P F0。",zh:"空间定位含两层隐喻领属关系：[参照物 P 空间] P 焦点物。"},
+  spaceWhy:{page:"7.1.5",quote:"(16)及(18a)里作为领有者的实体 R0 一定和它们所领有的空间S紧密邻接，这种邻接关系的紧密程度超过了任何一种其他关系。……“张三的手/父亲/书”中的de不可隐去的原因不在于领有者和领有物的关系不够紧密，而如前节所述，在于隐去de的构造若表实体，这实体须构成一个规约的类。",zh:"实体与邻接空间紧密到不可分离，且中心语是空间而非实体，不受类名限制，故可隐去 de。"},
+  timeEx:{page:"7.1.5",quote:"(21)昨天(的)上午|明天(的)晚上|星期天(的)白天|明年(的)春季|去年(的)春节|90年(的)2月|95年(的)年底|12月(的)31号|19世纪(的)上半叶|明朝(的)末年",zh:"时间定位构造 de 也以不出现为常，理据与空间定位平行：整体与部分不可割舍。"},
+  typology:{page:"7.1.5",quote:"世界上几乎所以语言里的所属关系和空间定位关系的编码形式都有相通之处(Ultan 1978)，这恐怕不是偶然的。Clark(1978)对无亲属关系的30种语言的抽样考察充分显示了这一点。……在那些从形式上区分可让渡(可分离)与不可让渡(不可分离)领属关系的语言里，将空间定位(spatial orientation)关系用不可让渡形式编码的语言比率相当高。",zh:"类型学证据：几乎所有语言的所属关系与空间定位编码形式相通；空间定位多用不可让渡形式编码。"},
+  demEx:{page:"7.2.1",quote:"(22)谁的哥哥|这样的人|怎么样的人|这里的书|那儿的情况|哪儿的人 (23) 这个学生 | 那家伙 | 这话 | 这些同学 | 这件事情 | 哪个同学 | 哪本书 | 什么人 | 什么东西 | 什么事",zh:"指示、疑问代词作定语：(22) 必须带 de，(23) 一般不带 de。"},
+  deictic:{page:"7.2.1",quote:"至于“这那(哪)”，似乎还没有人问过表指示的这类代词为什么不带de，大概觉得这是纯句法的限制，但我们相信其中一定有某种理据，因为所有已知语言里的这类指示成分和实体词的结合都相当紧密。",zh:"指示代词不带 de 有认知理据：所有已知语言里指示成分与实体词结合都相当紧密。"},
+  russell:{page:"7.2.1",quote:"专名在指称上的这种“非直指”“非亲知的性质使得罗素认为它们不是真正的专名，而是有定章状词的伪装形式或缩写(Russell 1956)，如“苏格拉底”实际上是“柏拉图的老师”“喝毒酒而死的哲学家”等摹状词的缩写；而真正的专名（他称为“逻辑专名 logically proper name”）应是“这”和“那”之类的成分，它们没有任何描述功能，只有指示功能",zh:"罗素：专名是摹状词的缩写；真正的专名是“这”“那”，只有指示功能。"},
+  pnNature:{page:"7.2.2",quote:"PN结构的表层语义关系是指别，而非领属。……“我哥哥”则类似“这个人”，其中“我”的表层语义脚色不是领有者，而是类似“这/那”的指别者，整个结构是在一个关系的框架中，用“我”作为确认指标，将所指确定为某个单称的实体。",zh:"PN 的表层语义是指别而非领属：“我哥哥”类似“这个人”。"},
+  logicName:{page:"7.2.2",quote:"PN 结构在指称方面类似表单指的专名，我们可以借用罗素的概念，称它们为“逻辑专名”，或反罗素之道而称之为“伪装的、扩展的专名”。它们披上了摹状词的伪装，但在指称的实质上相当于专名。",zh:"PN 是“逻辑专名”或“伪装的、扩展的专名”：披摹状词之伪装，实质相当于专名。"},
+  pnWhy:{page:"7.2.3",quote:"我们认为这不是由纯粹的句法限制决定的，其中必有认知理据，且其理据与 PN 结构本身的语义特性有关，前者可从后者推导而出。",zh:"PN 的构成限制可从 PN 的语义特性推导而出。"},
+  threeWays:{page:"7.2.3",quote:"第Ⅰ种是专名和罗素所说的“逻辑专名”的指称方式……第Ⅱ种是通名及一般的DN构造的指称方式……第Ⅲ种是指量定中结构（如“这个人”）和PN的指称方式，它们和专名的相同之处在于都是直接指称单个的实体，不同之处在于专名一般没有“类”的蕴含，而指量定中结构和PN结构则是以从类中直接挑出一个例的方式来指称个体。",zh:"指称单个实体的三种方式：直接指称（专名）、经类指称（通名）、从类中挑出例（指量结构与 PN）。"},
+  properName:{page:"7.2.3",quote:"我们说“我哥哥|我们学校”，因为“我哥哥”指张三，“我们学校”指北人；我们不说“我手|我钢笔”，因为我的手或我的钢笔虽然一定有不同于其他人的手或钢笔的地方，但这类个体差异并没有重要或显著到能被人规约地意识到，并可以用独一无二的专名去指称的地步。",zh:"能否形成 PN 的首要条件是实体可否有专名：人有专名，手和钢笔没有。"},
+  bidir:{page:"7.2.3",quote:"由于双向领属关系体现在一个结构中，它代表了两种关系的所指的交集，因此在指称上比单一关系的所指要确定得多，因而可以靠“我们”这样的确认指标去标明其特定的所指。这样，学生的口里便可以有“我们学校|我们楼”的说法，没有“我们图书馆|我们教室”的说法。",zh:"双向领属关系代表两种关系所指的交集，指称更确定，故有“我们学校”而无“我们图书馆”。"},
+  egoCenter:{page:"7.2.3",quote:"当前指示是以“我(ego)”作为中心的，“我”一定是特定的话语情景中最为确定的指称。没想“我”名叫张三，在某个言谈行为中“我”要提及自己的哥哥，若用“张三的哥哥”，听者要了解这一指称，需完成两个步骤……若用“我(的)哥哥”，听者无需经过第一个步骤就可直接理解整个构造的所指。",zh:"人称代词定语以自我中心为基础，是更直接的指称方式。"},
+  silverstein:{page:"7.2.3",quote:"Silverstein（1976）提出过一个著名的NP语义层级体系……Deane（1992）注意到，英语里的两种属构造，即领属词前置和领属者后置的构造的合格程度因表领有者的NP在上述层级上的位置而有所不同。……英语里领属结构的形式距离越小，其确指性越强，而处于自我中心层级最顶端的人称代词，其与中心语的形式距离最小。",zh:"Silverstein 层级与 Deane 的英语观察：形式距离越小确指性越强，与汉语相互印证。"},
+  typology2:{page:"7.3",quote:"萨丕尔曾精辟地指出，“我的爸爸”和“我的手|我的帽子”在本质上是不同的，前者只是代表我和另一个人的某种关系，不是真正的领有，后者才是实在的独占性的领有……汉语和上述第2类语言有着惊人的相似之处。举一个明显的例子，加州的Konkow语里的不可让渡领属形式中的 p2 全部为亲属词及其他几个人际关系词",zh:"类型学共相：亲属关系词比身体部位词更常用不可让渡（结合紧密）形式编码，汉语与 Takelma 类语言相似。"},
+  compound:{page:"7.3",quote:"(1)“汉语复合名词假说”：汉语里以名词为中心语的构造，若其修饰语是后面不带“的”的名词、区别词、形容词或动词，则这个构造是一个复合名词(nominal compound)。",zh:"汉语复合名词假说：不带 de 的定中构造是复合名词，意义上也相当于单个名词。"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= 角标编号 ================= */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#citeLoc").textContent="位置："+(s.ch||"第七章")+" · "+s.page+(s.page==="附注"||s.page==="封面"?"":" 节");
+  $("#citeQuote").textContent="原文："+s.quote;
+  $("#citeZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#citeClose").focus();
+}
+function closeCite(){ citePop.hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#citeClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[]; const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id); if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("np7theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("np7theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("np7fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("np7fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeTxt=$("#resumeTxt");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("np7progress",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("np7progress")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeTxt.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 通用点选展开 ================= */
+function bindPick(listSel,attr,boxSel,txtSel,table){
+  const box=$(boxSel),txt=$(txtSel),list=$(listSel);
+  if(!box||!txt||!list) return;
+  $$(".btn",list).forEach(b=>b.addEventListener("click",()=>{
+    const k=b.getAttribute("data-"+attr);
+    if(!Object.prototype.hasOwnProperty.call(table,k)) return;
+    txt.textContent=table[k];
+    box.hidden=false;
+    box.classList.remove("wrong");
+    $$(".btn",list).forEach(x=>x.classList.toggle("sel",x===b));
+  }));
+}
+
+/* ================= 场景一：原型领属三条件 ================= */
+bindPick("#protoBtns","pr","#protoBox","#protoTxt",{
+  a:"(1)a) 领有者 p₁ 为有生物，通常是人，更为原型的是第一人称的自我（ego）。——推论：原型的 p₁ 多是有指的，常是定指的，更原型的是单指的，常由只能表单指的代词或专有名词表达。",
+  b:"(1)b) 被领有者 p₂ 是可感知的、看得见的具体事物。——推论：原型的 p₂ 本身应为类指的，一般由普通名词（通名）表达，其单指通过从类中挑出一个例的方式实现。",
+  c1:"(1)c1) p₂ 受到 p₁ 的支配和控制。——原型的领属关系不是平等并列，而是主动与被动的对立。",
+  c2:"(1)c2) 领有关系是独占的，不与他人共有：一个特定的 p₁ 可以有多个所属物，可从一类事物中挑出一个来建立领有关系，而一个特定的 p₂ 一般只有一个特定的领有者。"
+});
+bindPick("#defBtns","df","#defBox","#defTxt",{
+  class:"类指限定：当 D 由能表类指的词语充任，而且整个构造也表类指时，这种限定关系是类指限定，其中的 D 就是“分类指标”。如“木头桌子”——把桌子分成木头的一类。",
+  indiv:"单指限定：当 D 是只能表单指的专名时，其作用是对单一指称的“确认”，即在中心语所代表的类中确认出一个特定的例来作为指示的对象，这种 D 称为“确认指标”。如“张三的鼻子”不是鼻子的一个次类，而是某个特定的鼻子。"
+});
+bindPick("#tailBtns","tl","#tailBox","#tailTxt",{
+  tail:"尾巴——在人们感知动物的整体轮廓时显著性更高，故能相当自由地与动物名构成 DN：“马／牛／猪／狗／猫／老鼠／老虎／兔子／狐狸尾巴”。",
+  nose:"鼻子——在感知上不太显著，故有不少限制：“猫的／猴子的／兔子的／老虎的／狗的／牛的／象的鼻子”都是鼻子的次类，但其中只有“牛”和“象”能不带 de 修饰“鼻子”——牛鼻子在互动关系上最显著（人们用绳子贯穿其中用以拉拽），象鼻子在形状上最显著（任何其他动物的鼻子都没有它长）。"
+});
+
+/* ================= 场景三：人际关系与物品 ================= */
+bindPick("#kinBtns","kn","#kinBox","#kinTxt",{
+  "4":"(4) 张三的哥哥｜宝钗的妈｜王贵的媳妇儿｜李四的亲戚｜小王的导师｜老刘的邻居｜宋江的朋友——p₁ 为专名，作用是单指限定，de 一定不能去掉。",
+  "5":"(5) 孩子的老师｜同学的同学｜主任的儿子｜爸爸的同事｜邻居的女儿｜朋友的太太｜首长的秘书——p₁ 为通名，虽有类指用法，但整个构造所代表的并不被看成一个规约的类（汉语里没有一类人可固定地贴上“邻居的女儿”这样的标签），故须带 de。",
+  "6":"(6) 干部（的）子女｜贵族（的）后裔｜烈士（的）后代｜军人（的）家属｜博士生（的）导师｜学生（的）家长——所代表的都是汉语里规约的类，de 可以隐去；不带 de 时 p₁ 及整个结构一定是类指或无指的，p₁ 的领属者意味非常弱而带有属性的意味。"
+});
+bindPick("#objBtns","ob","#objBox","#objTxt",{
+  "7":"(7) 李四的信｜鲁迅的照片｜学生的论文｜张三的衣服｜老师的收入｜赵七的财产｜老刘的手表——表单个领属者的专名自然要带 de；通名单指时（如“学生的论文已经交了”）和专名一样不能省 de。",
+  "8":"(8) 名人（的）书信｜明星（的）照片｜研究生（的）论文｜儿童（的）服装｜职工（的）收入｜国家（的）财产——p₁ 都是通名或集合名词，类指时能定义出规约的类，故 de 可隐去：“研究生论文”是论文的一种规约类，但我们没有“学生论文”这种规约类。",
+  "9":"(9) 曹雪芹的成就｜宝玉的性格｜黛玉的形象｜张三的利益｜红楼梦的风格｜水浒的情节——单指的个体专名和抽象名词的领属组合大多必须带 de，如“张三的气质／脾气／心情／地位／观点／信仰／经验／名声”。",
+  "10":"(10) 个人（的）成就｜人物（的）性格｜人物（的）形象｜群众（的）利益｜作品（的）风格｜故事（的）情节——与 (9) 形成清楚的对立：通名类指时可定义出规约的类，de 可隐去。"
+});
+
+/* ================= 场景四：归属与同位 ================= */
+bindPick("#appBtns","ap","#appBox","#appTxt",{
+  "13":"(13) 规约分类标签：美国总统克林顿｜北大校长蔡元培｜工会会员李香香｜陆军军官陈强｜北大学生赵大明——前项是后项身份的规约分类标签，把后项归入一个规约的类别。有趣的是其中的 de 反而不能出现（？美国的总统克林顿）。",
+  "14":"(14) 确认标签：希拉里的丈夫克林顿｜刘复的朋友蔡元培｜王贵的媳妇儿李香香｜老张的学生赵大明——前项是一种确认标签，它不是将后项归入一个规约的类别；其中的 de 自然一定得出现（不能说“*老张学生赵大明”）。"
+});
+
+/* ================= 场景五：时空定位 ================= */
+bindPick("#spaceBtns","sp","#spaceBox","#spaceTxt",{
+  "18":"(18a) 桌子的上头 vs (18b) 张三的书——前者可看作后者的隐喻：实体“桌子”可以领有空间“上头”，其理据源于领属关系所蕴含的邻接关系：书若为张三所领有，它在物理上或心理上应常与张三保持接触；任一实体都与它周围的空间相邻接，而实体若要领有某个空间，它能且只能领有与之紧密相邻并互相接触的那块空间。",
+  "19":"(19a) 桌子的上头有两本书 vs (19b) 张三有两只手——空间也能以隐喻的方式领有实体，其理据在于领属关系所蕴含的包含关系：张三领有手意味着这手包含在张三这个整体的身上；而书在桌子的上头意味着书被包含在由“桌子的上头”所定义出的空间里。",
+  "20":"(20a) 桌子上头的书 vs (20b) 张三的手——汉语由空间位置确认实体可通过两层隐喻的领属关系来进行：首先实体 R₀ 隐喻地领有空间 S，据以确定出一片特定的空间来，然后这片空间隐喻地领有实体 F₀，据以确认出一个特定的实体。但 (20a) 中中心语前的 de 不能隐去，一如 (20b)——因为其中心语是实体，受到类名限制的制约。"
+});
+bindPick("#condBtns","cd","#condBox","#condTxt",{
+  class:"类名条件（作用面最广、限制力最强）：隐去 de 的构造若表实体，这实体须构成一个规约的类。定语表属性的表征概念的构造，其间的 de 常可隐去，条件是定语须具有规约分类指标的作用。",
+  indep:"独立性条件：当修饰关系不表对实体的分类性限制，而表对实体的个体确认时，原型的领属构造一般应带 de——领有者与领属物必须被感知为两个独立的个体。",
+  alien:"可让渡条件（最后才浮现）：当修饰关系表对具体时空的确认时，由于中心语不表类指，类指限制不发生作用，而这类构造定中之间的概念关系实为不可让渡、不可分离关系中之最紧密者，故时空定位构造可不带 de。"
+});
+
+/* ================= 场景六：代词定语 ================= */
+bindPick("#demBtns","dm","#demBox","#demTxt",{
+  "22":"(22) 必须带 de：谁的哥哥｜这样的人｜怎么样的人｜这里的书｜那儿的情况｜哪儿的人——“谁”表原型的领属者；“这样｜怎么样”表实体的情状；“这里｜哪儿”以空间位置关系限定实体，因类名限制的约束而必须带 de。",
+  "23":"(23) 一般不带 de：这个学生｜那家伙｜这话｜这些同学｜这件事情｜哪个同学｜哪本书｜什么人｜什么东西｜什么事——不带 de 者表指示，带 de 者都表领属（朱德熙 1982）。“什么”作定语表实体的固定属性，和问情状的“什么样”相对立。"
+});
+bindPick("#distBtns","dt","#distBox","#distTxt",{
+  class:"类指的 D(de)N：其作用是表征概念，成分的概念距离表现为 D 和 N 这两者之间在物理和／或认知心理上的距离。类名的确立与认知主体在特定时空中的视点关系不大——桌子可否用木头去分类与特定的说话人无关。",
+  indiv:"单指的 D(de)N：其作用是专化所指，起作用的概念距离不是 D 和 N 的距离，而是据以确定 N 的所指的确认指标 D 与特定的认知主体之间的距离。确认指标与认知主体之间的概念距离越近，辨认出的对象的所指就越明确。"
+});
+
+/* ================= 场景七：PdN 与 PN ================= */
+bindPick("#pnBtns","pn","#pnBox","#pnTxt",{
+  "24":"(24) 亲属词：我（的）哥哥｜你（的）妹妹｜他（的）爷爷｜你（的）岳父｜她（的）爱人｜我（的）儿子｜你（的）媳妇儿｜他（的）爹——可带 de 也可不带。这类 N 蕴含双向领属关系。",
+  "25":"(25) 其他社会关系词：我（的）朋友｜你（的）同学｜我（的）邻居｜他（的）同事｜我（的）老乡｜你（的）学生｜我（的）徒弟｜他（的）导师——可带 de 也可不带。",
+  "26":"(26) 社会机构：我们学校｜你们车间｜他们单位｜我们教研室｜你们班｜他们公司｜我们国家｜我们所｜我们院｜你们楼｜我们室｜我们科｜他们台｜我们连——一般不能带 de（没有“我们的所｜你们的组”），PN 构造甚至可以看作复合词。P 只能是复数形式，即使说话人的意思是指单数。"
+});
+bindPick("#numBtns","nm","#numBox","#numTxt",{
+  a:"(a) 我的妹妹都很聪明｜我的老师大都很年轻｜他的老乡是张三和李四——主语为 PdN 时成立：PdN 可有指也可无指，有指时既可表单数也可表复数。",
+  b:"(b) ？我妹妹都很聪明｜？我老师大都很年轻｜？他老乡是张三和李四——主语为 PN 时不成立（需排除双主语的理解）：PN 一定是有指的，且只能表确定的单数指称。",
+  c:"(c) 我妹妹很聪明｜他老乡是张三｜他学生在我屋里——PN 表单指时成立，其中的 PN 都可换为专名（如“张三”）；这说明 PN 结构在指称方面类似表单指的专名。"
+});
+bindPick("#formBtns","fm","#formBox","#formTxt",{
+  "39":"(39)(40) 机构名词：a.“我们的学校有三千多所”比较“教育部直属的学校有三千多所”；b.“我们学校有100年的历史”比较“北大有100年的历史”；c.“*我们学校有三千多所”。a 中的“我们 N”是领属，b 中的是某个专名的替代名称，“我们”一定归属于这个专名代表的机构。",
+  "41":"(41)(42) 复指同位：专名可进入“张三这个人｜清华这个单位”这样的同位结构，也可用 PN 替换（“我邻居这个人｜我们学校这个地方”），却不大能用 PdN 替换（？我的邻居这个人）——PN 的类似专名的单称性质得到形式验证。",
+  "43":"(43)(44) “N 他”同位结构：张三他（不来了）｜爸爸他（不想去）——同样，“N 他”可换为“PN 他”（“我哥哥他｜我师傅他”），却不大能换为“PdN 他”（？我的哥哥他）。"
+});
+bindPick("#bidirBtns","bd","#bidirBox","#bidirTxt",{
+  "46":"(46)(47) 双向领属：北大是我们的学校／我们是北大的；32 楼是我们的宿舍楼／我们是 32 楼的——学校和宿舍楼既能被人领有，也能领有人，故可说“我们学校｜我们楼”。",
+  "48":"(48)(49) 单向领属：北大图书馆是我们的图书馆，但“*我们是北大图书馆的”（除非说话人是图书馆职员）；301 教室是我们的教室，但“*我们是 301 教室的”——教室不能领有人，故无“我们图书馆”“我们教室”的 PN 用法。",
+  "50":"(50)–(52) 我们 N：a.“我们学校越办越好”（PN，专名的替代名称，“我们”归属于北大）；b.“我们的学校越办越多”（PdN，不一定是单称，可以是不属于任何学校的教育部长说的话）。PN 中 P 的领属意味因其被领属的一面所中和——“互相拥有，不妨视为一体”，故甚至可形成“我们北大｜我们清华｜我们首钢”这样的同位复指结构。"
+});
+
+/* ================= 结尾自测 ================= */
+(function(){
+  const QA=[
+    {n:1,
+     ok:'<span class="v-ok">✓ 正确。</span>领有关系是较为原型的领属关系，其他各类关系（整体部分、归属、时空）大都处于其边缘。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：领有关系。整体部分关系、时空关系都是偏离原型的边缘类型。'},
+    {n:2,
+     ok:'<span class="v-ok">✓ 正确。</span>专名的作用是单指限定，即对单一指称的“确认”——“张三的鼻子”不是鼻子的次类，而是某个特定的鼻子。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：确认指标。分类指标对应类指限定（如“洋人的鼻子”）。'},
+    {n:3,
+     ok:'<span class="v-ok">✓ 正确。</span>能否隐去 de 取决于是否分出汉语里规约的类，而这与互动认知模式中的显著性有关。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。规约性与认知显著性才是关键，音节与“词/短语”标签都不是原因。'},
+    {n:4,
+     ok:'<span class="v-ok">✓ 正确。</span>实体与邻接空间紧密到不可分离（想不出“没了上头的桌子”），且中心语是空间而非实体，不受类名条件约束。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。汉语用领属图式隐喻编码空间关系，这是有类型学支持的理据分析。'},
+    {n:5,
+     ok:'<span class="v-ok">✓ 正确。</span>类名条件最先起作用；类名条件无法作用时，独立性条件决定原型领属应带 de；表时空确认时可让渡条件才浮现。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。三条条件的作用有次序，不可让渡条件在汉语里被“跨越”了。'},
+    {n:6,
+     ok:'<span class="v-ok">✓ 正确。</span>PN 的表层语义是指别而非领属，只能表单称专指——“我哥哥”类似“这个人”，中间并没有省略 de 的过程。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。“省略说”无法解释“？我妹妹都很聪明”与“我的妹妹都很聪明”的对立。'},
+    {n:7,
+     ok:'<span class="v-ok">✓ 正确。</span>双向领属关系代表两种关系所指的交集，指称更确定；图书馆、教室只能被人领有而不能领有人。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。这正是双向领属关系的体现。'},
+    {n:8,
+     ok:'<span class="v-ok">✓ 正确。</span>de 字隐现是概念整合程度高低的具体反映；共相（距离象似、双向领属）之中又有汉语的殊相（类名条件优先）。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。Haiman 的不可让渡等级序列需要修正，汉语并非 Greenberg (9) 的反例。'}
+  ];
+  QA.forEach(q=>{
+    const row=$("#q"+q.n);
+    if(!row) return;
+    const fb=$("#q"+q.n+"fb");
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      if(row.dataset.done) return;
+      row.dataset.done="1";
+      const ok=b.dataset.q==="a";
+      b.classList.add(ok?"sel":"wrong");
+      fb.innerHTML=ok?q.ok:q.no;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+    }));
+  });
+})();
+</script>
+</body>
+</html>

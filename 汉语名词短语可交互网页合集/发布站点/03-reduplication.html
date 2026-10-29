@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%239e3b2e' stroke-width='6'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>说两遍，意思就不一样 —— 《认知语言学与汉语名词短语》第三章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+.constellation{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+@media(max-width:720px){.constellation{grid-template-columns:repeat(2,1fr)}}
+.constellation a{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper);text-decoration:none;color:var(--ink);display:block}
+.constellation a:hover{border-color:var(--red);background:color-mix(in srgb,var(--red) 7%,var(--card))}
+.constellation a b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;color:var(--red)}
+.constellation a small{display:block;color:var(--muted);font-size:.8rem;margin-top:.25em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* SVG 主题适配：硬编码属性色 → 主题变量（CSS 覆盖 SVG 呈现属性） */
+svg [fill="#29241d"]{fill:var(--ink)}
+svg [fill="#6f675a"]{fill:var(--muted)}
+svg [fill="#9d4938"]{fill:var(--red)}
+svg [fill="#3d5a6c"]{fill:var(--blue)}
+svg [fill="#a87f24"]{fill:var(--gold)}
+svg [fill="#fffdf6"],svg [fill="#f6f1e5"]{fill:var(--card)}
+svg [stroke="#9d4938"]{stroke:var(--red)}
+svg [stroke="#3d5a6c"]{stroke:var(--blue)}
+svg [stroke="#a87f24"]{stroke:var(--gold)}
+svg [stroke="#6f675a"]{stroke:var(--muted)}
+svg [stroke="#dcd2bd"]{stroke:var(--line)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">名词短语深读 · 句法的象似性<small>《认知语言学与汉语名词短语》张敏 ｜ 第三章</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">叠</text></svg>
+  <p class="eyebrow">《认知语言学与汉语名词短语》张敏 著 ｜ 第三章「句法的象似性」第七节 ｜ 上篇三章之三</p>
+  <h1>说两遍，意思就不一样</h1>
+  <p class="lead">戴浩一（Tai 1992）基于汉语提出<strong>重叠象似动因</strong>：语言表达形式的重叠，对应于概念领域的重叠<sup class="cite" data-cite="tai-def"></sup>。把两个相同的东西归在一起、在一段时间里重复同样的动作、把程度往深里说——汉语就用重叠来编码这些「量」。更有趣的是准入规则：<strong>「死」「懂」不能重叠，「吃」「看」可以，「眨」「戴」重叠后意思还不一样</strong>。能不能说两遍，取决于动作在概念上能不能延续、能不能反复。</p>
+  <ul class="chips">
+    <li><b>一条动因</b>　形式重叠 ≡ 概念重叠</li>
+    <li><b>三类动词</b>　延续 · 反复 · 瞬间</li>
+    <li><b>一个谜题</b>　跳水能拷，跳河不能</li>
+    <li><b>二十多种</b>　语言都有这招</li>
+  </ul>
+
+  <figure class="figure">
+    <svg viewBox="0 0 680 250" role="img" aria-label="汉语重叠式光谱示意">
+      <text x="340" y="24" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9d4938" font-family="KaiTi,STKaiti,serif">同一形式手段 · 同一「量」的增量</text>
+      <!-- 行1 量词 -->
+      <text x="30" y="66" font-size="12.5" fill="#6f675a">量词</text>
+      <rect x="95" y="48" width="86" height="30" rx="8" fill="#3d5a6c" opacity=".12" stroke="#3d5a6c"/><text x="138" y="68" text-anchor="middle" font-size="13.5" fill="#29241d">个个</text>
+      <path d="M188 63 L218 63" stroke="#a87f24" stroke-width="2" marker-end="url(#oarr)"/>
+      <text x="232" y="68" font-size="12.5" fill="#6f675a">「每」——个个都很好</text>
+      <!-- 行2 数量结构 -->
+      <text x="30" y="112" font-size="12.5" fill="#6f675a">数量结构</text>
+      <rect x="95" y="94" width="86" height="30" rx="8" fill="#3d5a6c" opacity=".12" stroke="#3d5a6c"/><text x="138" y="114" text-anchor="middle" font-size="13.5" fill="#29241d">一首一首</text>
+      <path d="M188 109 L218 109" stroke="#a87f24" stroke-width="2" marker-end="url(#oarr)"/>
+      <text x="232" y="114" font-size="12.5" fill="#6f675a">「逐一」——一首一首地唱；一串串葡萄＝很多</text>
+      <!-- 行3 动词 -->
+      <text x="30" y="158" font-size="12.5" fill="#6f675a">动词</text>
+      <rect x="95" y="140" width="86" height="30" rx="8" fill="#3d5a6c" opacity=".12" stroke="#3d5a6c"/><text x="138" y="160" text-anchor="middle" font-size="13.5" fill="#29241d">看看</text>
+      <path d="M188 155 L218 155" stroke="#a87f24" stroke-width="2" marker-end="url(#oarr)"/>
+      <text x="232" y="160" font-size="12.5" fill="#6f675a">时量（看一会儿）＋动量（试一下）</text>
+      <!-- 行4 形容词 -->
+      <text x="30" y="204" font-size="12.5" fill="#6f675a">形容词</text>
+      <rect x="95" y="186" width="86" height="30" rx="8" fill="#3d5a6c" opacity=".12" stroke="#3d5a6c"/><text x="138" y="206" text-anchor="middle" font-size="13.5" fill="#29241d">大大</text>
+      <path d="M188 201 L218 201" stroke="#a87f24" stroke-width="2" marker-end="url(#oarr)"/>
+      <text x="232" y="206" font-size="12.5" fill="#6f675a">程度加深——大大的眼睛</text>
+      <defs><marker id="oarr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+    </svg>
+    <figcaption>示意：重叠式在汉语各词类中表达的共同点——某种非重叠式不具备的「量」的观念（据 3.7 节重绘）。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景 1 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 动因</p>
+  <h2>英语靠念叨，汉语靠成规</h2>
+  <p>英语里 He ran and ran and ran 比 He ran 动作量大，very very very tall 比 very tall 程度深——但那是临时组合。在相当多语言里，重叠是<strong>语法化了的词法句法机制</strong>：出现在名词上，单数变复数或表集合；出现在动词上，表持续或完成；出现在形容词上，表性质状态增强<sup class="cite" data-cite="english-rep"></sup>。Hiraga（1994）把重叠归入<strong>数量象似性</strong><sup class="cite" data-cite="hiraga"></sup>。汉语的量词、形容词、动词都能重叠，共同点是都包含某种「量」的观念：量词重叠含「每」，数量结构重叠含「逐一」「很多」<sup class="cite" data-cite="liang-repeat"></sup>。</p>
+</section>
+
+<!-- ============ 场景 2 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 动词准入</p>
+  <h2>谁能重叠，谁不能</h2>
+  <p>动作的量可以从两个角度看：延续的<strong>时量</strong>（一会儿）和反复的<strong>动量</strong>（一次）。按「能否延续、能否反复」两个标准，动词分三类——<strong>能延续能反复</strong>（吃、看、睡、坐、学、洗）、<strong>不能延续但能反复</strong>（眨、关、碰、见、插、摔、戴）、<strong>既不能延续又不能短时反复</strong>（死、上吊、结婚、懂、忘、明白、批准、发现、看见、打开、缩小）。不能重叠的正是第三类<sup class="cite" data-cite="verb-classes"></sup>。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">「这顶帽子太小了，你戴戴看。」这里的重叠表示什么？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">时量：戴一会儿</button>
+      <button data-ans="b">动量：试一下</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">动量。</span>原文标注：你试试这个、你戴戴看都不能换成「试一会儿／戴一会儿」，只能会意成「试一下」——第二类动词的重叠式一般表动量<sup class="cite" data-cite="zuozuo"></sup>。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>动词准入实验室 · 点一个动词</h3>
+    <div class="wordpool" id="verbPool"></div>
+    <div class="result" id="verbOut" hidden>
+      <p class="sent" id="verbSent"></p>
+      <dl class="rows">
+        <dt>类别</dt><dd id="verbClass"></dd>
+        <dt>重叠式</dt><dd id="verbForm"></dd>
+        <dt>表义</dt><dd id="verbMean"></dd>
+      </dl>
+    </div>
+  </div>
+
+  <details>
+    <summary>细节：「坐坐」为什么能两解？（默认折叠）</summary>
+    <p>第一类动词的重叠式通常既可表时量也可表动量：「你在这儿坐坐」表时量（坐一会儿）；「这张椅子很硬，你坐坐就知道了」表动量（坐一下试试）<sup class="cite" data-cite="zuozuo"></sup>。背后的认知结构（Langacker）：延续与反复都被感知为<strong>同质过程的复现</strong>——区别只在前者复现的过程之间没有可感知的边界，后者有。独立验证：两类动词都能带「着」，都能受「不停」「不断」「一直」修饰<sup class="cite" data-cite="scanning"></sup>。</p>
+  </details>
+</section>
+
+<!-- ============ 场景 3 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 动词拷贝</p>
+  <h2>跳水能拷，跳河不能</h2>
+  <p>「他吃饭吃了一整天」这种动词拷贝句，生成语法家用短语结构条件去套，戴浩一（Tai 1993）则给出三条语义证据：<strong>表即时状态变化的 VP 禁止拷贝；拷贝与否会造成「持续时间」与「经过时间」的意义区别；表频率的补足成分合法，表持续时间的补足成分对某些动词不合法</strong><sup class="cite" data-cite="verb-copy"></sup>。最直观的是那对例子：<strong>「他跳水跳了三个钟头」能说，「他跳河跳了三个钟头」不能说</strong>——跳水可持续，跳河是瞬间动作<sup class="cite" data-cite="tiaoshui"></sup>。</p>
+  <div class="lab">
+    <h3>拷贝裁判 · 点句子判合法性</h3>
+    <div class="wordpool" id="copyPool"></div>
+    <div class="result" id="copyOut" hidden>
+      <p class="sent" id="copySent"></p>
+      <p class="small" id="copyVerdict"></p>
+      <p class="small muted" id="copyWhy"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 4 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ AABB</p>
+  <h2>「大大小小」至少要三样东西</h2>
+  <p>形容词 AABB（大大小小、长长短短、高高低低、明明暗暗）里 AB 通常意义相反，重叠后强调<strong>参差不齐</strong>的状态。关键限制：<strong>被修饰的事物必须多于两个</strong>——「明明暗暗的灯光」暗示看到的灯非常多；只有一盏亮灯一盏暗灯，就不能这么说<sup class="cite" data-cite="aabb-adj"></sup>。动词 AABB（来来往往、说说笑笑、进进出出）表动作频繁或相连不间断；只是进出一次，也不能用「进进出出」<sup class="cite" data-cite="aabb-verb"></sup>。形式的重叠，照应着概念领域里事物的「重叠」。</p>
+
+  <div class="guess" data-guess>
+    <p class="q">一套房里只有一间大房、一间小房。能说「这里的房间大大小小的」吗？</p>
+    <div class="opts" data-correct="b">
+      <button data-ans="a">能</button>
+      <button data-ans="b">不能</button>
+    </div>
+    <div class="reveal" hidden>
+      <p><span class="ok">不能。</span>原文原话：若一个套房里只有一间大房、一间小房，我们也不能说「这里的房间大大小小的」<sup class="cite" data-cite="aabb-adj"></sup>——AABB 要求对象<strong>多于两个</strong>，否则「重叠」无从谈起。</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <h3>AABB 场景实验室 · 切换场景看判定</h3>
+    <div class="wordpool" id="aabbPool">
+      <button data-a="0" aria-pressed="true">一盏亮灯＋一盏暗灯</button>
+      <button data-a="1" aria-pressed="false">许多明暗不一的灯</button>
+      <button data-a="2" aria-pressed="false">人们进出各一次</button>
+      <button data-a="3" aria-pressed="false">人们不断进出</button>
+    </div>
+    <div class="result">
+      <p class="sent" id="aabbSent"></p>
+      <p class="small muted" id="aabbNote"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 场景 5 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 跨语言</p>
+  <h2>二十多种语言，同一招</h2>
+  <p>重叠不是汉语专利：类似的形容词、量词、动词重叠出现在 20 多种语言里，形容词重叠分布最广（哈尼语、白语、京语、怒语、畲语、阿昌语、苗语、纳西语、德昂语、壮语、佤语、仡佬语、黎语、瑶语、景颇语等），意义多半是程度加深<sup class="cite" data-cite="cross-lang"></sup>。怒语、门巴语里疑问代词重叠表复数（谁谁、哪里哪里＝哪些人、哪些地方）<sup class="cite" data-cite="nu-menba"></sup>；纳西语动词重叠还能表「互相」（lala＝打架、pupu＝互赠、sysy＝打仗）<sup class="cite" data-cite="naxi"></sup>；景颇语在重叠式中间插名词化词缀 me，得到「所有……的」（tin me tin＝所有跑的）<sup class="cite" data-cite="jingpo"></sup>。</p>
+
+  <div class="lab">
+    <h3>壮语后附音节 · 四级程度阶梯</h3>
+    <div class="ladder" id="zhuangLadder">
+      <button class="rung" data-z="0"><b>h in</b><small>石头（原式）</small></button>
+      <button class="rung" data-z="1"><b>h in h jan</b><small>很多石头</small></button>
+      <button class="rung" data-z="2"><b>h in h jan h jan</b><small>很多很多石头</small></button>
+      <button class="rung" data-z="3"><b>h in h ja h jin h jan</b><small>到处都是石头</small></button>
+    </div>
+    <div class="result">
+      <p class="sent" id="zhuangSent"></p>
+      <p class="small muted" id="zhuangNote"></p>
+    </div>
+  </div>
+  <p>台语系语言还能让后附音节的元音交替表程度：主要元音为 [i][e] 时动作较弱、程度较轻，为 [a][u][o] 时较强、较高——规律是前元音舌位越高程度越轻（[i]＜[e]＜[a]），前元音比后元音轻，后元音里舌位越高越重（[u]＞[o]）<sup class="cite" data-cite="vowel"></sup>。动作幅度与状态程度，系统地对应着舌位的高低前后——这就是<strong>语音象征</strong>。</p>
+  <figure class="figure">
+    <svg viewBox="0 0 680 240" role="img" aria-label="元音舌位与程度对应示意图">
+      <text x="150" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#3d5a6c">前元音 · 程度轻</text>
+      <text x="530" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#9d4938">后元音 · 程度重</text>
+      <!-- 前轴 -->
+      <line x1="150" y1="55" x2="150" y2="200" stroke="#3d5a6c" stroke-width="2"/>
+      <circle cx="150" cy="70" r="22" fill="#3d5a6c" opacity=".16" stroke="#3d5a6c"/><text x="150" y="75" text-anchor="middle" font-size="14" fill="#29241d">[i]</text>
+      <circle cx="150" cy="125" r="22" fill="#3d5a6c" opacity=".16" stroke="#3d5a6c"/><text x="150" y="130" text-anchor="middle" font-size="14" fill="#29241d">[e]</text>
+      <circle cx="150" cy="180" r="22" fill="#3d5a6c" opacity=".16" stroke="#3d5a6c"/><text x="150" y="185" text-anchor="middle" font-size="14" fill="#29241d">[a]</text>
+      <text x="150" y="225" text-anchor="middle" font-size="11.5" fill="#6f675a">舌位越高 → 越轻越小（[i]＜[e]＜[a]）</text>
+      <!-- 后轴 -->
+      <line x1="530" y1="55" x2="530" y2="200" stroke="#9d4938" stroke-width="2"/>
+      <circle cx="530" cy="70" r="22" fill="#9d4938" opacity=".16" stroke="#9d4938"/><text x="530" y="75" text-anchor="middle" font-size="14" fill="#29241d">[u]</text>
+      <circle cx="530" cy="125" r="22" fill="#9d4938" opacity=".16" stroke="#9d4938"/><text x="530" y="130" text-anchor="middle" font-size="14" fill="#29241d">[o]</text>
+      <text x="530" y="225" text-anchor="middle" font-size="11.5" fill="#6f675a">舌位越高 → 越重越大（[u]＞[o]）</text>
+      <!-- 中：程度尺 -->
+      <line x1="250" y1="125" x2="430" y2="125" stroke="#a87f24" stroke-width="2.5" marker-end="url(#varr)"/>
+      <text x="340" y="105" text-anchor="middle" font-size="13" fill="#a87f24" font-weight="700">轻 ——————→ 重</text>
+      <text x="340" y="150" text-anchor="middle" font-size="11.5" fill="#6f675a">动作幅度 · 状态程度</text>
+      <defs><marker id="varr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+    </svg>
+    <figcaption>示意：柳江壮语后附音节的元音交替与程度对应（据 3.7 节所述规律重绘，非原书插图）。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景 6 ============ -->
+<section class="scene" data-scene="6">
+  <p class="kicker">场景 6 ｜ 收束</p>
+  <h2>从词到句：象似性贯串汉语</h2>
+  <p>重叠只是句法象似性的一副面孔。第三章还铺陈了复杂性、独立性、次序、对称、范畴化等动因，以及动因之间的竞争与象似性的减损。下篇要用的，是其中与名词短语最相关的那条——<strong>距离象似动因</strong>：语言成分之间的距离，反映所表达概念成分之间的距离。汉语句法的象似性较强，正适合拿它开出路来<sup class="cite" data-cite="naturalness"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">第三章讲完的</p>
+      <p class="small muted">任意性 vs 象似性；六种象似动因；动因竞争与象似性减损。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">下篇要用的</p>
+      <p class="small muted">距离象似动因 → 汉语名词短语「的」字隐现 → DN 与 DdN 的语义差别。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>你答得上来吗</h2>
+  <div class="q">
+    <p>1. 为什么「*死死」「*懂懂」「*看见看见」不能重叠？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="0" data-ans="a">它们是书面语词</button>
+      <button data-q="0" data-ans="b">它们表既不能延续、又不能在短时内反复的动作</button>
+      <button data-q="0" data-ans="c">它们音节太少</button>
+    </div>
+    <p class="why" hidden>答案：b。第三类动词（瞬间完成且通常只发生一次，或表瞬间状态变化，或含结果意义）无法在概念上「复现」，重叠式便失去依托<sup class="cite" data-cite="verb-classes"></sup>。</p>
+  </div>
+  <div class="q">
+    <p>2. 「他到美国到了三次」合法而「*他到美国到了三年」不合法，说明动词拷贝受什么控制？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="1" data-ans="a">补语的音节数目</button>
+      <button data-q="1" data-ans="b">「到」可以重复三次，却不可能持续三年——语义因素</button>
+      <button data-q="1" data-ans="c">两句都合法，只是语体不同</button>
+    </div>
+    <p class="why" hidden>答案：b。频率补足成分合法、持续时间补足成分对「到」不合法——「到」可反复而不可持续，动因在语义<sup class="cite" data-cite="verb-copy"></sup>。</p>
+  </div>
+  <div class="q">
+    <p>3. 关于 AABB 式，下列说法哪项符合原文？</p>
+    <div class="opts" data-correct="b">
+      <button data-q="2" data-ans="a">只要 AB 意义相反就能用</button>
+      <button data-q="2" data-ans="b">被修饰描述的事物必须多于两个</button>
+      <button data-q="2" data-ans="c">只能修饰灯光</button>
+    </div>
+    <p class="why" hidden>答案：b。「明明暗暗的灯光」暗示灯非常多；一明一暗两盏灯、一大一小两间房都不能用<sup class="cite" data-cite="aabb-adj"></sup>。</p>
+  </div>
+</section>
+
+<!-- ============ 系列导航 ============ -->
+<section class="scene">
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="01-theory.html">01 理论主张</a>
+    <a href="02-categorization.html">02 范畴化</a>
+    <a class="cur" href="03-reduplication.html">03 重叠动因</a>
+  </nav>
+  <footer>
+    <p>本页范围：研读底本第三章第七节「重叠象似动因」（底本 L1907–L2027）。底本为 OCR 转录，无原书页码，角标中的「底本 Lx」指该行在研读底本中的行号；关键引文请点开角标核对原句后再引用。</p>
+    <p>未覆盖：第三章第一至六、八、九节（复杂性、独立性、次序、对称、范畴化动因与动因竞争）及第四至八章，见系列深读页。原书：《认知语言学与汉语名词短语》，张敏著。</p>
+  </footer>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "tai-def":      { page:"底本 L1911-1913", quote:"戴浩一将重叠象似动因定义为：(1)“语言表达形式的重叠(重复)对应于概念领域的重叠(重复)。”", zh:"Tai 1992 重叠象似动因：形式的重叠对应概念的重叠。" },
+  "english-rep":  { page:"底本 L1915", quote:"Lakoff & Johnson(1980)举例说，在英语里“He ran and ran and ran（他跑啊跑啊跑啊跑）”跟“He ran（他跑了）”相比，前者表示的动作的量更大……在相当多语言里，当重叠出现在名词上时，单数会变为复数或表集合概念；出现在动词上时，表示动作的持续或完成；出现在形容词上时，表示性质状态的增强。", zh:"英语重复表量；跨语言：名词重叠→复数/集合，动词→持续/完成，形容词→增强。" },
+  "hiraga":       { page:"底本 L1915", quote:"Hiraga(1994)据此将重叠看作数量象似性(quantity iconicity)的一种体现形式。", zh:"Hiraga 1994：重叠是数量象似性的一种体现。" },
+  "liang-repeat": { page:"底本 L1919", quote:"单个量词的重叠式包含“每”的意思，如“个个都很好”“次次都参加”。数量结构的重叠式有时含有“逐一”的意思，如“一首一首地唱”“一口一口地吃”；有时则表示动作的多次重复（作状语时，如“一趟一趟地去”）或物体的数量很多（作定语时，如“一串串葡萄”）。", zh:"量词重叠＝每；数量结构重叠＝逐一／多次／很多。" },
+  "verb-classes": { page:"底本 L1921-1933", quote:"动词重叠式既可表示时量短，又可表示动量小……从概念上看，动作可以从能否延续及能否反复这两个角度去判别它们在体方面的特征。用这两个标准去衡量，可分出以下三种动作的类：（1）能够延续，能够反复的动作，如“吃”“看”“睡”“坐”“学”“洗”等；（2）不能延续，但能够反复的动作，如瞬间的动作“眨”“关”“碰”“见”“插”“摔”等……（3）既不能延续，又不能在短时内反复出现的动作，如瞬间完成而通常又只能发生一次的动作“死”“上吊”“结（婚）”等，产生瞬间状态变化的动作“懂”“忘”“明白”“批准”“发现”等，包含结果意义的动作“看见”“打开”“缩小”等。", zh:"动词三类：能延续能反复（吃看睡坐学洗）／不能延续能反复（眨关碰见插摔戴）／都不能（死上吊结婚懂忘明白批准发现看见打开缩小）。" },
+  "zuozuo":       { page:"底本 L1927-1933", quote:"(4)你试试这个。（*试一会儿这个/试一次这个）(5)这顶帽子太小了，你戴戴看。（*戴一会儿帽子/戴次帽子）……能够重叠的动词在表第(2)类动作时，其重叠式一般表示动量，如“眨眨眼睛”“见见朋友”“戴戴这顶帽子”；在表第(1)类动作时，其重叠式通常既可表时量也可表动量，如“你在这儿坐坐”（表时量）“这张椅子很硬，你坐坐就知道了”（表动量）。", zh:"第二类动词重叠表动量（戴戴看＝试一下）；第一类可两解（坐坐＝坐一会儿／坐一下）。" },
+  "scanning":     { page:"底本 L1951", quote:"延续的动作和反复的动作之间的共同点就在于，二者都被感知为同质过程的复现，只不过在前一种情况下复现的过程之间没有可感知的边界，后一种情况下则有可感知的边界。这里归纳出来的共同点可以得到汉语里某些语法现象的独立论证。例如，动词在表延续和表反复时都能带“着”……都能受“不停”“不断”“一直”等表持续的词语修饰。", zh:"延续与反复＝同质过程复现（有无边界之别）；「着」「不停」「一直」独立验证。" },
+  "verb-copy":    { page:"底本 L1955-1967", quote:"Tai(1993)认为，汉语里的这一现象无法用纯形式的句法限制加以足够的说明。他提出以下三点证据，说明动词拷贝是由语义因素所控制的。第一，若VP表示的是产生即时状态变化的动作行为，则动词拷贝是被禁止的……第二，在相当多的情况下，动词拷贝出现与否可导致意义上的区别……第三，就某些动词而言，动词拷贝后面出现表动作频率的补足成分时是合法的(例9)，而后面出现表持续时间的补足成分时却不合法(例10)。(9)他到美国到了三次。(10)*他到美国到了三年。", zh:"Tai 1993 动词拷贝三证据：即时状态变化禁止拷贝；持续时间 vs 经过时间有别；频率补语合法而持续时间补语不合法。" },
+  "tiaoshui":     { page:"底本 L1971-1975", quote:"(11)他跳水跳了三个钟头。(12)*他跳河跳了三个钟头。从句法条件上看无法说明为什么动词拷贝不能出现在(12)里。而从概念上看，“跳水”是可持续的动作，“跳河”是瞬间的动作，无法持续，一般也不会在短时内反复出现。", zh:"跳水可持续→可拷贝；跳河瞬间→禁拷贝。" },
+  "aabb-adj":     { page:"底本 L1979", quote:"形容词的AABB式有“大大小小”“长长短短”“高高低低”“明明暗暗”“稀稀疏疏”“远远近近”“花花绿绿”等。这种格式里的AB两个成分通常是意义相反的，其重叠式AABB强调的是某种参差不齐的状态。值得注意的是，这类重叠式所修饰或描述的事物必须是多于两个的。例如，“明明暗暗的灯光”暗示看见的灯光非常多；若只有一盏较亮的灯、一盏较暗的灯，是不能用这一形式来修饰的。同样，若一个套房里只有一间大房，一间小房，我们也不能说“这里的房间大大小小的”。", zh:"形容词 AABB：AB 意义相反、表参差不齐；对象必须多于两个。" },
+  "aabb-verb":    { page:"底本 L1979", quote:"动词的AABB式有“来来往往”“说说笑笑”“哭哭啼啼”“摇摇摆摆”“打打闹闹”“进进出出”等。这种格式表示的是动作很频繁或相连不间断的意思。例如，“我的办公室紧靠大门，人们进进出出，十分吵闹”，若只是进出一次，也是不能使用“进进出出”这一格式去描述的。", zh:"动词 AABB 表频繁/相连不间断；进出一次不能用。" },
+  "cross-lang":   { page:"底本 L1981", quote:"根据我们所看到的有限的材料，类似汉语里的形容词、量词和动词的重叠现象就出现在20多种语言里。其中分布最广的是形容词的重叠式，出现在哈尼语、白语、京语、怒语、畲语、阿昌语、苗语、纳西语、德昂语、壮语、佤语、仡佬语、黎语、瑶语、景颇语等语言里，表达的意义多半是程度的加深。", zh:"20 多种语言有重叠现象；形容词重叠分布最广，多表程度加深。" },
+  "nu-menba":     { page:"底本 L1985-1993", quote:"(13)khe khe khaba khaba ie tci gua ne? (怒语)(哪些人到哪些地方去?) 谁谁哪里哪里去（助词）（助词）（助词）(14) nan hang hang hgolo ja? (门巴语)(你都买些什么呀?) 你 什么 什么 买 (助词)", zh:"怒语、门巴语：疑问代词重叠表复数（谁谁、哪里哪里）。" },
+  "naxi":         { page:"底本 L1995", quote:"在纳西语里，一般的动词重叠式表示动作的持续或反复，但有些动词重叠后带有“互相”的意思，如“la（打）：lala（打架=互相打）”“pu（赠送）：pupu（互赠）”“sy（杀）：sysy（打仗=互相杀）”。", zh:"纳西语动词重叠表互相：lala 打架、pupu 互赠、sysy 打仗。" },
+  "jingpo":       { page:"底本 L1995-2005", quote:"在景颇语里我们还能看到一种更有意思的现象，即重迭的动作、状态、事物之间的转换……若在形容词重叠式和动词重叠式的中间插进一个名词化词缀me，则形成的名词表示“所有……的”的意思。例如：(15) tin me tin (所有跑的) (16) koi me koi(所有弯曲的)", zh:"景颇语：重叠式中间插 me 得「所有……的」（tin me tin＝所有跑的）。" },
+  "zhuang":       { page:"底本 L2009-2016", quote:"下面是广西柳江壮语的例子：(17)hin(石头) hin hjan(很多石头) hin hjan hjan(很多很多石头) hin hja hjin hjan(到处都是石头) (18)hjau(暖) hjau hjut(暖暖的) hjau hjut hjut(暖烘烘的) hjau hja hjau hjut(暖暖烘烘的)", zh:"柳江壮语后附音节四级：石头→很多石头→很多很多石头→到处都是石头。" },
+  "vowel":        { page:"底本 L2018-2025", quote:"主要元音为[i][e]时，动作较弱，程度较轻；为[a][u][o]时，动作较强，程度较高；为[r]时，动作状态不强不弱、不轻不重。有人总结出这样的规律：(a)前元音与前元音相比，舌位越高表示的意义程度越轻越小([i] < [e] < [a])；(b)前元音和后元音相比，前者表示的意义程度比后者较轻较小；(c)后元音与后元音相比，舌位越高表示的意义程度越大、越重([u] > [u] > [o])……动作幅度的大小与状态程度的大小有系统地对应于舌位的高低和前后，这正是著名的语音象征现象的一种反映。", zh:"元音交替表程度：前元音舌位越高越轻；前＜后；后元音舌位越高越重——语音象征。" },
+  "naturalness":  { page:"底本 L2152、L3605-3607", quote:"汉语作为一种缺乏形态，并不严格地要求外在形式标记的语言，其句法结构比起形态丰富的语言来更加明显地倚重概念和象似的原则。正如谢信一(Hsieh 1978)所言，汉语是一种“图画”式的语言。", zh:"汉语缺乏形态、象似性较强——下篇距离动因的出发点。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《认知语言学与汉语名词短语》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景二：动词准入实验室 ================= */
+const VERBS = [
+  { v:"吃", cls:"第 1 类 · 能延续能反复", form:"吃吃", mean:"时量或动量（吃一会儿／吃一下）" },
+  { v:"看", cls:"第 1 类 · 能延续能反复", form:"看看", mean:"时量或动量（看一会儿电视／看一眼）" },
+  { v:"睡", cls:"第 1 类 · 能延续能反复", form:"睡睡", mean:"时量（睡一会儿）" },
+  { v:"坐", cls:"第 1 类 · 能延续能反复", form:"坐坐", mean:"两解：你在这儿坐坐（时量）／你坐坐就知道了（动量）" },
+  { v:"学", cls:"第 1 类 · 能延续能反复", form:"学学", mean:"时量（学一会儿）" },
+  { v:"洗", cls:"第 1 类 · 能延续能反复", form:"洗洗", mean:"时量或动量（洗洗衣服／洗洗看）" },
+  { v:"眨", cls:"第 2 类 · 不能延续但能反复", form:"眨眨", mean:"动量（眨眨眼睛）" },
+  { v:"关", cls:"第 2 类 · 不能延续但能反复", form:"关关", mean:"动量（关关窗）" },
+  { v:"碰", cls:"第 2 类 · 不能延续但能反复", form:"碰碰", mean:"动量（碰碰运气）" },
+  { v:"见", cls:"第 2 类 · 不能延续但能反复", form:"见见", mean:"动量（见见朋友）" },
+  { v:"戴", cls:"第 2 类 · 不能延续但能反复", form:"戴戴", mean:"动量（戴戴看＝试一下，不能说「戴一会儿」）" },
+  { v:"死", cls:"第 3 类 · 既不能延续又不能短时反复", form:"* 死死 ✗", mean:"瞬间完成且通常只发生一次——无法重叠" },
+  { v:"上吊", cls:"第 3 类 · 既不能延续又不能短时反复", form:"* 上上吊 ✗", mean:"同上——无法重叠" },
+  { v:"懂", cls:"第 3 类 · 既不能延续又不能短时反复", form:"* 懂懂 ✗", mean:"瞬间状态变化——无法重叠" },
+  { v:"忘", cls:"第 3 类 · 既不能延续又不能短时反复", form:"* 忘忘 ✗", mean:"瞬间状态变化——无法重叠" },
+  { v:"看见", cls:"第 3 类 · 既不能延续又不能短时反复", form:"* 看见看见 ✗", mean:"包含结果意义——无法重叠" }
+];
+const verbPool = document.getElementById("verbPool"), verbOut = document.getElementById("verbOut"),
+      verbSent = document.getElementById("verbSent"), verbClass = document.getElementById("verbClass"),
+      verbForm = document.getElementById("verbForm"), verbMean = document.getElementById("verbMean");
+VERBS.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.textContent = d.v;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => {
+    document.querySelectorAll("#verbPool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    verbSent.textContent = d.v;
+    verbClass.textContent = d.cls;
+    verbForm.textContent = d.form;
+    verbMean.textContent = d.mean;
+    verbOut.hidden = false;
+  };
+  verbPool.appendChild(b);
+});
+verbPool.children[3].click();
+
+/* ================= 场景三：动词拷贝裁判 ================= */
+const COPY = [
+  { s:"他发现这件事很久了。", ok:true, why:"「很久」是发现之后的经过时间，无须拷贝。" },
+  { s:"* 他发现这件事发现很久了。", ok:false, why:"「发现」表即时状态变化——禁止拷贝（Tai 证据一）。" },
+  { s:"我给他写信已经一个月了。", ok:true, why:"「一个月」是动作结束后经过的时间。" },
+  { s:"我给他写信已经写了一个月了。", ok:true, why:"「一个月」是动作持续的时间——拷贝把两种意义分开（Tai 证据二）。" },
+  { s:"他到美国到了三次。", ok:true, why:"「到」可反复——表频率的补足成分合法（Tai 证据三）。" },
+  { s:"* 他到美国到了三年。", ok:false, why:"「到」不可持续——表持续时间的补足成分不合法。" },
+  { s:"他跳水跳了三个钟头。", ok:true, why:"「跳水」是可持续的动作。" },
+  { s:"* 他跳河跳了三个钟头。", ok:false, why:"「跳河」是瞬间动作，无法持续——句法条件相同，概念不同。" }
+];
+const copyPool = document.getElementById("copyPool"), copyOut = document.getElementById("copyOut"),
+      copySent = document.getElementById("copySent"), copyVerdict = document.getElementById("copyVerdict"),
+      copyWhy = document.getElementById("copyWhy");
+COPY.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.textContent = d.s.length > 12 ? d.s.slice(0, 11) + "…" : d.s;
+  b.setAttribute("aria-pressed", "false");
+  b.onclick = () => {
+    document.querySelectorAll("#copyPool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    copySent.textContent = d.s;
+    copyVerdict.innerHTML = d.ok ? "<span class='ok'>合法 ✓</span>" : "<span class='no'>不合法 ✗</span>";
+    copyWhy.textContent = d.why;
+    copyOut.hidden = false;
+  };
+  copyPool.appendChild(b);
+});
+copyPool.children[7].click();
+
+/* ================= 场景四：AABB 场景实验室 ================= */
+const AABB = [
+  { s:"？明明暗暗的灯光", n:"只有一盏较亮的灯、一盏较暗的灯——对象不足两个以上，AABB 不成立。" },
+  { s:"明明暗暗的灯光 ✓", n:"看到的灯非常多——参差不齐有了着落。" },
+  { s:"？人们进进出出（只进出一次）", n:"只是进出一次，不能用「进进出出」描述。" },
+  { s:"人们进进出出 ✓", n:"动作很频繁或相连不间断——AABB 成立。" }
+];
+const aabbSent = document.getElementById("aabbSent"), aabbNote = document.getElementById("aabbNote");
+document.querySelectorAll("#aabbPool button").forEach(b => {
+  b.onclick = () => {
+    const i = +b.dataset.a;
+    document.querySelectorAll("#aabbPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    aabbSent.textContent = AABB[i].s;
+    aabbNote.textContent = AABB[i].n;
+  };
+});
+aabbSent.textContent = AABB[0].s; aabbNote.textContent = AABB[0].n;
+
+/* ================= 场景五：壮语阶梯 ================= */
+const ZHUANG = [
+  { s:"h in", n:"原式：石头。" },
+  { s:"h in h jan", n:"加一个后附音节：很多石头。" },
+  { s:"h in h jan h jan", n:"后附音节迭加：很多很多石头。" },
+  { s:"h in h ja h jin h jan", n:"进一步变形：到处都是石头——意义随形式层层加重。" }
+];
+const zhuangSent = document.getElementById("zhuangSent"), zhuangNote = document.getElementById("zhuangNote");
+document.querySelectorAll("#zhuangLadder .rung").forEach(b => {
+  b.onclick = () => {
+    const i = +b.dataset.z;
+    document.querySelectorAll("#zhuangLadder .rung").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    zhuangSent.textContent = ZHUANG[i].s;
+    zhuangNote.textContent = ZHUANG[i].n;
+  };
+});
+zhuangSent.textContent = "点一级阶梯";
+zhuangNote.textContent = "后附音节可以迭加，形式成层级，意义也成层级。";
+
+/* ================= 自测 ================= */
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const q = group.closest(".q");
+  const correct = group.dataset.correct || group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      q.querySelector(".why").hidden = false;
+    };
+  });
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

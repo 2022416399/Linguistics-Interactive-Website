@@ -1,0 +1,138 @@
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>等级与例外</h2>
+  </div>
+  <p class="point">Haiman 发现，许多语言用领属形式的有无区分一个<strong>不可让渡性连续等级</strong>：<strong>身体部位＞亲属关系＞一般物件</strong>，三者与领有者的概念距离依次增大<button type="button" class="cite" data-cite="alienScale" aria-label="查看出处"></button>。语言之间的区别，往往只在于<strong>切割点放在哪里</strong><button type="button" class="cite" data-cite="cutTypes" aria-label="查看出处"></button>——这正是下面这把尺子要试的东西。</p>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 230" role="img" aria-label="不可让渡性连续等级与切割点示意">
+      <text x="380" y="22" text-anchor="middle" font-size="15" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">不可让渡性连续等级——切割点决定哪些名词走"近距离"形式</text>
+      <rect x="60" y="38" width="210" height="72" rx="10" fill="var(--paper)" stroke="var(--ink-soft)"/>
+      <rect x="270" y="38" width="200" height="72" rx="10" fill="var(--paper)" stroke="var(--ink-soft)"/>
+      <rect x="470" y="38" width="230" height="72" rx="10" fill="var(--paper)" stroke="var(--ink-soft)"/>
+      <text x="165" y="68" text-anchor="middle" font-size="15" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">身体部位</text>
+      <text x="165" y="94" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">手 · 肚子 · 脚</text>
+      <text x="370" y="68" text-anchor="middle" font-size="15" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">亲属关系</text>
+      <text x="370" y="94" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">妈妈 · 妹妹 · 爸爸</text>
+      <text x="585" y="68" text-anchor="middle" font-size="15" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)">一般物件</text>
+      <text x="585" y="94" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">汽车 · 房子 · 书包</text>
+      <line x1="270" y1="30" x2="270" y2="112" stroke="var(--ink-faint)" stroke-dasharray="4 4"/>
+      <line x1="470" y1="30" x2="470" y2="112" stroke="var(--ink-faint)" stroke-dasharray="4 4"/>
+      <line id="cutLine" x1="380" y1="26" x2="380" y2="132" stroke="var(--red)" stroke-width="3"/>
+      <circle id="cutKnob" cx="380" cy="132" r="6" fill="var(--red)"/>
+      <line x1="60" y1="148" x2="700" y2="148" stroke="var(--ink-soft)"/>
+      <polygon points="700,144 712,148 700,152" fill="var(--ink-soft)"/>
+      <text x="380" y="170" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">概念距离渐远 · 越靠左越"不可让渡"</text>
+      <text x="165" y="196" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-soft)">① 仅身体部位</text>
+      <text x="165" y="212" text-anchor="middle" font-size="11" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">Yidinzy · Acooli</text>
+      <text x="370" y="196" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-soft)">② 身体部位＋亲属</text>
+      <text x="370" y="212" text-anchor="middle" font-size="11" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">Hua · Mekeo · 阿拉伯语</text>
+      <text x="585" y="196" text-anchor="middle" font-size="12" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-soft)">③ 不加区分</text>
+      <text x="585" y="212" text-anchor="middle" font-size="11" font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink-faint)">英语型（不构成反例）</text>
+    </svg>
+  </figure>
+
+  <div class="card">
+    <p class="bench-label">拖动滑杆移动切割点，看三类语言各据一方。</p>
+    <input type="range" id="cutRange" min="0" max="100" value="50" aria-label="移动不可让渡性切割点">
+    <div class="btn-row" id="cutJump" aria-label="快捷跳档" style="margin-top:10px">
+      <button type="button" class="chip" data-cut="1">仅身体部位</button>
+      <button type="button" class="chip" data-cut="2">身体部位＋亲属</button>
+      <button type="button" class="chip" data-cut="3">不加区分</button>
+    </div>
+    <div class="reveal" id="cutBox" hidden><p id="cutTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">汉语的位置——六个短语，逐个点开验一验。</p>
+    <div class="btn-row" id="cnBtns">
+      <button class="btn" data-cn="kin1">他妹妹</button>
+      <button class="btn" data-cn="kin2">我爸爸</button>
+      <button class="btn" data-cn="body1">你手</button>
+      <button class="btn" data-cn="body2">他肚子</button>
+      <button class="btn" data-cn="obj1">我汽车</button>
+      <button class="btn" data-cn="obj2">你房子</button>
+    </div>
+    <div class="reveal" id="cnBox" hidden><p id="cnTxt" style="margin:0"></p></div>
+  </div>
+
+  <p>结果与 Haiman 的预测<strong>正相反</strong>：汉语亲属词可以进入不带 de 的形式（"他妹妹""我爸爸"都成立），身体部位词却与一般物件词同流（"*你手""*我汽车"都得补上 de 才行）<button type="button" class="cite" data-cite="cnException" aria-label="查看出处"></button>。汉语因此被列入这条等级真正的反例短名单——这样的语言极少（Menya 语、Mokilese 语等，详见本书第五章）<button type="button" class="cite" data-cite="haimanRevise" aria-label="查看出处"></button>。Chappell &amp; Thompson(1992) 与 Tai(1993) 也注意到这个现象，但各自的解释都不能说令人满意。</p>
+
+  <details>
+    <summary>附注：口语例外、修订序列与第七章前瞻</summary>
+    <p><strong>口语例外。</strong>这里的"不成立"指无标记单说。较随便的口语里，宾语位置的身体部位词可以不带 de——"别踢我肚子！"；一般物件词也有类似说法——"别动我书包！"。这与等级本身无关<button type="button" class="cite" data-cite="oralNote" aria-label="查看出处"></button>。</p>
+    <p><strong>修订序列。</strong>面对汉语这类反例，Haiman 本人未能作进一步的解释，只是提出等级序列可能需要修正；本书第五章补充交代，他进而建议把序列调整为更粗但绝无例外的"亲属关系<em>或</em>身体部位＞一般物件"，两类名词孰先孰后不再强分<button type="button" class="cite" data-cite="haimanRevise" aria-label="查看出处"></button>。Sapir 早就指出过，"我的爸爸"与"我的手／我的帽子"本质不同：前者表示的是一种关系，不是真正的领有<button type="button" class="cite" data-cite="sapirRelation" aria-label="查看出处"></button>。</p>
+    <p><strong>另一种解释。</strong>戴浩一（Tai 1993）用"心理经验优先"来解释汉语——与日常生活关系越密切的名词，越容易走不带 de 的形式。本书不愿采取这条路线，担心它最终流向语言相对论<button type="button" class="cite" data-cite="tai93Mind" aria-label="查看出处"></button>。</p>
+    <p><strong>第七章前瞻。</strong>Seiler(1983)、Ultan(1978，75 种语言)、Sapir(1917) 都勾勒过领属表达的类型分别；汉语与第②类（亲属词与其他名词对立）惊人地相似——Konkow 语里"我母亲"nik-nè 与"我的手"nik'i má 分立，Tigak 语用附缀标出同样的一层等级<button type="button" class="cite" data-cite="ch7Preview" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">一条等级，一把尺子，三种切法——汉语偏偏站在预测的另一边。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 共识与关键想法</button>
+    <button class="btn" data-jump="s8">下一场：三规则与取向 →</button>
+  </div>
+</section>
+
+<section id="s8" data-scene="8">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="八" aria-hidden="true"></span>
+    <h2>三规则与取向</h2>
+  </div>
+  <p class="point">朱德熙（1957）早就把带 de／不带 de 定语的次序整理成三条规则<button type="button" class="cite" data-cite="zhu57Rules" aria-label="查看出处"></button>。规则本身干净利落，本书追问的是它的<strong>成因</strong>——在交代结论之前，先看规则。</p>
+
+  <div class="card">
+    <p class="bench-label">朱德熙三规则——逐条点开。</p>
+    <div class="btn-row" id="ruleBtns">
+      <button class="btn" data-u="1">规则一</button>
+      <button class="btn" data-u="2">规则二</button>
+      <button class="btn" data-u="3">规则三</button>
+    </div>
+    <div class="reveal" id="ruleBox" hidden><p id="ruleTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p class="bench-label">练一手：给「他的一把小瓷茶壶」排定语。四个定语分属四类——领属、数量、形容词、表性质的名词，按规则一的次序依次点选。</p>
+    <div class="btn-row" id="ordBtns">
+      <button class="btn" data-o="2">一把</button>
+      <button class="btn" data-o="4">瓷</button>
+      <button class="btn" data-o="1">他的</button>
+      <button class="btn" data-o="3">小</button>
+    </div>
+    <p class="lead" style="margin:10px 0 8px" id="ordOut"><span id="slot1">〔　〕</span> <span id="slot2">〔　〕</span> <span id="slot3">〔　〕</span> <span id="slot4">〔　〕</span> 茶壶</p>
+    <div class="btn-row">
+      <button class="btn" id="ordReset" type="button">重排</button>
+    </div>
+    <div class="reveal" id="ordBox" hidden><p id="ordFb" style="margin:0"></p></div>
+  </div>
+
+  <p>三条规则表面说的是定语次序，骨子里仍是<strong>距离动因</strong>在起作用：越靠近中心语的定语，与中心语的概念距离越小、关系越紧密<button type="button" class="cite" data-cite="distMotivate" aria-label="查看出处"></button>。这也反过来印证了前面的 de 字隐现分析——共性的规律能帮人在看似独立的汉语现象之间建立联系<button type="button" class="cite" data-cite="zhu57Examples" aria-label="查看出处"></button>。</p>
+
+  <div class="card">
+    <p class="bench-label">下篇总述的三个研究取向——逐个点开。</p>
+    <div class="btn-row" id="oriBtns">
+      <button class="btn" data-r="1">解释优先</button>
+      <button class="btn" data-r="2">语义优先</button>
+      <button class="btn" data-r="3">共性优先</button>
+    </div>
+    <div class="reveal" id="oriBox" hidden><p id="oriTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card taped">
+    <p style="margin:0 0 6px"><strong>什么叫"好的解释"？本书给出两条标准<button type="button" class="cite" data-cite="goodExplain" aria-label="查看出处"></button>。</strong></p>
+    <p>其一，最好能<strong>独立论证（independently motivated）</strong>，而不是<strong>特设（ad hoc）</strong>——同一条规律若能解释较多表面不相干的问题，就胜于为每个现象各配一种专门解释。</p>
+    <p style="margin:0">其二，要<strong>有限而明确</strong>，而不是空解释——适用范围有限、条件清楚，而不是那种"无所不能而无所能"的空泛议论。落到本书，务实的解释就是：直接对象是汉语具体事实，依据是细致的描写，结果是帮助我们发现更多、更细的事实。</p>
+  </div>
+
+  <details>
+    <summary>附注：参照系之辩与认知语言学的终极目标</summary>
+    <p><strong>参照系之辩。</strong>《马氏文通》（1898）以来百年，汉语语法学一直在探索汉语特点；本书认为最大局限在参照系——特点因比较而显，而参照系落在传统语法和印欧语上，过于质朴有限<button type="button" class="cite" data-cite="referenceLimit" aria-label="查看出处"></button>。王力、吕叔湘的高明之处，在于直接从汉语材料出发，同时借鉴更先进的西方普通语言学；当代共性取向则来自 Greenberg 功能学派类型学对蕴含性共性的总结，也有朱德熙一系的实践——方言象声词、各方言的"的"字、自指与转指、反复问句，都是用共时比较发现通则的样板<button type="button" class="cite" data-cite="zhuComparison" aria-label="查看出处"></button>。</p>
+    <p><strong>终极目标。</strong>人类相同的身体构造、相同的物理世界、相同的感知认知能力、类似的互动策略，会促动相同的概念结构——语言一定有共性；而认知策略、意向、互动模式、社会文化定势的差别，又让共性各有各的体现<button type="button" class="cite" data-cite="cogGoal" aria-label="查看出处"></button>。用沈家煊的话说：某些看上去是汉语特点的东西，其实是语言共性在汉语里的具体体现；从世界语言反观汉语，恰恰是为了更深刻地了解汉语<button type="button" class="cite" data-cite="shenJiaxuan" aria-label="查看出处"></button>。</p>
+  </details>
+
+  <p class="scene-foot">规则是描写，动因是解释；三个取向合起来，就是这本书做研究的姿势。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s7">← 等级与例外</button>
+    <button class="btn" data-jump="quiz">结尾自测 →</button>
+  </div>
+</section>

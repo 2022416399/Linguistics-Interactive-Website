@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>余论：多项定语的语序规律 · 《认知语言学与汉语名词短语》第八章可交互笔记</title>
+<meta name="description" content="《认知语言学与汉语名词短语》第八章可交互笔记：从意义解释形式的信念、朱德熙三条定语语序规则、距离象似原则的重述、陆丙甫的精细序列与轨层结构、英语德语优先语序、后置语言的镜象排列、Greenberg dnaN 共相、Deane 形式的空间化假设，含跨语言序列对照图与点选交互。">
+<style>
+:root{
+  --paper:#fbf9f2; --card:#ffffff; --ink:#1e3a5f; --ink-soft:#4a6285; --ink-faint:#7d90ab;
+  --grid:rgba(30,58,95,.06); --line:#c9d6e8; --hl:rgba(255,222,70,.55); --note:#fff3a8;
+  --red:#c0392b; --green:#2d6a4f; --blue:#2f6db3; --tape:rgba(255,235,120,.75);
+  --shadow:0 1px 2px rgba(30,58,95,.08),0 6px 18px rgba(30,58,95,.06);
+  --fs:17px;
+  font-size:var(--fs);
+}
+:root[data-theme="dark"]{
+  --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+  --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+  --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-theme="dark"]){
+    --paper:#131922; --card:#1b2431; --ink:#d9e4f2; --ink-soft:#a8bcd4; --ink-faint:#6f8199;
+    --grid:rgba(217,228,242,.055); --line:#33415a; --hl:rgba(255,222,70,.26); --note:#5c5320;
+    --red:#ef7d6a; --green:#7fc79e; --blue:#7db3e8; --tape:rgba(255,235,120,.22);
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; font-size:var(--fs); line-height:1.75; color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  background-color:var(--paper);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+.serif{font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif}
+.kai{font-family:"Kaiti SC","STKaiti",KaiTi,"BiauKai",serif}
+.mono{font-family:"SF Mono",Menlo,Consolas,"Courier New",monospace}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:8px;
+  padding:8px 14px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1.5px dashed var(--line)}
+.topbar .tb-title{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{min-height:36px;min-width:36px;padding:4px 10px;border:1.5px solid var(--ink);border-radius:12px 4px 13px 5px/5px 13px 4px 12px;
+  background:var(--card);color:var(--ink);font-size:.82rem;cursor:pointer;font-family:inherit}
+.tb-btn:hover{background:var(--hl)}
+.tb-sp{flex:1}
+#backBtn{display:none}
+#backBtn.show{display:inline-block}
+
+/* ---------- 版面 ---------- */
+.sheet{max-width:880px;margin:0 auto;padding:26px 18px 60px;position:relative}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:8px;width:2px;background:var(--red);opacity:.35}
+section{margin:34px 0 46px;scroll-margin-top:64px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0 .1em;font-weight:800;letter-spacing:.02em}
+h2{font-size:1.35rem;margin:0 0 10px;font-weight:800}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700}
+p{margin:.55em 0}
+a{color:var(--blue)}
+.hl{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 94%,transparent 94%);padding:0 .1em}
+.hl-thick{background:linear-gradient(transparent 30%,var(--hl) 30%,var(--hl) 96%,transparent 96%)}
+.kicker{font-size:.85rem;color:var(--ink-soft);letter-spacing:.08em}
+.lead{font-size:1.02rem}
+
+/* ---------- 便利贴 / 卡片 ---------- */
+.note{position:relative;background:var(--note);color:var(--ink);
+  border-radius:3px;padding:18px 18px 16px;transform:rotate(-.4deg);
+  box-shadow:var(--shadow);margin:14px 0}
+.note::before{content:"";position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:22px;background:var(--tape);border-radius:2px;opacity:.85}
+.note p{margin:.3em 0}
+.card{background:var(--card);border:1.5px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:16px 16px 14px;box-shadow:var(--shadow);margin:14px 0}
+.card.taped{position:relative}
+.card.taped::before{content:"";position:absolute;top:-12px;right:22px;transform:rotate(6deg);
+  width:62px;height:20px;background:var(--tape);border-radius:2px;opacity:.8}
+.bench-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:8px}
+
+/* ---------- 场景 ---------- */
+.scene-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.scene-num{flex:none;width:44px;height:44px;border:2px solid var(--red);border-radius:50% 46% 52% 48%/48% 52% 46% 50%;
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--red);font-size:1.15rem;
+  transform:rotate(-3deg);background:var(--card)}
+.scene-num::before{content:attr(data-n)}
+.point{font-size:1.02rem;margin:6px 0 12px}
+.scene-foot{font-size:.95rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);margin-top:16px;padding-top:8px}
+
+/* ---------- 按钮 / 交互 ---------- */
+.btn{min-height:44px;padding:8px 14px;border:1.5px solid var(--ink);border-radius:14px 5px 15px 6px/6px 15px 5px 14px;
+  background:var(--card);color:var(--ink);font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .08s}
+.btn:hover{background:var(--hl)}
+.btn:active{transform:scale(.97)}
+.btn.sel{outline:2.5px solid var(--red);outline-offset:1px;background:var(--hl)}
+.btn.wrong{outline:2.5px dashed var(--red);outline-offset:1px}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-flex;align-items:center;min-height:36px;padding:5px 13px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--card);font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip.sel{background:var(--hl);border-color:var(--ink);font-weight:700}
+.chip.right{border-color:var(--green);color:var(--green);font-weight:700}
+.reveal{background:color-mix(in srgb,var(--green) 9%,var(--card));border-left:4px solid var(--green);
+  border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+.reveal.wrong{background:color-mix(in srgb,var(--red) 8%,var(--card));border-left-color:var(--red)}
+.feedback{font-size:.95rem;margin:8px 0;min-height:1.6em}
+.v-ok{color:var(--green);font-weight:800;margin-right:.4em}
+.v-no{color:var(--red);font-weight:800;margin-right:.4em}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:.86rem}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:center;vertical-align:middle}
+.tbl th{background:var(--hl);font-weight:700}
+.tbl td.l,.tbl th.l{text-align:left}
+.tbl td.hi{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
+.tbl td.lo{color:var(--ink-faint)}
+input[type=range]{width:100%;max-width:460px;accent-color:var(--red);height:36px}
+
+/* ---------- 时间线（场景一） ---------- */
+.tl{list-style:none;margin:12px 0 6px;padding:2px 0 2px 28px;border-left:2.5px dashed var(--line)}
+.tl li{position:relative;margin:0 0 9px}
+.tl li::before{content:"";position:absolute;left:-34px;top:11px;width:11px;height:11px;border-radius:50%;
+  background:var(--card);border:2.5px solid var(--red)}
+.tl .btn{min-height:42px;text-align:left;font-size:.9rem;padding:6px 12px;line-height:1.5}
+.tl .tl-y{font-weight:800;color:var(--red);margin-right:.45em}
+
+/* ---------- 出处角标 ---------- */
+sup.cite,button.cite{-webkit-appearance:none;appearance:none;border:0;padding:0;margin:0 1px;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;justify-content:center;min-width:19px;height:19px;border-radius:50%;
+  background:var(--red);color:#fff;font-size:.68rem;font-weight:700;line-height:1;vertical-align:super;transform:translateY(-1px)}
+sup.cite:hover,button.cite:hover{filter:brightness(1.15)}
+sup.cite:focus-visible,button.cite:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.tag{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid currentColor;color:var(--ink-faint);vertical-align:.1em;margin-left:.35em;white-space:nowrap}
+.tag[data-label="推算"]{color:var(--blue)}
+.tag[data-label="示意"]{color:var(--ink-faint)}
+.tag[data-label="读图"]{color:var(--green)}
+.tag[data-label="解读"]{color:#8a6d1f}
+.tag[data-label="例示"]{color:#8a6d1f}
+
+/* ---------- 出处弹窗 ---------- */
+#citePop{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;
+  background:rgba(10,16,26,.42);padding:18px}
+#citePop[hidden]{display:none}
+.cite-card{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;max-width:560px;width:100%;
+  max-height:76vh;overflow:auto;padding:18px 18px 14px;box-shadow:var(--shadow);position:relative}
+.cite-card .cc-loc{font-size:.8rem;color:var(--ink-soft);letter-spacing:.05em;margin-bottom:6px}
+.cite-card .cc-quote{font-size:.95rem;line-height:1.8;border-left:3px solid var(--red);padding-left:12px;margin:8px 0}
+.cite-card .cc-zh{font-size:.95rem;margin:8px 0}
+.cite-card .cc-note{font-size:.78rem;color:var(--ink-faint);margin:10px 0 0}
+.cc-close{position:absolute;top:8px;right:8px;width:38px;height:38px;border:1.5px solid var(--line);border-radius:50%;
+  background:var(--card);color:var(--ink);font-size:1.1rem;cursor:pointer}
+
+/* ---------- 折页 ---------- */
+details{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;margin:12px 0;background:var(--card)}
+details summary{cursor:pointer;font-weight:700;font-size:.95rem;min-height:32px;display:flex;align-items:center;gap:6px}
+details summary::marker{color:var(--red)}
+details[open] summary{border-bottom:1.5px dashed var(--line);padding-bottom:8px;margin-bottom:8px}
+details ul{margin:.3em 0;padding-left:1.3em}
+details li{margin:.25em 0}
+
+/* ---------- 图形 ---------- */
+figure{margin:14px 0}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:.8rem;color:var(--ink-soft);margin-top:6px}
+.figbox{background:var(--card);border:1.5px solid var(--ink);border-radius:12px;padding:14px 12px 10px}
+.inline-svg{background:var(--card);border:1.5px dashed var(--line);border-radius:10px;padding:10px 8px 6px;margin:10px 0}
+#balBeam,#panL,#panR{transition:transform .18s ease}
+@media (prefers-reduced-motion: reduce){
+  #balBeam,#panL,#panR{transition:none}
+}
+
+/* ---------- 页脚 / 浮动 ---------- */
+footer.site{font-size:.82rem;color:var(--ink-faint);border-top:1.5px dashed var(--line);margin-top:44px;padding-top:14px}
+#resumePill{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:50;border:1.5px solid var(--ink);
+  background:var(--card);border-radius:999px;padding:9px 18px;font-size:.88rem;box-shadow:var(--shadow);cursor:pointer;
+  display:flex;gap:8px;align-items:center;min-height:44px}
+#resumePill[hidden]{display:none}
+.navline{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navline .btn{flex:1;text-align:center}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:520px){
+  .sheet{padding:20px 12px 60px}
+  h1{font-size:1.7rem}
+  .topbar .tb-title{display:none}
+  .note{transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a href="index.html" title="返回全书导览" style="position:fixed;left:12px;bottom:14px;z-index:9999;display:inline-flex;align-items:center;gap:4px;font:13px/1.4 system-ui,'Microsoft YaHei',sans-serif;color:#5a5348;background:rgba(255,253,246,.94);border:1px solid #d8d1c2;border-radius:999px;padding:6px 13px;text-decoration:none;box-shadow:0 2px 10px rgba(35,32,28,.12);backdrop-filter:blur(2px)">← 返回全书导览</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="rough" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/>
+    </filter>
+    <filter id="rough2" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.3"/>
+    </filter>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <span class="tb-title kai">《认知语言学与汉语名词短语》· 课堂交互笔记</span>
+  <span class="tb-sp"></span>
+  <button class="tb-btn" id="fontDown" aria-label="缩小字号">A−</button>
+  <button class="tb-btn" id="fontUp" aria-label="放大字号">A+</button>
+  <button class="tb-btn" id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  <button class="tb-btn" id="backBtn">↩ 回到刚才位置</button>
+</header>
+
+<main class="sheet">
+
+<!-- ============ 首屏 30 秒版 ============ -->
+<section data-hero>
+  <p class="kicker">《认知语言学与汉语名词短语》（张敏 著）· 第八章<button type="button" class="cite" data-cite="bookInfo" aria-label="查看出处"></button></p>
+  <h1><span class="hl hl-thick">余论：多项定语的语序规律</span></h1>
+  <p class="lead" style="color:var(--ink-soft)">读法：信念与路径 ｜ 朱德熙三条规则 ｜ 象似原则的重述 ｜ 陆丙甫的精细序列 ｜ 英语德语语序 ｜ 镜象与共相 ｜ 认知策略 ｜ 结语</p>
+
+  <div class="note">
+    <p style="font-size:1.08rem"><strong>半分钟版：</strong>第四~七章分析 de 字隐现，本章转向一个看似独立的现象——多项定语的相对语序。本书的结论是：<span class="hl">两个现象由同一条认知策略决定，都是距离象似动因的体现</span><button type="button" class="cite" data-cite="commonStrategy" aria-label="查看出处"></button>。朱德熙（1957）的三条语序规则可重述为“定语与中心语之间的距离取决于它们所表达的概念之间的距离”<button type="button" class="cite" data-cite="onePrinciple" aria-label="查看出处"></button>；汉语、英语、德语的优先语序几乎完全相同，定语后置的语言则呈<span class="hl">镜象排列</span>，Greenberg 的 dnaN／Nand 共相与陆丙甫的“轨层结构”指向同一理据<button type="button" class="cite" data-cite="greenberg" aria-label="查看出处"></button>。<span class="tag" data-label="解读">解读</span></p>
+  </div>
+
+  <figure class="figbox" data-figure>
+    <svg viewBox="0 0 760 344" role="img" aria-label="多项定语语序的跨语言对照图：汉语、英语德语的优先语序几乎相同，均为领属指别数量在前、情状估价颜色质料在后贴近中心语；波斯语等后置语言呈镜象排列；领属词是外延限定与内涵限定的转折点">
+      <g filter="url(#rough)" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round">
+        <rect x="48" y="36" width="64" height="36" rx="8"/>
+        <rect x="124" y="36" width="92" height="36" rx="8"/>
+        <rect x="228" y="36" width="60" height="36" rx="8"/>
+        <rect x="300" y="36" width="118" height="36" rx="8"/>
+        <rect x="430" y="36" width="96" height="36" rx="8"/>
+        <rect x="538" y="36" width="86" height="36" rx="8"/>
+        <path d="M222 32 L222 76" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <path d="M60 92 L700 92" stroke="var(--ink-faint)" stroke-width="1.5"/>
+        <rect x="48" y="150" width="80" height="36" rx="8"/>
+        <rect x="140" y="150" width="118" height="36" rx="8"/>
+        <rect x="270" y="150" width="56" height="36" rx="8"/>
+        <rect x="338" y="150" width="56" height="36" rx="8"/>
+        <rect x="406" y="150" width="56" height="36" rx="8"/>
+        <rect x="474" y="150" width="56" height="36" rx="8"/>
+        <rect x="542" y="150" width="92" height="36" rx="8"/>
+        <path d="M264 146 L264 190" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <path d="M60 206 L700 206" stroke="var(--ink-faint)" stroke-width="1.5"/>
+        <rect x="60" y="264" width="86" height="36" rx="8"/>
+        <rect x="166" y="264" width="96" height="36" rx="8"/>
+        <rect x="282" y="264" width="96" height="36" rx="8"/>
+        <rect x="398" y="264" width="96" height="36" rx="8"/>
+        <path d="M494 318 L60 318" stroke="var(--green)" stroke-width="2"/>
+        <path d="M60 312 L72 318 L60 324 Z" fill="var(--green)" stroke="none"/>
+      </g>
+      <g font-family="'Kaiti SC','STKaiti',KaiTi,serif" fill="var(--ink)" text-anchor="middle">
+        <text x="48" y="24" font-size="11.5" font-weight="700" fill="var(--ink-soft)" text-anchor="start">汉语（前置）：优先语序</text>
+        <text x="80" y="58" font-size="12.5">领属定语</text>
+        <text x="170" y="58" font-size="12">指别·数量</text>
+        <text x="258" y="58" font-size="12">情状</text>
+        <text x="359" y="58" font-size="11.5">性质（形体·颜色）</text>
+        <text x="478" y="58" font-size="11.5">质料·功能</text>
+        <text x="581" y="58" font-size="12.5" font-weight="700">中心语 N</text>
+        <text x="222" y="84" font-size="10.5" fill="var(--red)">转折</text>
+        <text x="140" y="110" font-size="11" fill="var(--blue)">限定外延 · 确定所指</text>
+        <text x="500" y="110" font-size="11" fill="var(--green)">限定内涵 · 表征概念</text>
+        <text x="140" y="126" font-size="10" fill="var(--ink-faint)">领属、指别与数量：从类中“拣选”出个体</text>
+        <text x="500" y="126" font-size="10" fill="var(--ink-faint)">形容词、性质名词：描述对象“是什么”</text>
+        <text x="48" y="138" font-size="11.5" font-weight="700" fill="var(--ink-soft)" text-anchor="start">英语·德语（前置）：几乎相同</text>
+        <text x="88" y="172" font-size="11.5">逻辑量词</text>
+        <text x="199" y="172" font-size="11.5">指示/冠词/领属</text>
+        <text x="298" y="172" font-size="11.5">数词</text>
+        <text x="366" y="172" font-size="11.5">情状</text>
+        <text x="434" y="172" font-size="11.5">估价</text>
+        <text x="502" y="172" font-size="11.5">颜色</text>
+        <text x="588" y="172" font-size="11.5">质料·名词</text>
+        <text x="264" y="200" font-size="10.5" fill="var(--red)">领属词 = 转折点</text>
+        <text x="48" y="224" font-size="11.5" font-weight="700" fill="var(--ink-soft)" text-anchor="start">波斯语·印尼语·巴斯克语（后置）：镜象排列</text>
+        <text x="103" y="286" font-size="12.5" font-weight="700">中心语</text>
+        <text x="214" y="286" font-size="11.5">颜色·质料</text>
+        <text x="330" y="286" font-size="11.5">估价·情状</text>
+        <text x="446" y="286" font-size="11.5">指别·数量</text>
+        <text x="380" y="340" font-size="11" fill="var(--green)">修饰语与中心语次序整体倒转、相对次序不变——与前置语序本质相同的镜象（mirror image）；Greenberg (1963)：前置时总是 dnaN，后置时多为 Nand</text>
+      </g>
+    </svg>
+    <figcaption>多项定语语序的跨语言对照：一条序列，两种镜像<button type="button" class="cite" data-cite="enDeOrder" aria-label="查看出处"></button><button type="button" class="cite" data-cite="wider" aria-label="查看出处"></button></figcaption>
+  </figure>
+
+  <div class="btn-row" id="sceneNav" aria-label="场景导航">
+    <button class="chip" data-jump="s1">信念与路径</button>
+    <button class="chip" data-jump="s2">三条规则</button>
+    <button class="chip" data-jump="s3">象似重述</button>
+    <button class="chip" data-jump="s4">精细序列</button>
+    <button class="chip" data-jump="s5">英语德语</button>
+    <button class="chip" data-jump="s6">镜象与共相</button>
+    <button class="chip" data-jump="s7">认知策略</button>
+    <button class="chip" data-jump="s8">结语</button>
+    <button class="chip" data-jump="quiz">结尾自测</button>
+  </div>
+  <p style="font-size:.85rem;color:var(--ink-faint)">点角标看原句 ｜ ← → 换场景 ｜ 虚线框是折叠细节</p>
+</section>
+
+<!-- ============ 场景一 ============ -->
+<section id="s1" data-scene="1">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="一" aria-hidden="true"></span>
+    <h2>从意义出发解释形式的信念</h2>
+  </div>
+  <p class="point">全书分析 de 字隐现规律时，自始至终持有一个基本信念：<strong>句法形式并不都是受制于抽象性质的原则与规则，表层的句法表现之下往往可以找到认知—语义上的理据</strong>——尤其是当类似的概念语义结构在同一语言中及不同语言间一再以类似的表层形式表达的时候。换言之，作为概念化过程结果的语义结构直接投射于表层句法的情况，要远远多过一般人所设想的（参见 Langacker 1990，Tai 1993a）<button type="button" class="cite" data-cite="belief" aria-label="查看出处"></button><button type="button" class="cite" data-cite="projection" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两条研究路径——点一条看本书的选择。</p>
+    <div class="btn-row" id="pathBtns">
+      <button class="btn" data-pt="form">从形式到意义</button>
+      <button class="btn" data-pt="meaning">从意义到形式</button>
+    </div>
+    <div class="reveal" id="pathBox" hidden><p id="pathTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">这种思路引导我们得出的解释是否可靠，很大程度上取决于它<strong>是否能用更多的现象独立论证</strong>。我们用距离象似动因解释汉语里 de 字的隐现，这种解释可得到大量语言里名词短语构成方式上的佐证；这种语义与形式同构的现象分布之广泛，使我们不得不相信这一基于象似性的解释是能够成立的——除非能就这个问题从其他角度提出更好的解释。它也使我相信，若在分析时抱定言必有据的态度，则以认知语义结构阐释句法结构的路子是行得通的<button type="button" class="cite" data-cite="corroborate" aria-label="查看出处"></button>。</p>
+
+  <p class="point">由于对语义构造的认识在某种程度上可不受特定形式的束缚，从中发掘出来的规律往往会有更普遍的解释力：<strong>同一条概念原则往往可以概括多种句法现象</strong>。戴浩一（Tai 1985）从次序象似性角度提出的“时间顺序原则”便是一个很好的例子——它概括了汉语里大量以动词为中心的、表面上互不相干的句法范畴的语序表现。本书作者则在另一篇文章里提出，管辖汉语以名词为中心的句法构造的语序表现的，正是<strong>距离象似原则</strong>（Zhang 1995b）<button type="button" class="cite" data-cite="pts" aria-label="查看出处"></button><button type="button" class="cite" data-cite="zhang1995b" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两条象似原则——点一条看它们各自的“管辖范围”。</p>
+    <div class="btn-row" id="principleBtns">
+      <button class="btn" data-pl="time">时间顺序原则（动词中心）</button>
+      <button class="btn" data-pl="distance">距离象似原则（名词中心）</button>
+    </div>
+    <div class="reveal" id="principleBox" hidden><p id="principleTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">表面上看，定中之间 de 字的隐现和多项定语的相对语序是两个独立的现象；但我们在前一种现象中发现的规律，却相当系统地反映在后一种现象里。限于篇幅，本章只简要说明两种现象里规律的一致性<button type="button" class="cite" data-cite="twoPhen" aria-label="查看出处"></button>。</p>
+  <div class="navline">
+    <span></span>
+    <button class="btn" data-jump="s2">下一场：朱德熙的三条规则 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景二 ============ -->
+<section id="s2" data-scene="2">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="二" aria-hidden="true"></span>
+    <h2>朱德熙的三条规则</h2>
+  </div>
+  <p class="point">本章的分析从朱德熙（1957）、赵元任（1968）、刘月华（1984）、陆丙甫（1988）等人对多项定语语序规则的观察入手。朱德熙（1957）最早将递加的多项定语的次序安排概括为三个方面的规则<button type="button" class="cite" data-cite="zhuRules" aria-label="查看出处"></button>：</p>
+
+  <div class="card taped">
+    <p class="bench-label">递加多项定语的三条规则——点一条看内容与例子。</p>
+    <div class="btn-row" id="zhuBtns">
+      <button class="btn" data-zt="1">规则一 · 不带 de 的次序</button>
+      <button class="btn" data-zt="2">规则二 · 领属仍在最前</button>
+      <button class="btn" data-zt="3">规则三 · 带 de 者在前</button>
+    </div>
+    <div class="reveal" id="zhuBox" hidden><p id="zhuTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">朱德熙的例子（本书作了些许调整，括弧内数字表示定语的次序）<button type="button" class="cite" data-cite="zhuEx" aria-label="查看出处"></button></p>
+    <table class="tbl">
+      <thead><tr><th class="l" style="width:10%">例</th><th class="l" style="width:44%">例子</th><th class="l">说明</th></tr></thead>
+      <tbody>
+        <tr><td class="l">(1)</td><td class="l">他的<sub>(1)</sub> 把<sub>(2)</sub> 小<sub>(3)</sub> 瓷<sub>(4)</sub> 茶壶</td><td class="l">几个定语都不带 de 时的次序：领属＞指别数量＞形容词＞表性质的名词</td></tr>
+        <tr><td class="l">(2)</td><td class="l">张三的<sub>(1)</sub> 两个<sub>(2)</sub> 破<sub>(3)</sub> 墨水<sub>(4)</sub> 瓶儿</td><td class="l">同上；“墨水”表质料，是最贴近中心语的性质名词</td></tr>
+        <tr><td class="l">(3)</td><td class="l">a. 瓷的小茶壶　b. 小瓷的茶壶<br><span style="font-size:.85rem;color:var(--ink-faint)">比较：小瓷茶壶｜小的瓷茶壶</span></td><td class="l">不带 de 时“小”一定在“瓷”前；带 de 后两者都可说，但不带 de 的对应形式并不平等</td></tr>
+        <tr><td class="l">(4)</td><td class="l">a. 绣花的绸衬衫　b. 绸绣花的衬衫<br><span style="font-size:.85rem;color:var(--ink-faint)">比较：绸的绣花衬衫</span></td><td class="l">动词性短语与名词定语的相对次序同理：离中心语近的表更稳固的性质</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="scene-foot">回顾前面对 de 字隐现条件的分析，我们一下子就可以看出这两个现象之间的联系：这些从形式上提出的规则，可以概括地重述为一条象似原则。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s1">← 信念与路径</button>
+    <button class="btn" data-jump="s3">下一场：象似原则的重述 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景三 ============ -->
+<section id="s3" data-scene="3">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="三" aria-hidden="true"></span>
+    <h2>重述为一条象似原则</h2>
+  </div>
+  <p class="point">从形式上提出的这些规则可以概括地重述为一条象似原则：<strong>定语和中心语之间的距离，取决于它们所表达的概念之间的距离</strong><button type="button" class="cite" data-cite="onePrinciple" aria-label="查看出处"></button>。从后往前看，促动第三条规则的，正是前面反复论证的决定 de 字隐现条件的距离象似动因，这无需多言。真正值得追问的是第一、第二条规则背后的认知原因。</p>
+
+  <div class="card taped">
+    <p class="bench-label">四类定语的“概念距离”与位置——点一类看它为何坐在那个位子上。</p>
+    <div class="btn-row" id="distBtns">
+      <button class="btn" data-dt="poss">领属定语 · 最远</button>
+      <button class="btn" data-dt="num">指别·数量 · 次远</button>
+      <button class="btn" data-dt="adj">形容词 · 较近</button>
+      <button class="btn" data-dt="noun">性质名词 · 最近</button>
+    </div>
+    <div class="reveal" id="distBox" hidden><p id="distTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">第二和第一条规则指出，表领属的体词总是离中心语最远。而我们在前面提过，<strong>领有者对事物的影响和属性对事物的影响有本质的不同</strong>：事物一般不会随领有者的改变而改变，却一定会随属性的改变而有别。故根据 Haiman 提出的标准，领有者和事物的概念距离一定比属性远；语义上的这一特征体现在语序上，便是表领有者的成分出现在属性成分之前<button type="button" class="cite" data-cite="possAttr" aria-label="查看出处"></button>。</p>
+
+  <p class="point">第一条规则提到，数量词（其实还包括指量构造）紧跟表领属的词，离中心语仍比形容词及表性质的名词远。这同样有认知上的原因：数量成分和领属者对中心语的限定作用有类似之处，带有从事物中“拣选”出某些或某个的意味，故它基本上是作用于概念的<strong>外延</strong>；但它对物体概念内涵的影响要稍稍大于领属者——如它可反映物体是否具有 [+可数] 这样的属性，而它本身又不可看作事物真正的属性。这正好说明了它夹在领有者和属性词之间的位置（参见 Seilor 1978）<button type="button" class="cite" data-cite="numeral" aria-label="查看出处"></button>。</p>
+
+  <p class="point">第六章说过，表属性的名词不带 de 和中心名词组合的限制比形容词要小得多，即前者比后者更倾向于隐去 de；而此处的第一条规则指出，多项定语中的形容词排在表性质的名词前面。这两种现象有着明显的联系：<strong>形容词表示的属性多为我们的感官所感受到的、或与心理估价相关的性质，它们与事物之间的联系没有名词表示的属性那么密切、直接</strong>；名词表示的属性多为事物较稳固的性质如质料、身份等，或在事物与人的互动关系中更为显著的性质如用途功能等。试比较“破茶壶”和“瓷茶壶”——“破”和“瓷”与茶壶概念联系的松紧有着不言而喻的差别<button type="button" class="cite" data-cite="adjNoun" aria-label="查看出处"></button>。</p>
+
+  <p class="scene-foot">上述规则只是对汉语多项定语语序的一个简略的勾勒。若把定语的类分得更细一些，可以看到决定其次序的仍是距离象似原则——这正是陆丙甫（1988）的工作。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s2">← 三条规则</button>
+    <button class="btn" data-jump="s4">下一场：陆丙甫的精细序列 →</button>
+  </div>
+</section>
+<!-- ============ 场景四 ============ -->
+<section id="s4" data-scene="4">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="四" aria-hidden="true"></span>
+    <h2>陆丙甫：更精细的序列</h2>
+  </div>
+  <p class="point">上述规则只是简略的勾勒。陆丙甫（1988）在分析多项组合式定语时发现，其顺序可分化为<strong>两个内部次序相对稳定的序列</strong>：指别词和数量词构成的序列，与其他定语构成的序列。根据前面的分析，领属定语与“这那”之类指别成分具有相似的指别作用，故我们认为领属定语应和指别词归为一类。这两个序列放在一起，自然是头一个序列在前<button type="button" class="cite" data-cite="luSeq" aria-label="查看出处"></button><button type="button" class="cite" data-cite="twoSeq" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两个内部稳定的序列——点一个看它的成员与作用。</p>
+    <div class="btn-row" id="seqBtns">
+      <button class="btn" data-sq="a">序列一 · 指别＋数量</button>
+      <button class="btn" data-sq="b">序列二 · 其他定语</button>
+    </div>
+    <div class="reveal" id="seqBox" hidden><p id="seqTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">后一个序列若刻划得更精细一些，便可发现<strong>表情状的形容词复杂形式一定得放在表性质的形容词简单形式之前</strong>——例如“我那件脏里叭唧的新绸子衬衫”：状态形容词“脏里叭唧”表临时的情状，简单形式“新”表较稳固的性质。这是因为情状和事物的概念距离比性质更远<button type="button" class="cite" data-cite="stateQuality" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">表属性的形容词、名词与区别词：基本顺序——点一项看它的位置与例子<button type="button" class="cite" data-cite="shapeColor" aria-label="查看出处"></button>。</p>
+    <div class="btn-row" id="orderBtns">
+      <button class="btn" data-or="shape">形体</button>
+      <button class="btn" data-or="color">颜色</button>
+      <button class="btn" data-or="material">质料</button>
+      <button class="btn" data-or="func">功能</button>
+    </div>
+    <div class="reveal" id="orderBox" hidden><p id="orderTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">这个顺序的认知理据，正如陆丙甫所概括的，是<strong>反映事物较临时的状态的定语倾向于靠前，而越是表现事物本身固有性质的定语越是后置</strong>。与此相应，作定语的名词和区别词一般放在形容词之前。不同语义属性的定语在带 de 不带 de 的限制方面也有一致的表现：表质料功能的定语和表形体颜色的定语相比，能更为自由地隐去 de——de 字隐现与语序在此再次走到了一起<button type="button" class="cite" data-cite="tempInnate" aria-label="查看出处"></button>。</p>
+
+  <p class="point">我们在此讨论的只是多项定语的<strong>优先语序、强势语序</strong>（preferred orders, canonical orders），故不拟深究某些定语在语序上的可变性。不过，表面上语序灵活的形式，其实际次序的不同仍反映了概念距离的不同——陆丙甫（1988）就曾细致地注意到，语序灵活的“VP 的”若位置不同，其意义会有分化<button type="button" class="cite" data-cite="preferred" aria-label="查看出处"></button><button type="button" class="cite" data-cite="vpDe" aria-label="查看出处"></button>：</p>
+
+  <div class="card taped">
+    <p class="bench-label">“VP 的”前移还是后置？——点一种位置看它限定的是什么。</p>
+    <div class="btn-row" id="vpBtns">
+      <button class="btn" data-vp="in">离中心语近 · 限定内涵</button>
+      <button class="btn" data-vp="ex">离中心语远 · 限定外延</button>
+    </div>
+    <div class="reveal" id="vpBox" hidden><p id="vpTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="scene-foot">“2500 颗投在广岛的原子弹”与“投在广岛的 2500 颗原子弹”蕴含的区别，同样是距离象似动因的反映：离中心语越近，越是对“是什么”的限定；越远，越是对“是哪一个”的限定。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s3">← 象似原则的重述</button>
+    <button class="btn" data-jump="s5">下一场：英语与德语的优先语序 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景五 ============ -->
+<section id="s5" data-scene="5">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="五" aria-hidden="true"></span>
+    <h2>英语与德语的优先语序</h2>
+  </div>
+  <p class="point">多项定语语序这个问题之所以引起我们的注意，一方面是因为它和定语带 de 与否的现象具有相同的认知基础，因而可以印证我们对后者的分析；另一方面是因为类似上面描述的语序还相当广泛地出现在其他不少语言里，具有一定的普遍性<button type="button" class="cite" data-cite="whyNotice" aria-label="查看出处"></button>。</p>
+
+  <p class="point">根据 Hill (1958)、Vendler (1968)、Martin (1968)、Seilor (1978) 等多位学者的研究，英语和德语前置的多项定语大致形成这样一个优先语序<button type="button" class="cite" data-cite="enDeOrder" aria-label="查看出处"></button>。点开每一格看它的语义类与典型成员：</p>
+
+  <div class="card taped">
+    <p class="bench-label">英语·德语前置多项定语的优先语序（从左到右离中心语越来越近）。</p>
+    <div class="btn-row" id="enSeqBtns">
+      <button class="btn" data-es="quant">逻辑量词</button>
+      <button class="btn" data-es="det">指示/冠词/领属</button>
+      <button class="btn" data-es="num">数词</button>
+      <button class="btn" data-es="state">情状形容词</button>
+      <button class="btn" data-es="eval">估价形容词</button>
+      <button class="btn" data-es="color">颜色形容词</button>
+      <button class="btn" data-es="material">质料形容词及名词</button>
+    </div>
+    <div class="reveal" id="enSeqBox" hidden><p id="enSeqTxt" style="margin:0"></p></div>
+  </div>
+
+  <div class="card">
+    <p class="bench-label">书中的两个例子<button type="button" class="cite" data-cite="enEx" aria-label="查看出处"></button></p>
+    <p style="font-size:.95rem"><strong>(5)</strong> all the ten pretty young American children's twenty little old china doll<br><span style="color:var(--ink-soft)">所有这十位漂亮的年轻美国孩子的二十个小小的旧瓷娃娃</span></p>
+    <p style="font-size:.95rem"><strong>(6)</strong> meine zehn schonen roten holzernen Kugeln（德语）<br><span style="color:var(--ink-soft)">我的十个漂亮的红木球</span></p>
+    <p style="font-size:.85rem;color:var(--ink-faint)">例 (5) 一个短语里套了两层：children's 之前是“这十位漂亮的年轻美国孩子”（all the ten pretty young American），之后是“二十个小小的旧瓷娃娃”（twenty little old china doll）——每一层内部都严格遵循上述序列。</p>
+  </div>
+
+  <p class="point">上面的序列<strong>几乎和汉语完全相同</strong><button type="button" class="cite" data-cite="almostSame" aria-label="查看出处"></button>。Seilor (1978) 进一步指出：上述序列中，<strong>领属词是个转折点</strong>——其前的定语倾向于对中心语的外延进行限定（即确定所指），其后是对内涵的限定和描述（表征概念）。这个说法和陆丙甫（1988）对汉语的分析不谋而合<button type="button" class="cite" data-cite="turning" aria-label="查看出处"></button>。</p>
+
+  <p class="scene-foot">转折点之前回答“哪一个”（从世界中拣选出对象），转折点之后回答“是什么”（描述对象的性质）——汉语里“他的把小瓷茶壶”与英语里“his little china teapot”在同一个地方转弯。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s4">← 陆丙甫的精细序列</button>
+    <button class="btn" data-jump="s6">下一场：更大范围的普遍性与镜象 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景六 ============ -->
+<section id="s6" data-scene="6">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="六" aria-hidden="true"></span>
+    <h2>更大范围的普遍性与镜象</h2>
+  </div>
+  <p class="point">更大范围的考察显示，和汉语“一个漂亮的大红球”及英语“a beautiful big red ball”、德语“ein schoner grosser roter Ball”语序一样的，还有匈牙利语、波兰语、土耳其语、印地语等多种语言；而定语后置的语言中，其语序多为“球—红—大—漂亮的”，如波斯语、印尼语、巴斯克语等——<strong>这正是与前置语序本质相同的一个镜象</strong>（mirror image）（参见 Hetzron 1978）<button type="button" class="cite" data-cite="wider" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">两种语言类型，一条序列——点一类看它的排列方式。</p>
+    <div class="btn-row" id="langBtns">
+      <button class="btn" data-lg="pre">前置语言 · 修饰语在前</button>
+      <button class="btn" data-lg="post">后置语言 · 镜象排列</button>
+    </div>
+    <div class="reveal" id="langBox" hidden><p id="langTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">根据 Greenberg (1963) 的一条普遍特征规律：<strong>若指示语 (d)、数词 (n)、形容词 (a) 都在名词前面，则语序总是 dnaN；若都在名词后面，则较多的语序是 Nand，少数还有 Ndna 这样的变体</strong><button type="button" class="cite" data-cite="greenberg" aria-label="查看出处"></button>。点开两种配置看它们的对照：</p>
+
+  <div class="card taped">
+    <p class="bench-label">Greenberg 的两种配置。</p>
+    <div class="btn-row" id="gbBtns">
+      <button class="btn" data-gb="dna">全前置 · dnaN</button>
+      <button class="btn" data-gb="nad">全后置 · Nand</button>
+    </div>
+    <div class="reveal" id="gbBox" hidden><p id="gbTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">多项定语语序的这种普遍性，<strong>尤其是修饰语后置的语言里多项定语的镜象排列，使我们相信其中的根本理据只能是距离象似动因</strong><button type="button" class="cite" data-cite="mirrorWhy" aria-label="查看出处"></button>。假如理据是某种任意的形式规则，就很难解释为什么不同类型的语言会在各自的线性次序中保持同一个相对序列——唯一的共同点，是它们都按概念距离来安排修饰语与中心语的远近。</p>
+
+  <p class="scene-foot">从汉语的三条规则，到英语德语的七格序列，再到后置语言的镜象，我们看到的是同一条原则在不同线性方向上的投影。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s5">← 英语与德语的优先语序</button>
+    <button class="btn" data-jump="s7">下一场：认知策略与轨层结构 →</button>
+  </div>
+</section>
+<!-- ============ 场景七 ============ -->
+<section id="s7" data-scene="7">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="七" aria-hidden="true"></span>
+    <h2>理据：从认知策略到轨层结构</h2>
+  </div>
+  <p class="point">这种解释早已为不少学者所提出。Vendler (1968)、Martin (1968) 都认为，<strong>形容词定语的位置由它们与名词的相关程度决定，语义上越像名词的便越靠近名词中心语</strong>；Bever (1970) 则明确提出这种语序是由认知策略决定的<button type="button" class="cite" data-cite="vendler" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">三种层层推进的解释——点一种看它的贡献。</p>
+    <div class="btn-row" id="theoryBtns">
+      <button class="btn" data-th="vendler">Vendler / Martin · 相关程度</button>
+      <button class="btn" data-th="bever">Bever · 认知策略</button>
+      <button class="btn" data-th="lu">陆丙甫 · 轨层结构</button>
+    </div>
+    <div class="reveal" id="theoryBox" hidden><p id="theoryTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">最先明确把汉语多项定语的语序与语言普遍现象联系起来考虑的是陆丙甫（1989，1992）。他用<strong>“轨层结构”</strong>的概念去概括这种普遍的语序现象，指出语义关系接近的成分其位置也比较靠近，这与认知的守恒性相关<button type="button" class="cite" data-cite="track" aria-label="查看出处"></button>。</p>
+
+  <details>
+    <summary>“轨层结构”是什么（折叠细节）</summary>
+    <p>陆丙甫把多项定语的次序比作轨道分层：每一类定语各处在自己的“轨层”上，离中心语越远的轨层，其成员在语义上与中心语的关系越间接、越临时；越近的轨层，成员与中心语的关系越直接、越固有。指别、数量处在最外轨层，形体颜色居中，质料功能最贴近中心语。汉语的“指别—数量—情状—性质—质料功能”与英语的“指示冠词领属—数词—情状—估价—颜色—质料”可看作同一条轨层结构在不同语言里的具体实现；后置语言则把整条轨层倒转，成为镜象。</p>
+  </details>
+
+  <p class="scene-foot">从“相关程度”到“认知策略”再到“轨层结构”，解释越来越形式化，但核心始终未变：语序反映概念距离。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s6">← 更大范围的普遍性与镜象</button>
+    <button class="btn" data-jump="s8">下一场：结语 →</button>
+  </div>
+</section>
+
+<!-- ============ 场景八 ============ -->
+<section id="s8" data-scene="8">
+  <div class="scene-head">
+    <span class="scene-num kai" data-n="八" aria-hidden="true"></span>
+    <h2>结语：共同的策略与更大的问题</h2>
+  </div>
+  <p class="point">本书下篇所讨论的课题主要是由语言共性研究中的一个难题引出的，从中得出的结论又把我们引向对语言共性更深一层的认识。<strong>汉语定中间 de 字的隐现规律和多项定语的排列规律由一条共同的认知策略所决定</strong>，它能为这两个独立现象表现出的一致性提供合理的解释<button type="button" class="cite" data-cite="commonStrategy" aria-label="查看出处"></button>。</p>
+
+  <p class="point">汉语里的这两种规律之所以与迄今发现的某些语言共性规律相通，其基础也可能在于<strong>体现在自然语言里的人类认知能力和认知策略的一般性和普遍性</strong>。这给我们提出了一个更大的问题：自然语言的形式规则在多大程度上与认知策略相关？语言的共性规律又在多大程度上可从认知上得到解释<button type="button" class="cite" data-cite="biggerQ" aria-label="查看出处"></button>？</p>
+
+  <p class="point">如本书上篇所述，近年来的认知语言学已开始试图回答这些问题。Deane（1992）从<strong>“形式的空间化假设”</strong>出发，为生成语法提出的多种普遍的句法限制和句法原则（如各种孤岛条件、X-bar 原则等）找出认知上的基础，这就是很好的例子<button type="button" class="cite" data-cite="deane" aria-label="查看出处"></button>。</p>
+
+  <div class="card taped">
+    <p class="bench-label">全书的收尾四点——点一条看它的分量。</p>
+    <div class="btn-row" id="bigBtns">
+      <button class="btn" data-bg="strategy">一条共同的策略</button>
+      <button class="btn" data-bg="question">两个更大的问题</button>
+      <button class="btn" data-bg="deane">Deane 的示范</button>
+      <button class="btn" data-bg="chinese">汉语的意义</button>
+    </div>
+    <div class="reveal" id="bigBox" hidden><p id="bigTxt" style="margin:0"></p></div>
+  </div>
+
+  <p class="point">汉语作为一种缺乏形态、象似性较强的语言，对它的深入研究必将大大有助于人们对这些问题的探索<button type="button" class="cite" data-cite="chineseSig" aria-label="查看出处"></button>。从第四章的字隐现到本章的定语语序，本书用一条距离象似原则贯穿了两种看似不相干的现象——这本身就是对“言必有据”四个字的最好注脚。</p>
+
+  <p class="scene-foot">全书正文至此结束。参考文献与索引见原书。</p>
+  <div class="navline">
+    <button class="btn" data-jump="s7">← 认知策略与轨层结构</button>
+    <button class="btn" data-jump="quiz">结尾自测 →</button>
+  </div>
+</section>
+<section id="quiz" data-scene="9">
+  <div class="scene-head"><span class="scene-num kai" data-n="测" aria-hidden="true"></span><h2>结尾自测</h2></div>
+  <div class="card"><p><strong>1.</strong> 本书分析 de 字隐现时持的基本信念是：</p><div class="btn-row" id="q1"><button class="btn" data-q="a">句法形式并不都受制于抽象的原则与规则，表层句法之下往往可以找到认知—语义上的理据</button><button class="btn" data-q="b">句法形式完全由抽象的原则与规则决定，与语义无关</button><button class="btn" data-q="c">汉语的句法规律完全是任意的，没有理据可讲</button></div><p class="feedback" id="q1fb"></p></div>
+  <div class="card"><p><strong>2.</strong> 朱德熙（1957）三条规则可被重述为一条象似原则，即：</p><div class="btn-row" id="q2"><button class="btn" data-q="a">定语和中心语之间的距离取决于它们所表达的概念之间的距离</button><button class="btn" data-q="b">定语越长越靠近中心语</button><button class="btn" data-q="c">单音节定语一定排在双音节定语之前</button></div><p class="feedback" id="q2fb"></p></div>
+  <div class="card"><p><strong>3.</strong> 领属定语总是离中心语最远，背后的认知原因是：</p><div class="btn-row" id="q3"><button class="btn" data-q="a">事物一般不会随领有者的改变而改变，却一定会随属性的改变而有别，故领有者与事物的概念距离比属性远</button><button class="btn" data-q="b">领属定语在历史上出现得最晚</button><button class="btn" data-q="c">领属定语都是单音节词</button></div><p class="feedback" id="q3fb"></p></div>
+  <div class="card"><p><strong>4.</strong> 数量词夹在领属者和属性词之间，本书的解释是：</p><div class="btn-row" id="q4"><button class="btn" data-q="a">它与领属者一样作用于概念的外延（“拣选”出个体），但对内涵的影响稍大（可反映 [+可数]），自身又不是真正的属性</button><button class="btn" data-q="b">数量词是形容词的一个小类</button><button class="btn" data-q="c">这是语言演变中的偶然残留</button></div><p class="feedback" id="q4fb"></p></div>
+  <div class="card"><p><strong>5.</strong> 陆丙甫（1988）发现多项组合式定语可分化为两个序列，领属定语被归入：</p><div class="btn-row" id="q5"><button class="btn" data-q="a">与指别词、数量词同属第一序列——它与“这那”具有相似的指别作用</button><button class="btn" data-q="b">与形容词同属第二序列</button><button class="btn" data-q="c">与质料名词同属最贴近中心语的序列</button></div><p class="feedback" id="q5fb"></p></div>
+  <div class="card"><p><strong>6.</strong> “2500 颗投在广岛的原子弹”与“投在广岛的 2500 颗原子弹”的区别在于：</p><div class="btn-row" id="q6"><button class="btn" data-q="a">离中心语近的“VP 的”限定内涵，远的限定外延——语序灵活的形式仍反映概念距离</button><button class="btn" data-q="b">两句意思完全相同，没有任何区别</button><button class="btn" data-q="c">区别只在于音节数搭配，与语义无关</button></div><p class="feedback" id="q6fb"></p></div>
+  <div class="card"><p><strong>7.</strong> 英语和德语前置多项定语的序列中，领属词的位置意味着：</p><div class="btn-row" id="q7"><button class="btn" data-q="a">它是一个转折点——其前限定外延（确定所指），其后限定内涵（表征概念）</button><button class="btn" data-q="b">它是可有可无的装饰成分</button><button class="btn" data-q="c">它必须紧贴中心语</button></div><p class="feedback" id="q7fb"></p></div>
+  <div class="card"><p><strong>8.</strong> 定语后置的语言（如波斯语）语序多为“球—红—大—漂亮的”，本书认为这说明：</p><div class="btn-row" id="q8"><button class="btn" data-q="a">它与前置语序本质相同，是一个镜象；其中的根本理据只能是距离象似动因</button><button class="btn" data-q="b">后置语言的语序完全没有规律</button><button class="btn" data-q="c">后置语言不遵守 Greenberg 的任何普遍特征</button></div><p class="feedback" id="q8fb"></p></div>
+  <footer class="site"><p>材料来源：《认知语言学与汉语名词短语》第八章 OCR 转录稿；转录稿无页码，角标位置精确到节。页面仅供个人学习研究使用。</p><p>单文件 · 零外部依赖 · 视觉为内联 SVG/CSS 手绘示意。</p></footer>
+</section>
+</main>
+<div id="citePop" hidden><div class="cite-card"><button class="cc-close" id="citeClose" aria-label="关闭">×</button><div class="cc-loc" id="citeLoc"></div><div class="cc-quote" id="citeQuote"></div><div class="cc-zh" id="citeZh"></div><p class="cc-note">出处来自本章 OCR 转录稿；转录稿无页码，定位精确到节。</p></div></div>
+<button id="resumePill" hidden>继续阅读 <span id="resumeTxt"></span></button>
+<script>
+"use strict";
+/* ================= 事实账本（出处库） ================= */
+const SOURCES = {
+  bookInfo:{ch:"第八章",page:"封面",quote:"认知语言学与汉语名词短语 ＞ 作者：张敏",zh:"《认知语言学与汉语名词短语》（张敏 著）第八章"},
+  belief:{page:"8.0",quote:"我们在分析汉语定中结构间de字的隐现规律时，自始至终持有一个基本的信念，即句法形式并不都是受制于抽象性质的原则与规则，表层的句法表现之下往往可以找到认知—语义上的理据，尤其是当类似的概念语义结构在同一语言中及不同语言间一再以类似的表层形式表达的时候",zh:"基本信念：句法形式并非都受制于抽象规则，表层句法之下往往可以找到认知—语义理据。"},
+  projection:{page:"8.0",quote:"作为概念化过程结果的语义结构直接投射于表层句法的情况要远远多过一般人所设想的（参见Langacker 1990，Tai 1993a）。",zh:"语义结构直接投射于表层句法的情况远比一般人所设想的更多。"},
+  corroborate:{page:"8.0",quote:"我们用距离象似动因解释汉语里de字的隐现，这种解释可得到大量语言里名词短语构成方式上的佐证，这种语义与形式同构的现象分布之广泛，使我们不得不相信这一基于象似性的解释是能够成立的，除非我们能就这个问题从其他角度提出更好的解释。",zh:"距离象似动因得到大量语言名词短语构成方式的佐证，除非有更好的解释，否则可以成立。"},
+  pts:{page:"8.0",quote:"戴浩一（Tai 1985）从次序象似性的角度提出的“时间顺序原则”便是一个很好的例子，这个原则概括了汉语里大量以动词为中心的，表面上互不相干的句法范畴的语序表现。",zh:"时间顺序原则概括了汉语大量以动词为中心的、表面互不相干的语序表现。"},
+  zhang1995b:{page:"8.0",quote:"我们在另一篇文章里提出，管辖汉语以名词为中心的句法构造的语序表现的正是距离象似原则(Zhang1995b)。",zh:"作者另一篇文章提出：汉语以名词为中心的句法构造，其语序由距离象似原则管辖。"},
+  twoPhen:{page:"8.0",quote:"表面上看，定中之间de字的隐现和多项定语的相对语序是两个独立的现象，但我们在前一种现象中发现的规律却相当系统地反映在后一种现象里。限于篇幅，在此只简要说明两种现象里规律的一致性。",zh:"de 字隐现与多项定语语序看似独立，实则前者发现的规律系统地反映在后者里。"},
+  zhuRules:{page:"8.0",quote:"朱德熙(1957)最早将递加的多项定语的次序安排概括为以下三个方面的规则：第一，如果几个定语都不带dc，一般的次序是：(1)表领属的名词或代词，(2)数量词，(3)形容词，(4)表性质的名词；第二，在带de的定语里头，表领属的名词或代词仍然在最前面；第三，带de的定语一定在不带de的定语之前。",zh:"朱德熙三条规则：不带 de 时次序为领属＞数量＞形容词＞性质名词；带 de 的定语中领属仍在最前；带 de 的定语在不带 de 的之前。"},
+  zhuEx:{page:"8.0",quote:"下面是朱德熙的例子(我们作了些许调整)：(1)他的(1)把(2)小(3)瓷(4)茶壶。(2)张三的(1)两个(2)破(3)墨水(4)瓶儿。(3)a. 瓷的小茶壶 b. 小瓷的茶壶（比较：小瓷茶壶，小的瓷茶壶）(4)a. 绣花的绸衬衫 b. 绸绣花的衬衫（比较：绸的绣花衬衫）",zh:"朱德熙的四个例子，括弧内数字指标注定语的次序。"},
+  onePrinciple:{page:"8.0",quote:"从形式上提出的这些规则可以概括地重述为一条象似原则：定语和中心语之间的距离取决于它们所表达的概念之间的距离。",zh:"三条形式规则可重述为：定语与中心语的距离取决于概念距离。"},
+  possAttr:{page:"8.0",quote:"第二和第一条规则指出表领属的体词总是离中心语最远，而我们在前面提过，领有者对事物的影响和属性对事物的影响有本质的不同，事物一般不会随领有者的改变而改变，却一定会随属性的改变而有别，故根据Haiman提出的标准，领有者和事物的概念距离一定比属性远",zh:"事物不随领有者而变却随属性而别，按 Haiman 标准，领有者与事物的概念距离比属性远，故领属定语最远。"},
+  numeral:{page:"8.0",quote:"数量成分和领属者对中心语的限定作用有类似之处，带有从事物中“拣选”出某些或某个的意味，故它基本上是作用于概念的外延。但它对物体概念内涵的影响要稍稍大于领属者，如它可反映物体是否具有[+可数]这样的属性，而它本身又不可看作事物真正的属性，这正好说明了它夹在领有者和属性词之间的位置(参见Seilor 1978)。",zh:"数量词与领属者都作用于外延，但对内涵影响稍大（可反映可数性），自身又不是真属性，故夹在中间。"},
+  adjNoun:{page:"8.0",quote:"形容词表示的属性多为我们的感官所感受到的，或与心理估价相关的性质，它们与事物之间的联系没有名词表示的属性那么密切、直接；名词表示的属性多为事物较稳固的性质如质料、身份等，或在事物与人的互动关系中更为显著的性质如用途功能等。试比较“破茶壶”和“瓷茶壶”，其中“破”和“瓷”与茶壶概念联系的松紧有着不言而喻的差别。",zh:"形容词表感官或估价性属性，与事物联系较松；名词表质料、身份、功能等稳固属性，联系更紧，故更贴近中心语。"},
+  luSeq:{page:"8.0",quote:"陆内甫(1988)在分析多项组合式定语时发现，其顺序可分化为两个内部次序相对稳定的序列，即指别词和数量词构成的序列与其他定语构成的序列。",zh:"多项组合式定语可分化为两个内部次序稳定的序列：指别＋数量序列与其他定语序列。"},
+  twoSeq:{page:"8.0",quote:"根据前面的分析，领属定语与“这那”之类指别成分具有相似的指别作用，故我们认为领属定语应和指别词归为一类。这两个序列放在一起，自然是头一个序列在前。",zh:"领属定语与指别成分作用相似，应归入指别一类；两个序列并置时，指别＋数量序列在前。"},
+  stateQuality:{page:"8.0",quote:"后一个序列若刻划得更精细一些，便可发现表情状的形容词复杂形式（如状态形容词、形容词性短语等）一定得放在表性质的形容词简单形式之前（例如“我那件脏里叭唧的新绸子衬衫”），这是因为情状和事物的概念距离比性质更远。",zh:"表情状的形容词复杂形式一定在表性质的形容词简单形式之前，因为情状的概念距离比性质远。"},
+  shapeColor:{page:"8.0",quote:"根据陆丙甫(1988)，在表属性的形容词和名词、区别词中，基本的顺序是“形体—颜色—质料—功能”（如“大号白色呢子防风大衣”），其中形体和颜色的次序有时能够调换，但它们一定在质料功能之前，质料也多半在功能之前。与此相应的是，作定语的名词和区别词一般放在形容词之前。",zh:"表属性定语的基本顺序：形体—颜色—质料—功能；名词和区别词一般在形容词之前。"},
+  tempInnate:{page:"8.0",quote:"这个顺序的认知理据正如陆丙甫所概括的，是反映事物较临时的状态的定语倾向于靠前，而越是表现事物本身固有性质的定语越是后置。不同语义属性的定语在带de不带de的限制方面也有一致的表现，即表质料功能的定语和表形体颜色的定语相比能更为自由地隐去de。",zh:"临时的状态靠前，固有性质后置；质料功能定语比形体颜色定语能更自由地隐去 de。"},
+  preferred:{page:"8.0",quote:"我们在此讨论的只是多项定语的优先语序、强势语序（preferred orders, canonical orders），故不拟深究某些定语在语序上的可变性，不过，表面上语序灵活的形式，其实际次序的不同仍反映了概念距离的不同",zh:"本章只讨论优先语序、强势语序；表面灵活的形式，实际次序仍反映概念距离。"},
+  vpDe:{page:"8.0",quote:"如陆丙甫(1988)就曾细致地注意到语序灵活的“VP的”若位置不同其意义会有分化，离中心语近的限定内涵，远的限定外延，如“2500颗投在广岛的原子弹”和“投在广岛的2500颗原子弹”就蕴含着这样的区别。这同样是距离象似动因的反映。",zh:"“VP 的”近中心语者限定内涵，远者限定外延；语序分化同样是距离象似动因的反映。"},
+  whyNotice:{page:"8.0",quote:"多项定语语序这个问题之所以引起我们的注意，一方面是因为它和定语带de与否的现象具有相同的认知基础，因而可以印证我们对后者的分析；另一方面是因为类似上面描述的语序还相当广泛地出现在其他不少语言里，具有一定的普遍性。",zh:"多项定语语序与 de 字隐现有相同认知基础，且广泛见于其他语言，故引起注意。"},
+  enDeOrder:{page:"8.0",quote:"根据Hill (1958)，Vendler(1968)，Martin(1968)，Seilor(1978)等多位学者的研究，英语和德语前置的多项定语大致形成这样一个优先语序“逻辑量词—指示词/冠词/领属词—数词—表情状的形容词—表估价的形容词—表颜色的形容词—表质料的形容词及名词”。",zh:"英语德语前置多项定语优先语序：逻辑量词—指示/冠词/领属—数词—情状—估价—颜色—质料及名词。"},
+  enEx:{page:"8.0",quote:"(5) all the ten pretty young American children's twenty little old china doll (所有这十位漂亮的年轻美国孩子的二十个小小的旧瓷娃娃) (6)meine zehn schonen roten holzernen Kugeln(德语)(我的十个漂亮的红木球)",zh:"英语、德语例子：一个短语内层层都遵循上述序列。"},
+  almostSame:{page:"8.0",quote:"上面的序列几乎和汉语完全相同。",zh:"英语德语的序列几乎和汉语完全相同。"},
+  turning:{page:"8.0",quote:"Seilor(1978)指出，上述序列中，领属词是个转折点，其前的定语倾向于对中心语的外延进行限定（即确定所指），其后是对内涵的限定和描述（表征概念），这个说法和陆丙甫(1988)对汉语的分析不谋而合。",zh:"领属词是转折点：其前限定外延（确定所指），其后限定内涵（表征概念），与陆丙甫对汉语的分析一致。"},
+  wider:{page:"8.0",quote:"更大范围的考察显示，和汉语“一个漂亮的大红球”及英语“a beautiful big red ball”、德语“ein schoner grosser roter Ball”语序一样的还有匈牙利语、波兰语、土耳其语、印地语等多种语言，而定语后置的语言中，其语序多为“球—红—大—漂亮的”，如波斯语、印尼语、巴斯克语等，而这正是与前置语序本质相同的一个镜象（mirror image）（参见Hetzron 1978）。",zh:"匈、波、土、印地等语言与汉语英语同序；波斯、印尼、巴斯克等后置语言呈镜象排列。"},
+  greenberg:{page:"8.0",quote:"根据Greenberg(1963)的一条普遍特征规律，若指示语(d)，数词(n)，形容词(a)都在名词前面，则语序总是dnaN；若都在名词后面，则较多的语序是Nand，少数还有Ndna这样的变体。",zh:"Greenberg 共相：d、n、a 全前置则总是 dnaN；全后置则多为 Nand，少数 Ndna。"},
+  mirrorWhy:{page:"8.0",quote:"多项定语语序的这种普遍性，尤其是修饰语后置的语言里多项定语的镜象排列，使我们相信其中的根本理据只能是距离象似动因。",zh:"镜象排列等普遍性使人相信根本理据只能是距离象似动因。"},
+  vendler:{page:"8.0",quote:"这种解释早已为不少学者所提出，如Vendler(1968)，Martin(1968)都认为形容词定语的位置由它们与名词的相关程度决定，语义上越像名词的便越靠近名词中心语，Bever(1970)则明确提出这种语序是由认知策略决定的。",zh:"Vendler、Martin：形容词位置由与名词的相关程度决定；Bever：这种语序由认知策略决定。"},
+  track:{page:"8.0",quote:"最先明确把汉语多项定语的语序与语言普遍现象联系起来考虑的是陆丙甫(1989，1992)，他用“轨层结构”的概念去概括这种普遍的语序现象，指出语义关系接近的成分其位置也比较靠近，这与认知的守恒性相关。",zh:"陆丙甫以“轨层结构”概括普遍语序现象：语义关系接近的成分位置也靠近，与认知守恒性相关。"},
+  commonStrategy:{page:"8.0",quote:"汉语定中间de字的隐现规律和多项定语的排列规律由一条共同的认知策略所决定，它能为这两个独立现象表现出的一致性提供合理的解释。",zh:"de 字隐现与多项定语排列由一条共同认知策略决定，可解释两个独立现象的一致性。"},
+  biggerQ:{page:"8.0",quote:"这给我们提出了一个更大的问题：自然语言的形式规则在多大程度上与认知策略相关？语言的共性规律又在多大程度上可从认知上得到解释？",zh:"更大的问题：形式规则在多大程度上与认知策略相关？共性规律在多大程度上可从认知上解释？"},
+  deane:{page:"8.0",quote:"如本书上篇所述，近年来的认知语言学已开始试图回答这些问题，如Deane（1992)从“形式的空间化假设”出发为生成语法提出的多种普遍的句法限制和句法原则（如各种孤岛条件、X-bar原则等）找出认知上的基础，这就是很好的例子。",zh:"Deane 从形式的空间化假设出发，为生成语法的普遍句法限制找出认知基础。"},
+  chineseSig:{page:"8.0",quote:"汉语作为一种缺乏形态，象似性较强的语言，对它的深入研究必将大大有助于人们对这些问题的探索。",zh:"汉语缺乏形态、象似性较强，深入研究它有助于探索形式规则与认知策略的关系。"}
+};
+
+/* ================= 基础工具 ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const motionOK=()=>!matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= 角标编号 ================= */
+const citeNo={};
+(function numberCites(){
+  $$(".cite").forEach(b=>{
+    const id=b.dataset.cite;
+    if(!citeNo[id]) citeNo[id]=Object.keys(citeNo).length+1;
+    b.textContent=citeNo[id];
+    if(!SOURCES[id]) b.title="缺出处："+id;
+  });
+})();
+
+/* ================= 出处弹窗 ================= */
+const citePop=$("#citePop");
+let lastFocus=null;
+function openCite(id){
+  const s=SOURCES[id]; if(!s) return;
+  $("#citeLoc").textContent="位置："+(s.ch||"第八章")+" · "+s.page+(s.page==="附注"||s.page==="封面"?"":" 节");
+  $("#citeQuote").textContent="原文："+s.quote;
+  $("#citeZh").textContent="转述："+s.zh;
+  lastFocus=document.activeElement;
+  citePop.hidden=false;
+  $("#citeClose").focus();
+}
+function closeCite(){ citePop.hidden=true; if(lastFocus&&lastFocus.focus) lastFocus.focus(); }
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".cite");
+  if(b){e.preventDefault();openCite(b.dataset.cite);}
+});
+$("#citeClose").addEventListener("click",closeCite);
+citePop.addEventListener("click",e=>{if(e.target===citePop)closeCite();});
+
+/* ================= 跳转与返回 ================= */
+const backStack=[]; const backBtn=$("#backBtn");
+function jumpTo(id){
+  const el=document.getElementById(id); if(!el) return;
+  backStack.push(scrollY);
+  try{history.pushState({y:scrollY},"","#"+id);}catch(e){}
+  el.scrollIntoView({behavior:motionOK()?"smooth":"auto",block:"start"});
+  backBtn.classList.add("show");
+}
+function goBack(){
+  const y=backStack.pop();
+  if(y!=null) scrollTo({top:y,behavior:motionOK()?"smooth":"auto"});
+  if(!backStack.length) backBtn.classList.remove("show");
+}
+backBtn.addEventListener("click",goBack);
+addEventListener("popstate",e=>{
+  if(e.state&&e.state.y!=null){backStack.pop();scrollTo({top:e.state.y,behavior:"auto"});}
+  if(!backStack.length) backBtn.classList.remove("show");
+});
+$$("[data-jump]").forEach(b=>b.addEventListener("click",()=>jumpTo(b.dataset.jump)));
+
+/* ================= 键盘 ================= */
+addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&!citePop.hidden){closeCite();return;}
+  const tag=(document.activeElement||{}).tagName;
+  if(tag==="INPUT"||tag==="TEXTAREA") return;
+  const scenes=$$("[data-scene]");
+  const cur=scenes.findIndex(s=>{const r=s.getBoundingClientRect();return r.top>=-80&&r.top<innerHeight*0.5;});
+  if(e.key==="ArrowRight"&&cur<scenes.length-1){scenes[cur+1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+  if(e.key==="ArrowLeft"&&cur>0){scenes[cur-1].scrollIntoView({behavior:motionOK()?"smooth":"auto"});}
+});
+
+/* ================= 主题与字号 ================= */
+const themeBtn=$("#themeBtn");
+function applyTheme(t){
+  if(t==="light"||t==="dark") document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+  store.set("np8theme",t||"auto");
+  themeBtn.textContent=t==="dark"?"◑ 暗":t==="light"?"◑ 亮":"◐ 明暗";
+}
+applyTheme(store.get("np8theme")||"auto");
+themeBtn.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||"auto";
+  const dark=cur==="dark"||(cur==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches);
+  applyTheme(dark?"light":"dark");
+});
+const FS=[15.5,17,18.5,20];
+let fsIdx=Number(store.get("np8fsIdx")||1);
+function applyFs(){document.documentElement.style.setProperty("--fs",FS[fsIdx]+"px");store.set("np8fsIdx",String(fsIdx));}
+applyFs();
+$("#fontDown").addEventListener("click",()=>{fsIdx=Math.max(0,fsIdx-1);applyFs();});
+$("#fontUp").addEventListener("click",()=>{fsIdx=Math.min(FS.length-1,fsIdx+1);applyFs();});
+
+/* ================= 阅读进度 ================= */
+const resumePill=$("#resumePill"),resumeTxt=$("#resumeTxt");
+let saveT=null;
+addEventListener("scroll",()=>{
+  if(saveT) return;
+  saveT=setTimeout(()=>{
+    saveT=null;
+    const scenes=$$("[data-scene],[data-quiz],[data-hero]");
+    let cur=scenes[0];
+    for(const s of scenes){if(s.getBoundingClientRect().top<120) cur=s;}
+    store.set("np8progress",JSON.stringify({id:cur.id,y:Math.round(scrollY)}));
+  },400);
+},{passive:true});
+(function initProg(){
+  let p=null;try{p=JSON.parse(store.get("np8progress")||"null");}catch(e){}
+  if(p&&p.id&&scrollY<40){
+    const el=document.getElementById(p.id);
+    if(el){
+      const h2=el.querySelector("h2");
+      resumeTxt.textContent=h2?h2.textContent.replace(/^\s+/,""):"上次位置";
+      resumePill.hidden=false;
+      resumePill.onclick=()=>{resumePill.hidden=true;scrollTo({top:p.y,behavior:motionOK()?"smooth":"auto"});};
+    }
+  }
+})();
+
+/* ================= 通用点选展开 ================= */
+function bindPick(listSel,attr,boxSel,txtSel,table){
+  const box=$(boxSel),txt=$(txtSel),list=$(listSel);
+  if(!box||!txt||!list) return;
+  $$(".btn",list).forEach(b=>b.addEventListener("click",()=>{
+    const k=b.getAttribute("data-"+attr);
+    if(!Object.prototype.hasOwnProperty.call(table,k)) return;
+    txt.textContent=table[k];
+    box.hidden=false;
+    box.classList.remove("wrong");
+    $$(".btn",list).forEach(x=>x.classList.toggle("sel",x===b));
+  }));
+}
+
+/* ================= 场景一：信念与路径 ================= */
+bindPick("#pathBtns","pt","#pathBox","#pathTxt",{
+  form:"从形式到意义：先搜集形式分布，再问“什么时候能用、什么时候不能用”，把规律表述为抽象的句法规则。这是结构主义以来的主流路子，但也常被批评为“为形式而形式”——规则背后为什么如此，仍是个问题。",
+  meaning:"从意义到形式：先问概念结构如何塑造表层表达，再从语义出发解释形式的分布。本书采取的正是这条路子，它往往被人们视为畏途，因为语义分析容易流于主观；但本书用“距离象似”这类可验证的认知原则来约束，故结论仍可被更多现象独立论证。"
+});
+bindPick("#principleBtns","pl","#principleBox","#principleTxt",{
+  time:"时间顺序原则（PTS，Tai 1985）：句法成分的次序对应于它们所表达的概念状态在时间上的先后。它管辖以动词为中心的构造——“我买了书看电影”“把饭吃了”等大量表面上互不相干的语序表现，都可由此概括。",
+  distance:"距离象似原则（Zhang 1995b）：句法成分之间的距离对应于它们所表达的概念之间的距离。它管辖以名词为中心的构造——定中之间 de 字的隐现（第四~七章）与多项定语的相对语序（本章），都由这条原则决定。"
+});
+
+/* ================= 场景二：朱德熙三条规则 ================= */
+bindPick("#zhuBtns","zt","#zhuBox","#zhuTxt",{
+  "1":"规则一：如果几个定语都不带 de，一般的次序是 (1) 表领属的名词或代词，(2) 数量词，(3) 形容词，(4) 表性质的名词。如“他的把小瓷茶壶”“张三的两个破墨水瓶儿”。",
+  "2":"规则二：在带 de 的定语里头，表领属的名词或代词仍然在最前面——无论带不带 de，领属者都坐最远的位子。",
+  "3":"规则三：带 de 的定语一定在不带 de 的定语之前。促动这条规则的正是前面反复论证的决定 de 字隐现条件的距离象似动因，故“这无需多言”。"
+});
+
+/* ================= 场景三：四类定语的概念距离 ================= */
+bindPick("#distBtns","dt","#distBox","#distTxt",{
+  poss:"领属定语——离中心语最远。事物一般不会随领有者的改变而改变，却一定会随属性的改变而有别；按 Haiman 的标准，领有者与事物的概念距离一定比属性远，故领属成分出现在所有属性成分之前。",
+  num:"指别与数量——次远。它与领属者一样带有“拣选”出某些或某个的意味，基本作用于概念的外延（确定所指）；但它对内涵的影响要稍稍大于领属者（可反映 [+可数]），自身又不是事物真正的属性，故夹在领有者与属性词之间（Seilor 1978）。",
+  adj:"形容词——较近。形容词表示的属性多为我们的感官所感受到的、或与心理估价相关的性质，与事物之间的联系没有名词表示的属性那么密切、直接。",
+  noun:"性质名词——最近。名词表示的属性多为事物较稳固的性质如质料、身份等，或在事物与人的互动关系中更为显著的性质如用途功能等；也正因如此，它比形容词更倾向于隐去 de。"
+});
+
+/* ================= 场景四：陆丙甫的精细序列 ================= */
+bindPick("#seqBtns","sq","#seqBox","#seqTxt",{
+  a:"序列一：指别词和数量词构成的序列（领属定语也归入此类）——成员包括“这／那／哪”、数量词与领属的名词代词。它们的作用是从类中“拣选”出个体，限定的是外延。",
+  b:"序列二：其他定语构成的序列——表情状的形容词复杂形式（状态形容词、形容词性短语）在前，表性质的形容词简单形式随后，名词与区别词最后。越往后越贴近中心语，越表固有性质。"
+});
+bindPick("#orderBtns","or","#orderBox","#orderTxt",{
+  shape:"形体——序列二内最靠前：“大号白色呢子防风大衣”的“大号”。形体与颜色的次序有时能够调换，但它们一定在质料功能之前。",
+  color:"颜色——次之：“大号白色呢子防风大衣”的“白色”。颜色也是较临时的状态，故排在质料之前。",
+  material:"质料——再次：“大号白色呢子防风大衣”的“呢子”。质料是事物较稳固的性质，多半在功能之前。",
+  func:"功能——最贴近中心语：“大号白色呢子防风大衣”的“防风”。功能是在事物与人的互动中显著的性质，最为固有；表质料功能的定语也能最自由地隐去 de。"
+});
+bindPick("#vpBtns","vp","#vpBox","#vpTxt",{
+  in:"限定内涵——“2500 颗投在广岛的原子弹”：“投在广岛的”紧贴中心语，限定这批原子弹“是什么”（投在广岛的那些），是内涵的限定。",
+  ex:"限定外延——“投在广岛的 2500 颗原子弹”：“VP 的”远离中心语，先划定“投在广岛的”这个外延，再从中数出 2500 颗，是外延的限定。语序灵活的形式仍反映概念距离的不同。"
+});
+
+/* ================= 场景五：英语德语的序列 ================= */
+bindPick("#enSeqBtns","es","#enSeqBox","#enSeqTxt",{
+  quant:"逻辑量词——最外一格：all、every 之类，作用于整个名词短语的外延。",
+  det:"指示词／冠词／领属词——the、this、my／his 等。Seilor 指出领属词是转折点：其前限定外延（确定所指），其后限定内涵（表征概念）。",
+  num:"数词——ten、twenty 之类，仍在外延一侧，但已带有一点内涵信息（可数性）。",
+  state:"表情状的形容词——little、old 之类表临时的情状，从此进入内涵一侧。",
+  eval:"表估价的形容词——pretty 之类与心理估价相关的性质。",
+  color:"表颜色的形容词——red 之类，比估价更贴近事物本身。",
+  material:"表质料的形容词及名词——china、wooden 之类最稳固的性质，紧贴中心语；例 (5)(6) 的 china doll／holzernen Kugeln 即在其位。"
+});
+
+/* ================= 场景六：普遍性与镜象 ================= */
+bindPick("#langBtns","lg","#langBox","#langTxt",{
+  pre:"前置语言——修饰语在中心语之前：汉语、英语、德语，以及匈牙利语、波兰语、土耳其语、印地语等，语序都是“一个漂亮的大红球／a beautiful big red ball／ein schoner grosser roter Ball”型。",
+  post:"后置语言——修饰语在中心语之后，次序整体倒转：波斯语、印尼语、巴斯克语等多为“球—红—大—漂亮的”。倒转的是线性方向，不变的是相对次序——与前置语序本质相同的镜象（mirror image，参见 Hetzron 1978）。"
+});
+bindPick("#gbBtns","gb","#gbBox","#gbTxt",{
+  dna:"全前置（dnaN）：指示语、数词、形容词都在名词之前时，语序总是指示语—数词—形容词—名词。汉语、英语、德语均属此式。",
+  nad:"全后置（Nand）：三者都在名词之后时，较多的语序是名词—形容词—数词—指示语，即前置序列的镜象；少数语言还有 Ndna 这样的变体。"
+});
+
+/* ================= 场景七：认知策略与轨层结构 ================= */
+bindPick("#theoryBtns","th","#theoryBox","#theoryTxt",{
+  vendler:"Vendler (1968)／Martin (1968)：形容词定语的位置由它们与名词的相关程度决定——语义上越像名词的便越靠近名词中心语。这是从“相关程度”出发的最早表述。",
+  bever:"Bever (1970)：明确提出这种语序是由认知策略决定的——把解释从语义相关程度推进到认知加工层面。",
+  lu:"陆丙甫（1989，1992）：用“轨层结构”的概念概括这种普遍的语序现象——语义关系接近的成分其位置也比较靠近，这与认知的守恒性相关；他也是最先明确把汉语多项定语语序与语言普遍现象联系起来的人。"
+});
+
+/* ================= 场景八：结语 ================= */
+bindPick("#bigBtns","bg","#bigBox","#bigTxt",{
+  strategy:"一条共同的策略：de 字的隐现与多项定语的排列，这两个看似独立的现象由同一条认知策略（距离象似）决定，它能为两者表现出的一致性提供合理的解释。",
+  question:"两个更大的问题：自然语言的形式规则在多大程度上与认知策略相关？语言的共性规律又在多大程度上可从认知上得到解释？本书下篇由共性研究的难题引出，又把结论引向对共性更深一层的认识。",
+  deane:"Deane（1992）的示范：从“形式的空间化假设”出发，为生成语法提出的多种普遍句法限制与原则（孤岛条件、X-bar 原则等）找出认知基础——认知语言学已在尝试回答上述问题。",
+  chinese:"汉语的意义：汉语缺乏形态、象似性较强，对它的深入研究必将大大有助于人们对这些问题的探索——距离象似原则在汉语里的两次胜利（de 字隐现与定语语序）即是明证。"
+});
+
+/* ================= 结尾自测 ================= */
+(function(){
+  const QA=[
+    {n:1,
+     ok:'<span class="v-ok">✓ 正确。</span>表层句法之下往往可以找到认知—语义上的理据，这是全书从意义解释形式的出发点。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：本书相信句法形式并非都受制于抽象规则，认知—语义理据往往可寻。'},
+    {n:2,
+     ok:'<span class="v-ok">✓ 正确。</span>定语与中心语之间的距离取决于概念距离——这是贯穿 de 字隐现与定语语序的一条原则。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：三条形式规则可重述为“距离取决于概念距离”的象似原则。'},
+    {n:3,
+     ok:'<span class="v-ok">✓ 正确。</span>按 Haiman 的标准，领有者与事物的概念距离比属性远——事物不随领有者而变，却随属性而别。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：领属定语最远由概念距离决定，与历史早晚、音节数无关。'},
+    {n:4,
+     ok:'<span class="v-ok">✓ 正确。</span>数量词作用于外延却带一点内涵（可数性），自身又不是真正的属性，故夹在领属者与属性词之间。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。这正是 Seilor (1978) 为数量词位置提出的认知解释。'},
+    {n:5,
+     ok:'<span class="v-ok">✓ 正确。</span>领属定语与“这那”具有相似的指别作用，故与指别词、数量词同属第一序列。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：两个序列分别是指别＋数量序列与其他定语序列，领属归前者。'},
+    {n:6,
+     ok:'<span class="v-ok">✓ 正确。</span>近者限定内涵、远者限定外延——语序灵活的形式仍反映概念距离，同样是距离象似动因的反映。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。陆丙甫细致地注意到了“VP 的”位置不同引起的意义分化。'},
+    {n:7,
+     ok:'<span class="v-ok">✓ 正确。</span>领属词是转折点：其前限定外延（确定所指），其后限定内涵（表征概念），与陆丙甫对汉语的分析不谋而合。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a：转折点之前回答“哪一个”，之后回答“是什么”。'},
+    {n:8,
+     ok:'<span class="v-ok">✓ 正确。</span>镜象排列说明理据不在任意的形式规则，而在距离象似动因——不同语言按概念距离安排修饰语与中心语的远近。',
+     no:'<span class="v-no">✗ 再想想。</span>正解是 a。Greenberg 的 dnaN／Nand 正是这一共相的形式表述。'}
+  ];
+  QA.forEach(q=>{
+    const row=$("#q"+q.n);
+    if(!row) return;
+    const fb=$("#q"+q.n+"fb");
+    $$(".btn",row).forEach(b=>b.addEventListener("click",()=>{
+      if(row.dataset.done) return;
+      row.dataset.done="1";
+      const ok=b.dataset.q==="a";
+      b.classList.add(ok?"sel":"wrong");
+      fb.innerHTML=ok?q.ok:q.no;
+      $$(".btn",row).forEach(x=>{x.disabled=true;});
+    }));
+  });
+})();
+</script>
+</body>
+</html>

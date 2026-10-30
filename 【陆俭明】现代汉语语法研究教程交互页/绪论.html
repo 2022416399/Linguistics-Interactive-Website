@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>绪论 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 绪论 交互研读</p>
+  <h1>汉语特点与语法观：先认语言，再谈语法</h1>
+  <p class="lead">全书起手三问——语言结构有什么性质、汉语有什么特点、语法结构关系有多复杂。结论先摆在这儿：汉语是没有严格形态变化、语用因素作用特别突出的语言；语法结构关系是多重的，句法关系与语义关系常常并存甚至错位。</p>
+  <ul class="navchips">
+    <a href="绪论.html" class="cur">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>汉语特点</b></li><li>语法观</li><li>话题与语用</li><li>结构关系多重性</li><li>三派理论格局</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第一篇 · 总论与词类</p>
+<h2>先立规矩：汉语是什么样的语言</h2>
+<p>这一篇是全书的起点。绪论回答「汉语有什么特点、语法是什么」这些带根本性的问题，第一节紧接其后处理最基础的分类问题——词类。两节不急着上工具，先把立场摆清楚：站在汉语自己的特点上，而不是照着印欧语的眼光看汉语。</p>
+
+  <article class="chapter" data-chapter="0">
+    <h3>绪论｜汉语特点与语法观</h3>
+    <p>全书从三个问题起手：语言结构有什么性质、汉语有什么特点、语法结构关系有多复杂。结论先摆在这儿：语言结构有整体性、可分割性，而且内含规则性；汉语是没有严格形态变化、语用因素作用特别突出的语言；语法结构关系是多重的，句法关系与语义关系常常并存甚至错位。<sup class="cite" data-cite="s-yufa-dingyi">出处</sup></p>
+    <blockquote>语法是由小的音义结合体组合成大的音义结合体所依据的一套规则。<sup class="cite" data-cite="s-yufa-dingyi">出处</sup></blockquote>
+    <p>汉语是<strong>非形态语言</strong>：没有严格意义的形态标志和形态变化，词类与句子成分之间不存在简单的一对一对应。汉语又是<strong>语用强势语言</strong>，语用因素在语法里作用特别突出——沈家煊说「汉语的语法和用法分不大开」，正是这个意思。<sup class="cite" data-cite="s-yongfa-fen-bu-da-kai">出处</sup></p>
+    <p>最能说明语用强势的是话题：</p>
+    <details>
+      <summary>展开：主语就是话题的例证</summary>
+      <p class="q">赵元任先生是菲律宾女佣。<sup class="cite" data-cite="s-zhaoyuanli-shi-feilvbin">出处</sup></p>
+      <p>这句话的意思不是「赵元任」这个人「是」女佣，而是「赵元任先生」这个话题后面，接着讲关于他的一番话——他家里请了一位菲律宾女佣。汉语里主语常常就是话题，语法分析得把语用层面算进来。</p>
+    </details>
+    <details>
+      <summary>展开：语言是什么——对语言的四层认识（0.1）</summary>
+      <p>语言是<b>声音和意义相结合的符号系统</b>；同时它还是一个很有规则的、随着社会发展而不断变动的结构系统。任何结构都具备整体性、可分割性与内含规则性，「整体」「成分」「关系（规则）」是结构的三大要素。<sup class="cite" data-cite="s-yuyan-fuhao-xitong">出处</sup></p>
+      <p>上世纪后半叶起，人们进一步把语言看作存在于人脑心智中的「自然客体」，是人因遗传而生来具有的信息「编码-解码」「表达-接收」系统，由此有<b>内在语言</b>（I-language，人脑心智中的自然客体）与<b>外在语言</b>（E-language，即音义结合的符号系统）之分。<sup class="cite" data-cite="s-neizai-waizai">出处</sup></p>
+      <p>进入新世纪，人们又认识到语言除工具性之外，还具有<b>资源性和情感性</b>，语言因而成为国家软实力与个人生存发展的重要资源。<sup class="cite" data-cite="s-ziyuan-qinggan">出处</sup></p>
+      <p>综合起来，语言是人类藉以互相传递信息的主要载体，是有层级性的、复杂的声音和意义相结合的符号系统，也是一个变动的音义结合的结构体。<sup class="cite" data-cite="s-yuyan-dingyi">出处</sup></p>
+    </details>
+    <details>
+      <summary>展开：汉语特点的全貌（0.2 小节十条）</summary>
+      <ul>
+        <li><b>人口与分布</b>：以汉语为母语的人口为世界最多，主要分布在中国（包括香港、澳门和台湾）以及东南亚诸国；华人遍布世界各地，汉语也及于全球。<sup class="cite" data-cite="s-hanyu-renkou">出处</sup></li>
+        <li><b>民族共同语</b>：普通话以北方方言为基础方言、以北京语音为标准音、以典范的现代白话文著作为语法规范；古人所谓「雅言」「通语」「官话」即其前身。<sup class="cite" data-cite="s-putonghua-guifan">出处</sup></li>
+        <li><b>七大方言</b>：北方、吴、湘、赣、客家、闽、粤。方言是「语言的活化石」，现代汉语南方方言正是古代汉语的历史投影。<sup class="cite" data-cite="s-fangyan-huohuashi">出处</sup></li>
+        <li><b>方块汉字</b>：一个汉字一个形体、一个音节，又几乎每个汉字都有意义，「形、音、义融为一体」；语素音节文字超越方言与古今，使汉语书面长期统一。<sup class="cite" data-cite="s-fangkuaizi">出处</sup></li>
+        <li><b>词类与成分一对多</b>：名词、动词、形容词无形态标志，进入句子也不变词形，故一个词常可出现在多种句法位置上而词形全同。<sup class="cite" data-cite="s-yidui-duo">出处</sup></li>
+        <li><b>组成关系与实现关系</b>：词与词组之间是组成关系，词组与句子之间是实现关系——词组加上一定句调就实现为句子，句子与词组在句法构造上不对立。<sup class="cite" data-cite="s-shixian-guanxi">出处</sup></li>
+        <li><b>语义容量</b>：同一种句法关系可隐含极大语义容量而毫无形式标志，「吃苹果」「吃大碗」「排电影票」「养病」都是「动词+名词」，语义关系各异。<sup class="cite" data-cite="s-yuyi-rongliang">出处</sup></li>
+        <li><b>相同词类序列不同构造</b>：「研究讨论」（联合）、「打算回家」（述宾）、「挖掘出来」（述补）、「研究结束」（主谓）、「访问回来」（连动）、「请他坐下」（递系）、「讽刺说」「养殖研究」（偏正）。<sup class="cite" data-cite="s-tonglei-xulie">出处</sup></li>
+        <li><b>词序灵活而语序固定</b>：同一事件可因说话人角度、情感、信息需求不同而改变词序、增减虚词；但基本语序固定，语序一变，结构关系与意思随之而变。<sup class="cite" data-cite="s-cixu-linghuo">出处</sup></li>
+        <li><b>虚词地位极重要</b>，详见第十三节；汉语又是<b>语用强势语言</b>，主语常常就是话题。<sup class="cite" data-cite="s-xuci-zhongyao">出处</sup></li>
+      </ul>
+    </details>
+    <p>语法结构关系的多重性分三层：句法结构与语义结构并存；相同的词类序列可以构成不同的句法结构；相同的词语也可以表示不同的语义关系。拿最常用的两串词来看：</p>
+    <div class="guess" data-guess>
+      <p class="q">「反对的是他」同一串词语，能有几种语义关系？</p>
+      <div class="opts">
+        <button data-ans="0">一种</button>
+        <button data-ans="1">两种</button>
+        <button data-ans="0">三种</button>
+      </div>
+      <div class="why"><b>两种。</b>可以是「动作—受事」（大家反对的是他），也可以是「动作—施事」（反对的人是他）。同一串词语、同一个词类序列，语义关系却不同——这正是语法结构关系多重性的表现。<sup class="cite" data-cite="s-fandui-de-shi-ta">出处</sup></div>
+    </div>
+    <details>
+      <summary>展开：三层多重性的实例</summary>
+      <p class="q">张三走了｜苹果吃了｜啤酒喝了<sup class="cite" data-cite="s-zhangsan-zoule">出处</sup></p>
+      <p>三串词的词类序列相同，句法关系却不同；而词序影响的是句法关系，不影响语义关系——这三例的语义关系并没有跟着变。再看「反对的是他」：同一串词语，可以表示「动作—受事」，也可以表示「动作—施事」两种语义关系。<sup class="cite" data-cite="s-fandui-de-shi-ta">出处</sup></p>
+      <p>第二层多重性里最该重视的，是跟构造层次无关的那一类：「进口钢材」答「需要进口些什么？」是述宾关系，答「急需什么钢材？」是偏正关系；「他写的散文」在「我想看看他写的散文」里是偏正，在「他写的散文，我写的是诗歌」里是主谓；「我们三班」更能分析为偏正、同位、主谓三种结构。<sup class="cite" data-cite="s-jinkou-gangcai">出处</sup></p>
+      <p>第三层多重性——相同词语之间不同的语义结构关系——除「反对的是他」外，还有经典歧义例「鸡不吃了」与「母亲的回忆」。<sup class="cite" data-cite="s-ji-bu-chi-le">出处</sup></p>
+    </details>
+    <details>
+      <summary>展开：语音、语义、语用对语法的三重制约（0.4）</summary>
+      <p><b>一、语音。</b>汉语音节性很强，音节数会影响语法：双音节花名可带可不带「花」字（玫瑰花／玫瑰），单音节花名非带不可；县名、人名也有同样的单双音节对立（复姓可以单呼「欧阳」，单姓不能单呼「张」）；形式动词「进行」「加以」「予以」后面作宾语的动词只能是双音节的。<sup class="cite" data-cite="s-yinjieshu">出处</sup></p>
+      <p>轻重音同样能区别结构：「学习文件」「进口设备」重音在后名词上是述宾，重音在前动词上是偏正；「洗得干净」重音在「干净」是情态补语（洗得很干净），重音在「洗」是可能补语（能洗干净）。<sup class="cite" data-cite="s-qingzhongyin">出处</sup></p>
+      <p><b>二、语义。</b>形容词的褒贬义色彩会决定说法：表示「结果的偏离」时，有明显褒贬义的形容词只能用「动词+得+太/过于+形容词+了」，中性形容词两种说法都行。程度副词「还」也分两类：表程度深的「还」可修饰褒、贬、中性形容词，表程度浅的「还」只能修饰褒义或中性义形容词。<sup class="cite" data-cite="s-baobian-yingxiang">出处</sup></p>
+      <p><b>三、语用。</b>汉语更多地受信息传递规则制约；社会心理也会影响语法——「我的爷爷比你的爷爷硬朗」不能说成「我的爷爷比你的硬朗」，因为在汉语里用「的」字结构称说人是不够礼貌的，而说对方朋友「小气」时反倒可以用这种不礼貌的替换。<sup class="cite" data-cite="s-shehui-xinli">出处</sup></p>
+    </details>
+    <p>绪论最后预告了全书的理论格局：乔姆斯基革命之后，语言研究出现形式、功能、认知三足鼎立的局面。本书的态度很明确——传统结构主义的层次、分布、替换、变换那一套并没有过时：</p>
+    <blockquote>切不可以以为这些理论方法已经过时了。<sup class="cite" data-cite="s-bukeyiwei-guoshi">出处</sup></blockquote>
+    <details>
+      <summary>展开：术语表 · 人物年份</summary>
+      <p><b>非形态语言</b>：没有严格形态标志和形态变化的语言，汉语属之。<b>语用强势语言</b>：语用因素在语法中作用特别突出。<b>语法结构关系 / 语义结构关系</b>：句法层面与语义层面两套关系并存。</p>
+      <p><b>朱德熙</b> 1982《语法答问》最早明确提出摆脱印欧语眼光；<b>王洪君</b> 1994《汉语的特点与语言的普遍性》提出从人类语言共性看汉语特点，认为「个性与共性不是矛盾的，共性比个性的层次高」；<b>沈家煊</b> 2011 论「汉语的语法和用法分不大开」。<sup class="cite" data-cite="s-geyu-gongxing">出处</sup></p>
+    </details>
+    <figure class="figure">
+      <svg viewBox="0 0 680 300" role="img" aria-label="语法单位四级关系示意图">
+        <rect x="0" y="0" width="680" height="300" fill="#fdfaf1"/>
+        <g stroke="#29241d" stroke-width="1.3" fill="#f1e6d2">
+          <rect x="220" y="30" width="240" height="52" rx="9"/>
+          <rect x="220" y="102" width="240" height="52" rx="9"/>
+          <rect x="220" y="174" width="240" height="52" rx="9"/>
+          <rect x="220" y="246" width="240" height="42" rx="9"/>
+        </g>
+        <g font-family="KaiTi,serif" font-size="16" fill="#9d4938" text-anchor="middle">
+          <text x="340" y="62">句子（语段）</text><text x="340" y="134">词组</text><text x="340" y="206">词</text><text x="340" y="272">语素</text>
+        </g>
+        <g stroke="#3d5a6c" stroke-width="1.2" fill="none">
+          <path d="M340 84 L340 100 M334 94 L340 100 L346 94"/>
+          <path d="M340 156 L340 172 M334 166 L340 172 L346 166"/>
+          <path d="M340 228 L340 244 M334 238 L340 244 L346 238"/>
+        </g>
+        <g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" fill="#6f675a">
+          <text x="476" y="60">最大的语法单位</text>
+          <text x="476" y="132">词与词组合</text>
+          <text x="476" y="204">最小的能独立运用的单位</text>
+          <text x="476" y="270">最小的音义结合体</text>
+          <text x="20" y="26">组合依据：语法规则；语法分析基本上到句子为止。</text>
+        </g>
+        <text x="20" y="288" font-family="-apple-system,PingFang SC,sans-serif" font-size="10.5" fill="#a87f24">示意图，非原书插图</text>
+      </svg>
+      <figcaption>图二（示意）：四级语法单位。语素是最小的音义结合体，逐级组合成词、词组、句子。<sup class="cite" data-cite="s-yufa-fenxi-dao-ju-zi-wei-zhi">出处</sup></figcaption>
+    </figure>
+    <div class="guess" data-guess>
+      <p class="q">「咬死了猎人的狗」按不同的语音停顿，有几种结构切分？</p>
+      <div class="opts">
+        <button data-ans="0">一种</button>
+        <button data-ans="0">两种</button>
+        <button data-ans="1">三种</button>
+      </div>
+      <div class="why"><b>三种。</b>停顿落在不同位置，切分就不同：「咬死了／猎人的狗」（陈述一件事）、「咬死了猎人的／狗」（狗被咬死了）、「咬死了猎／人的狗」（「猎」作「人」的定语，别解另存）。语音停顿直接影响结构切分，这是汉语里特别要紧的一课。<sup class="cite" data-cite="s-yaosilesieren-de-gou">出处</sup></div>
+    </div>
+  </article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">陆俭明认为，汉语在类型学上最根本的特点是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">有严格的形态标志和形态变化</button>
+      <button data-v="b">没有严格形态变化，语用因素在语法里作用特别突出</button>
+      <button data-v="c">词类与句子成分一一对应</button>
+    </div>
+    <div class="why">答案：b。汉语是非形态语言，又是语用强势语言。见本节，底本 L518、L537。</div>
+  </div>
+  <div class="item">
+    <p class="q">「赵元任先生是菲律宾女佣」这句话说明了什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">赵元任是女士</button>
+      <button data-v="b">汉语主语常常就是话题，语法分析得把语用层面算进来</button>
+      <button data-v="c">修辞手法不影响语法分析</button>
+    </div>
+    <div class="why">答案：b。句首名词是话题，后头是关于这个话题的一番话。见本节，底本 L492。</div>
+  </div>
+  <div class="item">
+    <p class="q">本书所说的语法单位，语法分析一般讲到哪一级为止？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">句群</button>
+      <button data-v="b">句子</button>
+      <button data-v="c">篇章段落</button>
+    </div>
+    <div class="why">答案：b。语法分析基本上到句子为止，篇章段落的性质不同。见本节，底本 L862。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：绪论各小节所夹脚注的注文、原书绪论各部分细节表述。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-yufa-dingyi": { page:"绪论 0.3 · 底本 L537", quote:"语法是一种语言中由小的音义结合体组合成大的音义结合体所依据的一套规则。", zh:"语法的定义：组合的依据是一整套规则。" },
+  "s-yongfa-fen-bu-da-kai": { page:"绪论 0.2 · 底本 L518", quote:"沈家煊（2011）指出，“汉语的语法和用法分不大开，讲汉语语法离开用法就没有多少语法可讲”。", zh:"汉语是语用强势语言：语法与用法分不大开。" },
+  "s-zhaoyuanli-shi-feilvbin": { page:"绪论 0.2 · 底本 L492", quote:"（13）赵元任先生是菲律宾女佣。【赵元任先生是男士。这句话的意思是“赵元任先生家雇佣/使用的是菲律宾女佣”】", zh:"主语常常就是话题：句首名词是话题，后头是关于它的话。" },
+  "s-zhangsan-zoule": { page:"绪论 0.4 · 底本 L1061", quote:"张三走了｜苹果吃了｜啤酒喝了。", zh:"词类序列相同、句法关系相同，语义关系各异。" },
+  "s-fandui-de-shi-ta": { page:"绪论 0.4 · 底本 L1113", quote:"（13）反对的是他。", zh:"同一串词语可表示不同语义关系：动作—受事／动作—施事。" },
+  "s-bukeyiwei-guoshi": { page:"绪论 0.7 · 底本 L1049", quote:"论方法已经过时了；须知熟练运用这些理论方法，这可是语法研究者应有的基本功。", zh:"传统结构主义方法并未过时，是研究者的基本功。" },
+  "s-geyu-gongxing": { page:"绪论 0.7 · 底本 L949", quote:"从人类语言共性看汉语特点的问题，是1994年王洪君最早提出来的。……“个性与共性不是矛盾的，共性比个性的层次高。”", zh:"王洪君：从人类语言共性看汉语特点；共性比个性层次高。" },
+  "s-yaosilesieren-de-gou": { page:"绪论 0.8 · 底本 L625", quote:"在汉语语法学界，说到由构造层次不同而造成的歧义时，常常会以“咬死了猎人的狗”作为实例。", zh:"经典歧义例：语音停顿不同，结构切分不同。" },
+  "s-yufa-fenxi-dao-ju-zi-wei-zhi": { page:"绪论 0.5 · 底本 L862", quote:"篇章段落的分析方法和句子内部的分析方法有较大的差别，语法分析基本上到句子为止，还是有点理由的。", zh:"语法分析基本上到句子为止。" },
+  "s-yuyan-fuhao-xitong": { page:"绪论 0.1 · 底本 L293", quote:"从语言的本体性质上来说，语言是一个声音和意义相结合的符号系统。", zh:"语言是音义结合的符号系统。" },
+  "s-neizai-waizai": { page:"绪论 0.1 · 底本 L297", quote:"语言应该有“内在语言”（internal language，简称I-language）和“外在语言”（external language，简称E-language）之分。", zh:"内在语言是人脑心智中的自然客体；外在语言是其外部表现形式。" },
+  "s-ziyuan-qinggan": { page:"绪论 0.1 · 底本 L301", quote:"语言除了具有工具性之外，还具有资源性和情感性。", zh:"语言除工具性外还有资源性与情感性。" },
+  "s-yuyan-dingyi": { page:"绪论 0.1 · 底本 L315", quote:"语言是人类藉以互相传递信息的主要载体；具体说是人类藉以思维、藉以互相交际、藉以保存和传承人类认识成果与民族文化的一个有层级性的、复杂的声音和意义相结合的符号系统，也是一个变动的音义结合的结构体。", zh:"语言的综合定义。" },
+  "s-hanyu-renkou": { page:"绪论 0.2 · 底本 L321", quote:"目前在世界上，以汉语为母语的人口是最多的，大约有将近15亿，主要分布在中国（包括香港、澳门和台湾），以及东南亚一些国家", zh:"汉语母语人口世界最多。" },
+  "s-putonghua-guifan": { page:"绪论 0.2 · 底本 L323", quote:"逐渐形成了“以北京语音为标准音、以北方话为基础方言、以典范的现代白话文著作为语法规范”的现代汉民族共同语。", zh:"普通话的三项规范。" },
+  "s-fangyan-huohuashi": { page:"绪论 0.2 · 底本 L331", quote:"“方言是语言的活化石”，汉语纷繁的方言对研究、了解汉语发展的历史极有用处。", zh:"七大方言；方言是活化石。" },
+  "s-fangkuaizi": { page:"绪论 0.2 · 底本 L333", quote:"这种方块汉字，一个汉字一个形体，一个汉字一个音节，又几乎每个汉字都有意义，因此汉字也可以说是“形、音、义融为一体”的记录汉语的书写符号。", zh:"方块汉字形音义融为一体。" },
+  "s-yidui-duo": { page:"绪论 0.2 · 底本 L341", quote:"汉语词类中的名词、动词、形容词无形态标志，进入句子也不发生词形上的变化。因此，汉语词类与句法成分是一对多的对应。", zh:"词类与句法成分一对多对应。" },
+  "s-shixian-guanxi": { page:"绪论 0.2 · 底本 L374", quote:"在汉语里，词和词组之间是组成关系，词组和句子之间则是实现关系（realization），词或词组加上一定的句调就成为句子。", zh:"词—词组是组成关系，词组—句子是实现关系。" },
+  "s-yuyi-rongliang": { page:"绪论 0.2 · 底本 L376", quote:"由于汉语是“非形态语言”，同一种句法关系可以隐含较大的语义容量和复杂的语义关系而没有任何形式标志。", zh:"同一句法关系可隐含大语义容量。" },
+  "s-tonglei-xulie": { page:"绪论 0.2 · 底本 L396", quote:"在汉语里，相同的词类序列可以代表不同的句法构造。", zh:"相同词类序列可代表不同句法构造。" },
+  "s-cixu-linghuo": { page:"绪论 0.2 · 底本 L414", quote:"汉语词序灵活，语序固定。同一个事件，由于说话人的角度不同、认识不同、情感态度不同、所需要表达的信息不同，可以采用不同的表达方式，而这就靠词序的改变加之虚词的运用。", zh:"词序灵活而语序固定。" },
+  "s-xuci-zhongyao": { page:"绪论 0.2 · 底本 L438", quote:"虚词在汉语语法中占有极为重要的地位。具体见下文第十三节。", zh:"虚词地位极重要。" },
+  "s-yinjieshu": { page:"绪论 0.4 · 底本 L547", quote:"汉语是音节性很强的语言，以音节为基本的表意单位，所以音节数有时会对语法有所影响。", zh:"音节数制约语法：花卉、地名、人名、形式动词。" },
+  "s-qingzhongyin": { page:"绪论 0.4 · 底本 L607", quote:"轻重音也对语法有一定影响。像“学习文件”“进口设备”“出租汽车”等，都既可以分析为述宾结构，也可以分析为“定-中”偏正结构，而区别就表现在轻重音上", zh:"轻重音区别述宾与偏正。" },
+  "s-baobian-yingxiang": { page:"绪论 0.4 · 底本 L667", quote:"采用哪一种说法，就跟形容词是否具有褒贬义色彩有关。具有明显褒贬义色彩的形容词，只能采用A的说法，即“动词+得+太/过于+形容词+了”的说法；而具有中性义的形容词（即不含褒贬义色彩的形容词），则两种说法都可以采用。", zh:"褒贬义色彩决定说法；还的程度深浅。" },
+  "s-shehui-xinli": { page:"绪论 0.4 · 底本 L747", quote:"那是因为在汉语里用“的”字结构来称说人是不够礼貌的。", zh:"社会心理制约语法：称说人的礼貌问题。" },
+  "s-jinkou-gangcai": { page:"绪论 0.9 · 底本 L1085", quote:"二者句法结构关系不同，跟构造层次无关。", zh:"进口钢材：述宾与偏正之别与层次无关。" },
+  "s-ji-bu-chi-le": { page:"绪论 0.9 · 底本 L1123", quote:"现代汉语语法学里的经典歧义例子“鸡不吃了”，过去人们已经注意到的歧义实例“母亲的回忆”……就都属于相同词语之间存在不同语义结构关系的例子。", zh:"鸡不吃了：第三层多重性的经典例。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

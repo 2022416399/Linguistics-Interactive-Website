@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第四节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第四节 交互研读</p>
+  <h1>语义特征：给关键位置上的词语「画像」</h1>
+  <p class="lead">变换矩阵里那些「不成立」的格子，逼着研究者去追问动词本身带了什么语义标记。语义特征分析把答案写成［＋X］／［－X］：［＋使附着］决定[A式]表存在，［＋系列推移性］决定「名词＋了」能说。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html" class="cur">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>语义特征</b></li><li>［±使附着］</li><li>［±完成］［±持续］</li><li>［±可控］</li><li>［＋系列推移性］</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>语义特征：为什么这个格子不成立</h2>
+<p>变换分析指出哪些句式之间通、哪些不通，却答不出「为什么不通」。语义特征分析来补这一刀：给关键位置上的词语做语义画像，用［＋X］／［－X］的标记解释格式的准入与歧义。</p>
+
+<article class="chapter" data-chapter="4">
+<h3>第四节｜汉语语法研究的语义特征分析法</h3>
+
+<p>变换分析告诉我们哪些句式之间"通"、哪些"不通"，但"为什么不通"仍悬而未决。语义特征分析就是来补这一刀的。</p>
+
+<blockquote>所谓语义特征，是指实词特有的、能对所在句法格式起制约作用的、并足以区别于其他小类实词的语义内涵。<sup class="cite" data-cite="s-yuyi-tezheng-dingyi">出处</sup></blockquote>
+
+<p>语义特征分析是从变换分析里生长出来的。变换矩阵里那些"不成立"的格子，逼着研究者去追问动词本身带了什么语义标记。答案往往可以写成［+X］/［－X］的形式。</p>
+
+<blockquote>语义特征分析，是指通过分析实词的语义特征，来考察、解释句法格式的分析方法。<sup class="cite" data-cite="s-yuyi-tezheng-fenxi">出处</sup></blockquote>
+
+<details>
+<summary>展开：分析语义特征的三个目的（4.2）</summary>
+<p class="q">语义特征原是语义学概念，语法学借来是为做两件事：解释造成同形多义句法格式（歧义格式）的原因；说明在某个句法格式中，为什么同是动词（或形容词、名词）而有的能进入、有的不能进入。语义学里分析描写语义特征大致有三个目的。<sup class="cite" data-cite="s-yuyi-tezheng-mudi">出处</sup></p>
+<p class="q">其一，从某个特定角度对某一个语义类再细分：在有生命的事物中，人类是一个语义类，可以根据[±直系][±男性][±长辈][±年长]等特征把"母亲""父亲""哥哥""姐姐""弟弟""妹妹""舅妈""舅舅"的辈分与关系细加分类。其二，凸显同一语义类下不同词语的差异："火"与"光"都属可见自然现象，但火有[+形体][-速度]、光有[-形体][+速度]，所以有"光的速度"而没有"火的速度"，有"大火""小火"而没有"大光""小光"；"喝"与"吃"的对象一为液体一为固体，所以"喝水"不说"吃水"，"吃梨"不说"喝梨"。其三，区别看似同义实际不同义的词："看"与"看见"除都凭借视觉器官外别无相同处——看是[-被动感知，+自主，+可控]，看见是[+被动感知，-自主，-可控]。<sup class="cite" data-cite="s-yuyi-tezheng-mudi">出处</sup></p>
+<p>还要注意：语法研究中所讲的语义特征都是结合具体句法格式概括得到的，不是离开具体句式单纯从词义角度分析概括的。离开具体句式，"写"一般怎么也不会想到还具有"给予"义特征；只有考察了"名词[施事]+动词+给+名词[与事]+名词[受事]"这一句式，确认"张三写给李四一封信"能说，才确定"写"在这种语义环境中具有"给予"义。</p>
+</details>
+
+<p>回到上一节那张矩阵。同是"动词＋着＋名词"，为什么有的能换成"名词＋正在＋动词＋着"？</p>
+
+<blockquote>[A式]与[B式]的区别，可以从动词的语义特征上得到解释：[A式]的动词具有[+使附着]的语义特征，[B式]的动词具有[-使附着]的语义特征。<sup class="cite" data-cite="s-jingtai-dongtai">出处</sup></blockquote>
+
+<p>"坐、站、蹲、躺、跪、立、贴、放、写、挂、别、戴、钉、绣"都能使某物附着于某处，所以带［+使附着］；"演、敲、下（棋）、赛、刮"不表使附着，带［－使附着］<sup class="cite" data-cite="s-shi-fuzhuozhe">出处</sup>。请读者据此判断一道题。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："台上坐着主席团"和"台上唱着戏"，哪一类能变换为"动词＋有＋名词"（"台上坐着主席团"→"台上坐有主席团"）？</p>
+<div class="opts">
+<button data-ans="0">两类都可以</button>
+<button data-ans="1">只有 [+使附着] 的一类可以</button>
+</div>
+<div class="why">能进入"动词＋有＋名词"式的，都是带［+使附着］特征的动词：坐、站、放、挂、写……它们都表示"使某物存在于某处"；"演、敲、赛、刮"带［－使附着］，只能表活动，不能表存在，所以"台上唱着戏"不能说成"台上唱有戏"<sup class="cite" data-cite="s-shi-fuzhuozhe">出处</sup>。</div>
+</div>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："他死了三天了"和"他看了三天了"，两句话的意思一样吗？</p>
+<div class="opts">
+<button data-ans="0">一样，都是动作持续了三天</button>
+<button data-ans="1">不一样，"死"表完成，"看"表状态</button>
+<button data-ans="0">完全无法比较</button>
+</div>
+<div class="why"><b>不一样。</b>同一个"动词＋了＋时量＋了"框架，藏着三种句法语义："死"是一次完成义，"等"是可持续义，"看"和"挂"呈现状态持续义。朱德熙用［＋完成］/［－完成］、［＋持续］/［－持续］、［＋状态］/［－状态］三组语义特征把它们区分开来<sup class="cite" data-cite="s-wancheng-chixu">出处</sup>。</div>
+</div>
+
+<p>语义特征分析的思路一经确立，很快推广到其他句式。朱德熙1979年研究"动词＋了＋时量＋了"格式时发现，同样的框架下其实藏着三种不同的句法语义。<sup class="cite" data-cite="s-wancheng-chixu">出处</sup></p>
+
+<table class="matrix">
+<caption class="small muted">表四（示意）：动词＋了＋时量＋了的三类格局</caption>
+<thead><tr><th>例句</th><th>结构</th><th>语义</th></tr></thead>
+<tbody>
+<tr><td>他死了三天了</td><td rowspan="2">动词＋了＋时量＋了</td><td>完成</td></tr>
+<tr><td>他等了三天了</td><td>持续</td></tr>
+<tr><td>他看了三天了</td><td>动词＋了＋时量＋了</td><td>状态</td></tr>
+<tr><td>画挂了三天了</td><td>动词＋了＋时量＋了</td><td>状态</td></tr>
+</tbody>
+</table>
+
+<p>"死"是一次完成义，"等"是可持续义，"看"和"挂"则呈现状态持续义。朱德熙用［＋完成］/［－完成］、［＋持续］/［－持续］、［＋状态］/［－状态］三组语义特征，把这四种情形区分开来<sup class="cite" data-cite="s-wancheng-chixu">出处</sup>。</p>
+
+<details>
+<summary>展开：送／偷／织为什么不同（4.3）</summary>
+<p class="q">变换分析可以分化"名词[施事]+动词+名词[受事]+给+名词[与事]"的三种语法意义，却解释不了"为什么词类序列、构造层次、各层直接成分之间的结构关系都完全相同而语法意义不同"。这就需要语义特征分析——差异都反映在动词上。[A式]的动词"送""卖""付""交"都含"给予"义（存在给予者与接受者双方，存在从给予者向接受者转移的事物，给予者能动地将所转移之物从自己一方转到接受者一方）；[B式]的动词"偷""取""要""买""讨"都含"取得"义；[C式]的动词"煮""刻""画""做"都含"制作"义。<sup class="cite" data-cite="s-geiyu-qude-zhizuo">出处</sup></p>
+<p class="q">三组动词的语义特征可描写为：动词a：[+给予，-取得，-制作]；动词b：[-给予，+取得，-制作]；动词c：[-给予，-取得，+制作]。正是这些语义特征的不同，显示了三式语法意义各不相同——既达到了分化的目的，又解释了造成歧义的原因。<sup class="cite" data-cite="s-geiyu-qude-zhizuo">出处</sup></p>
+</details>
+
+<details>
+<summary>延伸：动词＋有</summary>
+<p class="q">"动词＋有"式也有讲究："他占有""据有"可以，"他吃有""他坐有"不行，因为能进入这一格式的动词须带［+使附着］或［+获取］特征。<sup class="cite" data-cite="s-lingyou-shi-fuzhuozhe">出处</sup></p>
+<p class="q">史有为曾用同一格式的内部差异说明语义特征的作用："著有《阿Q正传》"前只能加施事主语（鲁迅著有《阿Q正传》），"附有《阿Q正传》"前只能加处所主语（书后附有《阿Q正传》），"藏有《阿Q正传》"前两种主语都可以（张三藏有／山洞里藏有）。原因是三类动词的语义特征不同："著、占、留、订、享、拥、雇"带[+领有，-使附着]；"附、刻、写、埋、镀、缝、题"带[-领有，+使附着]；"藏、存、怀、带、保存"两类特征兼有——"藏"作"收藏"讲时属前一类，作"藏匿"讲时属后一类。再往细看，"有"本身既能表领有也能表存在，A类动词后的"有"凸显领有义，B类凸显存在义，C类则要视动词的具体义项而定。<sup class="cite" data-cite="s-zhuyou-fuyou-cangyou">出处</sup></p>
+</details>
+
+<details>
+<summary>延伸：形容词进入祈使句的条件</summary>
+<p class="q">形容词能进入祈使句，须同时满足两个条件：[+可控]与[-贬义]。所以"认真点儿""虚心点儿"都能说，"骄傲点儿""马虎点儿"就不行。<sup class="cite" data-cite="s-kekong-bianyi">出处</sup></p>
+<p class="q">但规律不是"褒义能进、贬义不能进"这么简单：有一部分褒义形容词照样不能进入，我们不说"聪明点儿！""棒一点儿！""高尚一点儿！""健康一点儿！""伟大一点儿！"。细查会发现，a组（谦虚、大方、客气、灵活、坚强）与d组（棒、帅、高尚、崇高、伟大）的区别不在色彩——两组都既有口语词也有书面语——而在"可控"与"非可控"：a组所表示的性状人是可以控制的，d组则要由别人来评价，自己无法控制。取[±褒义][±贬义][±可控]三组特征，四组形容词的语义特征分别是：形a [+褒义，-贬义，+可控]、形b [-褒义，-贬义，+可控]、形c [-褒义，+贬义，±可控]、形d [+褒义，-贬义，-可控]；能进入该祈使句的只限于形a与形b，合起来正是[+可控，-贬义]。<sup class="cite" data-cite="s-kekong-bianyi">出处</sup></p>
+<p class="q>生活中也能听到"糊涂点儿！""马虎点儿，别那么认真。"这该怎么解释？本书把这个问题留给读者思考。<sup class="cite" data-cite="s-hutu-mahu">出处</sup></p>
+</details>
+
+<details>
+<summary>延伸：名词＋了</summary>
+<p class="q">"名词＋了"能说，要求名词具有[+系列推移性]："都春天了，还穿这么少"可以，因为"春天"处在"春→夏→秋→冬"的系列推移之中。<sup class="cite" data-cite="s-xilie-tuiyi">出处</sup></p>
+<p>"糊涂点儿"与"马虎点儿"的对比也留在这里，供读者思索：为何同是贬义形容词，其一能受"有点儿"修饰进入祈使，另一却不能？</p>
+<p class="q">"名词+了"通常作谓语，也可单独成句，前面可受副词修饰："你们老夫老妻了，还闹什么别扭啊""他呀，部长了，可还是那样平易近人""哟，几年不见，你都大姑娘了"。但不是随便什么名词都能进入——"*桌子了""*港币了""*饭碗了"都不说。能进入的名词分两种情况：一种是名词本身具有明显的顺序性或时间推移性（系列推移性），可以较自由地进入，如"春天了""正月了""星期一了""初十了"（周而复始）、"大学生了"（学历系列单向推移）、"部长了"（职务系列可升可降双向推移）；另一种是名词本身没有顺序性或时间推移性，但所表示的事物在特定条件下能进入某个排序，如处于京沪线上的"南京了"（"现在到哪儿了？""南京了。"，起点站不能说）、排队体检时的"王小刚了"、宴会上菜程序中的"东坡肘子了"。总起来可描写为：名词：[+系列推移性]。<sup class="cite" data-cite="s-xilie-tuiyi">出处</sup></p>
+<p>至于前面出现副词"都"的"都NP了"，语法意义跟"NP了"是否完全相同、能进入的词语是否等同，本书留给读者自行思索与分析。</p>
+</details>
+
+<p>当然，语义特征分析也不是万能的。有些格式的成立与否，还受制于语用、认知等因素，单靠几条语义特征概括不了。</p>
+
+<blockquote>语义特征分析也有局限，它并不能解释所有的句法现象。<sup class="cite" data-cite="s-bu-gaikuo">出处</sup></blockquote>
+
+<details>
+<summary>展开：概括语义特征并不容易（4.8）</summary>
+<p class="q">语义特征分析为进一步分化同形句式、为根据句法研究的需要对同一类实词划分小类，提供了更可靠的句法、语义依据，使语法研究朝着形式和意义相结合的方向迈出了可喜的一步。但也要提醒：概括语义特征有时很容易，有时很不容易。"NP了"的[+系列推移性]细心分析就能得到；可"把马刷刷""把衣服洗洗"能说，"把马骑骑""把衣服买买"不能说，甲乙两组格式相同（都是"把+N+Vv"）、N也相同，能说不能说的原因只能到动词重叠式上去找，可我们既说不出甲组Vv有什么共同语义特征，也说不出乙组Vv具有什么共同语义特征。本书在4.1只分析了[A式]"动词a"的[+使附着]，没有正面说明[B式]"动词b"具有什么语义特征——这不是疏忽，而是难以概括出来。<sup class="cite" data-cite="s-bu-gaikuo">出处</sup></p>
+</details>
+
+<p class="small muted">下一节，配价分析将把视线从"动词带什么标记"转向"动词能拉住多少个名词"。一条公式 P=n-m，简洁得惊人。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">语义特征分析是从哪种方法里生长出来的？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">配价分析</button>
+      <button data-v="b">变换分析——矩阵里「不成立」的格子逼出追问</button>
+      <button data-v="c">语义指向分析</button>
+    </div>
+    <div class="why">答案：b。变换矩阵的空格逼着研究者追问动词的语义标记。见本节，底本 L3325。</div>
+  </div>
+  <div class="item">
+    <p class="q">[A式]与[B式]的区别，从哪个语义特征上得到解释？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">［±完成］</button>
+      <button data-v="b">［±使附着］</button>
+      <button data-v="c">［±自主］</button>
+    </div>
+    <div class="why">答案：b。[A式]动词带[+使附着]表存在静态，[B式]动词带[-使附着]表活动动态。见本节，底本 L3313。</div>
+  </div>
+  <div class="item">
+    <p class="q">形容词要进入祈使句，须同时满足什么条件？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">［+贬义］与［-可控］</button>
+      <button data-v="b">［+可控］与［-贬义］</button>
+      <button data-v="c">没有条件限制</button>
+    </div>
+    <div class="why">答案：b。虚心点儿、积极点儿能说，骄傲点儿、马虎点儿不行。见本节，底本 L3673。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：语义特征的语义学三目的完整例子、动词与形容词语义特征描写的更多细节。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-jingtai-dongtai": { page:"第三节 3.6 · 底本 L3313", quote:"动词 a：[+使附着]", zh:"[A式]动词带[+使附着]表存在、静态；[B式]动词带[-使附着]表活动、动态。" },
+  "s-yuyi-tezheng-dingyi": { page:"第四节 4.2 · 底本 L3371", quote:"把“语义特征”这个概念术语借用到语法学中，为的是做两件事：一件事，用以解释造成同形多义句法格式即歧义句法格式的原因；另一件事，用以说明在某个句法格式中，为什么同是动词，或同是形容词，或同是名词，而有的能进入，有的不能进入。", zh:"语法学中的语义特征：解释歧义格式成因、说明准入差异。" },
+  "s-yuyi-tezheng-fenxi": { page:"第四节 4.1 · 底本 L3325", quote:"以上我们所运用的分析手段，就是语义特征分析法。", zh:"语义特征分析法：分析关键位置上词语的语义特征差异来说明格式。" },
+  "s-shi-fuzhuozhe": { page:"第四节 4.3 · 底本 L3278", quote:"这些实例中的动词虽然具体意思各不相同，但是具有某种共同的语义内涵，那就是“使附着”。", zh:"[±使附着]：坐、站、蹲、躺、跪、立、贴、放、写、挂、别、戴、钉、绣等都表使附着。" },
+  "s-wancheng-chixu": { page:"第四节 4.4 · 底本 L3471", quote:"（1）a. 死了三天了 b. 等了三天了", zh:"“死了／等了／看了三天了”三种格局：完成、持续、状态。" },
+  "s-lingyou-shi-fuzhuozhe": { page:"第四节 4.5 · 底本 L3643", quote:"动词 a：[+领有，-使附着]", zh:"“动词＋有”：动词分领有、使附着、兼有三类。" },
+  "s-kekong-bianyi": { page:"第四节 4.6 · 底本 L3673", quote:"虚心点儿！积极点儿！", zh:"形容词进祈使句须[+可控][-贬义]：虚心点儿能说，骄傲点儿不行。" },
+  "s-xilie-tuiyi": { page:"第四节 4.7 · 底本 L3843", quote:"名词：[+系列推移性]", zh:"“名词＋了”要求名词带[+系列推移性]。" },
+  "s-yuyi-tezheng-mudi": { page:"第四节 4.2 · 底本 L3329", quote:"语义学中分析、描写词的语义特征，大致有以下三个目的", zh:"细分语义类、凸显词语差异、区别同形词。" },
+  "s-geiyu-qude-zhizuo": { page:"第四节 4.3 · 底本 L3437", quote:"动词a：[+给予，-取得，-制作]；动词b：[-给予，+取得，-制作]；动词c：[-给予，-取得，+制作]", zh:"给予／取得／制作三组语义特征解释歧义。" },
+  "s-zhuyou-fuyou-cangyou": { page:"第四节 4.5 · 底本 L3599", quote:"动词a：[+领有，-使附着]；动词b：[-领有，+使附着]；动词c：[+领有，+使附着]", zh:"著有／附有／藏有：领有与使附着。" },
+  "s-hutu-mahu": { page:"第四节 4.6 · 底本 L3757", quote:"有个问题请大家考虑一下，在生活中我们也能听到“糊涂点儿！”“马虎点儿，别那么认真。”这怎么解释？", zh:"思考题：语境中非贬义的用法。" },
+  "s-bu-gaikuo": { page:"第四节 4.8 · 底本 L3863", quote:"总之，概括词的语义特征并不容易。", zh:"语义特征分析也有局限：语义特征并不都能概括出来。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

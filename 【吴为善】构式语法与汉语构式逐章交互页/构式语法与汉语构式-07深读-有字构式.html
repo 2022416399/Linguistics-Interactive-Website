@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>「有」，是个手拿着肉的字 —— 《构式语法与汉语构式》第七章第一节深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.puzzle{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0}
+.slot{width:120px;height:120px;border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;justify-content:center;position:relative;background:var(--paper)}
+.slot .filled{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:3.4rem;color:var(--ink);opacity:0;transform:scale(.6);transition:opacity .5s,transform .5s}
+.slot.done .filled{opacity:1;transform:scale(1)}
+.piece{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:2.2rem;width:76px;height:76px;border-radius:12px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink)}
+.piece[disabled]{opacity:.28;pointer-events:none}
+.puzzle .meaning{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.15rem;color:var(--red);opacity:0;transition:opacity .6s}
+.puzzle.done .meaning{opacity:1}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.subj{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0 1em}
+.subj button{min-height:44px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.92rem}
+.subj button[aria-pressed="true"]{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 14%,var(--card));font-weight:700}
+.subj button small{display:block;font-size:.72rem;color:var(--muted);font-weight:400}
+.objs{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.objs button{min-height:40px;font-size:.95rem;font-family:"Kaiti SC","STKaiti",KaiTi,serif}
+.objs button[aria-pressed="true"]{outline:2px solid var(--ink)}
+.objs .pos{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,var(--line))}
+.objs .neg{color:var(--blue);border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.5rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red);border-bottom:3px solid var(--red);padding:0 .12em}
+.badge{display:inline-block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.25rem;padding:.12em .8em;border-radius:8px;margin-right:.5em}
+.badge.own{color:#fff;background:var(--red)}
+.badge.exist{color:#fff;background:var(--blue)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.pair{grid-template-columns:1fr}}
+.pair .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.pair .card.a{border-top:4px solid var(--red)}
+.pair .card.b{border-top:4px solid var(--blue)}
+.pair .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.pair .sent u{text-decoration-color:var(--red);text-decoration-thickness:3px}
+.pair .card.b .sent u{text-decoration-color:var(--blue)}
+table.matrix{border-collapse:collapse;margin:12px 0;width:100%;max-width:520px}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:.5em .7em;text-align:center;font-size:.95rem}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+table.matrix td.own{color:var(--red);font-weight:700}
+table.matrix td.exist{color:var(--blue);font-weight:700}
+.flips{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:14px 0}
+.flip{perspective:600px;height:76px;border:none;background:none;padding:0}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .55s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:11px;border:1px solid var(--line);backface-visibility:hidden;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;padding:4px;text-align:center}
+.flip .f{background:var(--card);color:var(--ink)}
+.flip .b{background:var(--red);color:#fff;transform:rotateY(180deg);font-size:.98rem}
+.bar-wrap{margin:12px 0}
+.bar{height:30px;border:1px solid var(--line);border-radius:8px;background:var(--paper);overflow:hidden;position:relative}
+.bar i{display:block;height:100%;width:70%;background:linear-gradient(90deg,color-mix(in srgb,var(--red) 75%,var(--gold)),var(--red))}
+.bar b{position:absolute;right:10px;top:0;line-height:30px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+.pop a.jump{color:var(--blue);cursor:pointer;text-decoration:underline dotted;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.flip .in{transition:none}.slot .filled,.puzzle .meaning{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · 「有」字构式<small>《构式语法与汉语构式》吴为善 ｜ 第七章第一节</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="34" font-family="KaiTi,STKaiti,serif" fill="#9d4938">有</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第七章「参数变量与构式变异」第一节 ｜ 单节深读页</p>
+  <h1>「有」，是个手拿着肉的字</h1>
+  <p class="lead">金文里的「有」，画的是一只手提着一块肉——「拥有美好的物品」是它的本义<sup class="cite" data-cite="youhezirou"></sup><sup class="cite" data-cite="prototype"></sup>。这个偏见留在了今天的普通话里：宾语体面，「有」就是<strong style="color:var(--red)">「拥有」</strong>；宾语不体面，「有」只好表示<strong style="color:var(--blue)">「存在」</strong><sup class="cite" data-cite="shengyu"></sup>。一字两读，甚至决定了「很有魅力」能说、「很有毛病」不能说<sup class="cite" data-cite="hen"></sup>。</p>
+  <ul class="chips">
+    <li><b>原型义</b>　拥有（美好的物品）</li>
+    <li><b>默认值</b>　宾语〔+积极〕→ 拥有；〔−积极〕→ 存在</li>
+    <li><b>后果</b>　积极组合高度整合，扛得住「很」</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 380" role="img" aria-label="示意图：从又持肉到一字两读">
+      <g stroke="#29241d" stroke-width="3" fill="#f1e6d2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M214 122 C 244 102, 288 106, 306 130 C 322 152 316 182 292 194 C 266 208 230 202 216 184 C 204 168 200 136 214 122 Z"/>
+        <path d="M292 150 q 16 6 24 20" fill="none"/>
+        <path d="M232 146 q 12 8 10 22" fill="none" opacity=".45"/>
+      </g>
+      <g stroke="#29241d" stroke-width="3.4" fill="none" stroke-linecap="round">
+        <path d="M84 168 C 108 160, 128 152, 150 146"/>
+        <path d="M150 146 C 168 138, 190 134, 208 136"/>
+        <path d="M146 152 C 156 168, 158 184, 152 200"/>
+        <path d="M160 146 C 174 160, 178 176, 176 192"/>
+        <path d="M174 142 C 190 152, 197 166, 197 180"/>
+      </g>
+      <text x="196" y="238" text-anchor="middle" font-size="15" font-family="KaiTi,STKaiti,serif" fill="#6f675a">又（手）持肉（肉块）＝ 有</text>
+      <path d="M320 160 C 380 150, 420 120, 452 92" fill="none" stroke="#9d4938" stroke-width="2.6" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <path d="M320 176 C 380 190, 420 226, 452 258" fill="none" stroke="#3d5a6c" stroke-width="2.6" stroke-dasharray="1 7" stroke-linecap="round"/>
+      <circle cx="456" cy="88" r="7" fill="#9d4938"/>
+      <circle cx="456" cy="262" r="7" fill="#3d5a6c"/>
+      <text x="474" y="82" font-size="21" font-family="Kaiti,STKaiti,serif" fill="#9d4938">拥有</text>
+      <text x="474" y="106" font-size="13.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#6f675a">主观 · 值不值得，看价值评判</text>
+      <text x="474" y="128" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#9d4938">老王有钱 · 很有魅力</text>
+      <text x="474" y="256" font-size="21" font-family="KaiTi,STKaiti,serif" fill="#3d5a6c">存在</text>
+      <text x="474" y="280" font-size="13.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#6f675a">客观 · 与褒贬无关</text>
+      <text x="474" y="302" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#3d5a6c">老王有病 · *很有毛病</text>
+      <text x="120" y="330" font-size="13" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#a87f24">古文字形为示意，非拓本</text>
+    </svg>
+    <figcaption>图 1（示意）：「有」的原型义与一字两读。本义的画法是「手持肉」，两读的分叉在宾语体面不体面。</figcaption>
+  </figure>
+  <p class="small muted">约 6 分钟读完；文中例句、年份、比例均可点红色角标回研读底本核对原句。</p>
+</section>
+
+<!-- ============ 场景一：字源 ============ -->
+<section data-scene="1" class="scene">
+  <p class="kicker">问题 → 直觉</p>
+  <h2>一、字源：为什么是「手提着肉」？</h2>
+  <p>《说文解字》把「有」讲成「不宜有」，后世并不认账<sup class="cite" data-cite="shuowen"></sup><sup class="cite" data-cite="zhangbinglin"></sup>。按金文字形，「有」是「从又持肉」——以手持肉<sup class="cite" data-cite="wangyun"></sup><sup class="cite" data-cite="youhezirou"></sup>。能拿的东西那么多，为什么单说是「肉」？</p>
+  <div class="guess" data-guess>
+    <p class="q">古人为什么用「手提着肉」来表示「拥有」？</p>
+    <div class="opts">
+      <button data-ans="0">肉最便宜，人人拿得到</button>
+      <button data-ans="1">上古吃肉不易，肉是公认的好东西</button>
+    </div>
+    <p class="reveal" hidden>上古生产力低下，吃到肉是难事，「肉」是当时人们公认「值得拥有的好东西」——孟子描绘的王道愿景里，七十岁的老人才能吃上肉<sup class="cite" data-cite="mengzi"></sup><sup class="cite" data-cite="rouhaodongxi"></sup>。于是「手持肉」成了「拥有好东西」最省事的画法，「有」的原型义就此定型：拥有（美好的物品）<sup class="cite" data-cite="prototype"></sup>。</p>
+  </div>
+  <div class="puzzle" id="puzzle">
+    <button class="piece" id="pieceHand" aria-label="放入部件：又">又</button>
+    <button class="piece" id="pieceMeat" aria-label="放入部件：肉">肉</button>
+    <div class="slot" id="slotYou"><span class="filled">有</span></div>
+    <span class="meaning">手提着肉 ＝ 拥有（美好的物品）</span>
+  </div>
+  <p class="small muted">点「又」、点「肉」，看这个字怎么拼出来。</p>
+  <details>
+    <summary>字源官司与余波（许慎、章炳麟、王筠、陆宗达；赣方言与英语 have）</summary>
+    <ul>
+      <li>许慎《说文解字·有部》：「不宜有也。春秋传日：『日有食之』。从月，又声。」<sup class="cite" data-cite="shuowen"></sup></li>
+      <li>章炳麟批评此说「说《春秋》虽可尔，说字则不可通」；《广雅·释诂》则训「有，取也」<sup class="cite" data-cite="zhangbinglin"></sup><sup class="cite" data-cite="guangya"></sup>。</li>
+      <li>清王筠《说文释例》：「『有』字从又从肉会意」<sup class="cite" data-cite="wangyun"></sup>；近代古文字学者据毛公鼎、令鼎等字形，断定「有」字系「从又持肉之象」（陆宗达 1981）<sup class="cite" data-cite="youhezirou"></sup>。</li>
+      <li>余波一：赣方言至今说「听说那家家好有诶」，「有」指家境富裕（作者硕士生章丽燕 2011）<sup class="cite" data-cite="ganfangyan"></sup>。</li>
+      <li>余波二：刘丹青（2011）指出，汉语「有」本性里潜存表多、表好的倾向，自古而然，与英语 have 之类较为中性的领有动词不同<sup class="cite" data-cite="liudanqing"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景二：实验台 ============ -->
+<section data-scene="2" class="scene">
+  <p class="kicker">核心交互</p>
+  <h2>二、实验台：S ＋ 有 ＋ N，怎么读？</h2>
+  <p>主语不是处所词时，「有」读成什么，默认值由宾语决定：宾语〔+积极〕激活「拥有」，〔−积极〕激活「存在」<sup class="cite" data-cite="shengyu"></sup>。选一个主语，再点一个宾语词。</p>
+  <div class="guess" data-guess>
+    <p class="q">「村子里有很多漂亮的小楼」——这里的「有」表示什么？</p>
+    <div class="opts">
+      <button data-ans="own">拥有</button>
+      <button data-ans="exist">存在</button>
+    </div>
+    <p class="reveal" hidden>存在。主语是处所词时，它强制「有」表存在，与宾语褒贬无关；作者称之为人为的「设置」<sup class="cite" data-cite="qiangzhi"></sup><sup class="cite" data-cite="cunmin"></sup><sup class="cite" data-cite="renzhi-resshe"></sup>。到实验台上把主语换成「村子里」验证一下。</p>
+  </div>
+  <div class="lab" id="lab">
+    <h3>「有」字解读实验台</h3>
+    <p class="small muted" style="margin-top:0">第一步选主语（红＝述人，蓝＝处所）：</p>
+    <div class="subj" id="subjRow" role="group" aria-label="选择主语"></div>
+    <p class="small muted">第二步点宾语词（红字＝原文左列积极例，蓝字＝原文右列消极例）：</p>
+    <div class="objs" id="objRow" role="group" aria-label="选择宾语"></div>
+    <div class="result" id="result" aria-live="polite">
+      <p class="sent" id="rSent">老王 <em>有</em> 钱</p>
+      <p><span class="badge own" id="rBadge">拥有</span><span class="small muted" id="rNote">主语非处所词，宾语「钱」是被期待拥有的东西（积极义）→ 拥有。</span></p>
+      <dl class="rows">
+        <dt>范畴</dt><dd id="rCat">主观——值不值得拥有，取决于价值评判</dd>
+        <dt>「很」测验</dt><dd id="rHen"><span class="ok">✓ 很有钱</span>（按左列规则推算）</dd>
+        <dt>整合度</dt><dd id="rInt">高——「有＋N」已整合，相当于形容词</dd>
+        <dt>原文例句</dt><dd id="rOrig">「老王有钱。」（表拥有）<sup class="cite" data-cite="laowang"></sup></dd>
+      </dl>
+    </div>
+  </div>
+  <details>
+    <summary>原文三组对比例句（人 · 单位 · 事物，各三对）</summary>
+    <p class="small muted" style="margin-bottom:.4em">左列宾语表积极义→拥有；右列表消极义→存在（主语均非处所词）<sup class="cite" data-cite="sangzu"></sup>：</p>
+    <table class="matrix">
+      <tr><th>主语类型</th><th>积极义宾语 → 拥有</th><th>消极义宾语 → 存在</th></tr>
+      <tr><td>指人（生命度极高）</td><td class="own">这个女人有魅力 · 这个学生有教养 · 这个老板有气度</td><td class="exist">这个女人有毛病 · 这个学生有陋习 · 这个老板有案底</td></tr>
+      <tr><td>单位（有一定生命度）</td><td class="own">这家公司有实力 · 这家商店有信誉 · 这个村庄有运气</td><td class="exist">这家公司有隐患 · 这家商店有灾难 · 这个村庄有猫腻</td></tr>
+      <tr><td>事物（无生命度）</td><td class="own">这件文物有价值 · 这件事情有意思 · 这个股票有潜力</td><td class="exist">这件文物有缺陷 · 这件事情有阴谋 · 这个股票有风险</td></tr>
+    </table>
+    <p class="small muted">「老王有钱 / 老王有病」同为主语指人，解读却相反——可见主语生命度不是最终开关<sup class="cite" data-cite="laowang"></sup>。实验台中更换主语后的判定，为把原文机制应用到新组合，标「解读」；「钱 / 病」的「很」测验原文未列，按左列规则推算，标「推算」。</p>
+  </details>
+</section>
+
+<!-- ============ 场景三：两种句式 ============ -->
+<section data-scene="3" class="scene">
+  <p class="kicker">定义与辨析</p>
+  <h2>三、两种句式：领有句与存现句</h2>
+  <p>「有」的两个义项投射成两种句式：领有句表示某人拥有什么，存现句表示某处存在什么<sup class="cite" data-cite="lingyoucunxian"></sup>。传统语法看主语的生命度，可生命度解释不了「老王有钱 / 老王有病」——真正的开关在宾语<sup class="cite" data-cite="laowang"></sup>。</p>
+  <div class="pair">
+    <div class="card a">
+      <p class="sent"><u>村民们</u>有很多漂亮的小楼。</p>
+      <p class="small">主语指人、生命度极高 →「有」表<strong style="color:var(--red)">拥有</strong>，领有句<sup class="cite" data-cite="cunmin"></sup></p>
+    </div>
+    <div class="card b">
+      <p class="sent"><u>村子里</u>有很多漂亮的小楼。</p>
+      <p class="small">主语带方位词、处所义凸显 →「有」表<strong style="color:var(--blue)">存在</strong>，存现句<sup class="cite" data-cite="cunmin"></sup></p>
+    </div>
+  </div>
+  <table class="matrix">
+    <tr><th>主语 ＼ 宾语</th><th>积极</th><th>消极</th></tr>
+    <tr><th>指人 / 指物</th><td class="own">拥有</td><td class="exist">存在</td></tr>
+    <tr><th>处所</th><td class="exist">存在</td><td class="exist">存在</td></tr>
+  </table>
+  <p class="small muted">处所主语是「一票否决」；其余组合看宾语褒贬。领有句以述人主体为标记，存现句以处所话题为标记<sup class="cite" data-cite="bishi"></sup>。</p>
+  <details>
+    <summary>客观与主观、大与小：两个义项的精微差别</summary>
+    <ul>
+      <li>「存在义」属于客观范畴，「拥有义」属于主观范畴——是否值得拥有，取决于人们认知上的价值评判<sup class="cite" data-cite="kezhi"></sup>。</li>
+      <li>从所指看，「存在义」大于「拥有义」：凡拥有的东西总是存在的，但存在的东西却未必值得拥有<sup class="cite" data-cite="kezhi"></sup>。</li>
+      <li>「有」不表具体行为动作，概念意义空灵，是关系动词，主要表示前后两个名词的关系<sup class="cite" data-cite="guanxidongci"></sup>。</li>
+      <li>主语名词的语义特征对「有」的语义及整个构式具有句法语义的强制性；但主语不是处所词时，人们倾向于把积极义宾语配「拥有」、消极义宾语配「存在」<sup class="cite" data-cite="qiangzhi"></sup><sup class="cite" data-cite="qian-bing"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景四：程度的尺 ============ -->
+<section data-scene="4" class="scene">
+  <p class="kicker">整合效应</p>
+  <h2>四、一把程度的尺：「很有魅力」为什么能说？</h2>
+  <p>积极义的「有＋N」整合度高，前头加「很」稳稳扛住；消极义的还是松散动宾，一加就垮<sup class="cite" data-cite="zhengji"></sup><sup class="cite" data-cite="hen"></sup>。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 320" role="img" aria-label="示意图：程度副词很的测验尺">
+      <text x="340" y="30" text-anchor="middle" font-size="16" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#6f675a">程度副词「很」的测验尺</text>
+      <g font-family="KaiTi,STKaiti,serif" font-size="17">
+        <rect x="70" y="62" width="150" height="42" rx="9" fill="#fffdf6" stroke="#9d4938" stroke-width="2"/><text x="145" y="89" text-anchor="middle" fill="#9d4938">很有魅力 ✓</text>
+        <rect x="240" y="52" width="150" height="42" rx="9" fill="#fffdf6" stroke="#9d4938" stroke-width="2"/><text x="315" y="79" text-anchor="middle" fill="#9d4938">很有实力 ✓</text>
+        <rect x="410" y="62" width="150" height="42" rx="9" fill="#fffdf6" stroke="#9d4938" stroke-width="2"/><text x="485" y="89" text-anchor="middle" fill="#9d4938">很有价值 ✓</text>
+      </g>
+      <line x1="50" y1="160" x2="630" y2="160" stroke="#29241d" stroke-width="2.4"/>
+      <g stroke="#29241d" stroke-width="1.6">
+        <line x1="70" y1="152" x2="70" y2="168"/><line x1="110" y1="156" x2="110" y2="164"/><line x1="150" y1="152" x2="150" y2="168"/><line x1="190" y1="156" x2="190" y2="164"/><line x1="230" y1="152" x2="230" y2="168"/><line x1="270" y1="156" x2="270" y2="164"/><line x1="310" y1="152" x2="310" y2="168"/><line x1="350" y1="156" x2="350" y2="164"/><line x1="390" y1="152" x2="390" y2="168"/><line x1="430" y1="156" x2="430" y2="164"/><line x1="470" y1="152" x2="470" y2="168"/><line x1="510" y1="156" x2="510" y2="164"/><line x1="550" y1="152" x2="550" y2="168"/><line x1="590" y1="156" x2="590" y2="164"/>
+      </g>
+      <g font-family="KaiTi,STKaiti,serif" font-size="17">
+        <g transform="rotate(-3.5 145 236)"><rect x="70" y="214" width="150" height="42" rx="9" fill="#f0ece4" stroke="#3d5a6c" stroke-width="2"/><text x="145" y="241" text-anchor="middle" fill="#3d5a6c">*很有毛病 ✗</text></g>
+        <g transform="rotate(-2.5 315 236)"><rect x="240" y="214" width="150" height="42" rx="9" fill="#f0ece4" stroke="#3d5a6c" stroke-width="2"/><text x="315" y="241" text-anchor="middle" fill="#3d5a6c">*很有隐患 ✗</text></g>
+        <g transform="rotate(-4.5 485 236)"><rect x="410" y="214" width="150" height="42" rx="9" fill="#f0ece4" stroke="#3d5a6c" stroke-width="2"/><text x="485" y="241" text-anchor="middle" fill="#3d5a6c">*很有缺陷 ✗</text></g>
+      </g>
+      <g>
+        <path d="M556 128 q 30 -6 44 -26 l 0 74 q -14 -20 -44 -26 z" fill="#fffdf6" stroke="#29241d" stroke-width="2"/>
+        <line x1="556" y1="128" x2="556" y2="202" stroke="#29241d" stroke-width="2"/>
+        <text x="578" y="158" text-anchor="middle" font-size="12.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">八百词</text>
+      </g>
+      <text x="340" y="292" text-anchor="middle" font-size="13.5" font-family="KaiTi,STKaiti,serif" fill="#a87f24">《现代汉语八百词》：此类组合「不用程度副词，也能有程度深的意思」</text>
+    </svg>
+    <figcaption>图 2（示意）：整合度高的「有＋N」像个形容词，扛得住「很」；表存在的动宾结构扛不住。星号＊为原文标注的不合法形式。</figcaption>
+  </figure>
+  <div class="guess" data-guess>
+    <p class="q">「很有缺陷」能说吗？</p>
+    <div class="opts">
+      <button data-ans="yes">能，程度副词通用</button>
+      <button data-ans="no">不能</button>
+    </div>
+    <p class="reveal" hidden>不能，原文标了星号<sup class="cite" data-cite="hen"></sup>。道理一句话：「有」被解读为「存在」时，整个结构是不可能具有程度属性的<sup class="cite" data-cite="cunzai-wuchengdu"></sup>。反过来，扛住了「很」的「有＋N」已经熟语化——《现代汉语八百词》注明此类组合「不用程度副词，也能有程度深的意思」，解正明（2007）称之为「非常量」<sup class="cite" data-cite="babaijing"></sup><sup class="cite" data-cite="feichangliang"></sup>。</p>
+  </div>
+  <details>
+    <summary>「很」字测验全表（原文左列九例 ✓ ／ 右列九例 ✗ 或 ?）</summary>
+    <ul>
+      <li>✓ 能加：很有魅力 · 很有教养 · 很有气度 · 很有实力 · 很有信誉 · 很有运气 · 很有价值 · 很有意思 · 很有潜力<sup class="cite" data-cite="hen"></sup></li>
+      <li>✗ 不能加：*很有毛病 · *很有陋习 · *很有隐患 · *很有灾难 · *很有缺陷 · *很有阴谋<sup class="cite" data-cite="hen"></sup></li>
+      <li>? 存疑：?很有私心 · ?很有猫腻 · ?很有风险<sup class="cite" data-cite="hen"></sup></li>
+      <li>积极义名词强化「有」的本义，两者组合有天然的和谐度，是高度整合的语义基础；消极义名词只能激活「存在」，融合度相对较低<sup class="cite" data-cite="hexiedu"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景五：构式压制 ============ -->
+<section data-scene="5" class="scene">
+  <p class="kicker">熟语化之后</p>
+  <h2>五、一架模具：中性词进去，积极义出来</h2>
+  <p>「有＋N」凝固成习语性构式之后有了压制力：本身无褒贬的中性名词掉进来，整体也被读出程度高的积极义<sup class="cite" data-cite="yashi"></sup>。点词翻面，看模具里出来什么。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 300" role="img" aria-label="示意图：有加N构式的压制效应">
+      <g font-family="KaiTi,STKaiti,serif" font-size="15">
+        <rect x="60" y="26" width="104" height="34" rx="8" fill="#fffdf6" stroke="#6f675a" stroke-width="1.6" stroke-dasharray="4 4"/><text x="112" y="48" text-anchor="middle" fill="#6f675a">气氛</text>
+        <rect x="178" y="26" width="104" height="34" rx="8" fill="#fffdf6" stroke="#6f675a" stroke-width="1.6" stroke-dasharray="4 4"/><text x="230" y="48" text-anchor="middle" fill="#6f675a">理由</text>
+        <rect x="296" y="26" width="104" height="34" rx="8" fill="#fffdf6" stroke="#6f675a" stroke-width="1.6" stroke-dasharray="4 4"/><text x="348" y="48" text-anchor="middle" fill="#6f675a">证据</text>
+      </g>
+      <g stroke="#6f675a" stroke-width="1.4" stroke-dasharray="2 6"><line x1="112" y1="62" x2="112" y2="104"/><line x1="230" y1="62" x2="230" y2="104"/><line x1="348" y1="62" x2="348" y2="104"/></g>
+      <path d="M150 168 L 168 246 Q 170 258 182 258 L 288 258 Q 300 258 302 246 L 320 168 Z" fill="#f1e6d2" stroke="#29241d" stroke-width="2.6"/>
+      <ellipse cx="235" cy="168" rx="85" ry="13" fill="#e8dcc4" stroke="#29241d" stroke-width="2.6"/>
+      <line x1="200" y1="258" x2="270" y2="258" stroke="#29241d" stroke-width="2.6"/>
+      <text x="235" y="222" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#29241d">有＋N</text>
+      <g fill="#a87f24"><circle cx="196" cy="146" r="4"/><circle cx="235" cy="134" r="4.5"/><circle cx="272" cy="146" r="4"/><circle cx="252" cy="122" r="3"/><circle cx="216" cy="118" r="3"/></g>
+      <g font-family="KaiTi,STKaiti,serif" font-size="15">
+        <rect x="392" y="96" width="180" height="36" rx="8" fill="#9d4938"/><text x="482" y="120" text-anchor="middle" fill="#fff">有气氛（气氛很好）</text>
+        <rect x="392" y="146" width="180" height="36" rx="8" fill="#9d4938"/><text x="482" y="170" text-anchor="middle" fill="#fff">有理由（理由充分）</text>
+        <rect x="392" y="196" width="180" height="36" rx="8" fill="#9d4938"/><text x="482" y="220" text-anchor="middle" fill="#fff">有证据（证据确凿）</text>
+      </g>
+      <g stroke="#a87f24" stroke-width="1.6" stroke-dasharray="2 6"><path d="M322 160 C 350 150, 366 132, 388 122" fill="none"/><path d="M322 172 C 352 170, 368 166, 388 164" fill="none"/><path d="M322 186 C 350 192, 366 208, 388 214" fill="none"/></g>
+      <text x="235" y="286" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#6f675a">构式压制（coercion）——模具上写着「有＋N」</text>
+    </svg>
+    <figcaption>图 3（示意）：中性名词进入「有＋N」，整体读出程度高的积极义；括号内为原文注释。</figcaption>
+  </figure>
+  <div class="flips" id="flips"></div>
+  <p class="small muted">这九个名词本身都是中性的，并没有显著的褒贬义；掉进「有＋N」后，整体语用义显然是积极的<sup class="cite" data-cite="zhongxing-wubiaobian"></sup>。</p>
+  <details>
+    <summary>压制的原文与边界</summary>
+    <ul>
+      <li>原文：此类「有＋N」已经凝固成一个习语性「构式」，产生了构式的「压制」效应（coercion），即使是中性义名词进入该构式同样会产生程度高的积极义<sup class="cite" data-cite="yashi"></sup>。</li>
+      <li>原文九例（括号内为注释）：有气氛（气氛很好）· 有理由（理由充分）· 有证据（证据确凿）· 有价值（价值极高）· 有内容（内容充实）· 有特点（特点显著）· 有作用（作用很大）· 有学历（学历很高）· 有结果（达到了预期目标）<sup class="cite" data-cite="zhongxingci"></sup>。</li>
+      <li>「就事理而言，上例中的 N 都是中性的」——「气氛」可能好也可能不好，「价值」可能高也可能不高，但构式把语用义压向了积极一端<sup class="cite" data-cite="zhongxing-wubiaobian"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景六：数据与全貌 ============ -->
+<section data-scene="6" class="scene">
+  <p class="kicker">收束</p>
+  <h2>六、一个数据，和全貌</h2>
+  <p>作者（2012）收集的 500 多个比较固定的「有＋N」实例中，N 表积极义或整个结构表积极义的占到 70%，语义倾向非常显著<sup class="cite" data-cite="shuju70"></sup>。这不是偶然，是「期望值」心理：美好的事物总被期待「拥有」，相反的事物也许会「存在」，却不是我们所倾心的<sup class="cite" data-cite="qiwangzhi"></sup>。</p>
+  <div class="bar-wrap">
+    <div class="bar"><i></i><b>70%</b></div>
+    <p class="small muted" style="margin:.4em 0 0">500 多个固定「有＋N」实例中，表积极义的比例<sup class="cite" data-cite="shuju70"></sup>。此类现象邹韶华（1988）、贺阳（1994）、李宇明（1994）、沈家煊（1996）、石毓智（2001）等都已指出<sup class="cite" data-cite="xuezhe"></sup>。</p>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 210" role="img" aria-label="示意图：本节机制全貌">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="14">
+        <rect x="16" y="60" width="140" height="72" rx="10" fill="#fffdf6" stroke="#29241d" stroke-width="1.8"/><text x="86" y="88" text-anchor="middle" fill="#29241d" font-weight="bold">宾语名词的</text><text x="86" y="108" text-anchor="middle" fill="#29241d" font-weight="bold">语义倾向</text><text x="86" y="126" text-anchor="middle" fill="#6f675a" font-size="12">〔+积极〕/〔−积极〕</text>
+        <rect x="196" y="60" width="140" height="72" rx="10" fill="#fffdf6" stroke="#29241d" stroke-width="1.8"/><text x="266" y="88" text-anchor="middle" fill="#29241d" font-weight="bold">「有」的解读</text><text x="266" y="108" text-anchor="middle" fill="#9d4938">拥有</text><text x="266" y="126" text-anchor="middle" fill="#3d5a6c">存在</text>
+        <rect x="376" y="60" width="140" height="72" rx="10" fill="#fffdf6" stroke="#29241d" stroke-width="1.8"/><text x="446" y="88" text-anchor="middle" fill="#29241d" font-weight="bold">句式</text><text x="446" y="108" text-anchor="middle" fill="#9d4938">领有句</text><text x="446" y="126" text-anchor="middle" fill="#3d5a6c">存现句</text>
+        <rect x="556" y="60" width="108" height="72" rx="10" fill="#fffdf6" stroke="#29241d" stroke-width="1.8"/><text x="610" y="88" text-anchor="middle" fill="#29241d" font-weight="bold">整合度</text><text x="610" y="108" text-anchor="middle" fill="#9d4938">高·能加「很」</text><text x="610" y="126" text-anchor="middle" fill="#3d5a6c">低·加不得</text>
+      </g>
+      <g stroke="#29241d" stroke-width="2"><line x1="156" y1="96" x2="192" y2="96"/><line x1="336" y1="96" x2="372" y2="96"/><line x1="516" y1="96" x2="552" y2="96"/></g>
+      <g fill="#29241d"><polygon points="192,96 184,91 184,101"/><polygon points="372,96 364,91 364,101"/><polygon points="552,96 544,91 544,101"/></g>
+      <text x="340" y="176" text-anchor="middle" font-size="13" font-family="KaiTi,STKaiti,serif" fill="#a87f24">旁路：主语若为处所词，直接强制「存在」——那是人为的「设置」</text>
+      <text x="340" y="198" text-anchor="middle" font-size="12.5" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" fill="#6f675a">词义蕴含 → 多义分化 → 构式变异（据底本整理）</text>
+    </svg>
+    <figcaption>图 4：本节机制全貌。宾语名词的语义特征是「参数变量」：构件变化的量变积累导致质变，即构式变异（外部承继）<sup class="cite" data-cite="goujian"></sup><sup class="cite" data-cite="waibu-chengji"></sup>。</figcaption>
+  </figure>
+  <details>
+    <summary>本节在全书中的位置与未覆盖内容</summary>
+    <ul>
+      <li>「构件」指具有一定句法语义属性的「语块」，蕴含句法、语义、韵律乃至词义信息<sup class="cite" data-cite="goujian"></sup>。本节个案里，宾语名词的褒贬就是导致构式变异的参数变量。</li>
+      <li>构件变化积累量变之后产生质变，导致构式变异，属于「外部承继」（Goldberg 所谓的「多重承继」）<sup class="cite" data-cite="waibu-chengji"></sup>。</li>
+      <li>本节之后，第七章还有「韵律框架变形与构式变异」「语境特征消长与构式变异」两节，不在本页范围内，可回底本 L5039 起阅读。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 结尾自测 ============ -->
+<div data-quiz class="quiz">
+  <h2>你答得上来吗</h2>
+  <p class="q">1. 「这家商店有灾难」——读者最可能把「有」理解成什么？</p>
+  <div class="opts"><button data-k="1" data-v="own">拥有</button><button data-k="1" data-v="exist">存在</button></div>
+  <p class="why" hidden>答案：存在。主语「这家商店」不是处所词，宾语「灾难」表消极义，按默认值激活「存在」<sup class="cite" data-cite="sangzu"></sup><sup class="cite" data-cite="shengyu"></sup>。</p>
+  <p class="q">2. 「很有潜力」成立，「很有缺陷」不成立，根本原因是？</p>
+  <div class="opts"><button data-k="2" data-v="a">两个宾语音节数不同</button><button data-k="2" data-v="b">积极义「有＋N」已高度整合、相当于形容词；「有」表存在时结构不可能有程度属性</button></div>
+  <p class="why" hidden>答案：后者。整合度差异是句法表现的根源——扛得住「很」的已经熟语化，扛不住的一加就垮<sup class="cite" data-cite="zhengji"></sup><sup class="cite" data-cite="cunzai-wuchengdu"></sup><sup class="cite" data-cite="hen"></sup>。</p>
+  <p class="q">3. 作者判断「有」的本义是「拥有（美好的物品）」，主要依据是？</p>
+  <div class="opts"><button data-k="3" data-v="a">英语 have 的对比</button><button data-k="3" data-v="b">古文字「从又持肉」，且上古「肉」是罕见的好东西</button></div>
+  <p class="why" hidden>答案：后者。毛公鼎、令鼎等字形显示「有」是「以手持肉」之象；孟子笔下「七十者可以食肉」，肉是当时公认「值得拥有的好东西」<sup class="cite" data-cite="youhezirou"></sup><sup class="cite" data-cite="mengzi"></sup><sup class="cite" data-cite="rouhaodongxi"></sup>。</p>
+</div>
+
+<section class="scene">
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="构式语法与汉语构式-01深读-构式语法入门.html">01 绪论</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a class="cur" href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </nav>
+</section>
+
+<footer>
+  <p>本页范围：研读底本第七章第一节（「有」字构式的语义分化，底本 L4921–L5038）。底本为 PaddleOCR 转录的电子书文本，无原书页码，角标中的「底本 Lx」指该行在研读底本中的行号。关键数字与规则，请点开角标核对原句后再引用。</p>
+  <p>未覆盖：第七章第二节「韵律框架变形与构式变异」、第三节「语境特征消长与构式变异」。原书：《构式语法与汉语构式》，吴为善著，「认知语言学与汉语研究丛书」。</p>
+</footer>
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+  <p><a class="jump" id="popJump" hidden>↖ 去实验台验证</a></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本（原文位置 + 原句 + 转述） ================= */
+const SOURCES = {
+  shuowen:   { page:"底本 L4944", quote:"《说文解字·有部》许慎对“有”的解释是：“不宜有也。春秋传日：‘日有食之’。从月，又声。”", zh:"许慎《说文解字》把“有”解释为“不宜有”，认为字形“从月，又声”。" },
+  zhangbinglin:{ page:"底本 L4944", quote:"章炳麟批判了许慎的训解，认为他的解释“说《春秋》虽可尔，说字则不可通。”", zh:"章炳麟批评：此说讲《春秋》尚可，讲字形则不通。" },
+  guangya:   { page:"底本 L4944", quote:"《广雅·释诂》解释：“有，取也。”", zh:"《广雅》把“有”训为“取”。" },
+  wangyun:   { page:"底本 L4944", quote:"清王筠《说文释例》说“‘有’字从又从肉会意”。", zh:"王筠认为“有”字由“又”和“肉”会意。" },
+  youhezirou:{ page:"底本 L4944", quote:"近代研究古文字的学者依据毛公鼎、令鼎诸古字形，断定“有”字系“从又持肉之象”（参见陆宗达1981）。", zh:"据毛公鼎、令鼎等金文字形（陆宗达1981），“有”是“以手持肉”之象。" },
+  shoutizou: { page:"底本 L4946", quote:"也就是说，根据古汉字字形分析，“有”是个会意字，表示“手”提着“肉”，表示“拥有”。", zh:"“有”为会意字，像手提着肉，表示拥有。" },
+  mengzi:    { page:"底本 L4950", quote:"《孟子·梁惠王上》曾描绘了以王道治国的美好愿景：“五亩之宅，树之以桑，五十者可以衣帛矣。鸡豚狗彘之畜，无失其时，七十者可以食肉矣。百亩之田，勿夺其时，八口之家可以无饥矣。”", zh:"孟子描绘王道愿景：五十者衣帛，七十者食肉。" },
+  rouhaodongxi:{ page:"底本 L4950", quote:"可见当时只有年岁高的老人才能“衣帛食肉”，“肉”是当时人们公认的“值得拥有的好东西”。", zh:"上古只有老人才能食肉；肉是公认“值得拥有的好东西”。" },
+  prototype: { page:"底本 L4950", quote:"因此，“有”的原型义应该是“拥有（美好的物品）”。", zh:"“有”的原型义是“拥有（美好的物品）”。" },
+  ganfangyan:{ page:"底本 L4952", quote:"赣方言中至今仍有这样的说法，如“听说那家家好有诶”，“有”指的是家境富裕，表达的是富足之意（参见笔者硕士生章丽燕2011）。", zh:"赣方言“好有诶”指家境富裕（章丽燕2011）。" },
+  liudanqing:{ page:"底本 L4952", quote:"刘丹青（2011）也指出，汉语“有”本性里潜存表多、表好的倾向，自古而然……与英语 have 之类较为中性的领有动词不同。", zh:"刘丹青（2011）：汉语“有”自古潜存表多、表好倾向，不同于英语 have。" },
+  weijiao:   { page:"底本 L4952", quote:"在领有句中“有+宾语”结构本身倾向于表多、表好，因此只有倾向多和好的定语才能与整个动宾结构达到语义和谐，从而整合成一个尾焦点。", zh:"“有+宾语”倾向表多表好；只有表多表好的定语才与之和谐。" },
+  shiyi10:   { page:"底本 L4957", quote:"《现代汉语词典》（第6版）对“有”的释义多达10个义项。", zh:"《现代汉语词典》（第6版）“有”有10个义项。" },
+  liangxiang:{ page:"底本 L4957", quote:"除了一些标记性专门用法之外，“有”的词汇意义集中在两个义项：一个表示“拥有”；另一个表示“存在”。从语源来看，“拥有”是本义，“存在”是引申义。", zh:"“有”集中于“拥有”（本义）与“存在”（引申义）两个义项。" },
+  kezhi:     { page:"底本 L4957", quote:"其一，“存在义”属于客观范畴，而“拥有义”属于主观范畴，因为是否值得拥有取决于人们认知上的价值评判；其二，从所指范畴来看，“存在义”大于“拥有义”，因为凡拥有的东西总是存在的，但存在的东西却未必是值得拥有的。", zh:"存在义客观、拥有义主观；存在义范围大于拥有义。" },
+  guanxidongci:{ page:"底本 L4959", quote:"不论“有”表拥有还是表存在，都不表具体的行为动作，概念意义比较空灵，属于关系动词一类，主要用来表示前后两个名词的关系。", zh:"“有”是关系动词，不表具体动作。" },
+  lingyoucunxian:{ page:"底本 L4959", quote:"“领有句”是表示某人拥有什么，“存在句”表示某处存在什么。", zh:"两种句式：领有句（某人拥有什么）、存现句（某处存在什么）。" },
+  shengmingdu:{ page:"底本 L4959", quote:"按照传统语法的分析，这取决于“有”字句主语名词的“生命度”。", zh:"传统语法认为句式区别取决于主语的生命度。" },
+  cunmin:    { page:"底本 L4961-4963", quote:"a. 村民们有很多漂亮的小楼。(表拥有：领有句) b. 村子里有很多漂亮的小楼。(表存在：存现句)", zh:"主语指人→领有句；主语带方位词表处所→存现句。" },
+  qiangzhi:  { page:"底本 L4965-4967", quote:"主语名词的语义特征对“有”的语义以及整个构式具有句法语义的强制性……当主语名词指处所时，能强制性赋予“有”表存在；而当主语名词指人时，“有”未必表示拥有。", zh:"主语语义特征有强制性；处所主语强制“存在”，指人主语则未必“拥有”。" },
+  bishi:     { page:"底本 L4965", quote:"a句是以述人主体为标记的“有”字领有句，b句是以处所话题为标记的“有”字存现句。", zh:"领有句以述人主体为标记，存现句以处所话题为标记。" },
+  laowang:   { page:"底本 L4970-4972", quote:"a. 老王有钱。（表拥有） b. 老王有病。（表存在）……a句的“钱”是人们所期待拥有的东西（表积极义），我们倾向于理解为“拥有”……b句的“病”不是人们所期待出现的现象（表消极义），我们倾向于理解为“存在”。", zh:"主语指人也未必表拥有：宾语积极→拥有，宾语消极→存在。" },
+  "qian-bing": { page:"底本 L4972", quote:"当主语名词不是处所词因而无法强制性赋予“有”表存在时，人们在理解该构式时，倾向于将表积极义的宾语名词与“拥有”匹配，将表消极义的宾语名词与“存在”匹配。", zh:"主语非处所词时：积极宾语配“拥有”，消极宾语配“存在”。" },
+  shengyu:   { page:"底本 L5002", quote:"在此类“有”字构式中“有”表拥有还是表存在，认知机制上的“默认值”取决于宾语名词的语义倾向，当名词具有[+积极]的语义特征时激活“拥有”，当名词具有[-积极]的语义特征时激活“存在”。", zh:"宾语[+积极]激活“拥有”，[-积极]激活“存在”（主语非处所词时）。" },
+  "renzhi-resshe": { page:"底本 L5002", quote:"至于将S替换为处所成分而导致“有”字构式表存在，这可以说是一种人为的“设置”。", zh:"把主语换成处所成分而表存在，是人为的“设置”。" },
+  sangzu:    { page:"底本 L4982-4998", quote:"这个学生有教养 / 这个学生有陋习；这家公司有实力 / 这家公司有隐患；这件文物有价值 / 这件文物有缺陷……（原文三组对比例句）", zh:"原文三组对比例句：人、单位、事物三类主语，各配积极/消极宾语。" },
+  duoci:     { page:"底本 L5002", quote:"这是词义蕴含的语义特征产生了多义范畴的分化，对“有”字构式的构式义产生制约，并进而导致构式变异，形成了“领有句”和“存在句”两种不同的构式。", zh:"词语蕴含的语义特征导致多义分化与构式变异（领有句/存现句）。" },
+  zhengji:   { page:"底本 L5007", quote:"其中左列形式（宾语名词表积极义）与右列形式（宾语名词表消极义）的整合度不一样，其中左列形式的整合度高于右列形式。", zh:"积极义“有+N”整合度高于消极义。" },
+  hen:       { page:"底本 L5009-5033", quote:"很有魅力 很有教养 很有气度 / 很有实力 很有信誉 很有运气 / 很有价值 很有意思 很有潜力……*很有毛病 *很有陋习 ?很有私心 / *很有隐患 *很有灾难 ?很有猫腻 / *很有缺陷 *很有阴谋 ?很有风险", zh:"积极组合能加“很”；消极组合不能（*），部分存疑（?）。" },
+  babaijing: { page:"底本 L5015", quote:"《现代汉语八百词》注明此类组合“不用程度副词，也能有程度深的意思”。", zh:"《现代汉语八百词》：此类组合不带程度副词也含程度深的意思。" },
+  feichangliang:{ page:"底本 L5015", quote:"解正明（2007）认为此类结构的构式义表示“非常量”，笔者非常赞同，这是概念高度整合的后果。", zh:"解正明（2007）：此类结构构式义表“非常量”，是高度整合的后果。" },
+  "cunzai-wuchengdu": { page:"底本 L5035", quote:"理由很简单，当“有”被解读为“存在”时，整个结构是不可能具有程度属性的。", zh:"“有”表存在时，整个结构不可能有程度属性。" },
+  yashi:     { page:"底本 L5017", quote:"此类“有+N”已经凝固成一个习语性“构式”，产生了构式的“压制”效应（coercion），即使是中性义名词进入该构式同样会产生程度高的积极义。", zh:"“有+N”已熟语化，产生构式压制：中性名词进入也表程度高的积极义。" },
+  zhongxingci:{ page:"底本 L5019-5023", quote:"有气氛(气氛很好) 有理由(理由充分) 有证据(证据确凿) / 有价值(价值极高) 有内容(内容充实) 有特点(特点显著) / 有作用(作用很大) 有学历(学历很高) 有结果(达到了预期目标)", zh:"九个中性名词进入“有+N”后的积极义解读（括号内为原文注释）。" },
+  "zhongxing-wubiaobian": { page:"底本 L5025", quote:"就事理而言，上例中的N都是中性的，并没有显著地褒贬义。如“气氛”可能好也可能不好，“价值”可能高也可能不高，“作用”可能大也可能不大，但整个构式表达的语用义显然是积极的。", zh:"这些名词本身中性，无明显褒贬；构式把语用义压向积极一端。" },
+  hexiedu:   { page:"底本 L5037", quote:"“有”的本义表示“拥有（美好的物品）”，表积极义的名词强化了这种本义，两者组合有一种天然的和谐度，这是高度整合的语义基础；而表消极义的抽象名词，按照普遍的认知机制，只能激活“有”表“存在”，可融合度相对就较低。", zh:"积极名词强化本义、和谐度高；消极名词只能激活“存在”、融合度低。" },
+  qiwangzhi:{ page:"底本 L5037", quote:"这同样可以用人们的规约性心理“期望值”来加以解释：美好的事物或属性总是人们所期待“拥有”的，而相反的事物或属性也许会“存在”，却不是我们所倾心的。", zh:"以“期望值”解释：美好事物总被期待“拥有”。" },
+  shuju70:   { page:"底本 L4936", quote:"笔者（2012）曾对“有+N”进行了较为详尽的考察，发现在所收集的500多个比较固定的“有+N”实例中，N表示积极义或者整个结构表积极义的占总数的70%，语义倾向比较显著。", zh:"笔者（2012）考察500多个固定“有+N”实例，表积极义的占70%。" },
+  xuezhe:    { page:"底本 L4936", quote:"邹韶华（1988）、贺阳（1994）、李宇明（1994）、沈家煊（1996）、石毓智（2001）等学者都指出了这种倾向，并进行了一定的解释。", zh:"多位学者（1988—2001）早已指出“有”的积极义倾向。" },
+  goujian:   { page:"底本 L4929", quote:"每一个“构件”都蕴含了特定的句法、语义、韵律乃至词义信息，并具有特定的语用功能。", zh:"构件（语块）蕴含句法、语义、韵律、词义信息。" },
+  "waibu-chengji": { page:"底本 L4931", quote:"“构件”的变化在积累了一定的量变之后，就会产生质变，导致构式变异，属于“外部承继”（即Goldberg所谓的“多重承继”）。", zh:"构件的量变积累导致质变（构式变异），属外部承继。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch{} }
+};
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 字号 */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* 明暗 */
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"),
+      popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"),
+      popZh = document.getElementById("popZh"),
+      popJump = document.getElementById("popJump");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  popJump.hidden = !(id === "laowang" || id === "cunmin" || id === "shengyu" || id === "qiangzhi");
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+popJump.onclick = () => { closePop(); jumpTo("lab"); };
+
+/* 回跳 */
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+function goBack(){
+  const y = backStack.pop();
+  if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" });
+  backBtn.hidden = backStack.length === 0;
+}
+backBtn.onclick = goBack;
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+
+/* ================= 场景一：拼字 ================= */
+const puzzle = document.getElementById("puzzle");
+let handDone = false, meatDone = false;
+document.getElementById("pieceHand").onclick = function(){
+  handDone = true; this.disabled = true;
+  document.getElementById("slotYou").classList.add("done");
+  checkPuzzle();
+};
+document.getElementById("pieceMeat").onclick = function(){
+  meatDone = true; this.disabled = true;
+  document.getElementById("slotYou").classList.add("done");
+  checkPuzzle();
+};
+function checkPuzzle(){ if (handDone && meatDone) puzzle.classList.add("done"); }
+
+/* ================= 场景二：实验台 ================= */
+const SUBJECTS = {
+  laowang:{ label:"老王", desc:"指人 · 生命度极高", place:false },
+  gongsi: { label:"这家公司", desc:"单位 · 有一定生命度", place:false },
+  gupiao:{ label:"这只股票", desc:"事物 · 无生命度", place:false },
+  cunzi: { label:"村子里", desc:"处所 · 带方位词", place:true }
+};
+const HEN_OK = ["魅力","教养","气度","实力","信誉","运气","价值","意思","潜力"],
+      HEN_NO = ["毛病","陋习","隐患","灾难","缺陷","阴谋"],
+      HEN_Q  = ["猫腻","风险"];
+const OBJECTS = [
+  { w:"魅力", tone:"pos", orig:"这个女人有魅力" },
+  { w:"教养", tone:"pos", orig:"这个学生有教养" },
+  { w:"气度", tone:"pos", orig:"这个老板有气度" },
+  { w:"实力", tone:"pos", orig:"这家公司有实力" },
+  { w:"信誉", tone:"pos", orig:"这家商店有信誉" },
+  { w:"运气", tone:"pos", orig:"这个村庄有运气" },
+  { w:"价值", tone:"pos", orig:"这件文物有价值" },
+  { w:"意思", tone:"pos", orig:"这件事情有意思" },
+  { w:"潜力", tone:"pos", orig:"这个股票有潜力" },
+  { w:"毛病", tone:"neg", orig:"这个女人有毛病" },
+  { w:"陋习", tone:"neg", orig:"这个学生有陋习" },
+  { w:"案底", tone:"neg", orig:"这个老板有案底" },
+  { w:"隐患", tone:"neg", orig:"这家公司有隐患" },
+  { w:"灾难", tone:"neg", orig:"这家商店有灾难" },
+  { w:"猫腻", tone:"neg", orig:"这个村庄有猫腻" },
+  { w:"缺陷", tone:"neg", orig:"这件文物有缺陷" },
+  { w:"阴谋", tone:"neg", orig:"这件事情有阴谋" },
+  { w:"风险", tone:"neg", orig:"这个股票有风险" },
+  { w:"钱", tone:"pos", orig:"老王有钱" },
+  { w:"病", tone:"neg", orig:"老王有病" }
+];
+let curSubj = "laowang", curObj = OBJECTS[18];
+const subjRow = document.getElementById("subjRow"), objRow = document.getElementById("objRow");
+Object.entries(SUBJECTS).forEach(([id,s]) => {
+  const b = document.createElement("button");
+  b.innerHTML = s.label + "<small>" + s.desc + "</small>";
+  b.setAttribute("aria-pressed", id === curSubj);
+  b.onclick = () => { curSubj = id; [...subjRow.children].forEach(x => x.setAttribute("aria-pressed", x === b)); render(); };
+  subjRow.appendChild(b);
+});
+OBJECTS.forEach((o,i) => {
+  const b = document.createElement("button");
+  b.textContent = o.w; b.className = o.tone;
+  b.setAttribute("aria-pressed", i === 18);
+  b.onclick = () => { curObj = o; [...objRow.children].forEach(x => x.setAttribute("aria-pressed", x === b)); render(); };
+  objRow.appendChild(b);
+});
+function henLine(o, place){
+  if (o.w === "钱") return '<span class="ok">✓ 很有钱</span>（原文未列，按左列规则推算）<span class="tag" data-label="推算">推算</span>';
+  if (o.w === "病") return '<span class="no">✗ *很有病</span>（原文未列，参照 *很有毛病 推算）<span class="tag" data-label="推算">推算</span>';
+  if (place) return '<span class="no">✗ 村子里很有' + o.w + '</span>（按“存在无程度”推算）<span class="tag" data-label="解读">解读</span>';
+  if (HEN_OK.includes(o.w))  return '<span class="ok">✓ 很有' + o.w + '</span>';
+  if (HEN_NO.includes(o.w))  return '<span class="no">✗ *很有' + o.w + '</span>';
+  return '<span class="qm">? 很有' + o.w + '</span>';
+}
+function render(){
+  const s = SUBJECTS[curSubj], o = curObj;
+  const place = s.place;
+  const reading = place ? "exist" : (o.tone === "pos" ? "own" : "exist");
+  const swapped = !o.orig.startsWith(s.label);
+  document.getElementById("rSent").innerHTML = s.label + " <em>有</em> " + o.w;
+  const badge = document.getElementById("rBadge");
+  badge.textContent = reading === "own" ? "拥有" : "存在";
+  badge.className = "badge " + reading;
+  document.getElementById("rNote").textContent = place
+    ? "主语是处所词，强制「有」表存在——与宾语褒贬无关。"
+    : (reading === "own"
+      ? "主语非处所词，宾语「" + o.w + "」表积极义，按默认值激活「拥有」。"
+      : "主语非处所词，宾语「" + o.w + "」表消极义，按默认值激活「存在」。");
+  document.getElementById("rCat").textContent = reading === "own" ? "主观——值不值得拥有，取决于价值评判" : "客观——与褒贬评价无关";
+  document.getElementById("rHen").innerHTML = henLine(o, place);
+  document.getElementById("rInt").textContent = reading === "own" ? "高——「有＋N」已整合，相当于形容词" : "低——内部松散的动宾结构";
+  document.getElementById("rOrig").innerHTML = "「" + o.orig + "。」（" + (o.tone === "pos" ? "表拥有" : "表存在") + "）<sup class=\"cite\" data-cite=\"laowang\"></sup>"
+    + (swapped ? '　<span class="tag" data-label="解读">解读</span>换用“' + s.label + '”后的判定为机制应用' : "");
+}
+render();
+
+/* ================= 场景四/一：先猜再看 ================= */
+document.querySelectorAll(".guess").forEach(g => {
+  const reveal = g.querySelector(".reveal");
+  g.querySelectorAll(".opts button").forEach(b => {
+    b.onclick = () => {
+      g.querySelectorAll(".opts button").forEach(x => x.disabled = true);
+      reveal.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景五：翻牌 ================= */
+const NEUTRAL = [
+  ["气氛","气氛很好"],["理由","理由充分"],["证据","证据确凿"],["价值","价值极高"],
+  ["内容","内容充实"],["特点","特点显著"],["作用","作用很大"],["学历","学历很高"],["结果","达到了预期目标"]
+];
+const flips = document.getElementById("flips");
+NEUTRAL.forEach(([w,gloss]) => {
+  const b = document.createElement("button");
+  b.className = "flip"; b.setAttribute("aria-label", "有" + w + "，点击查看原文注释");
+  b.innerHTML = '<span class="in"><span class="f">有' + w + '</span><span class="b">（' + gloss + '）</span></span>';
+  b.onclick = () => b.classList.toggle("on");
+  flips.appendChild(b);
+});
+
+/* ================= 自测 ================= */
+const ANSWERS = { 1:"exist", 2:"b", 3:"b" };
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const k = group.querySelector("button").dataset.k;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.v === ANSWERS[k]) x.classList.add("right"); });
+      if (b.dataset.v !== ANSWERS[k]) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

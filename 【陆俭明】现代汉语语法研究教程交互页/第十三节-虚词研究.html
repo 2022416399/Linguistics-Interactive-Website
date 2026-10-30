@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第十三节 · 虚词研究 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第十三节 交互研读</p>
+  <h1>虚词研究：数量最少，分量最重的「经络」</h1>
+  <p class="lead">虚词跟实词比起来，数量要少得多，但其重要性大大超过实词，在现代汉语中起着<b>「经络」的作用</b><sup class="cite" data-cite="s-xuci-jingluo">出处</sup>。共时平面的虚词研究含用法、意义、教学三方面，本节只谈前二者：<b>用法研究</b>要具多角度、多层面、多方位观念，从句类、词类、音节、轻重音、肯定与否定、简单与复杂、位置、配搭八方面考察；<b>意义研究</b>以比较分析为最基本、最有效的方法，辅以语义背景分析，并切忌将虚词所在格式的意义视为虚词的意义<sup class="cite" data-cite="s-bijiao-zui-jiben">出处</sup>。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html">第八节 形式学派</a><a href="第九节-功能学派.html">第九节 功能学派</a><a href="第十节-认知学派.html">第十节 认知学派</a><a href="第十一节-构式语法.html">第十一节 构式语法</a><a href="第十二节-语言信息结构.html">第十二节 信息结构</a><a href="第十三节-虚词研究.html" class="cur">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>经络</b>作用</li><li>用法八方面</li><li>五种比较</li><li>语义背景分析</li><li>格式义≠虚词义</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第十三节</p>
+<h2>虚词研究：用法、意义与三条分析路径</h2>
+<p>虚词数量少、意义虚灵、用法个性极强，是汉语语法研究中公认的难点。本节的思路分三大块铺开：先看虚词为什么重要（13.1），再讲用法研究要从哪些方面去考察（13.2），最后讲意义研究的基本方法——比较分析（13.4）、语义背景分析（13.5），以及一条必须防止的偏差：切忌将虚词所在格式的意义视为虚词的意义（13.6）。全节的落点在一句话：<b>虚词的意义只有通过比较才能较好地加以把握</b><sup class="cite" data-cite="s-bijiao-wuzhong">出处</sup>。</p>
+
+<article class="chapter" data-chapter="13">
+<h3>第十三节｜现代汉语虚词研究</h3>
+
+<div class="kicker">13.1 虚词研究的重要性</div>
+
+<p>虚词是对实词而言的。虚词跟实词比起来，数量要少得多，但其重要性大大超过实词。虚词在现代汉语中起着「经络」的作用，特别是由于汉语没有俄、法、英诸语言里那种形态标志和形态变化，也没有日、朝/韩、蒙、土耳其诸语言里那种黏附形式，因此虚词在汉语中担负着更为繁重的语法任务，起着更为重要的语法作用<sup class="cite" data-cite="s-xuci-jingluo">出处</sup>。</p>
+
+<p>虚词在现代汉语里的作用，马真《现代汉语虚词研究方法论》一书（2004 年初版，2016 年修订版）归纳了如下五点<sup class="cite" data-cite="s-mazhen-five-functions">出处</sup>：</p>
+
+<table class="matrix">
+<tr><th style="width:17%">作用</th><th style="width:36%">实例</th><th>效果</th></tr>
+<tr><td>帮助表达实词之间某种语法关系</td><td>她满意得笑了。｜她满意地笑了。</td><td>用「得」，「满意」和「笑了」之间是述补关系，句子表示「她」由于得意而笑了；用「地」，是修饰关系，表示「她」笑时带着满意的心态</td></tr>
+<tr><td>帮助表达实词之间某种语义关系</td><td>张三把李四说了一通。｜张三被李四说了一通。</td><td>两句所差只在介词：用「把」，「张三」是「说」的施事、「李四」是受事；用「被」，施受互换</td></tr>
+<tr><td>帮助实词添加某种语法意义</td><td>我看见他拿了／拿过／拿着两个苹果。</td><td>同是动词「拿」：带「了」表示行为动作的实现或完成；带「过」表示有过的经历；带「着」表示行为动作的持续</td></tr>
+<tr><td>帮助改变词语的表述功能</td><td>吃的｜木头似的</td><td>动词「吃」加「的」成为名词性成分，表指称；名词「木头」加「似的」成为状态词性成分，表陈述</td></tr>
+<tr><td>帮助表达某种语气</td><td>他有儿子了／啦／吗。<br>张叔叔的确／也许／难道从北京回来了。</td><td>句末用「了」是陈述语气，「啦」是感叹语气，「吗」是疑问语气；副词「的确」表确信，「也许」表猜测、不确定，「难道」增强疑惑</td></tr>
+</table>
+<p class="small muted">表：马真归纳的虚词五点作用（用例与解释略有变动），据底本本节第一部分转制<sup class="cite" data-cite="s-mazhen-five-functions">出处</sup>。</p>
+
+<p>虚词在现代汉语中的重要作用决定了虚词研究的重要性，所以虚词研究一直是汉语语法研究的重要组成部分。虚词研究，就共时平面来说，主要包括三方面内容，一是虚词用法的研究，二是虚词意义的研究，三是虚词教学的研究；本节只谈前两方面的研究<sup class="cite" data-cite="s-xuci-research-scope">出处</sup>。</p>
+
+<p>无论虚词的用法还是虚词的意义，都不太好研究。这是因为虚词所表示的是语法意义，很虚灵，很不容易把握，而在用法上，又个性极强，即使是属同一类的虚词，即使意义接近，在用法上也会有很大的差别。要搞好虚词研究，重要的是要了解、掌握好虚词研究的方法<sup class="cite" data-cite="s-xuci-hard">出处</sup>。</p>
+
+<div class="kicker">13.2 关于虚词用法的研究</div>
+
+<p>要研究好虚词的用法，重要的要具有多角度、多层面、多方位的观念。具体说，要从各个方面去进行细致的考察、分析，这样就能较快、较容易地了解、把握一个虚词的用法。根据已有的研究成果，对于汉语虚词的用法大致可以从以下几方面去进行考察、研究<sup class="cite" data-cite="s-yongfa-duojiaodu">出处</sup>：</p>
+
+<div class="lab">
+<h3>一、句类</h3>
+<p>连词「或者」和「还是」都能在表示选择关系的复句中起连接作用，但是「或者」只用于陈述句，「还是」则用于疑问句。语气词「吗」只能用在问句里，「呢」则既能用于疑问句，也能用于陈述句（如：他们正在开会呢）；即使用于疑问句，二者也还有区别：「吗」只能用于「是非问句」，「呢」则正相反，只能用于「非是非问句」，即除非是问句以外的其他问句，包括特指问句、选择问句、反复问句<sup class="cite" data-cite="s-yongfa-julei">出处</sup>。</p>
+<p>程度副词「更」和「最」都能用于比较，都表示程度高，但是「更」可以用在「比」字句里（小张的成绩比我们更好），而「最」则不能（*小张的成绩比我们最好）。与之类同的程度副词「稍」和「较」都能用于比较，表示程度浅，但是「稍」可以用于「比」字句（我比他稍高一点儿），「较」则不能用于「比」字句，我们不说「我比他较高一点儿」<sup class="cite" data-cite="s-yongfa-julei">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>二、词类</h3>
+<p>连词「和」跟「并」都能用来连接词或词组，都能表示并列关系，但是「和」主要用来连接名词性词语，连接动词或形容词性词语则有条件；而「并」只能用来连接动词或形容词性词语<sup class="cite" data-cite="s-yongfa-cilei">出处</sup>。</p>
+<p>作为程度副词的「老」（如：那地方老远的），意思跟「很」相当，但是「很」可以修饰某些动词性成分（如：很喜欢｜很希望去｜很有办法），「老」不能修饰任何动词性成分；即使在修饰形容词这一点上也有区别：「老」只能用来修饰往大的方面说的有限的几个表量度的单音节形容词（如「大、长、沉、重、肥、高、粗、厚、宽、远、多、硬、烫」等），「很」则没有这种限制<sup class="cite" data-cite="s-yongfa-cilei">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>三、音节</h3>
+<p>在汉语用词造句中，常常需要注意音节问题，这是汉语的一个很重要的特点，副词在这一点上表现得特别突出。有的副词要求所修饰的成分必须是个单音节词，如「过」，只能说「过静」「过难」「过密」（修饰单音节形容词），不能说「过安静」「过困难」「过密切」（修饰双音节形容词）；而与之同义的「过于」则不受此限，可以说「过于安静」「过于困难」「过于密切」，也可以说「过于静」「过于难」「过于密」。跟「过」相类似的，还有「尽、屡、互」等，它们所修饰的词语必须是单音节的<sup class="cite" data-cite="s-yongfa-yinjie">出处</sup>。</p>
+<p>有的副词可以修饰一个词组，但是要求紧跟在它后面的必须是个单音节词，如「足」，只能说「足等了两个小时」，不能说「足等候了两个小时」；与之同义的「足足」就不受此限，既可以说「足足等了两个小时」，也可以说「足足等候了两个小时」。有的副词跟上述情况正相反，要求所修饰的词语必须是双音节的，如「大力」，只能说「大力帮助」，不能说「大力帮」；与「大力」类似的如「行将、万分、明明」等。另外，由「为」构成的双音节副词，如「大为、最为、甚为、颇为、极为」等，也都不能修饰单音节词。再如助词「与否」，它只能跟在一个双音节成分后面，如「正确与否｜考虑与否｜编写与否」，绝不跟在一个单音节成分后面，不说「对与否｜想与否｜编与否｜写与否」<sup class="cite" data-cite="s-yongfa-yinjie">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>四、轻重音</h3>
+<p>一个虚词往往可以表示多种不同的语法意义，而这又往往是通过轻重音来表示的。这一点在副词身上表现得特别明显。譬如「都」，试比较<sup class="cite" data-cite="s-yongfa-qingzhongyin">出处</sup>：</p>
+<blockquote>（1）我们'都看完了。——重音在「都」上，「都」总括主语所指的全范围。<br>
+（2）'我们都看完了。——重音在「我」上，「都」虽仍表总括，全句含「甚至」的意思（＝甚至连我们都看完了）。<br>
+（3）我们都看'完了。——重音在「完」上，「都」含有「已经」的意思。<sup class="cite" data-cite="s-yongfa-qingzhongyin">出处</sup></blockquote>
+<p>「已经」修饰数量词时，既可言够，也可言多，其区别就在轻重音上。如「已经三个了」，如果重音在「已经」上，是言够；如果重音在「三」上，是言多。再如，「再」表示重复时，可以表示两种不同的重复：一是实在的重复（这个电影太好了，明天再看一遍——已经看过一遍，准备第二天重新看一遍）；二是空缺的重复（票卖完了？没关系，我们明天再看好了——想要看，但票没买着，准备第二天实现计划）。「再」表示这两种重复，就是通过轻重音的不同来实现的：表示实在的重复，重音只能在「再」或「再」后面的某个音节上，绝不能在「再」之前；表示空缺的重复，重音则一定在「再」之前<sup class="cite" data-cite="s-yongfa-qingzhongyin">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>五、肯定与否定</h3>
+<p>多数虚词既可以跟肯定形式发生关系，也可以跟否定形式发生关系，但有些虚词在这方面有特殊要求，有多种情况<sup class="cite" data-cite="s-yongfa-kending-fouding">出处</sup>：</p>
+<ul class="rows">
+<li><b>只能否</b>如副词「从」就要求后面必须跟一个否定形式（从不说谎｜从没有听说过｜*从就很规矩），与之同义的「从来」就没有这种限制（从来不说谎｜从来就很规矩）。副词「万万」只能修饰一个否定形式（万万不可粗心大意｜万万没有想到｜*万万小心），与之同义的「千万」则不受这方面的限制（千万不可粗心大意｜千万要注意）。副词「毫、决、断」等也只能修饰一个否定形式。<sup class="cite" data-cite="s-yongfa-kending-fouding">出处</sup></li>
+<li><b>只能肯</b>如副词「万分」「分外」就只能用于肯定（万分高兴｜*万分不愉快｜分外晴朗｜*分外不愿意），跟它们同义的「十分」「非常」和「格外」就既能用于肯定（十分高兴｜非常愉快｜格外清静），也能用于否定（十分不满意｜非常不愉快｜格外不高兴）。我们常说在「把」字句中否定词一般要放在「把」字之前，从另一个角度说，也就是由「把」组成的介词结构一般不能修饰一个否定形式。<sup class="cite" data-cite="s-yongfa-kending-fouding">出处</sup></li>
+<li><b>两极对立</b>有些虚词有两种不同的意义或用法，而这在肯定、否定的要求上也正好形成对立。如「绝」，当它表示程度时，只能用于肯定（绝好机会｜绝妙的计策）；当它表示加强语气时，则只能用于否定（绝不妥协｜绝没有好下场）。再如程度副词「太」，当它表示赞叹时，只用于肯定（太棒了｜太精彩了）；当它表示过分时，则既可用于肯定（太浅了），也可用于否定（太不懂事了）。</li>
+<li><b>意思一样</b>有的既能用于肯定，也能用于否定，意思却一样。如「难免不犯错误」和「难免要犯错误」意思一样；「自行车别是他骑走了」跟「自行车别不是他骑走了」意思一样。「差一点儿」也属这种情况。</li>
+</ul>
+</div>
+
+<div class="lab">
+<h3>六、简单与复杂</h3>
+<p>由「把」组成的介词结构后面一定得跟一个复杂形式，这是众所周知的了。副词「终究、往往、白白、恐怕、略微」也要求所修饰的成分必须是个复杂形式，而分别跟它们同义或近义的「必将、常常、白、也许、较为」就没有这种要求<sup class="cite" data-cite="s-yongfa-jian-fu">出处</sup>：</p>
+<table class="matrix">
+<tr><th style="width:22%">要求复杂形式</th><th style="width:39%">成立</th><th>不成立</th></tr>
+<tr><td>终究</td><td>终究要灭亡｜终究会取得胜利</td><td>*终究灭亡｜*终究胜利</td></tr>
+<tr><td>必将（无此要求）</td><td>必将要灭亡｜必将取得胜利｜必将灭亡｜必将胜利</td><td>—</td></tr>
+<tr><td>往往</td><td>每到星期天他往往去颐和园</td><td>*每到星期天他往往去</td></tr>
+<tr><td>常常（无此要求）</td><td>他常常去颐和园｜故宫他常常去</td><td>—</td></tr>
+<tr><td>白白</td><td>白白劳动了一天｜难道这房子就这样白白丢了</td><td>*算我白白说，行不行？</td></tr>
+<tr><td>白（无此要求）</td><td>白劳动了一天｜不能白吃｜算我白说，行不行？</td><td>—</td></tr>
+<tr><td>略微</td><td>略微高些｜略微清静些</td><td>*略微整洁</td></tr>
+<tr><td>较为（无此要求）</td><td>较为高些｜较为清静｜较为整洁</td><td>—</td></tr>
+</table>
+<p>再如，由「对于」组成的介词结构作状语时，一般要求中心语是个复杂形式，而由「对」组成的介词结构作状语时，没有这种要求：用「对」时，我们可以说「对他要好好帮助」「对他能不能批评」，也可以说「对他帮助」「对他批评」；可是用「对于」时，我们可以说「对于他要好好帮助」「对于他能不能批评」，但不能说「对于他帮助」「对于他批评」。与上述情况相反，有的则要求所修饰的成分得是个简单形式，如「异常、万分」<sup class="cite" data-cite="s-yongfa-jian-fu">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>七、位置</h3>
+<p>在「把」字句和「被」字句中，否定副词和能愿动词只能放在「把」或「被」的前面；介词结构「关于……」只能放在主语前面，介词结构「对于……」就没有这种限制。这都涉及位置问题。一个虚词在句中有比较固定的位置，这固然需要注意，但更要引起重视的是另一种现象，即有些虚词在句子中的位置比较灵活，它可以在某种成分之前，也可以在某种成分之后，而在前在后，句子的意思就不一样<sup class="cite" data-cite="s-yongfa-weizhi">出处</sup>：</p>
+<blockquote>（5）他幸亏回来了，…… ≠ 幸亏他回来了，……<br>
+<span class="muted">【前者：主句指出避免了于「他」不利的事情；后者：主句指出在「他」的作用下避免了一起不如意的事情】</span><br>
+（6）没有全听懂 ≠ 全没有听懂<span class="muted">【部分不懂／全部不懂】</span><br>
+（7）光他吃米饭 ≠ 他光吃米饭<span class="muted">【别人不吃米饭／他别的不吃】</span><br>
+（8）很不习惯 ≠ 不很习惯<span class="muted">【强调不习惯，程度深，语气重／表示不习惯，程度浅，语气委婉】</span><sup class="cite" data-cite="s-yongfa-weizhi">出处</sup></blockquote>
+<p>有的在前后，似乎意思差不多，如「他也许不回来了」和「也许他不回来了」，「电话铃忽然响了」和「忽然电话铃响了」，「我才工作一年」和「我工作才一年」，但细细体会还是会觉察出细微的区别来<sup class="cite" data-cite="s-yongfa-weizhi">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>八、跟其他词语的配搭</h3>
+<p>「只有」要求有「才」与之相配，「只要」要求有「就」与之相配，这是大家所熟知的。复句中常犯的一种毛病，就是前后的连接成分配搭不当。这里要进一步指出的是，不光连词存在着配搭问题，别类虚词有的也有这方面的特殊要求<sup class="cite" data-cite="s-yongfa-peita">出处</sup>：</p>
+<ul class="rows">
+<li><b>怪……的</b>程度副词「怪」，除了风格、色彩跟「很」不同外，很重要的一点，「怪」要求后面有「的」与之配搭（怪可爱的｜*怪可爱），「很」的后面则不是非要有「的」不可的。</li>
+<li><b>恐怕……吧</b>「恐怕」后面常有语气词「吧」与之相配。</li>
+<li><b>本来……嘛</b>「本来」后面常用语气词「嘛」与之相配。</li>
+<li><b>不过……罢了</b>用助词「罢了」「而已」，前面常有副词「不过」「只」与之相配。</li>
+<li><b>莫非……不成</b>用助词「不成」，前面常用「难道」「莫非」与之相配。</li>
+</ul>
+</div>
+
+<p>以上所谈的八个方面，也还只是列举性的，并不是说虚词的用法只表现在这八个方面；而每一方面所包含、涉及的内容，也不限于上面所说的。譬如说，某些虚词或某些虚词格式，如表示程度浅的「还」「有点儿」和「不很……」等，对所修饰的成分在意义色彩上（褒义和贬义，积极和消极）还有所选择（如：她这个人还大方｜*她这个人还小气；有点儿骄傲｜*有点儿谦虚；很不大方｜*很不小气），这一点上文就没提到。此外，似乎还有社会心理问题，还有认知的问题，也会影响虚词的用法。如副词「差一点儿」的使用，就会受到社会心理的影响<sup class="cite" data-cite="s-yongfa-bujin">出处</sup>。</p>
+
+<div class="kicker">13.3 关于虚词意义的研究</div>
+
+<p>研究虚词的意义比研究虚词的用法难得多，这是因为虚词的意义比较虚灵，难以捉摸。譬如说「红的书」里的「的」表示什么意义？跟「红红的苹果」里的「的」所表示的意义是否一样？真还不太好说。再说，虚词的意义实际有两方面，一是虚词本身所表示的语法意义，一是虚词使用的语用意义。我们既要研究虚词本身所表示的语法意义，又要研究虚词使用的语用意义。这二者是互相联系，互为因果的<sup class="cite" data-cite="s-yiyi-liangmian">出处</sup>。</p>
+
+<p>透彻了解了一个虚词本身所表示的语法意义，有助于探求该虚词使用的语用意义；反之，如果了解了一个虚词使用的语用意义，也就有助于准确把握该虚词本身所表示的语法意义。试以「以至」和「以致」为例。「以至」和「以致」不仅语音相同，字形也相近，在使用上很容易混淆<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup>：</p>
+
+<blockquote>（1）*他只听了一面之词，以至没有处理好那两家的纠纷。<br>
+（2）*他腹部连中三弹，以至生命危在旦夕。<br>
+（3）*她儿子做了坏事，甚至拿了人家的东西，她不但不严加管教，还替他隐瞒，以至使她儿子逐渐走上犯罪的道路。<br>
+（4）*如果我们能采用这项先进技术，我们的生产效率将会提高两倍三倍，以致十几倍。<sup class="cite" data-cite="s-yizhi-bingju">出处</sup></blockquote>
+
+<p>例（1）—（3）里的「以至」该换用「以致」，例（4）里的「以致」该换用「以至」。要想把握好这两个连词的意义和用法，就需了解它们各自的语法意义和语用意义<sup class="cite" data-cite="s-yizhi-bingju">出处</sup>。</p>
+
+<p>「以至」的意思相当于「直到」「甚至」，这就是「以至」的语法意义；它的语用意义是表示由小到大、由少到多、由低到高、由浅入深的递进关系（也可用于相反的方向）<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup>：</p>
+
+<blockquote>（5）一石居是在的，狭小阴湿的店面和破旧的招牌都依旧；但从掌柜以至堂倌却已没有一个熟人，我在这一石居中也完全成了生客。（鲁迅《在酒楼上》）<br>
+（6）搞城市建设不能只看眼前，要考虑到明年、后年以至十年、二十年。<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup></blockquote>
+
+<p>「以至」有时可以说成「以至于」<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup>：</p>
+
+<blockquote>（7）许多美的人和美的事，错综起来像一天云锦，而且万颗奔星似的飞动着，同时又展开去，以至于无穷。（鲁迅《好的故事》）<br>
+（8）对群众的批评采取抵触以至于压制的态度，那是十分错误的。<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup></blockquote>
+
+<p>「以致」用在因果复句中表示「致使」「弄得」的意思，这就是「以致」所表示的语法意义。但它跟「因此」「所以」又不同，由它引出的结果总是由前面从句说的原因所造成的而且是说话人所不希望的后果——这就是使用「以致」的语用意义<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup>：</p>
+
+<blockquote>（9）对于非本质和非主流方面的问题，当然不能忽视，也要认真对待并加以解决，但是，不应当将这种问题看成本质和主流，以致迷惑了自己的方向。<br>
+（10）据可查考的资料记载，蒋家沟在历史上泥石流曾经数十次隔断小江、堵塞河道，以致洪水四处泛滥，淹没了许多农田、房屋。<br>
+（11）由于他不听从劝告，以致上了别人的当。<sup class="cite" data-cite="s-yizhi-yiyi">出处</sup></blockquote>
+
+<p>我们回过头去再来看例（1）—（4）。从前后分句之间的意思看，前三句都是因果关系，不是递进关系，用表示递进关系的「以至」当然就错了；最后一句则表示递进关系，用「以致」当然就错了，该用表示递进关系的「以至」。「以至」和「以致」的区别是明显的。可是有时似乎也可以用在相同的语境中<sup class="cite" data-cite="s-yizhi-tongjing">出处</sup>：</p>
+
+<blockquote>（12）在一片赞扬声中，他变得飘飘然起来，以至看不到自己工作中的缺点。<br>
+（13）在一片赞扬声中，他变得飘飘然起来，以致看不到自己工作中的缺点。<sup class="cite" data-cite="s-yizhi-tongjing">出处</sup></blockquote>
+
+<p>然而这两个句子所表示的意思很不相同——例（12）用「以至」表示递进关系，强调程度的加深，意思是「在一片赞扬声中，他变得不仅飘飘然起来，而且发展到了看不到自己工作中缺点的程度」，这里的「以至」可换成「甚至」或「以至于」；例（13）用「以致」表示因果关系，强调由于上述原因而造成的结果，意思是「他在一片赞扬声中由于变得飘飘然起来，因此连自己工作中的缺点也看不到了」，这里的「以致」可换成「因此」<sup class="cite" data-cite="s-yizhi-tongjing">出处</sup>：</p>
+
+<blockquote>（14）在一片赞扬声中，他变得飘飘然起来，甚至看不到自己工作中的缺点。<br>
+（15）在一片赞扬声中，他变得飘飘然起来，因此看不到自己工作中的缺点。<sup class="cite" data-cite="s-yizhi-tongjing">出处</sup></blockquote>
+
+<p>在一般辞书中，释义时只注重虚词的语法意义，这无可非谊；但是在供汉语教学用的汉语教科书中，既要注意虚词表示的语法意义，也得注意虚词使用的语用意义，这才有助于外国学生学习汉语虚词。目前，普遍忽视虚词使用的语用意义，都不注意从学习者的角度来考虑释义<sup class="cite" data-cite="s-yiyi-xuanshi">出处</sup>。</p>
+
+<p>研究虚词意义难，但如果方法得当，就可以了解、掌握好虚词的意义。从前人和时贤已有的研究经验看，无论研究虚词本身所表示的语法意义，还是研究虚词使用的语用意义，最基本、最有效的方法就是比较。此外，必须注意分析运用虚词的语义背景<sup class="cite" data-cite="s-bijiao-zui-jiben">出处</sup>。</p>
+
+<div class="kicker">13.4 研究虚词意义的基本方法——比较分析</div>
+
+<p>中国有一句俗语，叫「不怕不识货，就怕货比货」。意思就是，通过比较可以识别事物。中国古代还有一句话，叫「因比而显」，这句话可以说是对比较法之作用作了注解。无数事实告诉我们，比较分析是人类认识客观事物最原始、最基本也是最有效的方法。从科学研究的角度说，比较分析是一种对照两个或两个以上的事物，找出它们的共同点和相异点的逻辑方法，它是科学研究中得以建立起各种概念所必须运用的基本方法。比较法的运用是人们理性地认识客观世界的开始<sup class="cite" data-cite="s-bijiao-suyu">出处</sup>。</p>
+
+<p>比较分析，也是语法研究中最基本的分析手段之一，更是虚词研究最基本、最有效的一种分析手段。已有的研究表明，在虚词研究中，特别是对虚词意义的研究中，还可以有种种不同的比较。常用的有以下五种比较<sup class="cite" data-cite="s-bijiao-wuzhong">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>同义近义</b>把彼此同义或近义的虚词放在一起，进行比较辨析。</li>
+<li><b>有无虚词</b>把包含某虚词的句子跟抽掉了该虚词的句子拿来比较，即进行有无某虚词的比较。</li>
+<li><b>意义相对</b>将意义相对的虚词放在一起进行比较。</li>
+<li><b>同一方面</b>把说明同一方面问题的虚词放在一起进行比较辨析。</li>
+<li><b>形似实异</b>将形似实异的虚词放在一起进行辨析，以区别貌似一样实质不同的虚词。</li>
+</ul>
+
+<p>虚词的意义就只有通过上述这些比较才能较好地加以把握。下面对这五种比较分别举例略作些说明<sup class="cite" data-cite="s-bijiao-wuzhong">出处</sup>。</p>
+
+<div class="lab">
+<h3>比较一｜同义或近义的虚词：「更加」与「越发」</h3>
+<p>把同义或近义的虚词放在一起进行比较辨析，以确切把握虚词的语法意义和语用意义，这是虚词研究中最需要、最有效的一种比较。运用这种比较要联系虚词所在的句式来进行，这样效果更好。举个例子来说，「更加」和「越发」，都是书面语词，都能用于比较，都能用来表示程度进一步加深<sup class="cite" data-cite="s-gengjia-yuefa">出处</sup>：</p>
+<blockquote>（1）她的精力比过去更加充沛了。<br>（2）她的精力比过去越发充沛了。<sup class="cite" data-cite="s-gengjia-yuefa">出处</sup></blockquote>
+<p>这会给人一个错觉，以为「更加」和「越发」的语法意义是一样的。我们看到，现在通行的词典，譬如《当代汉语词典》和《应用汉语词典》就都用「更加」来注释「越发」。它们的语法意义真是一样的吗？如果我们联系它们所出现的句式进行细致的比较，就能发现它们的语法意义并不完全一样<sup class="cite" data-cite="s-gengjia-yuefa">出处</sup>：</p>
+<blockquote>（3）a. 这一来，她的任务比你更加艰巨了。｜b. *这一来，她的任务比你越发艰巨了。<br>
+（4）a. 来中国以后，琼斯的汉语比杰克说得更加流利了。｜b. 来中国以后，琼斯的汉语比杰克说得越发流利了。<br>
+（5）a. 这一来，他现在的任务比你更加艰巨。｜b. *这一来，他现在的任务比你越发艰巨。<br>
+（6）a. 小张比小林更加刻苦。｜b. *小张比小林越发刻苦。<br>
+（7）a. 比较起来，李亚川跑得更加快些。｜b. *比较起来，李亚川跑得越发快些。<br>
+（8）a. 长江比黄河长，长江比淮河更加长了。｜b. *长江比黄河长，长江比淮河越发长了。<sup class="cite" data-cite="s-gengjia-yuefa">出处</sup></blockquote>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：句尾没带「了」，「越发」就不能用；可有的句子带了「了」，「越发」还是不能用。这到底是为什么？</p>
+<div class="opts">
+<button data-ans="0">因为「越发」是方言词，普通话里不进「比」字句</button>
+<button data-ans="1">因为「越发」只用于不同时间平面，句末一定要带「了」，而且只能用于两项比较</button>
+</div>
+<div class="why">答案：b（第二项）。例（5）—（7）句尾没有「了」，只能用「更加」，不能用「越发」；例（8）句尾虽然有「了」，但这是三项比较的句式，也只能用「更加」。见下文引文，底本 L9678。</div>
+</div>
+
+<p>经过比较我们很容易发现，「更加」「越发」虽然都能用于比较，但它们有所不同<sup class="cite" data-cite="s-yuefa-shiyi">出处</sup>：</p>
+<blockquote>「越发」总是跟时间因素相联系，它只用于不同时间平面，不用于同一时间平面，正因为这样，所以用「越发」的句子，其末尾一定要带上「了」（「了」就表示随着时间的推移而变化）。「更加」则没有这个限制，既能用于两个时间平面，也能用于一个时间平面，如例（5）—（7）。<sup class="cite" data-cite="s-yuefa-shiyi">出处</sup></blockquote>
+<p>在具体用法上，「更加」不仅能用于两项比较，还可以用于三项比较，「越发」则只能用于两项比较。正是这种细致的比较，使我们分别准确地把握了「更加」和「越发」的语法意义和语用意义——「更加」表示程度的加深，「越发」则表示随着时间的推移而程度加深；从而也能使我们更准确地使用这两个程度副词<sup class="cite" data-cite="s-yuefa-shiyi">出处</sup>。</p>
+
+<table class="matrix">
+<tr><th style="width:34%">句式条件</th><th style="width:33%">「更加」</th><th>「越发」</th></tr>
+<tr><td>两项比较，句尾有「了」</td><td>她的精力比过去更加充沛了</td><td>她的精力比过去越发充沛了</td></tr>
+<tr><td>两项比较，句尾无「了」</td><td>小张比小林更加刻苦</td><td>*小张比小林越发刻苦</td></tr>
+<tr><td>三项比较（句尾有「了」）</td><td>长江比淮河更加长了</td><td>*长江比淮河越发长了</td></tr>
+</table>
+<p class="small muted">表：据底本例（3）—（8）转制<sup class="cite" data-cite="s-gengjia-yuefa">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>比较二｜有无虚词的比较：语气词「好了」</h3>
+<p>所谓「有无虚词的比较」，是指把含有某虚词的句子跟抽掉了该虚词的句子拿来比较，即作有无某虚词的比较，以显示出该虚词的语法意义。这是准确把握一个虚词意义的另一种有效的方法，也是虚词研究中经常采用的方法。虚词意义研究上的许多重要进展，某个新的虚词的确切释义，都是采取这种比较方法获得的。这里不妨以探讨语气词「好了」的语法意义为例来加以说明。「好了」是一个使用范围相当广的语气词<sup class="cite" data-cite="s-haole-bijiao">出处</sup>：</p>
+<blockquote>（9）「李老师，这本小说我拿去看看好吗？」「你拿去看好了。」<br>
+（10）「听说他要去告你。」「让他去告好了。我不怕！」<br>
+（11）你别怕，尽管放手干好了，有我们呢！<br>
+（12）现在一切都准备就绪了，你只管开闸好了。<br>
+（13）「师傅，没米饭了。」「没米饭吃面条好了。」<br>
+（14）既然他不愿意带你去，你就自己去好了。<sup class="cite" data-cite="s-haole-bijiao">出处</sup></blockquote>
+<p>各句句尾的「好了」到底表示什么意义呢？先前辞书都没有收录，《现代汉语词典》（第 6 版）才收录这个词。要给它作确切的注释，没有任何文献资料可供参考。要确切把握这个语气词的语法意义，最好的办法是将包含语气词「好了」的句子跟不用「好了」的句子进行对比分析<sup class="cite" data-cite="s-haole-bijiao">出处</sup>：</p>
+<table class="matrix">
+<tr><th style="width:50%">带「好了」</th><th>不带「好了」</th></tr>
+<tr><td>你拿去看好了。</td><td>你拿去看。</td></tr>
+<tr><td>让他去告好了。</td><td>让他去告。</td></tr>
+<tr><td>尽管放手干好了。</td><td>尽管放手干。</td></tr>
+<tr><td>你只管开闸好了。</td><td>你只管开闸。</td></tr>
+<tr><td>没米饭吃面条好了。</td><td>没米饭吃面条。</td></tr>
+<tr><td>你就自己去好了。</td><td>你就自己去。</td></tr>
+</table>
+<p>通过比较，我们大致可以把握「好了」的语法意义，可以将语气词「好了」释义为「不介意，不在乎，尽管放心」。上面所运用的比较方法，就是有无虚词的比较<sup class="cite" data-cite="s-haole-shiyi">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>比较三｜意义相对的虚词：「把」与「被」，「才」与「就」</h3>
+<p>将意义相对的虚词放在一起进行对比分析，也有助于我们辨明各个虚词各自表示的语法意义。譬如人们常常将介词「把」和「被」放在一起进行比较，以分别凸现、说明「把」和「被」的语法意义。再如，副词「才」和「就」就是一组相对的虚词。我们可以通过对大量实例的对比分析，凸现「才」和「就」各自的语法意义——副词「才」表示说话人主观认为事情实现得晚/慢、所说的数量少、所说的条件严；而副词「就」则表示说话人主观认为事情实现得早/快、所说的数量多、所说的条件宽<sup class="cite" data-cite="s-cai-jiu">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>比较四｜说明同一方面问题的虚词：「吗」与「吧」</h3>
+<p>把说明同一方面问题的虚词放在一起进行比较辨析，以说明这些虚词各自所表示的语法意义，从而使我们能较好地了解掌握某些虚词的意义。举例来说，「吗」和「吧」都是可以用于是非问句的语气词。我们可以通过对具体实例的分析，从用「吗」用「吧」这两种问句表达上的差异来把握「吗」和「吧」的语法意义——用「吗」，表示的是「问话人对事情的是与非不表明倾向性态度的询问」；用「吧」，表示的是「问话人对事情的是与非表明倾向性态度的询问」<sup class="cite" data-cite="s-ma-ba">出处</sup>。</p>
+<p>再如，「多」「可」「太」「真」「好」等都是可以用来表示感叹的语气副词<sup class="cite" data-cite="s-ma-ba">出处</sup>：</p>
+<blockquote>（21）这地方多美啊！<br>（22）我们家乡可美了！<br>（23）这地方太美了！<br>（24）这地方真美啊！<br>（25）这地方好美呀！<sup class="cite" data-cite="s-ma-ba">出处</sup></blockquote>
+<p>如果我们把这些语气副词放在一起加以比较分析，说明它们的异同，也属于这一种比较。先前有学者将可以用来说明数量的副词放到一起进行比较辨析，也是属于这种比较。</p>
+</div>
+
+<div class="lab">
+<h3>比较五｜形似实异的虚词：「进而」与「从而」</h3>
+<p>这里所说的形似，包括语音相近或字形相似。只因形似，有人特别是外国学生就容易不加区别地混用。上面 13.3 小节里比较的「以至」和「以致」就是形似实异的连词。这里不妨再举个实例——「进而」和「从而」。「进而」和「从而」都是连词，有些形似，都有一个「而」字，而且有时似乎还可以出现在相同的语境里<sup class="cite" data-cite="s-jiner-conger">出处</sup>：</p>
+<blockquote>（26）为了迫使她屈服，他们停发了她的工资，进而切断了她的一切经济来源。<br>
+（27）为了迫使她屈服，他们停发了她的工资，从而切断了她的一切经济来源。<sup class="cite" data-cite="s-jiner-conger">出处</sup></blockquote>
+<p>这样，让人搞不清楚它们的差别在哪里。其实，这两个连词是有明显区别的。「进而」强调在前一行动的基础上，采取进一步的行动；而「从而」用来引出表示结果的主句，这种结果是在某种条件逐渐形成或具备的情况下产生的<sup class="cite" data-cite="s-jiner-conger">出处</sup>：</p>
+<blockquote>（28）铁道部决定，先评选出各局、厂的先进集体和先进个人，进而评选出部的先进集体和先进个人。<br>
+（29）要完成今年经济建设的任务，并进而实现 90 年代的奋斗目标，关键在于深化改革、扩大开放。<br>
+（30）说起他们小两口，不是一个性格，在生活中出现磕磕碰碰的事，产生这样那样的矛盾，进而发生某些小的冲突，那是常有的事。<br>
+（31）张、王两家在赵大爷的调停与劝导下，彼此坦诚交换了意见，又都做了自我批评，从而消除了彼此的误会。<br>
+（32）我上面的意见不是主张要废止「曹学」这一称谓，只是希望不要忘记这个称谓得来的缘由，对「曹学」研究有所反省，从而将研究指向和研究思路回归到「红学」上去。<br>
+（33）在工程进程中，方副总工程师坚持质量第一，从严监管工程质量和进度，同时带领大家搞革新，攻克了一个又一个的施工难关，从而确保了湖南段筑路计划按时、按质、按量的实施。<br>
+（34）华子和彪哥原是把兄弟，想不到华子外出打工三年，彪哥把华子的媳妇儿给占了，从而两人就结下了生死仇。<sup class="cite" data-cite="s-jiner-conger">出处</sup></blockquote>
+<p>例（28）—（30）里的「进而」不能换成「从而」，而例（31）—（34）里的「从而」不能换成「进而」。那为什么例（26）、（27）里的「进而」「从而」能出现在相同的语境里呢？要知道，凡进一步采取的行动，从某种意义上说，也可以看作是前一行动所产生的结果。这样，在那样的语境下既可以用「进而」，也可以用「从而」，但意思上有差别。例（26）用「进而」，是说他们在停发了工资后，还进一步切断她除工资以外的其他经济来源，这意味着迫害的加深，前后是递进关系。例（27）用「从而」，是说由于他们停发了她的工资，这样就切断了她的一切经济来源，这意味着前后是一种因果关系<sup class="cite" data-cite="s-jiner-conger">出处</sup>。</p>
+<p>由于「进而」「从而」形似，因此常有人用混。常见的毛病是，该用「从而」的地方用了「进而」<sup class="cite" data-cite="s-jiner-conger-bingju">出处</sup>：</p>
+<blockquote>（35）*从去年开始，徐州市进一步走出国门，先后派出 40 多个代表团参加国外一系列大型经贸洽谈活动，特别是到众多发达国家和地区与大财团、大商社、跨国公司进行经济技术合作洽谈，进而使用外资的路子逐步拓宽。<br>
+（36）*来自个体经济的压力和挑战，促使国营和集体商业部门改善经营方式，改善经营手段，改善服务态度，进而无形中形成了经济生活中的竞争局面。<sup class="cite" data-cite="s-jiner-conger-bingju">出处</sup></blockquote>
+<p>例（35）「进而」后面所说的内容，不是徐州市走出国门的进一步行动，而是进一步走出国门后所收到的良好效果。同样，例（36）「形成了经济生活中的竞争局面」并不是「国营和集体商业部门改善经营方式，改善经营手段、改善服务态度」的进一步措施或行动，而是「来自个体经济的压力和挑战，促使……改善经营方式、改善经营手段、改善服务态度」所出现的一种结果。这两个例子里的「进而」都应该换成「从而」<sup class="cite" data-cite="s-jiner-conger-bingju">出处</sup>。</p>
+</div>
+
+<p>上面分别介绍了虚词研究中所运用的各种比较。其实在研究虚词的过程中，各种比较往往是综合运用的。譬如说，我们在分析、验证现代汉语里到底有几个疑问语气词时，就运用了多种比较方法<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</p>
+
+<p>关于现代汉语里的疑问语气词，汉语语法学界总共提到「啊、吧、呢、吗」四个，但大家意见并不一致。分歧大致如下表<sup class="cite" data-cite="s-yiwen-fenqi-biao">出处</sup>：</p>
+
+<table class="matrix">
+<tr><th>意见</th><th>啊</th><th>吧</th><th>呢</th><th>吗</th></tr>
+<tr><td>a</td><td>＋</td><td>＋</td><td>＋</td><td>＋</td></tr>
+<tr><td>b</td><td>－</td><td>＋</td><td>＋</td><td>＋</td></tr>
+<tr><td>c</td><td>－</td><td>－</td><td>＋</td><td>＋</td></tr>
+<tr><td>d</td><td>－</td><td>－</td><td>－</td><td>＋</td></tr>
+<tr><td>e</td><td>＋</td><td>－</td><td>＋</td><td>＋</td></tr>
+</table>
+<p class="small muted">表：疑问语气词分歧意见（＋＝认为是疑问语气词，－＝认为不是），据底本第四部分转制<sup class="cite" data-cite="s-yiwen-fenqi-biao">出处</sup>。</p>
+
+<p>大家对「吗」没有分歧意见，都认为它是疑问语气词；对「啊、吧、呢」就有不同看法了。这里需要指出的是，不管是持哪一种意见的，都没有正面说明理由。这样，现代汉语里到底有哪几个疑问语气词，「啊、吧、呢」到底是不是疑问语气词，都有进一步讨论、验证的必要。而我们来判断一个出现在疑问句末尾的语气词是不是疑问语气词，决不能根据语感，而要看它是否真的负载疑问信息；这一点又必须能在形式上得到验证。验证的最好办法，就是比较。具体说，就是从疑问句和非疑问句、从这种疑问句和那种疑问句、从带了语气词的和不带语气词的疑问句之间的最小对比中，来确定出现在疑问句末尾的语气词是否真负载疑问信息<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</p>
+
+<p>现代汉语里的疑问句可以分为两大类：A. 是非问句；B. 非是非问句（包括一般所谓的特指问句、选择问句和反复问句）。A、B 两大类疑问句，无论从句子的语段成分（即所包含的词语）还是超语段成分（即句调）来看，都存在着明显的对立。从句子的语段成分看，A 内不包含表示疑问的词语，跟非疑问句（如陈述句、祈使句）的语段成分相同；而 B 内一定包含表示疑问的词语。换句话说，是非问句的语段成分跟非疑问句一样，是一个「非疑问形式」（下面用 W 来表示）；而非是非问句的语段成分则是「疑问形式」（下面用 Q 来表示）<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</p>
+
+<p>从句子的超语段成分看，根据声学仪器的实验和我们的实地调查，A 是「句尾趋升」的形式（以下简称「升调」，在格式里用 ↗ 表示）；B 则可以有两种形式，一是「句尾趋降」（以下简称「降调」，在格式里用 ↘ 表示），与平叙句相同；一是「句尾趋升」，与 A 相同。在通常情况下，B 采用前一种形式；加强疑问语气时，采用后一种形式。这样，上述两类疑问句可分别表示为<sup class="cite" data-cite="s-format-abc">出处</sup>：</p>
+
+<blockquote>A. W＋↗?　　B₁: Q＋↘?　　B₂: Q＋↗?</blockquote>
+
+<p>而非疑问句可以表示为：C. W＋↘。我们不妨比较一下 A 和 C：由于 A 和 C 的语段成分相同，均为非疑问形式 W，因此 A 的疑问信息显然是由「升调」负载的。语言事实告诉我们，在现代汉语里，「升调」是疑问句调。再比较 B 和 C：从 B₁ 和 C 的对比中，我们可以明显地看到，由于二者超语段成分相同，都是「降调」，B₁ 的疑问信息无疑是由 Q（具体说是由 Q 里表示疑问的词语）负载的。B₂ 和 B₁ 是 B 的不同变体，毫无疑义 B₂ 的疑问信息主要也是由 Q 负载的，采用「升调」只是为了加强疑问语气<sup class="cite" data-cite="s-format-abc">出处</sup>。</p>
+
+<p>注意，上面所说的语段成分，不论是 W 还是 Q，都不带语气词。这就是说，上面我们所介绍的是现代汉语中句末不带语气词的疑问句的情形。有了上面的认识，我们就可以来逐一检验上面提到的「啊、吧、呢、吗」四个语气词分别在不同类型的疑问句里出现时到底是否负载疑问信息，从而验证并确定它们各自到底是不是疑问语气词。这里仅介绍对「啊」「吗」的验证，对「吧」「呢」的验证参看陆俭明（1984）<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</p>
+
+<p>先验证「啊」。「啊」的使用面很广，它既可以出现在非疑问句末尾，也可以出现在各类疑问句末尾，包括是非问句末尾和非是非问句末尾<sup class="cite" data-cite="s-ah-yongfa">出处</sup>：</p>
+
+<blockquote>（37）爷爷回上海啦＝（了＋啊）。【陈述句】<br>
+（38）你快走啊。【祈使句】<br>
+（39）大家快来看啊！【感叹句】<br>
+（40）你不买啊？【是非问句】<br>
+（41）她什么时候来啊？【非是非问句——特指问句】<br>
+（42）他这次去广州还是深圳啊？【非是非问句——选择问句】<br>
+（43）你明天到底来不来啊？【非是非问句——反复问句】<sup class="cite" data-cite="s-ah-yongfa">出处</sup></blockquote>
+
+<p>为便于说明，我们把句末带「啊」的是非问句记为 A′，把句末带「啊」的非是非问句记为 B′。根据声学仪器的实验和我们的实地调查，A′ 的超语段成分是升调，无一例外，整个格式为：A′. W＋啊＋↗? 而 B′ 的超语段成分有升调与降调两种形式，即可以是升调也可以是降调，不论是特指问句、选择问句还是反复问句，整个格式为：B′₁: Q＋啊＋↘?　B′₂: Q＋啊＋↗?<sup class="cite" data-cite="s-ah-yanfang">出处</sup>。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 350" role="img" aria-label="疑问语气词验证格式行对比示意图">
+<rect x="0" y="0" width="680" height="350" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">疑问语气词验证：最小对比看谁负载疑问信息</text>
+<g font-family="KaiTi,serif" font-size="13.5">
+<rect x="20" y="44" width="66" height="42" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="53" y="70" text-anchor="middle" fill="#29241d">A</text>
+<rect x="96" y="44" width="150" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-width="1.2"/><text x="171" y="70" text-anchor="middle" fill="#29241d">W＋<tspan fill="#c0392b">↗</tspan>？</text>
+<text x="262" y="70" fill="#6f675a">不带语气词的是非问句</text>
+<text x="470" y="70" fill="#9d4938">疑问信息 ＝ 升调</text>
+
+<rect x="20" y="98" width="66" height="42" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="53" y="124" text-anchor="middle" fill="#29241d">A′</text>
+<rect x="96" y="98" width="150" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-width="1.2"/><text x="171" y="124" text-anchor="middle" fill="#29241d">W＋啊＋<tspan fill="#c0392b">↗</tspan>？</text>
+<text x="262" y="124" fill="#6f675a">带「啊」的是非问句</text>
+<text x="470" y="124" fill="#9d4938">「啊」不负载</text>
+
+<rect x="20" y="152" width="66" height="42" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="53" y="178" text-anchor="middle" fill="#29241d">A″₁</text>
+<rect x="96" y="152" width="150" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-width="1.2"/><text x="171" y="178" text-anchor="middle" fill="#29241d">W＋吗＋<tspan fill="#3d5a6c">↘</tspan>？</text>
+<text x="262" y="178" fill="#6f675a">带「吗」，降调</text>
+<text x="470" y="178" fill="#9d4938">疑问信息 ＝「吗」</text>
+
+<rect x="20" y="206" width="66" height="42" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="53" y="232" text-anchor="middle" fill="#29241d">A″₂</text>
+<rect x="96" y="206" width="150" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-width="1.2"/><text x="171" y="232" text-anchor="middle" fill="#29241d">W＋吗＋<tspan fill="#c0392b">↗</tspan>？</text>
+<text x="262" y="232" fill="#6f675a">带「吗」，升调</text>
+<text x="470" y="232" fill="#9d4938">吗与升调都负载（羡余）</text>
+
+<rect x="20" y="260" width="66" height="42" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="53" y="286" text-anchor="middle" fill="#29241d">C</text>
+<rect x="96" y="260" width="150" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-width="1.2"/><text x="171" y="286" text-anchor="middle" fill="#29241d">W＋<tspan fill="#3d5a6c">↘</tspan>。</text>
+<text x="262" y="286" fill="#6f675a">非疑问句（陈述等）</text>
+<text x="470" y="286" fill="#3d5a6c">无疑问信息</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5">
+<rect x="20" y="314" width="640" height="28" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="332" text-anchor="middle" fill="#6f675a">对比逻辑：A 与 C 语段成分相同（均为 W），差别只在句调 → 升调是疑问句调；A″₁ 是降调，疑问信息只能由「吗」负载</text>
+</g>
+</svg>
+<figcaption>图二（示意，编者绘制），非原书插图。格式行与验证结论据底本第十三节第四部分疑问语气词验证转绘<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</figcaption>
+</figure>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「你不买啊？」——这是个是非问句，它的疑问信息到底由谁负载？</p>
+<div class="opts">
+<button data-ans="0">由句末语气词「啊」负载</button>
+<button data-ans="1">由句尾升调负载，「啊」并不负载疑问信息</button>
+</div>
+<div class="why">答案：b（第二项）。带「啊」的是非问句 A′ 跟不带「啊」的是非问句 A 超语段成分相同，都是升调，疑问信息还是由升调负载的。见下文引文，底本 L9870。</div>
+</div>
+
+<p>验证 A′ 里的「啊」是否负载疑问信息，它到底是不是疑问语气词，其办法是比较 A′、A、C。请看：A′. W＋啊＋↗?　A. W＋↗?　C. W＋↘。通过比较，很容易发现，A′ 疑问句的疑问信息还是由升调负载的，「啊」并不负载疑问信息。也就是说，是非问句末尾的「啊」不负载疑问信息<sup class="cite" data-cite="s-ah-bushi-yiwen">出处</sup>。</p>
+
+<p>再验证 B′ 里的「啊」是否负载疑问信息，它到底是不是疑问语气词，其办法是比较 B′ 和 B。不难看出，带「啊」的非是非问句跟不带「啊」的非是非问句情况一样——B′₁ 跟 B₁ 一样，疑问信息完全是由疑问词语 Q 负载的；B′₂ 跟 B₂ 一样，疑问信息主要是由疑问词语 Q 负载的，升调只是为了加强疑问语气。可见，B′ 末尾的「啊」也不负载疑问信息。因此，疑问句末尾的「啊」不能认为是疑问语气词<sup class="cite" data-cite="s-bp-yanfang">出处</sup>。</p>
+
+<p>现在验证「吗」。大家公认，语气词「吗」只出现在是非问句末尾，不出现在非是非问句末尾<sup class="cite" data-cite="s-ma-fanwei">出处</sup>：</p>
+
+<blockquote>（44）他们回来了吗？<br>
+*他们什么时候回来吗？<br>
+*他们是昨天还是今天回来的吗？<br>
+*他们回来不回来吗？<sup class="cite" data-cite="s-ma-fanwei">出处</sup></blockquote>
+
+<p>因此，所谓验证「吗」是不是疑问语气词，实际就是验证是非问句末尾的「吗」是不是疑问语气词。假定句末带「吗」的是非问句为 A″。根据声学仪器的实验和我们的实地调查，A″ 的超语段成分有降调与升调两种形式，即：A″₁: W＋吗＋↘?　A″₂: W＋吗＋↗?<sup class="cite" data-cite="s-ma-geshi">出处</sup></p>
+
+<p>验证是非问句末尾的「吗」是不是疑问语气词的办法是把带「吗」的是非问句 A″ 跟不带「吗」的是非问句 A 和非疑问句 C 进行比较。先比较 A″₁、A 和 C。通过比较，由于 A″₁ 是降调，我们不难认识，A″₁ 疑问句的疑问信息只能由「吗」负载，无疑「吗」是疑问语气词。至于 A″₂ 里的「吗」，我们没有理由怀疑它跟 A″₁ 里的「吗」的同一性。A″₁ 和 A″₂ 实际是 A″ 的不同变体。在 A″₂ 里，「吗」和升调都负载着疑问信息。我们可以认为其中有一个是羡余的（redundant），但从表达上说，这也绝不是多余的，可以起到加强疑问语气的作用（陆俭明，1984）<sup class="cite" data-cite="s-ma-shi-yiwen">出处</sup>。</p>
+
+<p>显然，上面分析、验证现代汉语里到底有哪几个疑问语气词时就综合运用了各种比较方法<sup class="cite" data-cite="s-yiwen-yanfang">出处</sup>。</p>
+
+<div class="kicker">13.5 虚词研究中的语义背景分析</div>
+
+<p>要正确把握某个虚词的意义，需要了解该虚词使用的语用意义，而这必须注意考察这个虚词使用的语义背景，或者说这个虚词出现的语用环境。具体说，就是一定要考察这个虚词能在什么样的上下文或者说语境里出现或使用，不能在什么样的上下文或者说语境里出现或使用<sup class="cite" data-cite="s-yuyi-beijing">出处</sup>。</p>
+
+<p>譬如说，就已有的资料看，「反而」在句子中到底表示什么关系，存在着明显的分歧：有的说它表示转折关系；有的说它表示递进关系；有的说它既表示递进关系，又表示转折关系<sup class="cite" data-cite="s-faner-fenqi">出处</sup>。</p>
+
+<p>「反而」到底表示什么语法意义呢？要搞清楚「反而」的具体用法和语法意义，就必须了解这个词在句中出现的语义背景。根据马真（1983）的研究，使用「反而」的语义背景是<sup class="cite" data-cite="s-faner-sibeijing">出处</sup>：</p>
+
+<blockquote>A. 甲现象或情况出现或发生了；<br>
+B. 按说〔常情〕／原想〔预料〕甲现象或情况的出现或发生会引起乙现象或情况的出现或发生；<br>
+C. 事实上乙现象或情况没有出现或发生；<br>
+D. 倒出现或发生了与乙相悖的丙现象或情况。</blockquote>
+
+<p>「反而」就用在上述 A、B、C、D 这四层意思中的 D 意的语句里，形成的句子格式是<sup class="cite" data-cite="s-faner-geshi">出处</sup>：</p>
+
+<blockquote>A＋B＋可是（不但）C＋反而D</blockquote>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 360" role="img" aria-label="反而语义背景四层示意图">
+<rect x="0" y="0" width="680" height="360" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">「反而」的语义背景：四层意思与句子格式</text>
+<g font-family="KaiTi,serif" font-size="13.5">
+<circle cx="40" cy="67" r="16" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="40" y="72" text-anchor="middle" fill="#29241d">A</text>
+<rect x="70" y="44" width="590" height="46" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/>
+<text x="86" y="64" fill="#29241d">甲现象或情况出现或发生了</text>
+<text x="86" y="82" fill="#6f675a" font-size="11.5">例：今天午后下了一场雷阵雨</text>
+<path d="M340 92 L340 104" stroke="#9d4938" stroke-width="1.6"/><path d="M335 100 L340 108 L345 100" fill="none" stroke="#9d4938" stroke-width="1.6"/>
+
+<circle cx="40" cy="131" r="16" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="40" y="136" text-anchor="middle" fill="#29241d">B</text>
+<rect x="70" y="108" width="590" height="46" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/>
+<text x="86" y="128" fill="#29241d">按说／原想：甲会引起乙的出现或发生</text>
+<text x="86" y="146" fill="#6f675a" font-size="11.5">例：原以为可以凉快一些</text>
+<path d="M340 156 L340 168" stroke="#9d4938" stroke-width="1.6"/><path d="M335 164 L340 172 L345 164" fill="none" stroke="#9d4938" stroke-width="1.6"/>
+
+<circle cx="40" cy="195" r="16" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="40" y="200" text-anchor="middle" fill="#29241d">C</text>
+<rect x="70" y="172" width="590" height="46" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/>
+<text x="86" y="192" fill="#29241d">事实上乙没有出现或发生</text>
+<text x="86" y="210" fill="#6f675a" font-size="11.5">例：可是并没有凉下来</text>
+<path d="M340 220 L340 232" stroke="#9d4938" stroke-width="1.6"/><path d="M335 228 L340 236 L345 228" fill="none" stroke="#9d4938" stroke-width="1.6"/>
+
+<circle cx="40" cy="259" r="16" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="40" y="264" text-anchor="middle" fill="#9d4938">D</text>
+<rect x="70" y="236" width="590" height="46" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/>
+<text x="86" y="256" fill="#29241d">倒出现或发生了与乙相悖的丙</text>
+<text x="86" y="274" fill="#6f675a" font-size="11.5">例：<tspan fill="#9d4938">反而</tspan>更闷热了　←「反而」只用在这一层</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="12">
+<rect x="20" y="300" width="640" height="30" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="320" text-anchor="middle" fill="#29241d">句子格式：A ＋ B ＋ 可是（不但）C ＋ <tspan fill="#9d4938">反而</tspan>D</text>
+<text x="340" y="350" text-anchor="middle" fill="#6f675a" font-size="11.5">四层意思可全部明说，也可不全明说而只是隐含，还可压缩为一个单句（如「春天反而冷起来了」）</text>
+</g>
+</svg>
+<figcaption>图一（示意，编者绘制），非原书插图。四层语义背景、例句与格式据底本第十三节第五部分转绘<sup class="cite" data-cite="s-faner-sibeijing">出处</sup>。</figcaption>
+</figure>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：使用「反而」的句子有四种格式。哪一种把四层意思（甲现象出现→按说会引起乙→乙未出现→倒出现相悖的丙）全都明确说出来了？</p>
+<div class="opts">
+<button data-ans="0">格式Ⅱ：A＋可是（不但）C＋反而D</button>
+<button data-ans="1">格式Ⅰ：A＋B＋可是（不但）C＋反而D</button>
+</div>
+<div class="why">答案：b（第二项）。格式Ⅰ把 A、B、C、D 四层一起明确说出，如例（1）；格式Ⅱ隐去 B，格式Ⅲ隐去 C，格式Ⅳ只留 A 与 D。见下文，底本 L9934。</div>
+</div>
+
+<p>这四层意思可以像下面那样在句中一起明确地说出来，也可以不全明确说出来，只是隐含着。所以在实际的语料里，使用「反而」的句子，可以有以下四种格式<sup class="cite" data-cite="s-faner-sige-geshi">出处</sup>：</p>
+
+<blockquote>Ⅰ. A＋B＋可是（不但）C＋反而D。<br>
+（1）（A）今天午后下了一场雷阵雨，（B）原以为可以凉快一些，可是（C）并没有凉下来，（D）反而更闷热了。<br><br>
+Ⅱ. A＋可是（不但）C＋反而D。<br>
+（2）（A）今天午后下了一场雷阵雨，可是（C）并没有凉下来，（D）反而更闷热了。<br>
+（3）（A）蕙气得回房间哭了半天，（C）她的丈夫不但不安慰她，（D）反而责备她小气。（巴金《春》）<br><br>
+Ⅲ. A＋B＋反而D。<br>
+（4）（A）今天午后下了一场雷阵雨，（B）原以为可以凉快一些，谁知（D）反而更闷热了。<br>
+（5）（A）九号十二号两天刚说好停战，（B）大家以为没有事了，谁知（D）敌人反而在这时候用大炮轰城。（《田汉剧作选》）<br><br>
+Ⅳ. A＋反而D。<br>
+（6）（A）今天午后下了一场雷阵雨，（D）天气反而更闷热了。<br>
+（7）（A）都春天了，（D）怎么天气反而冷起来了？<sup class="cite" data-cite="s-faner-sige-geshi">出处</sup></blockquote>
+
+<p>有时，上述 A、B、C、D 这四层意思也可以压缩，通过一个单句来表达。例如：（8）春天反而冷起来了<sup class="cite" data-cite="s-faner-sige-geshi">出处</sup>。</p>
+
+<p>了解了使用「反而」的语义背景，「反而」的语法意义也就清楚了<sup class="cite" data-cite="s-faner-yufa-yiyi">出处</sup>：</p>
+
+<blockquote>表示实际出现的情况或现象跟按常情或预料在某种前提下应该出现的情况或现象相反。（马真，1983）<sup class="cite" data-cite="s-faner-yufa-yiyi">出处</sup></blockquote>
+
+<p>再譬如，表加强否定语气的副词「并」和「又」虽然都能表示加强否定语气，但二者有明显的区别，而它们的区别就在于使用的语义背景不同——当强调说明事实不是对方所说的、或不是一般人所想的、或不是自己原先所认为的那样的情况时才能用语气副词「并」；至于语气副词「又」，则只能用在直接否定前提条件或起因的句子里，起加强否定语气的作用<sup class="cite" data-cite="s-bing-you">出处</sup>：</p>
+
+<blockquote>（9）你说他傻？我看他并不傻。<br>
+（10）小张：小王，明天我们去安本老师家，带一瓶茅台酒吧。小王：安本老师又不喝白酒。<sup class="cite" data-cite="s-bing-you">出处</sup></blockquote>
+
+<p>例（9）里的「并」不能改用「又」；而例（10）里的「又」不能改用「并」。通过上面所举的实例，我们对语义背景分析或语义背景分析法可以有一个大致的了解。其实不只在虚词研究中要注意运用语义背景分析，对句法格式的研究也需要运用语义背景分析。因此也可以这样说，在语法研究与分析中，通过具体分析某个词语或句法格式使用的语义背景来说明该词语或句法格式在意义上或用法上的特点，这种分析手段就叫「语义背景分析法」。这种分析方法，词汇研究，特别是词义分析，也很值得借鉴<sup class="cite" data-cite="s-beijing-fenxi">出处</sup>。</p>
+
+<p>从某个角度说，我们研究任何虚词或句法格式，都不能只着眼于词语或句法格式本身，还必须从词语或句法格式所在的篇章的角度来思考，来分析。因此，语义背景分析法也可视为语法的篇章分析的一部分<sup class="cite" data-cite="s-beijing-fenxi">出处</sup>。</p>
+
+<div class="kicker">13.6 虚词研究中切忌将虚词所在的格式义视为虚词的意义</div>
+
+<p>在虚词研究中，特别需要注意一点，那就是切忌将虚词所在的格式的意义视为虚词的意义。20 世纪 40 年代何容在《中国文法论》中就有此意识，只是未加论述，也一直没有引起学界注意。直到 80 年代，马真在《说「也」》一文中明确地提出了这一点<sup class="cite" data-cite="s-mazhen-shuye">出处</sup>：</p>
+
+<blockquote>我们之所以还要谈论这个「也」，一方面想说明「也」的基本作用是表示类同，而不是别的什么；另一方面也想通过对「也」的基本作用和具体用法的剖析，说明在虚词研究中切忌将含有某个虚词的某种句子格式所表示的语法意义硬归到格式中所包含的这个虚词身上去。</blockquote>
+
+<p>而后又专门论述这一问题，并列举了不少事实，说明目前在辞书编纂中普遍存在将虚词所在格式的语法意义归到虚词身上的问题。请看其中所举的两个实例<sup class="cite" data-cite="s-herong">出处</sup>：</p>
+
+<div class="lab">
+<h3>实例一｜关于介词「除了」</h3>
+<p>介词「除了」表示排除。可是，有的工具书认为「除了」还能「表示补充」，还能「表示选择」。所举的「表示补充」的例子是<sup class="cite" data-cite="s-chule-buchong">出处</sup>：</p>
+<blockquote>（1）除了写诗，还学英文、法文。<br>除了英语，物理也考了 90 分。<sup class="cite" data-cite="s-chule-buchong">出处</sup></blockquote>
+<p>「表示选择」的例子是：</p>
+<blockquote>（2）每天早餐，除了大饼就是油条。<br>中央台的 15 频道，除了戏曲就是音乐。<sup class="cite" data-cite="s-chule-buchong">出处</sup></blockquote>
+<p>例（1）确实含有「补充」之意，例（2）也确实含有「选择」之意。但是，这「补充」「选择」等语法意义真是由介词「除了」表示的吗？其实那「补充」之意是由「除了……还／也／更……」这种句法格式所表示的，而不是由「除了」单独表示的；同样，那「选择」之意是由「除了……就是……」这种句法格式所表示的，而不是由「除了」单独表示的。证明有二<sup class="cite" data-cite="s-chule-buchong">出处</sup>：</p>
+<p>第一，假如删去「除了」，句子确实就不含有「补充」或「选择」之意了；但是，如果例（1）删去「还」或「也」，例（2）删去「就是」，句子同样也就不含有「补充」或「选择」之意了。这足见那「补充」或「选择」之意是由整个句法格式表示的，而并非只是由「除了」单独表示的。<sup class="cite" data-cite="s-chule-buchong">出处</sup></p>
+<p>第二，我们还可以提供一个佐证，那就是在现代汉语里还有这样一个表示「选择」之意的句法格式：「不是……就是……」。例如：（3）每天早饭不是大饼就是油条。我们总不能认为那「选择」之意是由「不是」单独表示的<sup class="cite" data-cite="s-chule-xuanze">出处</sup>。</p>
+</div>
+
+<div class="lab">
+<h3>实例二｜关于介词「把」的释义</h3>
+<p>2010 年 5 月出版的《现代汉语规范词典》（第 2 版）对介词「把」作了如下的释义<sup class="cite" data-cite="s-ba-fanli">出处</sup>：</p>
+<blockquote>把¹：……⑨介　a) 表示处置，「把」的宾语是后面及物动词的受事者……b) 表示致使，后面的动词通常带有表示结果的补语，「把」后的名词与后面的动词的语义关系是多样的……c）表示发生了不如意的事情，「把」后面的名词是当事者……</blockquote>
+<p>按此注释，好像「表示处置」「表示致使」「表示发生了不如意的事情」都是介词「把」所表示的。事实上那是「把」字句的语法意义，而并非介词「把」的语法意义。这也犯了将「把」字句的语法意义归到了介词「把」的头上的错误。我们看到，《现代汉语词典》（第 7 版）对介词「把」的释义就比较好<sup class="cite" data-cite="s-ba-zhengli">出处</sup>：</p>
+<blockquote>把²　介　a) 宾语是后面动词的受事者，整个格式大多有处置的意思。……b) 后面的动词，是「忙、累、急、气」等加上表示结果的补语，整个格式有致使的意思。……c) 宾语是后面动词的施事者，整个格式表示不如意的事情。……</blockquote>
+<p>这样释义就没有将「把」字句所表示的「处置」或「致使」等语法意义归到介词「把」的身上<sup class="cite" data-cite="s-ba-zhengli">出处</sup>。</p>
+</div>
+
+<details>
+<summary>再补一例：「每」的意思也是格式所致<span class="tag">课堂笔记补充</span></summary>
+<p>凡是两个数量结构连用，整个格式都可能带有「每」的意思，如「三年两次」——这是格式所致，并不能认为「三」本身表示「每」<sup class="cite" data-cite="s-mei-geshi">出处</sup>。</p>
+</details>
+
+<blockquote>「切忌将虚词所在的格式的意义视为虚词的意义」，这在虚词研究中是一个值得注意并必须防止发生的问题。<sup class="cite" data-cite="s-geshiyi-feixuciyi">出处</sup></blockquote>
+
+<details>
+<summary>补：词语间的语义制约分析<span class="tag">课堂笔记补充</span></summary>
+<p>通过分析句法结构内部词语之间的意义上的制约关系来解释、说明某种语法现象，这种分析叫<b>词语间的语义制约分析</b><sup class="cite" data-cite="s-yuyi-zhiyue">出处</sup>。</p>
+<p>它跟语义特征分析有同有异：相同的是，二者都着眼于句子内部的分析；不同的是，语义制约分析针对具体句子或句法格式，着眼于词语间语义上的协调、和谐性，而语义特征分析针对整个句法格式，着眼于格式里处于关键位置的词<sup class="cite" data-cite="s-yuyi-zhiyue">出处</sup>。</p>
+<table class="matrix">
+<thead><tr><th></th><th>语义制约分析</th><th>语义特征分析</th></tr></thead>
+<tbody>
+<tr><td>同</td><td colspan="2">着眼于句子内部的分析</td></tr>
+<tr><td rowspan="2">异</td><td>针对具体句子／句法格式</td><td>针对整个句法格式</td></tr>
+<tr><td>着眼于词语间语义上的协调、和谐性</td><td>着眼于格式里处于关键位置的词</td></tr>
+</tbody>
+</table>
+<p class="small muted">表：语义制约分析与语义特征分析的同异（据课堂笔记转制）<sup class="cite" data-cite="s-yuyi-zhiyue">出处</sup>。</p>
+<p>动词的搭配面宽窄也反映这种制约：北京话里「吃」一般只带固体食物，南方大部分地区「吃」则可带固体、液体、气体<sup class="cite" data-cite="s-yuyi-zhiyue">出处</sup>。</p>
+<p>动结式「VA了」最能看出这种制约——补语形容词的语义跟动词的语义是否协调，直接决定整个动结式表「结果的实现」还是表「结果的偏离（含过分义）」<sup class="cite" data-cite="s-va-liao">出处</sup>：</p>
+<table class="matrix">
+<thead><tr><th>VA 了</th><th>结果的实现</th><th>结果的偏离（含「过分」义）</th></tr></thead>
+<tbody>
+<tr><td>剪短了</td><td>＋</td><td>＋</td></tr>
+<tr><td>剪长了</td><td>－</td><td>＋</td></tr>
+<tr><td>拉短了</td><td>－</td><td>＋</td></tr>
+<tr><td>拉长了</td><td>＋</td><td>＋</td></tr>
+<tr><td>画短了</td><td>＋</td><td>＋</td></tr>
+<tr><td>画长了</td><td>＋</td><td>＋</td></tr>
+<tr><td>买短了</td><td>－</td><td>＋</td></tr>
+<tr><td>买长了</td><td>－</td><td>＋</td></tr>
+<tr><td>剪齐了</td><td>＋</td><td>－</td></tr>
+</tbody>
+</table>
+<p class="small muted">表：「VA了」的结果实现与结果偏离（据课堂笔记转制）<sup class="cite" data-cite="s-va-liao">出处</sup>。</p>
+<p>规律一目了然：补语语义与动词语义协调的（剪短、拉长、画短、画长、剪齐）能表结果的实现；不协调的（剪长、拉短、买短、买长）只表结果的偏离——「剪齐了」甚至没有偏离义。词语间语义上的协调与否，直接决定整个动结式的意义，这正是词语间语义制约分析的具体运用<sup class="cite" data-cite="s-va-liao">出处</sup>。</p>
+</details>
+
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、「越发」为什么必须跟「了」共现，而「更加」不必？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">「越发」是补语性成分，需要「了」充当句法标记</button>
+      <button data-v="b">「越发」只用于不同时间平面，「了」正表示随着时间的推移而变化；「更加」两个时间平面都能用</button>
+      <button data-v="c">「越发」是方言词，受普通话语音规则限制</button>
+    </div>
+    <div class="why">答案：b。例（5）—（7）句尾没有「了」，只能用「更加」；例（8）三项比较，也只能用「更加」。见本节比较一，底本 L9678。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、要判断疑问句末尾的语气词是否真的负载疑问信息，本书认为最可靠的验证办法是什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">凭母语者的语感判断</button>
+      <button data-v="b">做最小对比——跟不带语气词的疑问句和非疑问句比较，看疑问信息到底由谁负载</button>
+      <button data-v="c">看辞书是否收录该语气词</button>
+    </div>
+    <div class="why">答案：b。「决不能根据语感，而要看它是否真的负载疑问信息；这一点又必须能在形式上得到验证。」A″₁ 是降调，疑问信息只能由「吗」负载。见本节第四部分，底本 L9800、L9907。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、有的辞书说介词「除了」能「表示补充」「表示选择」，问题出在哪里？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">释义时没有参考方言材料</button>
+      <button data-v="b">把「除了……还／也」「除了……就是……」整个句法格式的意义归到了「除了」头上</button>
+      <button data-v="c">「除了」确实能表示补充和选择，辞书释义是对的</button>
+    </div>
+    <div class="why">答案：b。删去「还」或「就是」，句子同样不含补充、选择之意；佐证格式「不是……就是……」。见本节 13.6 实例一，底本 L10002—L10014。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：本节第二部分所引「绪论」小节关于音节问题的全文、各比较所据的部分例句细节，以及疑问语气词分歧表所涉五种意见的具体文献<sup class="cite" data-cite="s-yiwen-fenqi-biao">出处</sup>。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-xuci-jingluo": { page:"第十三节 13.1 · 底本 L9414", quote:"虚词跟实词比起来，数量要少得多，但其重要性大大超过实词。虚词在现代汉语中起着“经络”的作用，特别是由于汉语没有俄、法、英诸语言里那种形态标志和形态变化，也没有日、朝/韩、蒙、土耳其诸语言里那种黏附形式，因此虚词在汉语中担负着更为繁重的语法任务，起着更为重要的语法作用。", zh:"虚词数量远比实词少，重要性却大大超过实词；汉语缺乏形态标志与黏附形式，虚词担负更为繁重的语法任务。" },
+  "s-mazhen-five-functions": { page:"第十三节 13.1 · 底本 L9418", quote:"虚词在现代汉语里的作用，马真《现代汉语虚词研究方法论》一书（2004年初版，2016年修订版）归纳了如下五点（用例与解释略有变动）：第一，帮助表达实词之间某种语法关系。……第五，帮助表达某种语气。", zh:"马真归纳虚词五点作用：表达语法关系、语义关系，添加语法意义，改变表述功能，表达语气。" },
+  "s-function-grammar-relation": { page:"第十三节 13.1 · 底本 L9424", quote:"（1）她满意得笑了。（2）她满意地笑了。例（1）用“得”，“满意”和“笑了”之间是述补关系，句子表示“她”由于得意而笑了。例（2）用“地”，“满意”与“笑了”之间是修饰关系，句子表示“她”笑时带着满意的心态。", zh:"「得」表述补关系，「地」表修饰关系——虚词帮助表达实词之间的语法关系。" },
+  "s-function-semantic-relation": { page:"第十三节 13.1 · 底本 L9430", quote:"（3）张三把李四说了一通。（4）张三被李四说了一通。……例（3）用“把”，“张三”是“说”的施事，“李四”是“说”的受事；例（4）用“被”，“张三”成了“说”的受事了，“李四”成了“说”的施事了。", zh:"「把」与「被」互换施受关系——虚词帮助表达实词之间的语义关系。" },
+  "s-function-add-meaning": { page:"第十三节 13.1 · 底本 L9436", quote:"（5）我看见他拿了两个苹果。（6）我看见他拿过两个苹果。（7）我看见他拿着两个苹果。……例（5）带上“了”，表示“拿苹果”这一行为动作的实现或完成；例（6）带上“过”，表示“他”有“拿苹果”这一经历；例（7）带上“着”，表示“拿苹果”这一行为动作的持续。", zh:"「了」表实现完成、「过」表经历、「着」表持续——虚词帮助实词添加语法意义。" },
+  "s-function-change-function": { page:"第十三节 13.1 · 底本 L9442", quote:"【实例一】“吃”是动词……如果后面加上结构助词“的”，“吃的”就成了名词性成分……表示指称。【实例二】“木头”是名词……如果后面加上结构助词“似的”，“木头似的”就成了状态词性成分了……表示陈述。", zh:"「吃的」由陈述变指称，「木头似的」由指称变陈述——虚词帮助改变词语的表述功能。" },
+  "s-function-mood": { page:"第十三节 13.1 · 底本 L9448", quote:"（8）他有儿子了。（9）他有儿子啦！（10）他有儿子吗？……（11）张叔叔的确从北京回来了。（12）张叔叔也许从北京回来了。（13）张叔叔难道从北京回来了？", zh:"「了／啦／吗」分别表陈述、感叹、疑问语气；「的确／也许／难道」分别表确信、猜测、增强疑惑。" },
+  "s-xuci-research-scope": { page:"第十三节 13.1 · 底本 L9466", quote:"虚词研究，就共时平面来说，主要包括三方面内容，一是虚词用法的研究，二是虚词意义的研究，三是虚词教学的研究。本节只谈前两方面的研究。", zh:"共时平面虚词研究三方面：用法、意义、教学；本节只谈前二者。" },
+  "s-xuci-hard": { page:"第十三节 13.1 · 底本 L9468", quote:"无论虚词的用法还是虚词的意义，都不太好研究。这是因为虚词所表示的是语法意义，很虚灵，很不容易把握，而在用法上，又个性极强，即使是属同一类的虚词，即使意义接近，在用法上也会有很大的差别。要搞好虚词研究，重要的是要了解、掌握好虚词研究的方法。", zh:"虚词意义虚灵、用法个性极强，必须掌握研究方法。" },
+  "s-yongfa-duojiaodu": { page:"第十三节 13.2 · 底本 L9474", quote:"要研究好虚词的用法，重要的要具有多角度、多层面、多方位的观念。具体说，要从各个方面去进行细致的考察、分析，这样就能较快、较容易地了解、把握一个虚词的用法。", zh:"用法研究的总观念：多角度、多层面、多方位。" },
+  "s-yongfa-julei": { page:"第十三节 13.2 · 底本 L9478", quote:"连词“或者”和“还是”……但是“或者”只用于陈述句，“还是”则用于疑问句。“吗”和“呢”都是语气词……“吗”只能用于“是非问句”，“呢”则正相反，只能用于“非是非问句”……“更”可以用在“比”字句里……而“最”则不能……“稍”可以用于“比”字句……“较”则不能。", zh:"句类制约：「或者」用于陈述、「还是」用于疑问；「吗」用于是非问、「呢」用于非是非问；「更」「稍」可进「比」字句，「最」「较」不可。" },
+  "s-yongfa-cilei": { page:"第十三节 13.2 · 底本 L9488", quote:"连词“和”跟“并”……但是“和”主要用来连接名词性词语，连接动词或形容词性词语则有条件；而“并”只能用来连接动词或形容词性词语。……“老”只能用来修饰往大的方面说的有限的几个表量度的单音节形容词……“很”则没有这种限制。", zh:"词类制约：「和」接名词性、「并」接谓词性；「老」限于有限的表量度单音节形容词，「很」无限制。" },
+  "s-yongfa-yinjie": { page:"第十三节 13.2 · 底本 L9498", quote:"有的副词要求所修饰的成分必须是个单音节词，如“过”……而与之同义的“过于”则不受此限……有的副词可以修饰一个词组，但是要求紧跟在它后面的必须是个单音节词，如“足”……与之同义的“足足”就不受此限。有的副词……要求所修饰的词语必须是双音节的。如“大力”……助词“与否”，它只能跟在一个双音节成分后面。", zh:"音节制约：「过／尽／屡／互／足」要求单音节，「过于／足足」不限；「大力／行将／万分」要求双音节；「与否」只跟双音节成分。" },
+  "s-yongfa-qingzhongyin": { page:"第十三节 13.2 · 底本 L9508", quote:"（1）我们'都看完了。（2）'我们都看完了。（3）我们都看'完了。……“已经”修饰数量词时，既可言够，也可言多，其区别就在轻重音上。……“再”表示重复时，可以表示两种不同的重复。一是实在的重复……二是空缺的重复。", zh:"轻重音区别意义：「都」三例分别表总括全范围、含「甚至」意、含「已经」意；「已经三个了」言够／言多；「再」表实在／空缺重复。" },
+  "s-yongfa-kending-fouding": { page:"第十三节 13.2 · 底本 L9518", quote:"1. 有的只能跟否定形式直接发生关系。如副词“从”……副词“万万”只能修饰一个否定形式……2. 有的则只能同肯定形式直接发生关系。如副词“万分”“分外”就只能用于肯定……3. 有些虚词有两种不同的意义或用法，而这在肯定、否定的要求上也正好形成对立。如“绝”……4. 有的既能用于肯定，也能用于否定，意思却一样。如“难免不犯错误”和“难免要犯错误”意思一样。", zh:"肯定否定四种情况：只能否（从／万万）／只能肯（万分／分外）／两极对立（绝／太）／意思一样（难免不／差一点儿）。" },
+  "s-yongfa-jian-fu": { page:"第十三节 13.2 · 底本 L9538", quote:"由“把”组成的介词结构后面一定得跟一个复杂形式……副词“终究、往往、白白、恐怕、略微”也要求所修饰的成分必须是个复杂形式，而分别跟它们同义或近义的“必将、常常、白、也许、较为”就没有这种要求。……由“对于”组成的介词结构作状语时，一般要求中心语是个复杂形式，而由“对”组成的介词结构作状语时，没有这种要求。……有的则要求所修饰的成分得是个简单形式，如“异常、万分”。", zh:"简单复杂制约：「把／终究／往往／白白／恐怕／略微／对于」要求复杂形式；「对」不限；「异常／万分」要求简单形式。" },
+  "s-yongfa-weizhi": { page:"第十三节 13.2 · 底本 L9544", quote:"（5）他幸亏回来了，…… ≠ 幸亏他回来了，……（6）没有全听懂 ≠ 全没有听懂（7）光他吃米饭 ≠ 他光吃米饭（8）很不习惯 ≠ 不很习惯……有的在前后，似乎意思差不多……但细细体会还是会觉察出细微的区别来。", zh:"位置灵活则意思不同：「幸亏」「全」「光」「很」前后位置互换，意义均有别。" },
+  "s-yongfa-peita": { page:"第十三节 13.2 · 底本 L9563", quote:"“只有”要求有“才”与之相配，“只要”要求有“就”与之相配……程度副词“怪”……很重要的一点，“怪”要求后面有“的”与之配搭……“恐怕”后面常有语气词“吧”与之相配；“本来”后面常用语气词“嘛”与之相配；而用助词“罢了”“而已”，前面常有副词“不过”“只”与之相配；用助词“不成”，前面常用“难道”“莫非”与之相配。", zh:"配搭制约：只有…才／只要…就／怪…的／恐怕…吧／本来…嘛／不过…罢了／莫非…不成。" },
+  "s-yongfa-bujin": { page:"第十三节 13.2 · 底本 L9568", quote:"以上所谈的八个方面，也还只是列举性的，并不是说虚词的用法只表现在这八个方面……譬如说，某些虚词或某些虚词格式……对所修饰的成分在意义色彩上（褒义和贬义，积极和消极）还有所选择……此外，似乎还有社会心理问题，还有认知的问题，也会影响虚词的用法。", zh:"八个方面只是列举；意义色彩（还大方／还小气）、社会心理、认知也影响虚词用法。" },
+  "s-yiyi-liangmian": { page:"第十三节 13.3 · 底本 L9576", quote:"虚词的意义实际有两方面，一是虚词本身所表示的语法意义，一是虚词使用的语用意义。我们既要研究虚词本身所表示的语法意义，又要研究虚词使用的语用意义。这二者是互相联系，互为因果的。", zh:"虚词意义＝语法意义＋语用意义，二者互相联系、互为因果。" },
+  "s-yizhi-yiyi": { page:"第十三节 13.3 · 底本 L9596", quote:"“以至”的意思相当于“直到”“甚至”，这就是“以至”的语法意义；它的语用意义是表示由小到大、由少到多、由低到高、由浅入深的递进关系（也可用于相反的方向）。……“以致”用在因果复句中表示“致使”“弄得”的意思……由它引出的结果总是由前面从句说的原因所造成的而且是说话人所不希望的后果——这就是使用“以致”的语用意义。", zh:"「以至」＝递进（直到／甚至）；「以致」＝因果（致使，且是不希望后果）。" },
+  "s-yizhi-bingju": { page:"第十三节 13.3 · 底本 L9582", quote:"（1）*他只听了一面之词，以至没有处理好那两家的纠纷。……（4）*如果我们能采用这项先进技术，我们的生产效率将会提高两倍三倍，以致十几倍。", zh:"四组病句：前三例因果误用「以至」，末例递进误用「以致」。" },
+  "s-yizhi-tongjing": { page:"第十三节 13.3 · 底本 L9610", quote:"（12）在一片赞扬声中，他变得飘飘然起来，以至看不到自己工作中的缺点。（13）在一片赞扬声中，他变得飘飘然起来，以致看不到自己工作中的缺点。然而这两个句子所表示的意思很不相同……", zh:"同一语境，「以至」强调程度加深，「以致」强调不如愿结果。" },
+  "s-yiyi-xuanshi": { page:"第十三节 13.3 · 底本 L9628", quote:"在一般辞书中，释义时只注重虚词的语法意义，这无可非谊；但是在供汉语教学用的汉语教科书中，既要注意虚词表示的语法意义，也得注意虚词使用的语用意义，这才有助于外国学生学习汉语虚词。目前，普遍忽视虚词使用的语用意义，都不注意从学习者的角度来考虑释义。", zh:"辞书重语法意义无可非谊；教学用教科书须兼顾语用意义。" },
+  "s-bijiao-zui-jiben": { page:"第十三节 13.3 · 底本 L9614", quote:"无论研究虚词本身所表示的语法意义，还是研究虚词使用的语用意义，最基本、最有效的方法就是比较。此外，必须注意分析运用虚词的语义背景。", zh:"虚词意义研究的基本方法：比较＋语义背景分析。" },
+  "s-bijiao-suyu": { page:"第十三节 13.4 · 底本 L9630", quote:"中国有一句俗语，叫“不怕不识货，就怕货比货”。意思就是，通过比较可以识别事物。中国古代还有一句话，叫“因比而显”……比较分析是人类认识客观事物最原始、最基本也是最有效的方法。……比较法的运用是人们理性地认识客观世界的开始。", zh:"「不怕不识货，就怕货比货」「因比而显」：比较是理性认识客观世界的开始。" },
+  "s-bijiao-wuzhong": { page:"第十三节 13.4 · 底本 L9634", quote:"常用的有以下五种比较：一、把彼此同义或近义的虚词放在一起，进行比较辨析。二、把包含某虚词的句子跟抽掉了该虚词的句子拿来比较，即进行有无某虚词的比较。三、将意义相对的虚词放在一起进行比较。四、把说明同一方面问题的虚词放在一起进行比较辨析。五、将形似实异的虚词放在一起进行辨析，以区别貌似一样实质不同的虚词。", zh:"五种比较：同义近义／有无虚词／意义相对／同一方面／形似实异。" },
+  "s-gengjia-yuefa": { page:"第十三节 13.4 · 底本 L9650", quote:"“更加”和“越发”，都是书面语词，都能用于比较，都能用来表示程度进一步加深。例如：（1）她的精力比过去更加充沛了。（2）她的精力比过去越发充沛了。……（8）a.长江比黄河长，长江比淮河更加长了。b.*长江比黄河长，长江比淮河越发长了。", zh:"八组对照：句尾有「了」两项比较两者皆可；无「了」或三项比较只能用「更加」。" },
+  "s-yuefa-shiyi": { page:"第十三节 13.4 · 底本 L9678", quote:"“越发”总是跟时间因素相联系，它只用于不同时间平面，不用于同一时间平面，正因为这样，所以用“越发”的句子，其末尾一定要带上“了”（“了”就表示随着时间的推移而变化）。“更加”则没有这个限制，既能用于两个时间平面，也能用于一个时间平面。", zh:"「越发」只用于不同时间平面、句末必带「了」、只用于两项比较；「更加」无此限制。" },
+  "s-haole-bijiao": { page:"第十三节 13.4 · 底本 L9696", quote:"（9）“李老师，这本小说我拿去看看好吗？”“你拿去看好了。”……（14）既然他不愿意带你去，你就自己去好了。各句句尾的“好了”到底表示什么意义呢？先前辞书都没有收录，《现代汉语词典》（第6版）才收录这个词。", zh:"「好了」使用面广；《现代汉语词典》第 6 版才收录；用有无比较确定其语法意义。" },
+  "s-haole-shiyi": { page:"第十三节 13.4 · 底本 L9735", quote:"通过比较，我们大致可以把握“好了”的语法意义，可以将语气词“好了”释义为“不介意，不在乎，尽管放心”。上面所运用的比较方法，就是有无虚词的比较。", zh:"「好了」＝不介意，不在乎，尽管放心。" },
+  "s-cai-jiu": { page:"第十三节 13.4 · 底本 L9750", quote:"副词“才”表示说话人主观认为事情实现得晚/慢、所说的数量少、所说的条件严；而副词“就”则表示说话人主观认为事情实现得早/快、所说的数量多、所说的条件宽。", zh:"「才」＝晚慢少严；「就」＝早快多宽——意义相对的虚词比较。" },
+  "s-ma-ba": { page:"第十三节 13.4 · 底本 L9758", quote:"用“吗”，表示的是“问话人对事情的是与非不表明倾向性态度的询问”；用“吧”，表示的是“问话人对事情的是与非表明倾向性态度的询问”。再如，“多”“可”“太”“真”“好”等都是可以用来表示感叹的语气副词。", zh:"「吗」不表明倾向；「吧」表明倾向；多可太真好同属感叹语气副词比较。" },
+  "s-jiner-conger": { page:"第十三节 13.4 · 底本 L9760", quote:"“进而”强调在前一行动的基础上，采取进一步的行动。……而“从而”用来引出表示结果的主句，这种结果是在某种条件逐渐形成或具备的情况下产生的。……例（28）—（30）里的“进而”不能换成“从而”，而例（31）—（34）里的“从而”不能换成“进而”。", zh:"「进而」＝进一步行动；「从而」＝引出结果；形似实异比较。" },
+  "s-jiner-conger-bingju": { page:"第十三节 13.4 · 底本 L9778", quote:"（35）*从去年开始，徐州市进一步走出国门……进而使用外资的路子逐步拓宽。（36）*来自个体经济的压力和挑战……进而无形中形成了经济生活中的竞争局面。……这两个例子里的“进而”都应该换成“从而”。", zh:"两组病句：后接是结果而非进一步行动，该用「从而」。" },
+  "s-yiwen-fenqi-biao": { page:"第十三节 13.4 · 底本 L9788", quote:"关于现代汉语里的疑问语气词，汉语语法学界总共提到“啊、吧、呢、吗”四个，但大家意见并不一致。……大家对“吗”没有分歧意见，都认为它是疑问语气词；对“啊、吧、呢”就有不同看法了。", zh:"四种疑问语气词五种意见分歧表；「吗」无分歧，其余三种待验证。" },
+  "s-yiwen-yanfang": { page:"第十三节 13.4 · 底本 L9796", quote:"而我们来判断一个出现在疑问句末尾的语气词是不是疑问语气词，决不能根据语感，而要看它是否真的负载疑问信息；这一点又必须能在形式上得到验证。验证的最好办法，就是比较。……从疑问句和非疑问句、从这种疑问句和那种疑问句、从带了语气词的和不带语气词的疑问句之间的最小对比中，来确定出现在疑问句末尾的语气词是否真负载疑问信息。", zh:"验证原则：不凭语感，看是否真负载疑问信息；办法是最小对比。" },
+  "s-format-abc": { page:"第十三节 13.4 · 底本 L9804", quote:"A.W+↑? B.B₁:Q+↓? B₂:Q+↑? 而非疑问句可以表示为：C.W+↓。我们不妨比较一下A和C……因此A的疑问信息显然是由“升调”负载的。语言事实告诉我们，在现代汉语里，“升调”是疑问句调。", zh:"A（W＋升调）／B₁（Q＋降调）／B₂（Q＋升调）／C（W＋降调）；A 与 C 对比→升调是疑问句调。" },
+  "s-ah-yongfa": { page:"第十三节 13.4 · 底本 L9842", quote:"（37）爷爷回上海啦=（了+啊）。【陈述句】（38）你快走啊。【祈使句】（39）大家快来看啊！【感叹句】（40）你不买啊？【是非问句】（41）她什么时候来啊？【特指问句】（42）他这次去广州还是深圳啊？【选择问句】（43）你明天到底来不来啊？【反复问句】", zh:"「啊」使用面广：非疑问句与各类疑问句末尾都能出现。" },
+  "s-ah-yanfang": { page:"第十三节 13.4 · 底本 L9853", quote:"A′的超语段成分是升调，无一例外，整个格式为：A′.W+啊+↗? 而B′的超语段成分有升调与降调两种形式……B′₁:Q+啊+↓? B′₂:Q+啊+↑?", zh:"A′ 一律升调；B′ 有升调、降调两种形式。" },
+  "s-ah-bushi-yiwen": { page:"第十三节 13.4 · 底本 L9870", quote:"通过比较，很容易发现，A'疑问句的疑问信息还是由升调负载的，“啊”并不负载疑问信息。也就是说，是非问句末尾的“啊”不负载疑问信息。", zh:"是非问句末尾的「啊」不负载疑问信息。" },
+  "s-bp-yanfang": { page:"第十三节 13.4 · 底本 L9878", quote:"带“啊”的非是非问句跟不带“啊”的非是非问句情况一样——B′₁跟B₁一样，疑问信息完全是由疑问词语Q负载的；B′₂跟B₂一样，疑问信息主要是由疑问词语Q负载的，升调只是为了加强疑问语气。可见，B′末尾的“啊”也不负载疑问信息。因此，疑问句末尾的“啊”不能认为是疑问语气词。", zh:"非是非问句末尾的「啊」也不负载疑问信息；疑问句末尾的「啊」不是疑问语气词。" },
+  "s-ma-fanwei": { page:"第十三节 13.4 · 底本 L9888", quote:"大家公认，语气词“吗”只出现在是非问句末尾，不出现在非是非问句末尾。例如：（44）他们回来了吗？*他们什么时候回来吗？*他们是昨天还是今天回来的吗？*他们回来不回来吗？", zh:"「吗」只出现在是非问句末尾。" },
+  "s-ma-geshi": { page:"第十三节 13.4 · 底本 L9895", quote:"假定句末带“吗”的是非问句为A″。根据声学仪器的实验和我们的实地调查，A″的超语段成分有降调与升调两种形式，即：A″₁:W+吗+↓? A″₂:W+吗+↑?", zh:"带「吗」的是非问句有降调、升调两种形式。" },
+  "s-ma-shi-yiwen": { page:"第十三节 13.4 · 底本 L9907", quote:"通过比较，由于A″₁是降调，我们不难认识，A″₁疑问句的疑问信息只能由“吗”负载，无疑“吗”是疑问语气词。（为什么？请自己想想。）", zh:"A″₁ 是降调，疑问信息只能由「吗」负载，「吗」无疑是疑问语气词。" },
+  "s-ma-xianyu": { page:"第十三节 13.4 · 底本 L9908", quote:"在A″₂里，“吗”和升调都负载着疑问信息。我们可以认为其中有一个是羡余的（redundant），但从表达上说，这也绝不是多余的，可以起到加强疑问语气的作用。（陆俭明，1984）", zh:"A″₂ 中「吗」与升调二者有一羡余，但可加强疑问语气。" },
+  "s-yuyi-beijing": { page:"第十三节 13.5 · 底本 L9916", quote:"要正确把握某个虚词的意义，需要了解该虚词使用的语用意义，而这必须注意考察这个虚词使用的语义背景，或者说这个虚词出现的语用环境。具体说，就是一定要考察这个虚词能在什么样的上下文或者说语境里出现或使用，不能在什么样的上下文或者说语境里出现或使用。", zh:"语义背景＝虚词能／不能出现的上下文或语境。" },
+  "s-faner-fenqi": { page:"第十三节 13.5 · 底本 L9918", quote:"就已有的资料看，“反而”在句子中到底表示什么关系，存在着明显的分歧：有的说它表示转折关系；有的说它表示递进关系；有的说它既表示递进关系，又表示转折关系。", zh:"「反而」表什么关系有三种分歧意见。" },
+  "s-faner-sibeijing": { page:"第十三节 13.5 · 底本 L9920", quote:"根据马真（1983）的研究，使用“反而”的语义背景是：A. 甲现象或情况出现或发生了；B. 按说〔常情〕/原想〔预料〕甲现象或情况的出现或发生会引起乙现象或情况的出现或发生；C. 事实上乙现象或情况没有出现或发生；D. 倒出现或发生了与乙相悖的丙现象或情况。", zh:"「反而」四层语义背景 A/B/C/D（马真，1983）。" },
+  "s-faner-geshi": { page:"第十三节 13.5 · 底本 L9928", quote:"“反而”就用在上述A、B、C、D这四层意思中的D意的语句里，形成的句子格式是：A+B+可是（不但）C+反而D。", zh:"「反而」只用在 D 意语句，格式为 A＋B＋可是（不但）C＋反而D。" },
+  "s-faner-sige-geshi": { page:"第十三节 13.5 · 底本 L9934", quote:"Ⅰ. A+B+可是（不但）C+反而D。……Ⅱ. A+可是（不但）C+反而D。……Ⅲ. A+B+反而D。……Ⅳ. A+反而D。……（8）春天反而冷起来了。", zh:"四种格式：四层全说／省 B／省 C／只留 A 与 D；四层还可压缩为单句。" },
+  "s-faner-yufa-yiyi": { page:"第十三节 13.5 · 底本 L9970", quote:"了解了使用“反而”的语义背景，“反而”的语法意义也就清楚了：表示实际出现的情况或现象跟按常情或预料在某种前提下应该出现的情况或现象相反。（马真，1983）", zh:"「反而」＝实际出现的情况与按常情或预料应出现的情况相反。" },
+  "s-bing-you": { page:"第十三节 13.5 · 底本 L9972", quote:"表加强否定语气的副词“并”和“又”虽然都能表示加强否定语气，但二者有明显的区别，而它们的区别就在于使用的语义背景不同——当强调说明事实不是对方所说的、或不是一般人所想的、或不是自己原先所认为的那样的情况时才能用语气副词“并”；至于语气副词“又”，则只能用在直接否定前提条件或起因的句子里，起加强否定语气的作用。", zh:"「并」否定对方或自己原先认为的情况；「又」直接否定前提条件或起因。" },
+  "s-beijing-fenxi": { page:"第十三节 13.5 · 底本 L9992", quote:"在语法研究与分析中，通过具体分析某个词语或句法格式使用的语义背景来说明该词语或句法格式在意义上或用法上的特点，这种分析手段就叫“语义背景分析法”。……因此，语义背景分析法也可视为语法的篇章分析的一部分。", zh:"语义背景分析法的定义；可视为语法篇章分析的一部分。" },
+  "s-geshiyi-feixuciyi": { page:"第十三节 13.6 · 底本 L10030", quote:"“切忌将虚词所在的格式的意义视为虚词的意义”，这在虚词研究中是一个值得注意并必须防止发生的问题。", zh:"切忌将格式义视为虚词义——本节最重要的提醒。" },
+  "s-herong": { page:"第十三节 13.6 · 底本 L9986", quote:"20世纪40年代何容在《中国文法论》中就有此意识，只是未加论述，也一直没有引起学界注意。", zh:"何容（20 世纪 40 年代）已有格式义≠虚词义的意识。" },
+  "s-mazhen-shuye": { page:"第十三节 13.6 · 底本 L9988", quote:"我们之所以还要谈论这个“也”，一方面想说明“也”的基本作用是表示类同，而不是别的什么；另一方面也想通过对“也”的基本作用和具体用法的剖析，说明在虚词研究中切忌将含有某个虚词的某种句子格式所表示的语法意义硬归到格式中所包含的这个虚词身上去。", zh:"马真《说「也」》：「也」的基本作用是表示类同；切忌把格式义归到虚词身上。" },
+  "s-chule-buchong": { page:"第十三节 13.6 · 底本 L10002", quote:"其实那“补充”之意是由“除了……还/也/更……”这种句法格式所表示的，而不是由“除了”单独表示的；同样，那“选择”之意是由“除了……就是……”这种句法格式所表示的，而不是由“除了”单独表示的。", zh:"「补充」义来自「除了……还/也/更……」格式；「选择」义来自「除了……就是……」格式。" },
+  "s-chule-xuanze": { page:"第十三节 13.6 · 底本 L10008", quote:"我们还可以提供一个佐证，那就是在现代汉语里还有这样一个表示“选择”之意的句法格式：“不是……就是……”。例如：（3）每天早饭不是大饼就是油条。我们总不能认为那“选择”之意是由“不是”单独表示的。", zh:"佐证：「不是……就是……」也表选择，「选择」义显然不是由单个词表示的。" },
+  "s-ba-fanli": { page:"第十三节 13.6 · 底本 L10018", quote:"2010年5月出版的《现代汉语规范词典》（第2版）对介词“把”作了如下的释义：把¹：……⑨介 a) 表示处置，“把”的宾语是后面及物动词的受事者……b) 表示致使……c）表示发生了不如意的事情。", zh:"反例：《现代汉语规范词典》第 2 版把「把」字句的意义归到介词「把」头上。" },
+  "s-ba-zhengli": { page:"第十三节 13.6 · 底本 L10024", quote:"《现代汉语词典》（第7版）对介词“把”的释义就比较好。……把² 介 a) 宾语是后面动词的受事者，整个格式大多有处置的意思。……b) 后面的动词，是“忙、累、急、气”等加上表示结果的补语，整个格式有致使的意思。……c) 宾语是后面动词的施事者，整个格式表示不如意的事情。", zh:"正面例：《现代汉语词典》第 7 版用「整个格式」措辞，不把格式义归到介词「把」。" },
+  "s-mei-geshi": { page:"第十三节 13.6 · 南大学姐课堂笔记（底本未展开）", quote:"「每」：凡是两个数量结构都可能有「每」的意思，这是格式所致，如「三年两次」不能认为「三」表示「每」。", zh:"两个数量结构连用可能带「每」义，乃格式所致，非「三」本身表示「每」（课堂笔记补充）。" },
+  "s-yuyi-zhiyue": { page:"第十三节 13.6 之后 · 南大学姐课堂笔记（底本未展开）", quote:"通过分析句法结构内部词语之间的意义上的制约关系来解释、说明某种语法现象。……同：着眼于句子内部的分析。异：语义制约分析针对具体句子/句法格式，着眼于词语间语义上的协调、和谐性；语义特征分析针对整个句法格式，着眼于格式里处于关键位置的词。", zh:"词语间语义制约分析的定义与跟语义特征分析的同异（课堂笔记补充）。" },
+  "s-va-liao": { page:"第十三节 13.6 之后 · 南大学姐课堂笔记（底本未展开）", quote:"动结式带结果补语的述补结构：剪短了（结果实现＋，结果偏离＋）；剪长了（－，＋）；拉短了（－，＋）；拉长了（＋，＋）；画短了（＋，＋）；画长了（＋，＋）；买短了（－，＋）；买长了（－，＋）；剪齐了（＋，－）。", zh:"「VA了」表结果实现还是结果偏离，取决于补语与动词语义是否协调（课堂笔记补充）。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一座城堡，三种数法 —— 《构式语法与汉语构式》第四章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · 数量同构<small>《构式语法与汉语构式》吴为善 ｜ 第四章第一节</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">量</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第四章「句法同构与多义解读」第一节 ｜ 单节深读页</p>
+  <h1>一座城堡，三种数法</h1>
+  <p class="lead">攻占了三座城堡／攻破了三次城堡／攻打了三天城堡——同一个句法模子「NP(受)+VP(t)+QM」，句末数量成分却被<strong>物量、动量、时量</strong>轮流占据。表面“一式三义”，底层却是同一件事：量词把实体、事件、时段<strong>个体化</strong>成计量单位，数词再落实量化状态<sup class="cite" data-cite="individuate"></sup>。三式的差别只在<strong>时间因素</strong>：A 式无关时间，B 式蕴涵时间，C 式凸显时间<sup class="cite" data-cite="timefactor"></sup>。判断它们同构的依据，是 Lakoff 的<strong>最大理据性原则</strong>：句法上有联系、语义上有联系的构式，存在就有理据<sup class="cite" data-cite="maxmoti"></sup>。</p>
+  <ul class="chips">
+    <li><b>三式</b>　A 实体计量 · B 事件计量 · C 时段计量</li>
+    <li><b>码化</b>　NP(受)+VP(t)+QM（分裂前移话题化）</li>
+    <li><b>同一功能</b>　个体化 ＋ 数词落实量化状态</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 340" role="img" aria-label="示意图：同一模子里物量动量时量三种数法及时间轴">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="60" y="34" width="250" height="60" rx="11"/>
+          <rect x="60" y="116" width="250" height="60" rx="11"/>
+          <rect x="60" y="198" width="250" height="60" rx="11"/>
+        </g>
+        <text x="185" y="60" text-anchor="middle" font-size="15" fill="#29241d">攻占了三座城堡</text>
+        <text x="185" y="80" text-anchor="middle" font-size="11" fill="#6f675a">物量 · 实体计量（A式）</text>
+        <text x="185" y="142" text-anchor="middle" font-size="15" fill="#29241d">攻破了三次城堡</text>
+        <text x="185" y="162" text-anchor="middle" font-size="11" fill="#6f675a">动量 · 事件计量（B式）</text>
+        <text x="185" y="224" text-anchor="middle" font-size="15" fill="#29241d">攻打了三天城堡</text>
+        <text x="185" y="244" text-anchor="middle" font-size="11" fill="#6f675a">时量 · 时段计量（C式）</text>
+        <path d="M320 64 L372 64 M320 146 L372 146 M320 228 L372 228" stroke="#a87f24" stroke-width="2" fill="none" marker-end="url(#arr6)"/>
+        <defs><marker id="arr6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <text x="346" y="52" text-anchor="middle" font-size="10.5" fill="#a87f24">话题化</text>
+        <text x="346" y="134" text-anchor="middle" font-size="10.5" fill="#a87f24">话题化</text>
+        <text x="346" y="216" text-anchor="middle" font-size="10.5" fill="#a87f24">话题化</text>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="382" y="34" width="250" height="60" rx="11"/>
+          <rect x="382" y="116" width="250" height="60" rx="11"/>
+          <rect x="382" y="198" width="250" height="60" rx="11"/>
+        </g>
+        <text x="507" y="60" text-anchor="middle" font-size="15" fill="#29241d">城堡攻占了三座</text>
+        <text x="507" y="80" text-anchor="middle" font-size="11" fill="#6f675a">QM 回指受事 · 成为焦点</text>
+        <text x="507" y="142" text-anchor="middle" font-size="15" fill="#29241d">城堡攻破了三次</text>
+        <text x="507" y="80" text-anchor="middle" font-size="11" fill="#6f675a">QM 回指受事 · 成为焦点</text>
+        <text x="507" y="224" text-anchor="middle" font-size="15" fill="#29241d">城堡攻打了三天</text>
+        <text x="507" y="244" text-anchor="middle" font-size="11" fill="#6f675a">QM 回指受事 · 成为焦点</text>
+        <g stroke="#a87f24" stroke-width="1.4" fill="none">
+          <line x1="70" y1="286" x2="70" y2="306"/>
+          <line x1="280" y1="286" x2="280" y2="306"/>
+          <line x1="490" y1="286" x2="490" y2="306"/>
+        </g>
+        <line x1="70" y1="296" x2="490" y2="296" stroke="#a87f24" stroke-width="1.4"/>
+        <text x="70" y="324" text-anchor="middle" font-size="11" fill="#3d5a6c">一个时间段</text>
+        <text x="280" y="324" text-anchor="middle" font-size="11" fill="#a87f24">三个时间段</text>
+        <text x="490" y="324" text-anchor="middle" font-size="11" fill="#9d4938">一段延续时间</text>
+        <text x="340" y="270" text-anchor="middle" font-size="11" fill="#6f675a">时间因素：无关 → 蕴涵 → 凸显</text>
+      </g>
+    </svg>
+    <figcaption>主视觉一（示意，非原文原图）：左列三式经分裂前移话题化变为右列同构句式；下方时间轴显示三式对时间因素的不同处理。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景一：三式对照 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 多义性</p>
+  <h2>同一个模子，三种计量</h2>
+  <div class="guess" data-guess>
+    <p class="q">「这座楼烧毁了三次」——句末的「三次」说明的是什么？</p>
+    <div class="opts">
+      <button data-ans="a">楼的数量</button>
+      <button data-ans="b">事件的次数（类别事件的计量）</button>
+      <button data-ans="c">烧毁动作持续的时长</button>
+    </div>
+    <p class="reveal" hidden>是<strong>类别事件的计量</strong>：「（某人）烧毁了这座楼」指一个事件类，动量词「次」使它个体化，「三」落实量化状态；它以整个事件过程的延续时间段作为计量单位，所以例(8)在时间轴上包含<strong>三个</strong>时间段——不是楼的数量，也不是单一时长<sup class="cite" data-cite="bshi"></sup>。</p>
+  </div>
+  <p>三类句式同属「NP(受)+VP(t)+QM」：受事宾语「数量＋NP」分裂前移话题化，句末 QM 回指受事、成为焦点；V 是及物动作动词，常带结果补语、带体标记「了」，表述已然事件<sup class="cite" data-cite="coding"></sup>。点选量词类型，看句子怎么换：</p>
+  <div class="ladder" id="qmLadder">
+    <button class="rung" data-q="0" aria-pressed="true"><b>A 式</b><small>物量 · 实体计量</small></button>
+    <button class="rung" data-q="1" aria-pressed="false"><b>B 式</b><small>动量 · 事件计量</small></button>
+    <button class="rung" data-q="2" aria-pressed="false"><b>C 式</b><small>时量 · 时段计量</small></button>
+  </div>
+  <div class="result" id="qmOut">
+    <p class="sent" id="qmSent"></p>
+    <dl class="rows">
+      <dt>计量</dt><dd id="qmWhat"></dd>
+      <dt>时间</dt><dd id="qmTime"></dd>
+    </dl>
+  </div>
+  <p class="small muted">语序背景：张伯江、方梅（1996）指出「VNM（攻破了城堡三次）」与「VMN（攻破了三次城堡）」两种语序中，后者使用频率自二三十年代以来提高了、组合能力增强了、适用面更广了，正处于进一步发展过程中<sup class="cite" data-cite="vnm"></sup>。</p>
+</section>
+
+<!-- ============ 场景二：个体化 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 同一功能</p>
+  <h2>量词干的是同一份活：个体化</h2>
+  <p>刘辉（2009）把物量词改称<strong>实体量词</strong>、动量词改称<strong>事件量词</strong>、时量词自然就是<strong>时段量词</strong><sup class="cite" data-cite="liuhui"></sup>。三者的共同功能只有一个：把「类」切成可计数的「个体」。实体量词的个体化功能，Lyons（1977）较早讨论，大河内康宪（1993）用来考察汉语，刘丹青（2008）强化为定论：实体量词<strong>不能</strong>为名词增加数量信息，分类只是附带功能，最主要的功能就是「个体化」<sup class="cite" data-cite="lyons"></sup>。</p>
+  <div class="lab" id="indLab">
+    <h3>个体化三级</h3>
+    <div class="ladder" id="indLadder">
+      <button class="rung" data-i="0" aria-pressed="true"><b>实体</b><small>类名 → 个体化 → 表述</small></button>
+      <button class="rung" data-i="1" aria-pressed="false"><b>事件</b><small>类别事件 → 个体事件</small></button>
+      <button class="rung" data-i="2" aria-pressed="false"><b>时段</b><small>人为规定的计量单位</small></button>
+    </div>
+    <div class="result" id="indOut">
+      <p class="sent" id="indSent"></p>
+      <p class="small muted" id="indNote"></p>
+    </div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 250" role="img" aria-label="示意图：实体事件时段三类量词的个体化功能及认知域">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <defs><marker id="arr7" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="24" y="40" width="188" height="96" rx="12"/>
+          <rect x="246" y="40" width="188" height="96" rx="12"/>
+          <rect x="468" y="40" width="188" height="96" rx="12"/>
+        </g>
+        <text x="118" y="66" text-anchor="middle" font-size="15.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">实体量词</text>
+        <text x="118" y="90" text-anchor="middle" font-size="11.5" fill="#6f675a">书 → 本 → 三本书</text>
+        <text x="118" y="110" text-anchor="middle" font-size="11.5" fill="#3d5a6c">空间范畴</text>
+        <text x="340" y="66" text-anchor="middle" font-size="15.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">事件量词</text>
+        <text x="340" y="90" text-anchor="middle" font-size="11.5" fill="#6f675a">买海鲜 → 次 → 三次</text>
+        <text x="340" y="110" text-anchor="middle" font-size="11.5" fill="#a87f24">介于两者之间</text>
+        <text x="562" y="66" text-anchor="middle" font-size="15.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">时段量词</text>
+        <text x="562" y="90" text-anchor="middle" font-size="11.5" fill="#6f675a">攻打县城 → 天 → 三天</text>
+        <text x="562" y="110" text-anchor="middle" font-size="11.5" fill="#9d4938">时间范畴</text>
+        <path d="M216 88 L242 88" stroke="#a87f24" stroke-width="2" marker-end="url(#arr7)"/>
+        <path d="M438 88 L464 88" stroke="#a87f24" stroke-width="2" marker-end="url(#arr7)"/>
+        <text x="229" y="74" text-anchor="middle" font-size="10.5" fill="#a87f24">隐喻</text>
+        <text x="451" y="74" text-anchor="middle" font-size="10.5" fill="#a87f24">隐喻</text>
+        <text x="340" y="182" text-anchor="middle" font-size="12" fill="#29241d">共同功能：个体化（成为计量单位）＋ 数词落实量化状态</text>
+        <text x="340" y="208" text-anchor="middle" font-size="11" fill="#6f675a">事件在特定空间展开必涉时间延续，故动量词居中——这正是承继链接的认知依据</text>
+      </g>
+    </svg>
+    <figcaption>主视觉二（示意，非原文原图）：三类量词共享个体化功能；动量词以事件本身为对象，介于空间域与时间域之间。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景三：同构辩论 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 同构论证</p>
+  <h2>「洗一次」是宾语还是补语？</h2>
+  <div class="guess" data-guess>
+    <p class="q">「一次头也没洗」——这句话能说吗？</p>
+    <div class="opts">
+      <button data-ans="a">能说</button>
+      <button data-ans="b">不能说，「一次」修饰「洗」</button>
+    </div>
+    <p class="reveal" hidden>能说。反对派说「头不能论次」，所以「一次头」不合法；笔者回应：不单说只证明它不是<strong>自由形式</strong>，却不能否认它是<strong>句法形式</strong>——朱德熙正是举出「一次头也没洗」「两天头一洗，就感冒了」「一天旅馆也没住」「三天旅馆住下来，胃口就没有了」来反驳的<sup class="cite" data-cite="rebut"></sup>。</p>
+  </div>
+  <p>丁声树等（1961）最早提出「动词＋动量」「动词＋时量」与「动词＋物量」同构，把其中的数量成分判为<strong>准宾语</strong>；赵元任（1979）称「自身宾语」；朱德熙（1982、1985）给出结构平行论证：动词后带动量、时量的格式跟述补结构没有共同点，跟带名量宾语的格式处处平行<sup class="cite" data-cite="zhu"></sup>。看这四格平行——</p>
+  <div class="lab" id="parLab">
+    <h3>朱德熙平行格式</h3>
+    <div class="ladder" id="parLadder">
+      <button class="rung" data-p="0" aria-pressed="true"><b>名量</b><small>买一本</small></button>
+      <button class="rung" data-p="1" aria-pressed="false"><b>动量</b><small>洗一次</small></button>
+      <button class="rung" data-p="2" aria-pressed="false"><b>时量</b><small>住一天</small></button>
+    </div>
+    <div class="result" id="parOut">
+      <p class="sent" id="parSent"></p>
+      <p class="small muted" id="parNote"></p>
+    </div>
+  </div>
+  <p>可这观点至今不是主流：多数学者仍把「VP+QM（物量）」判述宾，把「VP+QM（动量/时量）」判述补。笔者的回应分两步：其一，上述平行格式证明它们本是同一属性的成分，判宾语还是补语<strong>并不重要</strong>；其二，反对派依赖的「语义联系」靠不住——且看形义错配。</p>
+</section>
+
+<!-- ============ 场景四：形义错配 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 形义错配</p>
+  <h2>结构和意义，本来就会错位</h2>
+  <p>朱德熙提醒：结构上相关的两个成分，意义上不一定有联系；反之，意义上有联系的结构上也不一定有直接关系<sup class="cite" data-cite="mismatch"></sup>。语言里这类「形义错配」遍地都是——点开看三例：</p>
+  <div class="wordpool" id="misPool">
+    <button data-m="0">他们／都去了</button>
+    <button data-m="1">圆圆的排成一个圈儿</button>
+    <button data-m="2">酽酽的沏一杯茶</button>
+  </div>
+  <div class="result" id="misOut" hidden>
+    <p class="sent" id="misSent"></p>
+    <dl class="rows">
+      <dt>结构</dt><dd id="misStruct"></dd>
+      <dt>意义</dt><dd id="misMean"></dd>
+    </dl>
+  </div>
+  <p>「都」「也」在结构层次上修饰后面的谓词性成分，意义上却说明<strong>前面主语</strong>的范围，不能划归主语；「圆圆的」「酽酽的」结构上是状语，意义上却联系动词的<strong>宾语</strong>。可见「语义上没联系」从来不是否认句法同构的理由——VP+QM 的三式同构，由此站稳。</p>
+</section>
+
+<!-- ============ 场景五：同类演绎 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 同构演绎</p>
+  <h2>换到主位和宾位，照样成立</h2>
+  <p>数量结构在汉语里分布很广，同构效应集中在主、宾语两个指称位置。「一量＋都/也＋VP（否定）」里「一量」在<strong>主位</strong>：「一」表非真值义，不能用其他数字替换；量词可为物量、动量、时量；否定最小量以达否定全量<sup class="cite" data-cite="yiliang"></sup>。「V₁一量 V₂一量」里「一量」在<strong>宾位</strong>：两个「V一量」复叠，施事同一、两个「一量」同指；量词被动量、时量替换后，原型特征不变，构式义仍是行为惯性的消极评价<sup class="cite" data-cite="v1v2"></sup>。点一组看例句：</p>
+  <div class="ladder" id="dedLadder">
+    <button class="rung" data-d="0" aria-pressed="true"><b>主位·物量</b><small>一本都没看</small></button>
+    <button class="rung" data-d="1" aria-pressed="false"><b>主位·动量</b><small>一次都没去过</small></button>
+    <button class="rung" data-d="2" aria-pressed="false"><b>主位·时量</b><small>一天都不休息</small></button>
+    <button class="rung" data-d="3" aria-pressed="false"><b>宾位·替换</b><small>见一次闹一次</small></button>
+  </div>
+  <div class="result" id="dedOut">
+    <p class="sent" id="dedSent"></p>
+    <p class="small muted" id="dedNote"></p>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 230" role="img" aria-label="示意图：时间因素光谱与认知域承继">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <defs><marker id="arr8" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#9d4938"/></marker></defs>
+        <line x1="70" y1="120" x2="610" y2="120" stroke="#a87f24" stroke-width="2" marker-end="url(#arr8)"/>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <circle cx="140" cy="120" r="46"/>
+          <circle cx="340" cy="120" r="46"/>
+          <circle cx="540" cy="120" r="46"/>
+        </g>
+        <text x="140" y="116" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">A 式</text>
+        <text x="140" y="136" text-anchor="middle" font-size="11" fill="#6f675a">无关时间</text>
+        <text x="340" y="116" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">B 式</text>
+        <text x="340" y="136" text-anchor="middle" font-size="11" fill="#6f675a">蕴涵时间</text>
+        <text x="540" y="116" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">C 式</text>
+        <text x="540" y="136" text-anchor="middle" font-size="11" fill="#6f675a">凸显时间</text>
+        <text x="140" y="60" text-anchor="middle" font-size="11" fill="#3d5a6c">空间域</text>
+        <text x="340" y="60" text-anchor="middle" font-size="11" fill="#a87f24">居间</text>
+        <text x="540" y="60" text-anchor="middle" font-size="11" fill="#9d4938">时间域</text>
+        <text x="340" y="196" text-anchor="middle" font-size="11.5" fill="#6f675a">隐喻机制形成构式承继链接——像一套邮票：图形各异，主题、构图、色彩透出同一性</text>
+      </g>
+    </svg>
+    <figcaption>主视觉三（示意，非原文原图）：时间因素由弱到强的光谱，与认知域由空间到时间的滑变对应。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景六：收束 ============ -->
+<section class="scene" data-scene="6">
+  <p class="kicker">场景 6 ｜ 收束</p>
+  <h2>为什么大脑觉得它们「是一套」</h2>
+  <p>Goldberg 早年强调构式的<strong>不可预测性</strong>，同时也借鉴 Lakoff（1987）指出构式具有<strong>理据的可探索性</strong>：如果构式 A 和构式 B 句法上有联系、语义上有一定联系，A 的存在就有理据——这是<strong>最大理据性原则</strong>，也是本章判断同构的依据<sup class="cite" data-cite="maxmoti"></sup>。Goldberg（2006）后期理论更强调形式和功能的匹配：表层形式相同、话语功能一致的若干构式形成一个多义范畴，成员共有最大化的承继性理据<sup class="cite" data-cite="g06"></sup>。</p>
+  <p>三式同构的句法实现，作者归因于<strong>类推效应</strong>：Blevins &amp; Blevins（2009）指出，人的大脑是根深蒂固的模式搜索者，一旦发现模式就归类、建立联系、预测更深层的关系；类比思维是人类认知的核心<sup class="cite" data-cite="blevins"></sup>。就好比一套数枚邮票——图形不同，主题表现、构图设计、色彩运用、表意链接却透出同一性，「大同小异」让人感知它们属于同一家族<sup class="cite" data-cite="stamp"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">同一性在功能</p>
+      <p class="small muted">实体、事件、时段被同一地个体化为计量单位，数词落实量化状态；话语功能一致——凸显计量状态。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">多义性在时间</p>
+      <p class="small muted">A 式与时间无关（只有一个事件、一个时间段）；B 式蕴涵时间（多个事件、多个时间段）；C 式时间显性（延续时间本身成为计量对象）<sup class="cite" data-cite="timefactor"></sup>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>交卷前三题</h2>
+  <p class="q">1. C 式（时段计量）与 A 式（实体计量）的语义差异是什么？</p>
+  <div class="opts">
+    <button data-ans="a">C 式计量实体，A 式计量时间</button>
+    <button data-ans="b">C 式时间因素显性，A 式无关时间因素</button>
+  </div>
+  <p class="why" hidden>C 式中事件过程延续的时间本身成为计量对象，时间因素显性；A 式只包含一个事件、在时间轴上只有一个时间段，计量本身与时间因素无关<sup class="cite" data-cite="timefactor"></sup>。</p>
+  <p class="q">2. 按刘丹青（2008），实体量词最主要的功能是？</p>
+  <div class="opts">
+    <button data-ans="a">给名词增加数量信息</button>
+    <button data-ans="b">个体化（分类只是附带功能）</button>
+  </div>
+  <p class="why" hidden>是个体化。实体量词不能为名词增加数量信息，对名词指称的分类仅是附带功能，最主要的功能就是使表达类别的名词具有个体外延<sup class="cite" data-cite="lyons"></sup>。</p>
+  <p class="q">3. 「一量＋都/也＋VP（否定）」构式的表达效果是？</p>
+  <div class="opts">
+    <button data-ans="a">否定最小量以达否定全量</button>
+    <button data-ans="b">强调数量恰好为一</button>
+  </div>
+  <p class="why" hidden>是否定最小量以达否定全量：「一本都没看」＝所有哲学书都没看过，「一次都没去过」＝从来都没去过；其中「一」表非真值义，不能用其他数字替换<sup class="cite" data-cite="yiliang"></sup>。</p>
+</section>
+
+<section class="scene">
+  <p class="kicker">边界与延伸</p>
+  <h2>这一页讲了什么、没讲什么</h2>
+  <p><strong>讲了</strong>：第四章第一节「实体、事件、时段的数量同构」（底本 L3058–L3291）——NP(受)+VP(t)+QM 的 A/B/C 三式及其多义性、量词功能的同一性（个体化）、VP+QM 的同构论证与形义错配、两类同类构式的同构演绎。</p>
+  <p><strong>没讲</strong>：第四章第二节「黏合定中 NN、NV 的称谓同构」（底本 L3293 起）、第三节「述补 VR 黏合两字组的虚实同构」；第三、五至八章内容见系列深读页。这些都可按同规格续做深读页。</p>
+  <p class="small muted">底本为 PaddleOCR 转录的电子书文本，无原书页码；角标中的「底本 Lx」指该内容在研读底本中的行号。例句编号沿用底本原文编号。引用关键数字与结论前，请点开角标核对原句。</p>
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="构式语法与汉语构式-01深读-构式语法入门.html">01 绪论</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a class="cur" href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </nav>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "individuate": { page:"底本 L3164", quote:"综上所述，“NP（受）+VP（t）+QM”这三类句式具有内在的同构性，实体计量（A式）、事件计量（B式）、时段计量（C式）具有共同的构式理据，不同类型的量词实现了同一个功能，即将实体、事件、时间“个体化”以成为计量单位，并以数词落实对量化状态的描述。", zh:"三式共同的构式理据：各类量词实现同一功能——个体化；数词落实量化状态。" },
+  "maxmoti":     { page:"底本 L3053", quote:"Lakoff 为语法承继中的“理据性”这一术语提供了准确的定义：“如果一个构式的结构是从语言中的其他构式承继的，则该构式的存在具有理据性。”在此基础上他提出了最大理据性原则：“如果构式 A 和构式 B 在句法上有联系，那么当构式 A 和构式 B 在语义上存在一定程度的联系时，构式 A 的存在是有理据的。”", zh:"Lakoff 的理据性定义与最大理据性原则——本章判断句法是否同构的依据。" },
+  "g06":         { page:"底本 L3055", quote:"Goldberg(2006)后期发展的认知构式语法理论强调形式和功能的匹配，认为表层形式相同，话语功能一致的若干构式形成一个多义范畴，范畴成员共有最大化的承继性理据。", zh:"Goldberg 2006：形式相同、功能一致的若干构式形成多义范畴，成员共有最大化承继性理据。" },
+  "coding":      { page:"底本 L3088", quote:"上述句式可统一码化为“NP(受)+VP(t)+QM”……NP为话题主语（即分裂前移的“城堡”），论元角色为受事……核心成分V为及物性的动作动词，往往带有补语成分强调行为动作的结果……并且一般带有体标记“了”……句末的QM，具有指代功能（回指分裂前移的“城堡”），成为表述的焦点，凸显了计量状态。", zh:"构式码化 NP(受)+VP(t)+QM：受事分裂前移话题化，施事隐退；QM 回指受事成为焦点，凸显计量状态。" },
+  "vnm":         { page:"底本 L3076", quote:"张伯江、方梅(1996)曾指出：此类格式可以有两种不同的语序，概括为VNM（如“攻破了城堡三次”）和VMN（如“攻破了三次城堡”）……后者（即VMN）的使用频率提高了，组合能力增强了，适用面更广了，正处于进一步发展的过程中。", zh:"张伯江、方梅 1996：VMN 语序较二三十年代使用频率提高、组合能力增强、适用面更广，仍在发展。" },
+  "ashi":        { page:"底本 L3109-3111", quote:"上述例句中的 M 为物量，QM 是对某类实体的计量……量词“本”使这个通指类名“个体化”，成为可计量的单位，“两”落实了量化状态……该句式表述的是一个已然事件，但就计量本身来说，与时间因素无关。", zh:"A 式：物量对实体计量；个体化＋数词落实；已然事件，但计量与时间因素无关。" },
+  "bshi":        { page:"底本 L3126", quote:"笔者赞同刘辉（2009）的观点，认为该句式中的 QM 是对“类别事件”的计量……QM 是以整个事件过程的延续时间段作为计量单位，计量本身蕴涵了时间因素……B 式可能包含多个事件，在时间轴上可能有好几个连续的时间段，如例（8）就包含了三个时间段。", zh:"B 式：QM 对类别事件计量（刘辉 2009）；以事件过程延续时间段为单位，蕴涵时间因素；例(8)含三个时间段。" },
+  "cshi":        { page:"底本 L3143", quote:"上述例句中的 M 为时量，QM 是对某个事件持续时间的计量……时量词“天”是人为制定的时间计量单位，使这个时段“个体化”……但是事件过程延续的时间本身成为计量对象，因此时间因素是显性的。", zh:"C 式：时量对事件持续时间计量；时间单位个体化是人为规定；时间因素显性。" },
+  "timefactor":  { page:"底本 L3145-3151", quote:"实体计量(A式)、事件计量(B式)、时段计量(C式)在语义上的差异表现为对时间因素的处理……时间因素：无关时间因素 → 蕴涵时间因素 → 凸显时间因素。物量词实现个体化以三维空间的实体为对象，属于空间范畴；时量词实现个体化以事件延续的时间为对象，属于时间范畴；而动量词……介于两者之间。", zh:"三式差异＝时间因素处理：无关→蕴涵→凸显；认知域：空间域→（居间）→时间域。" },
+  "stamp":       { page:"底本 L3157", quote:"这三种构式给我们一种属于“一套”的感觉，就好比发行的一套数枚邮票，尽管图形不同，但主题表现、构图设计、色彩运用、表意链接等透出某种同一性，总体上的“大同小异”让人们感知到它们属于同一“家族”。就句法实现来看是一种“类推效应”。", zh:"“一套邮票”比喻：图形各异而同一性可感；句法实现上是类推效应。" },
+  "blevins":     { page:"底本 L3159", quote:"Blevins & Blevins (2009) 指出，人的大脑是一个根深蒂固的模式搜索者。一旦它发现一个模式，就会把它进行归类且与其他模式建立联系，并用来预测更深层的模式和关系……类比思维能力代表了人类认知的核心。", zh:"Blevins & Blevins 2009：大脑是模式搜索者；类比思维是人类认知的核心——三式同构是类推效应的后果。" },
+  "lyons":       { page:"底本 L3174", quote:"Lyons(1977)较早讨论了实体量词(即“物量词”)的个体化功能……大河内康宪(1993)……指出汉语实体量词的作用在于使得表达类名(name of kind)的光杆名词能够指称个体。刘丹青(2008)……指出实体量词不能为名词增加数量信息，对名词指称的分类也仅仅是附带功能，最主要的功能就是“个体化”(individuate)。", zh:"实体量词的个体化功能：Lyons 1977 首论，大河内康宪 1993 考察汉语，刘丹青 2008 定为最主要功能。" },
+  "liuhui":      { page:"底本 L3169", quote:"涉及量词的功能，笔者借鉴刘辉（2009）的观点将物量词界定为“实体量词”，动量词界定为“事件量词”，那么，时量词自然就可界定为“时段量词”。", zh:"借鉴刘辉 2009：物量词＝实体量词、动量词＝事件量词、时量词＝时段量词。" },
+  "eventq":      { page:"底本 L3197", quote:"事件量词是以整个事件过程的延续时间段作为计量单位，计量本身蕴涵了时间因素。因此对事件量词应该作如下的界定：事件量词的个体化作用表现在为事件类别（或次类事件）指派不同的个体时段，而数词表达的则是和话语有关的个体事件的数量。", zh:"事件量词界定：为事件类别（或次类）指派不同个体时段；以事件过程延续时间段为计量单位，蕴涵时间因素。" },
+  "zhu":         { page:"底本 L3211", quote:"丁声树等（1961）首先提出“动词+动量”……和“动词+时量”……与“动词+物量”……具有同构性，因此将其中的数量成分判定为“准宾语”……赵元任（1979）指出汉语有一些特殊类型的宾语，其中有一类称为“自身宾语”……朱德熙（1982，1985）……指出：动词后头带表示动量或者时量词语的格式（如“洗一次、住一天”）跟述补结构之间没有什么共同点。", zh:"同构观点源流：丁声树等 1961「准宾语」→赵元任 1979「自身宾语」→朱德熙 1982/1985 结构平行论证。" },
+  "rebut":       { page:"底本 L3227-3235", quote:"首先，我们通常不单说“一次头、一下门”，只能证明它们不是一个自由形式，却无法否认它们是一个句法形式。事实上朱德熙就举出了下列句子加以反驳：一次头也没洗。两次头一洗，就感冒了。一天旅馆也没住。三天旅馆住下来，胃口就没有了。", zh:"对反对派的反驳：不单说≠不合法；朱德熙举「一次头也没洗」「两天旅馆住下来……」等句为证。" },
+  "mismatch":    { page:"底本 L3237", quote:"朱德熙明确指出：结构上相关的两个成分，意义上不一定有多少联系；反过来说，意义上有联系的成分结构上也不一定有直接关系。比如副词“都”和“也”从结构上看是修饰后面的谓词性成分的，可是从意义上看却是说明前面主语的范围的……笔者认为，此类现象属于典型的“形义错配”现象。", zh:"形义错配：「都/也」结构上修饰谓词、意义上说明主语范围；「圆圆的」「酽酽的」亦然。" },
+  "yiliang":     { page:"底本 L3251-3265", quote:"该构式的特点是 VP 是否定形式，与“都”或“也”呼应。特别值得关注的是该构式的主语是“一量”：其中“一”表示非真值义，不能用其他数字替换；量词可以是各类量词，包括物量、动量、时量。从逻辑上分析，整个构式就是通过否定最小量“一量”来达到否定全量的表达效果。", zh:"「一量+都/也+VP(否定)」：一量居主位；「一」非真值义不可替换；三类量词皆可；否定最小量达否定全量。" },
+  "v1v2":        { page:"底本 L3290", quote:"“V₁一量 V₂一量”构式表述的不是一次性事件，而是一个事件的多次反复，对话语主体来说已经成了一种行为的“惯性”……从话语功能来分析……表达了说话人对话语主体表现出来的某种行为惯性的消极评价。", zh:"「V₁一量 V₂一量」：一量居宾位；量词可被动量、时量替换；构式义＝行为惯性的消极评价。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景一：三式对照 ================= */
+const QMS = [
+  { sent:"新书弄坏了两本。", what:"物量：QM「两本」对实体「新书」计量；量词「本」使通指类名个体化，「两」落实量化状态。", time:"无关时间：只包含一个事件，时间轴上只有一个时间段。" },
+  { sent:"这座楼烧毁了三次。", what:"动量：QM「三次」对类别事件计量——「（某人）烧毁了这座楼」是一个事件类，「次」使之个体化。", time:"蕴涵时间：以整个事件过程的延续时间段为计量单位；例(8)包含三个时间段。" },
+  { sent:"县城连续攻打了三天。", what:"时量：QM「三天」对事件持续时间计量；「天」是人为制定的时间计量单位，使时段个体化。", time:"凸显时间：事件过程延续的时间本身成为计量对象。" }
+];
+const qmSent = document.getElementById("qmSent"), qmWhat = document.getElementById("qmWhat"), qmTime = document.getElementById("qmTime");
+function qmShow(i){
+  [...document.querySelectorAll("#qmLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  qmSent.textContent = QMS[i].sent;
+  qmWhat.textContent = QMS[i].what;
+  qmTime.textContent = QMS[i].time;
+}
+document.querySelectorAll("#qmLadder .rung").forEach(b => { b.onclick = () => qmShow(+b.dataset.q); });
+qmShow(0);
+
+/* ================= 场景二：个体化三级 ================= */
+const INDS = [
+  { sent:"书 → 本 → 三本书", note:"实体量词：类名「书」经「本」个体化，获得个体外延构成集合，成员数量由数词表达（刘丹青 2008）。" },
+  { sent:"买海鲜 → 次 → 三次", note:"事件量词：光杆动词指称事件类别；「次」为事件类别（或次类）指派不同个体时段，数词表达个体事件数量（刘辉 2009）。同一次类可于不同时段在同一处所发生，不能于同一时段在不同处所发生。" },
+  { sent:"攻打县城 → 天 → 三天", note:"时段量词：客观时间无穷延续，时间单位的个体化完全人为规定——「年、天、小时、分钟」作依据，数词表达时段数量。" }
+];
+const indSent = document.getElementById("indSent"), indNote = document.getElementById("indNote");
+function indShow(i){
+  [...document.querySelectorAll("#indLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  indSent.textContent = INDS[i].sent;
+  indNote.textContent = INDS[i].note;
+}
+document.querySelectorAll("#indLadder .rung").forEach(b => { b.onclick = () => indShow(+b.dataset.i); });
+indShow(0);
+
+/* ================= 场景三：平行格式 ================= */
+const PARS = [
+  { sent:"买一本 · 买了一本 · 买一本书 · 一本也没买", note:"动词＋名量：四格平行——光杆、带「了」、插宾语、「一量也没」全量否定。" },
+  { sent:"洗一次 · 洗了一次 · 洗一次头 · 一次也没洗", note:"动词＋动量：与名量处处平行；「一次头」不单说，但「一次头也没洗」合法——是句法形式，不是自由形式。" },
+  { sent:"住一天 · 住了一天 · 住一天旅馆 · 一天也没住", note:"动词＋时量：平行同上；「三天旅馆住下来，胃口就没有了」证明「一天旅馆」可进入句法槽。" }
+];
+const parSent = document.getElementById("parSent"), parNote = document.getElementById("parNote");
+function parShow(i){
+  [...document.querySelectorAll("#parLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  parSent.textContent = PARS[i].sent;
+  parNote.textContent = PARS[i].note;
+}
+document.querySelectorAll("#parLadder .rung").forEach(b => { b.onclick = () => parShow(+b.dataset.p); });
+parShow(0);
+
+/* ================= 场景四：形义错配 ================= */
+const MIS = [
+  { sent:"他们／都去了，老王／也去了。", struct:"「都」「也」结构上修饰后面的谓词性成分。", mean:"意义上说明前面主语的范围——结构层次上不能划归主语。" },
+  { sent:"圆圆的排成一个圈儿。", struct:"「圆圆的」结构上是状语，修饰动词「排」。", mean:"意义上却联系动词的宾语「圈儿」。" },
+  { sent:"酽酽的沏一杯茶。", struct:"「酽酽的」结构上是状语，修饰动词「沏」。", mean:"意义上却联系动词的宾语「茶」。" }
+];
+const misOut = document.getElementById("misOut"), misSent = document.getElementById("misSent"),
+      misStruct = document.getElementById("misStruct"), misMean = document.getElementById("misMean");
+document.querySelectorAll("#misPool button").forEach(b => {
+  b.onclick = () => {
+    const m = MIS[+b.dataset.m];
+    document.querySelectorAll("#misPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    misOut.hidden = false;
+    misSent.textContent = m.sent;
+    misStruct.textContent = m.struct;
+    misMean.textContent = m.mean;
+  };
+});
+
+/* ================= 场景五：同类演绎 ================= */
+const DEDS = [
+  { sent:"一本都没看。", note:"主位·物量（例16）：「一」非真值义；否定最小量——所有哲学书都没看过。" },
+  { sent:"一次都没去过。", note:"主位·动量（例18）：女婿不愿见岳父——从来都没去过。" },
+  { sent:"一天都不休息。", note:"主位·时量（例20）：整个春节天天加班——每天都在上班。" },
+  { sent:"见一次闹一次。", note:"宾位·动量替换（例22）：两个「V一量」复叠，施事同一、两个「一量」同指；先「见」后「闹」——行为惯性的消极评价。" }
+];
+const dedSent = document.getElementById("dedSent"), dedNote = document.getElementById("dedNote");
+function dedShow(i){
+  [...document.querySelectorAll("#dedLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  dedSent.textContent = DEDS[i].sent;
+  dedNote.textContent = DEDS[i].note;
+}
+document.querySelectorAll("#dedLadder .rung").forEach(b => { b.onclick = () => dedShow(+b.dataset.d); });
+dedShow(0);
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

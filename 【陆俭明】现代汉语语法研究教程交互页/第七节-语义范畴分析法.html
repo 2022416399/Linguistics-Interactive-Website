@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第七节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第七节 交互研读</p>
+  <h1>语义范畴：意义类如何管住句子</h1>
+  <p class="lead">范畴是哲学老词，本书的「语义范畴」却有严格界定：不是词汇语义范畴，而是跟句法相关、对句法起制约作用的语义范畴。数量、领属、自主、顺序四种范畴各有实证，顺序范畴的四条规矩是全节的点睛之笔。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html" class="cur">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>语义范畴</b>界定</li><li>数量·领属</li><li>自主范畴</li><li>顺序四规矩</li><li>形式意义结合</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>语义范畴：把零散的语法意义归成大堆</h2>
+<p>第二篇的收尾。把「指向」再抽象一层：不再看个别成分指谁，而看数量、领属、自主、顺序这些范畴如何整体地制约句法。全节的落点，是朱德熙那句话——讲形式的时候要能得到语义方面的验证，讲意义的时候要能得到形式方面的验证。</p>
+
+<article class="chapter" data-chapter="7">
+<h3>第七节｜汉语语法研究的语义范畴分析法</h3>
+
+<p>范畴，本是哲学认识论的老词。哲学家康德把范畴看作人整理经验的先天框架；语法研究借它，是要把零散的语法意义归成大堆。</p>
+
+<blockquote>"范畴"是人在认知上对客观事物依照人类长期以来所认识到的不同客观事物的不同本质特点所作的高度抽象的概括。<sup class="cite" data-cite="s-fanwei-dingyi">出处</sup></blockquote>
+
+<p>但本书所说的"语义范畴"，有严格得多的界定——这是全节的理论基石，请务必读细。</p>
+
+<blockquote>本节所说的"语义范畴"……不是指对真实世界里所存在的客观事物进行分类所得的范畴，不是指词汇语义范畴，而是指跟句法相关的语义范畴，特别着眼于对句法起一定制约作用的语义范畴。<sup class="cite" data-cite="s-yuyi-fanchou">出处</sup></blockquote>
+
+<p>换句话说，"水果""家具"这类词义分类不算；只有能管住句子能不能说的那些意义类，才算。它们是对语法意义的抽象概括。</p>
+
+<blockquote>这种语义范畴是对不同语法意义进行抽象概括所得到的，下位包括时间范畴、处所范畴、领属范畴、数量范畴、工具范畴、自主范畴等。<sup class="cite" data-cite="s-xiaceng-leixing">出处</sup></blockquote>
+
+<details>
+<summary>数量短语的四种形式与四方面作用</summary>
+<p class="q">数量短语有四种形式：数词+量词（+名词）表定量（"三本书"），"数量"词（+名词）表不定量（"很多书"），每+数词+量词（+名词）表周遍性数量（"每一本书"），指示代词+数词+量词（+名词）表确指数量（"这三本书"）。<sup class="cite" data-cite="s-shuliang-sizhong">出处</sup></p>
+<p class="q">数量短语有四方面作用：表示数量（"三个面包"的"三个"）；起指代作用（"一条是鲤鱼，一条是鲫鱼"的"一条"兼有表数与指代）；构成特殊句式——周遍性主语句"一+量词（+名词）+也/都+不/没有+动词/形容词"（"一个人也不知道"意为"所有人都不知道"），以及表"每"的数量对应句式"三个人（组成）一组"；对某些句法结构起制约作用。<sup class="cite" data-cite="s-shuliang-zuoyong">出处</sup></p>
+</details>
+
+<p>先猜一例，掂量掂量"工具范畴"的分量。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："你这是用肉包子打狗。"句中的"肉包子"在句法语义上算什么？</p>
+<div class="opts">
+<button data-ans="0">食品，因为肉包子本来就是吃的</button>
+<button data-ans="1">工具，因为句法语义范畴要的是它在句中承担的句法语义角色</button>
+</div>
+<div class="why">单看词义，"肉包子"当然属于食品；可一进这个句子，它就成了"打狗"所凭借的工具。这正是本书语义范畴观的要害：分类的标准不是客观世界的物理属性，而是成分在句法结构中所起的制约作用。同一个"肉包子"，换个句式就可能变成受事<sup class="cite" data-cite="s-yuyi-fanchou">出处</sup>。</div>
+</div>
+
+<p>为什么要讲范畴？因为语法研究的正道是把形式和意义合在一起看。</p>
+
+<blockquote>朱德熙先生在《语法答问》（1985）中就深刻指出：语言包括形式和意义两方面。语法研究的最终目的就是弄清楚语法形式和语法意义之间的对应关系。所以从原则上说，进行语法研究应当把形式和意义结合起来。……真正的结合是要使形式和意义互相渗透。讲形式的时候能够得到语义方面的验证，讲意义的时候能够得到形式方面的验证。<sup class="cite" data-cite="s-zhuxi-1985">出处</sup></blockquote>
+
+<p>下面四种范畴，各有实证。</p>
+
+<details>
+<summary>实证一：数量范畴——双宾结构里数量短语不能缺</summary>
+<p class="q">"烫了他一个大燎泡。"能说，"*烫了他大燎泡。"不能说。<sup class="cite" data-cite="s-shuliang-queshao">出处</sup></p>
+<p class="q">很显然，在"动作—受事—结果"这类双宾结构中，数量短语是不能缺的。<sup class="cite" data-cite="s-shuliang-queshao">出处</sup></p>
+</details>
+
+<details>
+<summary>远宾语必须带数量词的三种双宾结构</summary>
+<p class="q">远宾语为结果宾语，一定得含数量词——"烫了他一个大燎泡""那蚊子叮了我两个大包""捂了孩子一身痱子"，抽掉数量词一个都站不住（"*烫了他大燎泡"）。<sup class="cite" data-cite="s-shuangbin-jieguo">出处</sup></p>
+<p class="q">远宾语为述语动词的受事或施事、近宾语表位移终点处所，远宾语也须含数量词——"不小心掉地下两个包子""你们先来这儿两个人"（"*不小心掉地下包子"不成话）。<sup class="cite" data-cite="s-shuangbin-chuwei">出处</sup></p>
+<p class="q">远宾语前有"他/它"充任的虚指宾语，远宾语仍须含数量成分——"我一定也唱他几段京戏""逛它几个大商场"，那"他/它"不实指什么，只表轻松、随便、俏皮的语气（"*唱他京戏"不成话）。<sup class="cite" data-cite="s-xuzhi-binyu">出处</sup></p>
+</details>
+
+<details>
+<summary>数量词还管自由与黏着、排斥与必需</summary>
+<p class="q">有些组合不含数量词就只能是黏着的：给予义双宾结构，近宾语是人称代词时远宾语带不带数量都自由（"送她（一个）手机"）；近宾语不是人称代词时，远宾语得是数量短语，否则只能被包含——"*她送小妹手机"站不住，"她决定送小妹手机"才可以，"给王叔叔绍兴酒的是李亚平先生"里的双宾结构也被包含在"的"字结构中。<sup class="cite" data-cite="s-shuangbin-nianzhuo">出处</sup></p>
+<p class="q">"动词+了+名词"（"吃了苹果"）与"动词+结果补语+名词"（"吃完苹果"）都是黏着的；末尾带"了"（"吃了苹果了"）或名词前加数量词（"吃了三个苹果"）都能使它们变自由。<sup class="cite" data-cite="s-shubinyu-nianzhuo">出处</sup></p>
+<p class="q">方位结构直接作定语，中心语不含数量词是黏着的、只能被包含（"把床上被子拿出去晒晒"）；含数量短语就自由，可单独成句（"床上两条被子"）。<sup class="cite" data-cite="s-fangwei-dingyu">出处</sup></p>
+<p class="q">也有相反的情况——排斥数量短语：表活动的"名词[处所]+动词+着+名词"句式排斥数量（"山上架着炮"有歧义，"山上架着一门炮"只表静态存在）；"什么"作定语，中心语绝对不能含数量成分（"什么书？"而"*什么一本书？"，非用不可只能说"一本什么书？"）；"再"表空缺的重复时后面不能出现数量成分（"*明天再吃一些吧"），表实际的重复时就可以（"还可以再吃几个"）。<sup class="cite" data-cite="s-paichi-shuliang">出处</sup></p>
+</details>
+
+<details>
+<summary>实证二：领属范畴——领属关系何时获得，决定句式</summary>
+<p class="q">"他的名字我忘了。"与"我忘了他的名字了。"两可；"他的名字我起了。"能说，"*我起了他的名字了。"不能说。<sup class="cite" data-cite="s-yuyi-fanchou">出处</sup></p>
+<p>分界在领属关系出现的时间：行为动作之前就已具有的领属，A式（受事作大主语的受事主语句）与B式两可；行为动作之后才具有的，只能用A式<sup class="cite" data-cite="s-yuyi-fanchou">出处</sup>。</p>
+</details>
+
+<details>
+<summary>领属关系的类型</summary>
+<p class="q">领属关系有二十来种：称谓领属（我的父亲）、占有领属（他的房子）、器官领属（他的眼睛）、构件领属（书的封面）、材料领属（桌子的木头）、属性领属（他的脾气）、特征领属（弟弟的个儿）、观念领属（他的观点）、成员领属（北大的学生）、变形领属（土豆丝儿）、成果领属（他的文章）、产品领属（东芝公司的电脑）、状况领属（他的前途）、创伤领属（张三的伤口）、事业领属（我们的事业）、景观领属（苏州的园林）、处所领属（张三的面前）、能力领属（张三的英语）等。<sup class="cite" data-cite="s-lingshu-leixing">出处</sup></p>
+</details>
+
+<details>
+<summary>要求领属、排斥领属的实例</summary>
+<p class="q">要求必须是领属关系：受事主语句谓语动词能再带受事宾语，条件是所带宾语跟受事主语有领属关系（"那狼打折了一条腿"——"那狼的腿"）；"把"字句与"被"字句叠置整合，条件是全句主语跟"把"的宾语有领属关系（"他被小偷把手表偷走了"）；主谓词组带"地"作状语，条件是全句主语跟作状语的主谓词组的主语有领属关系（"她们手拉手地走来""她头也不回地只管自己往前走"）。<sup class="cite" data-cite="s-lingshu-yaoqiu">出处</sup></p>
+<p class="q">歧义指数公式的例外也能用领属解释："孩子游泳的"按公式P=0不能再指称事物，却还能指称"孩子"的领有者家长；"他漆了地板的"P=0，也还能指称地板的领有者房子。<sup class="cite" data-cite="s-lingshu-qiyi">出处</sup></p>
+<p class="q">"桌子腿儿坏了"能变换成"桌子只坏了腿儿"，"木头桌子坏了"却不能变换成"*木头只坏了桌子"——前者"桌子"与"腿儿"有领属关系，后者"木头"与"桌子"没有。"的"字结构提取论元也看领属："张三打破了自己的玻璃杯"可提取为"（自己的）玻璃杯打破了的是张三"，"张三打破了李四的玻璃杯"却不能提取为"*李四的玻璃杯打破了的是张三"。<sup class="cite" data-cite="s-lingshu-tiqu">出处</sup></p>
+<p class="q">也有排斥领属关系的：双宾结构的远宾语排斥称谓领属、占有领属的领属性偏正词组——"*王老师嫁给李警官他的女儿"须说成"王老师把他的女儿嫁给李警官"；"*王老师嫁给李警官大女儿"也不行，因为"大女儿"是一价名词，隐含着领属性定语"他（的）"。施受关系主谓谓语句的B式（施事作大主语）里，小主语不能是称谓、占有领属的领属性偏正结构——"*我大哥的信写了"须说成A式"大哥的信我写了"，除非大主语后有停顿（"我啊，大哥的信写了"）。<sup class="cite" data-cite="s-lingshu-paichi">出处</sup></p>
+<p class="q">"他的衣服我买了"有a、b两解：a.他所拥有的衣服我买了（领属在动作前就有，"他的衣服"可挪到动词后："我买了他的衣服"）；b.要我替他买的衣服我买了（领属在动作后才实现，"*我买了他的衣服"不成立）。<sup class="cite" data-cite="s-yifu-maile">出处</sup></p>
+</details>
+
+<details>
+<summary>实证三：自主范畴——自动词与非自动词</summary>
+<p class="q">自动词指行为动作是动作者能主观决定并自由支配的、有意识的行为动作，如"吃、喝、看、说、研究、讨论"；非自动词指动作者无法决定和支配的、无意识的行为动作，如"病、蔫、噎、呛、忘、看见、听见"。<sup class="cite" data-cite="s-zizhu-ma1988">出处</sup></p>
+<p class="q">由自动词形成的"别+动词+了"，如"别看了""别吃了""别了解了"等，表示劝阻——对方已经在进行某种行为动作，或计划中要进行某种行为动作，说话人劝对方中止这种行为动作；而由非自动词形成的"别+动词+了"，如"别噎了""别呛了""别感染了"等，则表示提醒对方防止出现某种不如意或不利的情况。<sup class="cite" data-cite="s-bie1-bie2">出处</sup></p>
+</details>
+
+<details>
+<summary>自主范畴的更多试纸</summary>
+<p class="q">"别……！"与"别……了！"：自主动词两式都能进（"别吃！""别吃了！"），非自主动词只有带"了"一式（"别呛了！"而"*别呛！"）。同义的"看【自主】"与"看见【非自主】"、"了解【自主】"与"知道【非自主】"对比最明显。<sup class="cite" data-cite="s-bie-shifan">出处</sup></p>
+<p class="q">"甭……"只收自主动词——"甭吃、甭喝、甭想、甭看、甭研究、甭休息"都能说，"*甭病、*甭呛、*甭噎、*甭看见、*甭忘"都不成话。<sup class="cite" data-cite="s-beng-fan">出处</sup></p>
+<p class="q">"一下"表不定短时量时只能出现在自主动词后——"你来一下""你研究一下"都能说，"*你病一下""*你看见一下"都不成话。<sup class="cite" data-cite="s-yixia">出处</sup></p>
+<p class="q">形式动词"加以、进行、给以"后面作宾语的双音节动词只能是自主动词——"加以/进行调查"能说，"*加以/进行找见"不能说；表方式的副词"亲自、特地、专程、大力、暗暗、偷偷、擅自、埋头"也只能修饰自主动词——"亲自/暗暗观察"能说，"*亲自/暗暗看见"不能说。<sup class="cite" data-cite="s-xingshi-dongci">出处</sup></p>
+</details>
+
+<details>
+<summary>实证四：顺序范畴——排序规律抽象成范畴</summary>
+<p class="q">顺序范畴是对事物或行为动作排序规律的抽象概括。顺序范畴也是汉语中制约句法的一个重要的语义范畴。<sup class="cite" data-cite="s-shunxu-dingyi">出处</sup></p>
+</details>
+
+<p>顺序范畴是全节点睛之笔，本书为它归纳了四条规矩。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：时间词的层层套叠，得按什么顺序来？</p>
+<div class="opts">
+<button data-ans="0">由小到大</button>
+<button data-ans="1">由大到小</button>
+<button data-ans="0">没有一定之规</button>
+</div>
+<div class="why"><b>由大到小。</b>无论地点还是时间，表达上都遵循由大到小的顺序原则——年、月、日、上午、点、分，一层层套下去，顺序不能颠倒，颠倒了就不是汉语的说法<sup class="cite" data-cite="s-youda-dao-xiao">出处</sup>。</div>
+</div>
+
+<details>
+<summary>顺序范畴的四条规矩</summary>
+<p class="q">[规则一]"东""南""西""北"遵循下列方向顺序原则进行组合：东&gt;西&gt;南&gt;北【"&gt;"读作"优先于"】<sup class="cite" data-cite="s-fangxiang-guize">出处</sup></p>
+<p class="q">[规则二]在现代汉语里，如果要用一个名词性偏正结构来注明处于某位置的事物，也要受到顺序范畴的制约，具体得遵循如下的顺序原则：参照点先于目标。<sup class="cite" data-cite="s-cankao-mubiao">出处</sup></p>
+<p class="q">[规则三]无论地点还是时间，在表达上都遵循由大到小的顺序原则。这里说的时间是指时点。<sup class="cite" data-cite="s-youda-dao-xiao">出处</sup></p>
+<p class="q">[规则四]在现代汉语里，动词连用，从结构上来看，除联合结构外，常见的有述宾结构、述补结构、连谓结构、递系结构（兼语式）等。不管哪一类动词连用结构，都得受顺序范畴中的时间先后顺序的制约。<sup class="cite" data-cite="s-dongci-lianyong">出处</sup></p>
+<p>时间由大到小，最典型的是时间词的层层套叠，如"2013 年&gt;2 月&gt;5 日&gt;上午&gt;9 点&gt;24 分"；动词连用的典型则是"去₁→买菜→去₂"：为便于说明，我们将排在前面的"去"记为"去₁"，将排在后面的"去"记为"去₂"<sup class="cite" data-cite="s-qu1-qu2">出处</sup>。两句里的顺序都不能颠倒，颠倒了就不是汉语的说法。</p>
+</details>
+
+<details>
+<summary>方位词排序与参照点、目标</summary>
+<p class="q">"东、南、西、北"理论上有16种两两组合，现代汉语只成立6种——偏正型"东南、东北、西南、西北"与并列型"东西、南北"。方向顺序原则"东&gt;西&gt;南&gt;北"加"不能自身重叠"，就排掉了"*西东、*南东、*南西、*北东、*北西、*北南、*东东、*西西、*南南、*北北"这10种。<sup class="cite" data-cite="s-fangxiang-guize">出处</sup></p>
+<p class="q">注明位置的名词性偏正结构遵循"参照点先于目标"——"湖中的亭子""桌子上的剪子""地表下的水分"都不能倒过来说（"*亭子的湖中"）。可比较句里恰好相反，遵循"目标先于参照点"——"新房子比旧房子大""他没有我想的那么有钱"。<sup class="cite" data-cite="s-cankao-mubiao">出处</sup></p>
+<p class="q">由大到小的顺序原则也管数量表达：距离"总长36米7分米9厘米"、时段"历时3年10个月26天9小时24分"、重量"重3千克125克"，都不能颠倒。<sup class="cite" data-cite="s-youda-dao-xiao">出处</sup></p>
+</details>
+
+<p>顺序范畴还能回头解释第四节的遗留问题。</p>
+
+<blockquote>"系列推移性"就属于顺序范畴。因此，我们也可以说，在现代汉语里顺序范畴制约着"名词+了"句法格式，不含有顺序义的名词不能进入"名词+了"句法格式。<sup class="cite" data-cite="s-xilie-tuixian">出处</sup></blockquote>
+
+<p>"春天"处在"春→夏→秋→冬"的推移系列里，所以"都春天了"能说；"石头"不在任何系列里，"*都石头了"就不能说<sup class="cite" data-cite="s-xilie-tuixian">出处</sup>。</p>
+
+<blockquote>我们认为，探讨一定的句法语义范畴对句法的制约作用将有助于汉语句法研究的进一步深入，也有助于我们在汉语语法研究中进一步贯彻形式和意义相结合的原则。<sup class="cite" data-cite="s-jieyu-7">出处</sup></blockquote>
+
+<p class="small muted">第二篇到此为止。从下一节起进入理论流派：结构主义语言学、格理论、生成语法、构式语法、认知语法，将逐一登场。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">本书所说的「语义范畴」指什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">词汇语义范畴</button>
+      <button data-v="b">跟句法相关、对句法起制约作用的语义范畴</button>
+      <button data-v="c">对客观事物进行分类所得的范畴</button>
+    </div>
+    <div class="why">答案：b。不是真实世界的分类，而是能管住句子能不能说的意义类。见本节，底本 L5109。</div>
+  </div>
+  <div class="item">
+    <p class="q">「你这是用肉包子打狗」里的「肉包子」，在句法语义上算什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">受事</button>
+      <button data-v="b">工具</button>
+      <button data-v="c">施事</button>
+    </div>
+    <div class="why">答案：b。词义上它是食品，一进句子就成了「打狗」凭借的工具。见本节，底本 L5109。</div>
+  </div>
+  <div class="item">
+    <p class="q">「系列推移性」属于哪个范畴？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">数量范畴</button>
+      <button data-v="b">顺序范畴</button>
+      <button data-v="c">自主范畴</button>
+    </div>
+    <div class="why">答案：b。所以顺序范畴制约着「名词＋了」格式。见本节，底本 L5893。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：四种范畴所涉更多实例、顺序范畴与第十节「象似性」「意象图式」的交叉讨论。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-fanwei-dingyi": { page:"第七节 7.1 · 底本 L5107", quote:"“范畴”是人在认知上对客观事物依照人类长期以来所认识到的不同客观事物的不同本质特点所作的高度抽象的概括。", zh:"范畴：对客观事物本质特点高度抽象的概括。" },
+  "s-yuyi-fanchou": { page:"第七节 7.1 · 底本 L5109", quote:"本节所说的“语义范畴”，不是指对真实世界里所存在的客观事物进行分类所得的范畴，不是指词汇语义范畴，而是指跟句法相关的语义范畴，特别着眼于对句法起一定制约作用的语义范畴。", zh:"语义范畴＝跟句法相关、对句法起制约作用的范畴。" },
+  "s-xiaceng-leixing": { page:"第七节 7.1 · 底本 L5115", quote:"这种语义范畴是对不同语法意义进行抽象概括所得到的，下位包括时间范畴、处所范畴、领属范畴、数量范畴、工具范畴、自主范畴等。", zh:"语义范畴的下位类型。" },
+  "s-shuliang-queshao": { page:"第七节 7.2 · 底本 L5257", quote:"（7）*烫了他大燎泡。", zh:"双宾结构“动作—受事—结果”数量短语不能缺。" },
+  "s-zizhu-ma1988": { page:"第七节 7.3 · 底本 L5829", quote:"汉语的自主范畴，是由马庆株（1988）首先提出来的。", zh:"马庆株1988首提自主范畴：自动词／非自动词。" },
+  "s-bie1-bie2": { page:"第七节 7.3 · 底本 L5845", quote:"由自动词形成的“别+动词+了”，如“别看了”“别吃了”“别了解了”等，表示劝阻……而由非自动词形成的“别+动词+了”，如“别噎了”“别呛了”“别感染了”等，则表示提醒对方防止出现某种不如意或不利的情况。", zh:"“别＋自动词＋了”表劝阻；“别＋非自动词＋了”表提醒防范。" },
+  "s-shunxu-dingyi": { page:"第七节 7.4 · 底本 L5879", quote:"顺序范畴是对事物或行为动作排序规律的抽象概括。顺序范畴也是汉语中制约句法的一个重要的语义范畴。", zh:"顺序范畴的定义。" },
+  "s-fangxiang-guize": { page:"第七节 7.4 · 底本 L5917", quote:"[规则一]“东”“南”“西”“北”遵循下列方向顺序原则进行组合：东>西>南>北【“>”读作“优先于”】", zh:"方向顺序原则：东＞西＞南＞北。" },
+  "s-cankao-mubiao": { page:"第七节 7.4 · 底本 L5929", quote:"参照点先于目标。", zh:"参照点先于目标。" },
+  "s-youda-dao-xiao": { page:"第七节 7.4 · 底本 L5957", quote:"无论地点还是时间，在表达上都遵循由大到小的顺序原则。", zh:"地点、时间都由大到小。" },
+  "s-dongci-lianyong": { page:"第七节 7.4 · 底本 L5993", quote:"不管哪一类动词连用结构，都得受顺序范畴中的时间先后顺序的制约。", zh:"动词连用受时间先后顺序制约。" },
+  "s-qu1-qu2": { page:"第七节 7.4 · 底本 L6035", quote:"我们将排在前面的“去”记为“去1”，将排在后面的“去”记为“去2”。", zh:"去1（从事）→买菜→去2（离开原处）。" },
+  "s-xilie-tuixian": { page:"第七节 7.4 · 底本 L5893", quote:"“系列推移性”就属于顺序范畴。因此，我们也可以说，在现代汉语里顺序范畴制约着“名词+了”句法格式，不含有顺序义的名词不能进入“名词+了”句法格式。", zh:"系列推移性属于顺序范畴。" },
+  "s-zhuxi-1985": { page:"第七节 7.1 · 底本 L5119", quote:"语言包括形式和意义两方面。语法研究的最终目的就是弄清楚语法形式和语法意义之间的对应关系。所以从原则上说，进行语法研究应当把形式和意义结合起来。……真正的结合是要使形式和意义互相渗透。", zh:"朱德熙：形式与意义互相渗透、互相验证。" },
+  "s-jieyu-7": { page:"第七节 7.5 · 底本 L6049", quote:"我们认为，探讨一定的句法语义范畴对句法的制约作用将有助于汉语句法研究的进一步深入，也有助于我们在汉语语法研究中进一步贯彻形式和意义相结合的原则。", zh:"全节收柬：句法语义范畴对句法的制约作用值得深入探讨。" },
+  "s-shuliang-sizhong": { page:"第七节 7.2 · 底本 L5127", quote:"一般认为汉语里的数量短语，有四种形式：", zh:"四种形式：定量、不定量、周遍性数量、确指数量。" },
+  "s-shuliang-zuoyong": { page:"第七节 7.2 · 底本 L5153", quote:"现代汉语里，数量短语有四方面的作用。", zh:"四方面作用：表数量、指代、构成特殊句式、制约句法。" },
+  "s-shuangbin-jieguo": { page:"第七节 7.3 · 底本 L5241", quote:"（一）直接宾语为结果宾语，而那结果宾语一定得含有数量词，否则不成立。", zh:"双宾结构之一：结果宾语须含数量词。" },
+  "s-shuangbin-chuwei": { page:"第七节 7.3 · 底本 L5269", quote:"（二）直接宾语为述语动词的受事或施事，间接宾语（即近宾语，下同）则是表示事物位移终点的处所宾语。", zh:"双宾结构之二：位移终点处所作近宾语时，远宾语须含数量词。" },
+  "s-xuzhi-binyu": { page:"第七节 7.3 · 底本 L5299", quote:"（三）含有由“他/它”充任的虚指宾语，那直接宾语也必须含有数量成分，否则不成立。", zh:"双宾结构之三：虚指宾语后的远宾语须含数量成分。" },
+  "s-shuangbin-nianzhuo": { page:"第七节 7.3 · 底本 L5459", quote:"如果间接宾语不是由人称代词充任的，那么直接宾语（即远宾语）得是个数量短语，否则所形成的双宾结构是黏着的，甚至不能单独作谓语。", zh:"给予义双宾：近宾语非人称代词时远宾语须是数量短语。" },
+  "s-shubinyu-nianzhuo": { page:"第七节 7.3 · 底本 L5485", quote:"“动词+了+名词”这种述宾结构，如“吃了苹果”“喝了啤酒”“写了散文”等，是黏着的，单独站不住。", zh:"“动词+了+名词”“动词+结果补语+名词”黏着；带“了”或加数量词才自由。" },
+  "s-fangwei-dingyu": { page:"第七节 7.3 · 底本 L5499", quote:"现代汉语里，方位结构可以直接作定语。……前一种偏正结构是黏着的，只能处于被包含状态。后一种偏正结构是自由的，在一定的上下文里可以单独成句。", zh:"方位结构作定语：中心语含数量短语才自由。" },
+  "s-paichi-shuliang": { page:"第七节 7.3 · 底本 L5523", quote:"上面说的是，现代汉语里某些句法组合非要有数量短语不可。可是也有相反的情况，某些句法组合排斥数量成分。", zh:"排斥数量：存在动态句式、“什么”定语、“再”的空缺重复。" },
+  "s-lingshu-leixing": { page:"第七节 7.4 · 底本 L5575", quote:"领属关系是事物与事物之间的领有、隶属关系的总称，反映到语言中，就形成对句法起某种制约作用的领属范畴。", zh:"领属关系二十来种：称谓、占有、器官、构件、材料、属性等。" },
+  "s-lingshu-yaoqiu": { page:"第七节 7.4 · 底本 L5653", quote:"按说受事主语句谓语动词不能再带受事宾语，但有例外，其条件是所带的受事宾语跟受事主语之间有领属关系。", zh:"要求领属：受事主语句再带受事宾语、把被叠置、主谓词组带“地”作状语。" },
+  "s-lingshu-qiyi": { page:"第七节 7.4 · 底本 L5693", quote:"例外之一就是还能指称在“的”字结构里出现的配价成分所指事物的领有者。", zh:"歧义指数公式的例外：可指称配价成分所指事物的领有者。" },
+  "s-lingshu-tiqu": { page:"第七节 7.4 · 底本 L5737", quote:"句子谓语动词的论元可以用“的”字结构来提取。提取时可以采取多种方式，但又有不同的情况，而这也跟领属范畴有关。", zh:"桌子腿儿坏了↔桌子只坏了腿儿；“的”字结构提取方式看领属。" },
+  "s-lingshu-paichi": { page:"第七节 7.4 · 底本 L5757", quote:"【实例七】双宾结构的远宾语排斥领属性偏正词组。", zh:"排斥领属：双宾远宾语；B式主谓谓语句的小主语。" },
+  "s-yifu-maile": { page:"第七节 7.4 · 底本 L5821", quote:"（27）他的衣服我买了。", zh:"领属获得时间的两解：动作前已有可挪后，动作后才有不可挪后。" },
+  "s-bie-shifan": { page:"第七节 7.5 · 底本 L5831", quote:"原来这跟所修饰的动词是自主动词还是非自主动词有关。", zh:"“别……！”只收自主动词；“别……了！”两者都收。" },
+  "s-beng-fan": { page:"第七节 7.5 · 底本 L5853", quote:"跟“别……”相类似的是“甭……”。自主动词能出现在“甭……”格式里……而非自主动词都不能进入“甭……”这个格式。", zh:"“甭……”只收自主动词。" },
+  "s-yixia": { page:"第七节 7.5 · 底本 L5855", quote:"“一下”表示不定短时量时，只能出现在自主动词后面，不能出现在非自主动词后面。", zh:"“一下”只配自主动词。" },
+  "s-xingshi-dongci": { page:"第七节 7.5 · 底本 L5861", quote:"“加以”“进行”“给以”等，一般称为形式动词，后面都只能以双音节动词为宾语。而那作宾语的双音节动词也只能是双音节自动词。", zh:"形式动词宾语、方式副词状语都只收自主动词。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

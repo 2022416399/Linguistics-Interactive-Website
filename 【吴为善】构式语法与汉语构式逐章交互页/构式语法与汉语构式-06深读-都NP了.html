@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>都局长了，还这么不检点 —— 《构式语法与汉语构式》第六章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · 都NP了<small>《构式语法与汉语构式》吴为善 ｜ 第六章第二节之一</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">预期</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第六章「语用心理与语境适切度」第二节之一 ｜ 单节深读页</p>
+  <h1>都局长了，还这么不检点</h1>
+  <p class="lead">「都NP了」是个<strong>依附小句</strong>，自己站不住，后半句「还VP（否定）」才是表意重心<sup class="cite" data-cite="dependent"></sup>。说话人先拿「都NP了」确认的事实当<strong>参照</strong>，再指出话语主体的实际状态与规约性认知<strong>相悖</strong>——预设是「当了局长的人不该这么不检点」，事实却是「就这么不检点」<sup class="cite" data-cite="cgmean"></sup>。妙处在于 NP 会<strong>在线激活</strong>一条隐含的语义等级序列：能进这个句式的名词必须带 [+顺序] 特征，处在序列初始端的还不行——形不成<strong>落差</strong>，就没了质疑的由头<sup class="cite" data-cite="order"></sup>。</p>
+  <ul class="chips">
+    <li><b>构式</b>　都NP了，还＋VP（否定）</li>
+    <li><b>构件</b>　都（始料未及）· 了₂（重新确认）· NP[+顺序]</li>
+    <li><b>机制</b>　编码触发 ≠ 心理激活（开关 ≠ 通电）</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 330" role="img" aria-label="示意图：都NP了与后续主句的语篇整合">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="40" y="34" width="270" height="96" rx="12"/>
+        </g>
+        <text x="175" y="62" text-anchor="middle" font-size="17" font-family="KaiTi,STKaiti,serif" fill="#29241d">都 NP 了</text>
+        <text x="175" y="86" text-anchor="middle" font-size="11.5" fill="#6f675a">依附小句 · 确认事实作「参照」</text>
+        <text x="175" y="106" text-anchor="middle" font-size="11.5" fill="#3d5a6c">都：始料未及 ｜ 了₂：重新确认已然变化</text>
+        <path d="M318 82 L352 82" stroke="#a87f24" stroke-width="2.5" marker-end="url(#arrD)"/>
+        <defs><marker id="arrD" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <text x="335" y="68" text-anchor="middle" font-size="11" fill="#a87f24">衔接</text>
+        <g stroke="#9d4938" stroke-width="2" fill="#f7ece8">
+          <rect x="360" y="34" width="280" height="96" rx="12"/>
+        </g>
+        <text x="500" y="62" text-anchor="middle" font-size="17" font-family="KaiTi,STKaiti,serif" fill="#29241d">还 VP（否定）</text>
+        <text x="500" y="86" text-anchor="middle" font-size="11.5" fill="#6f675a">主句 · 表意重心</text>
+        <text x="500" y="106" text-anchor="middle" font-size="11.5" fill="#9d4938">「还」本质是语用否定，非逻辑否定</text>
+        <path d="M175 138 L175 176 M500 138 L500 176" stroke="#a87f24" stroke-width="1.6" fill="none" marker-end="url(#arrD)"/>
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="150" y="184" width="380" height="58" rx="12"/>
+        </g>
+        <text x="340" y="210" text-anchor="middle" font-size="15.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">身份升上去了，行为没跟上</text>
+        <text x="340" y="232" text-anchor="middle" font-size="11.5" fill="#6f675a">预设与事实的落差 → 反预期的主观评述</text>
+        <text x="340" y="290" text-anchor="middle" font-size="11.5" fill="#6f675a">例(3)「都局长了，还这么不检点」：局长不该不检点，事实却如此——有感而发</text>
+      </g>
+    </svg>
+    <figcaption>主视觉一（示意，非原文原图）：「都NP了」与「还VP（否定）」的语篇整合模式，落差产生反预期评述。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景一：预期判别 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 语用心理</p>
+  <h2>同一句话，正预期还是反预期</h2>
+  <p>「名词语＋了」其实不同质。例（1）「大姑娘了，懂规矩了」符合预期，是<strong>正预期</strong>；例（2）「都大姑娘了，还这么不懂规矩」与预期相悖，是<strong>反预期</strong><sup class="cite" data-cite="twotypes"></sup>。差别就在三个标记上——动手加一加：</p>
+  <div class="lab" id="expLab">
+    <h3>预期变换器</h3>
+    <p class="small muted">底句：大姑娘了，懂规矩了。</p>
+    <div class="wordpool">
+      <button id="expAddDu">＋ 加「都」</button>
+      <button id="expFlip">↻ 后续换成否定</button>
+      <button id="expAddHai">＋ 加「还」</button>
+      <button id="expReset">重置</button>
+    </div>
+    <div class="result" id="expOut">
+      <p class="sent" id="expSent"></p>
+      <dl class="rows">
+        <dt>类型</dt><dd id="expType"></dd>
+        <dt>判据</dt><dd id="expWhy"></dd>
+      </dl>
+    </div>
+  </div>
+  <p>原文的甄别标准很干净：例（1）前边不能出现「都」，后续句是肯定形式，也不能出现「还」；例（2）前边有「都」，后续句是带「还」的语用否定形式。三枚标记凑齐，句子就从「符合预期」翻转到「出乎意料」。</p>
+</section>
+
+<!-- ============ 场景二：准入实验室 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 准入条件</p>
+  <h2>什么样的名词进得来</h2>
+  <div class="guess" data-guess>
+    <p class="q">「都苹果了」——能这么说吗？</p>
+    <div class="opts">
+      <button data-ans="a">能，苹果也可以是身份</button>
+      <button data-ans="b">不能，普通物质名词不构成语义等级序列</button>
+    </div>
+    <p class="reveal" hidden>不能。邢福义（1984）发现，能进入该句式的名词必须具有 [+顺序] 的语义特征。「苹果」「教室」「宠物」都是各自离散的类指范畴的集合，范畴本身不构成序列，自然进不了这个构式<sup class="cite" data-cite="admission"></sup>。</p>
+  </div>
+  <p>真正能进来的名词绝大多数是<strong>指人身份</strong>，且自身形成语义等级序列。点一个名词，看它落在哪条序列、能不能进：</p>
+  <div class="lab" id="npLab">
+    <h3>NP 准入检验</h3>
+    <div class="wordpool" id="npPool">
+      <button data-n="0">中学生</button>
+      <button data-n="1">连长</button>
+      <button data-n="2">处长</button>
+      <button data-n="3">妈妈</button>
+      <button data-n="4">苹果</button>
+      <button data-n="5">公民</button>
+      <button data-n="6">小科员</button>
+      <button data-n="7">小姑娘</button>
+    </div>
+    <div class="result" id="npOut">
+      <p class="sent" id="npSent"></p>
+      <dl class="rows">
+        <dt>序列</dt><dd id="npSeq"></dd>
+        <dt>准入</dt><dd id="npVerdict"></dd>
+        <dt>理由</dt><dd id="npWhy"></dd>
+      </dl>
+    </div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 300" role="img" aria-label="示意图：四条语义等级序列与落差">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g font-family="KaiTi,STKaiti,serif">
+          <text x="30" y="34" font-size="12.5" fill="#3d5a6c">学业阶段</text>
+          <text x="150" y="34" font-size="13" fill="#29241d">中学生 → 大学生 → 研究生</text>
+          <text x="30" y="76" font-size="12.5" fill="#3d5a6c">军队领导</text>
+          <text x="150" y="76" font-size="13" fill="#29241d">连长 → 营长 → 团长</text>
+          <text x="30" y="118" font-size="12.5" fill="#3d5a6c">行政级别</text>
+          <text x="150" y="118" font-size="13" fill="#29241d">科长 → 处长 → 局长</text>
+          <text x="30" y="160" font-size="12.5" fill="#3d5a6c">社会角色</text>
+          <text x="150" y="160" font-size="13" fill="#29241d">大姑娘 → 妈妈 → 老太太</text>
+        </g>
+        <g stroke="#a87f24" stroke-width="1.4" fill="none">
+          <line x1="30" y1="200" x2="30" y2="224"/>
+          <line x1="640" y1="200" x2="640" y2="224"/>
+        </g>
+        <line x1="30" y1="212" x2="640" y2="212" stroke="#a87f24" stroke-width="1.6" marker-end="url(#arrE)"/>
+        <defs><marker id="arrE" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <text x="30" y="242" text-anchor="middle" font-size="11" fill="#6f675a">序列初始端</text>
+        <text x="335" y="242" text-anchor="middle" font-size="11" fill="#6f675a">级差爬升</text>
+        <text x="640" y="242" text-anchor="middle" font-size="11" fill="#9d4938">身份高端</text>
+        <text x="30" y="266" text-anchor="middle" font-size="11" fill="#9d4938">小孩/小兵/小科员在此——形不成落差，不能进入</text>
+        <text x="640" y="266" text-anchor="middle" font-size="11" fill="#9d4938">博士生/老兵在此——落差大，质疑有由头</text>
+      </g>
+    </svg>
+    <figcaption>主视觉二（示意，非原文原图）：四条典型语义等级序列；NP 须离开序列初始端，才能与后续主句的偏离状态形成落差。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景三：落差与匹配 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 激活证据</p>
+  <h2>级差越显眼，句子越有力</h2>
+  <div class="guess" data-guess>
+    <p class="q">「都妈妈了，还不会带孩子」和「都大姑娘了，还不会带孩子」——哪句更顺？</p>
+    <div class="opts">
+      <button data-ans="a">都妈妈了</button>
+      <button data-ans="b">都大姑娘了</button>
+    </div>
+    <p class="reveal" hidden>「都妈妈了」更顺。妈妈该会带孩子，不会才值得质疑；大姑娘尚未婚嫁、没有育儿经验，不会很正常——匹配关系不合理，句子接受度就差。三句句法语义都没问题，差在语用<sup class="cite" data-cite="matching"></sup>。</p>
+  </div>
+  <p>证据一：后续主句常常是个<strong>差比句</strong>，把隐含的级差摆到台面上——「都博士生了，还不如一个硕士生」「都老兵了，比新兵还胆小」，两个 NP 同属一条序列（硕士生→博士生、新兵→老兵），语篇衔接典型地反映出 NP 位置在线激活隐含序列的语用心理<sup class="cite" data-cite="comparative"></sup>。</p>
+  <p>证据二：NP 身份与后续主句状态的<strong>匹配关系</strong>决定句子合格度。同样一句「还不会带孩子」，换个 NP， acceptability 一路下滑：</p>
+  <div class="ladder" id="matchLadder">
+    <button class="rung" data-m="0" aria-pressed="true"><b>都妈妈了</b><small>还不会带孩子</small></button>
+    <button class="rung" data-m="1" aria-pressed="false"><b>都大姑娘了</b><small>还不会带孩子</small></button>
+    <button class="rung" data-m="2" aria-pressed="false"><b>都小姑娘了</b><small>还不会带孩子</small></button>
+  </div>
+  <div class="result" id="matchOut">
+    <p class="sent" id="matchSent"></p>
+    <dl class="rows">
+      <dt>合格度</dt><dd id="matchOk"></dd>
+      <dt>解释</dt><dd id="matchWhy"></dd>
+    </dl>
+  </div>
+  <p>三句句法、语义都没问题，差在语用：妈妈该会带孩子（不会，才值得质疑）；大姑娘尚未婚嫁、没有育儿经验（不会很正常）；小姑娘与带孩子简直没有关联。匹配关系的合理性与句子合格度成正比，而是否合理取决于我们的认知规约性<sup class="cite" data-cite="matching"></sup>。</p>
+</section>
+
+<!-- ============ 场景四：开关与通电 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 激活机制</p>
+  <h2>触发不等于激活</h2>
+  <p>「都NP了，还VP（否定）」的编码会<strong>触发</strong>听话人去找那条隐含序列，触发效应可分三点；但触发≠激活——好比<strong>开关和通电</strong>：打开开关未必亮灯，亮灯的前提是通电，而「通电」就是我们心目中积淀的规约性共识<sup class="cite" data-cite="trigger"></sup>。走一遍解码流程：</p>
+  <div class="lab" id="trigLab">
+    <h3>解码流水线</h3>
+    <button id="trigBtn">▶ 开始解码</button>
+    <div class="result" id="trigOut" hidden>
+      <p class="sent" id="trigStep"></p>
+      <p class="small muted" id="trigNote"></p>
+    </div>
+  </div>
+  <p class="small muted">以「都妈妈了，还不会带孩子」为例：了₂ 暗示「妈妈」可能代表一个序列 → VP「不会带孩子」提示「妈妈」与「会带孩子」的匹配关系 →「都」和「还」明示语用预设 → 听话人对照心里的默认「清单」，认同妈妈该会带孩子 → 序列激活，发话诱因读懂。两个环节瞬间完成，所以容易被忽略。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 240" role="img" aria-label="示意图：编码触发到心理激活的两阶段">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="30" y="40" width="270" height="110" rx="12"/>
+        </g>
+        <text x="165" y="66" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">编码形式 · 触发</text>
+        <text x="165" y="92" text-anchor="middle" font-size="11" fill="#6f675a">① 了₂：NP 可能代表语义序列</text>
+        <text x="165" y="112" text-anchor="middle" font-size="11" fill="#6f675a">② VP：提示与 NP 匹配的行为类</text>
+        <text x="165" y="132" text-anchor="middle" font-size="11" fill="#6f675a">③ 都／还：明示语用预设</text>
+        <path d="M306 95 L342 95" stroke="#a87f24" stroke-width="2.5" marker-end="url(#arrF)"/>
+        <defs><marker id="arrF" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <text x="324" y="82" text-anchor="middle" font-size="11" fill="#a87f24">通电</text>
+        <g stroke="#9d4938" stroke-width="2" fill="#f7ece8">
+          <rect x="350" y="40" width="300" height="110" rx="12"/>
+        </g>
+        <text x="500" y="66" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">规约性共识 · 激活</text>
+        <text x="500" y="92" text-anchor="middle" font-size="11" fill="#6f675a">心里「默认」的 NP 与应有状态</text>
+        <text x="500" y="112" text-anchor="middle" font-size="11" fill="#6f675a">匹配系列「清单」——比对、判偏离</text>
+        <text x="500" y="132" text-anchor="middle" font-size="11" fill="#9d4938">序列真正被激活，话语被准确解读</text>
+        <text x="340" y="196" text-anchor="middle" font-size="11.5" fill="#6f675a">打开开关未必亮灯——亮灯必须通电；触发只是开关，激活才是通电</text>
+      </g>
+    </svg>
+    <figcaption>主视觉三（示意，非原文原图）：编码触发三要点与心理激活的「通电」关系。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景五：顺序范畴 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 收束</p>
+  <h2>显性的顺序，隐性的顺序</h2>
+  <p>「顺序」分两类。一类是<strong>显性顺序</strong>，即语言符号编码的顺序（语序）：戴浩一（1988）的「时间顺序原则」——无时间标记的表述中，语序依据客观事件发生的时间排列；袁毓林（1999）讨论的多项定语排列语序。这是句法临摹的结果，体现语言编码的象似性原则<sup class="cite" data-cite="order"></sup>。</p>
+  <p>另一类是<strong>隐性顺序</strong>——名词性词语在特定构式中可能被激活的语义等级序列。它隐含不露，激活既依赖编码形式的触发，更依赖话语社团的规约性认知，在听话人解码时起关键作用。「都NP了」与否定性「连」字句，就是这种顺序范畴的两个样本<sup class="cite" data-cite="order"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">语篇整合模式</p>
+      <p class="small muted">都 NP 了，还＋VP（否定）——先行小句确认事实作参照，后续主句陈述偏离状态作表意重心；「还」本质是语用否定。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">话语功能</p>
+      <p class="small muted">表达反预期的主观评述，体现负面价值取向：具备某种身份的人应该怎样，而事实上不是这样。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>交卷前三题</h2>
+  <p class="q">1. 「都NP了」中，「都」和「了」各自的分工是？</p>
+  <div class="opts">
+    <button data-ans="a">都是语气副词，都表已然</button>
+    <button data-ans="b">「都」轻读、表始料未及；「了」是了₂，传递新信息、重新确认已然变化</button>
+  </div>
+  <p class="why" hidden>「都」一般轻读，是语气副词，主要表达说话人始料未及的语气（口语中可隐去）；「了」是句末语气词，属于「了₂」，表达说话人对已然变化的事实的重新确认<sup class="cite" data-cite="frame"></sup>。</p>
+  <p class="q">2. 「都妈妈了，还不会带孩子」可以说，「都小姑娘了，还不会带孩子」难以接受，为什么？</p>
+  <div class="opts">
+    <button data-ans="a">后一句句法错误</button>
+    <button data-ans="b">小姑娘与带孩子不具备匹配关系，语用层面不合适</button>
+  </div>
+  <p class="why" hidden>三句句法、语义都没有问题，差别在语用：妈妈该会带孩子，不会才值得质疑；小姑娘与带孩子没有关联，两者不具备匹配性——属于语用失当。匹配关系的合理性与句子合格度成正比，取决于认知规约性<sup class="cite" data-cite="matching"></sup>。</p>
+  <p class="q">3. 「都NP了」在句法上属于什么小句？</p>
+  <div class="opts">
+    <button data-ans="a">自立小句，可独立成句</button>
+    <button data-ans="b">依附小句（非谓特征小句），后边有主句衔接呼应</button>
+  </div>
+  <p class="why" hidden>是依附小句。方梅（2013）区分自立小句与依附小句；「都NP了」在句法上不能独立进入语篇，属于无关联词语标记型中的「非谓特征小句」，后边有表意重心的主句衔接<sup class="cite" data-cite="dependent"></sup>。</p>
+</section>
+
+<section class="scene">
+  <p class="kicker">边界与延伸</p>
+  <h2>这一页讲了什么、没讲什么</h2>
+  <p><strong>讲了</strong>：第六章第二节之一「“都NP了”构式与语义等级序列」（底本 L4524–L4613）——正/反预期的甄别、依附小句属性、NP[+顺序]准入与三类排除、差比句与匹配关系两组激活证据、触发≠激活的解码机制。</p>
+  <p><strong>没讲</strong>：第六章第一节「反预期心理表达式的语用驱动」（语义三角与语用三角、三类非常态关系）、第二节之二「否定性“连”字句与语义等级序列」、之三「量级模型配置与语篇整合效应」、第三节「[±积极]语义特征的心理解读」（形容词使动、「看你A的」）；第七、八章内容见系列深读页。这些都可按同规格续做深读页。</p>
+  <p class="small muted">底本为 PaddleOCR 转录的电子书文本，无原书页码；角标中的「底本 Lx」指该内容在研读底本中的行号。例句编号沿用底本原文编号。引用关键数字与结论前，请点开角标核对原句。</p>
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="构式语法与汉语构式-01深读-构式语法入门.html">01 绪论</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a class="cur" href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </nav>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "order":       { page:"底本 L4528", quote:"一类是显性的顺序，指语言符号编码的顺序（即“语序”）……如戴浩一（1988）提出的“时间顺序原则”……又如袁毓林（1999）讨论的多项定语的排列语序……另一类是隐性的顺序，指某个名词性词语在特定构式中可能被“激活”(activation)的语义等级序列。", zh:"顺序范畴两类：显性顺序（语序，时间顺序原则、多项定语）与隐性顺序（构式中被激活的语义等级序列）。" },
+  "twotypes":    { page:"底本 L4539", quote:"例（1）「大姑娘了，懂规矩了」符合说话人的预期，所以后续句采用肯定形式；而例（2）「都大姑娘了，还这么不懂规矩」与说话人的预期相悖，所以后续句采用带“还”的否定形式。如果说例（1）的评述体现了说话人的“正预期”的语用心理，那么例（2）的评述体现了说话人的“反预期”的语用心理。", zh:"「名词语+了」不同质：例(1)正预期（后续肯定），例(2)反预期（后续带「还」的否定）。" },
+  "frame":       { page:"底本 L4546", quote:"该构式的句法形式应该码化为“都 NP 了”，基本框架是“都…了”。根据上文分析，其中“都”一般轻读，是个语气副词，主要表达说话人始料未及的语气（在口语中可以隐去）；“了”是传递新信息的句末语气词，属于“了₂”，表达说话人对已然变化的事实的重新确认。", zh:"构件分工：都＝轻读语气副词、表始料未及（可隐去）；了＝了₂、传递新信息、重新确认已然变化。" },
+  "dependent":   { page:"底本 L4546", quote:"方梅（2013）借鉴国外理论，从语篇衔接的角度提出了“自立小句”（independent clause）与“依附小句”（dependent clause）的区别……本文讨论的“都 NP 了”是个依附性小句，属于（2）类中“非谓特征小句”类型。", zh:"「都NP了」是依附小句（无关联词语标记型中的非谓特征小句），不能独立进入语篇（方梅 2013）。" },
+  "cgmean":      { page:"底本 L4552", quote:"「都 NP 了」体现了说话人始料未及的语用心理，即话语主体 NP 实际表现状态与说话人的心理预期不符，因此该构式的构式义表达了说话人的一种反预期的主观评述……说话人是以“都 NP 了”确认的事实作为“参照”，对 NP 呈现的反预期状态“出乎意料”，因而有感而发。", zh:"构式义＝反预期的主观评述：以「都NP了」确认的事实为参照，对出乎意料的状态有感而发；「还」属语用否定。" },
+  "npseq":       { page:"底本 L4557-4567", quote:"邢福义（1984）发现能进入该句式的名词必须具有 [+顺序] 的语义特征……a 行的名词体现的是学业阶段序列；b 行的名词体现的是军队领导序列；c 行的名词体现的是行政级别序列；d 行的名词体现的是基于生活形态的社会角色序列。", zh:"邢福义 1984：NP 须有 [+顺序] 特征；四条典型序列：学业阶段、军队领导、行政级别、社会角色。" },
+  "admission":   { page:"底本 L4571-4577", quote:"a 组都是普通物质名词，是一个个各自离散的类指范畴的“集合”，范畴本身不构成语义等级序列，自然不能进入该构式。b 组都是指人身份的名词……但这些指人身份的名词具有泛义性，范畴本身也不构成语义等级序列……c 组……但“小孩”、“小兵”、“小科员”这些名词处于这个语义等级序列的初始端（最低等级），凡处在语义等级序列初始端的名词无法与后续主句所陈述的偏离状态形成“落差”，无法表达特定的话语功能。", zh:"三类不能进入：普通物质名词（无序列）；泛义身份名词（无序列）；序列初始端名词（形不成落差）。" },
+  "comparative": { page:"底本 L4583-4593", quote:"语料显示“都 NP 了”的后续主句可能是一个差比句……两个 NP 之间具有显性的“级差”，属于同一个语义等级序列。如例(5)的“硕士生 → 博士生”……这种语篇中两个句式的衔接，典型地反映出“都 NP 了”中 NP 位置在线激活隐含的语义等级序列的语用心理。", zh:"证据一：后续主句常为差比句，两 NP 有显性级差、同属一条序列（博士/硕士、妈妈/闺女、成年/小孩、老兵/新兵）。" },
+  "matching":    { page:"底本 L4595-4603", quote:"a. 都妈妈了，还不会带孩子。b. ? 都大姑娘了，还不会带孩子。c. ?? 都小姑娘了，还不会带孩子……上述句子在句法、语义上都没有问题，是语用层面不合适，属于语用失当现象……两者的合理性与句子的合格度成正比，而是否合理取决于我们的认知规约性。", zh:"证据二：匹配关系合理性决定合格度——妈妈该会带孩子（可质疑）；大姑娘无育儿经验；小姑娘无关联（语用失当）。" },
+  "trigger":     { page:"底本 L4612", quote:"其一，先行小句中表示新信息出现的句法标记“了₂”暗示前边的NP可能代表了一个语义序列；其二，后续主句中的VP在语义上提示了VP与NP匹配系列的行为类范畴；其三，先行小句中的“都”和后续主句中带否定义的“还”这些语用标记明示了句子的语用预设……我们之所以把这些过程看作是“触发”，那是因为“触发”不等于“激活”，这就好比开关和通电的关系，打开开关未必亮灯，因为亮灯的前提是必须通电。", zh:"触发三要点：了₂暗示序列、VP提示匹配、「都/还」明示预设；触发≠激活——开关≠通电，激活靠规约性共识。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景一：预期变换器 ================= */
+const expSent = document.getElementById("expSent"), expType = document.getElementById("expType"), expWhy = document.getElementById("expWhy");
+const expFlags = { du:false, flip:false };
+const EXP = {
+  base:   { t:"大姑娘了，懂规矩了。", k:"正预期", w:"符合说话人的预期——后续句是肯定形式，不能加「都」，也不能加「还」（例1）。" },
+  du:     { t:"都大姑娘了，懂规矩了。", k:"尚可，但别扭", w:"加「都」后暗示「始料未及」，与肯定后续句不匹配——例(1)前边不能出现「都」。" },
+  flip:   { t:"大姑娘了，不懂规矩了。", k:"仍非目标式", w:"只把后续换成否定还不够：缺「都」与「还」，反预期的参照点没立起来。" },
+  both:   { t:"都大姑娘了，还不懂规矩。", k:"反预期", w:"三枚标记凑齐：「都」立参照、「了₂」确认变化、「还」引出语用否定——与预期相悖，有感而发（例2）。" }
+};
+function expRender(key){
+  const e = EXP[key];
+  expSent.textContent = e.t;
+  expType.textContent = e.k;
+  expWhy.textContent = e.w;
+}
+document.getElementById("expAddDu").onclick = () => {
+  expFlags.du = !expFlags.du;
+  expRender(expFlags.du && expFlags.flip ? "both" : (expFlags.du ? "du" : (expFlags.flip ? "flip" : "base")));
+};
+document.getElementById("expFlip").onclick = () => {
+  expFlags.flip = !expFlags.flip;
+  expRender(expFlags.du && expFlags.flip ? "both" : (expFlags.du ? "du" : (expFlags.flip ? "flip" : "base")));
+};
+document.getElementById("expAddHai").onclick = () => { expFlags.du = true; expFlags.flip = true; expRender("both"); };
+document.getElementById("expReset").onclick = () => { expFlags.du = false; expFlags.flip = false; expRender("base"); };
+expRender("base");
+
+/* ================= 场景二：NP 准入 ================= */
+const NPS = [
+  { v:"中学生", seq:"学业阶段序列：中学生 → 大学生 → 研究生", ok:"可以进入", why:"指人身份，范畴构成语义等级序列，且不在初始端——「都中学生了」后续可接偏离状态。" },
+  { v:"连长", seq:"军队领导序列：连长 → 营长 → 团长", ok:"可以进入", why:"指人身份，序列完整；「都连长了，还……」能形成落差。" },
+  { v:"处长", seq:"行政级别序列：科长 → 处长 → 局长", ok:"可以进入", why:"行政级别序列的中段；原文举例「都处长了」「都局长了」皆成立。" },
+  { v:"妈妈", seq:"社会角色序列：大姑娘 → 妈妈 → 老太太", ok:"可以进入", why:"基于生活形态的社会角色序列；「都妈妈了，还不会带孩子」是原文示范句。" },
+  { v:"苹果", seq:"无序列", ok:"不能进入", why:"普通物质名词——各自离散的类指范畴的「集合」，范畴本身不构成语义等级序列（*都苹果了）。" },
+  { v:"公民", seq:"无序列", ok:"不能进入", why:"虽是指人身份，但具有泛义性，范畴本身不构成语义等级序列（*都公民了）。" },
+  { v:"小科员", seq:"行政级别序列初始端：科员 → 科长 → 处长 → 局长", ok:"不能进入", why:"处在序列初始端（最低等级），无法与后续主句陈述的偏离状态形成「落差」（?都小科员了）。" },
+  { v:"小姑娘", seq:"社会角色序列初始端：小姑娘 → 大姑娘 → 妈妈 → 老太太", ok:"不能进入", why:"同处序列初始端，形不成落差；「都小姑娘了，还不会带孩子」难以接受。" }
+];
+const npSent = document.getElementById("npSent"), npSeq = document.getElementById("npSeq"),
+      npVerdict = document.getElementById("npVerdict"), npWhy = document.getElementById("npWhy");
+function npShow(i){
+  const d = NPS[i];
+  document.querySelectorAll("#npPool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  npSent.textContent = (d.ok === "可以进入" ? "都" : "*都") + d.v + "了，还……";
+  npSeq.textContent = d.seq;
+  npVerdict.innerHTML = d.ok === "可以进入" ? "<span class=\"ok\">" + d.ok + "</span>" : "<span class=\"no\">" + d.ok + "</span>";
+  npWhy.textContent = d.why;
+}
+document.querySelectorAll("#npPool button").forEach(b => { b.onclick = () => npShow(+b.dataset.n); });
+npShow(0);
+
+/* ================= 场景三：匹配标尺 ================= */
+const MATCH = [
+  { sent:"都妈妈了，还不会带孩子。", ok:"✓ 可以接受", why:"作为妈妈应该具有带孩子的能力，事实上不会——值得质疑。" },
+  { sent:"? 都大姑娘了，还不会带孩子。", ok:"△ 接受度很差", why:"大姑娘尚未婚嫁，没有育儿经验，不会带孩子很正常——匹配性不尽合理。" },
+  { sent:"?? 都小姑娘了，还不会带孩子。", ok:"✗ 难以接受", why:"小姑娘与带孩子似乎没有关联，两者不具备匹配性——语用失当。" }
+];
+const matchSent = document.getElementById("matchSent"), matchOk = document.getElementById("matchOk"), matchWhy = document.getElementById("matchWhy");
+function matchShow(i){
+  [...document.querySelectorAll("#matchLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  matchSent.textContent = MATCH[i].sent;
+  matchOk.textContent = MATCH[i].ok;
+  matchWhy.textContent = MATCH[i].why;
+}
+document.querySelectorAll("#matchLadder .rung").forEach(b => { b.onclick = () => matchShow(+b.dataset.m); });
+matchShow(0);
+
+/* ================= 场景四：解码流水线 ================= */
+const trigBtn = document.getElementById("trigBtn"), trigStep = document.getElementById("trigStep"),
+      trigNote = document.getElementById("trigNote"), trigOut = document.getElementById("trigOut");
+const TRIG = [
+  { t:"都妈妈了，……", n:"触发①：句末「了₂」传递新信息，暗示「妈妈」这个身份可能代表一条语义序列。" },
+  { t:"……还不会带孩子。", n:"触发②：后续 VP「不会带孩子」在语义上提示「妈妈」与「会带孩子」的匹配系列。" },
+  { t:"都……还……", n:"触发③：「都」与带否定义的「还」明示语用预设——某类人应该会干某类事，而事实上不是。" },
+  { t:"对照心中「清单」", n:"通电：听话人依据「默认」的 NP 与应有状态匹配系列清单，认同妈妈该会带孩子。" },
+  { t:"序列激活", n:"偏离被判定，发话诱因读懂——开关一开，灯亮了。两个环节瞬间发生，所以容易被忽略。" }
+];
+let trigI = 0;
+function trigAdvance(){
+  if (trigI >= TRIG.length){
+    trigI = 0; trigOut.hidden = true; trigBtn.textContent = "▶ 重新解码";
+    return;
+  }
+  trigI++;
+  const s = TRIG[trigI - 1];
+  trigStep.textContent = s.t;
+  trigNote.textContent = s.n;
+  trigOut.hidden = false;
+  trigBtn.textContent = trigI === TRIG.length ? "✓ 解码完成，点此重来" : "▶ 下一步";
+}
+trigBtn.onclick = trigAdvance;
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

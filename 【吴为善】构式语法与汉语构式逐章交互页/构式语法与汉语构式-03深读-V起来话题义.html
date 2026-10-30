@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>“她笑起来很好看”，到底谁好看 —— 《构式语法与汉语构式》第三章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.slots{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:.5em 0}
+.slotx{width:74px;height:74px;border:2px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:2rem;color:var(--muted);background:var(--paper)}
+.slotx.filled{color:var(--red);border-style:solid}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · V起来话题义<small>《构式语法与汉语构式》吴为善 ｜ 第三章第一节之二</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">评</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第三章「构式原型与扩展承继」第一节之二 ｜ 单节深读页</p>
+  <h1>“她笑起来很好看”，到底谁好看？</h1>
+  <p class="lead">答案谁都不是——好看的既不是“她”，也不是“笑”，而是<strong>“V起来”这个次话题</strong>：臭豆腐是香是臭，要看在“什么样的闻起来状态下”<sup class="cite" data-cite="subtopic"></sup>。一个动作短语被前移到主语之后、谓语之前，动态时间因素被消除，从“打起来了”的起始义里<strong>浮现</strong>出评价义——“V起来”成了话题，句子专管评述<sup class="cite" data-cite="emergent"></sup>。无论受事、施事还是工具、处所、时间来占话题位，构式义万变不离其宗：<strong>当 V 起来的时候，某人或某物具有 AP 的性状</strong>。</p>
+  <ul class="chips">
+    <li><b>构件</b>　V起来＝指称性次话题（句法上是小主语）</li>
+    <li><b>两变式</b>　受事 NP 话题化 · 施事 NP 话题化</li>
+    <li><b>来源</b>　位移义 → 起始义 → 评价义（浮现意义）</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 340" role="img" aria-label="示意图：两个小句整合为V起来话题义构式">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="46" y="46" width="180" height="56" rx="10"/>
+          <rect x="46" y="116" width="180" height="56" rx="10"/>
+        </g>
+        <text x="136" y="71" text-anchor="middle" font-size="15" fill="#29241d">她笑了起来。</text>
+        <text x="136" y="90" text-anchor="middle" font-size="11.5" fill="#6f675a">动态时间因素 · 谓语身份</text>
+        <text x="136" y="141" text-anchor="middle" font-size="15" fill="#29241d">我觉得她挺好看的。</text>
+        <text x="136" y="160" text-anchor="middle" font-size="11.5" fill="#6f675a">独立小句 · 主观印象</text>
+        <path d="M236 124 L306 124" stroke="#9d4938" stroke-width="2.5" fill="none" marker-end="url(#arr3)"/>
+        <defs><marker id="arr3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#9d4938"/></marker></defs>
+        <text x="271" y="108" text-anchor="middle" font-size="11.5" fill="#9d4938">整合</text>
+        <text x="271" y="150" text-anchor="middle" font-size="11" fill="#6f675a">消除动态</text>
+        <text x="271" y="165" text-anchor="middle" font-size="11" fill="#6f675a">时间因素</text>
+        <g stroke="#9d4938" stroke-width="2" fill="#f7ece8">
+          <rect x="322" y="72" width="240" height="76" rx="12"/>
+        </g>
+        <text x="442" y="105" text-anchor="middle" font-size="19" font-family="KaiTi,STKaiti,serif" fill="#29241d">她笑起来挺好看的。</text>
+        <text x="442" y="130" text-anchor="middle" font-size="11.5" fill="#9d4938">V起来＝次话题 ｜ AP＝评价谓语</text>
+        <path d="M442 158 L442 200" stroke="#a87f24" stroke-width="2" fill="none" marker-end="url(#arr3)"/>
+        <g stroke="#a87f24" stroke-width="1.6" fill="#faf3e2">
+          <rect x="92" y="212" width="160" height="52" rx="10"/>
+          <rect x="262" y="212" width="160" height="52" rx="10"/>
+          <rect x="432" y="212" width="160" height="52" rx="10"/>
+        </g>
+        <text x="172" y="234" text-anchor="middle" font-size="13.5" fill="#29241d">位移义</text>
+        <text x="172" y="253" text-anchor="middle" font-size="11" fill="#6f675a">空间域 · 红旗升起来了</text>
+        <text x="342" y="234" text-anchor="middle" font-size="13.5" fill="#29241d">起始义</text>
+        <text x="342" y="253" text-anchor="middle" font-size="11" fill="#6f675a">时间域 · 他们打起来了</text>
+        <text x="512" y="234" text-anchor="middle" font-size="13.5" fill="#9d4938">评价义</text>
+        <text x="512" y="253" text-anchor="middle" font-size="11" fill="#6f675a">浮现 · 臭豆腐闻起来臭</text>
+        <path d="M256 238 L258 238 M356 238 L358 238" stroke="#a87f24" stroke-width="1.6"/>
+        <text x="340" y="300" text-anchor="middle" font-size="11.5" fill="#6f675a">示意：整合消解了“V起来”的谓语身份，评价义作为浮现意义产生</text>
+      </g>
+    </svg>
+    <figcaption>主视觉一（示意，非原文原图）：「她笑了起来＋我觉得她挺好看的」两个小句，整合为「她笑起来挺好看的」——V 起来获得次话题身份。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景一：谁被陈述 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 原型判别</p>
+  <h2>AP 到底在说谁？</h2>
+  <p>“V起来”的句法属性，学界吵了几十年：Sung（1994）和 Ji（1995）套用英语中动句，把它看作句子谓语；曹宏（2004c）质疑后定性为状语；王健慈（1997）叫它评判动词，算一种情态成分<sup class="cite" data-cite="dispute"></sup>。笔者的判决依据只有一条：<strong>AP 直接陈述的是谁</strong>。来当一回法官。</p>
+  <div class="lab" id="judgeLab">
+    <h3>次话题判别器</h3>
+    <div class="wordpool" id="judgeSents"></div>
+    <p class="small muted" id="judgeHint">先选一个句子，再判 AP 直接陈述谁。</p>
+    <div class="wordpool" id="judgeOpts">
+      <button data-j="topic">大主语 NP</button>
+      <button data-j="sub">「V起来」次话题</button>
+    </div>
+    <div class="result" id="judgeOut" hidden>
+      <p class="sent" id="judgeSent"></p>
+      <dl class="rows">
+        <dt>判决</dt><dd id="judgeVerdict"></dd>
+        <dt>理据</dt><dd id="judgeWhy"></dd>
+      </dl>
+    </div>
+    <p class="small muted" id="judgeScore" hidden></p>
+  </div>
+  <details>
+    <summary>四种定性假说速查（展开）</summary>
+    <ul>
+      <li><strong>谓语说</strong>：Sung（1994）、Ji（1995）——套用英语中动句构式，把“V起来”看作句子谓语<sup class="cite" data-cite="dispute"></sup>。</li>
+      <li><strong>状语说</strong>：曹宏（2004c）——对谓语说提出质疑，将此类“V起来”定性为状语<sup class="cite" data-cite="dispute"></sup>。</li>
+      <li><strong>评判动词说</strong>：王健慈（1997）——称为评判动词，看作一种情态成分<sup class="cite" data-cite="dispute"></sup>。</li>
+      <li><strong>次话题说</strong>：笔者（2012）——分析为指称性次话题，句法上是小主语，因为 AP 直接陈述的是“V起来”<sup class="cite" data-cite="subtopic"></sup>。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景二：起来三义 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 构式原型</p>
+  <h2>“起来”的三级滑变</h2>
+  <p>“起来”的本钱是<strong>位移义</strong>——人或物体由下向上的空间移动；隐喻映射到时间域，得到<strong>起始义</strong>——动作开始进行并继续下去<sup class="cite" data-cite="origin"></sup>。可一旦“V起来”位置前移、核心谓语抢走了焦点，两个小句整合，它就再也不是谓语，而是捞到了一个新身份：<strong>指称性次话题</strong>。点一阶，看例句。</p>
+  <div class="ladder" id="qiLadder">
+    <button class="rung" data-q="0" aria-pressed="true"><b>位移义</b><small>空间域</small></button>
+    <button class="rung" data-q="1" aria-pressed="false"><b>起始义</b><small>时间域</small></button>
+    <button class="rung" data-q="2" aria-pressed="false"><b>评价义</b><small>浮现意义</small></button>
+    <button class="rung" data-q="3" aria-pressed="false"><b>三义对照</b><small>总表</small></button>
+  </div>
+  <div class="result" id="qiOut">
+    <p class="sent" id="qiSent"></p>
+    <p class="small muted" id="qiNote"></p>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 250" role="img" aria-label="示意图：起来从位移义到起始义到评价义的滑变链">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <defs><marker id="arr4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="30" y="52" width="180" height="88" rx="12"/>
+          <rect x="250" y="52" width="180" height="88" rx="12"/>
+          <rect x="470" y="52" width="180" height="88" rx="12"/>
+        </g>
+        <text x="120" y="80" text-anchor="middle" font-size="16" font-family="KaiTi,STKaiti,serif" fill="#29241d">位移义</text>
+        <text x="120" y="103" text-anchor="middle" font-size="11.5" fill="#6f675a">五星红旗升起来了</text>
+        <text x="120" y="121" text-anchor="middle" font-size="11.5" fill="#6f675a">孩子们爬起来了</text>
+        <text x="340" y="80" text-anchor="middle" font-size="16" font-family="KaiTi,STKaiti,serif" fill="#29241d">起始义</text>
+        <text x="340" y="103" text-anchor="middle" font-size="11.5" fill="#6f675a">他们打起来了</text>
+        <text x="340" y="121" text-anchor="middle" font-size="11.5" fill="#6f675a">钢琴弹起来了</text>
+        <text x="560" y="80" text-anchor="middle" font-size="16" font-family="KaiTi,STKaiti,serif" fill="#9d4938">评价义</text>
+        <text x="560" y="103" text-anchor="middle" font-size="11.5" fill="#6f675a">臭豆腐闻起来臭</text>
+        <text x="560" y="121" text-anchor="middle" font-size="11.5" fill="#6f675a">小提琴拉起来真好听</text>
+        <path d="M214 96 L246 96" stroke="#a87f24" stroke-width="2" marker-end="url(#arr4)"/>
+        <path d="M434 96 L466 96" stroke="#a87f24" stroke-width="2" marker-end="url(#arr4)"/>
+        <text x="230" y="82" text-anchor="middle" font-size="11" fill="#a87f24">隐喻映射</text>
+        <text x="450" y="82" text-anchor="middle" font-size="11" fill="#a87f24">两小句整合</text>
+        <text x="120" y="170" text-anchor="middle" font-size="11.5" fill="#3d5a6c">空间域</text>
+        <text x="340" y="170" text-anchor="middle" font-size="11.5" fill="#3d5a6c">时间域</text>
+        <text x="560" y="170" text-anchor="middle" font-size="11.5" fill="#9d4938">评价域 · 浮现意义</text>
+        <text x="340" y="215" text-anchor="middle" font-size="11.5" fill="#6f675a">后两级的桥梁：位置前移＋核心谓语成为焦点，V起来不再是谓语</text>
+      </g>
+    </svg>
+    <figcaption>主视觉二（示意，非原文原图）：“起来”语义从空间域向时间域、再向评价域的两次跨域。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景三：两小句整合台 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 整合机制</p>
+  <h2>两句话，怎么合成一句</h2>
+  <p>“V起来”原本能独立当谓语。当它位置前移、核心谓语充当表述焦点，话语里出现两个小句——话题义构式正是两个小句整合的结果<sup class="cite" data-cite="integrate"></sup>。句法操作的关键是<strong>消除“V起来”的动态时间因素</strong>，取消它直接充当核心谓语的身份。走一遍整合流程：</p>
+  <div class="lab" id="zipLab">
+    <h3>整合台</h3>
+    <button id="zipBtn">▶ 开始整合</button>
+    <div class="result" id="zipOutBox" hidden>
+      <p class="sent" id="zipOut"></p>
+      <p class="small muted" id="zipNote"></p>
+    </div>
+  </div>
+  <p>整合之后，“V起来”含有“当……的时候”的意思，这是起始义的合理衍生；至于假设意味，江蓝生（2002）从语法化角度证明：近代汉语表假设的“时”和“後”都基于时间范畴，经“时间 → 条件 → 假设”途径虚化而来<sup class="cite" data-cite="jiang"></sup>。我们赞同曹宏（2004b）：<strong>评价义是整个构式义导致的</strong>，不是哪个词自带的。</p>
+</section>
+
+<!-- ============ 场景四：论元话题化变形器 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 构式扩展</p>
+  <h2>谁坐上话题位，句子就换一张脸</h2>
+  <div class="guess" data-guess>
+    <p class="q">“儿子做起那些代数题来很费劲”——被话题化的是谁？</p>
+    <div class="opts">
+      <button data-ans="a">受事「那些代数题」</button>
+      <button data-ans="b">施事「儿子」</button>
+    </div>
+    <p class="reveal" hidden>是<strong>施事「儿子」</strong>：典型施事 NP 构式由 NP(施)+V起(O)来+AP 变换而来，受事被指派插入“起来”中间（例 25′）；而“那些代数题，儿子做起来很费劲”（例 25）才是受事话题化<sup class="cite" data-cite="patient"></sup><sup class="cite" data-cite="agent"></sup>。</p>
+  </div>
+  <p>V 的属性决定主话题 NP 的语义角色，构式据此扩展为<strong>受事 NP 构式</strong>与<strong>施事 NP 构式</strong>两大类<sup class="cite" data-cite="extend"></sup>。不仅是受事——工具、处所、时间等外围论元都能话题化；轮到及物动词的受事要露面时，就把它塞进“起来”中间，形成“V起O来”。点一个角色，看变形：</p>
+  <div class="ladder" id="roleLadder">
+    <button class="rung" data-r="0" aria-pressed="true"><b>受事</b><small>优势组配 · 例 25</small></button>
+    <button class="rung" data-r="1" aria-pressed="false"><b>施事</b><small>显性前置 · 例 25′</small></button>
+    <button class="rung" data-r="2" aria-pressed="false"><b>工具</b><small>外围论元 · 例 20</small></button>
+    <button class="rung" data-r="3" aria-pressed="false"><b>处所／时间</b><small>外围论元 · 例 21、23</small></button>
+  </div>
+  <div class="result" id="roleOut">
+    <p class="sent" id="roleSent"></p>
+    <dl class="rows">
+      <dt>话题</dt><dd id="roleTopic"></dd>
+      <dt>机制</dt><dd id="roleMech"></dd>
+    </dl>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 330" role="img" aria-label="示意图：同一事件的不同论元话题化变换">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="210" y="30" width="260" height="54" rx="11"/>
+        </g>
+        <text x="340" y="53" text-anchor="middle" font-size="15.5" fill="#29241d">儿子做代数题</text>
+        <text x="340" y="72" text-anchor="middle" font-size="11" fill="#6f675a">基础表述：完整论元结构</text>
+        <path d="M340 90 L150 150 M340 90 L340 150 M340 90 L530 150" stroke="#a87f24" stroke-width="1.8" fill="none" marker-end="url(#arr5)"/>
+        <defs><marker id="arr5" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="20" y="158" width="260" height="86" rx="11"/>
+          <rect x="210" y="158" width="260" height="86" rx="11"/>
+          <rect x="400" y="158" width="260" height="86" rx="11"/>
+        </g>
+        <text x="150" y="184" text-anchor="middle" font-size="14.5" fill="#29241d">那些代数题，</text>
+        <text x="150" y="205" text-anchor="middle" font-size="14.5" fill="#29241d">儿子做起来很费劲。</text>
+        <text x="150" y="230" text-anchor="middle" font-size="11" fill="#3d5a6c">受事话题化（例25）· 施事隐退</text>
+        <text x="340" y="184" text-anchor="middle" font-size="14.5" fill="#29241d">儿子做起那些代数题来</text>
+        <text x="340" y="205" text-anchor="middle" font-size="14.5" fill="#29241d">很费劲。</text>
+        <text x="340" y="230" text-anchor="middle" font-size="11" fill="#9d4938">施事话题化（例25′）· 受事插入</text>
+        <text x="530" y="184" text-anchor="middle" font-size="14.5" fill="#29241d">万能钥匙开起锁来</text>
+        <text x="530" y="205" text-anchor="middle" font-size="14.5" fill="#29241d">随心所欲。</text>
+        <text x="530" y="230" text-anchor="middle" font-size="11" fill="#3d5a6c">工具话题化（例20）· V起O来</text>
+        <text x="340" y="288" text-anchor="middle" font-size="11.5" fill="#6f675a">变换不改构式义：无论谁占话题位，评述的都是“当 V 起来的时候”</text>
+      </g>
+    </svg>
+    <figcaption>主视觉三（示意，非原文原图）：同一事件「儿子做代数题」的三种话题化变换，受事论元需出现时插入“起来”中间。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景五：AP 指向实验室 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 语义指向</p>
+  <h2>同一句话，AP 指着不同的东西</h2>
+  <div class="guess" data-guess>
+    <p class="q">「他拉起小提琴来很好听」——好听的是谁？</p>
+    <div class="opts">
+      <button data-ans="a">施事「他」</button>
+      <button data-ans="b">受事「小提琴」</button>
+      <button data-ans="c">动作「拉」本身</button>
+    </div>
+    <p class="reveal" hidden>是<strong>受事「小提琴」</strong>（琴声）。同一构式换个 AP 就换指向：「很投入」指向施事，「有快有慢，有张有弛」指向动作本身<sup class="cite" data-cite="twomech"></sup>。</p>
+  </div>
+  <p>后半部分的 AP 是对“V起来”的直接陈述，也是对整个活动状态的评述——它的语义可能指向<strong>施事</strong>、<strong>受事</strong>，也可能指向<strong>行为动作本身</strong><sup class="cite" data-cite="twomech"></sup>。用「他拉起小提琴来」做实验：</p>
+  <div class="lab" id="apLab">
+    <h3>AP 指向实验室</h3>
+    <p class="small muted">他拉起小提琴来，____。</p>
+    <div class="wordpool" id="apPool">
+      <button data-ap="0">很好听</button>
+      <button data-ap="1">很投入</button>
+      <button data-ap="2">有快有慢，有张有弛</button>
+    </div>
+    <div class="result" id="apOut" hidden>
+      <p class="sent" id="apSent"></p>
+      <dl class="rows">
+        <dt>指向</dt><dd id="apTarget"></dd>
+        <dt>解读</dt><dd id="apNote"></dd>
+      </dl>
+    </div>
+  </div>
+  <p>指向可以漂移，构式义却不动摇——这正是“万变不离其宗”的现场证据。</p>
+</section>
+
+<!-- ============ 场景六：构式义同一性 ============ -->
+<section class="scene" data-scene="6">
+  <p class="kicker">场景 6 ｜ 收束</p>
+  <h2>一张三层表，钉住构式义</h2>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">形式层</p>
+      <p class="small muted">NP+V起来+AP → NP(受)+V起(O)来+AP → NP(施)+V起(O)来+AP。V 可不及物（形式不变）也可及物（受事插入，扩展为 V起O来）<sup class="cite" data-cite="twomech"></sup>。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">语义层</p>
+      <p class="small muted">当“V起来”时，某事件参与者 NP(施)、NP(受) 或 VP 本身，具有 AP 的性状特征<sup class="cite" data-cite="cmeaning"></sup>。</p>
+    </div>
+  </div>
+  <div class="result">
+    <p class="sent">功能层</p>
+    <p class="small muted">说话人对某类事件、活动或现象的状态所引发的<strong>主观感受</strong>加以评述<sup class="cite" data-cite="cmeaning"></sup>。评价义是整个构式义导致的（赞同曹宏 2004b）<sup class="cite" data-cite="jiang"></sup>。</p>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 240" role="img" aria-label="示意图：V起来话题义构式的形式语义功能三层结构">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#9d4938" stroke-width="2" fill="#f7ece8">
+          <rect x="70" y="26" width="540" height="48" rx="11"/>
+          <rect x="70" y="94" width="540" height="48" rx="11"/>
+          <rect x="70" y="162" width="540" height="48" rx="11"/>
+        </g>
+        <text x="98" y="55" font-size="14.5" fill="#9d4938">形式</text>
+        <text x="150" y="55" font-size="13" fill="#29241d">NP+V起来+AP → NP(受)+V起(O)来+AP → NP(施)+V起(O)来+AP</text>
+        <text x="98" y="123" font-size="14.5" fill="#9d4938">语义</text>
+        <text x="150" y="123" font-size="13" fill="#29241d">当“V起来”时，参与者 NP(施)／NP(受) 或 VP 本身具有 AP 性状</text>
+        <text x="98" y="191" font-size="14.5" fill="#9d4938">功能</text>
+        <text x="150" y="191" font-size="13" fill="#29241d">说话人对事件、活动或现象的状态所引发的主观感受加以评述</text>
+      </g>
+    </svg>
+    <figcaption>主视觉四（示意，非原文原图）：构式扩展无论怎么变换，形式、语义、功能三层的同一性不变<sup class="cite" data-cite="cmeaning"></sup>。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>交卷前三题</h2>
+  <p class="q">1. 「她笑起来很好看」在语义上等于「她很好看」吗？</p>
+  <div class="opts">
+    <button data-ans="a">等于，反正都是说她</button>
+    <button data-ans="b">不等于，好看陈述的是「笑起来」</button>
+  </div>
+  <p class="why" hidden>不等于。「臭/香」陈述的是「闻起来/吃起来」的感觉，不是直接陈述「臭豆腐」；「她笑起来很好看」是当她笑的时候好看，≠「她很好看」<sup class="cite" data-cite="subtopic"></sup>。</p>
+  <p class="q">2. 「武侠小说读起来很过瘾」中，句首 NP 的语义角色是？</p>
+  <div class="opts">
+    <button data-ans="a">施事</button>
+    <button data-ans="b">受事（话题化）</button>
+  </div>
+  <p class="why" hidden>受事。受事 NP 构式 NP(受)+V起(O)来+AP 中 V 都是及物动词，受事置于句首是话题化操作的后果，施事隐退为背景信息；受事话题化是优势组配<sup class="cite" data-cite="patient"></sup>。</p>
+  <p class="q">3. 按原文，「V起来」话题义构式的功能是什么？</p>
+  <div class="opts">
+    <button data-ans="a">叙述动作的起始和持续</button>
+    <button data-ans="b">对事件状态引发的主观感受加以评述</button>
+  </div>
+  <p class="why" hidden>是评述。功能层表述为“说话人对某类事件、活动或现象的状态所引发的主观感受加以评述”；动作的起始和持续是“起来”早期的起始义，已被整合消解<sup class="cite" data-cite="cmeaning"></sup><sup class="cite" data-cite="integrate"></sup>。</p>
+</section>
+
+<section class="scene">
+  <p class="kicker">边界与延伸</p>
+  <h2>这一页讲了什么、没讲什么</h2>
+  <p><strong>讲了</strong>：第三章第一节之二「“V起来”话题义构式解析」（底本 L2310–L2459）——原型（次话题判别、起来三义、两小句整合与浮现意义）与扩展（受事/施事/外围论元话题化、AP 三指向、构式义同一性）。</p>
+  <p><strong>没讲</strong>：第三章第一节之一「“NP+VR”自致使义构式解析」（底本 L2153–L2309）；第三章第二节「组配构件的扩展承继」（“一M比一M+VP”、“V₁一量 V₂一量”，底本 L2462 起）；第二至八章其余各节。这些都可按同规格续做深读页。</p>
+  <p class="small muted">底本为 PaddleOCR 转录的电子书文本，无原书页码；角标中的「底本 Lx」指该内容在研读底本中的行号。例句编号沿用底本原文编号。引用关键数字与结论前，请点开角标核对原句。</p>
+  <nav class="series">
+    <a href="index.html">↖ 系列索引</a>
+    <a href="构式语法与汉语构式-01深读-构式语法入门.html">01 构式语法入门</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a class="cur" href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </nav>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "coding":      { page:"底本 L2312", quote:"“V起来”话题义构式可以码化为“NP+V起来+AP”（参见第五章分析），笔者（2012）曾借鉴构式语法理论对该构式进行了考察。该构式中的“V起来”具有话题义，是个核心构件，其中V的替换使得构式扩展为两种形式。", zh:"构式码化为 NP+V起来+AP，笔者 2012 年考察；“V起来”是核心构件，V 的替换使构式扩展为两种形式。" },
+  "subtopic":    { page:"底本 L2331", quote:"就构式的原型特征来看，“V起来”分析为指称性次话题（句法上为小主语）也许更为合理，因为谓语AP直接陈述的是前边的“V起来”。如例（1）中“臭”和“香”分别陈述“闻起来”和“吃起来”的感觉，并不是直接陈述“臭豆腐”的……但“她笑起来很好看”在语义上不等于“她很好看”，这是显而易见的。", zh:"笔者判定：V起来是指称性次话题（小主语），AP 直接陈述它；「她笑起来很好看」≠「她很好看」。" },
+  "dispute":     { page:"底本 L2331", quote:"Sung（1994）和Ji（1995）套用英语的中动句构式把“V起来”看作句子的谓语；曹宏（2004c）对此进行了质疑，并将此类“V起来”定性为状语；王健慈（1997）则把此类“V起来”称为评判动词，看作一种情态成分。", zh:"三种旧说：谓语说（Sung 1994、Ji 1995）、状语说（曹宏 2004c）、评判动词／情态说（王健慈 1997）。" },
+  "origin":      { page:"底本 L2333", quote:"位于主语后、核心谓语前的“V起来”，其中“起来”在语义上继承的还是“起始义”……而“起来”的“起始义”又是基于“位移义”……的引申，是“起来”的语义从空间域向时间域的隐喻映射结果。", zh:"起来：位移义（空间域）→起始义（时间域）的隐喻映射；起始义＝动作开始进行并继续。" },
+  "integrate":   { page:"底本 L2345-2356", quote:"当“V起来”的位置前移，另外出现核心谓语充当表述的焦点时，整个话语就出现了两个小句，而“V起来”话题义构式正是两个小句整合的结果……这种整合在句法操作上的关键是消除了“V起来”的动态时间因素，因而取消了“V起来”直接充当核心谓语的“身份”，处于核心谓语前的位置并具有“次话题”的功能。", zh:"整合机制：位置前移＋核心谓语成焦点→两个小句整合；关键是消除动态时间因素，取消谓语身份，获得次话题功能。" },
+  "emergent":    { page:"底本 L2356", quote:"在特定构式的作用下“V起来”产生了新的“浮现意义”（emergent meaning），表达了一种对某种状态的评价。其中后边的核心谓语AP直接陈述“V起来”的状态，导致“V起来”含有“当……时候”的意思，这是“起来”表示起始义的合理衍生。", zh:"浮现意义：对某种状态的评价；V起来含「当……的时候」义，是起始义的合理衍生。" },
+  "jiang":       { page:"底本 L2356", quote:"江蓝生（2002）从语法化的角度作了解释，她通过语料证明近代汉语表示假设的“时”和“後”都是基于时间范畴，通过“时间 → 条件 → 假设”这样的语法化途径逐步虚化而来的……因此，我们赞同曹宏（2004b）的观点，此类构式中的“V起来”具有的评价义，是整个构式义导致的。", zh:"假设意味源于语法化：时间→条件→假设（江蓝生 2002）；赞同曹宏（2004b）：评价义由整个构式义导致。" },
+  "extend":      { page:"底本 L2361", quote:"基于成分V的替换，构式扩展为两种形式，一种是“受事NP构式”，另一种是“施事NP构式”两大类。", zh:"V 的属性决定 NP 语义角色及句法分布，构式扩展为受事 NP 构式与施事 NP 构式两大类。" },
+  "patient":     { page:"底本 L2366-2398", quote:"受事NP构式可进一步码化为“NP(受) + V 起(O) 来 + AP”。在该类变式中，V 都是及物动词，受事成分NP置于句首主语位置，显然是一种话题化操作的后果……由于话题都是外围论元，所以当及物动词的受事论元需要出现时，它们被指派插入“起来”的中间，如例(20)的“开起锁来”……当然，受事论元话题化是优势组配，其他论元角色占据话题位置的情况相对较少。", zh:"受事构式：V 皆及物，受话题化，施事隐退；工具/处所/时间亦可话题化，受事出现时插入“起来”中间（V起O来）；受事话题化是优势组配。" },
+  "agent":       { page:"底本 L2403-2439", quote:"施事NP构式可进一步码化为“NP(施) + V 起(O) 来 + AP”。语料表明，如果“V 起来”的施事成分需要在构式中出现，那么可以直接置于“V 起来”之前，而 AP 的语义指向施事NP……如果出于表达需要，施事成分也完全可以作为话题置于主语位置。典型的施事NP构式就是这样变换来的，受事成分被指派插入“起来”中间。", zh:"施事构式：施事前置于V起来，AP 指向施事；典型变式中受事插入“起来”中间（例25′、26′、27′、28′）。" },
+  "twomech":     { page:"底本 L2443-2451", quote:"第一，该构式的前半部分“NP+V起来”本是一个相对完整的表述，具有完整的论元结构……无论是施事、受事或其他外围论元都可能依据表达需要置于句首作为话题处理，这些变换并不影响构式义的同一性。第二……AP 在语义上可能指向施事，也可能指向受事，还可能指向行为动作本身，这同样不影响构式义的同一性。", zh:"变换机制两条：①各类论元均可依表达需要话题化；②AP 可指向施事、受事或动作本身；均不影响构式义同一性。" },
+  "cmeaning":    { page:"底本 L2455-2459", quote:"形式：NP+V 起来 +AP → NP(受)+V 起 (O) 来 +AP → NP(施)+V 起 (O) 来 +AP。语义：当“V起来”时，某事件参与者 NP（施）或 NP（受）或 VP 本身具有 AP 的性状特征。功能：说话人对某类事件、活动或现象的状态所引发的主观感受加以评述。", zh:"构式义三层：形式（三式变换）、语义（参与者或VP具有AP性状）、功能（对状态引发的主观感受加以评述）。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景一：次话题判别器 ================= */
+const JUDGE = [
+  { sent:"臭豆腐闻起来臭，吃起来香。", topic:"臭豆腐", sub:"闻起来／吃起来", ap:"臭／香",
+    why:"「臭」「香」分别陈述「闻起来」「吃起来」的感觉，并不直接陈述「臭豆腐」——臭豆腐到底是香还是臭，要看在什么样的「V起来」状态下。" },
+  { sent:"小提琴拉起来真好听。", topic:"小提琴", sub:"拉起来", ap:"真好听",
+    why:"「真好听」陈述的是「拉起来」的状态（例 2 的 AP 即如此），不是小提琴本身；换个人拉，评价可能翻转。" },
+  { sent:"她笑起来很好看。", topic:"她", sub:"笑起来", ap:"很好看",
+    why:"后边 AP 直接陈述「V起来」；有时看起来 AP 能陈述大主语，但「她笑起来很好看」在语义上不等于「她很好看」。" },
+  { sent:"他们干起来浑身是劲。", topic:"他们", sub:"干起来", ap:"浑身是劲",
+    why:"「浑身是劲」描述的是「干起来」时的状态（例 4），主语「他们」是施事主话题，被陈述的仍是次话题。" }
+];
+const judgeSents = document.getElementById("judgeSents"),
+      judgeOut = document.getElementById("judgeOut"),
+      judgeSent = document.getElementById("judgeSent"),
+      judgeVerdict = document.getElementById("judgeVerdict"),
+      judgeWhy = document.getElementById("judgeWhy"),
+      judgeScore = document.getElementById("judgeScore"),
+      judgeHint = document.getElementById("judgeHint");
+let judgeCur = -1, judgeRight = 0, judgeDone = new Set();
+JUDGE.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.textContent = d.sent;
+  b.onclick = () => {
+    judgeCur = i;
+    [...judgeSents.children].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+    judgeOut.hidden = true;
+    judgeHint.textContent = "已选：「" + d.sent + "」——AP「" + d.ap + "」直接陈述谁？";
+    document.querySelectorAll("#judgeOpts button").forEach(x => { x.disabled = false; x.classList.remove("right","wrong"); });
+  };
+  judgeSents.appendChild(b);
+});
+document.querySelectorAll("#judgeOpts button").forEach(b => {
+  b.onclick = () => {
+    if (judgeCur < 0){ judgeHint.textContent = "先在上方选一个句子。"; return; }
+    const d = JUDGE[judgeCur];
+    const right = b.dataset.j === "sub";
+    document.querySelectorAll("#judgeOpts button").forEach(x => x.classList.remove("right","wrong"));
+    judgeOut.hidden = false;
+    judgeSent.innerHTML = d.sent.replace(d.sub, "<em>" + d.sub + "</em>");
+    judgeVerdict.innerHTML = right
+      ? "<span class=\"ok\">判对了——AP 陈述的是「" + d.sub + "」（次话题）</span>"
+      : "<span class=\"no\">不对——「" + d.topic + "」只是主话题，被 AP 直接陈述的是「" + d.sub + "」，可以改判</span>";
+    judgeWhy.textContent = d.why;
+    if (right && !judgeDone.has(judgeCur)){ judgeDone.add(judgeCur); judgeRight++; }
+    judgeScore.hidden = false;
+    judgeScore.textContent = "进度：" + judgeRight + " / " + JUDGE.length + (judgeRight === JUDGE.length ? "　✓ 四句全判对：AP 陈述次话题，这就是「V起来」被判为指称性次话题的依据。" : "");
+  };
+});
+
+/* ================= 场景二：起来三义 ================= */
+const QI = [
+  { sent:"五星红旗升起来了。", note:"位移义（空间域）：人或物体由下向上的空间位置移动；例(5)、(6)「爬起来」同类。" },
+  { sent:"他们打起来了。", note:"起始义（时间域）：行为动作的开始进行并继续下去；例(7)、(8)「弹起来」同类——空间域隐喻映射到时间域的结果。" },
+  { sent:"臭豆腐闻起来臭，吃起来香。", note:"评价义（浮现意义）：「V起来」前移为次话题，AP 对它作状态评价；含「当……的时候」义，是起始义的合理衍生。" },
+  { sent:"位移 → 起始 → 评价", note:"总表：位移义基于空间；起始义是空间域向时间域的隐喻映射；评价义由两小句整合产生，是构式的浮现意义，不再表示动作起始。" }
+];
+const qiSent = document.getElementById("qiSent"), qiNote = document.getElementById("qiNote");
+function qiShow(i){
+  [...document.querySelectorAll("#qiLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  qiSent.textContent = QI[i].sent;
+  qiNote.textContent = QI[i].note;
+}
+document.querySelectorAll("#qiLadder .rung").forEach(b => { b.onclick = () => qiShow(+b.dataset.q); });
+qiShow(0);
+
+/* ================= 场景三：整合台 ================= */
+const zipBtn = document.getElementById("zipBtn"), zipOut = document.getElementById("zipOut"),
+      zipNote = document.getElementById("zipNote"), zipOutBox = document.getElementById("zipOutBox");
+const zipSteps = [
+  { t:"她笑了起来。＋ 我觉得她挺好看的。", n:"第 0 步：两个小句——「V起来」还是谓语，带动态时间因素（例 9 的原型场景）。" },
+  { t:"她笑起来，挺好看的。", n:"第 1 步：位置前移，核心谓语「挺好看的」成为表述焦点，第二个小句评述化。" },
+  { t:"她笑起来挺好看的。", n:"第 2 步：整合为单句——消除「V起来」的动态时间因素，取消谓语身份，它成为指称性次话题；评价义浮现（例 9 的结果）。" }
+];
+let zipI = 0;
+function zipAdvance(){
+  if (zipI >= zipSteps.length - 1){
+    zipI = 0; zipOutBox.hidden = true; zipBtn.textContent = "▶ 重新整合";
+    return;
+  }
+  zipI++;
+  const s = zipSteps[zipI];
+  zipOut.textContent = s.t;
+  zipNote.textContent = s.n;
+  zipOutBox.hidden = false;
+  zipBtn.textContent = zipI === zipSteps.length - 1 ? "✓ 整合完成，点此重来" : "▶ 继续整合";
+}
+zipBtn.onclick = zipAdvance;
+
+/* ================= 场景四：论元话题化 ================= */
+const ROLES = [
+  { sent:"那些代数题，儿子做起来很费劲。", topic:"受事「那些代数题」（例 25）", mech:"受事话题化：V 是及物动词，受事置于句首主语位置，施事「儿子」隐退为背景信息；受事话题化是优势组配。" },
+  { sent:"儿子做起那些代数题来很费劲。", topic:"施事「儿子」（例 25′）", mech:"施事话题化：施事直接置于「V起来」之前，AP「很费劲」指向施事；受事被指派插入「起来」中间，构件扩展为「V起O来」。" },
+  { sent:"万能钥匙开起锁来随心所欲。", topic:"工具「万能钥匙」（例 20）", mech:"工具（外围论元）话题化：受事「锁」需出现，插入「起来」中间——「开起锁来」；同类如例(19)「这种刀切起来很顺手」。" },
+  { sent:"海滨浴场游起来特舒畅。", topic:"处所「海滨浴场」（例 21）", mech:"处所／时间（外围论元）亦可话题化，如例(23)「暑假里玩起来很过瘾」；例(22)「读起书来」是受事插入的形式。" }
+];
+const roleSent = document.getElementById("roleSent"), roleTopic = document.getElementById("roleTopic"), roleMech = document.getElementById("roleMech");
+function roleShow(i){
+  [...document.querySelectorAll("#roleLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  const r = ROLES[i];
+  roleSent.textContent = r.sent;
+  roleTopic.textContent = r.topic;
+  roleMech.textContent = r.mech;
+}
+document.querySelectorAll("#roleLadder .rung").forEach(b => { b.onclick = () => roleShow(+b.dataset.r); });
+roleShow(0);
+
+/* ================= 场景五：AP 指向 ================= */
+const APS = [
+  { ap:"很好听", target:"受事（小提琴）", note:"好听的是小提琴（琴声）——AP 指向受事参与者。" },
+  { ap:"很投入", target:"施事（他）", note:"投入的是演奏者——AP 指向施事参与者。" },
+  { ap:"有快有慢，有张有弛", target:"行为动作（演奏）", note:"快慢、张弛描述的是演奏行为本身——AP 指向 VP。" }
+];
+const apOut = document.getElementById("apOut"), apSent = document.getElementById("apSent"),
+      apTarget = document.getElementById("apTarget"), apNote = document.getElementById("apNote");
+document.querySelectorAll("#apPool button").forEach(b => {
+  b.onclick = () => {
+    const a = APS[+b.dataset.ap];
+    document.querySelectorAll("#apPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    apOut.hidden = false;
+    apSent.innerHTML = "他拉起小提琴来，<em>" + a.ap + "</em>。";
+    apTarget.textContent = a.target;
+    apNote.textContent = a.note;
+  };
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

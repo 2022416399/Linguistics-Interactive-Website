@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第十节 · 认知学派 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:6.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第十节 交互研读</p>
+  <h1>认知学派：语言与客观世界之间，隔着人的认知</h1>
+  <p class="lead">认知语言学的基本理念可以概括为「现实—认知—语言」：语言世界和客观世界不直接对应，中介是人的认知域；对意义的理解是一个动态的<b>识解</b>过程<sup class="cite" data-cite="s-cognitive-domain-mediation">出处</sup>。这一节用六把钥匙开六类问题——象似性、语义强度、意象图式、隐喻转喻、有界无界、范畴化非范畴化，看看认知视角怎样补上形式研究补不上的解释。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html">第八节 形式学派</a><a href="第九节-功能学派.html">第九节 功能学派</a><a href="第十节-认知学派.html" class="cur">第十节 认知学派</a><a href="第十一节-构式语法.html">第十一节 构式语法</a><a href="第十二节-语言信息结构.html">第十二节 信息结构</a><a href="第十三节-虚词研究.html">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li>体验哲学与<b>认知域</b></li><li>认知<b>共性</b>与<b>个性</b></li><li>象似性·距离准则</li><li>语义强度等级</li><li>意象图式</li><li>有界与无界</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第十节</p>
+<h2>认知学派语法分析思路：从认知角度解释语言现象</h2>
+<p>认知语言学是建筑在认知科学的基础上的。一般认为认知科学是 20 世纪兴起的一门新的学科门类，其目的和任务在于探索人脑、心智的工作机制、工作原理；促使它产生的因素有三个方面：计算机的面世（图灵 1935 年设计研制的「图灵机」，1950 年发表《计算的机器与智能》）、心智哲学的兴起（「心智之于大脑如同计算软件之于硬件」）、以及背叛行为主义哲学的认知革命（皮亚杰的「发生认识论」与乔姆斯基对「刺激—反应」行为主义的有力批驳）<sup class="cite" data-cite="s-cognitive-science">出处</sup>。现在一般都接受萨加特的说法：认知科学是关于心智和智能的跨学科研究的学科，它关涉心理学、哲学、计算机科学、语言学、人类学和神经科学各领域<sup class="cite" data-cite="s-cognitive-science">出处</sup>。</p>
+<p>认知语言学的兴起也有语言学自身的原因。1957 年掀起「乔姆斯基革命」之后，形式语言学把语言看作完全独立于语言使用者和语言使用环境的自主的系统；乔姆斯基强调语言的自主性，这一观点受到了语言学界一部分学者和心理学界特别是认知科学研究者的强烈反对。于是，20 世纪 70 年代，不仅引发了功能语言学的兴起，也引发了认知语言学的迅速崛起。束定芳（2008）指出：「虽然现代意义上的认知语言学最初诞生于 Chomsky 语言理论框架中，但后来的发展使它采取了与乔氏理论相反的立场。」<sup class="cite" data-cite="s-cog-position">出处</sup>认知语言学在国际上被确认为一个独立的新兴的语言学学派，是在上个世纪 80 年代末：1989 年国际认知语言学会议的召开与《认知语言学》期刊第一期的出版，被认为是这一新兴学派确立的标志<sup class="cite" data-cite="s-cog-rise">出处</sup>。</p>
+<p>认知语言学的核心是对意义的理解的解释。认知语言学认为对意义的理解应该是一个动态的识解过程，它是透过语言并以语言为工具来揭示概念和概念结构；认知语言学的基本观点是，语言是人的认知能力不可分割的重要组成部分。Lakoff &amp; Johnson（1999）说得很清楚<sup class="cite" data-cite="s-embodied-concept">出处</sup>：</p>
+<blockquote>「概念是通过身体、大脑和对世界的体验而形成的，而且只有通过它们才能被理解。」<sup class="cite" data-cite="s-embodied-concept">出处</sup></blockquote>
+<p>这也正如王寅（2002）所说，「在语言与现实之间存在认知和概念这一中间层次，如果不依靠认知结构和范畴知识，就无法接近现实」。因此，语言的外在功能是交际工具，而内在的基本功能则是象征——各种语法结构的类型，都可以看作是不同象征的结构类型；语法规则从某种意义上说，可以看作是抽象的结构图式<sup class="cite" data-cite="s-embodied-concept">出处</sup>。认知语言学当代以兰盖克和雷柯夫为代表，有意思的是这两位对认知语言学的定位持完全相反的看法——兰盖克认为认知语言学应属于功能语言学的范围，雷柯夫则认为功能语言学应属于认知语言学的范围；不过这种分歧不影响具体研究<sup class="cite" data-cite="s-cog-fields">出处</sup>。</p>
+<p>认知语言学的研究将涉及范畴化、原型理论、隐喻和转喻概念、意象图式、象似性、主观性等诸方面，同时也关注语法化问题，因为语法化多半是通过隐喻或转喻实现的<sup class="cite" data-cite="s-cog-fields">出处</sup>。本节不可能作全面介绍，仅就认为对解决汉语语法问题、解释汉语语法现象有用的一些分析手段，作些介绍与说明。</p>
+
+<article class="chapter" data-chapter="10">
+<h3>第十节｜汉语语法研究的认知学派分析思路</h3>
+
+<div class="kicker">10.1 认知学派的基本观点和研究领域</div>
+
+<p>关于认知语言学的学科定位，众说纷纭：不少人认为它是跨认知科学和语言科学的一门交叉性学科；也有人认为「认知语言学是语言学中的一种新的范式」，是「当代语言学中的一门『显学』」。不管是不是已经成为一个独立的学科，有一点大家认识是比较一致的，那就是认知语言学的任务是从认知的角度来研究、解释语言能力和诸种语言现象<sup class="cite" data-cite="s-cog-position">出处</sup>。现在从事或接受认知语言学的学者普遍认为，语言是人的认知能力的不可分割的重要组成部分，语言是人特有的一种认知活动，这种认知活动包括人对世界的感知、人对世界的经验以及人对世界加以概念化的方式等。认知语言学就是以认知为出发点，来探究人是怎样运用语言符号对事物或事件进行抽象，怎样运用语言符号对事物或事件加以概念化，怎样运用语言符号以及由这些符号组成的种种语言结构来实现人的交际活动、思维活动<sup class="cite" data-cite="s-cog-fields">出处</sup>。</p>
+
+<div class="kicker">10.2 人类认知的共性与个性</div>
+
+<p>全人类有共同的认知基础，这决定了各民族虽操不同的语言但可以通过翻译互相交际；但各民族历史文化背景的差异和生活环境的不同，又决定了各民族会在认知上有所差异。反映在语言上，就会呈现出不同的表达习惯<sup class="cite" data-cite="s-common-cognitive-base">出处</sup>。譬如说，作为一个位移事件，必然包含四个要素：图像、移动、路径、方式。这反映了人对位移事件认知的共同性。但是，各民族在看待这四个要素关系的认识上并不一样——哪个要素跟哪个要素「捆绑」在一起，各个要素用什么样的词语表达，并不一样<sup class="cite" data-cite="s-motion-bundling">出处</sup>：</p>
+
+<blockquote>张三跑进了房间。【汉语：图像—移动＋方式—路径—目的地】<br>Zhangsan ran into the room.【英语：图像—移动＋方式—路径—目的地】<br>Zhangsan est entré dans la chambre en courant.【法语：图像—移动＋路径—目的地—方式】<sup class="cite" data-cite="s-motion-bundling">出处</sup></blockquote>
+
+<p>汉语和英语一致，将移动与方式捆绑在一起；法语则将移动与路径捆绑在一起。然而汉语和英语还有差异：汉语常常可以将移动与路径捆绑在一起，而将方式隐含其中；英语不能这样表达，因为汉语的路径习惯用动词表达，而英语的路径习惯用前置词表示<sup class="cite" data-cite="s-motion-bundling">出处</sup>。</p>
+
+<p class="tag">实例一</p>
+<p><b>汉语和英语用「东」「西」「南」「北」定方位时说法上的差异。</b>全人类都有东、西、南、北的方位感，这可以说是人类在认知上的共性，世界各国确定地球上某个点的方位时都会用上这四个最基本的方位词。但是，在表达复合方位上，汉语和英语既有共性，又有个性差异。当两两组合用来表示一个复合方位时，从理论上来说，按排列组合可以构成 16 种格式；可是在现代汉语中，事实上只有 6 种能成立，合乎汉语说话的习惯，而以下 10 种在方位表达上都不用<sup class="cite" data-cite="s-fangwei-16">出处</sup>：</p>
+
+<blockquote>成立：东南｜东北｜西南｜西北【偏正型】　东西｜南北【并列型】<br>不用：*南东｜*南西｜*西东｜*北东｜*北南｜*北西【偏正型】　*东东｜*西西｜*南南｜*北北【并列型】<sup class="cite" data-cite="s-fangwei-16">出处</sup></blockquote>
+
+<p>经分析不难发现其中的组合规则：<b>规则一</b>，「东」「南」「西」「北」遵循方向顺序原则进行组合：东＞西＞南＞北（「＞」读作「优先于」）；<b>规则二</b>，「东」「南」「西」「北」都不能自身并置进行组合。按规则一，「东」可以顺向分别跟「西」「南」「北」组合，构成「东西」「东南」「东北」；「西」只能顺向跟「南」「北」组合，构成「西南」「西北」，不能逆向跟「东」组合，所以没有「西东」的说法。英语复合方位的表达法也只有跟汉语类似的 6 种，这是汉语、英语的共性；但组合方式跟汉语有明显的差异——偏正型顺序跟汉语正好相反，然而所指相同（southeast＝东南，southeast 的构词顺序是 south＋east）；并列型不仅顺序跟汉语相反，中间还得加连词 and（west and east＝东西，north and south＝南北）<sup class="cite" data-cite="s-fangwei-16">出处</sup>。</p>
+
+<p>汉语和英语的上述异同说明了什么？按照认知语言学的观念，空间域是人类语言中最基本的认知域之一，东、西、南、北的方位关系是人类最基本也是最朴素的空间认识，这种朴素的空间认识全人类是共通的——人们在确定东、西、南、北方位时，选择的参照物通常是太阳或月亮升降的地方，这个参照物固定不变也最容易找到，所以「东」和「西」是基础方位词，「南」和「北」是参照「东」「西」而次生的方位词，汉语是这样，英语也是这样。那么为什么具体说法——汉语说「东南」，英语说 southeast——会有不同呢？张璐（2002）指出，这是因为母语为汉语的人们和母语为英语的人们的认知策略不同：说汉语的人，其认知过程策略一般是参照点先于目标，而说英语的人一般是目标先于参照点。而这种差异，也反映在其他许多方面的表达上——汉语的方所表达是「（在）＋Y＋方位词＋的＋X」，如「（在）湖中的亭子」；英语是「X＋介词＋（方位词）＋Y」，如 a pavilion at the center of the lake。显然，在汉语里参照点先于目标，而在英语里一般是目标先于参照点<sup class="cite" data-cite="s-reference-point-strategy">出处</sup>。</p>
+
+<p class="tag">实例二</p>
+<p><b>汉语和英语在回答是非问句时用「是」用「不」的差异。</b>请先看两组实例。A 组是肯定是非问句的一问一答：</p>
+
+<blockquote>你喜欢这种鱼（吗）？——是，我喜欢（这种鱼）。｜不，我不喜欢（这种鱼）。<br>她现在在跳舞（吗）？——是，她在跳舞。｜不，她不在跳舞。<br>Do you like the fish?——Yes, I like the fish.｜No, I don't like the fish.<br>Is she dancing now?——Yes, she is dancing now.｜No, she is not dancing now.<sup class="cite" data-cite="s-shifei-table">出处</sup></blockquote>
+
+<p>B 组是否定是非问句的一问一答：</p>
+
+<blockquote>你不喜欢这种鱼（吗）？——不，我喜欢（这种鱼）。｜是，我不喜欢（这种鱼）。<br>她不在跳舞（吗）？——不，她在跳舞。｜是，她不在跳舞。<br>Don't you like the fish?——Yes, I like the fish.｜No, I don't like the fish.<br>Isn't she dancing now?——Yes, she is dancing now.｜No, she is not dancing now.<sup class="cite" data-cite="s-shifei-table">出处</sup></blockquote>
+
+<p>看来汉语和英语回答是非问句时用「是」还是用「不」有同有异——回答肯定是非问句时，用「是」用「不」情况相同；回答否定是非问句时，用「是」用「不」情况就正好相反。其异同可列如下<sup class="cite" data-cite="s-shifei-table">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表一（转制）：汉英回答是非问句用「是／Yes」还是用「不／No」对照<sup class="cite" data-cite="s-shifei-table">出处</sup></caption>
+<thead><tr><th>问话主要疑问点所采用的形式</th><th>答话人自己的意见</th><th>汉语</th><th>英语</th></tr></thead>
+<tbody>
+<tr><td>肯定形式</td><td>肯定意见</td><td>是</td><td>Yes</td></tr>
+<tr><td>肯定形式</td><td>否定意见</td><td>不</td><td>No</td></tr>
+<tr><td>否定形式</td><td>肯定意见</td><td>不</td><td>Yes</td></tr>
+<tr><td>否定形式</td><td>否定意见</td><td>是</td><td>No</td></tr>
+</tbody>
+</table>
+
+<p>为什么会有这种差异？如果单纯从语言内部去找答案，也是很难作出圆满的解释的。这里不妨先说明一下问话人使用是非问句进行发问的心态。说汉语的人也好，说英语的人也好，在使用是非问句发问时，总是把内心自认为的主观想法清楚地表示在问话里：问话人心目中以为听话人大概是不喜欢这种鱼的，所以就采用否定形式来发问。就问话心态来说，说汉语的中国人和说英语的欧美人是一样的。但答话人回答问题的心态则是很不相同的<sup class="cite" data-cite="s-shifei-han">出处</sup>。说汉语的人，他来回答问题时，首先需要对问话人自认为的主观想法作出反应——同意还是不同意，接着才说明实际情况怎么样。所以当听到问话人问「你不喜欢这种鱼（吗）？」，答话人首先所要肯定或否定的是问话人这种自认为的主观想法：说「是」是肯定问话人的想法，说「不」是否定问话人的想法，然后才说明客观事实<sup class="cite" data-cite="s-shifei-han">出处</sup>。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：别人问你「Don't you like the fish?」——你明明喜欢这种鱼，按英语习惯该挑哪句作答？</p>
+<div class="opts">
+<button data-ans="0">No, I don't.（跟汉语一样，先回应问话人的想法）</button>
+<button data-ans="1">Yes, I like the fish.（直接对事实表态）</button>
+</div>
+<div class="why">答案：b。说英语的人回答是非问句时，根本就不考虑问话人自认为的主观想法，只考虑自己所要陈述或说明的客观事实怎么样——该肯定还是该否定，一上来就用 Yes／No 对客观事实开门见山地表明意见。所以否定形式的问句加上肯定的好意，英语说 Yes；而汉语会先照顾问话人的主观想法，说「不，我喜欢」。这种差异正反映了二者在民族心理和认知上的差异<sup class="cite" data-cite="s-shifei-ying">出处</sup>。</div>
+</div>
+
+<p>而说英语的人的心理或者说思路则不是这样：答话人回答问话人的是非问句时，根本就不考虑问话人自认为的主观想法，只考虑自己所要陈述或说明的客观事实怎么样——该肯定还是该否定。所以当听到问话人问「Don't you like the fish?」，答话人一上来就对问话人所提到的客观事实开门见山地用 Yes 或 No 来表明自己所持的肯定或否定的意见，接着再作具体说明。因此，说汉语的人和说英语的人在回答否定是非问句时用「是／Yes」或「不／No」的差异，正反映了二者在民族心理和认知上的差异<sup class="cite" data-cite="s-shifei-ying">出处</sup>。</p>
+
+<div class="kicker">10.3 关于语言结构的「象似性」分析</div>
+
+<p>「象似性」（iconicity）是当今认知语言学研究、讨论的一个热点。最早明确提出「象似性」问题的是美国语言学家海曼（J. Haiman），他于 1980 年发表了 The Iconicity of Grammar（《语法象似性》）一文，这篇文章被认为是认知语言学象似性理论的开山之篇<sup class="cite" data-cite="s-haiman-1980">出处</sup>。历来认为语言具有「任意性」（arbitrariness），拿索绪尔的话来说，「能指和所指的关系是任意的」。「象似性」则是跟「任意性」相对的概念：</p>
+
+<blockquote>「象似性」是指语言的形式与意义之间的联系并非完全任意的，而是有一定理据的（motivated），而且是可以验证的。<sup class="cite" data-cite="s-iconicity-motivated">出处</sup></blockquote>
+
+<p>现在「距离象似性原则」「顺序象似性原则」已由大量语言事实证明，并为大家所接受。但所谓「语言的形式和内容具有象似性」，不是指语言形式与客观世界具有象似性——语言与客观世界不直接对应；也不要简单地理解为语言与概念结构具有象似性。拿戴浩一先生首先揭示的汉语句子里多个动词性成分的语序排列遵循时间先后的顺序原则来说，下面各例明显符合上述原则<sup class="cite" data-cite="s-time-order">出处</sup>：</p>
+
+<blockquote>李老汉听到枪响马上起身下炕披上衣服直奔大门外……【连谓结构，完全按时间先后顺序排列】<br>他诚心诚意地请那位教书先生来教他儿子识字。【两个递系结构构成的连谓结构，动词成分均按时间先后排列】<br>大家打算去香山看红叶。【连谓结构充任宾语的述宾结构，动词成分都按时间先后排列】<br>他跳在马背上。｜他在马背上跳着。【「在……」位置不同，意思不同，都按时间先后排列】<sup class="cite" data-cite="s-time-order">出处</sup></blockquote>
+
+<p>下面的例子似乎不好处理：「他写字在黑板上／他在黑板上写字」「他撒胡椒面在锅里／他在锅里撒了些胡椒面」「他在厨房里死了／他死在厨房里了」——每组的 a 句和 b 句都合汉语语法，但有人会觉得 a 句符合时间先后顺序原则、b 句不符合，也有人会觉得正好相反。该如何解释？这就看你如何识解：「他写字在黑板上」可以识解为「先写，而后所写之字在黑板上」；「他在黑板上写字」可以识解为「他先拿了粉笔接触黑板，而后写字」——都符合时间先后顺序原则，我们很难说哪种识解不被允许。对同一事实作不同识解，这实际就涉及下面会讲到的「意象」问题。可见，所谓语法形式与其所表示的内容具有象似性，是就语法形式与概念化结构（即人的识解）二者之间的象似性来说的。因此张敏（2008）指出：「若将句法象似性理解为句法结构与概念化结构对应，这一方法是至关重要的。」<sup class="cite" data-cite="s-zhangmin-spi">出处</sup></p>
+
+<p class="tag">实例一</p>
+<p><b>现代汉语里定语与中心语之间用不用「的」的问题。</b>形容词修饰名词所形成的名词性偏正结构，在英语里只有「A＋N」这一种形式；可是在汉语里，有两种形式——「A＋N」和「A＋的＋N」，而且不是任何形容词修饰名词都可以采取这两种形式<sup class="cite" data-cite="s-zhaoxi-1956">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表二（转制）：英汉形容词修饰名词对照<sup class="cite" data-cite="s-zhaoxi-1956">出处</sup></caption>
+<thead><tr><th>英语</th><th>汉语</th></tr></thead>
+<tbody>
+<tr><td>hot water</td><td>热水／热的水</td></tr>
+<tr><td>cold rice</td><td>冷饭／冷的饭</td></tr>
+<tr><td>hot meat</td><td>*热肉／热的肉</td></tr>
+<tr><td>cold fish</td><td>*冷鱼／冷的鱼</td></tr>
+<tr><td>large scale</td><td>大规模／*大的规模</td></tr>
+<tr><td>honest person</td><td>老实人 ≠ 老实的人</td></tr>
+</tbody>
+</table>
+
+<p>有时，有「的」没有「的」，意思可能不一样，例如「老实人 ≠ 老实的人」。上述现象首先是由朱德熙（1956）发现的，怎么解释汉语形容词修饰名词带不带「的」的问题？当初朱德熙先生没有进一步加以解释。直到 1998 年，朱德熙先生的博士生张敏用认知语言学的象似性原则里的距离准则作出了很有说服力的解释<sup class="cite" data-cite="s-distance-criterion-de">出处</sup>：</p>
+
+<blockquote>「X（的）名」结构中，「的」的有无实际起两方面的作用，一是表明 X 和「名」在人们的观念里，即认知域里，联系是否紧密，联系紧密的，不用「的」，联系不紧密甚至难得有联系的，就得用「的」。二是强调、凸显 X。<sup class="cite" data-cite="s-distance-criterion-de">出处</sup></blockquote>
+
+<p>譬如水，这是人的生活必需品，是最必需的饮品，人一天也离不开它。在日常生活中，水有冷热之分，在汉族人的认知域中和生活理念中，水就总是跟冷或热紧密相连。正因为这样，反映在汉语里可以说「热水」「冷水」而无须用「的」；有时用「的」只是为了强调。至于鱼、肉的情况就不同：现在似乎已不是稀罕之物，常能吃到，可是以前普通百姓难得吃上鱼和肉。这样，鱼和肉虽也有冷热之分，但由于长期以来它们并非我们汉族人最基本的生活必需品，因此在汉族人的生活理念中，冷和热跟鱼、肉并不总是紧密相连。反映在语言上，当「冷」「热」修饰「鱼」和「肉」时，就得用「的」。这个解释应该说是很有说服力的<sup class="cite" data-cite="s-distance-criterion-de">出处</sup>。</p>
+
+<div class="split">
+<p class="note" style="margin:0">点一组说法，看「的」字的隐现（距离准则）：</p>
+<div class="opts" id="deOpts">
+  <button data-w="hot">热水</button>
+  <button data-w="cold">冷水</button>
+  <button data-w="fish">热的鱼</button>
+  <button data-w="meat">热的肉</button>
+</div>
+<p class="deout" id="deOut"></p>
+<p class="note">「的」的有无，一是表明 X 和「名」在认知域里联系是否紧密，二是强调、凸显 X。<sup class="cite" data-cite="s-distance-criterion-de">出处</sup></p>
+</div>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「热」修饰「鱼」，汉语该说「热鱼」还是「热的鱼」？</p>
+<div class="opts">
+<button data-ans="0">「热鱼」——跟「热水」一个样，不用「的」</button>
+<button data-ans="1">「热的鱼」——必须用「的」</button>
+</div>
+<div class="why">答案：b。按距离准则，「的」的有无表明 X 和「名」在认知域里联系是否紧密：水是生活必需品，冷热总与水紧密相连，所以说「热水」「冷水」；鱼肉长期以来并非最基本的生活必需品，冷热跟鱼、肉联系并不紧密，就得用「的」。同一个「热」，跟「水」亲近、跟「鱼」疏远<sup class="cite" data-cite="s-distance-criterion-de">出处</sup>。</div>
+</div>
+
+<p>在此基础上，张敏进一步将形容词修饰名词的问题类推到名词修饰名词，说明「我女朋友」和「我的女朋友」在认知上有区别（即「我女朋友 ≠ 我的女朋友」）。介绍对象时得用「我女朋友」——这意味着「我」与「女朋友」之间已经亲密无间，距离近，所以不用「的」；除非要强调区别性，中间才用「的」。可是在「要说什么条件啊，我的女朋友不要求很漂亮，只要心地好就行」这样的语境里，一定得用「我的女朋友」而并不含强调意味——因为「我」与「女朋友」之间八字还没有一撇呢，距离远，所以要用「的」<sup class="cite" data-cite="s-wo-nvpengyou">出处</sup>。</p>
+
+<p>下面又该如何解释——为什么能说「我妹妹」而不能说「我桌子」？先前一般认为，虽然二者都是领属关系，但「桌子」对「我」来说是可让渡的领有物，而「妹妹」对「我」来说是不可让渡的领有物，所以「我」和「桌子」之间必须用「的」，「我」和「妹妹」之间可以不用「的」。单就上面的例子来说，解释得似很有道理，但又该如何解释「我妹妹／*我耳朵」「*张三妹妹／猪耳朵」——所领有之物全是不可让渡的，那为什么有的必须用「的」，有的可以不用「的」？张敏（1998）认为，这也需要用象似性原则中的距离准则来解释——「我妹妹」「猪耳朵」已具有称谓性，而「张三妹妹」「我耳朵」不具有称谓性。具有称谓性的内部两个成分之间的关系自然就紧密，因此可以不用「的」；而不具有称谓性的内部两个成分之间的关系，自然就松散，所以必须用「的」。事实表明，现代汉语名词性短语中间用不用「的」，都可以用象似性原则作出解释，而这无疑把对名词性短语的研究向前大大推进了一步<sup class="cite" data-cite="s-wo-meimei">出处</sup>。</p>
+
+<p class="tag">实例二</p>
+<p><b>对「那孩子追得老头儿直喘气」的识解。</b>「那孩子追得老头儿直喘气」，这是「绪论」0.7 小节里说到的一个句子。这句话表示什么意思？按排列组合，可能有四种意思，可是实际上有三种意思是大家都认可的<sup class="cite" data-cite="s-haizi-zhuix">出处</sup>：</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 340" role="img" aria-label="那孩子追得老头儿直喘气四种识解示意图">
+<rect x="0" y="0" width="680" height="340" fill="#fdfaf1"/>
+<g font-family="-apple-system,PingFang SC,sans-serif" text-anchor="middle">
+<text x="340" y="30" font-size="14.5" fill="#29241d" font-weight="700">「那孩子追得老头儿直喘气」的四种识解（语义靠近顺向原则）</text>
+<g>
+<rect x="16" y="48" width="648" height="58" rx="8" fill="#fdfaf1" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="36" y="82" font-size="16" fill="#29241d" font-weight="700">a</text>
+<text x="64" y="83" font-size="17" fill="#3d5a6c" font-family="KaiTi,serif">那孩子</text>
+<text x="170" y="83" font-size="17" fill="#6f675a" font-family="KaiTi,serif">追得</text>
+<text x="250" y="83" font-size="17" fill="#9d4938" font-family="KaiTi,serif">老头儿</text>
+<text x="350" y="83" font-size="17" fill="#9d4938" font-family="KaiTi,serif">直喘气</text>
+<path d="M64 94 L226 94" stroke="#3d5a6c" stroke-width="3"/>
+<path d="M250 94 L452 94" stroke="#9d4938" stroke-width="3"/>
+<text x="470" y="72" font-size="20" fill="#2f6b3a" font-weight="700">√</text>
+<text x="500" y="70" font-size="12" fill="#29241d">孩子追，老头儿喘气</text>
+<text x="500" y="88" font-size="11.5" fill="#6f675a">双向顺向且靠近——最佳识解，使用频率最高</text>
+</g>
+<g>
+<rect x="16" y="114" width="648" height="58" rx="8" fill="#fdfaf1" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="36" y="148" font-size="16" fill="#29241d" font-weight="700">b</text>
+<text x="64" y="149" font-size="17" fill="#3d5a6c" font-family="KaiTi,serif">那孩子</text>
+<text x="170" y="149" font-size="17" fill="#6f675a" font-family="KaiTi,serif">追得</text>
+<text x="250" y="149" font-size="17" fill="#6f675a" font-family="KaiTi,serif">老头儿</text>
+<text x="350" y="149" font-size="17" fill="#3d5a6c" font-family="KaiTi,serif">直喘气</text>
+<path d="M64 160 L226 160" stroke="#3d5a6c" stroke-width="3"/>
+<path d="M350 160 L452 160" stroke="#3d5a6c" stroke-width="3"/>
+<text x="470" y="138" font-size="20" fill="#2f6b3a" font-weight="700">√</text>
+<text x="500" y="136" font-size="12" fill="#29241d">孩子追，孩子喘气</text>
+<text x="500" y="154" font-size="11.5" fill="#6f675a">顺向，同一主体的两个合情理事件——可接受</text>
+</g>
+<g>
+<rect x="16" y="180" width="648" height="58" rx="8" fill="#fdfaf1" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="36" y="214" font-size="16" fill="#29241d" font-weight="700">c</text>
+<text x="64" y="215" font-size="17" fill="#9d4938" font-family="KaiTi,serif">那孩子</text>
+<text x="170" y="215" font-size="17" fill="#9d4938" font-family="KaiTi,serif">追得</text>
+<text x="250" y="215" font-size="17" fill="#9d4938" font-family="KaiTi,serif">老头儿</text>
+<text x="350" y="215" font-size="17" fill="#9d4938" font-family="KaiTi,serif">直喘气</text>
+<path d="M64 226 L226 226" stroke="#9d4938" stroke-width="3"/>
+<path d="M250 226 L452 226" stroke="#9d4938" stroke-width="3"/>
+<text x="470" y="204" font-size="20" fill="#2f6b3a" font-weight="700">√</text>
+<text x="500" y="202" font-size="12" fill="#29241d">老头儿追，老头儿喘气</text>
+<text x="500" y="220" font-size="11.5" fill="#6f675a">「老头儿」与「追」反向——可接受，频率不高</text>
+</g>
+<g>
+<rect x="16" y="246" width="648" height="58" rx="8" fill="#fdfaf1" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="36" y="280" font-size="16" fill="#29241d" font-weight="700">d</text>
+<text x="64" y="281" font-size="17" fill="#3d5a6c" font-family="KaiTi,serif">那孩子</text>
+<text x="170" y="281" font-size="17" fill="#9d4938" font-family="KaiTi,serif">追得</text>
+<text x="250" y="281" font-size="17" fill="#9d4938" font-family="KaiTi,serif">老头儿</text>
+<text x="350" y="281" font-size="17" fill="#3d5a6c" font-family="KaiTi,serif">直喘气</text>
+<path d="M170 292 L332 292" stroke="#9d4938" stroke-width="3"/>
+<path d="M64 292 L452 292" stroke="#3d5a6c" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="470" y="270" font-size="20" fill="#c0392b" font-weight="700">×</text>
+<text x="500" y="268" font-size="12" fill="#29241d">老头儿追，孩子喘气</text>
+<text x="500" y="286" font-size="11.5" fill="#6f675a">反向且远距——不成立，没人能接受</text>
+</g>
+<rect x="16" y="314" width="648" height="20" rx="6" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="328" font-size="11.5" fill="#6f675a">语义靠近原则（语义靠近顺向原则）是距离准则的另一种反映（陆丙甫 2006、张敏 2008）</text>
+</g>
+</svg>
+<figcaption>示意图（转绘），非原书插图。四种识解的认可情况据底本第十节【实例二】。</figcaption>
+</figure>
+
+<p>对这四种识解，陆丙甫（2006）、张敏（2008）按一般所说的「语义靠近象似性」（Semantic Proximity Iconicity，可简称 SPI，也称作「语义靠近原则」）作了解释：a 的识解，「孩子」与「追」、「老头儿」与「喘气」都靠近，而且都属于顺向理解；b 的识解，「孩子」与「追」靠近，属于顺向理解，「孩子」与「喘气」虽不相靠近（中间由「追得老头儿」相隔），但还属于顺向理解，且「孩子追」和「孩子喘气」属于同一主体的两个合乎情理的事件；c 的识解，「老头儿」跟「追」、「老头儿」跟「喘气」都靠近，「老头儿」跟「喘气」属于顺向理解，可是「老头儿」跟「追」则属于反向理解；d 的识解，「老头儿」与「追」虽靠近，但属于反向理解，「孩子」与「喘气」虽可视为顺向理解，但很不靠近。显然，相比之下 a 属于最佳识解，语言事实也告诉我们 a 识解的使用频率最高；b 和 c 的识解可以接受，但它们的使用频率不会很高；而 d 不成立。「语义靠近原则」，说得更确切一点为「语义靠近顺向原则」，这是距离准则的另一种反映<sup class="cite" data-cite="s-haizi-zhuix">出处</sup>。</p>
+
+<div class="kicker">10.4 关于语义强度等级分析</div>
+
+<p>请看下面两个例子：「我不知道她不在家。」「我不希望她不在家。」两例词类序列相同，内部层次构造、句法结构关系和语义结构关系都相同。可是有很重要的差别：「我不知道她不在家」≠「我知道她在家」，而「我不希望她不在家」＝「我希望她在家」<sup class="cite" data-cite="s-lvshuxiang-1987">出处</sup>。这为什么？怎么解释这个现象？上面所说的这类现象，吕叔湘先生 1987 年就注意到了，并举出了两组例子：a 组「不怕他不来 ≠ 怕他来」「不说他不好 ≠ 说他好」「不知道他不在家 ≠ 知道他在家」；b 组「不相信他不知道 ＝ 相信他知道」「不赞成他不考大学 ＝ 赞成他考大学」「不希望他不参加 ＝ 希望他参加」。吕先生提出了这个问题，但没有回答，更没有进一步加以解释。如果单纯从形式的角度来考虑，可能很难作出令人满意的解释<sup class="cite" data-cite="s-lvshuxiang-1987">出处</sup>。</p>
+
+<p>沈家煊（1989，1998）则从人的认知功能角度对此现象作出了合理的解释。从人的认知功能的角度看，语言中表示「情态」「意愿」的词语，在表意上存在着程度的差别，这可以称之为「语义强度」的差别。拿表示情态的词语（包括某些动词、能愿动词和副词）来说，存在着概率上的差异，具体可分为三小类<sup class="cite" data-cite="s-semantic-strength">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>可能</b>可能、能……</li>
+<li><b>多半</b>多半、很可能、像、显得、相信、觉得……</li>
+<li><b>肯定</b>肯定、断定、知道、说、承认、一定……</li>
+</ul>
+
+<p>这三小类词语的语义强度等级可表示如下<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表三（转制）：情态类词语语义强度等级<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></caption>
+<thead><tr><th></th><th>弱项</th><th>中项</th><th>强项</th></tr></thead>
+<tbody>
+<tr><td>肯定等级</td><td>可能</td><td>很可能</td><td>肯定</td></tr>
+<tr><td>强度值</td><td>0<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>0.5<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>1<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td></tr>
+<tr><td>否定等级</td><td>不可能</td><td>不很可能</td><td>不肯定</td></tr>
+<tr><td>强度值</td><td>0<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>-0.5<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>-1<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td></tr>
+</tbody>
+</table>
+
+<p>表示意愿的词语，按意愿程度，也可以分为三小类：允许／同意（允许、同意、可以、让、肯、准……）、应该／赞成（应该、赞成、打算、建议、希望、要、想、主张、考虑……）、必须／保证（必须、强迫、命令、保证、须要、坚持……）。这三小类词语的语义强度等级可表示如下<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表四（转制）：意愿类词语语义强度等级<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></caption>
+<thead><tr><th></th><th>弱项</th><th>中项</th><th>强项</th></tr></thead>
+<tbody>
+<tr><td>肯定等级</td><td>可以</td><td>应该</td><td>必须</td></tr>
+<tr><td>强度值</td><td>0<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>0.5<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>1<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td></tr>
+<tr><td>否定等级</td><td>不必</td><td>不该</td><td>不可</td></tr>
+<tr><td>强度值</td><td>0<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>-0.5<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td><td>-1<sup class="cite" data-cite="s-shenjiaxuan-qd">出处</sup></td></tr>
+</tbody>
+</table>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 300" role="img" aria-label="语义强度等级双滑轨示意图">
+<rect x="0" y="0" width="680" height="300" fill="#fdfaf1"/>
+<g font-family="-apple-system,PingFang SC,sans-serif" text-anchor="middle">
+<text x="340" y="28" font-size="14" fill="#29241d" font-weight="700">语义强度等级：肯定等级与否定等级方向相反</text>
+<text x="60" y="82" font-size="12.5" fill="#3d5a6c" text-anchor="start" font-weight="700">肯定等级</text>
+<path d="M110 96 L640 96" stroke="#3d5a6c" stroke-width="2"/>
+<path d="M640 96 L630 91 M640 96 L630 101" stroke="#3d5a6c" stroke-width="2"/>
+<circle cx="170" cy="96" r="15" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.6"/>
+<circle cx="375" cy="96" r="15" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.6"/>
+<circle cx="580" cy="96" r="15" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.6"/>
+<text x="170" y="72" font-size="14.5" fill="#29241d">可能</text>
+<text x="375" y="72" font-size="14.5" fill="#29241d">很可能</text>
+<text x="580" y="72" font-size="14.5" fill="#29241d">肯定</text>
+<text x="170" y="101" font-size="13" fill="#9d4938" font-weight="700">0</text>
+<text x="375" y="101" font-size="13" fill="#9d4938" font-weight="700">0.5</text>
+<text x="580" y="101" font-size="13" fill="#9d4938" font-weight="700">1</text>
+<text x="170" y="132" font-size="11.5" fill="#6f675a">弱项</text>
+<text x="375" y="132" font-size="11.5" fill="#6f675a">中项</text>
+<text x="580" y="132" font-size="11.5" fill="#6f675a">强项</text>
+<text x="340" y="160" font-size="12" fill="#6f675a">否定使强度等级整体反向：否定弱项得强项，否定强项得弱项，否定中项仍为中项</text>
+<text x="60" y="212" font-size="12.5" fill="#a87f24" text-anchor="start" font-weight="700">否定等级</text>
+<path d="M110 226 L640 226" stroke="#a87f24" stroke-width="2"/>
+<path d="M110 226 L120 221 M110 226 L120 231" stroke="#a87f24" stroke-width="2"/>
+<circle cx="170" cy="226" r="15" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.6"/>
+<circle cx="375" cy="226" r="15" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.6"/>
+<circle cx="580" cy="226" r="15" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.6"/>
+<text x="170" y="202" font-size="14.5" fill="#29241d">不可能</text>
+<text x="375" y="202" font-size="14.5" fill="#29241d">不很可能</text>
+<text x="580" y="202" font-size="14.5" fill="#29241d">不肯定</text>
+<text x="170" y="231" font-size="13" fill="#9d4938" font-weight="700">0</text>
+<text x="375" y="231" font-size="13" fill="#9d4938" font-weight="700">-0.5</text>
+<text x="580" y="231" font-size="13" fill="#9d4938" font-weight="700">-1</text>
+<text x="170" y="262" font-size="11.5" fill="#6f675a">否定之弱项</text>
+<text x="375" y="262" font-size="11.5" fill="#6f675a">否定之中项</text>
+<text x="580" y="262" font-size="11.5" fill="#6f675a">否定之强项</text>
+<text x="340" y="286" font-size="11.5" fill="#6f675a">「不V1不V2」：中项词语的否定词可前移而意思基本不变；弱项、强项不能前移，前移则意思改变</text>
+</g>
+</svg>
+<figcaption>示意图（转绘），非原书插图。等级数据据底本表一、表二（情态类与意愿类词语语义强度等级）。</figcaption>
+</figure>
+
+<p>上述词语的语义强度等级差别是在人的认知域中存在的，说汉语的人都能感觉到。值得注意的是，在上述等级中，凡是属于「弱项」或「强项」的词语，如果能形成「不V1不V2」，那就只能造成前面所说的 a 种情形——否定词不能前移，前移意思就变。而凡是属于「中项」的词语，如果能形成「不V1不V2」，就造成前面所说的 b 种情形——否定词可以前移，而意思基本不变<sup class="cite" data-cite="s-qianyi-jieguo">出处</sup>：</p>
+
+<blockquote>弱项、强项（否定词不能前移）：不可以不去 ≠ 可以去 ＝ 必须去｜可能不干净 ≠ 不可能干净｜可以不干净 ≠ 不可以干净｜肯定不干净 ≠ 不肯定干净｜必须不干净 ≠ 不必须干净<br>中项（否定词可以前移）：不相信他不去 ＝ 相信他去｜不觉得不好 ＝ 觉得好｜不应该不去 ＝ 应该去｜不希望他不好 ＝ 希望他好｜很可能不来 ＝ 不很可能来<sup class="cite" data-cite="s-qianyi-jieguo">出处</sup></blockquote>
+
+<p>那么，为什么中项词语会造成 b 种情形，而弱项和强项的词语只能造成 a 种情形呢？原来，情态类和意愿类词语的语义等级，反映了这两类词语在语义表达上这样两个特点。第一，在语义上，强项词语蕴涵中项、弱项词语，中项词语蕴涵弱项词语；而弱项词语则不蕴涵中项、强项词语，中项词语不蕴涵强项词语——当我们说「肯定是 P」，那就蕴涵着「多半是 P」和「可能是 P」之意；当我们说「可能是 P」，那就不蕴涵「多半是 P」之意，更不蕴涵「肯定是 P」之意。第二，就否定情况看，对弱项词语的否定，得到的是否定等级上的一个强项；对强项词语的否定，得到的是否定等级上的一个弱项；而对一个中项词语的否定，得到的是否定等级的中项的意思。这两个特点，决定了弱项或强项词语如果后面带上一个否定成分，其否定词不能前移；而中项词语如果后面带上一个否定成分，其否定词可以前移，而意思基本不变。了解了沈家煊先生所指出的这两个特点，就能较好地回答、解释吕先生所提出的问题了。这也说明，语言的认知研究可以弥补语言的形式研究上的不足，二者彼此起着互补的作用<sup class="cite" data-cite="s-yunhan-fouze">出处</sup>。</p>
+
+<div class="kicker">10.5 关于意象图式分析</div>
+
+<p>前面我们已经指出，「语言世界和客观世界不直接对应，在语言世界和客观世界之间有个中介物，那就是人的认知域」，因此认知语言学的基本理念也可以概括为「现实—认知—语言」。那「认知域」肯定还可以细分。心理学与神经科学的研究初步表明，认知域本身就是一个复杂的网状结构，内中会包含有：人的感觉、知觉器官与外界反复互动机制，由此所形成的感知，感知经心智加工所形成的意象图式，那意象图式凭借内在语言进一步进行范畴化、概念化抽象而成的认知模式，在此基础上再进一步形成的概念结构等；此外，还有激活功能、关联功能、投射功能等<sup class="cite" data-cite="s-cognitive-domain-mediation">出处</sup>。</p>
+
+<p>在心理学和神经科学中，只单独用到「意象」（image）和「图式」（schema）。意象，是指人对客观事物的心理印象，这种心理印象可以因人的视角、需求、认识深浅、凸显的部分或方面不同而不同；图式，是指在意象的基础上加工而成的认知式样。意象可看作是图式的具体内容，图式可视为意象所呈现的表征。在认知语言学研究中，将「意象」和「图式」加以整合称为「意象图式」（image schema）。意象图式是构成「认知模型」（Cognitive Model，简称 CM）或「理想认知模型」（Idealized Cognitive Model，简称 ICM）的基础。在语言中，对某些客观状况的表述，可以这样说不能那样说，或者可以这样说也可以那样说但意思不同，就可以用「意象图式」理论来解释<sup class="cite" data-cite="s-image-schema">出处</sup>。</p>
+
+<p class="tag">实例一</p>
+<p><b>「事物—背衬」意象图式。</b>请先看例句：「眼镜在剪刀右边／剪刀在眼镜左边」「小岛在湖的中央／?湖在小岛的周围」「书在桌子的上面／?桌子在书的下面」「蚊子在那颗钉子旁边／?钉子在那只蚊子旁边」——每行左右两边的说法，左边都可以接受（意思上有区别），右边则不为母语为汉语的人所接受。怎么解释？我们知道，人们在指示、辨识客观事物位置时，往往通过跟另一个可以作为背衬的事物的对比来加以说明，这就是「事物—背衬」意象图式。从这些实例中，可以看到「事物—背衬」意象图式中一些带规律性的东西：一、大的事物总是作小的事物的背衬——「小岛」远远小于「湖」，所以通常用「小岛在湖的中央」的说法；二、固定的事物总是作移动的事物的背衬——「蚊子」与「钉子」就大小说差不多，但「蚊子」属于可移动的事物，「钉子」属于固定物，所以通常用「蚊子在那颗钉子旁边」的说法（注意，即使把「蚊子」换成「壁虎」，也是这样，虽然壁虎比钉子大得多）<sup class="cite" data-cite="s-shiwu-beituo">出处</sup>。</p>
+
+<p class="tag">实例二</p>
+<p><b>不同语序的「给」字句。</b>意象图式跟语序有密切的关系。例如「我送一本书给小李」和「我送给小李一本书」——按照一般的分析，两句可以互相变换而语义关系保持不变，而且都是表达「我通过『送』这一行为，达到将一本书的归属权由『我』转移给『小李』」这样一种意思。可是，二者是有区别的：「我曾经送一本书给小李，小李不收」能说，而「我曾经送给小李一本书，小李不收」就很别扭；此外，如果插入「了」，前句只能插入「送」之后，不能插入「给」之后；后句只能插入「给」之后，不能插入「送」之后。怎么解释这一现象？这类问题，先前是不考虑的，因为先前只关注客观现实，从客观现实看两句话的意思是一样的。在认知语言学看来，这两句话的意思是有差别的，而差别并不在客观现实，而在主观认识上：前句关注于「书」的转移过程——由「我」转移至「小李」；后句则关注于转移的结果——「书」的领有权归「小李」了。正是这种意象差别，造成句法格式的差异，并由此造成了两种不同的结构变化<sup class="cite" data-cite="s-gei-imagery">出处</sup>。</p>
+
+<div class="kicker">10.6 关于隐喻和转喻分析</div>
+
+<p>先对隐喻（metaphor）和转喻（metonymy）略作些说明。隐喻基于相似（similarity），如「那家伙，老狐狸一只！」，意思是那家伙的狡猾程度类似狐狸；转喻基于靠近（contiguity），如「请问能兑换袁大头吗？」，这里的「袁大头」指有袁世凯头像的银元。隐喻与转喻所指的语言现象，人们早就注意了，不过以往是从修辞的角度来研究这些现象的——隐喻所指，在修辞学里称为「比喻」；转喻所指，在修辞学里称为「借代」。隐喻和转喻都是人类的一种思维方式，是人认识、理解客观世界的一种工具；人类各种语言活动，可以说都是通过隐喻或转喻来体现人对客观世界的认识<sup class="cite" data-cite="s-metaphor-metonymy">出处</sup>。</p>
+
+<p>在人的认知领域里形成隐喻或转喻这样的思维方式，其基础有二：一是本体与喻体原本所具有的相似性或靠近性，正是这种相似性和靠近性可以由喻体激活本体——狐狸的最大特性是狡猾，一个人很狡猾，人们就很容易把他跟狐狸相比；人对人，最容易通过脸部特征相认，所以说到「新面孔」，人们就容易想到是指新的成员。二是以说话者所发现的或者刻意想象出来的本体与喻体的相似性或靠近性——「这件事就此画上了一个圆满的句号」，一件事的结束跟一句话完了之后在书面上加上一个句号，这二者之间的相似性是说话人所发现或刻意想象出来的；「四个轮子竟比两条腿还慢」，用「四个轮子」来表示乘车，用「两条腿」来表示人走路，也是如此<sup class="cite" data-cite="s-metaphor-metonymy">出处</sup>。隐喻和转喻对于人类的认知和语言起着两种作用：一是不断提供看待事物的新视角；二是不断增添词语的新的意义。在日常生活中，所谓这个说法新，实际就是运用了新的隐喻或转喻；在词汇学上所谓词的引申义，就是运用隐喻或转喻的结果。</p>
+
+<p>隐喻和转喻不只用于名词（铁石心肠、木头人、软件、新面孔、四个轮子），也用于形容词、动词——形容词的例子如「硬：态度硬｜心肠硬｜说话很硬」；动词的例子如「挖掘：挖掘语言事实｜挖掘民间处方」「吃：这一仗我们吃［消灭］了敌人一个排」。那么，人为什么明明要说 A 事物，却不直接调用人对 A 事物感知所形成的认知域，而要用另一个认知域 B 来激活呢？这完全出于表达的某种需要，最常见的是为了使表达新鲜、生动，有表现力、感染力<sup class="cite" data-cite="s-metaphor-metonymy">出处</sup>。隐喻和转喻，从某个角度看，都是一个认知域激活另一个认知域的一种认知活动，界限不是很清楚——「李老汉是我们村的诸葛亮」，从相似性角度看属于隐喻，从靠近性角度看也可视为转喻。但因隐喻基于相似，所以当 B 激活 A 之后，B 和 A 之间可能会形成投射／映射关系；而转喻因为基于靠近，当 B 激活 A 之后，B 和 A 之间不会形成投射／映射关系<sup class="cite" data-cite="s-activation-map">出处</sup>。</p>
+
+<p>隐喻和转喻理论不仅可以解释许多修辞现象，解决许多词义发展中的问题，也有助于我们对某些语法现象有更深刻的认识。这里不妨以现代汉语里的「的」字结构为例——这里所说的「的」字结构是指结构助词「的」（也就是朱德熙先生所说的名词性后附成分「的3」）加在实词性词语之后所形成的名词性「的」字结构，码化为「X 的」。朱德熙先生（1983）曾指出，结构助词「的」其作用有两个方面：第一，「语法功能的转化」，具体说就是名词化——不管什么性质的实词性词语，加上结构助词「的」都可以形成一个名词性结构；第二，「语义功能的转化」，具体说就是指称化、事物化，如「红的」就是指红的东西，所以可以加数量词。从认知上来说，「的」字结构可以看作是一种转喻现象——用该事物的部分特性来指代该事物：「红的衣服 → 红的」是用衣服颜色的属性转指衣服，「我的书 → 我的」是用书所具有的归属的属性转指书，「教英语的老师 → 教英语的」是用老师具有的教英语的职业属性转指老师。从「的」字结构所呈现的转喻现象，说明激活可以有两种类型：一种是直接激活；另一种是借助一定的语法手段来激活，这就是「的」字结构所呈现的转喻现象<sup class="cite" data-cite="s-de-metonymy">出处</sup>。不是任何「的」字结构」都能呈现转喻作用，甚至同一个实词性词语形成的「的」字结构，有时能呈现转喻作用，有时不能（严辰松，2007）：「铁的（柜子）」能说，「铁的硬度」却不能说成「*铁的（硬度）」；「哥哥的（手机）」能说，「*哥哥的（耳朵）」不能说；「干净的（衣服）」能说，「*干净的（双手）」不能说。为什么有的「的」字结构不能起转喻作用？还需研究<sup class="cite" data-cite="s-de-metonymy">出处</sup>。</p>
+
+<div class="kicker">10.7 关于「有界」和「无界」分析</div>
+
+<p>「有界」（bounded）、「无界」（unbounded）也是认知科学里的一对重要的概念，是人的认知机制中的一种重要的对立，沈家煊（1995）作了很好的阐述。所谓「有界」，就是有一定的边界，有一定的范围；所谓「无界」，就是没有明确的边界，没有明确的范围。注意，这是就人的认识而言的，并非就客观世界的实际而言的——譬如说墙角，在客观世界里很难说它有一定的明确的边界，我们无法在墙上画出一条界线，说超过这条线就不再是墙角；但我们在认识上仍然将墙角视为有边界的个体，所以可以说「一个墙角」「四个墙角」。不仅事物在人的认知上有「有界」和「无界」之分，行为动作、性状在人的认知上也有「有界」和「无界」之分。就事物而言，重要区别就在于：有界的事物具有可重复性（replicability），因此可以用数量成分来称说，譬如桌子，可以说「一张桌子」「三张桌子」；无界的事物不具有可重复性，像水就没有这种重复性。无界的事物是同质的（homogeneous），有界的事物是异质的（heterogeneous）——水不管怎么分割、怎么增加，仍然是水；可是桌子一分割就不成为桌子了<sup class="cite" data-cite="s-bounded-unbounded">出处</sup>。</p>
+
+<p>「有界」「无界」这对概念可用来更好地解释一些语法现象。本书第七节谈到数量范畴对句法的制约作用时举过一个典型例子：「盛碗里两条鱼」里的数量词「两条」必须出现，如果抽去「两条」说成「盛碗里鱼」，就不成话。怎么解释这种制约作用呢？沈家煊（1995）就从「有界」「无界」这一视角重新作了解释：由于「盛碗里」是一个「有起点、有终点」的有界的行为动作，这就要求动词所带之宾语成分也得是有界的。名词「鱼」单独作宾语是个类名，表示通指（generic），是无界的，这就不能与有界的行为动作相配合；加上数量词「两条」，「两条鱼」则成有界的了，跟有界的行为动作「盛碗里」能很好配合。沈家煊这一解释无疑比原先的解释要深刻<sup class="cite" data-cite="s-bounded-unbounded">出处</sup>。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「盛碗里鱼」和「盛碗里两条鱼」——哪句合汉语语法？</p>
+<div class="opts">
+<button data-ans="0">两句都合——「两条」可有可无</button>
+<button data-ans="1">只有「盛碗里两条鱼」合，「盛碗里鱼」不成话</button>
+</div>
+<div class="why">答案：b。「盛碗里」是有起点、有终点的有界动作，就要求宾语也是有界的；「鱼」单说是通指类名，无界，配上「两条」才有界。不过研究无止境——让「鱼」有界的办法至少有五种（前加数量词、前加「这／那」或当面直指、前加带「的」的修饰成分、动词带结果补语或趋向补语再加「了」、动词前加范围副词「只」），可在这个句式里，只有前加数量成分这一种办法行得通，其余的都不行，为什么还需进一步探究<sup class="cite" data-cite="s-youjie-wuzhang">出处</sup>。</div>
+</div>
+
+<p>关于事物的「有界化」，一般认为大致有五种情况：一是前加数量词，如「*我吃了苹果」不说，说成「我吃了三个苹果」就可以；二是前加指示代词「这／那」，或说话人当面直指；三是前加带「的」的修饰成分，「妈妈买的苹果」「大的苹果」「红红的苹果」都属于有界名词；四是让述语动词带上结果补语或趋向补语，形成动结式或动趋式，然后再后加「了」，如「我吃完苹果了」「他吞下枣核儿了」；五是在动词前加上范围副词「只」，「我只吃了苹果」就自由了。可是我们看到，让不合汉语语法的「*盛碗里鱼」里的无界名词「鱼」变为有界名词，却只能取前加数量成分这一种办法，而不能取其他四种办法：「*盛碗里这／那（条）鱼」「*盛碗里红烧的鱼」「*盛进了碗里鱼」「*只／已经盛碗里鱼」都不说。再譬如，「姐姐吃了妈妈买的苹果」能说，「我吃了大的苹果」「我吃了红红的苹果」却似不说。这该怎么解释呢？似乎可以用「有定」「无定」来解释——在这种句式中，那受事宾语不仅要求是有界的，还要求是无定的；可是问题又来了，为什么在这种句式中受事宾语要求是无定的，而在其他述宾句式中并无此硬性要求（「我只尝了那个菜」「我只吃了妈妈烧的鱼」，其宾语所指是有界的，但不要求非无定不可）？看来为什么在「盛碗里两条鱼」这种句式中受事宾语部分必须要有数量成分，还得进一步探究。另外，我们也还可以追问：为什么有界的行为动作要求动词所带之宾语成分也必须是有界的？这也需作出解释<sup class="cite" data-cite="s-youjie-wuzhang">出处</sup>。</p>
+
+<div class="kicker">10.8 关于「范畴化」分析</div>
+
+<p>近几年来汉语中大量出现程度副词「很」修饰名词的现象，如「很农民、很德国、很男人、很女人、很阳光」等，有学者将此种现象称之为「非范畴化」（decategorization）。要了解非范畴化，得先了解范畴化这个概念。范畴化（categorization），现在大家都承认是人类最重要的认知能力之一，其基本作用是从差异中找出相似之处，从一个个的个别之中发现不同类别的共性特征，以便给事物、行为或性状等进行必要的分类，从而减轻认识过程中的认知负担，以符合经济性原则。但是，在人类认识的完整过程中，实际既包含从个别到一般这种体现范畴化的认识过程，又包含从一般到个别这种体现非范畴化的认识过程，后一种认识过程更体现了人的认识的深化和创造性。这两种认识过程构成了一个有机的整体，构成了完整的范畴化理论。某个语言实体，譬如某个名词，原属名词这一词类范畴，在实际话语交际过程中，其意义和功能呈现出逐渐向另一词类范畴转移的趋向，我们就可以说这个名词正经历非范畴化的过程<sup class="cite" data-cite="s-feifanchou">出处</sup>。</p>
+
+<p>语言实体发生非范畴化会有各种不同的情况：同为名词，有的「受副词修饰」而造成名词非范畴化现象，有的「直接作谓语」而造成名词非范畴化现象，有的「直接作状语」而造成名词非范畴化现象，其动因和机制可能各不一样。但有一点可以肯定，都跟词本身的意义有关。实词的意义实际含有三个层面的意义——「自身义」「关系义」以及「词与词之间的组合义」，实词的非范畴化跟自身义有关。「自身义」是指某个实词本身的意义，又可细分为概念义、指称义、语义特征三种，名词的非范畴化主要跟名词的概念义有关。名词的概念义又可以从两方面去加以理解：一是从外延的角度，可称之为「概念外延义」（简称「外延义」）；一是从内涵的角度，可称之为「概念内涵义」（简称「内涵义」）<sup class="cite" data-cite="s-nongmin-yiyi">出处</sup>。</p>
+
+<p>这里试以「农民」为例来加以说明。名词「农民」，《现代汉语词典》（第 7 版）上的解释是「在农村从事农业生产的劳动者」，这就是「农民」的概念义。但下面两个句子里的「农民」含义并不相同：「这两位农民是从四川来的」里的「农民」是取外延义，自然也包含内涵义；「王教授在农村劳动一年，像个农民了」里的「农民」是取内涵义。对于内涵义，还可以细分为类属义、内在性质义、附加性质义：「农民」的类属义是「事物·人·劳动者」，内在性质义是「在农村从事农业生产」，附加性质义是「勤劳·朴实·憨厚·比较保守·文化程度低……」。就名词来说，当取其内涵义时，该名词往往不指称具体的某个事物。我们也常常可以这样说：「王华呀，比农民1还农民2」——「农民1」取的是词的外延义，「农民2」取的是词的内涵义。「农民2」在例（4）里凸现的是什么内涵义？这只能根据一定的上下文来判断：a 句「王华呀，干起活儿来比我们农民1还农民2」，「农民2」凸现其「在农村从事农业生产」的内在性质义；b 句「王华呀，特朴实、憨厚，比农民1还农民2」，「农民2」凸现其「朴实、憨厚」这一面的附加性质义；c 句「王华呀，特土气、保守，比农民1还农民2」，「农民2」凸现其「土气、保守」这一面的附加性质义<sup class="cite" data-cite="s-nongmin-yiyi">出处</sup>。</p>
+
+<p>了解了名词的内涵义，就可以明了现代汉语里为什么会出现「很农民、很德国」这类说法。其实这类情况早已有之：譬如「牛」和「铁」原本是名词，可是在实际运用中，逐渐非范畴化，最后由名词分化出一个形容词来——《现代汉语词典》（第 7 版）对「牛」「铁」的解释，「牛：②形 固执或骄傲」「铁：③形 形容坚硬；坚强；牢固」。「很农民」一类说法反映了非范畴化现象。可是从另一个角度看，也可以认为是一种转喻现象——因为我们也可以将「很农民」一类说法看作 B 激活 A 的认知现象：「这个人很农民」，说到农民就激活了农民会干农活儿、憨厚或保守等内涵义，于是听话人就从中知道说话人所说的那个人是一个什么样的人。只是这种激活现象是由具体事物激活那事物所具有的性质，或者说特性<sup class="cite" data-cite="s-feinongmin-activation">出处</sup>。</p>
+
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">本节自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、认知语言学的基本理念可以概括为？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">语言—文字—社会</button>
+      <button data-v="b">现实—认知—语言</button>
+      <button data-v="c">个体—群体—文化</button>
+    </div>
+    <div class="why">答案：b。语言世界和客观世界不直接对应，在语言世界和客观世界之间有个中介物，那就是人的认知域；因此认知语言学的基本理念概括为「现实—认知—语言」。见 10.5，底本 L7923。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、英语回答「Don't you like the fish?」时想表示「我喜欢」，该用哪句？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">No, I don't.</button>
+      <button data-v="b">Yes, I like the fish.</button>
+      <button data-v="c">Yes, I don't.</button>
+    </div>
+    <div class="why">答案：b。英语答话人只考虑客观事实怎么样、该肯定还是该否定，一上来就用 Yes／No 对事实表态；否定形式的问句加肯定的好意，就说 Yes。汉语则先回应问话人的主观想法，说「不，我喜欢」。见 10.2，底本 L7611。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、「我不希望她不在家。」跟哪句意思相同？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">我希望她不在家</button>
+      <button data-v="b">我希望她在家</button>
+      <button data-v="c">意思变了，说不准</button>
+    </div>
+    <div class="why">答案：b。「希望」是意愿类中项词语，后面带否定成分时否定词可以前移而意思基本不变；「知道」是情态类强项词语，否定词不能前移，所以「我不知道她不在家」≠「我知道她在家」。见 10.4，底本 L7875 附近。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」；原书外链插图一律未入页。</li>
+    <li>未入页：认知科学背景的更详细铺陈、「的」字结构转喻作用的更多例证，以及原书脚注。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-cognitive-science": { page:"第十节 10.1 · 底本 L7455—L7473", quote:"促使认知科学产生的因素有三个方面。一是计算机的面世……计算机源于英国数学家、逻辑学家、哲学家图灵（A. M. Turing）1935年设计研制的理论上的万能机——“图灵机”（Turing machine）……二是心智哲学的兴起……“心智之于大脑如同计算软件之于硬件。”……三是背叛行为主义哲学的认知革命。突出的是皮亚杰（Jean Piaget）和乔姆斯基（N.Chomsky）。", zh:"认知科学三方面成因；萨加特定义：关于心智和智能的跨学科研究，关涉心理学、哲学、计算机科学、语言学、人类学和神经科学。" },
+  "s-cog-position": { page:"第十节 10.1 · 底本 L7468", quote:"正如束定芳（2008）所指出的：“虽然现代意义上的认知语言学最初诞生于Chomsky语言理论框架中，但后来的发展使它采取了与乔氏理论相反的立场。”", zh:"认知语言学走了与乔姆斯基相反的道路：不承认语言是大脑中自主的组成部分。" },
+  "s-cog-rise": { page:"第十节 10.1 · 底本 L7472", quote:"认知语言学在国际上被确认为一个独立的新兴的语言学学派，是在上个世纪80年代末。1989年国际认知语言学会议（International Conference on Cognitive Linguistics，Duisburg，Germany）的召开与《认知语言学》（Cognitive Linguistics）这一学术期刊第一期的出版，被认为是这一新兴学派确立的标志。", zh:"1989 年国际认知语言学会议与《认知语言学》创刊，是这一学派确立的标志。" },
+  "s-embodied-concept": { page:"第十节 10.1 · 底本 L7474", quote:"认知语言学的基本观点是，语言是人的认知能力不可分割的重要组成部分；语言世界和客观世界不直接对应，在语言世界和客观世界之间有个中介物，那就是人的认知域。这一点，Lakoff&Johnson（1999）说得很清楚：“概念是通过身体、大脑和对世界的体验而形成的，而且只有通过它们才能被理解。”这也正如王寅（2002）所说，“在语言与现实之间存在认知和概念这一中间层次，如果不依靠认知结构和范畴知识，就无法接近现实”。", zh:"体验哲学：概念通过身体、大脑和对世界的体验而形成；认知域是语言世界与客观世界之间的中介。" },
+  "s-cog-fields": { page:"第十节 10.1 · 底本 L7476", quote:"认知语言学的研究将涉及范畴化、原型理论、隐喻和转喻概念、意象图式、象似性、主观性等诸方面，同时也关注语法化问题，因为语法化多半是通过隐喻或转喻实现的。", zh:"认知语言学的研究领域；兰盖克与雷柯夫对学科定位看法相反，但不影响具体研究。" },
+  "s-common-cognitive-base": { page:"第十节 10.2 · 底本 L7486", quote:"全人类有共同的认知基础，这决定了各民族虽操不同的语言但可以通过翻译互相交际；但各民族历史文化背景的差异和生活环境的不同，又决定了各民族会在认知上有所差异。反映在语言上，就会呈现出不同的表达习惯。", zh:"认知共性决定可译性，认知个性决定表达差异。" },
+  "s-motion-bundling": { page:"第十节 10.2 · 底本 L7488—L7500", quote:"作为一个位移事件，必然包含四个要素：图像、移动、路径、方式。这反映了人对位移事件认知的共同性。但是，各民族在看待这四个要素关系的认识上并不一样……汉语和英语一致，将移动与方式捆绑在一起；法语则将移动与路径捆绑在一起。然而汉语和英语还有差异，汉语常常可以将移动与路径捆绑在一起，而将方式隐含其中……而英语不能这样表达……这是因为汉语的路径习惯用动词表达，而英语的路径习惯用前置词表示。", zh:"位移事件四要素的「捆绑」方式各民族不同：汉语英语捆绑移动与方式，法语捆绑移动与路径。" },
+  "s-fangwei-16": { page:"第十节 10.2 · 底本 L7506—L7548", quote:"当两两组合用来表示一个复合方位时，从理论上来说，按排列组合可以构成16种格式……可是在现代汉语中，这16种组合中事实上只有下面6种能成立……而以下10种在方位表达上都不用……[规则一]“东”“南”“西”“北”遵循下列方向顺序原则进行组合：东>西>南>北……[规则二]“东”“南”“西”“北”都不能自身并置进行组合。……英语复合方位的表达法也只有跟汉语类似的6种……但组合方式跟汉语有明显的差异，在具体组合上，其顺序跟汉语正好相反，然而所指相同。", zh:"汉语方位组合两条规则；英语只有类似六种但顺序相反，并列型还须加 and。" },
+  "s-reference-point-strategy": { page:"第十节 10.2 · 底本 L7550", quote:"那么为什么具体说法——汉语说“东南”，英语说southeast——汉语和英语会有不同呢？张璐（2002）指出，这是因为母语为汉语的人们和母语为英语的人们的认知策略不同，具体说，说汉语的人，其认知过程策略一般是参照点先于目标，而说英语的人一般是目标先于参照点。", zh:"汉英认知策略差异：汉语参照点先于目标，英语目标先于参照点；方所表达亦然。" },
+  "s-shifei-table": { page:"第十节 10.2 · 底本 L7597", quote:"看来汉语和英语回答是非问句时用“是”还是用“不”有同有异——回答肯定是非问句时，用“是”用“不”情况相同；回答否定是非问句时，用“是”用“不”情况就正好相反。", zh:"汉英是非问句答话对照：肯定形式问答话相同；否定形式问，答话正好相反。" },
+  "s-shifei-han": { page:"第十节 10.2 · 底本 L7601", quote:"说汉语的人，他来回答问题时，首先需要对问话人自认为的主观想法作出反应——同意还是不同意，接着才说明实际情况怎么样；换句话说，在汉语里，答话人回答问话人的是非问句时，他首先对问话人所自认为的主观想法表示肯定或否定的意见，接着答话人才说明客观事实是怎么样的或将是怎么样的。", zh:"汉语答话心态：先回应问话人的主观想法（是＝肯定其想法，不＝否定其想法），再说明事实。" },
+  "s-shifei-ying": { page:"第十节 10.2 · 底本 L7611", quote:"而说英语的人的心理或者说思路则不是这样。答话人回答问话人的是非问句时，根本就不考虑问话人自认为的主观想法，只考虑自己所要陈述或说明的客观事实怎么样——该肯定还是该否定。……因此，说汉语的人和说英语的人在回答否定是非问句时用“是/Yes”或“不/No”的差异，正反映了二者在民族心理和认知上的差异。", zh:"英语答话心态：直接对客观事实表态，Yes＝肯定事实，No＝否定事实。" },
+  "s-haiman-1980": { page:"第十节 10.3 · 底本 L7625", quote:"最早明确提出“象似性”问题的是美国语言学家海曼（J. Haiman）。他于1980年发表了The Iconicity of Grammar（《语法象似性》）一文，这篇文章被认为是认知语言学象似性理论的开山之篇。", zh:"海曼 1980 年《语法象似性》：认知语言学象似性理论的开山之篇。" },
+  "s-iconicity-motivated": { page:"第十节 10.3 · 底本 L7627", quote:"历来认为语言具有“任意性”（arbitrariness），拿索绪尔的话来说，“能指和所指的关系是任意的”。“象似性”则是跟“任意性”相对的概念，是指语言的形式与意义之间的联系并非完全任意的，而是有一定理据的（motivated），而且是可以验证的。", zh:"象似性定义：形式与意义的联系有理据、可验证；距离与顺序两大原则已被大量事实证明。" },
+  "s-time-order": { page:"第十节 10.3 · 底本 L7627—L7659", quote:"就拿戴浩一先生首先揭示的汉语句子里多个动词性成分的语序排列是遵循时间先后的顺序原则来说，下面各例明显符合上述原则……例（2）a句可以识解为“先写，而后所写之字在黑板上”；b句可以识解为“‘他’先拿了粉笔接触黑板，而后写字”；都符合时间先后顺序原则。我们很难说哪种识解不被允许。", zh:"时间先后顺序原则（戴浩一）；同一事实可作不同识解，象似性是就语法形式与概念化结构（识解）而言。" },
+  "s-zhangmin-spi": { page:"第十节 10.3 · 底本 L7661", quote:"可见，所谓语法形式与其所表示的内容具有象似性，是就语法形式与概念化结构（即人的识解）二者之间的象似性来说的。因此张敏（2008）指出：“若将句法象似性理解为句法结构与概念化结构对应，这一方法是至关重要的。”", zh:"句法象似性＝句法结构与概念化结构对应。" },
+  "s-zhaoxi-1956": { page:"第十节 10.3 · 底本 L7675", quote:"上述现象首先是由朱德熙（1956）发现的。", zh:"形容词修饰名词带不带「的」的现象，朱德熙 1956 年首先发现。" },
+  "s-distance-criterion-de": { page:"第十节 10.3 · 底本 L7677", quote:"直到1998年，朱德熙先生的博士生张敏用认知语言学的象似性原则里的距离准则作出了很有说服力的解释——“X（的）名”结构中，“的”的有无实际起两方面的作用，一是表明X和“名”在人们的观念里，即认知域里，联系是否紧密，联系紧密的，不用“的”，联系不紧密甚至难得有联系的，就得用“的”。二是强调、凸显X。", zh:"距离准则：「的」的有无表明认知域内联系是否紧密，兼有凸显作用。" },
+  "s-wo-nvpengyou": { page:"第十节 10.3 · 底本 L7679—L7707", quote:"在此基础上，张敏进一步将形容词修饰名词的问题类推到名词修饰名词，说明“我女朋友”和“我的女朋友”在认知上有区别（即“我女朋友≠我的女朋友”）……例（6）意味着“我”与“女朋友”之间已经亲密无间，距离近，所以不用“的”；而例（8）“我”与“女朋友”之间八字还没有一撇呢，距离远，所以要用“的”。", zh:"「我女朋友≠我的女朋友」：距离近不用「的」，距离远必须用「的」。" },
+  "s-wo-meimei": { page:"第十节 10.3 · 底本 L7709—L7741", quote:"下面例（9）又该如何解释——为什么能说“我妹妹”而不能说“我桌子”？……张敏（1998）认为，这也需要用象似性原则中的距离准则来解释——“我妹妹”“猪耳朵”已具有称谓性，而“张三妹妹”“我耳朵”不具有称谓性。具有称谓性的内部两个成分之间的关系自然就紧密，因此可以不用“的”；而不具有称谓性的内部两个成分之间的关系，自然就松散，所以必须用“的”。", zh:"可让渡／不可让渡解释不了的，称谓性能解释：有称谓性则关系紧密。" },
+  "s-haizi-zhuix": { page:"第十节 10.3 · 底本 L7743—L7769", quote:"“那孩子追得老头儿直喘气”……按排列组合，可能有四种意思……可是实际上，有三种意思是大家都认可的……对这四种识解，陆丙甫（2006）、张敏（2008）按一般所说的“语义靠近象似性”（Semantic Proximity Iconicity，可简称SPI）（也称作“语义靠近原则”），作了如下解释……显然，相比之下，a属于最佳识解……而d不成立。", zh:"语义靠近顺向原则：a 最佳，b、c 可接受，d 不成立。" },
+  "s-lvshuxiang-1987": { page:"第十节 10.4 · 底本 L7797", quote:"上面所说的这类现象，吕叔湘先生1987年就注意到了，并举出了如下两组例子：（5）a. 不怕他不来≠怕他来……b. 不相信他不知道=相信他知道……", zh:"吕叔湘 1987 年提出问题：两类「不V1不V2」现象一不等一相等，但未解释。" },
+  "s-semantic-strength": { page:"第十节 10.4 · 底本 L7813", quote:"从人的认知功能的角度看，语言中表示“情态”“意愿”的词语，在表意上存在着程度的差别，这可以称之为“语义强度”的差别。拿表示情态的词语（包括某些动词、能愿动词和副词）来说，存在着概率上的差异，具体可分为三小类：A.【可能】……B.【多半】……C.【肯定】……", zh:"沈家煊（1989，1998）语义强度等级：情态类、意愿类各分弱项、中项、强项。" },
+  "s-shenjiaxuan-qd": { page:"第十节 10.4 · 底本 L7824—L7836", quote:"这三小类词语的语义强度等级可表示如下：肯定等级：可能（0）——很可能（0.5）——肯定（1）；否定等级：不可能（0）——不很可能（-0.5）——不肯定（-1）。……表示意愿的词语，按意愿程度，也可以分为三小类……肯定等级：可以（0）——应该（0.5）——必须（1）；否定等级：不必（0）——不该（-0.5）——不可（-1）。", zh:"底本表一、表二：情态类与意愿类词语的语义强度等级（转制为表三、表四）。" },
+  "s-yunhan-fouze": { page:"第十节 10.4 · 底本 L7875", quote:"第一，在语义上，强项词语蕴涵中项、弱项词语，中项词语蕴涵弱项词语；而弱项词语则不蕴涵中项、强项词语，中项词语不蕴涵强项词语。……第二，就否定情况看，对弱项词语的否定，得到的是否定等级上的一个强项……对强项词语的否定，得到的是否定等级上的一个弱项……对一个中项词语的否定，得到的是否定等级的中项的意思。", zh:"语义等级两个特点：由强至弱的蕴涵关系；否定使强度方向反转。" },
+  "s-qianyi-jieguo": { page:"第十节 10.4 · 底本 L7843—L7917", quote:"在上述等级中，凡是属于“弱项”或“强项”的词语，如果能形成“不V1不V2”，那就只能造成前面所说的a种情形。……而凡是属于“中项”的词语，如果能形成“不V1不V2”，就造成前面所说的b种情形。……弱项或强项词语如果后面带上一个否定成分，其否定词不能前移，如果前移，意思发生变化……而中项词语如果后面带上一个否定成分，其否定词可以前移，而意思基本不变。", zh:"否定前移规则：中项可前移（意思基本不变），弱项、强项不能前移。" },
+  "s-cognitive-domain-mediation": { page:"第十节 10.5 · 底本 L7923", quote:"前面我们已经指出，“语言世界和客观世界不直接对应，在语言世界和客观世界之间有个中介物，那就是人的认知域”，因此认知语言学的基本理念也可以概括为“现实—认知—语言”。", zh:"基本理念：现实—认知—语言；认知域是可细分的复杂网状结构。" },
+  "s-image-schema": { page:"第十节 10.5 · 底本 L7925—L7939", quote:"意象，是指人对客观事物的心理印象，这种心理印象可以因人的视角、需求、认识深浅、凸显的部分或方面不同……而不同。……图式，是指在意象的基础上加工而成的认知式样。……在认知语言学研究中，将“意象”和“图式”加以整合称为“意象图式”（image schema）。意象图式是构成“认知模型”（Cognitive Model，简称CM）或“理想认知模型”（Idealized Cognitive Model，简称ICM）的基础。", zh:"意象＋图式＝意象图式，是 CM／ICM 的基础。" },
+  "s-shiwu-beituo": { page:"第十节 10.5 · 底本 L7941—L7949", quote:"人们在指示、辨识客观事物位置时，往往通过跟另一个可以作为背衬的事物的对比来加以说明。这就是“事物—背衬”意象图式。……一、大的事物总是作小的事物的背衬……二、固定的事物总是作移动的事物的背衬。", zh:"事物—背衬意象图式两条规律：大背衬小、固定背衬移动。" },
+  "s-gei-imagery": { page:"第十节 10.5 · 底本 L7951—L7973", quote:"例（2）a句关注于“书”的转移过程——由“我”转移至“小李”；而例（2）b句则关注于转移的结果——“书”的领有权归“小李”了。……正是这种意象差别，造成句法格式的差异，并由此造成了由例（2）a句和b句分别转换成例（3）、例（4）两种不同的结构变化。", zh:"给字句两种语序是两种意象：凸显转移过程 vs 凸显转移结果。" },
+  "s-metaphor-metonymy": { page:"第十节 10.6 · 底本 L7977", quote:"隐喻基于相似（similarity），如：“那家伙，老狐狸一只！”……转喻基于靠近（contiguity），如：“请问能兑换袁大头吗？”……隐喻所指，在修辞学里称为“比喻”；转喻所指，在修辞学里称为“借代”。隐喻和转喻都是人类的一种思维方式，是人认识、理解客观世界的一种工具。", zh:"隐喻基于相似，转喻基于靠近；两者都是人类最基本的认知模式。" },
+  "s-activation-map": { page:"第十节 10.6 · 底本 L8029", quote:"隐喻也好，转喻也好，从激活的角度说，都是一个认知域激活另一个认知域，都是由一个认知域联想推知另一个认知域。但因隐喻基于相似，所以当B激活A之后，B和A之间可能会形成投射/映射关系；而转喻因为基于靠近，所以当B激活A之后，B和A之间不会形成投射/映射关系。", zh:"激活之后，隐喻可能形成投射／映射，转喻不会；两者是界限难分的两个极端。" },
+  "s-de-metonymy": { page:"第十节 10.6 · 底本 L8055", quote:"从认知上来说，“的”字结构可以看作是一种转喻现象——用该事物的部分特性来指代该事物。即：红的衣服→红得【用衣服颜色的属性转指衣服】……不是任何“的”字结构都能呈现转喻作用，甚至同一个实词性词语形成的“的”字结构，有时能呈现转喻作用，有时不能。（严辰松，2007）", zh:"「的」字结构是转喻：以部分特性指代事物；激活有直接激活与借助语法手段激活两类。" },
+  "s-bounded-unbounded": { page:"第十节 10.7 · 底本 L8087—L8093", quote:"所谓“有界”，就是有一定的边界，有一定的范围；所谓“无界”，就是没有明确的边界，没有明确的范围。注意，这是就人的认识而言的，并非就客观世界的实际而言的。……由于“盛碗里”是一个“有起点、有终点”的有界的行为动作，这就要求动词所带之宾语成分也得是有界的。名词“鱼”单独作宾语是个类名，表示通指（generic），是无界的，这就不能与有界的行为动作相配合。", zh:"有界无界（沈家煊 1995）：有界动作要求有界宾语，比「句法语义范畴制约」的解释更深刻。" },
+  "s-youjie-wuzhang": { page:"第十节 10.7 · 底本 L8097—L8131", quote:"关于事物的“有界化”，一般认为大致有以下几种情况：一是前加数量词……二是前加指示代词“这/那”，或说话人当面直指……三是前加带“的”的修饰成分……四是让述语动词带上结果补语或趋向补语……五是在动词前加上范围副词“只”。……可是我们看到，让不合汉语语法的“*盛碗里鱼”里的无界名词“鱼”变为有界名词……却只能取前加数量成分这一种办法。", zh:"有界化五种办法，在「盛碗里」句式里只有前加数量词行得通；为什么还需进一步探究。" },
+  "s-feifanchou": { page:"第十节 10.8 · 底本 L8133", quote:"近几年来汉语中大量出现程度副词“很”修饰名词的现象，如“很农民、很德国、很男人、很女人、很阳光”等，有学者将此种现象称之为“非范畴化”（decategorization）。", zh:"非范畴化：名词意义和功能向另一词类范畴转移；与范畴化构成完整的范畴化理论。" },
+  "s-nongmin-yiyi": { page:"第十节 10.8 · 底本 L8143—L8191", quote:"实词的意义实际含有三个层面的意义——“自身义”“关系义”以及“词与词之间的组合义”。实词的非范畴化跟自身义有关。……名词的概念义，事实上又可以从两方面去加以理解，一是从外延的角度……一是从内涵的角度。……（3）王华呀，比农民1还农民2。……（4）a. 王华呀，干起活儿来比我们农民1还农民2。b. 王华呀，特朴实、憨厚……c. 王华呀，特土气、保守……", zh:"「农民」的外延义与内涵义；「比农民1还农民2」三解随上下文而变。" },
+  "s-feinongmin-activation": { page:"第十节 10.8 · 底本 L8195", quote:"因为我们也可以将“很农民”一类说法看作B激活A的认知现象——“这个人很农民”，说到农民就激活了农民会干农活儿、憨厚或保守等内涵义，于是听话人就从中知道说话人所说的那个人是一个什么样的人。只是这种激活现象是由具体事物激活那事物所具有的性质，或者说特性。", zh:"「很农民」也是转喻：由具体事物激活该事物的性质；「牛」「铁」早已非范畴化成形容词。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 「的」字隐现 ---------- */
+const DE = {
+  hot:  { t:"热水", ok:true,  d:"联系紧密，无须「的」；要用「的」也只是为了强调。" },
+  cold: { t:"冷水", ok:true,  d:"同样紧密：冷与「水」的距离近，也无须「的」。" },
+  fish: { t:"热的鱼", ok:false, d:"必须用「的」：「热」与「鱼」的联系不如「热水」紧密，加「的」同时也有凸显「热」的作用。" },
+  meat: { t:"热的肉", ok:false, d:"同样必须用「的」：「热」与「肉」的联系也不紧密。" }
+};
+const deOpts = $("#deOpts"), deOut = $("#deOut");
+if(deOpts) $$("button", deOpts).forEach(b => b.onclick = () => {
+  const d = DE[b.dataset.w];
+  $$("button", deOpts).forEach(x => x.classList.remove("cur"));
+  b.classList.add("cur");
+  deOut.innerHTML = "<span class='" + (d.ok ? "ok" : "no") + "'>" + (d.ok ? "可以不带「的」" : "必须带「的」") + "</span>　" + d.d;
+  deOut.classList.add("on");
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

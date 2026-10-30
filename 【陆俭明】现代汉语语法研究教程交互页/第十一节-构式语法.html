@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第十一节 · 构式语法 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:6.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第十一节 交互研读</p>
+  <h1>构式语法：形式与意义的配对</h1>
+  <p class="lead">「更不必说」这个意思，没法从 let 和 alone 两个词里推知——菲尔墨把这个整体叫作构式（construction），哥尔德伯格把它发展成系统的理论<sup class="cite" data-cite="s-let-alone">出处</sup>。本节追问四件事：构式怎么来的、构式怎么用（构式-语块分析）、构式有什么价值、构式理论有哪些局限<sup class="cite" data-cite="s-construction-definition-1995">出处</sup>。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html">第八节 形式学派</a><a href="第九节-功能学派.html">第九节 功能学派</a><a href="第十节-认知学派.html">第十节 认知学派</a><a href="第十一节-构式语法.html" class="cur">第十一节 构式语法</a><a href="第十二节-语言信息结构.html">第十二节 信息结构</a><a href="第十三节-虚词研究.html">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>两版</b>构式定义</li><li>十六句分类实验</li><li>双及物构式重析</li><li>「被X」双通道</li><li>构式-语块分析法</li><li>三大局限</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第十一节</p>
+<h2>构式语法分析思路：形式与意义的配对</h2>
+<p>构式语法理论（Construction Grammar Theory，简称 CG 理论）是上世纪 80 年代末逐渐兴起、90 年代逐步形成的一种新的语法分析理论<sup class="cite" data-cite="s-let-alone">出处</sup>。它跟前面三节讲的结构主义、形式学派、功能学派都不同：结构主义给语言描写，形式学派从语言内部寻求解释，功能学派从语言外部寻求解释，而构式语法直接把「形式与意义的配对」本身当作语法表征的基本单位——句子不再是「词汇加规则」临时拼出来的，而是一个个构式<sup class="cite" data-cite="s-five-views">出处</sup>。这一节第五版才独立成节，分量不轻<sup class="cite" data-cite="s-oxford-handbook">出处</sup>。</p>
+
+<article class="chapter" data-chapter="11">
+<h3>第十一节｜汉语语法研究的构式语法分析思路</h3>
+
+<div class="kicker">11.1 构式语法理论的产生</div>
+
+<p>构式语法理论发端于上个世纪 80 年代菲尔墨（Charles J. Fillmore）等人对英语习语个案「let alone」的研究<sup class="cite" data-cite="s-let-alone">出处</sup>：</p>
+
+<blockquote>We can't even pay our bills, <u>let alone</u> make a profit.（我们连账都付不起，<u>更不必说／更不用说</u>赚钱了。）<sup class="cite" data-cite="s-let-alone">出处</sup></blockquote>
+
+<p>「更不必说／更不用说」这个意思，我们没法从 let 或 alone 这两个词里加以预测或者说推知——let 是动词，表示「允许」；alone 是副词，表示「仅仅」。菲尔墨等就将 let alone 视为 construction，我们译为「构式」<sup class="cite" data-cite="s-let-alone">出处</sup>。</p>
+
+<p>construction 作为语言学里的一个术语早已有之，但在不同分支里指不同的概念：索绪尔用它指词语间在句法上的「组合性联结」；美国结构主义用它指句式，如「主谓宾句式」（SVO Construction）、「被动句式」（Passive Construction）等；乔姆斯基的 TG 理论用它指由原始单位生成出来的一种可被描写的结构，它可以从词汇与所依据的规则预测出来，所以只是一种「副现象」（epiphenomena）<sup class="cite" data-cite="s-construction-term">出处</sup>。就跟 case 这个术语一样——传统语法里指「形态格」，菲尔墨《格辨》里指语义格，乔姆斯基著作里指「格位」——一个术语在不同分支学科领域指说不同的概念，这是常有的事<sup class="cite" data-cite="s-construction-term">出处</sup>。在构式理论中将 construction 作「构式」理解，是由菲尔墨在框架语义学（Frame Semantics）的基础上形成并提出来的<sup class="cite" data-cite="s-goldberg-books">出处</sup>。</p>
+
+<p>系统论述构式语法理论并出版专著的学者是普林斯顿大学的哥尔德伯格（A. E. Goldberg）。她的第一本专著是 <i>Constructions: A Construction Grammar Approach to Argument Structure</i>（1995），第二本专著是 <i>Constructions at Work: The Nature of Generalization in Language</i>（2006），两本均已出版中文译本<sup class="cite" data-cite="s-goldberg-books">出处</sup>。一般认为，下面两段话集中反映了她关于构式语法理论的观点：</p>
+
+<blockquote>C 是一个独立的构式，当且仅当 C 是一个形式（F<sub>i</sub>）和意义（S<sub>i</sub>）的对应体，而无论是形式还是意义的某些特征，都不能完全从 C 这个构式的组成成分或另外的先前已有的构式推知。（Goldberg，1995，1.1）<sup class="cite" data-cite="s-construction-definition-1995">出处</sup></blockquote>
+
+<blockquote>任何语言格式，只要其形式或功能的某些方面不能从其组成部分或其他已经存在的构式中得到完全预测，就应该被看作是一个构式。(Goldberg，2006，1.1)<sup class="cite" data-cite="s-construction-definition-2006">出处</sup></blockquote>
+
+<p>通观哥尔德伯格的主要论著，她关于构式语法理论的基本观点，归纳起来有这样五点<sup class="cite" data-cite="s-five-views">出处</sup>：</p>
+
+<ul>
+<li>一、构式是形式和意义的匹配（form and meaning pairings）。</li>
+<li>二、构式本身能表示独立的意义。</li>
+<li>三、构式，无论其形式还是意义的某些特征，都不能完全从构式的组成成分或另外的先前已有的构式推知。这就是著名的「不可预测性」（unpredictability）说。</li>
+<li>四、构式语法具有生成性，但不具有转换性（CG is generative. CG is not transformational.）。</li>
+<li>五、某种构式是某个语言所专属的，但可以进行跨语言比较。</li>
+</ul>
+
+<p>构式语法理论一问世，立刻引起学界的广泛注意。衡量一种语法分析理论的价值，重要的一点是看它对语言习得的解释如何，而构式语法理论在这方面有它的优越之处。概括性是语言的本质属性之一，从句法层面看，这种概括性就集中体现在构式上，句法习得的要义也在概括性上<sup class="cite" data-cite="s-sixteen-experiment">出处</sup>。下面的实验很说明问题：选取 throw、get、slice 和 take 四个动词，每个动词都可以用在「及物构式」（VO）、「双及物构式」（VOO）、「致使移动构式」（VOL）和「动结构式」（VOR）这四种构式中，于是形成以下 16 个句子<sup class="cite" data-cite="s-sixteen-experiment">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表一（转制）：16 句分类实验材料（动词 × 四种构式）<sup class="cite" data-cite="s-sixteen-experiment">出处</sup></caption>
+<thead><tr><th>动词</th><th>及物构式 VO</th><th>双及物构式 VOO</th><th>致使移动构式 VOL</th><th>动结构式 VOR</th></tr></thead>
+<tbody>
+<tr><td><b>throw</b>（扔）</td><td>Pat threw the hammer.（帕特扔了锤子。）</td><td>Chris threw Linda the pencil.（克里斯把铅笔扔给琳达。）</td><td>Pat threw the key onto the roof.（帕特把钥匙扔到了屋顶上。）</td><td>Lyn threw the box apart.（林恩把箱子扔散架了。）</td></tr>
+<tr><td><b>get</b>（得到）</td><td>Michelle got the book.（米歇尔得到了那本书。）</td><td>Beth got Liz an invitation.（贝思给利兹弄到了一份请柬。）</td><td>Laura got the ball into the net.（劳拉把球投进了篮网。）</td><td>Dana got the mattress inflated.（达纳把垫子充足了气。）</td></tr>
+<tr><td><b>slice</b>（切）</td><td>Barbara sliced the bread.（芭芭拉切面包。）</td><td>Jennifer sliced Terry an apple.（珍妮弗给特里切了一个苹果。）<sup class="cite" data-cite="s-sixteen-experiment">出处</sup></td><td>Meg sliced the ham onto the plate.（梅格把火腿切到盘子里。）</td><td>Nancy sliced the tyre open.（南希切开了那个轮胎。）</td></tr>
+<tr><td><b>take</b>（拿）</td><td>Audrey took the watch.（奥德丽拿走了那块表。）</td><td>Paula took Sue a message.（葆拉带给苏一条消息。）</td><td>Kim took the rose into the house.（金把那朵玫瑰拿进屋。）</td><td>Rachel took the wall down.（雷切尔把那堵墙拆了。）</td></tr>
+</tbody>
+</table>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：把这 16 个句子打乱，让受试者自己分类。你猜受试者会怎么分——按动词分（throw 的四句归一堆、get 的四句归一堆……）的多，还是按构式分（四句及物归一堆、四句双及物归一堆……）的多？<sup class="cite" data-cite="s-sixteen-experiment">出处</sup></p>
+<div class="opts">
+<button data-ans="0">按动词分类的多——同一个动词的四句意思更接近</button>
+<button data-ans="1">按构式分类的多——同一个构式的四句共享一个整体意义</button>
+</div>
+<div class="why">答案：b。国外、国内都做过这样的实验，其结果都是按构式分类多于按动词分类。这一实验结果至少可以作为一个佐证：「构式可能是句子整体意义的更佳预测因子」（Goldberg，2006，6.5）。语言习得告诉我们，人们习得一种语言时并非先习得语素、再习得词、再习得组合规则，而是一个构式一个构式地习得，然后根据需要再去分解为一个个词或语素——汉语的「把」字句，无论本族儿童还是外族人，实际都是整体习得「X 把 Y 怎么样（了）」这一构式<sup class="cite" data-cite="s-construction-best-predictor">出处</sup>。</div>
+</div>
+
+<p>因此许多学者都同意 Croft（2001：16）的观点：构式是句法表征的「原素单位」（primitive unit，有人译为「基原单位」）<sup class="cite" data-cite="s-croft-primitive">出处</sup>。构式语法理论一面世就迅速引起语言学界的瞩目，目前已经成为国际语言学领域的研究热点之一：从 2001 年至今，关于构式语法的国际学术研讨会已举行了多次，内部还形成了不同的支派；2013 年牛津大学出版社出版了 Hoffmann &amp; Trousdale 的《牛津构式语法手册》，除导言外分「原则与方法」「构式主义方法」「构式：从语素到句子到更大单位」「语言习得与认知」「语言变异与变化」五大部分 26 章，对构式语法理论作了全方位、阶段性的介绍与阐述<sup class="cite" data-cite="s-oxford-handbook">出处</sup>。有关构式语法理论的讨论，至今没有停息。</p>
+
+<div class="kicker">11.2 构式语法理论引入中国</div>
+
+<p>构式语法理论也受到国内学者的极大关注。事实上，我国上个世纪 40 年代的语法著作以及后来的论著中就有了构式的理念：王力先生在《中国现代语法》（1943）和《中国语法理论》（1944）中将「把」字句称为「处置式」，将带结果补语的动补结构称为「使成式」，就有明显的构式意识<sup class="cite" data-cite="s-wangli-1943">出处</sup>。朱德熙先生在《语法讲义》（1982）里讨论了「在＋NP<sub>p</sub>＋VP」这一句法格式（NP<sub>p</sub> 代表处所成分，VP 代表动词性词语），并通过变换将它分化为 A₁ 和 A₂ 两个同形格式，指出 A₁ 式（在沙发上坐着｜在黑板上写字｜在山顶上盖房子）「都表示人或事物的位置」，A₂ 式（在床上咳嗽｜在河里游泳｜在飞机上看书）「都表示事件发生的处所」——这也是明显的构式理念<sup class="cite" data-cite="s-zhudeuxi-1982">出处</sup>。遗憾的是我们没能升华为理论，把构式理论的发明权让给了外国学者。</p>
+
+<p>最先明确将构式语法理论引入中国的是中国社科院语言研究所研究员张伯江先生。他于 1999 年在《中国语文》第 3 期上发表了《现代汉语的双及物结构式》一文，该文一开始就说了下面一大段话<sup class="cite" data-cite="s-zhangbojiang-1999-quote">出处</sup>：</p>
+
+<blockquote>过去的语法研究相信每个动词有固有的「配价」能力，它们在句子里带多少宾语以及带什么样的宾语是这种配价能力的反映；同时相信通过对词汇语义和句法规则的描写可以概括所有语法现象。但当我们把观察的视野放到实际运用中的语言的时候，就会发现，这些规则并不能穷尽地描述动词运用的所有细节。更为重要的是，语言中大量使用的句式（construction），其句法-语义特征往往不是能够由词汇语义规则自然推导出来的，这些句式的语义构成是人类认知对现实的反映，它们所体现出的句法-语义的一致关系无疑应该是语法研究的核心内容。<sup class="cite" data-cite="s-zhangbojiang-1999-quote">出处</sup></blockquote>
+
+<p>张文所说的「句式语法」就是「构式语法」。这一大段话实际也点出了构式语法理论的基本观点——构式，其句法-语义特征往往不是能够由词汇语义规则自然推导出来的，这些构式的语义构成是人类认知对现实的反映<sup class="cite" data-cite="s-zhangbojiang-1999-quote">出处</sup>。</p>
+
+<p class="tag">双及物构式的重析</p>
+<p>张文首先指出，以往的研究多从「位置」的角度给双宾语结构下定义并作详细的分类，但是这样的界定与分类，有三个关乎句式的大问题没有得到解决<sup class="cite" data-cite="s-ditransitive-three-problems">出处</sup>：</p>
+
+<ul>
+<li>（一）找不到适合所有类型的双宾语结构的一条或几条句法特征。</li>
+<li>（二）也无法看出能进入这一句法格式的动词有什么可以概括的特点。</li>
+<li>（三）看不到对双宾语句式的概括的语义描述。</li>
+</ul>
+
+<p>以上三点也可以视为结构主义视野下的语法研究所存在的局限。张文指出，对上述问题的完满解决取决于研究思路的转变，即得用构式语法理论来分析描写。根据 Goldberg（1995）对构式的定义，可将双宾语构式视为「双及物构式」，其形式表现为 V–N₁–N₂，其语义核心为「有意的给予性转移」；为了突出这一构式整体的语法意义独立性，因而放弃带有强烈结构分解意识的「双宾语」的说法，而改称为「双及物式」（ditransitive construction）——「双宾语」说是分解的观点，「双及物式」是整体的观点<sup class="cite" data-cite="s-ditransitive-vn1n2">出处</sup>。设 V 为表示行为动作的动词，A 为施事，P 为受事，R 为接受者，典型的双及物式的特征可概括为<sup class="cite" data-cite="s-ditransitive-vn1n2">出处</sup>：</p>
+
+<blockquote>「在形式为『A＋V＋R＋P』的句式里，施事者有意地把受事转移给接受者，这个过程是在发生的现场成功地完成的。」<sup class="cite" data-cite="s-ditransitive-vn1n2">出处</sup></blockquote>
+
+<p>这种双及物式有三个句法特点<sup class="cite" data-cite="s-ditransitive-features">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>特点一</b>一般可以在受事前面加上施事的领格形式：刚才老李送我一本他的书。｜昨天邻居卖我一把他的旧椅子。</li>
+<li><b>特点二</b>一般不能用「给」将接受者提到动词之前：*刚才老李给我送了一本书。｜*昨天邻居给我卖了一把旧椅子。</li>
+<li><b>特点三</b>可以用「把」将受事提到动词之前：刚才老李把一本书送我了。｜昨天邻居把一把旧椅子卖我了。</li>
+</ul>
+
+<p>张文进一步依据 Taylor（1989）的典型范畴理论，不将给予义和上述三个句法特点当作界定双及物式的「充分-必要」条件，而是看作双及物式的原型特征。那原型的双及物式通过隐喻或转喻，便引申、扩展出有不同形式、不同语义、不同句法表现的引申式，即原先一般所说的不同类型的双宾语句式<sup class="cite" data-cite="s-taylor-1989">出处</sup>。</p>
+
+<p>先看<b>话语空间的转喻</b>。拿「问」和「回答」为例，形成形式基本相同的两个句子：「老师问学生一个问题。」「老师回答学生一个问题。」a 句和 b 句语义方向好像相反，b 句很容易理解为给予意义的引申（给予物是「答案」）；但 a 句应将给予物理解为一个更抽象的东西（老师的「请求」）<sup class="cite" data-cite="s-yuhu-space-metonymy">出处</sup>。这里的引申机制就是转喻：</p>
+
+<table class="matrix">
+<caption class="small muted">表二（转制）：话语空间的转喻<sup class="cite" data-cite="s-yuhu-space-metonymy">出处</sup></caption>
+<thead><tr><th>句式</th><th>喻体</th><th>转指物</th></tr></thead>
+<tbody>
+<tr><td>（8）老师问学生一个问题<sup class="cite" data-cite="s-yuhu-space-metonymy">出处</sup></td><td>问题</td><td>关于回答这个问题的请求</td></tr>
+<tr><td>（9）王老师考我们数学<sup class="cite" data-cite="s-yuhu-space-metonymy">出处</sup></td><td>数学</td><td>关于数学能力的测验</td></tr>
+<tr><td>（10）弟弟求我一件事<sup class="cite" data-cite="s-yuhu-space-metonymy">出处</sup></td><td>事</td><td>关于办这件事的请求</td></tr>
+</tbody>
+</table>
+
+<p>再看<b>物质空间的转喻</b>。拿「卖」和「买」来说，如果只着眼于动词的语义，通常都将它们看作一对反义词。但是构式语法理论认为，构式语义与词汇语义之间是一种互动（interaction）关系，句式语义可以赋予一些原没有给予义的动词以给予义，这是因为构式是一个「完形」（gestalt），进入构式的任何实例都会例示（instantiate）构式的整体意义，动词「买」也不例外。这样，「我买他一本书」跟「他卖我一本书」并不是语义完全相反的两个构式——两个句子中的主语「我」和「他」都分别是主动者，动词后的第一个名词「他」和「我」都是被动作影响的有生对象，两个句子有平行的句法特点。在这其中引申的机制是转喻——「我买他一本书」是「我」给予「他」一个「损失」<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表三（转制）：物质空间的转喻<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup></caption>
+<thead><tr><th>句式</th><th>喻体</th><th>转指物</th></tr></thead>
+<tbody>
+<tr><td>（11）老王买了我一把旧椅子<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup></td><td>一把旧椅子</td><td>一把旧椅子的损失</td></tr>
+<tr><td>（12）李师傅拿了我两把钳子<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup></td><td>两把钳子</td><td>两把钳子的损失</td></tr>
+<tr><td>（13）他偷了东家一头牛<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup></td><td>一头牛</td><td>一头牛的损失</td></tr>
+</tbody>
+</table>
+
+<p>同时，动词本身也是个转喻过程<sup class="cite" data-cite="s-verb-metonymy">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表四（转制）：动词本身的转喻<sup class="cite" data-cite="s-verb-metonymy">出处</sup></caption>
+<thead><tr><th>句式</th><th>喻体</th><th>转指物</th></tr></thead>
+<tbody>
+<tr><td>（11′）老王买了我一把旧椅子<sup class="cite" data-cite="s-verb-metonymy">出处</sup></td><td>买</td><td>买＋使损失</td></tr>
+<tr><td>（12′）李师傅拿了我两把钳子<sup class="cite" data-cite="s-verb-metonymy">出处</sup></td><td>拿</td><td>拿＋使损失</td></tr>
+<tr><td>（13′）他偷了东家一头牛<sup class="cite" data-cite="s-verb-metonymy">出处</sup></td><td>偷</td><td>偷＋使损失</td></tr>
+</tbody>
+</table>
+
+<blockquote>「双及物构式的给予意义是由构式带来的，不是来自每一个个别动词。」<sup class="cite" data-cite="s-ditransitive-gestalt">出处</sup></blockquote>
+
+<p>构式中的动词，有的自身表示给予意义，有的从给予的方式体现给予意义，更多的是动词本身没有狭义的给予意义，而借助构式来表示给予意义。张文按上述分析思路，说明了「我帮你一千块钱」「单位照顾我一套房子」「大家骂他『癞皮狗』」「他赢了我二百块钱」「韩国队进我们两个球」「学校放我们两天假」「那老头吐他一口唾沫」，乃至一些熟语性的说法，如「围了我个水泄不通」「饶他个初次」「打他一个冷不防」「玩它个痛快」等，也都是从典型双及物构式通过隐喻、转喻的引申机制而来的<sup class="cite" data-cite="s-ditransitive-gestalt">出处</sup>。</p>
+
+<div class="de">
+<p class="note" style="margin:0 0 8px">小实验：张伯江以构式语法重析汉语双及物构式，语义核心是「有意的给予性转移」。点个动词，看它进不进这个构式<sup class="cite" data-cite="s-ditransitive-vn1n2">出处</sup>：</p>
+<div class="opts" id="diOpts">
+  <button data-w="give">送</button><button data-w="throw">扔</button><button data-w="hand">递</button><button data-w="eat">吃</button><button data-w="fry">炒</button>
+</div>
+<p class="deout" id="diOut"></p>
+</div>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「我买他一本书」跟「他卖我一本书」，语义是不是完全相反？</p>
+<div class="opts">
+<button data-ans="0">完全相反——「买」和「卖」是一对反义词，两句针锋相对</button>
+<button data-ans="1">并不相反——两句主语都是主动者，动词后第一个名词都是被动作影响的有生对象，「买他那本」是「我」给予「他」一个「损失」</button>
+</div>
+<div class="why">答案：b。只着眼于动词语义，「买」「卖」像一对反义词；但构式是一个「完形」，进入构式的任何实例都会例示构式的整体意义。「我买他一本书」是「我」给予「他」一个「损失」——「老王买了我一把旧椅子」的转指物就是「一把旧椅子的损失」。这正是构式义与词汇语义互动的结果<sup class="cite" data-cite="s-wuzhi-space-metonymy">出处</sup>。</div>
+</div>
+
+<p>以上是张伯江先生首次明确运用构式语法理论对现代汉语里一般所谓的双宾语结构所作的统一分析，在汉语学界引起了极大的反响。其实，在张伯江之前，沈家煊（1999）很精彩地分析了「在」字句和「给」字句，虽未点名运用构式语法理论，实际运用的是构式语法理论<sup class="cite" data-cite="s-shenjiaxuan-1999">出处</sup>。沈文指出，不同的词类序列代表不同的句式，但是句式并不等于不同的词类序列：</p>
+
+<blockquote>「一个句式是一个『完形』（Gestalt），即一个整体结构。只有把握句式的整体意义，才能解释许多分小类未能解释的语法现象，才能对许多对应的语法现象作出相应的概括。句式整体意义的把握跟心理上的『完形』感知一致，都受一些基本认知原则的支配。」<sup class="cite" data-cite="s-construction-gestalt">出处</sup></blockquote>
+
+<p>沈家煊先生所说的认知原则，包括顺序原则（如果 B 在 A 之后，C 在 B 之后，那么 A、B、C 是一个序列，而不是一个无序列）、包容原则（如果 B 包容在 A 之内，那么 A 就不可能包容在 B 之内）、相邻原则（相邻的两个成分倾向于组成一个单位）、数量原则（认识数量上的多和少是人的基本认知能力之一）<sup class="cite" data-cite="s-four-cognitive-principles">出处</sup>。</p>
+
+<p>事实也确实如此。现代汉语里的「在」字句和「给」字句有各种各样，光用给词分小类确实难以解释上面各句式之间的差异。沈文根据「完形心理学」的认知原则，指出上面所列的各种「在」字句和「给」字句具有如下的整体意义<sup class="cite" data-cite="s-zg-sentences">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表五（转制）：沈家煊（1999）「在」字句／「给」字句整体意义<sup class="cite" data-cite="s-zg-sentences">出处</sup></caption>
+<thead><tr><th>句式</th><th>例句</th><th>整体意义</th></tr></thead>
+<tbody>
+<tr><td>Z₁ 在 x SVO</td><td>在黑板上我写了几个字</td><td>在某处所发生某事件</td></tr>
+<tr><td>Z₂ S 在 x VO</td><td>我在黑板上写了几个字</td><td>在某处所发生某动作</td></tr>
+<tr><td>Z₂′ S 在 VO</td><td>我在写字</td><td>（一般动作句，无特定处所配置）</td></tr>
+<tr><td>Z₃ SVO 在 x</td><td>我写了几个字在黑板上</td><td>动作作用下事物达到某处所，动作和达到是两个分离过程</td></tr>
+<tr><td>Z₄ SV 在 x O</td><td>我写在黑板上几个字</td><td>动作作用下事物达到某处所，动作和达到是一个统一过程<sup class="cite" data-cite="s-zg-sentences">出处</sup></td></tr>
+<tr><td>Z₄′ SV x O</td><td>我放桌上一盆花</td><td>（同 Z₄，介词不出现，由数量原则说明）</td></tr>
+<tr><td>G₁ 给 x SVO</td><td>给你我买了一所房子</td><td>对某受惠目标发生某事件</td></tr>
+<tr><td>G₂ S 给 x VO</td><td>我给你买了一所房子</td><td>对某受惠目标发生某动作</td></tr>
+<tr><td>G₂′ S 给 VO</td><td>你给来封信</td><td>（一般动作句，无特定受惠配置）</td></tr>
+<tr><td>G₃ SVO 给 x</td><td>我买了一所房子给你</td><td>惠予事物转移并达到某终点，转移和达到是两个分离过程</td></tr>
+<tr><td>G₄ SV 给 x O</td><td>我卖给你一所房子</td><td>惠予事物转移并达到某终点，转移和达到是一个统一过程<sup class="cite" data-cite="s-zg-sentences">出处</sup></td></tr>
+<tr><td>G₄′ SV x O</td><td>我卖你一所房子</td><td>（同 G₄，介词不出现，由数量原则说明）</td></tr>
+</tbody>
+</table>
+
+<p>顺序原则可以说明 Z₁／Z₂ 和 Z₃／Z₄ 之间的区别，同时说明 G₁／G₂ 和 G₃／G₄ 之间的区别；包容原则可以说明 Z₁ 和 Z₂ 的区别，同时说明 G₁ 和 G₂ 的区别；相邻原则可以说明 Z₃ 和 Z₄ 的区别，同时说明 G₃ 和 G₄ 的区别；数量原则能说明 Z₄ 和 Z₄′ 之间、G₄ 和 G₄′ 之间的区别。沈家煊先生正是运用上述认知原则出色地对现代汉语里各种各样的「在」字句和各种各样的「给」字句作出了统一的平行语义解释，使人们看到了构式的句法格局与构式语义之间深层次的对应性。因此张伯江（2014）认为，沈先生的这篇文章是「汉语构式语法研究范例」<sup class="cite" data-cite="s-zhangbojiang-2014">出处</sup>。</p>
+
+<p>构式语法理论一经引入国内，便迅速吸引了汉语学界和外语学界众多的学者专家和青年学子，并涌现了大量的研究成果。从 1999 年沈家煊、张伯江的文章开始至 2006 年年底为止，据不完全统计，在各种刊物上发表的文章 380 多篇，这还不包括各高校硕士生、博士生的论文，也不包括网上语言学交流平台上发表的文章；这期间还出版了一些专著和论文集。中国学界对构式语法理论总起来说是持肯定态度的，同时也指出了该理论的局限与问题，并不只是被动地接受、采用<sup class="cite" data-cite="s-380-articles">出处</sup>。</p>
+
+<div class="kicker">11.3 构式是怎么来的？</div>
+
+<p>对句法结构的研究，向来采用「词汇加规则」的模式。而按构式语法理论的观点，构式是句法表征的「原素单位」。如果确认这一观点，人们很自然地要追问：构式是怎么产生的？在回答这个问题之前，我们先认可 Chomsky（1968，1986）关于「内在语言」（internal language，简称 I-language）和「外在语言」（external language，简称 E-language）之分的观点——「内在语言」是存在于人脑心智中的自然客体，是意象图式经过大脑处理后形成的表征系统，它包括一个运算程序和一个词库；「外在语言」是内在语言的外部表现形式，这就是一般所说的「声音和意义相结合的符号系统」。对于构式的产生，我们需要从外在语言和内在语言这两方面来加以观察和认识<sup class="cite" data-cite="s-internal-external-language">出处</sup>。</p>
+
+<p>就外在语言来看，语言总是随着社会的发展而不断发展变化，语言的变化就表现在语音、词汇、语法等各个不同层面不断出现各种各样的变异现象。语言出现各种变异可以说是语言发展的常态。句法上的变异现象就是在言谈交际中突然出现的、常常被人视为「不合逻辑的」那些说法，刘大为（2010）称之为「修辞构式」——他所说的「修辞」用的不是传统意义上「为了某种修辞目的而采用某种修辞手段」这一含义，而是泛指在交际过程中由各种因素致使出现「大量不典型、非常态、使用受到一定情境局限的句子」<sup class="cite" data-cite="s-rhetorical-construction">出处</sup>。据初步考察，变异大致有以下七种情况<sup class="cite" data-cite="s-seven-variations">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表六（转制）：句法变异的七种情况<sup class="cite" data-cite="s-seven-variations">出处</sup></caption>
+<thead><tr><th>变异类型</th><th>例证</th></tr></thead>
+<tbody>
+<tr><td>一、故意多次重复某些词语，以起强调作用，随之模仿并逐渐泛化</td><td>学习，学习，再学习！｜（这个问题需要）考虑，考虑，再考虑！｜成功的必要条件，第一是勤奋，第二是勤奋，第三还是勤奋。</td></tr>
+<tr><td>二、为了表达的经济，故意省略，并逐步泛化</td><td>我们用电话联系→我们电话联系｜赶时间写论文→赶写论文→赶论文｜你看你的书→你看你的</td></tr>
+<tr><td>三、功能扩展并逐渐泛化</td><td>动宾格带宾语：登陆诺曼底｜称霸武林｜聚焦雾霾；形容词带宾语：富了个人穷了国家｜幸福千万家；名词带宾语：明天我会电话你｜他就这样潜规则了不少新来的女演员<sup class="cite" data-cite="s-seven-variations">出处</sup></td></tr>
+<tr><td>四、外语或方言句法格式的渗透</td><td>来自西南边陲的我｜从来默默无闻、一向低调的他【受外语影响】｜洗洗干净｜知不知道【来自方言】</td></tr>
+<tr><td>五、改变词序</td><td>用大碗吃→吃大碗｜用这把刀切→切这把刀｜这个箱子用尼龙绳捆→这个箱子捆尼龙绳</td></tr>
+<tr><td>六、改变搭配规则，并逐渐泛化</td><td>被自杀｜被就业→被苗条｜被教授｜被 82%【「被X」】；很阳光→很农民｜很德国｜很女人【「很N」】<sup class="cite" data-cite="s-seven-variations">出处</sup></td></tr>
+<tr><td>七、隐喻并仿造，然后泛化</td><td>走来走去｜看来看去→吃来吃去还是黄瓜馅儿饺子好吃｜喝来喝去还是燕京啤酒爽口</td></tr>
+</tbody>
+</table>
+
+<p>这些变异的出现，一般都是出于表达的特殊需要，如第一小类的故意重复、叠用以及第六小类的「被X」，最有代表性了，并具有真正意义上的修辞效果；有的则是为了表达的经济，第二小类就最有代表性了。不管属于哪一小类，都是先在某个人的言辞中或某种媒体上出现，然后扩散，即或慢或快地说开去<sup class="cite" data-cite="s-seven-variations">出处</sup>。</p>
+
+<p>变异现象都具有临时性，不少可能只是昙花一现。而有不少则在广泛运用的基础上逐渐固化，新的构式由此而产生。最典型的如上面举到的「吃来吃去还是黄瓜馅儿饺子好吃」，这可视为「V 来 V 去＋VP」这一构式的一个实例，它是由「走来走去」这种原有的语法构式通过隐喻并仿造而发生的变异现象。该构式已为人们频频使用——「喝来喝去还是龙井茶对我的口味」「挑来挑去还是那条裙子最好看」「住来住去还是觉得住乡下最舒服」「听来听去我还是最喜欢《梁祝小提琴协奏曲》」「穿来穿去还是那件衣服穿着舒服」「吃来吃去没有一个菜好吃」。在频频使用中，也就是在泛化过程中，要求在「V 来 V 去」之后得紧接一个 VP，从而形成「V 来 V 去＋VP」这样一种新的构式。这一新的构式所具有的特殊的构式义是，「在行为动作所能涉及的诸种事物中，反复掂量，或主观认为『要数某事物较为／最为合意』，或主观认为『哪个都不合意』」<sup class="cite" data-cite="s-vvqu-construction">出处</sup>。</p>
+
+<p>促使某种变异「凝固」或者说「固化」为新的构式，当然是看能否被广泛使用，是否被泛化；而能否被广泛使用、是否被泛化，则取决于这种变异说法是否符合经济原则，是否具有特殊的表达作用。一句话，「凝固」或者说「固化」取决于是否符合交际的需要<sup class="cite" data-cite="s-vvqu-construction">出处</sup>。总之：</p>
+
+<blockquote>「语言的变异是常态，语言变异被频繁使用并泛化，就会逐渐固化为新的构式。这也就是认知语言学家 Langacker（1987）提出的『基于使用的理论』（usage-based theory）；也就是功能语法学家 Hopper（1987）提出的『用法先于语法』的『浮现语法』（emergent grammar）观。」<sup class="cite" data-cite="s-variation-solidifies">出处</sup></blockquote>
+
+<p>从内在语言考虑，既然 Goldberg（1995，2006）和 Croft（2001）都确认语言中存在的就是一个个构式，构式是句法表征的「原素单位」，而语言并不跟客观世界直接联系，都得经由认知域，因此「构式基于认知」这个问题是回避不了的。Goldberg（1995）只是认为「构式义跟人类经验有关」，提出了「情景编码假设」：「与基本句子类型对应的构式把与人类经验有关的基本事件类型编码为这些构式的中心意义。」我国有学者进行过一些探讨（陆俭明，2006；施春宏，2013）。现在，我们试着在前人研究成果的基础上，作如下两种新的假设<sup class="cite" data-cite="s-hypothesis-inner-outer">出处</sup>：</p>
+
+<div class="lab">
+<h3>假设一：「由内到外」运作假设</h3>
+<p class="note">就「说话人根据其自身的特殊感知或认识用某种言辞表达出来」这一过程，在说话人认知域中的运作<sup class="cite" data-cite="s-hypothesis-inner-outer">出处</sup>：</p>
+<ol>
+<li>客观世界（客观事件或事物以及彼此之间客观存在的关系等）；</li>
+<li>通过感觉器官感知并形成直感形象或直觉；</li>
+<li>在认知域内进一步抽象，由直感形象或直觉形成意象图式；</li>
+<li>在认知域内借助内在语言进一步由意象图式形成具体的概念框架；</li>
+<li>该具体的概念框架投射到外在语言，寻找最能表示该概念框架的具体的表达构式——可能已有的构式能用来表达，也可能跟已有的构式发生碰撞，产生新的「修辞构式」，并呈现为具体的句子；</li>
+<li>按「修辞构式」呈现的句子多次反复运用，并进一步抽象概括，便分别在内在语言和外在语言形成相应的、稳定的语义框架和新的语法构式。</li>
+</ol>
+</div>
+
+<p>当外在语言输入某个句子，譬如「他被杀害了」和「他被捐款了」这样的句子进入听话人的认知域，就要接受核查。一个正常的人，一般两三岁之后就在认知域中不断积聚以母语为载体的内在语言结构和相应的概念结构所需遵循的规则或准则，所以外在语言输入的句子自然就会接受内在语言所形成的结构以及相应的概念结构所需遵循的规则或准则的核查。核查结果，无非两种情况<sup class="cite" data-cite="s-hypothesis-outer-inner">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>第一种</b>完全符合认知域中所存储的各种规则或准则，如「他被杀害了」，符合「被＋及物动词＋了」的规则，就完全通过并接受。</li>
+<li><b>第二种</b>并不完全符合认知域中所存储的各种规则或准则，如「他被捐款了」，是「被＋不及物动词＋了」，认知域中没有这一规则。没这规则怎么办呢？大脑就开始由数据驱动进行「自下而上」的搜索、处理，形成各种初步的意象图式，并作出由不同概念结构组成的不同理解。</li>
+</ul>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「他被捐款了」——「被」后面是个不及物动词，认知域里没这条规则。你能替大脑想出几种理解？</p>
+<div class="opts">
+<button data-ans="0">只有一种理解——就是「捐款」本身的意思，没什么好多想的</button>
+<button data-ans="1">会有好几种理解——谁捐的、怎么「被」上的、后果如何，都能拆出不同的概念结构</button>
+</div>
+<div class="why">答案：b。施春宏（2013）指出至少可以形成五种理解：a. 某人并不想捐款但被人劝说、引诱、要求或强迫而捐了款；b. 某人并未捐款而由他人冒捐从而被认为自己捐款了；c. 某人并未捐款而被他人传说捐了款；d. 某人并未捐款而被他人在统计中写成捐了款；e. 某人虽捐了款但并不想让他人知道，却被人打听到后说出了捐款。所理解到的各组概念结构，其相应的各个意象图式间的关系，可设想为联接、互动激活、重组等多种模块化模式；各个过程都是在「内在语言」中经由数据驱动的「自下而上」与概念驱动的「自上而下」二者互动而完成的<sup class="cite" data-cite="s-hypothesis-outer-inner">出处</sup>。</div>
+</div>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 430" role="img" aria-label="被X构式双通道生成示意图">
+<rect x="0" y="0" width="680" height="430" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">「被X」新构式的双通道生成（据底本两种假设转绘）</text>
+<rect x="14" y="40" width="310" height="336" rx="10" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="169" y="62" text-anchor="middle" font-size="12.5" fill="#3d5a6c" font-weight="700" font-family="-apple-system,PingFang SC,sans-serif">假设一 · 由内到外（说话人的「发明」）</text>
+<g font-family="KaiTi,serif" font-size="12.5" text-anchor="middle">
+<rect x="40" y="74" width="258" height="38" rx="7" fill="#eef2f4" stroke="#3d5a6c" stroke-width="1.2"/><text x="169" y="98" fill="#29241d">① 客观世界：事件·事物·关系</text>
+<rect x="40" y="124" width="258" height="38" rx="7" fill="#eef2f4" stroke="#3d5a6c" stroke-width="1.2"/><text x="169" y="148" fill="#29241d">② 感知 → 直感形象／直觉</text>
+<rect x="40" y="174" width="258" height="38" rx="7" fill="#eef2f4" stroke="#3d5a6c" stroke-width="1.2"/><text x="169" y="198" fill="#29241d">③ 认知域抽象 → 意象图式</text>
+<rect x="40" y="224" width="258" height="38" rx="7" fill="#eef2f4" stroke="#3d5a6c" stroke-width="1.2"/><text x="169" y="248" fill="#29241d">④ 形成具体的概念框架</text>
+<rect x="40" y="274" width="258" height="46" rx="7" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.2"/><text x="169" y="293" fill="#29241d">⑤ 投射外在语言：或现成构式，</text><text x="169" y="310" fill="#29241d">或碰撞出新的「修辞构式」</text>
+<rect x="40" y="332" width="258" height="34" rx="7" fill="#f5e3de" stroke="#9d4938" stroke-width="1.2"/><text x="169" y="354" fill="#9d4938" font-weight="700">⑥ 反复运用 → 固化为新构式</text>
+</g>
+<g stroke="#6f675a" stroke-width="1.1" fill="none">
+<path d="M169 112 L169 124"/><path d="M169 162 L169 174"/><path d="M169 212 L169 224"/><path d="M169 262 L169 274"/><path d="M169 320 L169 332"/>
+</g>
+<rect x="356" y="40" width="310" height="336" rx="10" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="511" y="62" text-anchor="middle" font-size="12.5" fill="#3d5a6c" font-weight="700" font-family="-apple-system,PingFang SC,sans-serif">假设二 · 由外到内（听话人的「解码」）</text>
+<g font-family="KaiTi,serif" font-size="12.5" text-anchor="middle">
+<rect x="378" y="74" width="266" height="34" rx="7" fill="#eef2f4" stroke="#3d5a6c" stroke-width="1.2"/><text x="511" y="96" fill="#29241d">外在句子输入认知域 → 接受核查</text>
+<rect x="378" y="120" width="128" height="52" rx="7" fill="#e9f0e6" stroke="#2f6b3a" stroke-width="1.3"/><text x="442" y="142" fill="#2f6b3a" font-weight="700">符合规则</text><text x="442" y="160" fill="#29241d">他被杀害了</text>
+<rect x="524" y="120" width="120" height="52" rx="7" fill="#f5e3de" stroke="#c0392b" stroke-width="1.3"/><text x="584" y="142" fill="#c0392b" font-weight="700">不符合规则</text><text x="584" y="160" fill="#29241d">他被捐款了</text>
+<rect x="378" y="184" width="266" height="46" rx="7" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.2"/><text x="511" y="203" fill="#29241d">数据驱动「自下而上」搜索，</text><text x="511" y="220" fill="#29241d">形成五种初步理解</text>
+<rect x="378" y="242" width="266" height="46" rx="7" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.2"/><text x="511" y="261" fill="#29241d">意象图式多模式加工：联接／</text><text x="511" y="278" fill="#29241d">互动激活／重组（受语境影响）</text>
+<rect x="378" y="300" width="266" height="34" rx="7" fill="#f5e3de" stroke="#9d4938" stroke-width="1.2"/><text x="511" y="322" fill="#9d4938" font-weight="700">泛化接纳新词汇 → 稳定「被X」构式</text>
+</g>
+<g stroke="#6f675a" stroke-width="1.1" fill="none">
+<path d="M442 108 L442 120"/><path d="M584 108 L584 120"/><path d="M442 146 C 470 160, 480 170, 511 184"/><path d="M511 207 L511 242"/><path d="M511 288 L511 300"/>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" fill="#6f675a" text-anchor="middle">
+<text x="511" y="396">「被就业」「被苗条」「被教授」「被82%」——泛化后进入该构式的新词汇</text>
+<text x="511" y="416">两种假设均待脑神经科学、心理学与神经语言学学者通过实验加以证实</text>
+</g>
+</svg>
+<figcaption>图一（示意，转绘），非原书插图。双通道据底本第十一节 11.3 两种假设与「被捐款」五种理解转绘<sup class="cite" data-cite="s-hypothesis-outer-inner">出处</sup>。</figcaption>
+</figure>
+
+<p>「假设一」是就「说话人根据其自身的特殊感知或认识用某种言辞表达出来」这一过程在说话人认知域中的运作——它要告诉人们，当一个人有所感悟、有所认识并要将此感悟或认识传递给他人时，在认知系统上是如何运作才足以将能用来传递此感悟或认识的某种新的构式「发明」出来，并由此为同一族群的人们所广泛使用并逐渐固化。「假设二」是就听话人或阅读者对所听到、所看到的话进行接收并解读这一过程在听话人或阅读者认知域中的运作——它要告诉人们，听话者或阅读者是基于什么样的机制如何能接受他人「发明」出来的「修辞构式」并能从中领悟他人所要传递的感悟和认识<sup class="cite" data-cite="s-hypothesis-outer-inner">出处</sup>。</p>
+
+<p>以上都只是假设，但愿大家一起来进一步修正、完善这两种假设。当然也可以推翻这两种假设重新作出假设。不管怎么说，做好这项研究工作将有助于对构式理论作出更有力的论证<sup class="cite" data-cite="s-hypothesis-outer-inner">出处</sup>。</p>
+
+<div class="kicker">11.4 关于「构式-语块」句法分析法</div>
+
+<p>构式理论真要发挥它在句法研究中的作用，要增强其方法论价值，它需要与语块理论（Chunk Theory）相结合。构式语法理论要与语块理论相结合这一想法，最早是由陆俭明在 2009 年 5 月 16 日至 17 日由对外经济贸易大学英语学院主办的「首届全国语言语块教学与研究学术研讨会」上所做的主题报告《从构式看语块》中提出来的；同年 8 月 1 日至 4 日在广西师范大学举行的「第七届国际汉语教学学术研讨会」上所做的主题报告《汉语教学中的「构式-语块」教学法》中作了更明确的说明<sup class="cite" data-cite="s-chunk-theory">出处</sup>。</p>
+
+<p>语块理论是由米勒（Miller，1956）的短时记忆理论演化而来的。国内外二语教学界和自然语言处理学界已经广泛使用这种理论。不过，目前二语教学界对「语块」这一术语的使用，更多的还是从词汇角度来考虑的，其含义大致相当于英语里的 formulaic language。我们所说的「语块」「组块」术语，其含义分别相当于英语的 chunk 和 chunking。语块理论的核心内容是，根据心理实验所提供的数据，大脑运用语言进行组码（即编码）也好，解码也好，能容纳的离散块是七块左右，关注范围是四块左右；这样，一个经过组块（chunking）而成的语句表面看是由若干个语素或者说若干个词组合成的，实际的组成单位是语块（chunk）<sup class="cite" data-cite="s-miller-1956">出处</sup>。语块是「人类信息处理能力的实际运用单位」（陆丙甫，2008）<sup class="cite" data-cite="s-lubingfu-2008">出处</sup>。</p>
+
+<p>语块跟构式关系紧密。无论从构式内部的语义配置、构式的词类序列来说，还是从构式的论元结构来说，构式的组成单位就是语块。下面的例子很说明问题<sup class="cite" data-cite="s-existential-chunks">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表七（转制）：存在构式的语块分解<sup class="cite" data-cite="s-existential-chunks">出处</sup></caption>
+<thead><tr><th></th><th>A</th><th>B</th><th>C</th></tr></thead>
+<tbody>
+<tr><td>例（1）a.<sup class="cite" data-cite="s-existential-chunks">出处</sup></td><td>桌子上</td><td>放着</td><td>玫瑰花。</td></tr>
+<tr><td>例（1）b.<sup class="cite" data-cite="s-existential-chunks">出处</sup></td><td>爸爸昨天从王府井买来的红木桌子上</td><td>放着</td><td>一束妈妈刚从院子里摘下的玫瑰花。</td></tr>
+<tr><td>词类序列</td><td>[处所词语]</td><td>[动词＋着]</td><td>[名词语]</td></tr>
+<tr><td>语义配置</td><td>【存在处所】</td><td>【存在方式】</td><td>【存在物】</td></tr>
+</tbody>
+</table>
+
+<p>例（1）a 和 b 两句是现代汉语中存在构式的两个实例，a 句短，b 句长。但不论长短，不管怎么分析，都得分析为 A、B、C 三部分——从词类序列来说，A 为处所词语，B 为「动词『放』＋『着』」，C 为名词语；从构式的语义配置来说，A 为存在处所，B 为存在方式，C 为存在物。A、B、C 便是组成存在构式的三个语块；「NP<sub>L</sub>＋V 着＋NP」便是存在构式的形式表示；「存在处所—存在方式—存在物」便是存在构式的内部语义配置链<sup class="cite" data-cite="s-existential-chunks">出处</sup>。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 300" role="img" aria-label="存在构式三语块打包示意图">
+<rect x="0" y="0" width="680" height="300" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">存在构式：不管多长，始终打包成三块</text>
+<g font-family="KaiTi,serif" font-size="14" text-anchor="middle">
+<rect x="30" y="46" width="200" height="46" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="130" y="75" fill="#29241d">桌子上</text>
+<rect x="240" y="46" width="200" height="46" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="340" y="75" fill="#29241d">放着</text>
+<rect x="450" y="46" width="200" height="46" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="550" y="75" fill="#29241d">玫瑰花。</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="12" text-anchor="middle">
+<text x="130" y="112" fill="#3d5a6c">A ｜ 存在处所</text><text x="340" y="112" fill="#a87f24">B ｜ 存在方式</text><text x="550" y="112" fill="#9d4938">C ｜ 存在物</text>
+<path d="M130 122 L130 140" stroke="#dcd2bd" stroke-width="1.2"/><path d="M340 122 L340 140" stroke="#dcd2bd" stroke-width="1.2"/><path d="M550 122 L550 140" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="340" y="158" fill="#6f675a">b 句再长，也还是这三块——</text>
+</g>
+<g font-family="KaiTi,serif" font-size="12.5" text-anchor="middle">
+<rect x="30" y="170" width="330" height="46" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="195" y="198" fill="#29241d">爸爸昨天从王府井买来的红木桌子上</text>
+<rect x="370" y="170" width="80" height="46" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="410" y="198" fill="#29241d">放着</text>
+<rect x="460" y="170" width="190" height="46" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="555" y="198" fill="#29241d">一束妈妈刚从院子里摘下的玫瑰花。</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="12" text-anchor="middle">
+<text x="195" y="236" fill="#3d5a6c">[处所词语] → 【存在处所】</text><text x="410" y="236" fill="#a87f24">[动词＋着] →【存在方式】</text><text x="555" y="236" fill="#9d4938">[名词语] →【存在物】</text>
+<rect x="30" y="252" width="620" height="34" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="274" fill="#6f675a">「NP_L＋V着＋NP」＝形式表示　「存在处所—存在方式—存在物」＝内部语义配置链</text>
+</g>
+</svg>
+<figcaption>图二（示意，转绘），非原书插图。A/B/C 三语块据底本第十一节 11.4 存在构式语块分解表转绘<sup class="cite" data-cite="s-existential-chunks">出处</sup>。</figcaption>
+</figure>
+
+<p>前面我们所举过的「V 来 V 去＋VP」构式，就可以认为由两个语块构成：一个是「V 来 V 去」，其形式特征是，前后两个动词相同，前一个动词后面带趋向动词「来」，后一个动词后面带趋向动词「去」；另一个语块就是那 VP，会有两种表现形式——或是「还是／还数＋主谓短语」，如前面所举的各句；或是一个否定的周遍性结构，如「吃来吃去没有一个菜好吃」<sup class="cite" data-cite="s-vvqu-construction">出处</sup>。</p>
+
+<p>我们认为，构式理论如果和语块理论相结合，就有可能提高构式语法理论的方法论价值。按照「构式-语块」分析法的思路，对任何构式的分析手续或步骤是<sup class="cite" data-cite="s-analysis-steps">出处</sup>：</p>
+
+<ol>
+<li>a. 分析该构式的词类序列。</li>
+<li>b. 分析该构式的内部语义配置状况。</li>
+<li>c. 分析该构式所表示的独特的语法意义。</li>
+<li>d. 分析该构式的语块组成状况，以及各语块的特点。</li>
+<li>e. 分析该构式具体选择什么样的词项，以及可进入该构式的词项的特点。</li>
+<li>f. 考察分析其同形构式和同义构式，如果有的话。</li>
+<li>g. 考察、分析该构式使用的语义背景。</li>
+</ol>
+
+<div class="kicker">11.5 构式语法理论的价值</div>
+
+<p>按照形式派的论元结构理论，句子以动词为核心，而作为一个动词，必将形成一个以该动词为核心的论元结构，一切包含该动词并以该动词为核心的句法结构，都看作是由该动词的论元结构通过一定转换规则生成的，否则，就认为动词发生了词义变化，或者认为所谓「增元」或「减元」了。论元结构理论，用来说明诸如下面这样的语法现象是得心应手的<sup class="cite" data-cite="s-argument-structure">出处</sup>：</p>
+
+<blockquote>a. 弟弟打破了我的杯子。｜b. 弟弟把我的杯子打破了。｜c. 我的杯子被弟弟打破了。｜d. 我的杯子弟弟打破了。<sup class="cite" data-cite="s-argument-structure">出处</sup></blockquote>
+
+<p>然而语言事实并不像生成语法理论所设想的那样简单。现代汉语里有这样一种存在句式，那就是「NP<sub>L</sub>＋V＋着＋NP」。例如<sup class="cite" data-cite="s-existential-four-questions">出处</sup>：</p>
+
+<blockquote>a. 台上坐着主席团｜门口站着许多孩子｜床上躺着一个病人<br>
+b. 墙上挂着一幅画｜花瓶里插着腊梅花｜门上贴着一副对联<sup class="cite" data-cite="s-existential-four-questions">出处</sup></blockquote>
+
+<p>例 a 各句，其宾语所指是谓语动词的施事；例 b 各句，其宾语所指是谓语动词的受事。对于这类存在句，国内外研究汉语语法的学者已经发表、出版许多论著。但是，如果站在今天的认识高度，汉语中这种存在句仍有许多问题需要我们去作进一步的思考和解释。这些问题是<sup class="cite" data-cite="s-existential-four-questions">出处</sup>：</p>
+
+<ol>
+<li>这些句子里没有表示存在意思的词语，那么为什么这种句子能表示「存在」义？</li>
+<li>根据转换生成语法学的论元结构理论，动词的施事属于域外论元，按理应出现在动词前，为什么例 a 里动词的施事却跑到动词后面去了？</li>
+<li>例 b 里的动词是二元动词，其受事论元在动词后作宾语，但是，为什么动词的施事论元没有出现，而且也不能出现？</li>
+<li>假如同为述宾结构，如果宾语的语义角色不同，所表示的语法意义就会有差异——吃苹果【宾语为受事】、吃大碗【宾语为工具】、吃食堂【宾语为处所】、吃环境【宾语为目的】、吃父母【宾语为凭借】，语法意义各异。可是，为什么在存在句里宾语的语义角色明明不一样（一为施事，一为受事），而所表示的语法意义却一样，都表示存在，表静态？</li>
+</ol>
+
+<p>有人运用生成语法理论从句式变异或动词变异的角度给以解释，如顾阳（1997），缺乏说服力；上个世纪 80 年代后期生成语法学派拉森提出动词空壳理论和「空动词」概念，后被乔姆斯基接受并改称为「轻动词理论」。「轻动词」是指有语义内容而无语音形式的动词，是一个起引导动词语作用的成分（Chomsky 1995：「v is a light verb that introduces verbal phrases.」）。这种理论可以较好地回答、解释不少语法现象，对于上述第 1、第 2 两个问题就可以用轻动词理论作出回答——上面表示存在的「台上坐着主席团」，其生成过程可以解释为「台上 [坐着]<sub>j</sub> v 主席团 t<sub>j</sub>；余者类推」；「墙上挂着一幅画」可以解释为「墙上 [挂着]<sub>j</sub> v 一幅画 t<sub>j</sub>」<sup class="cite" data-cite="s-light-verb">出处</sup>。</p>
+
+<p>但是，轻动词理论并不能对前面提出的第 4 个问题作出回答。应该看到，轻动词理论也无非是为了圆或者说补论元结构理论的不足。转换生成语法理论发展到现在也认识到这样一点：「存现结构是作为现实世界客体或状态的空间存在、出现或消失在语言中的影射」。但他们没有深一层考虑这样的问题：现实世界客体或状态的种种不同情况从本质上来看是怎么投射到语言中来的。他们只知道在论元结构的理论框架下翻新作解释<sup class="cite" data-cite="s-light-verb">出处</sup>。</p>
+
+<p>应该说，运用哥尔德伯格构式语法理论可以作出很好的解释。例（2）——无论是 a 的各句还是 b 的各句，都是存在构式的具体句子形式；「表示存在」，这就是存在构式所表示的语法意义。大家知道，说到存在，一定有个存在物，一定同时有个存在的处所，此外会有一个连接存在物与存在处所的链接成分。这种链接成分，最常用的是动词「有」（台上有主席团｜墙上有一幅画）；如果要同时表示存在的方式，就用「V 着」。当说话者要以存在处所为话题时，在现代汉语中，就让表示存在处所的词语居于句首作话题，让表示存在物的词语殿后作为句子的信息焦点。那「有」、那「V 着」放置在存在处所与存在物之间，它们既起着连接作用，又起着存在句的标记作用——只要在「有」或「V 着」前出现处所成分，在「有」或「V 着」后出现「（数量）名」词语，句子一定表示存在。因此，不管那处所成分和存在物用多长的语形来表示，会始终保持三块——存在处所、存在方式、存在物，而这正是构成存在构式的三个语块。至于「施事—动作」「动作—受事」这种语义关系，在存在句中只是潜在的，在存在构式里凸显的是「存在处所—存在方式—存在物」这种语义关系<sup class="cite" data-cite="s-construction-explains-existence">出处</sup>。</p>
+
+<p>已有的研究表明，构式语法理论有重要学术价值。第一，这种理论可以帮助我们来解释一些先前不好解释或先前想不到去解释的语法现象。譬如「NP<sub>L</sub>＋V＋着＋NP」这种存在句，其中的 NP 既可以是受事（台上放着鲜花），也可以是施事（台上坐着来宾），这为什么？这个问题过去都不去深究的，甚至是想不到的。有了构式语法理论就可以回答这个问题<sup class="cite" data-cite="s-construction-explains-existence">出处</sup>。</p>
+
+<p>再举一个先前不好解释或者说解释得不是很令人满意的语法现象，那就是所谓「论元增量句」，指的是下面这样的句子<sup class="cite" data-cite="s-incremental-arguments">出处</sup>：</p>
+
+<blockquote>（5）张三高李四一个头。<br>（6）我总共／一共吃（了）他三个苹果。<sup class="cite" data-cite="s-incremental-arguments">出处</sup></blockquote>
+
+<p>「高」是形容词，它只能有一个论元，可是在例（5）里，「高」前后出现了三个不同性质的名词性成分——「张三」「李四」「一个头」，这怎么分析和解释？「吃」是二元动词，可是例（6）「吃」前后出现了三个不同性质的名词性成分——「我」「他」「三个苹果」，这又怎么分析和解释？以往的解释是动词的增元现象：例（5）那三个名词性成分是「高」的三个论元，「高」由一元动词涵变为三元动词；例（6）是「吃」的三个论元，「吃」由二元动词涵变为三元动词。表面看来这解释不错，但是，其增元的机制、动因是什么？很难作出令人满意的回答。对此现象，构式理论可以作出较好的解释：一般的「张三高」，这是一种性状构式，这个构式除了形容词「高」之外，只需要一个论元；而例（5）「张三高李四一个头」则是一种性状比较构式，这个构式除了形容词「高」之外，包含三个论元——性状主体「张三」、比较对象「李四」和比较差量「一个头」。这两种解释，哪一种更合理？哪一种对于语言事实更具有解释力？可以进一步去思考、比较<sup class="cite" data-cite="s-incremental-arguments">出处</sup>。</p>
+
+<p>必须指出，上述现象不只是汉语中存在，其他语言里也存在。Goldberg（1995：9）就说到英语里的 sneeze 是明显的不及物动词，但在下面的句子里却带上了宾语<sup class="cite" data-cite="s-sneeze">出处</sup>：</p>
+
+<blockquote>（7）He sneezed the napkin off the table.（他打喷嚏（打得）把餐巾弄到桌子下了。）<sup class="cite" data-cite="s-sneeze">出处</sup></blockquote>
+
+<p>上例含有明显的使动意义，而这种使动意义很难说是由动词 sneeze 表示的。这种使动意义就是由这种特殊的构式所表示的。这种句子的存在，也让我们去进一步思考：Goldberg 所举的含有 sneeze 的句子能从动词 sneeze 的论元结构推导出来吗？如果回答是否定的，那么这是不是也说明同一个动词可以形成不同的论元结构<sup class="cite" data-cite="s-sneeze">出处</sup>？</p>
+
+<p>第二，马真在《说「也」》（1982）一文中指出<sup class="cite" data-cite="s-ma-zhen-1982">出处</sup>：</p>
+
+<blockquote>「在虚词研究中切忌将含有某个虚词的某种句子格式所表示的语法意义硬归到该虚词身上去。」<sup class="cite" data-cite="s-ma-zhen-1982">出处</sup></blockquote>
+
+<p>后来在《是词的意义还是格式的意义》（2005）和《说说目前辞书的释义》（2016）中，又举出某些辞书在注释方面所犯的这类毛病，并再次强调此观点。事实告诉我们，将句法格式的意义误归到该格式的某个词身上，这是在语法研究或词汇研究中，特别是在虚词研究中常见的毛病。如果有了构式的观念，就可以避免犯这方面的错误<sup class="cite" data-cite="s-ma-zhen-1982">出处</sup>。</p>
+
+<p>第三，有助于我们去进一步探索影响句子意思的因素，去进一步探索句子意思的组成。原先我曾认为，整个句子意思的组成可以描写为（陆俭明，1987）：句子语段成分的意义（具体的词汇义、抽象的关系义——语法结构关系赋予的意义、语义结构关系赋予的意义）加上句子超语段成分的意义（句调所赋予的语气、情感意义）。现在看来，上述描写显然不全面——没有考虑构式所表示的意义，宜加以修改补正<sup class="cite" data-cite="s-sentence-meaning">出处</sup>。</p>
+
+<p>第四，更重要的一个方面，那就是将扩大我们语法研究的视野，引起我们对以往语言理论的新的反思和思考，开拓语法研究的新领域。不妨再回到上面讨论过的存在句：在存在构式里凸显的是「存在处所—存在方式—存在物」这种语义关系，而不是「处所—动作—施事」或「处所—动作—受事」那样的语义关系。但是人们不禁要问：「主席团」和「坐」、「孩子」和「站」、「病人」和「躺」之间难道没有施事和动作的语义关系？「挂」和「画」、「插」和「腊梅花」、「贴」和「对联」之间难道没有动作和受事的语义关系？有，当然有，但是这种语义关系在存在句中是潜在的。由此我们得出了「语言中实词与实词之间的语义关系具有多重性的特点」这一结论。「鸡不吃了」「母亲的回忆」的歧义现象正是实词之间语义关系多重性的反映。语言中实词之间的语义关系类似于人类社会里的人际关系，都具有多重性，而在某个情景下或者说语境下，一般只凸显一种关系。认识到语言中实词之间语义关系的多重性，这无疑有助于词义研究的深化<sup class="cite" data-cite="s-semantic-multiplicity">出处</sup>。</p>
+
+<p>这里不妨再举一例。在第四节 4.6「关于『形容词＋（一）点儿！』祈使句式」小节中，我们介绍了现代汉语里一种特殊的由形容词构成的祈使句「A（一）点儿！」，而这类祈使句不是任何形容词都能进入的。在那一小节里运用语义特征分析法作出了解释。但是，在那一小节最后提出了这样一个请大家思考的问题：在生活中我们也能听到「糊涂点儿！」「马虎点儿，别那么认真。」这怎么解释？语义特征分析法遇到这种情况就觉得一筹莫展，就只能无奈地说「这是由语用因素造成的例外」。其实，「A（一）点儿！」是现代汉语中一种特殊的构式，这一构式本身就表示「要求听话人在某一点上达到说话人所要求的性状」。这一「构式义」决定了这个构式选择的形容词词项必须是可控的，而且以「非贬义」形容词为优先选择的词项；但不排除在特殊语境下选择可控的贬义词项，以达到说话人的某种特殊要求。可见，从构式语法理论角度看，类似上述的例外现象是可以解释的<sup class="cite" data-cite="s-a-yidianr">出处</sup>。</p>
+
+<div class="kicker">11.6 构式语法理论的局限以及需要进一步探究的几个问题</div>
+
+<p>但是我们必须看到，构式语法理论毕竟是一个新兴的理论，还很不完善，甚至还存在某些局限与需要进一步探讨的问题。这里先说构式语法理论的局限。我们觉得主要有三个<sup class="cite" data-cite="s-three-limitations">出处</sup>：</p>
+
+<ol>
+<li><b>数量无穷。</b>哥尔德伯格认为凡是形式和意义的对应体就都可以看作构式（2006 又改说为「形式和功能的对应体」）。于是，她所说的构式，包括了从复句到语素的不同单位。按照这种看法，语言成了一个由长度不等、复杂程度不等的一个个构式所组成的清单。这跟她自己在 Goldberg（1995）第三章谈「语言组织的相关心理原则」时所提出的「最大经济性原则」好像是矛盾的——她接受 Haiman（1985）的意见，认为「不同构式的数量应尽可能最小化」，现在却把一个个语素、词、成语、短语结构都看成了构式，按此推断，那么一个个具体的句子也该看作是构式。这一来，构式的数量还小得了吗？可以说是无穷！在本节注释里已经指出，「形式和意义的匹配」实际有两种不同的情况：一种是只有象征关系，内部没有结构性的组成关系；另一种是既有象征关系，内部又有结构性的组成关系。构式语法理论里所说的「形式和意义的匹配」，应该只指后一种情况<sup class="cite" data-cite="s-three-limitations">出处</sup>。</li>
+<li><b>否认转换。</b>哥尔德伯格否认「转换」说，将一个个构式孤立化，而忽视了所指基本相同（即近义）的构式之间的相关性。于是构式与构式之间的联系，特别是句法层面构式与构式之间的相关性，都给抹杀了。可是语言事实告诉我们，语言中存在着类似同义词现象的同义句式现象：「弟弟打破了我的杯子」「弟弟把我的杯子打破了」「我的杯子被弟弟打破了」「我的杯子弟弟打破了」——四句所指基本相同（我的杯子由好变破，打破杯子的是弟弟），但由于表达的需要，采用了不同的构式，而每种构式表示不同的特殊的语法意义。Goldberg（1995）在第三章一方面强调理据性推理的重要性，认为「新信息可被分析为已知信息的变异」，「语义上和句法上相联的构式之间存在非对称的承继联接」，而且还允许「多重承继」；另一方面又不承认构式的「转换性」，二者似乎是矛盾的<sup class="cite" data-cite="s-three-limitations">出处</sup>。</li>
+<li><b>放弃投射。</b>与上面谈的局限相关，哥尔德伯格，特别是一些激进的学者，如克罗夫特（Croft）、兰盖克（Langacker）等，放弃投射的观点和与之相关的组合规则，认为「词库和句法之间没有严格的分界线」（Goldberg，1995，1.2）；Langacker（2005）甚至认为没有必要制定句法组合规则之类的规则。这样就等于取消了句法组合理论。而这对语言教学、自然语言处理以及对语言本身种种现象的解释，都是不利的<sup class="cite" data-cite="s-three-limitations">出处</sup>。</li>
+</ol>
+
+<p>哥尔德伯格似乎总想着能用她这一理论去解释所有的语言现象。事实上是办不到的。不要说她这一理论办不到，而且可以说，任何一种理论都办不到。一种切合语言事实的理论方法，可以而且应该能解决若干语言问题，解释若干语言现象，但都不可能包打天下。对一种新生的、迅速为学界吸纳的理论方法，采取绝对肯定或绝对否定的态度和做法，都是不可取的，都不能看作是科学的态度和做法<sup class="cite" data-cite="s-three-limitations">出处</sup>。</p>
+
+<p>作为一种新兴的理论，构式语法理论为人们提供了研究语言的一个新的视角。但毕竟时间短，还很不完善。正如有的学者所认为的，目前还不好说是一种新兴的理论，稳妥一点还是先叫「构式语法方法」<sup class="cite" data-cite="s-construction-method-not-theory">出处</sup>。事实上也确实有许多问题需要我们去进一步探索、明确<sup class="cite" data-cite="s-fifteen-questions">出处</sup>：</p>
+
+<details>
+<summary>展开：构式语法理论需要进一步探究的十五个问题</summary>
+<ol>
+<li>是不是只要是意义和形式的匹配就是构式？特别是，语素、词等是否要列入构式范围之内？</li>
+<li>构式义的性质是什么？为什么构式本身会具有独立于词语的整体意义？</li>
+<li>构式的形式到底是指什么？</li>
+<li>构式只指范式还是也包括实例？</li>
+<li>构式到底是否具有多义性？</li>
+<li>构式只是指特殊语法格式吗？构式能否分类？怎么分类？</li>
+<li>是不是每个构式都具有特殊的构式义？像「张三吃了两个面包」这类一般所说的句法上「主一动一宾」、语义上「施事一动作一受事」的句式是否也看作构式？</li>
+<li>怎么理解「动词义与构式义的互动关系」？</li>
+<li>构式（这里只指句法层面的）的组成成分是什么？也就是说构式的基本构造单位是什么？</li>
+<li>构式理论是否一定要跟语块理论相结合才有方法论价值？构式和语块是一种什么样的关系？</li>
+<li>构式语法理论的层次观念跟美国结构主义的 IC 分析理论的层次观念是一致的还是不一致的？</li>
+<li>构式语法，现在还是停留在对各种构式的孤立的研究上，并未形成一个依据构式语法理论所建立的完整的语法系统或者说语法体系。如何从现有的孤立的一个个构式的研究走向构建完整的语法体系？<sup class="cite" data-cite="s-fifteen-questions">出处</sup></li>
+<li>在应用上，现在只能说在二语教学上、在某种句式的教学上具有某种优越性，但也还没有在更广泛的领域加以运用。如何从构式的角度进一步就语言习得、语言测试、自然语言处理与理解等方面去加以实验和检验，以确定其可取性？</li>
+<li>现有的构式语法理论可以说是在英语的基础上建立起来的，语言的共性决定了即使只是从英语的基础上建立起来的构式语法理论也将不同程度地适用于其他语言。汉语是跟英语很不同的语言，如何一方面站在语言共性的高度，另一方面立足于汉语，来进一步完善构式语法理论？</li>
+<li>构式语法理论与其他语法理论该是一种什么关系？能否兼容？</li>
+</ol>
+</details>
+
+<details>
+<summary>容纳句：一种构式，两种词序<span class="tag">课堂笔记补充</span></summary>
+<p>先看一对句子：<b>a. 一锅饭吃了／能吃十个人。b. 十个人吃了／能吃一锅饭。</b><sup class="cite" data-cite="s-rongnaju">出处</sup></p>
+<p>a 是「受事—动作—施事」，b 是「施事—动作—受事」，表层语义关系正好相反；但二者实际是一种构式——内部的语义关系相同，都是「容纳量—容纳方式—被容纳量」；表示的语法意义相同，都是「X 量容量 Y 量」；词类序列也相同，都是「数名短语1—动词—数名短语2」<sup class="cite" data-cite="s-rongnaju">出处</sup>。两类句子词类序列一致、语义关系配置相同，正体现了构式「整体大于部分之和」的基本精神。</p>
+</details>
+
+<details>
+<summary>附：2009—2018 年出版的有关构式的著作（含论文集，按出版时间先后排列，节录）</summary>
+<p>张伯江（2009）《从施受关系到句式语义》，商务印书馆。｜朱军（2010）《汉语构式语法研究》，中国社会科学出版社。｜牛保义编著（2011）《构式语法理论研究》，上海外语教育出版社。｜王寅（2011）《构式语法研究》（上、下），上海外语教育出版社。｜段业辉、刘树晟等（2012）《现代汉语构式语法研究》，世界图书出版公司。｜邵春燕（2013）《事件-构式框架与现代汉语复杂致使-结果构式》，山东大学出版社。｜刘琦（2014）《认知构式语法的理论演绎与应用研究》，学林出版社。｜田臻（2014）《汉英存在构式与动词语义互动的实证研究》，上海外语教育出版社。｜皇甫素飞（2015）《现代汉语紧缩构式的多维研究》，中国社会科学出版社。｜郑娟曼（2015）《现代汉语习语性贬抑义构式研究》，中国社会科学出版社。｜吴为善（2016）《构式语法与汉语构式》，学林出版社。｜詹芳琼（2016）《汉语系词构式的形式和功能》，上海外语教育出版社。｜张克定（2016）《空间关系构式的认知研究》，高等教育出版社。｜车录彬（2017）《现代汉语羡余否定构式研究》，中国社会科学出版社。｜施春宏等（2017）《汉语构式的二语习得研究》，商务印书馆。｜袁野（2017）《构式语法的理论、流派和应用》，高等教育出版社。｜刘云飞（2018）《现代汉语兼语构式的概念套叠研究》，科学出版社。｜施春宏（2018）《形式和意义互动的句式系统研究——互动构式语法探索》，商务印书馆。<sup class="cite" data-cite="s-fifteen-questions">出处</sup></p>
+</details>
+
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、按照哥尔德伯格的定义，一个语言格式要被看作构式，关键条件是什么？<sup class="cite" data-cite="s-construction-definition-2006">出处</sup></p>
+    <div class="opts" data-k="1">
+      <button data-v="a">使用频率高，在生活中经常出现</button>
+      <button data-v="b">形式或功能的某些方面不能从其组成部分或其他已经存在的构式中得到完全预测</button>
+      <button data-v="c">有固定的动词与之搭配，动词不能更换</button>
+    </div>
+    <div class="why">答案：b。「任何语言格式，只要其形式或功能的某些方面不能从其组成部分或其他已经存在的构式中得到完全预测，就应该被看作是一个构式」（Goldberg，2006，1.1）。1995 年那版说的是「形式（Fi）和意义（Si）的对应体」，2006 年改说「形式或功能」。见 11.1，底本 L8221—L8223。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、双及物构式的给予意义是从哪儿来的？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">每个动词本身都固有的给予义，构式只是把它们排在一起</button>
+      <button data-v="b">由构式带来的，不是来自每一个个别动词</button>
+      <button data-v="c">由动词后的数量名成分带来的</button>
+    </div>
+    <div class="why">答案：b。构式是一个「完形」，进入构式的任何实例都会例示构式的整体意义，所以「我买他一本书」也能理解为「我」给予「他」一个「损失」；构式中的动词，有的自身表示给予意义，有的从给予的方式体现给予意义，更多的是动词本身没有狭义的给予意义，而借助构式来表示给予意义。见 11.2，底本 L8399—L8407。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、「他被捐款了」这类句子能被理解、被接受，依据的是本节哪一种假设？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">假设一「由内到外」——概念框架投射到外在语言，直接生成新构式</button>
+      <button data-v="b">假设二「由外到内」——不完全符合已有规则的句子经数据驱动「自下而上」搜索，形成多种理解，再泛化接纳新词汇</button>
+      <button data-v="c">轻动词理论——由空动词引导生成</button>
+    </div>
+    <div class="why">答案：b。「他被捐款了」是「被＋不及物动词＋了」，认知域中没有这一规则，大脑便由数据驱动进行「自下而上」的搜索、处理，形成多种初步理解（施春宏 2013 列有五种），再通过泛化并接纳新词汇（被就业、被苗条、被教授等），最终形成稳定的带讽刺否定意义的「被X」新构式。见 11.3，底本 L8587—L8599。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」；原书外链插图（轻动词树图两幅）一律未入页，只以文字说明其生成过程。</li>
+    <li>未入页：原书本节全部脚注、张伯江（2006，2008）对「取得」类双及物构式的再讨论，以及附录著作的完整书目细节<sup class="cite" data-cite="s-fifteen-questions">出处</sup>。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-let-alone": { page:"第十一节 11.1 · 底本 L8209—L8213", quote:"构式语法理论（Construction Grammar Theory，简称CG理论）是上世纪80年代末逐渐兴起、90年代逐步形成的一种新的语法分析理论。这种理论发端于上个世纪80年代菲尔墨（Charles J. Fillmore）等人对英语习语个案“let alone”的研究。……可是“更不必说/更不用说”这意思，我们没法从let或alone这两个词里加以预测或者说推知。菲尔墨等就将let alone视为construction（我们译为“构式”）。", zh:"let alone 整句之义不能从 let（允许）与 alone（仅仅）推知，这种形式与意义的对应体即构式。" },
+  "s-construction-term": { page:"第十一节 11.1 · 底本 L8213—L8217", quote:"Construction，作为语言学里的一个术语，早已有之。……索绪尔就用过这个术语，指的是词语间在句法上的“组合性联结”；美国结构主义用过这个术语，指的是句式……乔姆斯基的TG理论，用construction来指由原始单位生成出来的一种可被描写的结构，它可以从词汇与所依据的规则预测出来，所以只是一种“副现象”（epiphenomena）。", zh:"同一术语在不同分支指不同概念；构式理论中的「构式」由菲尔墨在框架语义学基础上提出。" },
+  "s-goldberg-books": { page:"第十一节 11.1 · 底本 L8217—L8219", quote:"系统论述构式语法理论并出版专著的学者是哥尔德伯格。她的第一本专著是Constructions: A Construction Grammar Approach to Argument Structure（1995）；第二本专著是Constructions at Work: The Nature of Generalization in Language（2006）。这两本专著均已出版中文译本。", zh:"哥尔德伯格两本专著（1995／2006）均有中文译本，构式语法由此成为系统理论。" },
+  "s-construction-definition-1995": { page:"第十一节 11.1 · 底本 L8221", quote:"C是一个独立的构式，当且仅当C是一个形式（Fi）和意义（Si）的对应体，而无论是形式还是意义的某些特征，都不能完全从C这个构式的组成成分或另外的先前已有的构式推知。（Goldberg，1995，1.1）", zh:"1995 年定义：形式与意义的对应体，某些特征不能从组成成分或先前已有构式完全推知。" },
+  "s-construction-definition-2006": { page:"第十一节 11.1 · 底本 L8223", quote:"任何语言格式，只要其形式或功能的某些方面不能从其组成部分或其他已经存在的构式中得到完全预测，就应该被看作是一个构式。(Goldberg，2006，1.1)", zh:"2006 年定义：把「意义」扩为「形式或功能」，覆盖面更宽。" },
+  "s-five-views": { page:"第十一节 11.1 · 底本 L8225—L8239", quote:"通观哥尔德伯格的主要论著，她关于构式语法理论的基本观点，归纳起来有这样五点：一、构式是形式和意义的匹配（form and meaning pairings）。二、构式本身能表示独立的意义。三、构式，无论其形式还是意义的某些特征，都不能完全从构式的组成成分或另外的先前已有的构式推知。这就是著名的“不可预测性”（unpredictability）说。四、构式语法具有生成性，但不具有转换性（CG is generative.CG is not transformational.）。五、某种构式是某个语言所专属的，但可以进行跨语言比较。", zh:"五点基本观点：形式意义匹配／独立意义／不可预测性／有生成性无转换性／语言专属但可跨语言比较。" },
+  "s-sixteen-experiment": { page:"第十一节 11.1 · 底本 L8261—L8279", quote:"选取四个动词，分别是throw、get、slice和take，每个动词都可以用在“及物构式”（VO）、“双及物构式”（VOO）、“致使移动构式”（VOL）和“动结构式”（VOR）这四种构式中，于是可以形成以下16个句子……实验时，将这16个句子打乱，让受试者自己将句子分类。国外、国内都做过这样的实验，其结果是按构式分类多于按动词分类。", zh:"16 句分类实验：四动词 × 四构式；受试按构式分类多于按动词分类，本页转制为表一。" },
+  "s-construction-best-predictor": { page:"第十一节 11.1 · 底本 L8281", quote:"这一实验结果，至少可以作为一个佐证，“构式可能是句子整体意义的更佳预测因子”（Goldberg，2006，6.5）。语言习得（无论是儿童语言习得还是成人二语习得）告诉我们，人们在习得一种语言时，并非先习得一个个语素，再习得一个个词，再习得一条条组合规则……实际上是一个构式一个构式地习得，然后根据需要再去分解为一个个词或语素。", zh:"构式是句子整体意义的更佳预测因子；语言是一个构式一个构式地习得，「把」字句即整体习得。" },
+  "s-croft-primitive": { page:"第十一节 11.1 · 底本 L8293", quote:"因此，许多学者都同意Croft（2001：16）的观点：构式是句法表征的“原素单位”（primitive unit，有人译为“基原单位”）。", zh:"Croft（2001）：构式是句法表征的原素单位。" },
+  "s-oxford-handbook": { page:"第十一节 11.1 · 底本 L8295", quote:"2013年牛津大学出版社出版了Hoffmann&Trousdale的《牛津构式语法手册》一书。该书除导言外，分“原则与方法”“构式主义方法”“构式：从语素到句子到更大单位”“语言习得与认知”“语言变异与变化”五大部分26章对构式语法理论作了全方位、阶段性的介绍与阐述。", zh:"《牛津构式语法手册》（2013）五大部分 26 章；构式语法讨论至今没有停息。" },
+  "s-wangli-1943": { page:"第十一节 11.2 · 底本 L8313—L8315", quote:"王力先生在《中国现代语法》（1943）和《中国语法理论》（1944）中将“把”字句称为“处置式”，将带结果补语的动补结构称为“使成式”，就有明显的构式意识。", zh:"王力（1943／1944）的处置式、使成式已有明显构式意识。" },
+  "s-zhudeuxi-1982": { page:"第十一节 11.2 · 底本 L8315—L8321", quote:"朱德熙先生在《语法讲义》（1982）里讨论了“在+NPp+VP”这一句法格式……指出A1式“在+NPp+VP”（在沙发上坐着|在黑板上写字|在山顶上盖房子）“都表示人或事物的位置”，A2式“在+NPp+VP”（在床上咳嗽|在河里游泳|在飞机上看书）“都表示事件发生的处所”。这也是明显的构式理念。遗憾的是我们没能升华为理论，把构式理论的发明权让给了外国学者。", zh:"朱德熙（1982）将同形的「在＋处所＋VP」分化为 A₁／A₂，也是构式理念。" },
+  "s-zhangbojiang-1999-quote": { page:"第十一节 11.2 · 底本 L8323—L8335", quote:"过去的语法研究相信每个动词有固有的“配价”能力，它们在句子里带多少宾语以及带什么样的宾语是这种配价能力的反映……更为重要的是，语言中大量使用的句式（construction），其句法-语义特征往往不是能够由词汇语义规则自然推导出来的，这些句式的语义构成是人类认知对现实的反映，它们所体现出的句法-语义的一致关系无疑应该是语法研究的核心内容。", zh:"张伯江（1999）开篇之论：构式的句法-语义特征不能由词汇语义规则自然推导，其语义构成是人类认知对现实的反映。" },
+  "s-ditransitive-three-problems": { page:"第十一节 11.2 · 底本 L8337—L8343", quote:"就双宾语结构来说，以往的研究多从“位置”的角度定义，并作详细的分类，但是这样的界定与分类，有三个关乎句式的大问题没有得到解决：（一）找不到适合所有类型的双宾语结构的一条或几条句法特征。（二）也无法看出能进入这一句法格式的动词有什么可以概括的特点。（三）看不到对双宾语句式的概括的语义描述。", zh:"从「位置」角度界定双宾语结构的三大不足，也是结构主义视野的局限。" },
+  "s-ditransitive-vn1n2": { page:"第十一节 11.2 · 底本 L8345—L8349", quote:"根据Goldberg（1995）对构式的定义，可将双宾语构式视为“双及物构式”，其形式表现为：V-N1-N2，其语义核心为“有意的给予性转移”。……典型的双及物式的特征可概括为“在形式为'A+V+R+P'的句式里，施事者有意地把受事转移给接受者，这个过程是在发生的现场成功地完成的”。", zh:"双及物构式＝V–N₁–N₂，语义核心「有意的给予性转移」；放弃「双宾语」说法，改取整体观点。" },
+  "s-ditransitive-features": { page:"第十一节 11.2 · 底本 L8351—L8365", quote:"一、一般可以在受事前面加上施事的领格形式。例如：（1）刚才老李送我一本他的书。……二、一般不能用“给”将接受者提到动词之前。例如：（3）*刚才老李给我送了一本书。……三、可以用“把”将受事提到动词之前。例如：（5）刚才老李把一本书送我了。", zh:"典型双及物式三个句法特点：可加施事领格／不能用「给」提前接受者／能用「把」提前受事。" },
+  "s-taylor-1989": { page:"第十一节 11.2 · 底本 L8367", quote:"张文进一步依据Taylor（1989）的典型范畴理论，不将给予义和上述三个句法特点当作界定双及物式的“充分-必要”条件，而是看作双及物式的原型特征。那原型的双及物式通过隐喻或转喻，便引申、扩展出有不同形式、不同语义、不同句法表现的引申式。", zh:"给予义与三个句法特点是原型特征而非充分必要条件，引申式经隐喻、转喻扩展而来。" },
+  "s-yuhu-space-metonymy": { page:"第十一节 11.2 · 底本 L8381—L8387", quote:"（一）话语空间的转喻。拿“问”和“回答”为例……a句应将给予物理解为一个更抽象的东西（老师的“请求”）。这里的引申机制就是转喻。……张文说：“这样，我们就寻绎到了‘答’‘问’这两种看似相反的句式之间的语义联系。”", zh:"话语空间转喻：「问」转指「关于回答这个问题的请求」，本页转制为表二。" },
+  "s-wuzhi-space-metonymy": { page:"第十一节 11.2 · 底本 L8389—L8393", quote:"（二）物质空间的转喻。拿“卖”和“买”来说……构式是一个“完形”（gestalt），进入构式的任何实例都会例示（instantiate）构式的整体意义……在这其中引申的机制是转喻——“我买他一本书”是“我”给予“他”一个“损失”。", zh:"物质空间转喻：「买他那本」＝给予对方一个「损失」，本页转制为表三。" },
+  "s-verb-metonymy": { page:"第十一节 11.2 · 底本 L8393—L8399", quote:"同时，动词本身也是个转喻过程。请看：（11′）老王买了我一把旧椅子｜买｜买＋使损失……（13′）他偷了东家一头牛｜偷｜偷＋使损失。", zh:"动词本身也是转喻：买＝买＋使损失，拿＝拿＋使损失，偷＝偷＋使损失；本页转制为表四。" },
+  "s-ditransitive-gestalt": { page:"第十一节 11.2 · 底本 L8399—L8407", quote:"张文指出，双及物构式的给予意义是由构式带来的，不是来自每一个个别动词。构式中的动词，有的自身表示给予意义，有的从给予的方式体现给予意义，更多的是动词本身没有狭义的给予意义，而借助构式来表示给予意义。", zh:"给予义由构式带来而非动词；张文还解释了「帮你一千块钱」「骂他癞皮狗」「玩它个痛快」等一系列引申式。" },
+  "s-shenjiaxuan-1999": { page:"第十一节 11.2 · 底本 L8421", quote:"其实，在张伯江之前，沈家煊（1999）很精彩地分析了“在”字句和“给”字句，虽未点名运用构式语法理论，实际运用的是构式语法理论。", zh:"沈家煊（1999）先于张伯江实际运用了构式语法理论分析「在」字句、「给」字句。" },
+  "s-construction-gestalt": { page:"第十一节 11.2 · 底本 L8425", quote:"不同的词类序列代表不同的句式，但是句式并不等于不同的词类序列。一个句式是一个“完形”（Gestalt），即一个整体结构。只有把握句式的整体意义，才能解释许多分小类未能解释的语法现象，才能对许多对应的语法现象作出相应的概括。句式整体意义的把握跟心理上的“完形”感知一致，都受一些基本认知原则的支配。", zh:"沈家煊（1999）：句式是完形，整体意义的把握受基本认知原则支配。" },
+  "s-four-cognitive-principles": { page:"第十一节 11.2 · 底本 L8427—L8435", quote:"顺序原则：如果B在A之后，C在B之后，那么A、B、C是一个序列，而不是一个无序列。包容原则：如果B包容在A之内，那么A就不可能包容在B之内。相邻原则：相邻的两个成分倾向于组成一个单位。数量原则：认识数量上的多和少是人的基本认知能力之一，数量的概念在各方面都存在。", zh:"四条认知原则：顺序、包容、相邻、数量。" },
+  "s-zg-sentences": { page:"第十一节 11.2 · 底本 L8437—L8457", quote:"Z1 在xSVO在某处所发生某事件｜Z2 S在xVO在某处所发生某动作｜Z3 SVO在x动作作用下事物达到某处所，动作和达到是两个分离过程｜Z4 SV在xO动作作用下事物达到某处所，动作和达到是一个统一过程……G4 SV给xO惠予事物转移并达到某终点，转移和达到是一个统一过程。", zh:"「在」字句、「给」字句各式整体意义；顺序原则说明 Z₁／Z₂ 与 Z₃／Z₄，包容原则说明 Z₁ 与 Z₂，相邻原则说明 Z₃ 与 Z₄，数量原则说明 Z₄ 与 Z₄′。本页转制为表五。" },
+  "s-zhangbojiang-2014": { page:"第十一节 11.2 · 底本 L8461", quote:"沈家煊先生正是运用上述认知原则出色地对现代汉语里的各种各样的“在”字句和各种各样的“给”字句作出了统一的平行语义解释，使人们看到了构式的句法格局与构式语义之间深层次的对应性。因此张伯江（2014）认为，沈先生的这篇文章是“汉语构式语法研究范例”。", zh:"张伯江（2014）评沈家煊（1999）为「汉语构式语法研究范例」。" },
+  "s-380-articles": { page:"第十一节 11.2 · 底本 L8459", quote:"从1999年沈家煊、张伯江的文章开始至2006年年底为止，据不完全统计，在各种刊物上发表的文章380多篇，这还不包括各高校硕士生、博士生的论文，也不包括网上语言学交流平台上发表的文章。", zh:"1999—2006 年底构式语法论文 380 多篇；中国学界持肯定态度同时指出其局限。" },
+  "s-internal-external-language": { page:"第十一节 11.3 · 底本 L8485—L8491", quote:"我们先认可Chomsky（1968，1986）关于“内在语言”（internal language，简称I-language）和“外在语言”（external language，简称E-language）之分的观点。“内在语言”是存在于人脑心智中的自然客体，是意象图式经过大脑处理后形成的表征系统（system of representations），它包括一个运算程序（computational procedure）和一个词库（lexicon）。“外在语言”是内在语言的外部表现形式。", zh:"从内在语言与外在语言两方面观察构式的产生。" },
+  "s-rhetorical-construction": { page:"第十一节 11.3 · 底本 L8491—L8495", quote:"句法上的变异现象就是在言谈交际中突然出现的、常常被人视为“不合逻辑的”那些说法，刘大为（2010）称之为“修辞构式”。刘大为先生所说的“修辞构式”里的“修辞”，用的不是传统意义上“为了某种修辞目的而采用某种修辞手段”这一含义，而是泛指在交际过程中由各种因素致使出现“大量不典型、非常态、使用受到一定情境局限的句子”。", zh:"刘大为（2010）「修辞构式」：言谈交际中突然出现的、常被视为不合逻辑的说法。" },
+  "s-seven-variations": { page:"第十一节 11.3 · 底本 L8497—L8537", quote:"据初步考察，变异大致有以下几种情况：一、故意多次重复某些词语……二、为了表达的经济，故意省略，并逐步泛化……三、功能扩展并逐渐泛化……四、外语或方言句法格式的渗透……五、改变词序……六、改变搭配规则，并逐渐泛化……七、隐喻并仿造，然后泛化。", zh:"句法变异七种情况：重复、省略、功能扩展、外语方言渗透、改变词序、改变搭配规则、隐喻仿造；本页转制为表六。" },
+  "s-vvqu-construction": { page:"第十一节 11.3 · 底本 L8539—L8559", quote:"该构式已为人们频频使用……在频频使用中，也就是在泛化过程中，要求在“V来V去”之后得紧接一个VP，从而形成“V来V去+VP”这样一种新的构式。这一新的构式所具有的特殊的构式义是，“在行为动作所能涉及的诸种事物中，反复掂量，或主观认为‘要数某事物较为/最为合意’，或主观认为‘哪个都不合意’”。", zh:"「V 来 V 去＋VP」由隐喻仿造泛化而成，构式义为反复掂量、或认为某物最合意或哪个都不合意。" },
+  "s-variation-solidifies": { page:"第十一节 11.3 · 底本 L8561", quote:"总之，语言的变异是常态，语言变异被频繁使用并泛化，就会逐渐固化为新的构式。这也就是认知语言学家Langacker（1987）所提出的“基于使用的理论”（usage-based theory）；也就是功能语法学家Hopper（1987）提出的“用法先于语法”的“浮现语法”（emergent grammar）观。", zh:"变异经频繁使用并泛化而固化为新构式；对应 Langacker 基于使用的理论与 Hopper 浮现语法观。" },
+  "s-hypothesis-inner-outer": { page:"第十一节 11.3 · 底本 L8563—L8585", quote:"“构式基于认知”这当然还是个假设，有待于脑神经科学、心理学和神经语言学的学者们通过实验加以证实。……假设一【“由内到外”运作假设】i. 客观世界……→vi.按“修辞构式”呈现的句子多次反复运用，并进一步抽象概括，便分别在内在语言和外在语言形成相应的、稳定的语义框架和新的语法构式。", zh:"假设一「由内到外」六步：客观世界→感知→意象图式→概念框架→投射外在语言→反复运用固化为新构式。" },
+  "s-hypothesis-outer-inner": { page:"第十一节 11.3 · 底本 L8587—L8599", quote:"第二种情况是，并不完全符合认知域中所存储的各种规则或准则，如“他被捐款了”，是“被+不及物动词+了”，认知域中没有这一规则。没这规则怎么办呢？大脑就开始由数据驱动进行“自下而上”的搜索、处理，形成各种初步的意象图式，并作出由不同概念结构组成的不同理解，诸如（施春宏，2013）：a.某人并不想捐款但被人劝说、引诱、要求或强迫而捐了款……e.某人虽捐了款但并不想让他人知道，却被人打听到后说出了捐款。", zh:"假设二「由外到内」：「他被捐款了」不符规则，经数据驱动自下而上搜索形成五种理解，泛化后形成「被X」构式。" },
+  "s-chunk-theory": { page:"第十一节 11.4 · 底本 L8603—L8613", quote:"构式语法理论要与语块理论相结合这一想法，最早是由陆俭明在2009年5月16日至17日……所做的主题报告《从构式看语块》中提出来的；同年8月1日至4日……所做的主题报告《汉语教学中的“构式-语块”教学法》中作了更明确的说明。", zh:"陆俭明 2009 两个主题报告首提「构式-语块」分析法。" },
+  "s-miller-1956": { page:"第十一节 11.4 · 底本 L8615", quote:"语块理论是由米勒（Miller，1956）的短时记忆理论演化而来的。……语块理论的核心内容是，根据心理实验所提供的数据，大脑运用语言进行组码（即编码）也好，解码也好，能容纳的离散块是七块左右，关注范围是四块左右。", zh:"米勒（1956）短时记忆理论：大脑能容纳的离散块七块左右，关注范围四块左右。" },
+  "s-lubingfu-2008": { page:"第十一节 11.4 · 底本 L8617", quote:"我们所说的“语块”“组块”术语，其含义分别相当于英语的chunk和chunking。……语块是“人类信息处理能力的实际运用单位”。（陆丙甫，2008）", zh:"语块＝chunk，组块＝chunking；语块是人类信息处理能力的实际运用单位（陆丙甫 2008）。" },
+  "s-existential-chunks": { page:"第十一节 11.4 · 底本 L8627—L8641", quote:"例（1）a和b两句是现代汉语中存在构式的两个实例，a句短，b句长。但不论长短，不管怎么分析，都得分析为A、B、C三部分——从词类序列来说，A为处所词语，B为“动词‘放’+‘着’”，C为名词语；从构式的语义配置来说，A为存在处所，B为存在方式，C为存在物。", zh:"存在构式三语块：存在处所—存在方式—存在物；「NP_L＋V着＋NP」为形式表示。本页转制为表七。" },
+  "s-analysis-steps": { page:"第十一节 11.4 · 底本 L8649—L8665", quote:"按照“构式-语块”分析法的思路，对任何构式的分析手续或步骤是：a.分析该构式的词类序列。b.分析该构式的内部语义配置状况。c.分析该构式所表示的独特的语法意义。d.分析该构式的语块组成状况，以及各语块的特点。e.分析该构式具体选择什么样的词项，以及可进入该构式的词项的特点。f.考察分析其同形构式和同义构式，如果有的话。g.考察、分析该构式使用的语义背景。", zh:"构式-语块分析法七步手续：词类序列→语义配置→语法意义→语块组成→词项选择→同形同义构式→语义背景。" },
+  "s-argument-structure": { page:"第十一节 11.5 · 底本 L8669—L8677", quote:"按照形式派的论元结构理论，句子以动词为核心，而作为一个动词，必将形成一个以该动词为核心的论元结构，一切包含该动词并以该动词为核心的句法结构，都看作是由该动词的论元结构通过一定转换规则生成的，否则，就认为动词发生了词义变化，或者认为所谓“增元”或“减元”了。", zh:"论元结构理论：句子以动词为核心，一切句法结构由其论元结构经转换规则生成。" },
+  "s-existential-four-questions": { page:"第十一节 11.5 · 底本 L8679—L8703", quote:"现代汉语里有这样一种存在句式，那就是“NPL+V+着+NP”。例如：（2）a.台上坐着主席团｜门口站着许多孩子……b.墙上挂着一幅画｜花瓶里插着腊梅花……这些问题是：1.这些句子里没有表示存在意思的词语，那么为什么这种句子能表示“存在”义？……4.……为什么在存在句里宾语的语义角色明明不一样（一为施事，一为受事），而所表示的语法意义却一样，都表示存在，表静态？", zh:"存在句四问：为何表存在／施事为何后出现／受事句中施事为何不出现也不能出现／宾语的语义角色不同而语法意义为何相同。" },
+  "s-light-verb": { page:"第十一节 11.5 · 底本 L8705—L8711", quote:"“轻动词”是指有语义内容而无语音形式的动词，是一个起引导动词语作用的成分。（Chomsky 1995：“v is a light verb that introduces verbal phrases。”）这种理论可以较好地回答、解释不少语法现象。对于上述第1、第2两个问题就可以用轻动词理论作出回答。", zh:"轻动词理论可回答存在句第 1、2 问；但回答不了第 4 问，也无非是为圆论元结构理论的不足。" },
+  "s-construction-explains-existence": { page:"第十一节 11.5 · 底本 L8713—L8747", quote:"应该说，运用哥尔德伯格构式语法理论可以作出很好的解释。……说到存在，一定有个存在物，一定同时有个存在的处所，此外会有一个连接存在物与存在处所的链接成分。……不管那处所成分和存在物用多长的语形来表示，会始终保持三块——存在处所、存在方式、存在物，而这正是构成存在构式的三个语块。", zh:"构式理论对存在句的统一解释：存在处所—存在方式—存在物三语块，凸显存在义；施事-动作关系只是潜在的。" },
+  "s-incremental-arguments": { page:"第十一节 11.5 · 底本 L8749—L8765", quote:"（5）张三高李四一个头。（6）我总共/一共吃（了）他三个苹果。……一般的“张三高”，这是一种性状构式，这个构式除了形容词“高”之外，只需要一个论元；而例（5）“张三高李四一个头”则是一种性状比较构式，这个构式除了形容词“高”之外，包含三个论元——性状主体“张三”、比较对象“李四”和比较差量“一个头”。", zh:"论元增量句的两种解释：动词增元（机制动因难答）vs 性状比较构式（含三个论元）。" },
+  "s-sneeze": { page:"第十一节 11.5 · 底本 L8767—L8770", quote:"Goldberg（1995：9）就说到英语里的sneeze是明显的不及物动词，但在下面的句子里却带上了宾语：（7）He sneezed the napkin off the table.（他打喷嚏（打得）把餐巾弄到桌子下了。）上例含有明显的使动意义，而这种使动意义很难说是由动词sneeze表示的。这种使动意义就是由这种特殊的构式所表示的。", zh:"sneeze 例：使动意义由特殊构式表示，而非动词；同一动词可形成不同论元结构。" },
+  "s-ma-zhen-1982": { page:"第十一节 11.5 · 底本 L8774", quote:"马真在《说“也”》（1982）一文中指出：“在虚词研究中切忌将含有某个虚词的某种句子格式所表示的语法意义硬归到该虚词身上去。”", zh:"马真（1982）：切忌将句子格式的意义硬归到格式中的虚词身上。" },
+  "s-sentence-meaning": { page:"第十一节 11.5 · 底本 L8782—L8791", quote:"原先我曾认为，整个句子意思的组成可以描写如下（陆俭明，1987）：句子的意义（甲）句子语段成分的意义（一）具体的词汇义（二）抽象的关系义（1）语法结构关系赋予的意义（2）语义结构关系赋予的意义（乙）句子超语段成分的意义——句调所赋予的语气、情感意义。现在看来，上述描写显然不全面——没有考虑构式所表示的意义。", zh:"句子意义的组成宜补入「构式所表示的意义」这一项。" },
+  "s-semantic-multiplicity": { page:"第十一节 11.5 · 底本 L8793—L8801", quote:"由此我们得出了“语言中实词与实词之间的语义关系具有多重性的特点”这一结论。“鸡不吃了”“母亲的回忆”的歧义现象正是实词之间语义关系多重性的反映。语言中实词之间的语义关系类似于人类社会里的人际关系，都具有多重性，而在某个情景下或者说语境下，一般只凸显一种关系。", zh:"实词与实词之间的语义关系具有多重性，语境中一般只凸显一种关系。" },
+  "s-a-yidianr": { page:"第十一节 11.5 · 底本 L8803", quote:"“A（一）点儿！”是现代汉语中一种特殊的构式，这一构式本身就表示“要求听话人在某一点上达到说话人所要求的性状”。这一“构式义”决定了这个构式选择的形容词词项必须是可控的，而且以“非贬义”形容词为优先选择的词项；但不排除在特殊语境下选择可控的贬义词项。", zh:"「A（一）点儿！」祈使构式的构式义，可解释「糊涂点儿！」这类语义特征分析法解释不了的例外。" },
+  "s-three-limitations": { page:"第十一节 11.6 · 底本 L8807—L8833", quote:"我们觉得主要有三个：第一个局限，哥尔德伯格认为凡是形式和意义的对应体就都可以看作构式……这一来，构式的数量还小得了吗？可以说是无穷！……第二个局限，哥尔德伯格否认“转换”说，将一个个构式孤立化，而忽视了所指基本相同（即近义）的构式之间的相关性。……第三个局限……放弃投射的观点和与之相关的组合规则……这样就等于取消了句法组合理论。", zh:"三大局限：构式数量无穷（与最大经济性原则相矛盾）／否认转换（抹杀近义构式间的相关性）／放弃投射（取消句法组合理论）。" },
+  "s-construction-method-not-theory": { page:"第十一节 11.6 · 底本 L8835", quote:"作为一种新兴的理论，构式语法理论为人们提供了研究语言的一个新的视角。但毕竟时间短，还很不完善。正如有的学者所认为的，目前还不好说是一种新兴的理论，稳妥一点还是先叫“构式语法方法”。", zh:"稳妥一点先叫「构式语法方法」；绝对肯定或绝对否定都不可取。" },
+  "s-fifteen-questions": { page:"第十一节 11.6 · 底本 L8837—L8893", quote:"事实上也确实有许多问题需要我们去进一步探索、明确：（一）是不是只要是意义和形式的匹配就是构式？……（十五）构式语法理论与其他语法理论该是一种什么关系？能否兼容？", zh:"有待进一步探究的十五个问题：从构式范围、构式义性质到语法体系构建与理论关系。" },
+  "s-rongnaju": { page:"第十一节 11.6 · 南大学姐课堂笔记（底本未展开）", quote:"a. 一锅饭吃了/能吃十个人。b. 十个人吃了/能吃一锅饭。虽然 a 是受事-动作-施事，b 是施事-动作-受事，但它们实际是一种构式：① 它们内部的语义关系相同：容纳量-容纳方式-被容纳量 ② 它们表示的语法意义相同：X 量容量 Y 量 ③ 它们的词类序列相同：数名短语 1-动词-数名短语 2", zh:"容纳句：一锅饭吃了十个人 vs 十个人吃了一锅饭——语义关系相反，实为同一构式（课堂笔记补充）。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 双及物构式 ---------- */
+const DI = {
+  give:  { t:"送", ok:true,  d:"「送他一本书」成立：给予性转移，且有接受者。" },
+  throw: { t:"扔", ok:true,  d:"「扔他一个球」类用法成立：构式义把「扔」吸收为给予。" },
+  hand:  { t:"递", ok:true,  d:"「递我一杯水」成立：典型的给予类动词。" },
+  eat:   { t:"吃", ok:false, d:"「吃我一本书」不成立：只有受事、没有接受者，进不了双及物构式。" },
+  fry:   { t:"炒", ok:false, d:"「炒我一盘菜」不成立：制作类动词缺少接受者，不能被构式义吸收。" }
+};
+const diOpts = $("#diOpts"), diOut = $("#diOut");
+if(diOpts) $$("button", diOpts).forEach(b => b.onclick = () => {
+  const d = DI[b.dataset.w];
+  $$("button", diOpts).forEach(x => x.classList.remove("cur"));
+  b.classList.add("cur");
+  diOut.innerHTML = "<span class='" + (d.ok ? "ok" : "no") + "'>" + (d.ok ? "成立" : "不成立") + "</span>　" + d.d;
+  diOut.classList.add("on");
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

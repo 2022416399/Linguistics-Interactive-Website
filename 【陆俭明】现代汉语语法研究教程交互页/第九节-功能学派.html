@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第九节 · 功能学派 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:6.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第九节 交互研读</p>
+  <h1>功能学派：语法为什么是这样的？</h1>
+  <p class="lead">形式学派问「是什么」，功能学派追问「为什么」——而且要从语言外部、从交际功能去找答案<sup class="cite" data-cite="s-function-start-and-end">出处</sup>。这一节沿四条路径看汉语：把语法现象放回<b>篇章</b>里看，放进<b>历时演化</b>里看，放进<b>跨语言比较</b>里看，最后放进<b>真实会话</b>里看——许多熟视无睹的现象，就这样看出了新意思。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html">第八节 形式学派</a><a href="第九节-功能学派.html" class="cur">第九节 功能学派</a><a href="第十节-认知学派.html">第十节 认知学派</a><a href="第十一节-构式语法.html">第十一节 构式语法</a><a href="第十二节-语言信息结构.html">第十二节 信息结构</a><a href="第十三节-虚词研究.html">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>用法先于语法</b></li><li>篇章视角看「的」与「把」</li><li>语法化与「了」三分</li><li>蕴涵性等级链</li><li>应答协调一致性</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第九节</p>
+<h2>功能学派语法分析思路：从语言外部寻求解释</h2>
+<p>功能语言学派（简称「功能学派」）是当代语言学领域三大学派之一。它所说的「功能」，指语言的交际功能<sup class="cite" data-cite="s-six-fields">出处</sup>。功能学派是在对乔姆斯基革命的反拨中崛起的：生成学派强调语法的「天赋性」和「自主性」，主张从语言内部寻求解释，甚至认为语言的实际使用对研究语言规律没有多少裨益，方法论上注重内省、不注重实际语料；功能学派则认为，对语言现象与语言规律得从语言外部、特别是从语言的交际功能这一角度去寻求解释<sup class="cite" data-cite="s-rise-70s">出处</sup>。</p>
+<p>功能学派的基本观点，本书「绪论」0.7 小节已经介绍过<sup class="cite" data-cite="s-function-start-and-end">出处</sup>：</p>
+<blockquote>「语言的交际功能既是语法研究的出发点，也是语法研究的归宿。」功能学派所考虑的基本问题是：「How grammars come to be the way they are？」（语法为什么是这样的？）功能学派甚至普遍形成了这样的思想：「用法先于语法。」<sup class="cite" data-cite="s-function-start-and-end">出处</sup></blockquote>
+<p>但也不是说功能学派不需要形式分析——他们中的多数人认为功能分析和形式分析都需要，只是应以功能分析为主，形式分析为辅<sup class="cite" data-cite="s-function-start-and-end">出处</sup>。这与第八节形式学派的「语法先于用法」正相反对，两派的分歧从古希腊时代就已埋下伏笔。</p>
+
+<article class="chapter" data-chapter="9">
+<h3>第九节｜汉语语法研究的功能学派分析思路</h3>
+
+<div class="kicker">9.1 功能学派的基本观点和关注领域</div>
+
+<p>功能学派的兴起是在 20 世纪 70 年代。自 50 年代爆发「乔姆斯基革命」以来，转换生成语法一度是语言研究中最为活跃的领域；这个主张引来多方面的质疑与反对，功能语言学派就是在这样的背景下产生的<sup class="cite" data-cite="s-rise-70s">出处</sup>。</p>
+
+<p>功能学派虽说兴起于上个世纪，若要追根溯源，可以追溯到古希腊时代。那时就存在着语言观迥然不同的两大派：一派以普罗塔哥拉和柏拉图为代表，强调语言是人与人之间谈论事情的一种活动方式，研究语言就是要对话语作出语义解释，因此要关注语义与修辞功能的关系，他们将语言学归入人类学；另一派以亚里士多德为代表，强调研究语言规则系统，对句子作出形式分析，将语言学视为哲学的一部分<sup class="cite" data-cite="s-ancient-two-schools">出处</sup>。二者之间的分歧意见大致可列入下表：</p>
+
+<table class="matrix">
+<caption class="small muted">表一（转制）：古希腊两派语言观对照<sup class="cite" data-cite="s-ancient-two-schools">出处</sup></caption>
+<thead><tr><th>普罗塔哥拉和柏拉图</th><th>亚里士多德</th></tr></thead>
+<tbody>
+<tr><td>语言学是人类学的一部分</td><td>语言学是哲学的一部分</td></tr>
+<tr><td>语法是文化的一部分</td><td>语法是逻辑学的一部分</td></tr>
+<tr><td>语言是向人谈论事情的手段</td><td>语言是表示肯定与否定的手段</td></tr>
+<tr><td>语言是一种活动方式</td><td>语言是一种判断方式</td></tr>
+<tr><td>语言学是描写的</td><td>语言学是规范的</td></tr>
+<tr><td>语言是选择系统</td><td>语言是规则系统</td></tr>
+<tr><td>注意不规则现象</td><td>注意规则现象</td></tr>
+<tr><td>关心语义与修辞功能的关系</td><td>关心语义与真值的关系</td></tr>
+<tr><td>对话语作语义解释</td><td>对句子作形式分析</td></tr>
+<tr><td>把可接受性或用途作为理想化标准</td><td>把合乎语法性作为理想化标准</td></tr>
+</tbody>
+</table>
+
+<p>不过，20 世纪 70 年代兴起的功能学派，更直接是受布拉格学派「语言功能论」的影响。布拉格学派接受了索绪尔关于「系统」「结构」的概念，同时接受了博杜恩·德·库尔德内的功能观，并受到马丁内「功能语言观」的影响，一向自称「结构—功能学派」。其奠基人马泰修斯一再强调「语言是一个价值系统」，「语言是交际的工具，思维的工具」，因此「语言研究应以交际需要为出发点」，「分析语言现象要首先考虑其功能」；具体说，「研究语言应从语言功能入手，然后去研究语言形式」，因为「说话人先想到要表达什么，然后才去寻找适宜的语言形式」<sup class="cite" data-cite="s-mathesius-fsp">出处</sup>。</p>
+
+<p>正是基于这样的认识，马泰修斯于 1929 年提出了「句子功能透视」（functional sentence perspective，也有人译为「句子功能前景」「句子功能观点」）的理论，强调用信息论的原理来分析话语和文句。具体说，他把一个句子分为三部分<sup class="cite" data-cite="s-mathesius-fsp">出处</sup>：</p>
+
+<blockquote>主位（theme）是「话语的出发点」，是「所谈论的对象」，是「已知信息」；述位（rhyme）是「话语的核心」，是「说话人对主位要讲的话，或与主位有关的话」；过渡（transition）是属于「非主位的但又负载最小交际能力的成分」。<sup class="cite" data-cite="s-mathesius-fsp">出处</sup></blockquote>
+
+<div class="split">
+<p class="note">点一下句子里的每个成分，看它在「句子功能透视」里各是哪一段（马泰修斯的经典例句）：<sup class="cite" data-cite="s-mathesius-fsp">出处</sup></p>
+<div class="sent"><span data-role="theme">He</span><span data-role="transition">has fallen</span><span data-role="rhyme">ill</span><span>.</span></div>
+<div class="splitout" id="fspOut">先点一个成分——主位是话语的出发点、负载已知信息；述位是话语的核心、负载新信息；过渡负载最小的交际能力。</div>
+</div>
+
+<p>上面例句里的 he 是主位，是所谈论的对象；ill 是述位，是话语的核心；has fallen 是过渡，是负载最小交际能力的成分。新崛起的功能学派就普遍接受了布拉格学派的句子功能前景理论和「主位」「述位」的概念，只是把「过渡」归入了述位<sup class="cite" data-cite="s-mathesius-fsp">出处</sup>。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 250" role="img" aria-label="句子功能透视主位过渡述位示意图">
+<rect x="0" y="0" width="680" height="250" fill="#fdfaf1"/>
+<g font-family="-apple-system,PingFang SC,sans-serif" text-anchor="middle">
+<text x="340" y="30" font-size="14.5" fill="#29241d">句子功能透视（FSP）：He has fallen ill.</text>
+<rect x="80" y="56" width="90" height="44" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/>
+<rect x="190" y="56" width="160" height="44" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/>
+<rect x="370" y="56" width="90" height="44" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/>
+<text x="125" y="83" font-size="16" fill="#29241d" font-family="KaiTi,serif">He</text>
+<text x="270" y="83" font-size="16" fill="#29241d" font-family="KaiTi,serif">has fallen</text>
+<text x="415" y="83" font-size="16" fill="#29241d" font-family="KaiTi,serif">ill</text>
+<text x="478" y="83" font-size="16" fill="#6f675a">.</text>
+<path d="M125 100 L125 122" stroke="#3d5a6c" stroke-width="1.2"/>
+<path d="M270 100 L270 122" stroke="#a87f24" stroke-width="1.2"/>
+<path d="M415 100 L415 122" stroke="#9d4938" stroke-width="1.2"/>
+<text x="125" y="140" font-size="13.5" fill="#3d5a6c" font-weight="700">主位 theme</text>
+<text x="125" y="160" font-size="11.5" fill="#6f675a">已知信息 · 话语的出发点</text>
+<text x="270" y="140" font-size="13.5" fill="#a87f24" font-weight="700">过渡 transition</text>
+<text x="270" y="160" font-size="11.5" fill="#6f675a">负载最小的交际能力</text>
+<text x="415" y="140" font-size="13.5" fill="#9d4938" font-weight="700">述位 rhyme</text>
+<text x="415" y="160" font-size="11.5" fill="#6f675a">新信息 · 话语的核心</text>
+<rect x="60" y="184" width="560" height="46" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="205" font-size="12" fill="#6f675a">马泰修斯（1929）三分主位／过渡／述位；新崛起的功能学派普遍接受</text>
+<text x="340" y="223" font-size="12" fill="#6f675a">「主位」「述位」概念，只是把「过渡」归入述位。</text>
+</g>
+</svg>
+<figcaption>示意图（转绘），非原书插图；底本此处原为外链图片，未入页。</figcaption>
+</figure>
+
+<p>美国的功能学派，从理论继承上说，还受到洪堡特关于「语言和思维不可分割」等观点，以及萨丕尔关于「言语是一种非本能性的、获得的、『文化的』功能」和「语言是表达意义的工具」等观点的影响。萨丕尔和布龙菲尔德虽同为美国结构主义的奠基者，但萨丕尔在强调语言是一个符号系统的同时，强调「语言是一种社会现象」，带有「文化的功能」<sup class="cite" data-cite="s-sapir-humboldt">出处</sup>。本书第八节说到，形式学派所关心的是整个人类语言的普遍规律或原则；这一点功能学派也这样认为，但他们所说的人类语言共性是指「蕴含性共性」（implicational universal），而非完全一致的共性原则（详见下文 9.4）<sup class="cite" data-cite="s-sapir-humboldt">出处</sup>。</p>
+
+<p>功能学派强调语言的交际功能，这一语言观决定了他们注重语言的实际交际、注重语言的社会性，强调研究语法、解释说明语法规则都必须而且主要得从语义、语用方面去找因素，要联系外部世界来考察、研究语言。外部世界非常大，不可能面面俱到，得选择合适的切入点。于是，功能学派逐步形成了若干个具体的研究领域，就目前来说主要是：话语信息结构、会话交际、语法化、语言社会变异、话语篇章分析、语言类型及语义地图等<sup class="cite" data-cite="s-six-fields">出处</sup>。本节只就其中对解决汉语语法问题、解释汉语语法现象有用的一些分析手段，作些介绍与说明。</p>
+
+<div class="kicker">9.2 从篇章角度解释语法现象</div>
+
+<p>篇章（text），在国内外不同的学术论著中有不同的含义。吕叔湘先生在《汉语语法分析问题》（1979）中有这么一段话<sup class="cite" data-cite="s-lvshuxiang-text">出处</sup>：</p>
+
+<blockquote>「比句子大的单位是段、大段、全篇（或章、节）。一般讲语法只讲到句子为止，篇章段落的分析是作文法的范围。事实上，句和句之间的联系，段和段之间的联系，往往也应用语法手段（主要是虚词）……因此，篇章段落的分析方法和句子内部的分析方法有较大的差别，语法分析基本上到句子为止，还是有点理由的。」<sup class="cite" data-cite="s-lvshuxiang-text">出处</sup></blockquote>
+
+<p>本书采纳吕先生的意见，对「篇章」取这样一种看法——篇章是指大于句子的话语，无论是书面语还是口语；越过句子而产生的语言现象，一般称之为「篇章现象」<sup class="cite" data-cite="s-text-def">出处</sup>。</p>
+
+<p>在我国，对篇章结构及其特点的关注，可追溯到刘勰的《文心雕龙·章句》：</p>
+
+<blockquote>「夫人之立言，因字而生句，积句而成章，积章而成篇。」<sup class="cite" data-cite="s-liuxie">出处</sup></blockquote>
+
+<p>不过后来将篇章研究归入文章学或修辞学范畴。篇章研究真正作为一个独立的语言学分支学科，那是上个世纪 50 年代至 70 年代在西方发展起来的，而且发展得很快，遍及各国；现在逐步探索各种文体或语体的结构要素，以及由于篇章原因所造成的种种语言现象<sup class="cite" data-cite="s-liuxie">出处</sup>。篇章虽不属于语法研究的范围，但某些语法现象从篇章的角度（或者说放到篇章里去看）会看得更清楚<sup class="cite" data-cite="s-text-view-clearer">出处</sup>。下面举些实例，请大家透过实例来体会从篇章角度研究语法的研究视角与研究思路。</p>
+
+<p class="tag">实例一</p>
+<p><b>助词「的」的实际作用。</b>在结构主义语法学理论思想指导下，语法研究的视野只到句子为止，这使我们对某些语法现象、特别是一些虚词的实际作用的认识，往往受到局限。关于现代汉语里的「的」（包含书面上出现在状语末尾的「地」），学界已有不少研究。从结构主义语言学的视角看，朱德熙先生的《说「的」》（1961）<sup class="cite" data-cite="s-zhu-dexi-de">出处</sup>可认为是有关「的」的最高水平的研究成果了。朱先生鉴于「的」是个后附成分，运用结构主义的分析方法，比较了「X 的」结构的语法功能，发现可以分为三类不同性质的「X 的」：</p>
+
+<ul>
+<li>副词性的，如「悄悄地」「忽然地」等；</li>
+<li>形容词性的，如「红红的」「干干净净的」「糊里糊涂的」等；</li>
+<li>名词性的，如「吃的」「妈妈买的」「干净的」「木头的」等。</li>
+</ul>
+
+<p>朱先生将「X 的」语法性质上的不同归结为「的」的功能的不同，从而将「的」分析为三个——副词性的后附成分「的1」、形容词性的后附成分「的2」和名词性的后附成分「的3」<sup class="cite" data-cite="s-zhu-dexi-de">出处</sup>。关于「的1」和「的2」，暂无新的看法；关于「的3」，如果进一步从篇章的视角考察一下它在不同层面的实际作用，还可以对它获得新的认识。</p>
+
+<p>按朱先生的分析，「我的面包｜张三的面包」「妈妈买的面包（大）｜甜的面包（好吃）」「他呀，从来不吃这种甜面包的。｜他昨天回来的。」这三组例子里的「的」都是「的3」。功能学派则不这样看，他们认为从篇章的角度看，这三个例子里的「的」实际处于不同的层面，其性质和作用是不相同的。请看张伯江（2005）的分析<sup class="cite" data-cite="s-zhangbojiang-de">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>领属关系标志</b>例（1）里的「的」可以看作领属关系标志，是属于形态学意义的语法手段，黏在词上实现词汇性意义的变化——使该词具有属格身份。人称代词只要后边加了这个「的」字，就强制性地成为属格身份。<sup class="cite" data-cite="s-zhangbojiang-de">出处</sup></li>
+<li><b>关系小句标志</b>例（2）里的「的」，可以看作关系小句标志。那作为关系化标志的「的」是一种特殊的句法手段，通过它可以使谓词性成分体词化，从而可以提取句子的句法成分宾语或主语，对原先的行为事件结构或「事物—性状」结构内部的语义加以调整。<sup class="cite" data-cite="s-zhangbojiang-de">出处</sup></li>
+<li><b>传信范畴标志</b>例（3）里的「的」则可以看作传信范畴标志。作为传信标志的「的」，并不改变也不影响原来句子的句法结构和命题内容，只是添加一种说话人的态度因素。<sup class="cite" data-cite="s-zhangbojiang-de">出处</sup></li>
+</ul>
+
+<p>第二种作用可以这样看：「妈妈买面包」「面包甜」是最基本的句子结构；加「的」之后，「妈妈买的面包（大）」「妈妈买的（大）」「甜的面包（好吃）」「甜的（好吃）」都能说——本着经济原则，在一定上下文中还可省去中心名词。张伯江（2005）的分析无疑有助于我们加深对结构助词「的」的认识<sup class="cite" data-cite="s-zhangbojiang-de">出处</sup>。</p>
+
+<p class="tag">实例二</p>
+<p><b>对「把」字句、「将」字句的新认识。</b>关于「把」字句汉语学界谈论得很多，谈论「把」字句时一般也常常会谈到「将」字句。而对于二者的区别，一般都认为只是语气、风格的差异：「将」字句书面语语气浓，只用在书面语上；「把」字句则口语、书面语都用。1999 年，陶红印教授专门从篇章语体的视角考察了书面上的「把」字句和「将」字句，结果发现一个很有意思的现象<sup class="cite" data-cite="s-taohongyin-1999">出处</sup>。</p>
+
+<p>说「将」字句只用于书面语，「把」字句则书面语、口语都用，这结论不错。问题是：二者在书面语中所起的作用一样吗？陶红印（1999）的调查发现，「把」字句、「将」字句虽然都能用于书面语，但在语体上有重要的差异。他对 1997 年全年《人民日报》49 篇社论（近十万字）作了统计，「把」字句出现 145 次，「将」字句只出现 7 次；而近五万字的菜谱类语料里，「将」字句出现 372 次，「把」字句只出现 166 次；类似菜谱这样一种「指导操作性」语体的《利方多元系统中文软件用户手册》，头 45 页两万五千多字中，「将」字句出现 33 次，「把」字句只出现 1 次<sup class="cite" data-cite="s-taohongyin-1999">出处</sup>。</p>
+
+<table class="matrix">
+<caption class="small muted">表二（转制）：陶红印（1999）篇章语体调查<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></caption>
+<thead><tr><th>语料（语体）</th><th>「把」字句</th><th>「将」字句</th></tr></thead>
+<tbody>
+<tr><td>《人民日报》社论（新闻评论）</td><td>145<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td><td>7<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td></tr>
+<tr><td>菜谱（指导操作）</td><td>166<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td><td>372<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td></tr>
+<tr><td>中文软件用户手册（指导操作）</td><td>1<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td><td>33<sup class="cite" data-cite="s-taohongyin-1999">出处</sup></td></tr>
+</tbody>
+</table>
+
+<p>同是书面语，为什么会出现这样的差异？后来沈家煊（2002）通过对汉语里处置式的研究，获得了如下结论：「把」字句具有很强的「主观处置性」，而「将」字句的主观性逐渐衰弱，这从《老残游记》开始就可以看出。这实际就回答了上面的问题——正是由于「把」字句具有很强的「主观处置性」，因此一般多用「把」字句来表示那「主观处置性」；而「将」字句的主观性逐渐衰弱，因此一般主要用在菜谱、用户手册、产品说明书一类文体中，而这也是商家的需要——显示客观姿态、尽量弱化主观性<sup class="cite" data-cite="s-shenjiaxuan-2002">出处</sup>。显然，跳出句子，从篇章语体的角度看，使我们对「把」字句、「将」字句获得了重要的新的认识。</p>
+
+<p>其实从篇章语体角度看「把」字句，还会获得另外的新认识。吕叔湘先生在 1942 年出版的《中国文法要略》中说，「宾语代表无定的事物，不能用把」；「真正的无定而用把的例子，早期也许有，现代是很难得遇见的」。从那以后学界一直认为「把」字后面的宾语成分「不能是无定性的」<sup class="cite" data-cite="s-lvshuxiang-1942">出处</sup>。应该承认，绝大多数的「把」字句，其「把」的宾语是有定的，譬如我们不说：</p>
+
+<blockquote>*他把一块橡皮递给我了。｜*他把一个凳子踢翻了。<sup class="cite" data-cite="s-lvshuxiang-1942">出处</sup></blockquote>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：吕叔湘先生说「宾语代表无定的事物，不能用把」。下面这个句子，你觉得汉语里到底能说吗？——「我要向他借支钢笔，他却把一支铅笔递给了我。」</p>
+<div class="opts">
+<button data-ans="0">不能说——「一支铅笔」带数量词，是无定成分，违反「把」的宾语必须有定的规矩</button>
+<button data-ans="1">能说——这类句子确实存在，而且含有「出乎意料」的特殊表达作用</button>
+</div>
+<div class="why">答案：b。宋玉柱首先指出、马真进一步详细描写：这类「把」字句在口语中决非「难得遇见」。A 组「我要他去买件衬衣，他却心不在焉，把条裤子给买来了」；B 组「只听见隔壁房里『乓啷』一声，像是把个什么玻璃瓶给打了」；C 组「他一不小心，把个什么瓶子踢着了」。三组共有一个特点：全含出乎意料的意思——这正是从语篇视角观察「把」字句所获得的新认识<sup class="cite" data-cite="s-chuyiliao-ba">出处</sup>。</div>
+</div>
+
+<p>但我们也应该承认，确实存在「把」的宾语由无定的「数量名」成分充任的那种「把」字句，而且决非「难得遇见的」，特别是在口语中。宋玉柱先生首先提出了这一看法，而马真作了进一步较为详细的描写<sup class="cite" data-cite="s-chuyiliao-ba">出处</sup>：</p>
+
+<blockquote>A 组：我要向他借支钢笔，他却把一支铅笔递给了我。｜我要他去买件衬衣，他却心不在焉，把条裤子给买来了。｜叫你去请外科大夫，你怎么把个牙科大夫请来了？｜我说要打酱油，你怎么把醋打瓶里了？<br>
+B 组：只听见隔壁房里「乓啷」一声，像是把个什么玻璃瓶给打了。｜忽然，「哐当」一声，不知是谁把个凳子给撞翻了。<br>
+C 组：他只顾低着头想事，一不留神，把个孩子给撞倒了。｜他一不小心，把个什么瓶子踢着了，发出的响声立即惊动了岗楼里的敌人。<sup class="cite" data-cite="s-chuyiliao-ba">出处</sup></blockquote>
+
+<p>A 组代表一种情况：都是复句，「把」字句用作后一分句，全句表示乙应甲的要求做了某件事，而乙所处置的对象并非是甲所要求的；前一分句指明甲原先对乙的要求。B 组代表另一种情况：也都是复句，「把」字句也用在后一分句，全句表示从突然发出的声响判断，像是毁了什么东西；在前一分句里一定包含有拟声词。C 组代表又一种情况：都是说由于不留神、不小心，做了不该做的事。很明显，无论是 A 组、B 组还是 C 组「把」字句，都含有出乎意料的意思。这兴许可以看作是这类「把」字句所共有的特殊表达作用。而这正是从语篇的视角观察「把」字句所获得的新认识<sup class="cite" data-cite="s-chuyiliao-ba">出处</sup>。</p>
+
+<p>关于「把」字宾语为「数量名」形式的「把」字句，后来陶红印、张伯江（2000）通过对辞书语料的调查，又发现了一种新情况，那就是在辞书释义语言中，所有「把＋数量词＋名词」形式都不表示「不定指」（indefinite），而表示「通指」（generic）。就《现代汉语词典》的释义来看，无一例外<sup class="cite" data-cite="s-cidian-tongzhi">出处</sup>：</p>
+
+<blockquote>翻译：把一种语言文字的意义用另一种语言文字表达出来。<br>挂钩：用钩把两节车厢连接起来。<sup class="cite" data-cite="s-cidian-tongzhi">出处</sup></blockquote>
+
+<p>词典释义是一种特殊的语体，一般没有什么上下文，更没有特定的说话情境，「把」后的「无定形式名词语」能表示通指意义，不能不认为是辞书释义这种特定的语体语言所决定的。当然，对于辞书中的这种「把」字句，也可以这样认为：名词「通指」，实际是名词「有定性」的另一种表现<sup class="cite" data-cite="s-cidian-tongzhi">出处</sup>。</p>
+
+<p class="tag">实例三</p>
+<p><b>关于「去＋VP」和「VP＋去」。</b>「去＋VP」和「VP＋去」里的 VP 表示动词性词语：「去＋VP」指「去看电影」「去买东西」这一类说法，「VP＋去」指「看电影去」「买东西去」这一类说法。在对外汉语教学中，有的汉语老师这样跟留学生说：「（我）去问问」和「（我）问问去」、「去喝点儿水」和「喝点儿水去」意思差不多，都可以说。这种说法给留学生造成一个错觉，以为这两种说法可以任意换着说。这样，在他们的说话、写作中就出现了这样一些不合汉语说话习惯的说法<sup class="cite" data-cite="s-qu-vp-yuti">出处</sup>：</p>
+
+<blockquote>「埃德，你刚才干吗去了？」——「*我打了一会儿排球去。」【正确：我去打了一会儿排球】<br>「*你把墙上的钉子拔掉去！」【正确：你去把墙上的钉子拔掉】<br>「玛莎呢？」——「玛莎去上图书馆了。」【正确：玛莎上图书馆去了】<br>「*田中，走，去上课！」【正确：田中，走，上课去】<sup class="cite" data-cite="s-qu-vp-yuti">出处</sup></blockquote>
+
+<p>这两种说法，到底能不能换着说？研究结果表明，就单个儿句子看，基本意思一样——「去」和 VP 都说明同一施动者，「去」都表示施动者位移的运动趋向，VP 都表示施动者位移后进行的行为动作，「去」和 VP 之间都含有目的关系，即 VP 表示「去」的目的。但是，如果跳出句子范围，从篇章、语体的角度看，二者不能任意换着说<sup class="cite" data-cite="s-qu-vp-yuti">出处</sup>。</p>
+
+<p>先从语体看。「去＋VP」和「VP＋去」这两种句式在方言里的使用情况有差异：北方方言，特别是北京话，主要采用「VP＋去」的说法；而其他许多方言，如西南官话、下江官话、闽方言、粤方言、湘方言、吴方言等，主要采用「去＋VP」的说法。在普通话里，两种句式都用，但又有一定的分工——口语中多用「VP＋去」句式，而在书面语中，两种句式都用。《相声创作选集》和《北京口语调查资料》基本都是口语，经翻检，使用「VP＋去」句式的数目确实远远大于「去＋VP」句式<sup class="cite" data-cite="s-qu-vp-table">出处</sup>。</p>
+
+<table class="matrix">
+<caption class="small muted">表三（转制）：「去＋VP／VP＋去」使用统计<sup class="cite" data-cite="s-qu-vp-table">出处</sup></caption>
+<thead><tr><th>语料（语体）</th><th>去＋VP</th><th>VP＋去</th></tr></thead>
+<tbody>
+<tr><td>《相声创作选集》（口语）</td><td>4<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td><td>54<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td></tr>
+<tr><td>《北京口语调查资料》（口语）</td><td>6<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td><td>66<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td></tr>
+<tr><td>《老舍四部剧本》（书面）</td><td>118<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td><td>132<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td></tr>
+<tr><td>《陈建功小说集》（书面）</td><td>37<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td><td>22<sup class="cite" data-cite="s-qu-vp-table">出处</sup></td></tr>
+</tbody>
+</table>
+
+<p>而书面语里，两种句式都用，翻检《老舍四部剧本》和《陈建功小说集》，两种句式的使用数量差别不是很明显<sup class="cite" data-cite="s-qu-vp-table">出处</sup>。当然还是有所区别。为什么会有区别呢？从篇章看，它们在语用上还有差异。</p>
+
+<p>现代汉语书面语中，「去＋VP」和「VP＋去」这两种句式都用，但语用功能不同。意在强调施动者从事什么事情，那么就采用「去＋VP」说法。因此凡是谈到执行或分配什么任务时，都用「去＋VP」句式，因为执行或分配任务，都属于施动者从事什么事情<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup>：</p>
+
+<blockquote>咱们永远在一块儿，我去挣钱，你去念书。（老舍《茶馆》）<br>我说，40 岁以上的去舀水，40 岁以下的去挖沟，合适不合适？（老舍《龙须沟》）<br>假若咱们真个办个妇女商店，余志芳可以去卖鱼，玉娥可以去卖青菜。（老舍《女店员》）<br>好，我去送，你看家。（老舍《全家福》）<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup></blockquote>
+
+<p>这些例子都不宜采用「VP＋去」说法——「咱们永远在一块儿，我挣钱去，你念书去」，让人听着会觉得很别扭。而意在强调施动者位移，那么就采用「VP＋去」说法。在这种情况下，句子开头往往有「走」这一类字眼儿，或者句中往往含有表示施动者离开之意的话语<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup>：</p>
+
+<blockquote>走！我们斗争他去。（老舍《龙须沟》）<br>走吧，喝碗热茶去。（老舍《龙须沟》）<br>你们谈吧，我拿饭去。（老舍《女店员》）<br>屋里烤烤去！（老舍《龙须沟》）<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup></blockquote>
+
+<p>这两种说法为什么会在语用功能上有所分工？张伯江（2005）有个说法，认为这两种句式的语用功能的分工是由它们的语体分工带来的<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup>。北京话里还有一种「去＋VP＋去」的说法，例如「你赶快去找去」「到岁数去考去，每年一次」。对「去＋VP＋去」不妨这样来理解：当既要表示施动者从事什么事情，又要表示施动者位移时，就采用「去＋VP＋去」说法。这样说来，现代汉语里总共存在三种句式：A. 去＋VP；B. VP＋去；C. 去＋VP＋去。我们不妨将 VP 前的「去」标为「去1」，将 VP 后的「去」标为「去2」，这样可以将三个句式概括为一个句式：</p>
+
+<blockquote>（去1）＋VP＋（去2）<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup></blockquote>
+
+<p>在具体语体篇章里，「去1」和「去2」可以只出现一个，也可以都出现，但不能都不出现；如果只出现一个，那么只出现「去1」就是「去＋VP」句式，只出现「去2」就是「VP＋去」句式。取哪种情况，取决于语体和语篇的不同<sup class="cite" data-cite="s-qu-vp-yongtu">出处</sup>。</p>
+
+<div class="kicker">9.3 从语法化角度解释语法现象</div>
+
+<p>在汉语词汇、语法研究中早先有「虚化」一说，这是从历时的视角指一个词由实词变为虚词的演变过程。例如，现代汉语里的介词「把」就是由表示「把持，拿」义的动词「把」虚化来的——苏轼的「明月几时有，把酒问青天」里的「把」就是表示「把持，拿」义的动词；介词「被」就是由早先表示「覆盖」义后又引申为「遭受」义的动词「被」虚化来的；语气助词「看」（如「试试看」「你说说看」里的「看」）就是由主动通过视觉器官感知客观事物的动词「看」逐步虚化来的。「把」「被」由具有实在意义的动词演变为表示抽象语法意义的介词，「看」由具有实在意义的动词演变为表示某种语气的语气助词，这些都是「实词虚化」现象<sup class="cite" data-cite="s-grammaticalization-def">出处</sup>。</p>
+
+<p>中国对「虚化」问题的关注比较早，元朝周伯琦在《六书正讹》中说：</p>
+
+<blockquote>「大抵古人制字，皆从事物上起。今之虚字，皆古之实字。」<sup class="cite" data-cite="s-zhouboqi">出处</sup></blockquote>
+
+<p>这是我们所见到的最早有关「虚化」问题的记载。「语法化」（grammaticalization），这是一个由西方传来的新创的术语，最早可追溯到法国学者梅耶（Meillet）的《语法形式的演变》（1912）一书，其中就使用了 grammaticalization 一词，用来描写一个词汇形式如何演化为一个语法标记的过程——具体说，一个词语如何演变为附着语素，一个附着语素如何演变为词缀，以至于一个词缀又如何演变为另一个不能进行分析的语素；一句话<sup class="cite" data-cite="s-grammaticalization-def">出处</sup>：</p>
+
+<blockquote>「一个本来独立的词演变为一个具有句法功能的成分。」<sup class="cite" data-cite="s-grammaticalization-def">出处</sup></blockquote>
+
+<p>其实不管语法化的定义如何，大家对语法化都有个一致的看法：语法化是一个过程；在这个过程中，发生语法化的成分由原来表示实在意义转化为表示较虚的意义，甚至转化为仅表语法功能意义。因此，西方语言中很多共时的形态句法现象，以及语言中的许多虚词或者说功能词，都有历史演变的痕迹与理据。怪不得在西方功能语言学派中流行着这样一句话：「今天的形态是昨天的句法」<sup class="cite" data-cite="s-xingtai-jufa">出处</sup>。显然，「虚化」说也好，「语法化」说也好，原本属于历史语言学范畴。</p>
+
+<p>既然语法化是属于历史语言学范畴，为什么在现代汉语语法研究中要提到语法化问题呢？语法化问题实际关涉到语言的语法变异问题。而语言的语法变异，即使在共时层面也随时都有可能发生，这也就是说，语法始终处于演化状态。因此上个世纪 80 年代，「动态浮现语法」的分析思想为学界广泛接受。该分析思想是由美国的功能语言学派代表人物 P. Hopper 于 1987 年发表的一篇题为 Emergent Grammar（《浮现语法》）的文章中首先提出来的，其基本观点是：「用法先于语法」。这跟形式学派的「语法先于用法」的语法观是针锋相对的。他认为任何语言的语法都是在说该语言的人所能说出来的话语里呈现出来的，因此研究者需要特别注重口语语料的调查和使用，而且关注范围不能只限于句子内部，而得关注语言交际的全部活动<sup class="cite" data-cite="s-emergent-grammar">出处</sup>。我们虽从事的是现代汉语语法研究，必须重视吸收和运用「动态浮现语法」分析思想。这里不妨举两个实例。</p>
+
+<p class="tag">实例一</p>
+<p><b>关于「再见」的语法化过程。</b>这是李明的研究成果。「再见」，这原是一个「状—中」偏正词组，现在还作为词组用，如「大家约好明年春节再见」中的「再见」，就是个词组，意思是「再次相见」。可是下面句子里的「再见」就不能作为「再次相见」理解，它已经是一个表示「道别」的词了：「他在车上频频挥手和大家再见。」从表示「再次相见」义的词组，到表示「道别」义的词，经历了一个演变过程<sup class="cite" data-cite="s-zaijian">出处</sup>：</p>
+
+<ol>
+<li>大家约好明年春节再见。【「状—中」词组，表示「再次相见」之义】</li>
+<li>你要不愿意去，算了，再见！【道别时常用的惯用语——既可分析为「状—中」词组，还能表示「再次相见」之义；也可以视为仅表「道别」之义的词】</li>
+<li>我坐进车里，把东西放好，摇下窗户和他再见。【纯粹是表「道别」之义的词】</li>
+</ol>
+
+<p>不难发现，那「再见」从实实在在的词组到成为惯用语，再到表「道别」义的词，这明显地呈现了「动态浮现」的过程，而这就发生在现代汉语之中<sup class="cite" data-cite="s-zaijian">出处</sup>。从「再见」的演变中可以体会到，语法化常常会伴随着词汇化。所谓「词汇化」，有一种理解，就是「从非词单位变为词的过程，最常见的是从短语或从句法结构演变为词」，也可以这样说，原来不是一个词的语言形式在历时发展中变为一个词的演变过程<sup class="cite" data-cite="s-lexicalization">出处</sup>。多数情况是原先是词组后来演变为一个合成词，如「疾病」，原是个主谓词组，表示病情加重的意思，后成为了一个词；再如「品尝」「风华」，原是名词作状语的偏正词组，后演变为一个词了。有的，原先不在一个层面上，后来逐渐黏合在一起成了一个双音节词，如「已经」「曾经」便是。有的，甚至并非线性相邻，结果逐渐黏合在一起成了个双音节词，如「奈何」「如何」就分别由「奈……何」「如……何」这样的框架逐渐发展形成的<sup class="cite" data-cite="s-lexicalization">出处</sup>。</p>
+
+<p class="tag">实例二</p>
+<p><b>深化对「了（le）」的认识。</b>有些语法现象，过去已经发现了，也描写了，但是由于只局限于句子内部来观察、分析，并只作静态描写，因此不能认识得很深刻。这里不妨以现代汉语里的「了」为例来加以说明<sup class="cite" data-cite="s-le-chufen">出处</sup>。</p>
+
+<p>现代汉语里读为轻声的「了」，是学界讨论得很多的一个老大难的问题。先前一般将「了」分析为两个：一个出现在句中，依附于动词之后，一般称为「了1」，是动态助词，表示行为动作的实现或完成；另一个出现在句尾，一般称为「了2」，是句末语气词，表示新情况的出现<sup class="cite" data-cite="s-le-chufen">出处</sup>。</p>
+
+<p>1983 年马希文发表文章，认为「把那材料烧了！」「那破皮鞋扔了！」这样的句子里，虽然读为轻声、并处于句子末尾，但不是表示「新情况的出现」（后来学界就称之为「了3」）。马希文先生指出，这个「了」意义比较实在，「烧了」「扔了」相当于某些方言里「烧掉」「扔掉」（「动词＋掉」）的意思，可以将这个「了」分析为补语。马希文先生还从形式上加以验证——在北京口语里，这两个句子里的「了」读为轻声 lou。马希文先生的这一看法获得学界普遍认同。于是从那以后汉语学界一般将普通话里读为轻声的「了」分析为三个<sup class="cite" data-cite="s-maxiwen-1983">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>了1</b>动态助词，出现在句中，黏附在动词之后，表示实现或完成。<sup class="cite" data-cite="s-maxiwen-1983">出处</sup></li>
+<li><b>了2</b>语气词，出现在句尾，表示新情况的出现。<sup class="cite" data-cite="s-maxiwen-1983">出处</sup></li>
+<li><b>了3</b>动词，只出现在某些动词后，作动词补语，在意思上相当于动词「掉」。<sup class="cite" data-cite="s-maxiwen-1983">出处</sup></li>
+</ul>
+
+<p>前人的研究只到此为止。2005 年张伯江在《功能语法与汉语研究》一文中，运用「动态浮现语法」分析理论，从话语篇章的角度对这个「了」重新作了研究与分析，进一步发现并指出了上述三个「了」字的差异<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>了1</b>加在动词或动词性词组之后，意义比「了3」虚些，其作用范围在句子的中心谓语，表明句子的时体特征，跟事件过程相关，说明事件的实现或结束。<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup></li>
+<li><b>了2</b>意义更虚，作用于整个句子，不影响句子的命题内容，只是表明句子命题内容与说话情景的关系。<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup></li>
+<li><b>了3</b>其作用范围只在动词上，意义还比较实在，只是这是个黏着动词，只能黏在动词上作补语。<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup></li>
+</ul>
+
+<blockquote>从「了3」到「了1」到「了2」，意义越来越虚，所处位置越来越往外。<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup></blockquote>
+
+<p>以上对「了」的新认识可以更好地说明下面语句的歧义：「别吃了！」既可理解为「劝对方不要吃掉」（了3），也可理解为「劝对方不要继续吃了」（了1）；「吃了两个菜了」既可理解为「吃掉两个菜了」（了3＋了2），也可理解为「言下之意，菜吃得够多的了」（了1＋了2）；「那字早擦掉了，擦了三天了，哪还能看得清楚？」与「擦了三天了，他还没有擦干净」，两个「擦了三天了」里的「了」各不相同<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup>。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「别吃了！」——这句话在饭桌上起码有几种听法？</p>
+<div class="opts">
+<button data-ans="0">只有一种：劝对方别把东西吃掉</button>
+<button data-ans="1">两种：既可劝「别吃掉」，也可劝「别继续吃」</button>
+<button data-ans="0">三种以上，得看说话人语气轻重</button>
+</div>
+<div class="why">答案：b。若「吃」后是「了3」，相当于「吃掉」，句子是劝对方不要吃掉；若「吃」后是「了1」，句子是劝对方不要继续吃了。过去只看到句子内部的静态描写，看不透这层歧义；放到「了」的语法化等级（了3→了1→了2，意义越来越虚、位置越来越往外）里，歧义的来由就清楚了<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup>。</div>
+</div>
+
+<div class="kicker">9.4 从语言类型学角度解释语法现象</div>
+
+<p>当代语言类型学已不是简单地给语言分类的分支学科，它实际是要探索人类语言的共性；不过功能语言学所要探索的人类语言共性不是人类所有语言一致具有的共性，而是一种蕴涵性共性——有条件的语言共性，即：假如 P，那么 Q<sup class="cite" data-cite="s-implicational-universal">出处</sup>。语言类型学的性质决定了：第一，语言类型学的研究面对的不能只是一两个语言或方言，必须是众多的语言或方言；第二，其研究重在不同语言的比较研究。语言类型学的视角可以引导我们加深对跨语言或跨方言的语法现象的认识。这里举三个例子来加以说明。</p>
+
+<p class="tag">实例一</p>
+<p><b>关于汉语的「和」与英语的 with。</b>汉语有个介词「和」，英语有个前置词（即介词）with，它们虽然都能用来引介行为动作的伴随者（即与事），但二者似没什么可比性——汉语的「和」作介词时，只起引介行为动作伴随者的作用（如：我刚才和老李下了一盘棋），没有别的作用；而同时「和」又可以是连词，表示并列关系（如：我还有一个弟弟和一个妹妹）。可是英语的 with 则没有表示并列的连词用法，而 with 作为前置词用时，除了引介行为动作的伴随者外，还可以引介行为动作的工具、方式、原因等<sup class="cite" data-cite="s-he-with">出处</sup>：</p>
+
+<blockquote>I often play basketball with Peter.【引出伴随者】<br>I cut the potatoes with a knife.【引出工具】<br>She greeted us with smiles.【引出方式】<br>I tremble with fear always.【引出原因】<sup class="cite" data-cite="s-he-with">出处</sup></blockquote>
+
+<p>因此二者好像没有什么可比性。可是，据吴福祥《汉语伴随介词语法化的类型学研究——兼论 SVO 型语言中伴随介词的两种演化模式》一文论述，实际上汉语的介词「和」与英语的前置词 with 二者的差异，具有语言类型学的意义<sup class="cite" data-cite="s-he-with">出处</sup>。根据跨语言比较，在 SVO 型语言中，伴随介词存在两种演变模式：</p>
+
+<ul class="rows">
+<li><b>模式Ⅰ</b>伴随介词→并列连词。汉语就属于这一语言类型，仫佬语、黎语、布努语、拉珈语、壮语武鸣话、吉卫苗语、拉基语、村语等我国境内少数民族语言都跟汉语类似；西非的 Awutu 语和 Benue-Kwa 语群诸语言，其并列连词也源自伴随介词。</li>
+<li><b>模式Ⅱ</b>伴随介词→工具介词→方式介词→原因介词→……。英语就属于这一语言类型，丹麦语、爱斯基摩语、爱沙尼亚语、佛莱芒语、法语、挪威语、西班牙语等许多西方语言跟英语相类似。</li>
+</ul>
+
+<p>造成这种语言类型上的差异的原因是什么？原来，跟介词／前置词结构的位置有关。汉语的介词结构「和＋名词性词语」，在句中位于主语和谓语动词之间，形成「名词性词语1＋和＋名词性词语2＋谓语部分」这样的结构形式，这样就容易使原本不在一个构造层面上的「名词性词语1＋和＋名词性词语2」，逐渐演变为一个并列结构，从而使介词「和」语法化为并列连词。而英语的前置词结构「with NP」，则出现在谓语动词（包括其宾语）之后，「名词性词语1」跟「名词性词语2」没条件连在一起，with 不可能语法化为并列连词；可是由于 with 是高频词，也必然会发生语法化变异，这就迫使它走另一种路径——with 作为前置词的语法功能逐渐由实而虚，由引介行为动作的伴随者语法化为可以引介行为动作的工具、方式、原因等<sup class="cite" data-cite="s-he-with">出处</sup>。正是这种位置上的差异，也就是语序上的差异，造成了二者类型学上的差异。</p>
+
+<p class="tag">实例二</p>
+<p><b>含有动词「给」的双宾句的名词性成分的提取。</b>沈家煊先生曾举过这样一个例子<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup>：</p>
+
+<blockquote>张生用鸽子给莺莺送了个信儿。Tom sent a message to Mary with a pigeon.<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup></blockquote>
+
+<p>例（5）「张生」（英文换用 Tom）是施事，「信儿」是受事，「莺莺」（英文换用 Mary）是与事，「鸽子」是旁事（工具）。上述指示动作施事、受事、与事、旁事的名词性成分（一般称为「论元」）都可以提取<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup>：</p>
+
+<blockquote>a. 用鸽子给莺莺送了个信儿的人【提取施事「张生」】<br>b. 张生用鸽子给莺莺送的信儿【提取受事「信儿」】<br>c. 张生用鸽子给她送了个信儿的姑娘【提取与事「莺莺」】<br>d. 张生用它给莺莺送了个信儿的鸽子【提取旁事「鸽子」】<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup></blockquote>
+
+<p>注意：提取与事和旁事时，原位置上必须用第三人称代词复指（如 c 中的「她」和 d 中的「它」）。作为形式语言学派，只需如实描写并揭示其各自的生成路径就完成研究任务了；可是作为功能语言学派，得追究：为什么 c、d 要用第三人称代词复指？这是不是汉语特有的现象？其他语言也都是这样的情况吗？如果不是，那为什么？其中有无什么规律可循？对比其他语言，研究发现四种语言类型<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表四（转制）：四种语言在论元提取上的受限情况<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup></caption>
+<thead><tr><th>语言</th><th>a 施事</th><th>b 受事</th><th>c 与事</th><th>d 旁事</th></tr></thead>
+<tbody>
+<tr><td>Toba Batak 语（大洋洲）</td><td>不受限</td><td>受限·复指</td><td>受限·复指</td><td>受限·复指</td></tr>
+<tr><td>汉语、波斯语</td><td>不受限</td><td>不受限</td><td>受限·复指</td><td>受限·复指</td></tr>
+<tr><td>泰米尔语（印度）</td><td>不受限</td><td>不受限</td><td>不受限</td><td>受限·复指</td></tr>
+<tr><td>英语</td><td>不受限</td><td>不受限</td><td>不受限</td><td>不受限</td></tr>
+</tbody>
+</table>
+
+<p>上述情况似乎说明，在提取句子里的施事主语、受事宾语、与事宾语或介词的旁事宾语上受限制的情况各不相同，各具特色，但仔细分析，我们会发现，上述四种情况代表了四种语言类型，而且可以说，世界上的各种语言，在提取这四种成分上都跳不出这四种类型。而这四种类型，隐含着一条人类语言的蕴涵性规律——在提取上述四种成分时遵循下面这一条等级法则<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup>：</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 400" role="img" aria-label="两条蕴涵性等级链示意图">
+<rect x="0" y="0" width="680" height="400" fill="#fdfaf1"/>
+<g font-family="-apple-system,PingFang SC,sans-serif" text-anchor="middle">
+<text x="340" y="30" font-size="13.5" fill="#3d5a6c" font-weight="700">蕴涵性等级链之一：双宾句论元提取（功能学派所追索的规律）</text>
+<rect x="28" y="46" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#3d5a6c" stroke-width="1.6"/>
+<rect x="193" y="46" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#3d5a6c" stroke-width="1.6"/>
+<rect x="358" y="46" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#3d5a6c" stroke-width="1.6"/>
+<rect x="523" y="46" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#3d5a6c" stroke-width="1.6"/>
+<text x="93" y="75" font-size="14.5" fill="#29241d">施事主语</text>
+<text x="258" y="75" font-size="14.5" fill="#29241d">受事直接宾语</text>
+<text x="423" y="75" font-size="14.5" fill="#29241d">与事间接宾语</text>
+<text x="588" y="75" font-size="14.5" fill="#29241d">介词的旁事宾语</text>
+<text x="176" y="75" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="341" y="75" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="506" y="75" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="93" y="110" font-size="11" fill="#6f675a">a</text>
+<text x="258" y="110" font-size="11" fill="#6f675a">b</text>
+<text x="423" y="110" font-size="11" fill="#6f675a">c</text>
+<text x="588" y="110" font-size="11" fill="#6f675a">d</text>
+<rect x="28" y="128" width="625" height="36" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="150" font-size="12" fill="#6f675a">规则：若链上某一项提取不受限制，则它左边的各项也不受限制（四种语言类型见表四）</text>
+<text x="340" y="212" font-size="13.5" fill="#a87f24" font-weight="700">蕴涵性等级链之二：处所成分与引介处所的介词（刘丹青 2003）</text>
+<rect x="28" y="228" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#a87f24" stroke-width="1.6"/>
+<rect x="193" y="228" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#a87f24" stroke-width="1.6"/>
+<rect x="358" y="228" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#a87f24" stroke-width="1.6"/>
+<rect x="523" y="228" width="130" height="46" rx="8" fill="#fdfaf1" stroke="#a87f24" stroke-width="1.6"/>
+<text x="93" y="257" font-size="14.5" fill="#29241d">所在</text>
+<text x="258" y="257" font-size="14.5" fill="#29241d">终点／方向</text>
+<text x="423" y="257" font-size="14.5" fill="#29241d">源点</text>
+<text x="588" y="257" font-size="14.5" fill="#29241d">经由</text>
+<text x="176" y="257" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="341" y="257" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="506" y="257" font-size="19" fill="#9d4938" font-weight="700">＞</text>
+<text x="93" y="292" font-size="11" fill="#6f675a">在</text>
+<text x="258" y="292" font-size="11" fill="#6f675a">到·向</text>
+<text x="423" y="292" font-size="11" fill="#6f675a">从</text>
+<text x="588" y="292" font-size="11" fill="#6f675a">经</text>
+<rect x="28" y="310" width="625" height="36" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="332" font-size="12" fill="#6f675a">规则：前边的介词可用来引介后边的处所成分，后边的介词则不能引介前边的处所成分</text>
+<text x="340" y="368" font-size="11.5" fill="#6f675a">类似这样的蕴涵性法则，形式语言学派是不会考虑因而也不会总结得到的</text>
+<text x="340" y="388" font-size="11.5" fill="#6f675a">——这正是功能学派「从语言外部寻求解释」的用武之地</text>
+</g>
+</svg>
+<figcaption>示意图（转绘），非原书插图。两条等级链在底本中均为行文，未配图。</figcaption>
+</figure>
+
+<blockquote>施事主语＞受事直接宾语＞与事间接宾语＞介词的旁事宾语<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup></blockquote>
+
+<p>这条等级法则的意思是，如果所提取的等级链上某一项不受限制，那么在提取它左边的各项时也不受限制。类似这样的法则，形式语言学派是不会考虑因而也不会总结得到的<sup class="cite" data-cite="s-lunyuan-tiqu">出处</sup>。</p>
+
+<p class="tag">实例三</p>
+<p><b>汉语吴方言各次方言里引介处所成分的介词使用。</b>就普通话（实际是北京话）来说，引介处所成分的介词有：在（引介所在处所）、到（引介位移终点）、向（引介动作趋向或位移方向）、从（引介源点）、经（引介经由的处所）<sup class="cite" data-cite="s-chusuo-jieci">出处</sup>。在普通话里，「在」和「到」有时可以互用，但有规则——引介位移终点，「到」可以换用「在」，但引介所在处所，「在」则不能换用「到」：「他跳到／在马背上跳」能说，「他在马背上跳」能说而「*他到马背上跳」不能说。「从」和「经」也可以互换，但也有规则——引介经由的处所可以用「从」替换「经」，但引介源点，不能用「经」替换「从」：「南京到杭州，你可以经／从苏州直接去杭州，不必绕道上海」能说，「我从北京出发到南昌」能说而「*我经北京出发到南昌」不能说<sup class="cite" data-cite="s-chusuo-jieci">出处</sup>。</p>
+
+<p>吴方言各片次方言，引介处所成分的介词，让人觉得很乱。其实内中有规则。那不同的处所成分有等级序列，具体如下：</p>
+
+<blockquote>所在＞终点／方向＞源点＞经由<sup class="cite" data-cite="s-chusuo-jieci">出处</sup></blockquote>
+
+<p>其规则是：前边的介词可以用来引介后边的处所成分，后边的介词则不能引介前边的处所成分。各片方言都遵循这一规则，只是具体情况不同而已（刘丹青，2003）。大家如果细心一点，从前面所举的普通话例子就可以发现，上述规则也适用于普通话<sup class="cite" data-cite="s-chusuo-jieci">出处</sup>。</p>
+
+<p>上面说到，语言类型学的研究面对的不能只是一两个语言或方言，必须是众多的语言或方言。这使得我们对一些耳熟能详的语言现象有更深一层的认识。譬如说否定与疑问，大家都很熟悉，但我们过去都将它们跟肯定句、跟陈述句对照来认识——否定句与肯定句相对，疑问句与陈述句相对。汤普逊（S. A. Thompson）根据前人对世界语言广泛调查所记录描写的材料，对否定与疑问获得了这样一个新的认识：否定，不管各种语言所采用的手段如何不同（有的用否定助词，有的用否定动词，有的用否定词缀），都直接跟核心谓语动词发生关系；而疑问，也不管各种语言所采用的手段如何不同（有的采取动词倒置，有的采用疑问语素，有的采用附加问句，有的采用语调，有的采用非语调性标记），都或居句首，或居句尾，或是凌驾于整个句子之上的语音形式。那么为什么否定总作用在谓语上，疑问则作用于整个句子平面？汤普逊从功能语法的角度给出了答案：否定究其本质而言是关于命题的真伪的认定，所以总是体现在谓语上；而疑问实际是一种交互性行为，或为了提出问题，或为了交换话轮（turn）。可见，否定与疑问其实有本质区别<sup class="cite" data-cite="s-tangpusen">出处</sup>。</p>
+
+<div class="kicker">9.5 从话语交际角度解释语法现象</div>
+
+<p>现代汉语里有一个用于人的名量词「位」。辞书上，语法书上，讲汉语量词的论著里，在谈到这个量词「位」时，都说这个量词只用于人，含敬称之意，不能用于说话人自身一方<sup class="cite" data-cite="s-ci-wei-shuyi">出处</sup>：</p>
+
+<blockquote>《现代汉语词典》（第 7 版）／《新华字典》（第 10 版）：〔量〕用于人（含敬意）。<br>《应用汉语词典》：[量] 用于人（含敬意）。<br>《商务馆学汉语词典》：〔量〕用于人（用于比较客气、尊敬的场合）。<br>《中国文法要略》9.13（吕叔湘，1942）：称人，含敬意，如一位客人。<sup class="cite" data-cite="s-ci-wei-shuyi">出处</sup></blockquote>
+
+<p>譬如，我们不说「*我们系就我一位没有博士学位」「*我们三位都来自上海」<sup class="cite" data-cite="s-ci-wei-shuyi">出处</sup>。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：上大酒楼、大饭店用餐，一进门，服务员热情迎上前问：「请问几位？」——你们一行五位，按辞书说法「位」含敬意、不能用于自己一方，可你常常会脱口而出说——</p>
+<div class="opts">
+<button data-ans="0">「我们五个」——守规矩，「位」不能用在自个儿身上</button>
+<button data-ans="1">「我们五位」——顺着服务员的话头，跟着用「位」</button>
+</div>
+<div class="why">答案：b。这不是用得不对，而是有原因的。本书作者在北京市海淀区新开元大酒店连续三天记录了 163 拨顾客进门时与服务员的对话，结果发现其中 151 拨顾客在答话中用「位」，约占 93.6%；答话中用「个」的只有 12 拨，且都是自家人（或跟很要好的朋友一起）用餐。解释就是下面要说的「应答协调一致性原则」——问话人用什么量词，答话人也跟着用什么量词<sup class="cite" data-cite="s-diaocha-wei">出处</sup>。</div>
+</div>
+
+<p>最近发现了这个新情况。这用得不对？还是有别的什么原因驱使我们这样回答？碰到或发现新的语言现象，首先要进行实地调查。本书作者在北京市海淀区新开元大酒店假装在酒店门厅里等人，注意用餐客人进门时服务员与顾客的对话。连续三天，一共注意记录了 163 拨顾客进酒店时与服务员的对话。调查结果发现，其中有 151 拨顾客在答话中用「位」，约占 93.6%；答话中用「个」的，只有 12 拨顾客，用「个」都属于这样的情况：「请问几位？」——「就我们俩。」「请问几位？」——「就我一个。」<sup class="cite" data-cite="s-diaocha-wei">出处</sup></p>
+
+<p>本书作者不是北京人，为慎重起见，向多位北京人作了咨询，他们都确认上面所说的「位」的用法。中国社会科学院语言研究所张伯江研究员（北京人）提醒说，其他量词使用上可能有类似现象。譬如狗，可以论「只」，也可以论「条」。如果有人问：「你家养了几条狗？」应声回答好像总会说「两条」而不说「两只」；而如果用量词「只」问话：「你家养了几只狗？」这时应声回答好像总会说「两只」而不会说「两条」。于是就调查了问到狗、猪（可以论头、论只、论口）、烟（可以论根、论支）的应答情况，结果确如张伯江所言，问话人用什么量词，答话人也跟着用什么量词<sup class="cite" data-cite="s-liangci-genju">出处</sup>。</p>
+
+<p>后来本书作者又注意介词的使用，口语交际中也存在类似现象。作者的家乡苏州吴中区东山镇所说的土话叫「东山话」，属吴语的一个次方言。当两个熟人（假定是甲和乙）在东西向街上对面碰见，习惯用下面这样的看似废话的一问一答互打招呼<sup class="cite" data-cite="s-wang-chao">出处</sup>：</p>
+
+<blockquote>甲：你往东去？　乙：哎，我往东去。你往西去？　甲：哎，我往西去。<br>甲：你朝北去？　乙：哎，我朝北去。你朝南去？　甲：哎，我朝南去。<sup class="cite" data-cite="s-wang-chao">出处</sup></blockquote>
+
+<p>不难发现，如果先打招呼的人用介词「往」，答话人一定也用「往」回话；如果先打招呼的人用介词「朝」，答话人也一定用「朝」回话<sup class="cite" data-cite="s-wang-chao">出处</sup>。趋向动词中的「来／去」，按一般的说法，是以说话人为基点的——「来」指物体朝说话人方向移动，「去」指物体离开说话人而移动。可是在一问一答中，会出现例外。例如，上课铃响了，老师在教室里招呼学生：「同学们，上课了，快进教室来。」学生回答：「我（们）马上就来。」而不说：「我（们）马上就去。」再如，电话中，对方问：「你什么时候来？」一般都回答：「马上就来。」反倒不说：「马上就去。」<sup class="cite" data-cite="s-lai-qu">出处</sup></p>
+
+<p>从上面所说的语言事实中我们可以看到，在汉语会话里存在这样一种现象：会话双方在某些同义词语的选用上，答话人会跟随发话人，最先发话人用什么词，在后面会话中就跟着用什么词。该怎么看待和解释上述语言现象呢？</p>
+
+<p>格赖斯（Grice，1975）曾提出会话合作原则（cooperative principle），勃朗和列文森（P. Brown &amp; S. Levinson，1978）以及利奇（Leech，1983）又先后提出会话礼貌原则（politeness principle）。但是，经查阅，他们所谈的原则都是针对会话内容来说的。而上面所说的汉语里的会话现象，则完全是形式方面的。我们就仿照他们的会话原则，提出建立了一条新的会话原则<sup class="cite" data-cite="s-response-coordination">出处</sup>：</p>
+
+<blockquote>「应答协调一致性原则」<sup class="cite" data-cite="s-response-coordination">出处</sup></blockquote>
+
+<p>但是，应答协调一致性的会话原则似不好解释下面的对话（假定为张三、李四对话）<sup class="cite" data-cite="s-politeness-first">出处</sup>：</p>
+
+<blockquote>张三：早饭用过了？　李四：吃过了，您呢？　张三：我也吃过了。<sup class="cite" data-cite="s-politeness-first">出处</sup></blockquote>
+
+<p>在上面的对话里，张三一开始用的是含敬意的「用」（意思相当于「吃」），而答话人答话时并没用「用」，而改用普通的「吃」。这里，并不存在应答协调一致性。这个情况跟应答协调一致性原则不相符合，这又该怎么解释？这就促使我们再回过头来研究分析在大酒楼门口服务员与顾客一问一答之中有些顾客答话用量词「个」的情况。原来，少数应答时不用「位」的都不是宴请客人，都是自家人（包括跟很要好的朋友一起）用餐吃饭。上述情况说明，应答协调一致性原则还是存在的，但是它得让位于礼貌原则。这也说明，在数条会话原则中还存在着会话原则的优先顺序问题——排在最优选地位的是礼貌原则<sup class="cite" data-cite="s-politeness-first">出处</sup>。</p>
+
+<p>上述事实告诉我们，新的语言事实、语言现象的挖掘与描写很重要；同时也说明理论的需要——没有功能学派的会话理论，面对上述语言事实可能只停留在一般的事实的描写上，不会去考虑是否还存在另外的会话原则的问题<sup class="cite" data-cite="s-politeness-first">出处</sup>。</p>
+
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">本节自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、功能学派所考虑的基本问题是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">语言是何时、如何起源的</button>
+      <button data-v="b">语法为什么是这样的</button>
+      <button data-v="c">方言之间的差异如何形成</button>
+    </div>
+    <div class="why">答案：b。功能学派所考虑的基本问题是「How grammars come to be the way they are？」（语法为什么是这样的？），答案是「由语言的交际功能所决定」。见 9.1，底本 L6888。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、跟「了1」「了2」相比，「了3」最突出的特点是什么？<sup class="cite" data-cite="s-le-zhangbojiang">出处</sup></p>
+    <div class="opts" data-k="2">
+      <button data-v="a">意义最虚，作用于整个句子</button>
+      <button data-v="b">意义还比较实在，作用范围只在动词上</button>
+      <button data-v="c">只出现在句尾，表示新情况的出现</button>
+    </div>
+    <div class="why">答案：b。张伯江（2005）指出：「了1」作用范围在句子的中心谓语，「了2」作用于整个句子，「了3」作用范围只在动词上、意义还比较实在；从「了3」到「了1」到「了2」，意义越来越虚，所处位置越来越往外。见 9.3，底本 L7211—L7219。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、「应答协调一致性原则」跟「礼貌原则」发生冲突时，哪个优先？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">应答协调一致性优先，形式一致不能破</button>
+      <button data-v="b">礼貌原则优先，应答协调一致性让位</button>
+      <button data-v="c">两者互不相让，看当时情境随机定</button>
+    </div>
+    <div class="why">答案：b。自家人用餐时答「就我们俩」「就我一个」而不用「位」，说明应答协调一致性原则还是存在的，但是它得让位于礼貌原则；在数条会话原则中，排在最优选地位的是礼貌原则。见 9.5，底本 L7439。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」；原书外链插图一律未入页。</li>
+    <li>未入页：各实例更多的跨语言与方言语料、老舍剧本与小说统计的逐条数目，以及原书脚注。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-rise-70s": { page:"第九节 9.1 · 底本 L6886", quote:"功能学派的兴起是在20世纪70年代。自50年代爆发“乔姆斯基革命”以来，一时转换生成语法研究成为当时语言研究中最为活跃的领域。生成语言学派强调语法的“天赋性”（innateness）和“自主性”（automatic），主张对种种语言现象从语言内部去寻求解释。甚至他们认为语言的实际使用（language use）对研究语言规律没有多少裨益。因此转换生成语法在方法论上注重内省，不注重通过实际语料来研究语言规律。这个主张引来多方面的质疑与反对，功能语言学派就是在这样的背景下产生的。", zh:"功能学派在对乔姆斯基革命的反拨中崛起：从语言内部寻求解释，转向从语言外部、从交际功能寻求解释。" },
+  "s-function-start-and-end": { page:"第九节 9.1 · 底本 L6888", quote:"功能学派的基本观点是：“语言的交际功能既是语法研究的出发点，也是语法研究的归宿。”功能学派所考虑的基本问题是：“How grammars come to be the way they are？”（语法为什么是这样的？）功能学派甚至普遍形成了这样的思想：“用法先于语法。”但也不是说他们不需要形式分析。功能学派中的多数人认为功能分析和形式分析都需要，只是应以功能分析为主，形式分析为辅。", zh:"基本观点、基本问题与「用法先于语法」；功能分析为主、形式分析为辅。" },
+  "s-ancient-two-schools": { page:"第九节 9.1 · 底本 L6890—L6894", quote:"古希腊时代就存在着语言观迥然不同的两大派，一派以普罗塔哥拉（Protagoras，485—410 B.C.）和柏拉图（Plato，427—347 B.C.）为代表，一派以亚里士多德（Aristotle，384—322 B.C.）为代表。普罗塔哥拉和柏拉图他们就强调语言是人与人之间谈论事情的一种活动方式，研究语言就是要对话语作出语义解释，因此要关注语义与修辞功能的关系。他们将语言学归入人类学。而亚里士多德他们强调研究语言规则系统，对句子作出形式分析，将语言学视为哲学的一部分。", zh:"功能学派可追溯到古希腊两派语言观之争，底本原表共十组对照，本页转制为表一。" },
+  "s-mathesius-fsp": { page:"第九节 9.1 · 底本 L6896", quote:"马泰修斯于1929年提出了“句子功能透视”（functional sentence perspective，捷克语原文为 aktuální členění větné，也有人译为“句子功能前景”或“句子功能观点”）的理论，强调用信息论的原理来分析话语和文句。具体说，他把一个句子分为三部分：主位（theme）、过渡（transition）和述位（rhyme）。主位是“话语的出发点”，是“所谈论的对象”，是“已知信息”；述位是“话语的核心”，是“说话人对主位要讲的话，或与主位有关的话”；过渡是属于“非主位的但又负载最小交际能力的成分”。", zh:"句子功能透视三分：主位（已知信息）、述位（新信息·话语核心）、过渡（最小交际能力）；新功能学派把过渡归入述位。" },
+  "s-sapir-humboldt": { page:"第九节 9.1 · 底本 L6905", quote:"美国的功能学派，从理论继承上说，还受到洪堡特关于“语言和思维不可分割”和“民族语言和民族精神紧密相连”，“民族语言是民族精神外部现象”等观点以及萨丕尔（E. Sapir，1884—1939）关于“言语是一种非本能性的、获得的、‘文化的’功能”和“语言是表达意义的工具”，“是表达思想的形式”等观点的影响。", zh:"萨丕尔与布龙菲尔德同为美国结构主义奠基者，但萨丕尔强调语言是社会现象、带有文化功能；功能学派所见的人类语言共性是蕴含性共性。" },
+  "s-six-fields": { page:"第九节 9.1 · 底本 L6907", quote:"功能学派强调语言的交际功能。功能学派的这一语言观决定了他们注重语言的实际交际，注重语言的社会性，强调研究语法、解释说明语法规则都必须而且主要得从语义、语用方面去找因素，要联系外部世界来考察、研究语言。……于是，功能学派逐步形成了若干个具体的研究领域，就目前来说主要是：话语信息结构、会话交际、语法化、语言社会变异、话语篇章分析、语言类型及语义地图等。", zh:"功能学派六个主要研究领域；本节只介绍对解决汉语语法问题有用的几种分析手段。" },
+  "s-lvshuxiang-text": { page:"第九节 9.2 · 底本 L6913", quote:"比句子大的单位是段、大段、全篇（或章、节）。一般讲语法只讲到句子为止，篇章段落的分析是作文法的范围。事实上，句和句之间的联系，段和段之间的联系，往往也应用语法手段（主要是虚词）；但是除此之外还有其他手段，如偶句、排句、问答等等；还常常只依靠意义上的连贯，没有形式标志。因此，篇章段落的分析方法和句子内部的分析方法有较大的差别，语法分析基本上到句子为止，还是有点理由的。", zh:"吕叔湘（1979）论篇章与句子分析方法的差别；本书据此确定「篇章」的取值范围。" },
+  "s-text-def": { page:"第九节 9.2 · 底本 L6915", quote:"我们采纳吕先生的意见，对“篇章”取这样一种看法——篇章是指大于句子的话语，无论是书面语还是口语。越过句子而产生的语言现象，一般称之为“篇章现象”。", zh:"篇章＝大于句子的话语；篇章现象＝越过句子而产生的语言现象。" },
+  "s-liuxie": { page:"第九节 9.2 · 底本 L6917", quote:"在我国，对篇章结构及其特点的关注，可追溯到刘勰的《文心雕龙·章句》：“夫人之立言，因字而生句，积句而成章，积章而成篇。”不过后来将篇章研究归入文章学或修辞学范畴。篇章研究真正作为一个独立的语言学分支学科，那是上个世纪50年代至70年代在西方发展起来的，而且发展得很快，遍及各国。", zh:"中国篇章关注可追溯到刘勰；篇章研究作为独立分支学科是上世纪50至70年代在西方发展起来的。" },
+  "s-text-view-clearer": { page:"第九节 9.2 · 底本 L6919", quote:"篇章虽不属于语法研究的范围，但某些语法现象从篇章的角度（或者说放到篇章里去看）会看得更清楚。", zh:"本节总纲：跳出句子，把语法现象放回篇章里看。" },
+  "s-zhu-dexi-de": { page:"第九节 9.2 · 底本 L6925—L6933", quote:"从结构主义语言学的视角看，朱德熙先生的《说“的”》（1961）可认为是有关“的”的最高水平的研究成果了。朱先生鉴于“的”是个后附成分，他运用结构主义的分析方法，比较了“X的”结构的语法功能，发现可以分为三类不同性质的“X的”：（a）副词性的……（b）形容词性的……（C）名词性的……朱先生将“X的”语法性质上的不同归结为“的”的功能的不同，从而将“的”分析为三个——副词性的后附成分“的1”、形容词性的后附成分“的2”和名词性的后附成分“的3”。", zh:"朱德熙（1961）三分「的」：副词性、形容词性、名词性后附成分。" },
+  "s-zhangbojiang-de": { page:"第九节 9.2 · 底本 L6945—L6971", quote:"功能学派则不这样看，他们认为从篇章的角度看，这三个例子里的“的”实际处于不同的层面，其性质和作用是不相同的。……例（1）里的“的”可以看作领属关系标志，是属于形态学意义的语法手段……例（2）里的“的”，可以看作关系小句标志。……例（3）里的“的”则可以看作传信范畴标志。作为传信标志的“的”，并不改变也不影响原来句子的句法结构和命题内容，只是添加一种说话人的态度因素。", zh:"张伯江（2005）三个层面：领属关系标志（形态学）／关系小句标志（句法）／传信范畴标志（语用）。" },
+  "s-taohongyin-1999": { page:"第九节 9.2 · 底本 L6977—L6983", quote:"1999年，陶红印教授专门从篇章语体的视角考察了书面上的“把”字句和“将”字句，结果发现一个很有意思的现象。……他对1997年全年49篇社论做了调查统计，在近10万字的语料中，“把”字句出现145次，“将”字句只出现7次。……近5万字的语料里，“将”字句却出现了372次，“把”字句只出现166次，远低于“将”字句。……在头45页25，000多字中，“将”字句出现33次，“把”字句只出现1次。", zh:"同是书面语，社论类多用「把」，菜谱、说明书类多用「将」——语体分工一目了然。" },
+  "s-shenjiaxuan-2002": { page:"第九节 9.2 · 底本 L6985", quote:"后来沈家煊（2002）通过对汉语里处置式的研究，获得了如下结论：“把”字句具有很强的“主观处置性”，而“将”字句的主观性逐渐衰弱，这从《老残游记》开始就可以看出。", zh:"「把」主观处置性强，「将」主观性渐衰；商家用「将」是为显示客观姿态。" },
+  "s-lvshuxiang-1942": { page:"第九节 9.2 · 底本 L6989", quote:"吕叔湘先生在1942年出版的《中国文法要略》中说，“宾语代表无定的事物，不能用把”；“真正的无定而用把的例子，早期也许有，现代是很难得遇见的”。从那以后学界一直认为“把”字后面的宾语成分“不能是无定性的”。", zh:"传统结论：「把」的宾语不能是无定性的；绝大多数把字句确实如此，但确有例外。" },
+  "s-chuyiliao-ba": { page:"第九节 9.2 · 底本 L7001—L7031", quote:"但我们也应该承认，确实存在“把”的宾语由无定的“数量名”成分充任的那种“把”字句，而且决非“难得遇见的”，特别是在口语中。宋玉柱先生首先提出了这一看法，而马真作了进一步较为详细的描写。……很明显，无论是A组、B组还是C组“把”字句，都含有出乎意料的意思。这兴许可以看作是这类“把”字句所共有的特殊表达作用。而这正是从语篇的视角观察“把”字句所获得的新认识。", zh:"A/B/C 三组无定宾语把字句共有的特殊表达作用：出乎意料义。" },
+  "s-cidian-tongzhi": { page:"第九节 9.2 · 底本 L7033", quote:"关于“把”字宾语为“数量名”形式的“把”字句，后来陶红印、张伯江（2000）通过对辞书语料的调查，又发现了一种新情况，那就是在辞书释义语言中，所有“把+数量词+名词”形式都不表示“不定指”（indefinite），而表示“通指”（generic）。就《现代汉语词典》的释义来看，无一例外。", zh:"辞书释义语体中，「把＋数量名」表通指；通指实际是名词有定性的另一种表现。" },
+  "s-qu-vp-yuti": { page:"第九节 9.2 · 底本 L7043—L7065", quote:"“去+VP”就是指“去看电影”“去买东西”这一类说法，“VP+去”就是指“看电影去”“买东西去”这一类说法。……这种说法给留学生造成一个错觉，以为这两种说法可以任意换着说。……研究结果表明，就单个儿句子看，基本意思一样……但是，如果跳出句子范围，从篇章、语体的角度看，二者不能任意换着说。", zh:"单句范围内两种说法意思一样；跳出句子，从篇章、语体看不能任意换用。" },
+  "s-qu-vp-table": { page:"第九节 9.2 · 底本 L7067—L7077", quote:"先从语体看。……北方方言，特别是北京话，主要采用“VP+去”的说法；而其他许多方言……主要采用“去+VP”的说法。……《相声创作选集》和《北京口语调查资料》基本都是口语，经翻检，使用“VP+去”句式的数目确实远远大于“去+VP”句式。……而书面语里，两种句式都用。我们翻检了《老舍四部剧本》和《陈建功小说集》，两种句式的使用数量差别不是很明显。", zh:"口语材料中 VP＋去 占绝对优势；书面语两种句式都用，差别不明显。" },
+  "s-qu-vp-yongtu": { page:"第九节 9.2 · 底本 L7081—L7131", quote:"意在强调施动者从事什么事情，那么就采用“去+VP”说法。因此凡是谈到执行或分配什么任务时，都用“去+VP”句式……而意在强调施动者位移，那么就采用“VP+去”说法。在这种情况下，句子开头往往有“走”这一类字眼儿……张伯江（2005）……认为这两种句式的语用功能的分工是由它们的语体分工带来的。……（去1）+VP+（去2）", zh:"语用分工：去＋VP 强调从事什么事情，VP＋去 强调施动者位移；三句式可概括为（去1）＋VP＋（去2）。" },
+  "s-grammaticalization-def": { page:"第九节 9.3 · 底本 L7157", quote:"“语法化”（grammaticalization），这是一个由西方传来的新创的术语。最早可追溯到法国学者梅耶（Meillet）的《语法形式的演变》（1912）一书，其中就使用了grammaticalization一词，用来描写一个词汇形式如何演化为一个语法标记的过程——具体说，一个词语如何演变为附着语素，一个附着语素如何演变为词缀，以至于一个词缀又如何演变为另一个不能进行分析的语素；一句话：“一个本来独立的词演变为一个具有句法功能的成分”。", zh:"语法化定义（梅耶 1912）；「虚化」是中国本土的类似观察。" },
+  "s-zhouboqi": { page:"第九节 9.3 · 底本 L7157", quote:"中国对“虚化”问题的关注比较早，元朝周伯琦在《六书正讹》中说：“大抵古人制字，皆从事物上起。今之虚字，皆古之实字。”这是我们所见到的最早有关“虚化”问题的记载。", zh:"中国最早有关「虚化」的记载：今之虚字，皆古之实字。" },
+  "s-xingtai-jufa": { page:"第九节 9.3 · 底本 L7159", quote:"因此，西方语言中很多共时的形态句法现象，以及语言中的许多虚词或者说功能词，都有历史演变的痕迹与理据。怪不得在西方功能语言学派中流行着这样一句话：“今天的形态是昨天的句法”。", zh:"共时形态的背后有历时演变的理据。" },
+  "s-emergent-grammar": { page:"第九节 9.3 · 底本 L7161", quote:"因此上个世纪80年代，“动态浮现语法”的分析思想为学界广泛接受。该分析思想是由美国的功能语言学派代表人物 P.Hopper 于 1987 年发表的一篇题为 Emergent Grammar（《浮现语法》）的文章中首先提出来的，其基本观点是：“用法先于语法”。这跟形式学派的“语法先于用法”的语法观是针锋相对的。", zh:"Hopper（1987）「动态浮现语法」：语法在话语中呈现，要特别注重口语语料、关注语言交际的全部活动。" },
+  "s-zaijian": { page:"第九节 9.3 · 底本 L7165—L7173", quote:"“再见”，这原是一个“状-中”偏正词组，现在还作为词组用，如“大家约好明年春节再见”中的“再见”，就是个词组，意思是“再次相见”。……从表示“再次相见”义的词组，到表示“道别”义的词，经历了一个演变过程……（3）我坐进车里，把东西放好，摇下窗户和他再见。【纯粹是表“道别”之义的词】", zh:"李明的「再见」语法化三阶段：词组 → 惯用语 → 表道义的词；动态浮现在现代汉语中就能观察到。" },
+  "s-lexicalization": { page:"第九节 9.3 · 底本 L7175", quote:"所谓“词汇化”，有一种理解，就是“从非词单位变为词的过程，最常见的是从短语或从句法结构演变为词”，也可以这样说，原来不是一个词的语言形式在历时发展中变为一个词的演变过程。……如“奈何”“如何”就分别由“奈……何”“如……何”这样的框架逐渐发展形成的。", zh:"语法化常伴随词汇化：疾病、品尝、风华、已经、曾经、奈何、如何等均为其例。" },
+  "s-le-chufen": { page:"第九节 9.3 · 底本 L7181—L7195", quote:"现代汉语里读为轻声[lə]的“了”，是学界讨论得很多的一个老大难的问题。先前一般将“了”分析为两个：一个出现在句中，依附于动词之后，一般称为“了1”。……这个“了1”是动态助词，表示行为动作的实现或完成。另一个出现在句尾，一般称为“了2”。……这个“了2”是句末语气词，表示新情况的出现。", zh:"传统二分：了1（动态助词，句中）与了2（语气词，句尾）。" },
+  "s-maxiwen-1983": { page:"第九节 9.3 · 底本 L7197—L7203", quote:"1983年马希文发表文章，认为下面句子里的“了”，虽然普通话读为轻声[lə]，并处于句子末尾，但不是表示“新情况的出现”（后来学界就称之为“了3”）……马希文先生指出，这个“了”意义比较实在，“烧了”“扔了”相当于某些方言里“烧掉”“扔掉”（“动词+掉”）的意思，可以将这个“了”分析为补语。马希文先生还从形式上加以验证——在北京口语里例（9）、例（10）里的“了”读为轻声[lou]。", zh:"马希文（1983）提出「了3」：意义实在的黏着动词，作补语，相当于「掉」。" },
+  "s-le-zhangbojiang": { page:"第九节 9.3 · 底本 L7211—L7219", quote:"2005年张伯江在《功能语法与汉语研究》一文中，运用“动态浮现语法”分析理论，从话语篇章的角度对这个“了”重新作了研究与分析，进一步发现并指出了上述三个“了”字的差异：“了1”……其作用范围在句子的中心谓语，表明句子的时体特征……“了2”，意义更虚，作用于整个句子，不影响句子的命题内容……“了3”，其作用范围只在动词上，意义还比较实在……从“了3”到“了1”到“了2”，意义越来越虚，所处位置越来越往外。", zh:"三个「了」的作用范围依次扩大、意义依次变虚；歧义句由此得到解释。" },
+  "s-implicational-universal": { page:"第九节 9.4 · 底本 L7241", quote:"当代语言类型学已不是简单地给语言分类的分支学科，它实际是要探索人类语言的共性；不过功能语言学所要探索的人类语言共性不是人类所有语言一致具有的共性，而是一种蕴涵性共性——有条件的语言共性，即：假如P，那么Q。", zh:"功能派追求的是有条件的语言共性：假如 P，那么 Q。" },
+  "s-he-with": { page:"第九节 9.4 · 底本 L7251—L7281", quote:"汉语有个介词“和”，英语有个前置词（即介词）with……可是英语的with则没有表示并列的连词用法，而with作为前置词用时，除了引介行为动作的伴随者外，还可以引介行为动作的工具、方式、原因等……根据跨语言比较，在SVO型语言中，伴随介词存在两种演变模式：演变模式I：伴随介词→并列连词。……演变模式Ⅱ：伴随介词→工具介词→方式介词→原因介词→……。", zh:"「和」走模式Ⅰ（→并列连词），with 走模式Ⅱ（→工具／方式／原因介词）。" },
+  "s-lunyuan-tiqu": { page:"第九节 9.4 · 底本 L7307—L7343", quote:"沈家煊先生曾举过这样一个例子：（5）张生用鸽子给莺莺送了个信儿。……上述指示动作施事、受事、与事、旁事的名词性成分（一般称为“论元”）都可以提取……注意：提取与事和旁事时，原位置上必须用第三人称代词复指……作为功能语言学派，得追究：为什么c、d要用第三人称代词复指？……上述四种情况代表了四种语言类型，而且可以说，世界上的各种语言……都跳不出这四种类型。而这四种类型，隐含着一条人类语言的蕴涵性规律……施事主语>受事直接宾语>与事间接宾语>介词的旁事宾语。这条等级法则的意思是，如果所提取的等级链上某一项不受限制，那么在提取它左边的各项时也不受限制。类似这样的法则，形式语言学派是不会考虑因而也不会总结得到的。", zh:"论元提取蕴涵等级链：施事＞受事＞与事＞旁事；四种语言类型都跳不出这条链。" },
+  "s-chusuo-jieci": { page:"第九节 9.4 · 底本 L7347—L7375", quote:"就普通话（实际是北京话）来说，引介处所成分的介词有：在（引介所在处所）……经（引介经由的处所）……吴方言各片次方言，引介处所成分的介词，让人觉得很乱。其实内中有规则。那不同的处所成分有等级序列，具体如下：所在>终点/方向>源点>经由。其规则是：前边的介词可以用来引介后边的处所成分，后边的介词则不能引介前边的处所成分。各片方言都遵循这一规则，只是具体情况不同而已。（刘丹青，2003）", zh:"处所成分等级链：所在＞终点／方向＞源点＞经由；普通话同样适用。" },
+  "s-tangpusen": { page:"第九节 9.4 · 底本 L7377", quote:"否定，不管各种语言所采用的手段如何不同（有的用否定助词，有的用否定动词，有的用否定词缀），都直接跟核心谓语动词发生关系；而疑问，也不管各种语言所采用的手段如何不同……都或居句首，或居句尾，或是凌驾于整个句子之上的语音形式。……否定究其本质而言是关于命题的真伪的认定，所以总是体现在谓语上；而疑问实际是一种交互性行为，或为了提出问题，或为了交换话轮（turn）。可见，否定与疑问其实有本质区别。", zh:"汤普逊：否定作用于谓语（命题真伪认定），疑问作用于全句（交互性行为）。" },
+  "s-ci-wei-shuyi": { page:"第九节 9.5 · 底本 L7381—L7389", quote:"现代汉语里有一个用于人的名量词“位”。辞书上，语法书上，讲汉语量词的论著里，在谈到这个量词“位”时，都说这个量词只用于人，含敬称之意，不能用于说话人自身一方。……《中国文法要略》9.13（吕叔湘，1942）：称人，含敬意，如一位客人。", zh:"辞书一致口径：「位」含敬意，不能用于说话人自身一方。" },
+  "s-diaocha-wei": { page:"第九节 9.5 · 底本 L7397—L7403", quote:"最近发现了一个新情况。上大酒楼、大饭店用餐，一进门，服务员热情迎上前问：“请问几位？”我们常常会脱口而出说“我们五位”“我们四位”等等。……连续三天，一共注意记录了163拨顾客进酒店时与服务员的对话。调查结果发现，其中有151拨顾客在答话中用“位”，约占93.6%；答话中用“个”的，只有12拨顾客。", zh:"实地调查：151/163 拨用「位」，约占 93.6%；用「个」的都是自家人用餐。" },
+  "s-liangci-genju": { page:"第九节 9.5 · 底本 L7407", quote:"中国社会科学院语言研究所张伯江研究员（北京人）提醒我，其他量词使用上可能有类似现象。譬如狗，可以论“只”，也可以论“条”。如果有人问：“你家养了几条狗？”应声回答好像总会说“两条”而不说“两只”。……于是我就调查了问到狗、猪（可以论头、论只、论口）、烟（可以论根、论支）的应答情况，结果确如张伯江所言，问话人用什么量词，答话人也跟着用什么量词。", zh:"量词选用上也有应答跟随现象：问「几条」答「两条」，问「几只」答「两只」。" },
+  "s-wang-chao": { page:"第九节 9.5 · 底本 L7409—L7417", quote:"当两个熟人（假定是甲和乙）在东西向街上对面碰见，习惯用下面这样的看似废话的一问一答互打招呼：（5）甲：你往东去？乙：哎，我往东去。你往西去？甲：哎，我往西去。……不难发现，如果先打招呼的人用介词“往”，答话人一定也用“往”回话；如果先打招呼的人用介词“朝”，答话人也一定用“朝”回话。", zh:"介词使用上同样存在应答协调：问用「往」答也用「往」，问用「朝」答也用「朝」。" },
+  "s-lai-qu": { page:"第九节 9.5 · 底本 L7419", quote:"趋向动词中的“来/去”，按一般的说法，是以说话人为基点的——“来”指物体朝说话人方向移动，“去”指物体离开说话人而移动。可是在一问一答中，会出现例外。……学生回答：“我（们）马上就来。”而不说：“我（们）马上就去。”", zh:"「来／去」以说话人为基点，但一问一答中答话人跟随发话人的视角。" },
+  "s-response-coordination": { page:"第九节 9.5 · 底本 L7429", quote:"格赖斯（Grice，1975）曾提出会话合作原则（cooperative principle），勃朗和列文森（P.Brown&S.Levinson，1978）以及利奇（Leech，1983）又先后提出会话礼貌原则（politeness principle）。但是，经查阅，他们所谈的原则都是针对会话内容来说的。而上面所说的汉语里的会话现象，则完全是形式方面的。我们就仿照他们的会话原则，提出建立了一条新的会话原则——“应答协调一致性原则”。", zh:"在合作原则、礼貌原则之外，试提出针对形式方面的「应答协调一致性原则」。" },
+  "s-politeness-first": { page:"第九节 9.5 · 底本 L7439", quote:"原来，少数应答时不用“位”的都不是宴请客人，都是自家人（包括跟很要好的朋友一起）用餐吃饭。上述情况说明，应答协调一致性原则还是存在的，但是它得让位于礼貌原则。这也说明，在数条会话原则中还存在着会话原则的优先顺序问题——排在最优选地位的是礼貌原则。", zh:"自家人用餐答「个」不用「位」：应答协调一致性让位于礼貌原则；礼貌原则是会话原则中最优选的。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 主位 / 述位 ---------- */
+const FSP = {
+  theme: "主位（theme）：话语的出发点、所谈论的对象，负载已知信息。",
+  transition: "过渡（transition）：既非主位，也负载最小的交际能力。",
+  rhyme: "述位（rhyme）：话语的核心，是说话人对主位要讲的话，负载新信息。"
+};
+$$(".split .sent span[data-role]").forEach(s => s.onclick = () => {
+  $$(".split .sent span").forEach(x => x.classList.remove("on"));
+  s.classList.add("on");
+  const out = $("#fspOut");
+  out.innerHTML = "<b>" + s.textContent + "</b> —— " + FSP[s.dataset.role];
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

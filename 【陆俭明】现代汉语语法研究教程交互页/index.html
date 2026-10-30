@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>总目录 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+<style>
+.toc{display:flex;flex-direction:column;gap:10px;margin:16px 0 6px}
+.tocgrp{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.14em;color:var(--gold);margin:18px 0 2px;border-bottom:1px dashed var(--line);padding-bottom:5px}
+.tocgrp:first-child{margin-top:6px}
+.tocard{display:block;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:12px 16px;text-decoration:none;color:var(--ink)}
+.tocard:hover{border-color:var(--red)}
+.tocard b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.04rem;color:var(--red);margin-right:10px}
+.tocard .tt{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:.98rem}
+.tocard .td{display:block;font-size:.85rem;color:var(--muted);margin-top:4px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 全书总目录</p>
+  <h1>十五章研读：从汉语特点到构式语法</h1>
+  <p class="lead">一本书读懂汉语语法研究的路数：从最基础的层次分析，到形式、功能、认知三派理论，再到构式语法。全书十五章各做独立交互页，角标直抵原书，先猜与自测随页附送。<sup class="cite" data-cite="s-edition">出处</sup></p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>十五章</b></li><li>六种方法</li><li>三派理论</li><li>构式语法</li><li>研究素质</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">全书十五章 · 总目录</p>
+<h2>十五章，四块读</h2>
+<p>绪论和第一节立立场、定分类；第二至七节陆续给出六种分析方法；第八至十三节介绍三派理论及其应用；结束语把目光从方法转向人，谈研究者应有的素质。每章独立成页，点卡片进去。</p>
+
+<div class="guess" data-guess>
+  <p class="q">全书十三节里，专讲「分析方法」的有几节？</p>
+  <div class="opts">
+    <button data-ans="0">五节</button>
+    <button data-ans="1">六节</button>
+    <button data-ans="0">七节</button>
+  </div>
+  <div class="why"><b>六节。</b>第二节到第七节正好六种分析方法——层次、变换、语义特征、配价、语义指向、语义范畴；第八节起转入理论流派。<sup class="cite" data-cite="s-toc">出处</sup></div>
+</div>
+
+<div class="guess" data-guess>
+  <p class="q">乔姆斯基革命之后，语言研究出现什么样的局面？</p>
+  <div class="opts">
+    <button data-ans="0">生成语法一派独大</button>
+    <button data-ans="1">形式、功能、认知三足鼎立</button>
+    <button data-ans="0">形式与功能两派对立</button>
+  </div>
+  <div class="why"><b>三足鼎立。</b>乔姆斯基革命改变了语言研究的航向，领域内由此出现形式语言学、功能语言学、认知语言学三足鼎立的局面；本书的态度是传统结构主义方法并未过时。<sup class="cite" data-cite="s-hypotheses">出处</sup></div>
+</div>
+
+<div class="toc">
+  <p class="tocgrp">第一篇 · 总论与词类</p>
+<a class="tocard" href="绪论.html">
+  <b>绪论</b><span class="tt">汉语特点与语法观：先认语言，再谈语法</span>
+  <span class="td">汉语是没有严格形态变化、语用因素作用特别突出的语言；语法结构关系是多重的，句法与语义常常并存甚至错位。</span>
+</a>
+<a class="tocard" href="第一节-汉语词类研究.html">
+  <b>第一节 词类</b><span class="tt">词类研究：拿什么作划分依据</span>
+  <span class="td">词类是概括词的分类，划分依据是全部语法功能，不是意义，也不是形态；顺带处理名物化之争、兼类词与「名动包含」说。</span>
+</a>
+  <p class="tocgrp">第二篇 · 分析方法</p>
+<a class="tocard" href="第二节-层次分析法.html">
+  <b>第二节 层次</b><span class="tt">层次分析：切分与定性</span>
+  <span class="td">使用最久、最基础的句法分析：切分与定性；最见功力之处是分化歧义句式，但解释不了歧义为何产生。</span>
+</a>
+<a class="tocard" href="第三节-变换分析法.html">
+  <b>第三节 变换</b><span class="tt">变换分析：在句式之间找依存</span>
+  <span class="td">在句式之间找对应，凭平行性原则验证；层次分析分不出的歧义，变换来补。</span>
+</a>
+<a class="tocard" href="第四节-语义特征分析法.html">
+  <b>第四节 语义特征</b><span class="tt">语义特征：给关键位置上的词语「画像」</span>
+  <span class="td">用［＋使附着］这类标记，解释同一格式为何有的实例能说、有的不能说。</span>
+</a>
+<a class="tocard" href="第五节-配价分析法.html">
+  <b>第五节 配价</b><span class="tt">配价分析：动词能拉住几个名词</span>
+  <span class="td">动词能拉住几个必有名词语；歧义指数公式与省略测试，附可上手的小实验。</span>
+</a>
+<a class="tocard" href="第六节-语义指向分析法.html">
+  <b>第六节 语义指向</b><span class="tt">语义指向：成分在语义上「指向」谁</span>
+  <span class="td">句法上是一家人，语义上未必同心；「才」「只」「究竟」的种种分别，都因指向而不同。</span>
+</a>
+<a class="tocard" href="第七节-语义范畴分析法.html">
+  <b>第七节 语义范畴</b><span class="tt">语义范畴：意义类如何管住句子</span>
+  <span class="td">数量、领属、自主、顺序四种范畴，各自管住一片句子的成立与否。</span>
+</a>
+  <p class="tocgrp">第三篇 · 理论流派</p>
+<a class="tocard" href="第八节-形式学派.html">
+  <b>第八节 形式学派</b><span class="tt">形式学派：从「是什么」到「为什么」</span>
+  <span class="td">「形式」不是跟「意义」相对，而是跟「功能」「认知」相对；从美国描写到生成语法、轻动词结构。</span>
+</a>
+<a class="tocard" href="第九节-功能学派.html">
+  <b>第九节 功能学派</b><span class="tt">功能学派：语法为什么是这样的？</span>
+  <span class="td">形式学派问「是什么」，功能学派追问「为什么」，而且要从语言外部、从交际功能去找答案。</span>
+</a>
+<a class="tocard" href="第十节-认知学派.html">
+  <b>第十节 认知学派</b><span class="tt">认知学派：语言与客观世界之间，隔着人的认知</span>
+  <span class="td">「现实—认知—语言」：语言世界和客观世界之间，隔着人的认知；象似性、有界无界都从这里来。</span>
+</a>
+<a class="tocard" href="第十一节-构式语法.html">
+  <b>第十一节 构式语法</b><span class="tt">构式语法：形式与意义的配对</span>
+  <span class="td">「更不必说」的意思没法从 let 和 alone 推知——构式是形式与意义的配对，整体大于部分之和。</span>
+</a>
+<a class="tocard" href="第十二节-语言信息结构.html">
+  <b>第十二节 信息结构</b><span class="tt">语言信息结构：句子传的意，大于句子说的话</span>
+  <span class="td">语言最本质的功能是传递信息；句子所传的信息，大多大于句子本身表示的意义。</span>
+</a>
+<a class="tocard" href="第十三节-虚词研究.html">
+  <b>第十三节 虚词</b><span class="tt">虚词研究：数量最少，分量最重的「经络」</span>
+  <span class="td">虚词数量远少于实词，重要性却大大超过，起着「经络」的作用；八个方面看用法，比较分析看意义。</span>
+</a>
+  <p class="tocgrp">结束语</p>
+<a class="tocard" href="结束语.html">
+  <b>结束语</b><span class="tt">应有的研究素质：底子、能力与学风</span>
+  <span class="td">目光从「方法」转向「人」：专业基础知识、研究能力、良好学风，三方面缺一不可；发现问题居能力之首。</span>
+</a>
+</div>
+<p class="small muted">十五章之外，各页底部「关于本页」注明底本、未入页内容与离线说明。</p>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">本书认为划分词类的根本依据是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">词的意义</button>
+      <button data-v="b">词的全部语法功能</button>
+      <button data-v="c">词的形态变化</button>
+    </div>
+    <div class="why">答案：b。词类是概括词的分类，划分依据是全部语法功能；形态不过是功能的外在标志。见第一节。</div>
+  </div>
+  <div class="item">
+    <p class="q">陆俭明考察「的」字结构歧义的指数公式，运算方式是？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">相加</button>
+      <button data-v="b">相减</button>
+      <button data-v="c">相乘</button>
+    </div>
+    <div class="why">答案：b。P 为动词配价数与「的」字结构里已出现配价成分数之差：得零不能指称，得一一般无歧义，得二以上有歧义。见第五节。</div>
+  </div>
+  <div class="item">
+    <p class="q">乔姆斯基革命之后，语言研究形成怎样的格局？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">生成语法一派独大</button>
+      <button data-v="b">形式、功能、认知三足鼎立</button>
+      <button data-v="c">描写与解释截然二分</button>
+    </div>
+    <div class="why">答案：b。三足鼎立之下，本书仍主张：传统结构主义的层次、分布、替换、变换并没有过时。见绪论。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>本页为总目录：十五章各自成页，单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+
+<script>
+const SOURCES = {
+  "s-edition": { page:"凡例 · 底本 L227", quote:"将原属于第十节的10.9「关于构式语法分析」抽出来并适当加以扩充，独立成为第五版的第十一节……将原属于第九节的9.6「从信息结构角度解释语法现象」抽出来并适当加以扩充，独立成为第五版的第十二节。", zh:"第五版把构式语法与信息结构各自扩为独立一节，可见这两块在近年汉语语法研究里的分量。" },
+  "s-toc": { page:"目录 · 底本 L8—L175", quote:"绪论；第一节 汉语词类研究；……第十三节 现代汉语虚词研究；结束语——应有的研究素质", zh:"全书十三节加一个结束语，据目录归纳为三块：描写、解释、应用。" },
+  "s-hypotheses": { page:"绪论 0.7 · 底本 L935", quote:"乔姆斯基对语言提出了三大假设：一是人生来就有一个语言获得装置（language acquisition device），语言是人脑心智的重要组成部分；二是人类语言千差万别，但遵循共同的组合原则，差异只是参数的不同，从而形成了「原则与参数」（principles and parameters）的理论；三是人类语言共同遵循的组合原则应该是极为简明的。", zh:"乔姆斯基革命改变了语言研究的航向，语言研究领域由此出现形式语言学、功能语言学、认知语言学三足鼎立的局面。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

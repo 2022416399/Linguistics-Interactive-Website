@@ -1,1 +1,580 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>语法讲义-05谓词</title><style>:root{--bg:#f7f4ee;--paper:#fffdf8;--ink:#25231f;--muted:#706b62;--line:#ded8cc;--red:#a84432;--blue:#3d638b;--green:#2d7965;--gold:#c99438;font-size:16px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;line-height:1.75}.wrap{max-width:980px;margin:auto;padding:0 18px}.top{position:sticky;top:0;z-index:5;background:#f7f4eedd;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0;gap:8px}.brand{font-weight:750;color:var(--red)}button{font:inherit;min-height:44px;padding:.5rem .75rem;border-radius:9px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}.tools{display:flex;gap:6px}.hero{padding:45px 0 30px;background:linear-gradient(135deg,#f0e3cd,var(--bg) 65%)}h1{font-size:clamp(2.1rem,6vw,4rem);line-height:1.1;letter-spacing:-.05em;margin:10px 0}.eyebrow{color:var(--red);font-weight:700}.lead{font-size:1.12rem;color:var(--muted);max-width:760px}.figure{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;margin:22px 0;box-shadow:0 10px 30px #5c4a3215}.figure svg{width:100%;height:auto}main{padding:22px 0 70px}.scene{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;margin:22px 0;box-shadow:0 10px 30px #5c4a3215}.scene h2{color:var(--red);margin-top:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fbf7ef}.card h3{margin-top:0;color:var(--blue)}.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:15px 0}.node{background:#ead6c2;border:1px solid #c89072;border-radius:10px;padding:9px 12px;font-weight:700}.arrow{color:var(--red);font-size:1.4rem}.lab{border:1px solid #9cb5c9;background:#edf3f7;border-radius:12px;padding:16px}.lab select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink)}.guess{border-left:4px solid var(--gold);background:#fbf4e4;padding:15px;margin:15px 0;border-radius:7px}.answer{color:var(--green);font-weight:650}.cite{color:var(--red);font-weight:750;cursor:pointer}.quiz{border:1px dashed var(--line);padding:14px;border-radius:10px;margin:10px 0}.quiz button{display:block;margin-top:8px}.source{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:16px;z-index:10}.box{background:var(--paper);max-width:650px;width:100%;padding:22px;border-radius:16px;max-height:85vh;overflow:auto}.box h2{color:var(--red);margin-top:0}.hidden{display:none!important}details{border-top:1px solid var(--line);margin-top:15px;padding-top:10px}summary{cursor:pointer;color:var(--blue);font-weight:650}footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted)}body.dark{--bg:#1f2527;--paper:#293033;--ink:#f2eee7;--muted:#b8b2a8;--line:#485153}body.dark .hero{background:linear-gradient(135deg,#3b3029,var(--bg) 65%)}body.dark .card{background:#30383a}body.dark .lab{background:#27363d}body.dark .guess{background:#3c3325}@media(prefers-color-scheme:dark){body:not(.light){--bg:#1f2527;--paper:#293033;--ink:#f2eee7;--muted:#b8b2a8;--line:#485153}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:450px){.grid{grid-template-columns:1fr}.scene{padding:16px}}</style></head><body><header class="top"><div class="wrap nav"><div class="brand">语法讲义-05谓词</div><div class="tools"><button id="minus">A−</button><button id="plus">A+</button><button id="theme">明暗</button><button id="back" hidden>回到刚才</button></div></div></header><section class="hero" data-hero><div class="wrap"><div class="eyebrow">朱德熙《语法讲义》｜第5章</div><h1>谓词</h1><p class="lead">动词与形容词的分类、及物性和重叠式。</p><figure class="figure" data-figure><svg viewBox="0 0 800 150" role="img" aria-label="本章核心路线图"><path d="M80 75H720" stroke="#a84432" stroke-width="4" stroke-dasharray="8 8"/><g fill="#ead6c2" stroke="#a84432" stroke-width="2"><circle cx="80" cy="75" r="45"/><circle cx="293" cy="75" r="45"/><circle cx="507" cy="75" r="45"/><circle cx="720" cy="75" r="45" fill="#d5e4df" stroke="#2d7965"/></g><g text-anchor="middle" fill="#25231f" font-size="18"><text x="80" y="82">观察</text><text x="293" y="82">切分</text><text x="507" y="82">比较</text><text x="720" y="82">解释</text></g></svg></figure></div></section><main class="wrap"><section class="scene" data-scene="1"><h2>场景 1｜本章主线</h2><div class="flow"><span class="node">谓词 → 动词 / 形容词</span><span class="arrow">→</span><span class="node">章节结论</span></div><p>关注带宾语能力、程度修饰和重叠形式的分布差异。<sup class="cite" data-cite="s05">[原文]</sup></p><div class="guess" data-guess><b>先猜再看：</b>本章最需要优先观察的是“意义”还是“形式分布”？<button onclick="this.nextElementSibling.hidden=false">揭晓</button><p class="answer" hidden>先观察形式分布，再结合意义解释。朱德熙的基本方法是“以结构为纲、以意义为参照”。</p></div></section><section class="scene" data-scene="2"><h2>场景 2｜概念卡片</h2><div class="grid"><div class="card"><h3>看书</h3><p>围绕“看书”观察本章的形式、分布与功能，避免只凭语义直觉判断。</p></div><div class="card"><h3>很高兴</h3><p>围绕“很高兴”观察本章的形式、分布与功能，避免只凭语义直觉判断。</p></div><div class="card"><h3>看看</h3><p>围绕“看看”观察本章的形式、分布与功能，避免只凭语义直觉判断。</p></div></div><details><summary>展开：分析提醒</summary><p>同一个词语进入不同结构后，可能承担不同的语法功能；同一种意义也可能由不同形式表达。分析时应把位置、组合能力和句法层次记录下来。</p></details></section><section class="scene" data-scene="3"><h2>场景 3｜例句观察台</h2><div class="lab"><b>选择一个例子：</b><select id="ex"><option>看书</option><option>很高兴</option><option>看看</option><option>干干净净</option></select><p id="out">请选择例句，观察它的结构位置、搭配限制与语法功能。</p></div><p>当前章的学习任务：把例句拆成可观察的形式证据，并说明它与相邻结构的差异。<span class="tag">语料观察</span></p></section><section class="scene" data-scene="4"><h2>场景 4｜方法与相邻章节</h2><p>本章不是孤立知识点。它承接前一章的分析基础，并为下一章“代词”提供观察工具：先确定单位和结构，再判断功能与意义。</p><details><summary>展开：不要混淆的两组概念</summary><p>结构位置不等同于语义角色；形式相似不代表功能相同；可以进入同一位置也不代表内部构造完全一致。</p></details></section><section class="scene" data-scene="5"><h2>场景 5｜你答得上来吗？</h2><div class="quiz" data-quiz><b>1. 本章的核心分析对象是什么？</b><button onclick="this.nextElementSibling.hidden=false">查看答案</button><p class="answer" hidden>谓词中的形式单位、组合关系和分布限制。</p></div><div class="quiz" data-quiz><b>2. 为什么不能只靠语义下结论？</b><button onclick="this.nextElementSibling.hidden=false">查看答案</button><p class="answer" hidden>因为同一意义可能有多种形式，同一形式也可能因结构和语境而产生不同功能。</p></div><div class="quiz" data-quiz><b>3. 下一步怎么读？</b><button onclick="this.nextElementSibling.hidden=false">查看答案</button><p class="answer" hidden>回到例句，标出成分位置、组合限制和结构层次，再用章节术语复述。</p></div></section><footer>本页依据《语法讲义》研读底本与读书笔记整理。原笔记未提供可靠对应页码，出处账本暂标“页码待核对”。</footer></main><div class="source hidden" id="source"><div class="box"><button id="close" style="float:right">关闭</button><h2 id="st">出处核对</h2><p id="sq"></p><p>本页内容为依据原始底本与读书笔记的学习性转述，页码待核对。</p></div></div><script>const $=s=>document.querySelector(s);let SOURCES={'s05':{t:'第5章：谓词',q:'本页依据《语法讲义》第5章研读底本与读书笔记整理。'}};document.querySelectorAll('.cite').forEach(e=>e.onclick=()=>{let s=SOURCES[e.dataset.cite];$('#st').textContent=s.t;$('#sq').textContent='原文/笔记入口：'+s.q;$('#source').classList.remove('hidden')});$('#close').onclick=()=>$('#source').classList.add('hidden');$('#source').onclick=e=>{if(e.target.id==='source')$('#source').classList.add('hidden')};$('#ex').onchange=e=>$('#out').textContent='已选：'+e.target.value+'。请记录它的结构位置、组合限制和语法功能。';let scale=1;$('#minus').onclick=()=>{scale=Math.max(.9,scale-.05);document.documentElement.style.fontSize=scale+'rem'};$('#plus').onclick=()=>{scale=Math.min(1.2,scale+.05);document.documentElement.style.fontSize=scale+'rem'};$('#theme').onclick=()=>document.body.classList.toggle('dark');try{let y=localStorage.getItem('grammar-05-y');if(y&&confirm('继续上次阅读位置？'))scrollTo(0,+y);addEventListener('scroll',()=>localStorage.setItem('grammar-05-y',scrollY),{passive:true})}catch(e){}</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《语法讲义》第五章｜谓词</title>
+<style>
+:root{--bg:#f7f4ee;--paper:#fffdf8;--ink:#25231f;--muted:#706b62;--line:#ded8cc;--red:#a84432;--blue:#3d638b;--green:#2d7965;--gold:#c99438;--soft:#fbf3e4;--soft2:#eaf2ee;font-size:16px}
+@media (prefers-color-scheme:dark){:root:not(.light){--bg:#211f1c;--paper:#2b2925;--ink:#eae5da;--muted:#aca498;--line:#4c473d;--red:#dd7a66;--blue:#93b8d9;--green:#79c0ab;--gold:#d9a950;--soft:#38332a;--soft2:#2e3a34}}
+:root.dark{--bg:#211f1c;--paper:#2b2925;--ink:#eae5da;--muted:#aca498;--line:#4c473d;--red:#dd7a66;--blue:#93b8d9;--green:#79c0ab;--gold:#d9a950;--soft:#38332a;--soft2:#2e3a34}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;line-height:1.75}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:8;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:56px;flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.02em}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:10px;min-height:44px;padding:.4rem .8rem;cursor:pointer}
+button:hover{border-color:var(--red)}
+button:disabled{opacity:.65;cursor:default}
+.hero{padding:46px 0 30px;background:linear-gradient(135deg,var(--soft),var(--bg) 68%)}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.2;margin:.2em 0}
+.eyebrow{margin:0;color:var(--red);font-weight:700;letter-spacing:.08em}
+.lead{color:var(--muted);max-width:60ch;font-size:1.05rem}
+.figure{margin:22px 0;background:#fffdf8;border:1px solid #ded8cc;border-radius:14px;padding:12px;box-shadow:0 10px 30px #5c4a3215}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:#706b62;font-size:.9rem;padding:8px 4px 2px}
+.figure figcaption sup.cite{color:#a84432}
+main{padding:20px 0 60px}
+.scene{margin:0 0 42px;scroll-margin-top:72px}
+.scene h2{color:var(--red);font-size:1.5rem;margin:0 0 .2em}
+.scene h3{color:var(--blue);font-size:1.1rem;margin:1.2em 0 .3em}
+.kicker{margin:0 0 1em;color:var(--muted);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin:14px 0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.card b{color:var(--blue)}
+.card small{color:var(--muted)}
+sup.cite{color:var(--red);cursor:pointer;font-weight:700;font-size:.72em;vertical-align:super}
+sup.cite:hover{text-decoration:underline}
+.tag{display:inline-block;border:1px solid var(--green);color:var(--green);border-radius:999px;padding:.05rem .55rem;font-size:.78rem;margin:0 .3rem .3rem 0}
+[data-guess]{border:1px dashed var(--gold);border-radius:12px;padding:12px 14px;margin:16px 0;background:var(--paper)}
+.reveal{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+[data-quiz]{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:18px 0;background:var(--soft2)}
+.q-t{margin:.2em 0 .6em;font-weight:700}
+.opts{display:grid;gap:8px;margin-bottom:8px}
+.opts button{text-align:left}
+.opts button.right{border-color:var(--green)}
+.opts button.wrong{border-color:var(--red)}
+.q-fb.ok{color:var(--green);font-weight:700}
+.q-fb.no{color:var(--red);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips button{border-radius:999px}
+.chips button[aria-pressed="true"]{border-color:var(--red);color:var(--red);font-weight:700}
+.pop{position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:#0009;padding:16px}
+.pop-card{max-width:560px;max-height:84vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+.pop-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.pop-page{color:var(--muted);font-size:.9rem}
+.pop-quote{border-left:3px solid var(--gold);padding-left:10px;margin:10px 0}
+.pop-tip{color:var(--muted);font-size:.85rem}
+#resume{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:20;background:var(--paper);border:1px solid var(--red);border-radius:999px;padding:8px 12px;display:flex;gap:8px;align-items:center;box-shadow:0 8px 24px #0002}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted)}
+footer a{color:var(--red)}
+details{border:1px dashed var(--line);border-radius:12px;padding:10px 14px;margin:14px 0;background:var(--paper)}
+summary{min-height:44px;cursor:pointer;font-weight:700;display:flex;align-items:center}
+details li{margin:.3em 0}
+.k{color:var(--red);font-weight:700}
+/* 图表固定浅色底、深色字，不随暗色主题变暗，保证明亮清晰；每个形状均有显式 fill，stroke-only 分组一律 fill="none" */
+.svbg{fill:#fffdf8}
+.svln{stroke:#ded8cc;fill:none}
+.svtx{fill:#25231f}
+.svmu{fill:#706b62}
+.svrd{fill:#a84432}
+.svbl{fill:#3d638b}
+.svgr{fill:#2d7965}
+.svgd{fill:#fbf3e4}
+@media (max-width:640px){.hero{padding:30px 0 20px}.scene h2{font-size:1.3rem}.tools button{padding:.35rem .6rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><div class="brand">《语法讲义》· 第五章</div><div class="tools"><button id="minus">A−</button><button id="plus">A+</button><button id="theme">暗色</button><button id="back" hidden>回到刚才</button></div></div></header>
+<div id="resume" hidden><span id="resumeTxt"></span><button id="resumeGo">继续</button><button id="resumeNo">从头读</button></div>
+
+<section class="hero" data-hero>
+<div class="wrap">
+<p class="eyebrow">朱德熙《语法讲义》· 逐章研读</p>
+<h1>谓词</h1>
+<p class="lead">谓词包括动词和形容词。先用两项标准分开动形，再看动词大类、助动词、形态，末后看形容词两类与谓词的体词化。</p>
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 250" role="img" aria-label="动词形容词四类判定矩阵">
+<rect class="svbg" x="0" y="0" width="680" height="250" rx="10"/>
+<g stroke="#ded8cc" fill="none">
+<rect x="10" y="10" width="660" height="142" rx="10"/>
+<line x1="345" y1="10" x2="345" y2="152"/>
+<line x1="10" y1="81" x2="670" y2="81"/>
+</g>
+<text class="svmu" x="160" y="28" font-size="10">带宾 ＋</text>
+<text class="svmu" x="500" y="28" font-size="10">带宾 −</text>
+<text class="svmu" x="20" y="52" font-size="10">加很＋</text>
+<text class="svmu" x="20" y="123" font-size="10">加很−</text>
+<text class="svbl" x="70" y="52" font-size="11" font-weight="700">一类 · 动词</text>
+<text class="svtx" x="70" y="70" font-size="10">想 怕 爱 喜欢 关心 赞成</text>
+<text class="svrd" x="395" y="52" font-size="11" font-weight="700">四类 · 形容词</text>
+<text class="svtx" x="395" y="70" font-size="10">大 红 远 好 累 干净</text>
+<text class="svbl" x="70" y="123" font-size="11" font-weight="700">二类 · 动词</text>
+<text class="svtx" x="70" y="141" font-size="10">唱 念 看 买 说 讨论</text>
+<text class="svbl" x="395" y="123" font-size="11" font-weight="700">三类 · 动词</text>
+<text class="svtx" x="395" y="141" font-size="10">醒 病 死 咳嗽 游行 游泳</text>
+<text class="svgr" x="18" y="178" font-size="10">形容词：受「很」修饰又不能带宾语，两项必须兼备</text>
+<text class="svgr" x="18" y="200" font-size="10">动词：不受「很」修饰或能带宾语，符合一项即算</text>
+<text class="svmu" x="18" y="226" font-size="10">一类二类能带宾语，是及物动词；三类不能带宾语，是不及物动词</text>
+</svg>
+<figcaption>图一｜动形之分：两项标准，四类反应。<sup class="cite" data-cite="wd-div">[1]</sup><sup class="cite" data-cite="wd-def">[2]</sup></figcaption>
+</figure>
+</div>
+</section>
+
+<main class="wrap">
+
+<section class="scene" id="s1" data-scene="1">
+<h2>动词和形容词的区分</h2>
+<p class="kicker">第一问｜怎么分开动词和形容词</p>
+<p>标准有两项：前边能不能加「很」，后边能不能带宾语；反应归成四类（见图一），前三类动词，末一类形容词。<sup class="cite" data-cite="wd-div">[1]</sup></p>
+<p>定义两面看：受「很」修饰而不能带宾语的是形容词，两项必须兼备；不受「很」修饰或能带宾语的是动词，符合一项即算。一二类是及物动词，三类是不及物动词。<sup class="cite" data-cite="wd-def">[2]</sup></p>
+<p>「委曲」两属：带宾语时是动词，不带时是形容词。「端正」「宽大」本形容词，后加宾语化成动词；「死」的死亡义不受「很」，死板义可以（规定得很死）。<sup class="cite" data-cite="wd-qu">[3]</sup><sup class="cite" data-cite="wd-duan">[4]</sup><sup class="cite" data-cite="wd-si">[5]</sup></p>
+<p>宾语只当真宾语讲：时量动量程度、运动终点、存现都算准宾语。<sup class="cite" data-cite="wd-zhun">[6]</sup></p>
+<p>形容词重叠式不受「很」修饰，按全面功能归形容词，叫状态形容词；原来的形式叫性质形容词。<sup class="cite" data-cite="wd-over">[7]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「委曲」能受「很」修饰又能带宾语，算形容词还是动词？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>两属——带宾语的时候是动词，不带宾语的时候是形容词。真正的形容词类动词（一类）带宾语时可以同时受「很」修饰（很想你），「委曲」没这个本事，所以拆成两半看。<sup class="cite" data-cite="wd-qu">[3]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s2" data-scene="2">
+<h2>动词的大类</h2>
+<p class="kicker">第二问｜动词内部怎么分</p>
+<p>动词功能并不完全一致：能加「了」与不能，能加「着」与不能，能重叠与不能，能带双宾语与不能（名单见例句库）。<sup class="cite" data-cite="wd-cls">[8]</sup></p>
+<p>及物与不及物的区别在所带宾语：不及物只能带准宾语，及物还能带真宾语；有的两属（他笑了——他笑你｜车来了——来碗肉丝面）。<sup class="cite" data-cite="wd-trans">[9]</sup></p>
+<p>一部分及物动词后头经常带宾语：散了会儿步的「散」、结过婚的「结」、姓王的「姓」及具有、加以、成为。<sup class="cite" data-cite="wd-must">[10]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「飞昆明」「休息了一会儿」带的宾语，是真宾语吗？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>是准宾语——前者表运动终点的处所，后者表时量；存现宾语（新到了一批货）也算准宾语。划分动形的定义里，宾语只当真宾语讲。<sup class="cite" data-cite="wd-zhun">[6]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s3" data-scene="3">
+<h2>体宾、谓宾与名动词</h2>
+<p class="kicker">第三四问｜宾语有几种，动词怎么跟</p>
+<p>只能带体词性宾语的叫体宾动词，能带谓词性宾语的叫谓宾动词。体宾动词绝对不能带谓词性宾语。<sup class="cite" data-cite="wd-ti">[11]</sup></p>
+<p>真谓宾动词的宾语可以是单个动词形容词，也可以是主谓、述宾、连谓或副词修饰的偏正（同意/大家都去）。准谓宾动词的宾语限名动词或体词、形容词修饰的偏正（进行/农村调查；*立刻调查）。<sup class="cite" data-cite="wd-zz">[12]</sup></p>
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 260" role="img" aria-label="宾语的类与动词的类">
+<rect class="svbg" x="0" y="0" width="680" height="260" rx="10"/>
+<g stroke="#ded8cc" fill="none">
+<rect x="10" y="14" width="325" height="58" rx="10"/>
+<rect x="345" y="14" width="325" height="58" rx="10"/>
+<rect x="10" y="86" width="325" height="58" rx="10"/>
+<rect x="345" y="86" width="325" height="58" rx="10"/>
+<rect x="10" y="158" width="660" height="58" rx="10"/>
+</g>
+<text class="svbl" x="24" y="36" font-size="11" font-weight="700">体宾动词</text>
+<text class="svtx" x="24" y="56" font-size="10">骑(马) 买(票) 驾驶(汽车)——只带体词宾语</text>
+<text class="svbl" x="359" y="36" font-size="11" font-weight="700">准宾语 → 不及物动词</text>
+<text class="svtx" x="359" y="56" font-size="10">时量 终点 存现：休息了一会儿 飞昆明</text>
+<text class="svgr" x="24" y="108" font-size="11" font-weight="700">真谓宾动词</text>
+<text class="svtx" x="24" y="128" font-size="10">宾语可是主谓、连谓、副词偏正：同意/大家都去</text>
+<text class="svgr" x="359" y="108" font-size="11" font-weight="700">准谓宾动词</text>
+<text class="svtx" x="359" y="128" font-size="10">宾语限名动词或偏正：进行/农村调查</text>
+<text class="svrd" x="24" y="180" font-size="11" font-weight="700">名动词</text>
+<text class="svtx" x="24" y="200" font-size="10">可以充任准谓宾动词的宾语＋可以受名词直接修饰</text>
+<text class="svmu" x="359" y="180" font-size="10">有影响 有准备 有调查</text>
+<text class="svmu" x="359" y="200" font-size="10">政治影响 历史研究 农村调查</text>
+<text class="svmu" x="18" y="238" font-size="10">不能说：*有看 *进行/查 *进行/调查农村 *进行/立刻调查</text>
+</svg>
+<figcaption>图二｜宾语的类牵着动词的类。<sup class="cite" data-cite="wd-ti">[11]</sup><sup class="cite" data-cite="wd-zz">[12]</sup><sup class="cite" data-cite="wd-mingd">[13]</sup></figcaption>
+</figure>
+<p>「有」能说有影响、有准备，不能说*有看。「影响」一类可受名词直接修饰（政治影响、农村调查）——名词修饰动词本该加「的」。名动词两项特征：可充准谓宾动词的宾语，可受名词直接修饰。<sup class="cite" data-cite="wd-mingd">[13]</sup></p>
+<p>「锁」分得出两个——名词、动词；「影响」分不出，是名动词。<sup class="cite" data-cite="wd-suo">[14]</sup></p>
+<p>「没有人」的「没有」文言说「无」，「没有来」的说「未」；名动词做「有」的宾语时两式同形，「没有调查」有歧义。<sup class="cite" data-cite="wd-meiyou">[15]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「进行」能带「查」「调查农村」「立刻调查」吗？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>只能带「调查」「农村调查」「周密的调查」：「查」是一般动词，「调查农村」是述宾，「立刻调查」的修饰语是副词——三样都进不去。准谓宾动词的宾语，限名动词或体词、形容词修饰的偏正。<sup class="cite" data-cite="wd-zz">[12]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s4" data-scene="4">
+<h2>助动词</h2>
+<p class="kicker">第五问｜助动词一家</p>
+<p>助动词是真谓宾动词里的一类（名单见图三）。五个特点：只带谓词宾语；不能重叠；不能带后缀「了」「着」「过」；可以放在「～不～」的格式里；可以单说。<sup class="cite" data-cite="wd-aux">[16]</sup></p>
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 290" role="img" aria-label="助动词的分组">
+<rect class="svbg" x="0" y="0" width="680" height="290" rx="10"/>
+<g stroke="#ded8cc" fill="none">
+<rect x="10" y="10" width="660" height="40" rx="10"/>
+<rect x="10" y="62" width="215" height="82" rx="10"/>
+<rect x="232" y="62" width="215" height="82" rx="10"/>
+<rect x="455" y="62" width="215" height="82" rx="10"/>
+<rect x="10" y="156" width="215" height="82" rx="10"/>
+<rect x="232" y="156" width="215" height="82" rx="10"/>
+<rect x="455" y="156" width="215" height="82" rx="10"/>
+</g>
+<text class="svtx" x="24" y="34" font-size="10">五特点：只带谓宾｜不重叠｜不了着过｜能进「～不～」｜可单说</text>
+<text class="svbl" x="24" y="84" font-size="11" font-weight="700">可能</text>
+<text class="svtx" x="24" y="104" font-size="10">能 能够 可以 会</text>
+<text class="svtx" x="24" y="122" font-size="10">可能 得(dé)</text>
+<text class="svgr" x="246" y="84" font-size="11" font-weight="700">意愿</text>
+<text class="svtx" x="246" y="104" font-size="10">敢 肯 愿意 情愿</text>
+<text class="svtx" x="246" y="122" font-size="10">乐意 想要</text>
+<text class="svrd" x="469" y="84" font-size="11" font-weight="700">需要 · 估计</text>
+<text class="svtx" x="469" y="104" font-size="10">应 应该 应当 该</text>
+<text class="svtx" x="469" y="122" font-size="10">该：又该感冒了</text>
+<text class="svbl" x="24" y="178" font-size="11" font-weight="700">允许 · 估价</text>
+<text class="svtx" x="24" y="198" font-size="10">许 准｜值得 配</text>
+<text class="svtx" x="24" y="216" font-size="10">值得看 不配看</text>
+<text class="svgr" x="246" y="178" font-size="11" font-weight="700">劝阻</text>
+<text class="svtx" x="246" y="198" font-size="10">别 甭</text>
+<text class="svtx" x="246" y="216" font-size="10">别：不要 甭：不用</text>
+<text class="svrd" x="469" y="178" font-size="11" font-weight="700">好 · 难 · 容易</text>
+<text class="svtx" x="469" y="198" font-size="10">打扫干净好过年</text>
+<text class="svtx" x="469" y="216" font-size="10">日语容易学 阿拉伯语难学</text>
+<text class="svmu" x="18" y="262" font-size="10">「想」只在愿望义上是助动词：我想他不会来了（推测）≠ 他想去学习（愿望）</text>
+<text class="svmu" x="18" y="280" font-size="10">要：愿望（我要喝水）／需要（过河要有船，不能用「不要」否定）</text>
+</svg>
+<figcaption>图三｜助动词五特点与六个意义群。<sup class="cite" data-cite="wd-aux">[16]</sup><sup class="cite" data-cite="wd-xiang">[17]</sup></figcaption>
+</figure>
+<p>表可能：「能」「可以」说主观能力，其否定是「不能」，「不可以」是不许可；「会」多说学习练习获得的技能（会走路是技术好）。「可能」可估已发生（可能已经下雨了），「会」不能。「能」「得」「可以」还说许可（教室里不能抽烟）。<sup class="cite" data-cite="wd-neng">[18]</sup><sup class="cite" data-cite="wd-keneng">[19]</sup><sup class="cite" data-cite="wd-xuke">[20]</sup></p>
+<p>表意愿需要：「敢」的宾语多肯定式，否定只在双重否定或反问；「肯」「愿意」表意愿，「肯不肯」有时是答应不答应；「情愿」是「宁可」；「要」一是愿望，一是需要（过河要有船），后者不能用「不要」否定。「应」「该」表需要，「该」还表推测（又该感冒了）。<sup class="cite" data-cite="wd-yiyuan">[21]</sup><sup class="cite" data-cite="wd-yao">[22]</sup><sup class="cite" data-cite="wd-xuyao">[23]</sup></p>
+<p>「别」是「不要」的合音，「甭」是「不用」的合音。「甭」有时是「不必」（这种小事甭请示），有时表禁止（甭说话！）；「不用」可带体词宾语，「甭」不能（*甭你操心）。不企望的事只能用「别」（*你可甭生病）。<sup class="cite" data-cite="wd-bie">[24]</sup></p>
+<p>「好」在「打扫干净好过年」「不好不去」里是助动词；「难」「容易」也有这用法，「难」的宾语总是单个动词，不止一词只能用「很难」。<sup class="cite" data-cite="wd-hao">[25]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「我想他不会来了」的「想」，是助动词吗？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>不是——这是推测、料想的意思。助动词的「想」只在愿望义上（他想去学习），能放进「想不想」的格式；思念义（很想他）、思索义（想办法）的「想」能带体词宾语，也都不是助动词。<sup class="cite" data-cite="wd-xiang">[17]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s5" data-scene="5">
+<h2>重叠式与后缀</h2>
+<p class="kicker">第六问｜动词的量和貌</p>
+<p>动词重叠式兼表时量和动量：看看书等于看会儿书（时量短），伸伸舌头等于伸了一伸（动量小，常表尝试）。说成天操劳的活儿不能用；祈使句里口气缓和（你教我！｜你教我：）。<sup class="cite" data-cite="wd-ovl">[26]</sup><sup class="cite" data-cite="wd-ovl2">[27]</sup></p>
+<p>重叠式的否定只出现在两种场合：「不……不……」的前一个「不」后头，以及反问句。<sup class="cite" data-cite="wd-ovl2">[27]</sup></p>
+<p>后缀「了」表动作完成，与发生时间无关：下了课再去（尚未发生）｜关了灯就看不见了（假设）。持续性动词的时量宾语表持续（等了一年），无持续的表完成以后经历的（房子塌了大半年了）。形容词加「了」只能指已实现（*短一寸就合适了不能加）。<sup class="cite" data-cite="wd-le">[28]</sup><sup class="cite" data-cite="wd-adjle">[29]</sup></p>
+<p>「没」「没有」加在体词性成分前头相当于「无」（他没孩子），加在谓词性成分前头相当于「未」（饭没煮熟）；「没去」的肯定形式是「去了」不是「有去」。两种位置功能平行，谓词性成分前头的「没」看成动词也有理。<sup class="cite" data-cite="wd-mei">[30]</sup></p>
+<p>句中的「了」是动词后缀，句尾的是语气词：看了两遍了，一前一后。后缀「着」表持续（外头下着大雪），姿态动词后头表静止状态（台上坐着主席团）；形容词加「着」跟数量准宾语（大着十岁）。后缀「过」表曾经；「爬过山就到了」的「过」是动词补语。<sup class="cite" data-cite="wd-le2">[31]</sup><sup class="cite" data-cite="wd-zhe">[32]</sup><sup class="cite" data-cite="wd-guo">[33]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「去听听报告」为什么不能说？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>因为「听听」是说「听一会儿」，报告按一般情形不会只听一会儿；电视可以只看一会儿，所以「晚上想去看看电视」能说。重叠式表短时量，与时量不合的场合用不上。<sup class="cite" data-cite="wd-ovl">[26]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s6" data-scene="6">
+<h2>性质与状态形容词</h2>
+<p class="kicker">第七问｜形容词的两副面目</p>
+<p>性质形容词包括单音节（大、红、快、好）和一般双音节（大方、干净）。状态形容词五式：单音节重叠（小小儿的）、双音节重叠（干干净净的）、煞白冰凉一类（ABAB，不同于一般的 AABB）、带后缀（黑乎乎、绿油油；脏里孤唧）、f＋形容词＋的（挺好的）。<sup class="cite" data-cite="wd-2adj">[34]</sup></p>
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 250" role="img" aria-label="性质形容词与状态形容词的修饰自由">
+<rect class="svbg" x="0" y="0" width="680" height="250" rx="10"/>
+<g stroke="#ded8cc" fill="none">
+<rect x="10" y="10" width="660" height="164" rx="10"/>
+<line x1="340" y1="10" x2="340" y2="174"/>
+</g>
+<text class="svrd" x="24" y="34" font-size="11" font-weight="700">性质形容词 · 受限</text>
+<text class="svgr" x="356" y="34" font-size="11" font-weight="700">状态形容词 · 自由</text>
+<text class="svtx" x="24" y="60" font-size="10">白手</text>
+<text class="svmu" x="120" y="60" font-size="10">→</text>
+<text class="svtx" x="356" y="60" font-size="10">雪白的手</text>
+<text class="svtx" x="24" y="86" font-size="10">贵手绢儿</text>
+<text class="svmu" x="120" y="86" font-size="10">→</text>
+<text class="svtx" x="356" y="86" font-size="10">挺贵的手绢儿</text>
+<text class="svtx" x="24" y="112" font-size="10">薄灰尘</text>
+<text class="svmu" x="120" y="112" font-size="10">→</text>
+<text class="svtx" x="356" y="112" font-size="10">薄薄的灰尘</text>
+<text class="svtx" x="24" y="138" font-size="10">厚雪</text>
+<text class="svmu" x="120" y="138" font-size="10">→</text>
+<text class="svtx" x="356" y="138" font-size="10">老厚的雪</text>
+<text class="svtx" x="24" y="164" font-size="10">老实学问</text>
+<text class="svmu" x="120" y="164" font-size="10">→</text>
+<text class="svtx" x="356" y="164" font-size="10">老老实实的学问</text>
+<text class="svmu" x="18" y="198" font-size="10">状语同理：轻放 ✓｜*轻搁 → 轻轻地搁 ✓｜*慢游 → 慢慢地游 ✓</text>
+<text class="svmu" x="18" y="220" font-size="10">意义上多能配合（贵和手绢儿），过不去的是性质形容词直接修饰这道关</text>
+</svg>
+<figcaption>图四｜换上状态形容词就自由了。<sup class="cite" data-cite="wd-ding">[35]</sup><sup class="cite" data-cite="wd-zhuang">[36]</sup></figcaption>
+</figure>
+<p>性质形容词单纯表属性，状态形容词带明显的描写性。作定语，性质形容词不带「的」直接修饰名词受限制：白纸能说，白手不说；换成对应的状态形容词就合法（见图四）。<sup class="cite" data-cite="wd-ding">[35]</sup></p>
+<p>作状语同理：轻放、慢走、重打能说，*轻搁、*慢游、*重接不说；状态形容词不受限制。书面语里双音节形容词加「的」（写作「地」）可做状语，口语里总是用状态形容词。<sup class="cite" data-cite="wd-zhuang">[36]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「白手」为什么不说，「雪白的手」却能说？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>「白」是性质形容词，直接修饰名词受限制；「雪白」是状态形容词，可以自由修饰名词。并不是意义上不能配合——换成对应的状态形容词，格式就合法了。<sup class="cite" data-cite="wd-ding">[35]</sup></p></div>
+</div>
+</section>
+
+<section class="scene" id="s7" data-scene="7">
+<h2>名形词、多少与体词化</h2>
+<p class="kicker">第八九问｜谓词怎么变成体词</p>
+<p>「毒」受「很」修饰又能做「有」的宾语，可两种位置上的「毒」意思不一样——一个是形容词，一个是名词；机械、理想类似。「危险」「困难」说不出这种区别（很危险｜有(很大)危险），看成形容词里的小类，叫名形词，与名动词一样兼有名词性质。<sup class="cite" data-cite="wd-mx">[37]</sup></p>
+<p>「多」「少」表数量，能做谓语（人多）、状语（多想想）、补语（说得多），不能做定语（*多人）。「很多」「不少」还能做定语、充任体宾动词的宾语（看过很多），功能近数量词；「不多」「很少」不带体词性。「好些」「许多」同此，但不能做谓语。<sup class="cite" data-cite="wd-duo">[38]</sup></p>
+<p>谓词体词化的主要手段是加助词「的」造成「的」字结构：凉→凉的｜游泳→游泳的。「的」改变功能也改变意义——「游泳的」转指做这动作的人；也能加在体词上（木头→木头的）。<sup class="cite" data-cite="wd-tch">[39]</sup></p>
+<p>三个「的」：「小的」里的是助词，「小小的」里的是状态形容词的后缀，「渐渐的」里的是副词的后缀——同形不同质。<sup class="cite" data-cite="wd-de3">[40]</sup></p>
+<p>古汉语跟「的」相当的有「者」「所」：「者」后置多指施事（食者），「所」前置多指受事（所食）。「者」已蜕化成名词后缀，「所」限于组成「的」字结构。「他们所反对的」的「所」可去，「今天所演的」的不行——「今天演的」有歧义，可指节目也可指人。<sup class="cite" data-cite="wd-zs">[41]</sup></p>
+<p>主谓结构体词化有三条路：整个后头加「的」（我们反对的）、谓语前加「所」再组成「的」字结构（我们所反对的）、主语后头加「的」（我们的反对）。末一种是以谓词为中心语的偏正结构。<sup class="cite" data-cite="wd-3way">[42]</sup></p>
+<div data-guess>
+<p><span class="k">先猜再看</span>｜「小小的」和「小的」里头的「的」，是同一种东西吗？</p>
+<button class="reveal-btn">揭晓</button>
+<div class="reveal" hidden><p>不是。「小的」是的字结构，「的」是助词；「小小的」是状态形容词，「的」是状态形容词的后缀；「渐渐的」是副词，「的」是副词的后缀。三者语音形式相同，其实是完全不同的东西。<sup class="cite" data-cite="wd-de3">[40]</sup></p></div>
+</div>
+<div data-quiz>
+<p class="q-t">自测三题，点选项即判</p>
+<div class="q" data-correct="b">
+<p class="q-t">一、判定形容词的两项标准，关系是什么？</p>
+<div class="opts">
+<button data-v="a">符合其中一项即可</button>
+<button data-v="b">必须兼备，少一项就不成</button>
+<button data-v="c">一项都不需要，凭意义判定</button>
+</div>
+<p class="q-fb ok" hidden>对。受「很」修饰而又不能带宾语，两项必须兼备；动词那两项标准（不受「很」修饰、能带宾语）只要符合其中一项就行。<sup class="cite" data-cite="wd-def">[2]</sup></p>
+<p class="q-fb no" hidden>再想。确定形容词的两项标准必须兼备；确定动词的两项标准只要符合其中一项。<sup class="cite" data-cite="wd-def">[2]</sup></p>
+</div>
+<div class="q" data-correct="c">
+<p class="q-t">二、「你可别生病」为什么不能说「你可甭生病」？</p>
+<div class="opts">
+<button data-v="a">因为「甭」不能用在否定句里</button>
+<button data-v="b">因为「甭」只能带体词宾语</button>
+<button data-v="c">因为「别」表主观不愿意，「甭」表客观无需，生病是不企望的事</button>
+</div>
+<p class="q-fb ok" hidden>对。「别」表示说话的人主观上不愿意对方做某事，「甭」表示客观上没有理由或无需乎做某事；对于说话的人不企望发生的事，只能用「别」，不能用「甭」。<sup class="cite" data-cite="wd-bie">[24]</sup></p>
+<p class="q-fb no" hidden>再想。「甭」进得了否定句，也不是宾语的问题；分野在口气——不企望发生的事只能用「别」。<sup class="cite" data-cite="wd-bie">[24]</sup></p>
+</div>
+<div class="q" data-correct="a">
+<p class="q-t">三、「今天所演的」里头的「所」，为什么不能随便去掉？</p>
+<div class="opts">
+<button data-v="a">因为「今天演的」有歧义，可指节目也可指人</button>
+<button data-v="b">因为「所」已经蜕化成名词后缀</button>
+<button data-v="c">因为「今天」是时间词，后头得加「所」</button>
+</div>
+<p class="q-fb ok" hidden>对。「他们所反对的」去掉「所」意思无别，「今天所演的」不成——「今天演的」可以指演出的节目，也可以指演节目的人，「所」字让所指明确，只能指节目。<sup class="cite" data-cite="wd-zs">[41]</sup></p>
+<p class="q-fb no" hidden>再想。蜕化成名词后缀的是「者」；时间词也不见得非加「所」不可。要害在「今天演的」有歧义，「所」排除了指人的那一读。<sup class="cite" data-cite="wd-zs">[41]</sup></p>
+</div>
+</div>
+<details>
+<summary>凡例与校勘记</summary>
+<ul>
+<li>例句照录研读底本，异体与讹误随文标注。</li>
+<li>角标所引原句照录研读底本；页码依原书目录所载本章各节起始页，点角标可查原句。</li>
+<li>星号表示不能说；A、B 指底本两组例句的标记；()表示成分省略；f 代表「很、挺」一类程度副词。</li>
+<li>互动记录只存本机浏览器，不上传。</li>
+<li>单文件离线页面，断网可读。</li>
+</ul>
+<p>校勘记：「别 甭」一节底本标题讹作「别 需」，据目录从正；「不调查调查不容易开清楚」之「开」疑为「弄」；「手里墙着一盆水」之「墙」应为「端」；「容词加『过』的例子」之「容词」应为「形容词」；「是差号」「还是同常同」两处讹乱，当为「～」号；底本表格「*重摸」与正文「重打」不一，疑有一讹；「闭着眼睛说瞎活」之「活」应为「话」。页内从正字，疑讹之处汇记于此，以待核对。</p>
+</details>
+<details>
+<summary>本章例句库（照录底本，折叠省流）</summary>
+<ul>
+<li><sup class="cite" data-cite="wd-cls">[8]</sup>动词分类五看：是、在、认为（不加「了」）｜是、在、姓、同意（不加「着」）｜是、姓、包括、成功（不重叠）｜借、教、送、给（带双宾语）｜送给你、交给你／*走给你、*唱给你</li>
+<li><sup class="cite" data-cite="wd-trans">[9]</sup>兼属两类：他笑了——他笑你｜他哭了——他哭他父亲｜坐着舒服些——坐飞机去｜睡一会儿——喜欢睡硬床｜车来了——来碗肉丝面｜他清醒过来了——清醒清醒头脑</li>
+<li><sup class="cite" data-cite="wd-must">[10]</sup>必带宾语的动词：散了会儿步的「散」｜结过婚的「结」｜姓王的「姓」｜具有、含有、加以、企图、成为；宾语转化：他理的发好｜发也不理，澡也不洗｜他是去年结的婚</li>
+<li><sup class="cite" data-cite="wd-ti">[11]</sup>体宾动词：骑(马)、买(票)、捆(东西)、喝(一杯)、驾驶(汽车)、修理(电灯)；谓宾动词：能(去)、会(写)、觉得(好)、打算(参加)、主张(先调查)、希望(快回信)；两可：喜欢说话～喜欢孩子｜赞成马上出发～赞成这个意见</li>
+<li><sup class="cite" data-cite="wd-zz">[12]</sup>真谓宾的宾语：同意/参加｜同意/参加这次会｜同意/大家都去｜同意/坐火车去｜同意/立刻参加；准谓宾：进行/调查｜进行/农村调查｜进行/周密的调查｜*进行/查｜*进行/调查农村｜*进行/立刻调查</li>
+<li><sup class="cite" data-cite="wd-mingd">[13]</sup>名动词：有影响、有准备、有剥削、有计划、有研究、有演出、有分析、有工作、有保证、有调查；*有看、*有写、*有去、*有反对、*有喜欢、*有同意；政治影响、思想准备、经济剥削、工业计划、历史研究、文艺演出、数学分析、电影工作、物质保证、农村调查</li>
+<li><sup class="cite" data-cite="wd-suo">[14]</sup>没有的歧义：没有影响｜没有发现｜没有分析｜没有影响(工作)｜没有发现(问题)｜没有分析(形势)；有调查就有发言权｜调查了就有发言权</li>
+<li><sup class="cite" data-cite="wd-aux">[16]</sup>助动词名单：能、能够、会、可以、可能、得、要、敢、想、应该、应当、该、愿意、情愿、乐意、肯、许、准、(不)配、值得</li>
+<li><sup class="cite" data-cite="wd-neng">[18]</sup>能能够可以会：能(够)挑二百斤的担子上山｜骆驼可以好几天不吃东西｜又会吹笛子，又会拉手风琴｜看样子会下雨｜可能找着了｜干这种事的人还能是好人？｜教室里不能抽烟｜谁都可以提意见｜每天晚上算帐算到十一二点，才得休息｜不得不说话｜不得不告诉你</li>
+<li><sup class="cite" data-cite="wd-yiyuan">[21]</sup>敢肯愿意情愿想要：敢负责任｜不敢不说｜你敢不告诉我｜只要肯下工夫就能学会｜我愿意一个人去｜他说什么也不肯｜我情愿走路（也不坐车）｜我不想溜冰，我想游泳</li>
+<li><sup class="cite" data-cite="wd-xuyao">[23]</sup>应应该该许准值得配：有事应该跟大家一块儿商量｜不早了，咱们该走了｜吹了风，又该感冒了｜考试的时候许不许看书？｜不准攀折花木｜值得看｜不配看</li>
+<li><sup class="cite" data-cite="wd-bie">[24]</sup>别甭：这种小事甭请示｜你就甭给他写信了｜好好听着，甭说话！｜你甭听他瞎说｜不用你操心｜你甭操心｜*甭你操心｜*你甭睁着｜*你可甭生病｜*你甭把钱弄丢了</li>
+<li><sup class="cite" data-cite="wd-hao">[25]</sup>好难容易：打扫干净好过年｜山坡太陡，只好蹲下来往下出溜｜咱们不好不去｜日语好不好学？好学｜日语容易学，阿拉伯语难学｜很难把他驳倒｜很难令人相信</li>
+<li><sup class="cite" data-cite="wd-ovl">[26]</sup>重叠式：看看书、下下棋、聊聊天｜洗洗衣服、铡铡草、喂喂牲口｜晚上想去看看电视｜那不过说说罢了｜你教我！～你教我：｜他伸伸舌头说｜我该去理理发了｜你戴戴看｜不信你坐坐试试｜车上不好上，我上上试试｜你去买买看</li>
+<li><sup class="cite" data-cite="wd-ovl2">[27]</sup>多常常与否定：你太累了，今天得多睡睡｜常常练练，就能学会｜鞋小了点儿，可是多穿穿就会大的｜不调查调查不容易弄清楚｜你怎么不问问？</li>
+<li><sup class="cite" data-cite="wd-le">[28]</sup>后缀了：他下了课就上图书馆去了｜下了课再去｜关了灯就什么也看不见了｜把草拔干净了再上肥｜天不亮就套好了大车｜等了一年｜坐了一会儿｜睡了两个钟头｜病了一个月｜房子塌了大半年了｜死了三年了｜他回来了好几个月了｜自行车丢了一星期了</li>
+<li><sup class="cite" data-cite="wd-adjle">[29]</sup>形容词加了：短了一寸｜稍微大了一点｜比先前瘦了好多｜*短一寸就合适了（不能加了）｜*稍微大一点好（不能加了）</li>
+<li><sup class="cite" data-cite="wd-mei">[30]</sup>没和没有：没有共产党就没有新中国(歌词)｜他没孩子｜饭没煮熟｜隧道还没有打通｜没下雨｜看了一遍——没(有)看｜套好了车——没(有)套好</li>
+<li><sup class="cite" data-cite="wd-le2">[31]</sup>两个了：他来过了｜太小了｜下雨了｜我找着那个地方了｜看了两遍了｜火车已经过了黄河了｜昨天就退了烧了</li>
+<li><sup class="cite" data-cite="wd-zhe">[32]</sup>后缀着：他正上着大学呢｜外头下着大雪｜台上坐着主席团｜旁边站着两个孩子｜手里端着一盆水｜门开着呢｜墙上挂着一幅画｜房顶上盖着一层厚厚的雪｜我比他大着十岁｜慢着点写！</li>
+<li><sup class="cite" data-cite="wd-guo">[33]</sup>后缀过：你动了手术没有？～你动过手术没有？｜去过～没(有)去过｜见过～没(有)见过｜北京从来没有这么冷过｜这个人从来没有闲过｜爬过山没有？（后缀）～爬过山就到了（补语）</li>
+<li><sup class="cite" data-cite="wd-2adj">[34]</sup>两类形容词：性质——大、红、快、好；大方、干净、规矩、伟大；状态——小小儿的｜干干净净（的）｜煞白、冰凉、通红、喷香、粉碎、稀烂、精光｜黑乎乎、绿油油、慢腾腾、硬梆梆｜脏里孤唧｜灰不溜秋、白不雌列｜可怜巴巴、老实巴焦｜挺好的、很小的、怪可怜的</li>
+<li><sup class="cite" data-cite="wd-ding">[35]</sup>定语的受限与自由：白纸、白头发／*白手、*白家具｜贵东西／*贵手绢儿｜薄纸／*薄灰尘｜脏衣服／*脏糖｜窄心眼儿／*窄布｜凉水／*凉脸｜厚书／*厚雪｜香花儿／*香饭｜小自行车／*小报复｜短袖子／*短沉默｜绿绸子／*绿庄稼｜蓝墨水／*蓝天空｜聪明孩子／*聪明动物｜老实人／*老实学问；换成状态形容词：雪白的手｜挺贵的手绢儿｜薄薄的灰尘｜脏里孤唧的糖｜很窄的布｜冰凉的脸｜老厚的雪｜香喷喷的饭｜小小的报复｜短短的沉默｜绿油油的庄稼｜蓝蓝的天空｜挺聪明的动物｜老老实实的学问</li>
+<li><sup class="cite" data-cite="wd-zhuang">[36]</sup>状语的受限与自由：轻放／*轻搁｜慢走／*慢游｜重打／*重接；轻轻地搁｜慢慢地游｜重重地摸｜紧紧地拿着｜乖乖地玩儿｜热呼呼地喝下去｜好好地写一篇</li>
+<li><sup class="cite" data-cite="wd-mx">[37]</sup>名形词：很危险｜有(很大)危险｜很困难｜有(不少)困难｜很矛盾｜有(很多)矛盾；毒、机械、理想、规矩、道德、模范</li>
+<li><sup class="cite" data-cite="wd-duo">[38]</sup>多少：人多｜书少｜多想想｜少出去｜说得多｜做得少｜人很多｜书不少｜很多人｜不少书｜看过很多｜买了不少；两本书；买了两本(书)＝很多书；买了很多(书)</li>
+<li><sup class="cite" data-cite="wd-tch">[39]</sup>的字结构：凉→凉的｜便宜→便宜的｜买→买的｜游泳→游泳的｜看电影→看电影的｜到上海去→到上海去的｜木头→木头的｜我→我的｜两块钱→两块钱的</li>
+<li><sup class="cite" data-cite="wd-zs">[41]</sup>者与所：食者｜所食；我们所反对的只是这一点～这正是我们所反对的东西｜他所说的与事实不符～他所说的理由不能成立｜今天所演的／今天演的</li>
+<li><sup class="cite" data-cite="wd-3way">[42]</sup>体词化三路：我们反对的｜我们所反对的｜我们的反对(是有理由的)</li>
+</ul>
+</details>
+
+</main>
+
+<footer>
+<div class="wrap">
+<p>上一章 <a href="语法讲义-04体词.html">第四章 体词</a>｜下一章 <a href="语法讲义-06代词.html">第六章 代词</a>｜<a href="index.html">返回目录</a></p>
+</div>
+</footer>
+
+<div id="source" class="pop" hidden>
+<div class="pop-card" role="dialog" aria-modal="true" aria-labelledby="st">
+<div class="pop-head"><b id="st"></b><button id="close">关闭</button></div>
+<p id="sp" class="pop-page"></p>
+<p id="sq" class="pop-quote"></p>
+<p id="sz"></p>
+<button id="popJump" hidden>跳到相关场景</button>
+<p class="pop-tip">引文照录研读底本；页码依原书目录所载本章各节起始页。按 Esc 关闭。</p>
+</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+var $=function(s){return document.querySelector(s)};
+var $$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var store={
+  get:function(k){try{return localStorage.getItem('z5-'+k)}catch(e){return null}},
+  set:function(k,v){try{localStorage.setItem('z5-'+k,v)}catch(e){}}
+};
+function motionOK(){return !window.matchMedia('(prefers-reduced-motion: reduce)').matches}
+var SCENES=['s1','s2','s3','s4','s5','s6','s7'];
+var NAMES=['一','二','三','四','五','六','七'];
+var backStack=[];
+function jumpTo(id){
+  var t=document.getElementById(id);if(!t)return;
+  backStack.push(location.hash||'#');
+  t.scrollIntoView({behavior:motionOK()?'smooth':'auto',block:'start'});
+  try{history.pushState({scene:id},'','#'+id)}catch(e){}
+  var b=$('#back');if(b)b.hidden=false;
+}
+function goBack(){
+  var prev=backStack.pop();
+  var b=$('#back');if(b)b.hidden=backStack.length===0;
+  if(prev&&prev.length>1){var t=document.querySelector(prev);if(t){t.scrollIntoView({behavior:motionOK()?'smooth':'auto'});return}}
+  window.scrollTo({top:0,behavior:motionOK()?'smooth':'auto'});
+}
+window.addEventListener('popstate',function(){if(backStack.length)backStack.pop();var b=$('#back');if(b)b.hidden=backStack.length===0});
+
+var SOURCES={
+'wd-div':{page:55,quote:'谓词包括动词和形容词两类。我们用来划分动词和形容词的标准有以下两项：（1）前边能不能加“很”，(2) 后边能不能带宾语。前三类是动词，最后一类是形容词。',zh:'两项标准：前加很、后带宾。'},
+'wd-def':{page:55,quote:'(1)凡受“很”修饰而不能带宾语的谓词是形容词。(2)凡不受“很”修饰或能带宾语的谓词是动词。要注意的是确定形容词的两项标准(受“很”修饰和不能带宾语)必须兼备；确定动词的两项标准(不受“很”修饰和能带宾语)只要符合其中一项就行。',zh:'形容词两项兼备，动词一项即算。'},
+'wd-qu':{page:55,quote:'“委曲”可以受“很”修饰，又能带宾语(委曲你了)，看起来好像属于上边表里的1类。但是1类动词带宾语的时候，可以同时受“很”修饰(例如：很想你|很怕生病)。“委曲”受“很”修饰的时候，后头不能带宾语；带宾语的时候，不受“很”修饰。我们说此类动词带宾语的时候是动词，不带宾语的时候是形容词。',zh:'委曲：带宾是动词，不带是形容词。'},
+'wd-duan':{page:55,quote:'“端正，宽大”本来是形容词，现在常常在后边加上宾语，使它转化成动词，例如：端正学习态度|宽大了一个特务分子。情形与“委曲”类似。',zh:'端正宽大：形容词加宾语转动词。'},
+'wd-si':{page:55,quote:'“死”有时是死亡的意思，在这个意义上不受“很”修饰，是不及物动词；有时是死板、不灵活的意思，在这个意义上可以受“很”修饰（规定得很死），是形容词。(3.3)',zh:'死：死亡义动词，死板义形容词。'},
+'wd-zhun':{page:55,quote:'（1）表示时量，动量或程度的宾语：休息了一会儿醒了两回大了一点儿。（2）表示运动终点的处所宾语：飞昆明来北京去学校。（3）表示存在、出现或消失的存现宾语(8.5)：新到了一批货来了个客人死了父亲。我们把这几种类型的宾语称为准宾语，把一般宾语称为真宾语。我们上边给动词和形容词下的定义里所说的宾语都应理解为真宾语。',zh:'准宾语三类：时量、终点、存现。'},
+'wd-over':{page:55,quote:'高兴：高高兴兴～高兴高兴｜舒服：舒舒服服～舒服舒服｜漂亮：漂漂亮亮～漂亮漂亮｜热闹：热热闹闹～热闹热闹。这些词兼属形容词和动词（不及物动词）两类。……我们把形容词重叠式看成形容词里的一类，管它叫状态形容词。与状态形容词对应，形容词原来的形式可以叫作性质形容词。',zh:'高兴高兴兼两类；重叠式是状态形容词。'},
+'wd-cls':{page:57,quote:'例如有的动词能加后缀“了”，有的不能(是、在、认为)；有的动词能加后缀“着”，有的不能(是、在、姓、同意)；有的动词能重迭，有的不能(是、姓、包括、成功)；有的能带双宾语(借、教、送、给)，有的不能；有的动词能放在“～给你”的格式里(送给你，交给你)，有的不能(*走给你，*唱给你)。',zh:'动词小类五看。'},
+'wd-trans':{page:58,quote:'有的动词带真宾语的时候和不带真宾语的时候意义上有区别，比较：他笑了一——他笑你｜他哭了一——他哭他父亲｜坐着舒服些——坐飞机去｜睡一会儿——喜欢睡硬床｜车来了——来碗肉丝面｜他清醒过来了——清醒清醒头脑。我们说这些动词兼属不及物动词和及物动词两类。',zh:'不带宾语与带宾语，两属。'},
+'wd-must':{page:58,quote:'只有一部分及物动词后头经常带宾语。例如“散了会儿步”的“散”、“结过婚”的“结”、“姓王”的“姓”以及“具有、含有、加以、企图，成为”等等。……他理的发好｜发也不理，澡也不洗｜他是去年结的婚。',zh:'散结姓：宾语常在后头。'},
+'wd-ti':{page:58,quote:'有的动词只能带体词性的宾语，不能带谓词性的宾语，例如：骑(马)，买(票)，捆(东西)，喝(一杯)，驾驶(汽车)，修理（电灯）。我们管这类动词叫体宾动词。有的动词能带谓词性的宾语，例如：“能(去)、会(写)、觉得(好)、打算(参加)、主张(先调查)、希望(快回信)”。我们管这类动词叫谓宾动词。……喜欢说话（谓词性宾语）～喜欢孩子（体词性宾语）',zh:'体宾谓宾之分。'},
+'wd-zz':{page:58,quote:'“觉得、希望、赞成、打算、以为，认为、感到、能、应该”等都是这样的动词，我们管这一类谓宾动词叫真谓宾动词。……进行/调查（宾语是名动词）｜进行/农村调查（宾语是偏正结构，修饰语是名词）｜进行/周密的调查（宾语是偏正结构，修饰语是形容词）｜*进行/查（宾语是一般动词，不是名动词）｜*进行/调查农村（宾语是述宾结构）｜*进行/立刻调查（宾语是偏正结构，修饰语是副词）。除了“进行”以外，“有、作、加以、给以、受到、予以”等等也是这样的动词。我们管这一类动词叫准谓宾动词。',zh:'真谓宾与准谓宾。'},
+'wd-mingd':{page:60,quote:'名词可以直接修饰名词，修饰动词时，后头要加“的”字，可是上边举的“影响”等动词不受这个限制，可以受名词直接修饰。例如：政治影响 思想准备 经济剥削 工业计划 历史研究 文艺演出 数学分析 电影工作 物质保证 农村调查。……总括起来说，名动词的主要语法特征是：(1)可以充任准谓宾动词的宾语，(2)可以受名词直接修饰。',zh:'名动词两特征。'},
+'wd-suo':{page:60,quote:'“锁”有两个意思，一指物件，一指动作；在前一种意义上是名词，在后一种意义上是动词。……我们分得出两个不同的“锁”，却分不出两个不同的“影响”，我们说“影响”只有一个，是名动词。',zh:'锁是两个词，影响是一个。'},
+'wd-meiyou':{page:60,quote:'“没有人”的“没有”文言说“无”；“没有来”的“没有”文言说“未”。……因此“没有调查就没有发言权”一句话是有歧义的。里头的“没有调查”可以理解为“无调查”，也可以理解为“未调查”。',zh:'没有调查：无调查或未调查。'},
+'wd-aux':{page:61,quote:'助动词是真谓宾动词里的一类。包括：“能、能够、会、可以、可能、得、要、敢、想、应该、应当、该、愿意、情愿、乐意、肯、许、准、(不)配、值得”等等。助动词有以下一些特点：只能带谓词宾语，不能带体词宾语；不能重叠；不能带后缀“了”“着”“过”；可以放在“～不～”的格式里；可以单说。',zh:'助动词五特点。'},
+'wd-xiang':{page:61,quote:'a. 很想他(思念、怀念)｜b. 想办法(思索、动脑筋)｜c. 我想他不会来了(推测、料想)｜d. 他想去学习(愿望)。a 和 b 的“想”能带体词宾语，c 的“想”不能放在“～不～”格式里，都不是助动词，只有 d 里的“想”才是助动词。',zh:'想四义，仅愿望义是助动词。'},
+'wd-neng':{page:62,quote:'“能”和“可以”意义近似，所以(1)(2)两句里的“能”和“可以”可以互换。要注意的是“能挑二百斤”的否定说法是“不能挑二百斤”，“可以好几天不吃东西”的否定说法不是“不可以好几天不吃东西”，因为“不可以”是不许可、不应该的意思。……“会”则多半用来说要经过学习或练习获得的技能。因此“能走路”和“会走路”意思不一样。',zh:'能可以会：能力与技能。'},
+'wd-keneng':{page:62,quote:'“会”和“可能”都表示可能性，所以例(4)的“会”也可以换成“可能”。二者的区别在于：“可能”可以是估计某事将要发生(晚上可能下雨)，也可以是估计某事已经发生(可能已经下雨了)；“会”只能用于前一种情形，不能用于后一种情形(不能说：*会已经下雨了)。',zh:'可能兼估已未，会只管将。'},
+'wd-xuke':{page:62,quote:'“能、能够、得、可以”表示环境或情理上许可。例如：教室里不能抽烟。……“不得”后头常常跟一个否定形式的宾语。例如：不得不说话|不得不告诉你。',zh:'许可一类，不得后接否定。'},
+'wd-yiyuan':{page:63,quote:'“敢”表示有胆量这么办，宾语往往是肯定形式(敢负责任)。否定形式只出现在双重否定句(不敢不说)或反问句(你敢不告诉我)里。……“肯”和“愿意”“乐意”都表示意愿。……“肯”和“愿意”“乐意”有区别。……“情愿”和“愿意”不一样，是“宁可”“宁肯”的意思，例如：我情愿走路（也不坐车）。',zh:'敢肯愿意情愿的分寸。'},
+'wd-yao':{page:63,quote:'助动词“要”有以下两种意思：1. 愿望：我要喝水。2. 事实上需要如此或情理上应该如此：过河要有船。(1)可以用“不要”来否定(我不要喝水)。(2)不能用“不要”否定。',zh:'要两义，否定各别。'},
+'wd-xuyao':{page:64,quote:'这几个词都表示情理上或事实上的需要。例如：有事应该跟大家一块儿商量。……“该”有时表示一种估计或推测。这种地方不能用“应该”。例如：吹了风，又该感冒了。……“许”和“准”都表示允许、许可。……这两个词都表示估价。“值得看”是说有看的价值。“不配看”是说没有看的资格。',zh:'应该表需要，该兼推测；许准值得配。'},
+'wd-bie':{page:65,quote:'“别”是“不要”的合音，“甭”是“不用”的合音。……此外，“不用”可以带体词宾语，所以可以说：“不用你操心”，“甭”是助动词，不能带体词宾语，所以只能说“你甭操心”，不能说“甭你操心”。……对于说话的人不企望发生的事，只能用“别”，不能用“甭”。',zh:'别甭：合音与口气。'},
+'wd-hao':{page:66,quote:'“好”是形容词，但在下面的句子里是助动词：打扫干净好过年。……这类“好”字只用于肯定和否定，没有“好不好”的说法。……“难”和“容易”前头常常加上程度副词“很”，注意“难”和“很难”的语法功能有差别：“难”的宾语总是单个的动词(特别是单音节的)，如果宾语不止一个词，就只能用“很难”。',zh:'好难容易的助动词用法。'},
+'wd-ovl':{page:66,quote:'“看看书”“下下棋”都表示时量短，等于说“看会儿书”，“下会儿棋”。……前一句强调动作的时间不长，用重叠式；后一句说成天洗衣服、铡草、喂牲口，就不能用重叠式了。……前一句的“听”不能换成“听听”，因为“听听”是说“听一会儿”。……你教我！你教我：前一句用动词基本形式，显得直率，生硬；后一句用重叠式，口气就不一样。……这种重叠式常常表示尝试。例如：这顶帽子太小了，你戴戴看。',zh:'重叠式：短时、缓和、尝试。'},
+'wd-ovl2':{page:68,quote:'“多睡睡”等于说“多睡一会儿”，“常常练练”等于说“常常练一下”。……动词重叠式的否定形式只出现于以下两种场合，一是“不……不……”的前一个“不”字后头。例如：不调查调查不容易开清楚。一是反问句里。例如：你怎么不问问？',zh:'多常常照表短少；否定两处。'},
+'wd-le':{page:68,quote:'“看了一遍”表示已经看完了，和“看一遍”的意思不一样，可见动词后缀“了”的作用在于表示动作的完成。……汉语的“了”只表示动作处于完成状态，跟动作发生的时间无关，既可以用于过去发生的事，也可以用于将要发生的或设想中发生的事。……如果动词所指的动作(行为、变化)带持续性，那末时量宾语表示动作持续的时间。……如果动作所指的动作无持续性，那末时量宾语表示动作完成以后经历的时间。',zh:'了表完成，不论时候。'},
+'wd-adjle':{page:68,quote:'形容词加“了”，后边跟着由数量词或是“很多、好多、不少”充任的宾语，表示已经实现了的事。……不带“了”字，可以指未实现的事，也可以指已实现的事；带了“了”字，只能指已经实现的事。',zh:'形容词加了指已实现。'},
+'wd-mei':{page:68,quote:'“没”和“没有”加在体词性成分前边，表示不存在或不不具有，相当于文言里的“无”。……加在谓词性成分前边表示动作没有完成或是事情没有发生，相当于文言里的“未”。……从这些方面考虑，把谓词性成分前头的“没”和“没有”看成动词是合理的。',zh:'没有无未，谓词前也可算动词。'},
+'wd-le2':{page:68,quote:'北京话里有一个和动词后缀“了”同音的语气词“了”。动词后缀“了”只在句中出现，不在句尾出现；语气词“了”只在句尾出现，不在句中出现。……以下各句都有两个“了”，前一个是动词后缀，后一个是语气词：看了两遍了。',zh:'两个了：句中与句尾。'},
+'wd-zhe':{page:68,quote:'动词后缀“着”加在动词后头表示动作或变化的持续（已经开始，尚未结束）。……“着”加在“站、坐、躺、蹲、端、捧、举”等表示姿态的动词后头，表示一种静止的状态。……形容词加“着”，后头总跟着数量词充任的准宾语。',zh:'着表持续与静止。'},
+'wd-guo':{page:68,quote:'“过”表示曾经发生某事或曾经经历某事，跟后缀“了”不同。……要注意后缀“过”和动词“过”的区别。……前一句里的“过”是动词后缀。……后一句里的“过”是动词做补语，这个“爬过”是越过的意思。',zh:'过表曾经；过与过有别。'},
+'wd-2adj':{page:73,quote:'形容词可以分为性质形容词和状态形容词两类。性质形容词包括单音节形容词(大、红、快、好)和一般的双音节形容词(大方、干净、规矩、伟大)。状态形容词包括：(1) 单音节形容词重叠式：小小儿的。(2) 双音节形容词重叠式：干干净净（的）。(3) “煞白、冰凉，通红、喷香、粉碎，稀烂，精光”等。……(4) 带后缀的形容词，包括ABB式：“黑乎乎、绿油油、慢腾腾、硬梆梆”，A里BC式：“脏里孤唧”，A不BC式：“灰不溜秋、白不雌列”。……(5)“f+形容词+的”形式的合成词(f代表“很、挺”一类程度副词)：挺好的，很小的，怪可怜的。',zh:'状态形容词五式。'},
+'wd-ding':{page:73,quote:'性质形容词做定语修饰名词有带“的”和不带“的”两种格式……在不带“的”的格式里，形容词和名词的配合受到限制，比如可以说“白纸”“白头发”，但是不说成不大说“白手”“白家具”。……总之，性质形容词直接（不带“的”）修饰名词的格式是受限制的，而状态形容词则可以自由地修饰名词。',zh:'性质受限，状态自由。'},
+'wd-zhuang':{page:73,quote:'无论是单音节或双音节性质形容词作状语都受到限制。例如可以说“轻放”，不能说“*轻搁”；可以说“慢走”，不能说“*慢游”；可以说“重打”，不能说“*重接”。状态形容词作状语就不受什么限制。',zh:'状语同上：性质受限。'},
+'wd-mx':{page:75,quote:'“毒”可以受“很”修饰，又能做“有”的宾语，可是这两种语法位置上的“毒”意思不一样，我们说一个是形容词，一个是名词。……我们把这些词看成是形容词里的一个小类，称为名形词。名形词和名动词都是兼有名词性质的谓词。',zh:'名形词：兼名词性质的形容词。'},
+'wd-duo':{page:76,quote:'“多”和“少”都表示数量。这两个词能做谓语（人多|书少）、状语（多想想|少出去）和补语（说得多|做得少），不能做定语（没有“*多人”“*少书”的说法）。……“很多”“不少”兼有这几方面的语法功能……(c) 项说明“很多”和“不少”带有体词性，从它们能指代名词一点看，可以说跟数量词的功能相当。',zh:'多少：谓状补三能，定语不能。'},
+'wd-tch':{page:77,quote:'在现代汉语里，谓词性成分转化为体词性成分的主要手段是在谓词性成分后边加上助词“的”造成“的”字结构。……因为“的”有这种转化意义的作用，所以不仅可以加在谓词性成分上，也可以加在体词性成分上。',zh:'的字结构：谓词转体词。'},
+'wd-de3':{page:77,quote:'“小的”是“的”字结构，其中的“的”是助词。“小小的”是状态形容词，其中的“的”是状态形容词的后缀。“渐渐的”是副词，其中的“的”是副词的后缀。这三个“的”语音形式相同，其实是完全不同的东西。',zh:'三个的同形不同质。'},
+'wd-zs':{page:77,quote:'在古汉语里，跟助词“的”相当的语法成分有两个，一个是“者”，一个是“所”。“者”字加在动词或形容词后头造成体词性成分，“所”字加在及物动词前头造成体词性成分。……“者”字结构大都指施事(食者)，“所”字结构大都指受事(所食)。……因为“今天演的”有歧义，可以指演出的节目，也可以指演节目的人，“今天所演的”所指是明确的，只能指节目。',zh:'者指施事，所指受事。'},
+'wd-3way':{page:77,quote:'在现代汉语里，主谓结构可以通过三种不同的方式体词化。一是在整个主谓结构后头加上助词“的”造成“的”字结构，例如“我们反对的”。二是在谓语前边加“所”字之后再组成的“的”字结构，这就是上文讨论的“我们所反对的”一类格式。三是在主语后头加“的”字，例如“我们的反对(是有理由的)”。',zh:'主谓体词化三路。'}
+};
+var JUMPS={
+'wd-div':'s1','wd-def':'s1','wd-qu':'s1','wd-duan':'s1','wd-si':'s1','wd-zhun':'s1','wd-over':'s1',
+'wd-cls':'s2','wd-trans':'s2','wd-must':'s2',
+'wd-ti':'s3','wd-zz':'s3','wd-mingd':'s3','wd-suo':'s3','wd-meiyou':'s3',
+'wd-aux':'s4','wd-xiang':'s4','wd-neng':'s4','wd-keneng':'s4','wd-xuke':'s4','wd-yiyuan':'s4','wd-yao':'s4','wd-xuyao':'s4','wd-bie':'s4','wd-hao':'s4',
+'wd-ovl':'s5','wd-ovl2':'s5','wd-le':'s5','wd-adjle':'s5','wd-mei':'s5','wd-le2':'s5','wd-zhe':'s5','wd-guo':'s5',
+'wd-2adj':'s6','wd-ding':'s6','wd-zhuang':'s6',
+'wd-mx':'s7','wd-duo':'s7','wd-tch':'s7','wd-de3':'s7','wd-zs':'s7','wd-3way':'s7'
+};
+var pop=$('#source'),st=$('#st'),sp=$('#sp'),sq=$('#sq'),sz=$('#sz'),pj=$('#popJump');
+function openPop(key){
+  var s=SOURCES[key];if(!s)return;
+  st.textContent='出处 · 第五章';
+  sp.textContent='原书第 '+s.page+' 页';
+  sq.textContent=s.quote;
+  sz.textContent=s.zh;
+  var j=JUMPS[key];
+  if(j){pj.hidden=false;pj.onclick=function(){closePop();jumpTo(j)};}else{pj.hidden=true}
+  pop.hidden=false;
+}
+function closePop(){pop.hidden=true}
+$$('sup.cite').forEach(function(el){
+  el.setAttribute('role','button');el.setAttribute('tabindex','0');el.setAttribute('title','查看出处');
+  el.addEventListener('click',function(){openPop(el.getAttribute('data-cite'))});
+  el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openPop(el.getAttribute('data-cite'))}});
+});
+$('#close').addEventListener('click',closePop);
+pop.addEventListener('click',function(e){if(e.target===pop)closePop()});
+$$('.reveal-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var d=b.nextElementSibling;if(!d)return;
+    d.hidden=!d.hidden;b.textContent=d.hidden?'揭晓':'收起';
+  });
+});
+var done=0;
+$$('[data-quiz]').forEach(function(box){
+  var score=$('#score');
+  box.querySelectorAll('.q').forEach(function(q){
+    var ans=q.getAttribute('data-correct');
+    var ok=q.querySelector('.q-fb.ok'),no=q.querySelector('.q-fb.no');
+    q.querySelectorAll('.opts button').forEach(function(b){
+      b.addEventListener('click',function(){
+        q.querySelectorAll('.opts button').forEach(function(x){x.disabled=true});
+        if(b.getAttribute('data-v')===ans){b.classList.add('right');if(ok)ok.hidden=false;done++;}
+        else{b.classList.add('wrong');if(no)no.hidden=false;}
+        if(score)score.textContent='已答对 '+done+' / 3 题';
+      });
+    });
+  });
+});
+var scale=parseFloat(store.get('scale'))||1;
+function applyScale(){document.documentElement.style.fontSize=(16*scale)+'px';}
+applyScale();
+$('#minus').addEventListener('click',function(){scale=Math.max(.9,+(scale-0.05).toFixed(2));store.set('scale',scale);applyScale();});
+$('#plus').addEventListener('click',function(){scale=Math.min(1.25,+(scale+0.05).toFixed(2));store.set('scale',scale);applyScale();});
+var theme=store.get('theme')||'auto';
+function applyTheme(){
+  var dark=theme==='dark'||(theme==='auto'&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.classList.toggle('dark',dark);
+  $('#theme').textContent=dark?'明色':'暗色';
+}
+applyTheme();
+$('#theme').addEventListener('click',function(){
+  var dark=document.documentElement.classList.contains('dark');
+  theme=dark?'light':'dark';store.set('theme',theme);applyTheme();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closePop();
+  if(e.target.tagName==='BUTTON'||e.target.tagName==='INPUT')return;
+  var cur=location.hash.replace('#','');
+  var i=SCENES.indexOf(cur);if(i<0)i=0;
+  var n=e.key==='ArrowRight'?Math.min(SCENES.length-1,i+1):Math.max(0,i-1);
+  jumpTo(SCENES[n]);
+});
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting)store.set('scene',en.target.id)});
+  },{rootMargin:'-35% 0px -55% 0px'});
+  SCENES.forEach(function(id){var t=document.getElementById(id);if(t)io.observe(t)});
+}
+var rt=$('#resume'),rtxt=$('#resumeTxt');
+window.addEventListener('scroll',function(){store.set('y',String(window.scrollY))},{passive:true});
+function showResume(){
+  var sc=store.get('scene'),y=parseInt(store.get('y')||'0',10);
+  if(!sc||!y||y<200)return;
+  var i=SCENES.indexOf(sc);if(i<0)return;
+  rtxt.textContent='上次读到第'+NAMES[i]+'节';
+  rt.hidden=false;
+}
+$('#resumeGo').addEventListener('click',function(){var sc=store.get('scene');if(sc)jumpTo(sc);rt.hidden=true;});
+$('#resumeNo').addEventListener('click',function(){rt.hidden=true;store.set('y','0');store.set('scene','');window.scrollTo({top:0,behavior:motionOK()?'smooth':'auto'})});
+showResume();
+$('#back').addEventListener('click',goBack);
+$$('[data-jump]').forEach(function(b){b.addEventListener('click',function(){jumpTo(b.getAttribute('data-jump'))})});
+})();
+</script>
+</body>
+</html>

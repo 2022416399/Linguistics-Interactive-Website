@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第三节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第三节 交互研读</p>
+  <h1>变换分析：在句式之间找依存</h1>
+  <p class="lead">变换分析的思想从纳斯菲尔德、海里斯一路来到汉语：变换是句式的变换，不是具体句子之间的变换；客观依据是句式之间的聚合关系。它的贡献是分化歧义、鉴别「同构不同质」的句式，而必须守住的铁律是平行性原则。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html" class="cur">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>句式</b>的变换</li><li>聚合关系</li><li>同构不同质</li><li>平行性原则</li><li>杀鸡不用牛刀</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>变换分析：解释的任务接棒者</h2>
+<p>层次分析在歧义面前停步，变换分析接过「解释」的任务。本节的主线是：变换的资格（句式而非句子）、变换的用场（分化歧义、证明句式异同）、变换的边界（平行性原则与它自身的局限）。</p>
+
+<article class="chapter" data-chapter="3">
+<h3>第三节｜汉语语法研究的变换分析法</h3>
+
+<p>变换分析的思想源头，可以追溯到1896年纳斯菲尔德（J. G. Nasfield）在《普通语言学》里的尝试；把变换系统用于语法研究、使之成为操作程序的，则是海里斯（Z. S. Harris）1952年的《结构语言学》；朱德熙1986年又把这一方法引入汉语研究，写进《变换分析的平行性原则》一文<sup class="cite" data-cite="s-chan-sheng">出处</sup>。一条线索从描写语言学出发，在汉语里落地生根。</p>
+
+<blockquote>层次分析法很有用，但它有局限，它不能解释造成歧义的原因。变换分析法正是适应这种研究、分析的需要而产生的。<sup class="cite" data-cite="s-chan-sheng">出处</sup></blockquote>
+
+<p>先说清楚前提：变换不是随便换个说法，它的客观依据是<b>句式之间的聚合关系</b>。</p>
+
+<blockquote>变换分析的客观依据，是句法结构之间的聚合关系，具体说是句式之间的聚合关系。<sup class="cite" data-cite="s-3-3-basis">出处</sup></blockquote>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："变换"这个词在本书里一共有几种含义？</p>
+<div class="opts">
+<button data-ans="0">一种，就是改写成另一个句子</button>
+<button data-ans="0">两种</button>
+<button data-ans="1">三种</button>
+</div>
+<div class="why"><b>三种。</b>一个句式变成另一个句式；哪两个句式之间有变换关系；还有变换分析这种方法本身。得分清了，才不会把具体的句子跟具体的句子之间的变换，误当成"句式的变换"<sup class="cite" data-cite="s-bianhuan-gainian">出处</sup>。</div>
+</div>
+
+<details>
+<summary>"变换"一词的三种含义</summary>
+<p class="q">第一种含义指一个句式变成另一个句式，即句式的变换；第二种含义指句式的变换关系，即哪两个句式之间有对应；第三种含义指变换分析这种方法本身，即运用变换关系来研究语法。<sup class="cite" data-cite="s-bianhuan-gainian">出处</sup></p>
+<p>纳斯菲尔德1896年首次提出变换思想；海里斯1952年在《结构语言学》中把变换系统化，并强调平行性原则；朱德熙1986年发表《变换分析的平行性原则》，把这一原则在汉语研究中落实。<sup class="cite" data-cite="s-chan-sheng">出处</sup></p>
+</details>
+
+<blockquote>对于变换分析法，首先必须认识清楚，"变换是句式的变换"，不是具体的句子跟具体的句子之间的变换。<sup class="cite" data-cite="s-jushi-bianhuan">出处</sup></blockquote>
+
+<p>屋顶上的小偷，是变换分析分化歧义的经典案例。同一形式，可以分别对应三种语义。</p>
+
+<details>
+<summary>例：我在屋顶上发现了小偷</summary>
+<p class="q">例句"我在屋顶上发现了小偷"有三种意思：屋顶上有一个小偷，我在屋顶上发现了他；我发现了一个小偷，小偷在屋顶上；我发现了一个小偷，我在屋顶上。<sup class="cite" data-cite="s-ambiguity">出处</sup></p>
+<p>三种意思对应三种变换式：可以换成"是我在屋顶上发现小偷的"，也可以换成"是我发现小偷在屋顶上的"，还可以换成"我在屋顶上，发现小偷……"。变换式各不相同，层次却可能相同——这正说明层次分析不足以分化、解释这类歧义，须用变换来验证<sup class="cite" data-cite="s-yanzheng-qiyi">出处</sup>。</p>
+</details>
+
+<details>
+<summary>展开：送／偷／织一件毛衣给她（3.1）</summary>
+<p class="q">请看格式相同、词类序列一致的三句："我送了一件毛衣给她""我偷了一件毛衣给她""我织了一件毛衣给她"。用层次分析，三者结果一样；但它们表示的语法意义不同：第一句包含两个行为动作而实际只有一个过程（送的过程也就是给的过程）；第二句包含两个转移过程；第三句包含一个制作过程和一个转移过程。这种区别可以用变换分析来证实。<sup class="cite" data-cite="s-song-tou-zhi">出处</sup></p>
+<p class="q">第一句代表的[A式]能变换为"动词+给+与事+受事"（我送给她一件毛衣）；第二、三句代表的[B式][C式]都不能这样变换（*我偷给她一件毛衣、*我织给她一件毛衣）。而[B式]与[C式]还有区别：[B式]能变换为"从……+动词+受事+给+与事"（我从上海买了一件毛衣给她），[C式]不能（*我从上海织了一件毛衣给她）。至此，变换分析分化了层次分析所不能分化的这一歧义句法格式。<sup class="cite" data-cite="s-song-tou-zhi">出处</sup></p>
+</details>
+
+<p>变换分析的更大贡献，是揭示"同构不同质"的句式。请看"双及物构式"这一组例子：</p>
+
+<blockquote>"双及物构式"指一个动词同时带两个宾语（近宾语、远宾语）的构式，如"我送她一件毛衣"。<sup class="cite" data-cite="s-shuangyu-geju">出处</sup></blockquote>
+
+<table class="matrix">
+<caption class="small muted">表三（示意）：[A式]与[C式]、[B式]与[D式]的变换矩阵</caption>
+<thead><tr><th>原式</th><th>例句</th><th>变换式</th><th>结果</th></tr></thead>
+<tbody>
+<tr><td>[A式]</td><td>台上放着鲜花</td><td rowspan="2">⇒ [C式]<br>鲜花正在台上放着</td><td>成立</td></tr>
+<tr><td>[A式]</td><td>台上坐着主席团</td><td>成立</td></tr>
+<tr><td>[A式]</td><td>台上演着京戏</td><td>⇒ 京戏正在台上演着</td><td>不成立</td></tr>
+<tr><td>[B式]</td><td>台上演着京戏</td><td rowspan="2">⇒ [D式]<br>台上正在演京戏</td><td>成立</td></tr>
+<tr><td>[B式]</td><td>门外敲着锣鼓</td><td>成立</td></tr>
+<tr><td>[B式]</td><td>台上放着鲜花</td><td>⇒ 台上正在放鲜花</td><td>不成立</td></tr>
+</tbody>
+</table>
+
+<details>
+<summary>展开：变换分析的客观依据（3.3）</summary>
+<p class="q">层次分析的客观依据是句法构造的层次性，变换分析的客观依据则是<b>句法格式的相关性</b>——各个句法格式表面各不相同，实际上彼此存在内在联系。"张三送给李四那个照相机""张三送了那个照相机给李四""张三把那个照相机送给了李四""那个照相机被张三送给李四了""那个照相机张三送给李四了"，词类序列、层次构造、结构关系、语法意义都不同，但句中各实词之间的语义结构关系相同，前提条件正是语义结构关系一致。<sup class="cite" data-cite="s-xiangguanxing">出处</sup></p>
+<p class="q">造成相关性的原因有两个。其一，语言表达要求细致，同一个意义可以用不同句法格式来表达，造成大量同义句式：基本意思"我丢了两把办公室的钥匙"，可以有好些种说法。其二，语言表达要求尽可能经济，常在一定的上下文里省略词语，使原本属于不同句式、内部语义关系不同的句子表面成了形式相同的歧义句——"老虎把鸡吃了"属"把"字句，"白菜被鸡吃了"属"被"字句，为经济而省略"把NP""被NP"后，都出现了"鸡吃了"，而"鸡"一为受事一为施事，歧义由此而生。<sup class="cite" data-cite="s-jingji-shiyong">出处</sup></p>
+</details>
+
+<p>这张矩阵说明：[A式]（表存在、静态）能变换为[C式]（"名词＋正在＋动词＋方位词"式），[B式]（表活动、动态）能变换为[D式]（"名词＋正在＋动词＋宾语"式），两者正好互补，绝不串门<sup class="cite" data-cite="s-shuangyu-geju">出处</sup>。请读者也来试一试。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："戏台上放着鲜花"为什么不能变换成"戏台上正在放鲜花"？</p>
+<div class="opts">
+<button data-ans="0">因为"鲜花"是远宾语，不能被"正在"修饰</button>
+<button data-ans="1">因为"放着"表静态存在，属于[A式]，只能换成"鲜花正在台上放着"</button>
+</div>
+<div class="why">关键在动词的语义特征："放着鲜花"里的"放"带［+使附着］特征，句子表静态存在，属[A式]；"正在放鲜花"表动态活动，是[B式]的变换式。两类句式各有各的去处，硬套就出病句。这也是下一节语义特征分析的伏笔<sup class="cite" data-cite="s-jingtai-dongtai">出处</sup>。</div>
+</div>
+
+<p>变换分析要守一条铁律——<b>平行性</b>。</p>
+
+<blockquote>变换分析的平行性原则，是指原句式各个实例与变换式各个实例之间，在结构关系、语义关系上要一一对应。<sup class="cite" data-cite="s-pingxing-xing">出处</sup></blockquote>
+
+<p>鱼目混珠的例子提醒我们：形式上像变换，实质上各走各的路，就不能算数。矩阵(7)里列有九个实例，其中第 c、e、i 三例的变换方向与其余各例并不一致；矩阵(8)里八个实例，其中第 d、h 两例同样如此<sup class="cite" data-cite="s-pingxing-xing">出处</sup>。这几例"搭错车"的句子，恰恰证明平行性原则不可或缺。</p>
+
+<details>
+<summary>展开：平行性原则的五条（3.4）</summary>
+<p class="q">一个合格的变换，首先得形成一个变换矩阵，矩阵由三部分组成：左边是所要研究分析的句法格式（原句式）及其一个个具体实例，中间是箭头，右边是变换式的一个个实例。此外还得遵守：一、矩阵左边作为原句式的实例，形式（词类序列）必须相同，语法意义（高层次语义关系）也必须一致；二、矩阵右边作为变换式的实例，形式与语法意义也必须一致；三、每一横行左右两侧的句子，共现词之间的语义结构关系（低层次语义关系）必须保持一致；四、每一横行左右两侧在语法意义（高层次语义关系）上的差别必须一致。<sup class="cite" data-cite="s-pingxing-wutiao">出处</sup></p>
+<p class="q">拿"病人在床上躺着"那组矩阵来说，c例"他在马背上跳着"、e例"他在地上画着"、i例"水在河里流着"就是鱼目混珠的实例：其余各例原句式都表示存在、表静态，这三例却表示活动、表动态；其余变换式都表存在静态，这三例却表事物位移；就c例说，原句式里"马背上"指明"他跳"这一活动的场所，变换式"他跳在马背上"里"马背上"却成了"他"位移的终点，共现词语义关系并不一致。可见平行性原则确保了变换的合格性。<sup class="cite" data-cite="s-yumu-hunzhu">出处</sup></p>
+</details>
+
+<details>
+<summary>展开：变换分析把研究引向深入（3.5）</summary>
+<p class="q">层次分析无法分化的"反对的是他"，变换分析可以分化：它既能变换为"反对他"（[A式]→[C式]），也能变换为"反对搬迁方案的是他"（[B式]→[D式]），但不能交叉——*"苦练她"、*"苦练基本功的是她"之类不成立，两种意思就此分开。又如"这几箱书送北京大学图书馆"，"送"理解为"赠送"时图书馆是书的接受者（与事宾语），理解为"运送"时是书位移的终点（处所宾语）；前者能变换为"送给"，后者能变换为"送到"，但不能互换，歧义由此得到证明。<sup class="cite" data-cite="s-fandui-ta">出处</sup></p>
+<p class="q>更重要的是发现新规律。实例一：双宾结构的远宾语不能由表示占有领属关系的偏正结构充任——"把我弟弟的箱子给你"不能说成"给你我弟弟的箱子"，这一点是在研究双宾结构跟"把"字句的变换关系时发现的。实例二：不用"被""给"一类字的受事主语句，受事主语不能是人称代词——"把他撤了"能说成"他撤了"，"把它扔了"却不能说成"它扔了"。实例三：用"还"的"比"字句除表示比较外还能表示含夸张意味的比喻，"更"不能——"比狐狸还狡猾"能说，"比狐狸更狡猾"不能说。实例四：副词"都"的确切语法意义是强调后面所说的性状或情况适用于它所指向的某个集合中的每一个个体，或无一例外——所以"我们三个人都给他送了一个大大的蛋糕"是病句（实际只送了一个）。<sup class="cite" data-cite="s-yinshen-sige">出处</sup></p>
+</details>
+
+<blockquote>变换分析也有局限，它不能解释造成歧义的原因，也回答不了有些句式为什么不能那样变换。<sup class="cite" data-cite="s-bianhuan-juxian">出处</sup></blockquote>
+
+<p>不过，变换分析仍是分化歧义、鉴别句式、发现规律的有力工具。作者用一句俗话提醒学者们量力而行：</p>
+
+<blockquote>杀鸡不必用牛刀。<sup class="cite" data-cite="s-ji-buyong-niudao">出处</sup></blockquote>
+
+<details>
+<summary>展开：变换分析也有局限（3.6）</summary>
+<p class="q">变换分析可以用来分化歧义句式，但不能用来解释造成歧义的原因。它把"名词[处所]+动词+着+名词"分化为表存在静态的[A式]与表活动动态的[B式]，达到了分化的目的；但要进一步追问——两者词类序列相同、内部构造层次和句法结构关系也相同，为什么会表示不同的语法意义？这歧义句式究竟是怎么造成的？变换分析回答不了，就得寻求别的解决手段。<sup class="cite" data-cite="s-bianhuan-juxian">出处</sup></p>
+</details>
+
+<p class="small muted">下一节，我们将打开语义特征这把更精细的刀，去看 [+使附着] 之类的标记如何决定句式的命运。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">变换分析的客观依据是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">句子成分的多少</button>
+      <button data-v="b">句式之间的聚合关系</button>
+      <button data-v="c">语音形式的异同</button>
+    </div>
+    <div class="why">答案：b。变换分析抓的是格式之间的相关性。见本节，底本 L2775。</div>
+  </div>
+  <div class="item">
+    <p class="q">「戏台上放着鲜花」不能变换成「戏台上正在放鲜花」，为什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">「鲜花」是远宾语，不能被「正在」修饰</button>
+      <button data-v="b">「放着」表静态存在，属[A式]，只能换成「鲜花正在台上放着」</button>
+      <button data-v="c">音节搭配不协调</button>
+    </div>
+    <div class="why">答案：b。关键在动词的语义特征[+使附着]。见本节，底本 L3313。</div>
+  </div>
+  <div class="item">
+    <p class="q">变换分析必须遵守的原则是？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">经济性原则</button>
+      <button data-v="b">平行性原则</button>
+      <button data-v="c">最小对比原则</button>
+    </div>
+    <div class="why">答案：b。朱德熙称之为「变换分析的平行性原则」。见本节，底本 L2911。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：变换矩阵中鱼目混珠实例的完整列表、平行性原则各条的完整表述。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-3-3-basis": { page:"第三节 3.3 · 底本 L2673", quote:"层次分析的客观依据是句法构造的层次性。变换分析的客观依据是什么呢？是句法格式的相关性。", zh:"变换分析抓的是格式之间的相关性，不是单个句子内部的层次。" },
+  "s-ambiguity": { page:"第三节 3.1 · 底本 L2375", quote:"我在屋顶上发现了小偷", zh:"三种理解：我在屋顶上、小偷在屋顶上、双方都在屋顶上。层次与结构关系相同，分歧在实词间的语义结构关系。" },
+  "s-chan-sheng": { page:"第三节 3.2 · 底本 L2661", quote:"在语法研究中，最早使用 transformation 这一术语的是1896年出版的英国语法学家纳斯菲尔德（J. C. Nesfield）的 English Grammar Series。", zh:"纳斯菲尔德1896首次使用 transformation；海里斯1952系统化；朱德熙1986引入汉语研究。" },
+  "s-bianhuan-gainian": { page:"第三节 3.2 · 底本 L2669", quote:"英语语法著作中的 transformation 有三种含义：在传统语法中，指句子的改换；在美国描写语言学中，指不同句式的变换；在乔姆斯基的转换生成语法中，指由底层结构到表层结构的转换。", zh:"“变换”一词的三种含义。" },
+  "s-jushi-bianhuan": { page:"第三节 3.3 · 底本 L2775", quote:"对于变换分析法，首先必须认识清楚，“变换是句式的变换”。用朱德熙先生1986年的话来说，“变换可以理解为存在于两种结构不同的句式之间的依存关系”。", zh:"变换是句式的变换，不是具体句子之间的变换。" },
+  "s-yanzheng-qiyi": { page:"第三节 3.4 · 底本 L2513", quote:"我们从外部形式上验证或者说证实了“我在屋顶上发现了小偷”确实是一个既可以表示a义又可以表示b义的歧义句……上面所用的分析方法，就是变换分析法。", zh:"变换分析：从外部形式上验证歧义、分化句式。" },
+  "s-shuangyu-geju": { page:"第三节 3.5 · 底本 L3119", quote:"“双宾结构”就是指一个动词后面带上两个宾语的句法结构，如“给他一本书”。", zh:"双宾结构：一个动词带两个宾语（近宾语、远宾语）。" },
+  "s-jingtai-dongtai": { page:"第三节 3.6 · 底本 L3313", quote:"动词 a：[+使附着]", zh:"[A式]动词带[+使附着]表存在、静态；[B式]动词带[-使附着]表活动、动态。" },
+  "s-pingxing-xing": { page:"第三节 3.7 · 底本 L2911", quote:"以上所说的原则，已故著名语言学家朱德熙先生称之为“变换分析的平行性原则”。", zh:"平行性原则：原句式与变换式各实例在结构关系、语义关系上一一对应。" },
+  "s-bianhuan-juxian": { page:"第三节 3.6 · 底本 L3239", quote:"变换分析法可以用来分化歧义句式，但不能用来解释造成歧义句式的原因。", zh:"变换分析也有局限：能分化歧义，不能解释成因。" },
+  "s-song-tou-zhi": { page:"第三节 3.1 · 底本 L2521", quote:"这三个句子，格式相同，词类序列也都是“名词[施事]+动词+名词[受事]+给+名词[与事]”。如果用层次分析法来对它们进行分析，结果一样。", zh:"送／偷／织：变换分析区分同构不同质。" },
+  "s-xiangguanxing": { page:"第三节 3.3 · 底本 L2671", quote:"变换分析的客观依据是什么呢？是句法格式的相关性。", zh:"句法格式的相关性是变换分析的客观依据。" },
+  "s-jingji-shiyong": { page:"第三节 3.3 · 底本 L2740", quote:"造成具有这种相关性的不同句法格式的原因有两个", zh:"表达要求细致与经济，造成同义句式与歧义。" },
+  "s-pingxing-wutiao": { page:"第三节 3.4 · 底本 L2771", quote:"作为一个合格的变换，一定得形成一个变换矩阵（matrix），这个变换矩阵由三部分组成", zh:"变换矩阵三部分与平行性原则。" },
+  "s-yumu-hunzhu": { page:"第三节 3.4 · 底本 L2912", quote:"在这个变换矩阵里就有鱼目混珠的实例，即c例、e例和i例。", zh:"鱼目混珠：平行性原则的必要性。" },
+  "s-fandui-ta": { page:"第三节 3.5 · 底本 L3031", quote:"而用变换分析法可以分化这歧义句式。“反对的是他”的词类序列是", zh:"反对的是他：两种变换式分化歧义。" },
+  "s-yinshen-sige": { page:"第三节 3.5 · 底本 L3118", quote:"双宾结构的远宾语不能由表示占有领属关系的偏正结构充任，这个特点就是在运用变换分析法时发现的。", zh:"变换分析引向深入的四个实例。" },
+  "s-ji-buyong-niudao": { page:"第三节 3.8 · 底本 L3017", quote:"用通俗的话来说，“杀鸡不必用牛刀”。", zh:"量力而行：能用层次分析解决的，不必动用变换分析。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

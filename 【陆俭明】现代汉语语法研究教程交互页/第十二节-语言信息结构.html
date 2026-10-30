@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第十二节 · 语言信息结构 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第十二节 交互研读</p>
+  <h1>语言信息结构：句子传的意，大于句子说的话</h1>
+  <p class="lead">「语言是人类最重要的交际工具」这句老三句没错，但更得知道：<b>语言最本质的功能是传递信息</b><sup class="cite" data-cite="s-language-basic-function-is-information">出处</sup>。而句子所传递的信息，在大多数情况下都<b>大于</b>句子本身表示的意义<sup class="cite" data-cite="s-information-greater-than-meaning">出处</sup>。本节给出一个新的研究视角：句子结构与句子信息结构是平行的两套结构，汉语信息传递遵循八条准则<sup class="cite" data-cite="s-eight-criteria">出处</sup>。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html">第八节 形式学派</a><a href="第九节-功能学派.html">第九节 功能学派</a><a href="第十节-认知学派.html">第十节 认知学派</a><a href="第十一节-构式语法.html">第十一节 构式语法</a><a href="第十二节-语言信息结构.html" class="cur">第十二节 信息结构</a><a href="第十三节-虚词研究.html">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>信息</b>＞句子意义</li><li>平行的两套结构</li><li>话题—评述</li><li>八条信息准则</li><li>话题句特别多</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第十二节</p>
+<h2>语言信息结构分析思路：从传递信息看语法</h2>
+<p>语言信息结构理论是第五版新增的又一节。它要回答的问题很根本：我们天天在用语言传递信息，可「信息」在句子里是怎么安放的？为什么「你很冷」说不出口而「我很冷」可以？为什么「把」字句、「被」字句、话题句在汉语里这么多？把「信息传递」这条线拉出来，许多老问题会得到新解释<sup class="cite" data-cite="s-theory-complement-not-replace">出处</sup>。</p>
+
+<article class="chapter" data-chapter="12">
+<h3>第十二节｜汉语语法研究的语言信息结构分析思路</h3>
+
+<div class="kicker">12.1 需要不断寻求新的研究视角</div>
+
+<p>中外语言研究的历史虽有 2000 多年之久，但至今我们对语言可能还是只看到了它冰山的一角，对语法的复杂性远未认识清楚<sup class="cite" data-cite="s-language-iceberg">出处</sup>。在本节之前有关语法分析的理论方法已经介绍了 20 余种，但是有些语法现象我们运用前面介绍的分析方法还难以解释。譬如：表感知的形容词词语，如「累、疼、冷」等，在陈述句中如果直接作谓语，要受到限制——不接受第二人称主语（朱敏，2012）<sup class="cite" data-cite="s-zhumin-2012">出处</sup>：</p>
+
+<blockquote>a. 我很累。｜他很累。｜*你很累。<br>
+b. 我很疼。｜他很疼。｜*你很疼。<br>
+c. 我很冷。｜他很冷。｜*你很冷。<sup class="cite" data-cite="s-zhumin-2012">出处</sup></blockquote>
+
+<p>这为什么？怎么解释？</p>
+
+<p>任何学科领域，都会不断产生新的理论方法。新理论、新方法的产生，都有其内在原因，这可以从三方面来认识（陆俭明，2010）<sup class="cite" data-cite="s-new-theory-three-reasons">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>第一</b>就科学领域说，不存在放之四海、放之古今而皆准的理论方法。任何一种理论方法都有它可取、有用之处，但也都有它的局限。局限不等于缺点，局限是说，任何一种理论方法都只能解决一定范围里的问题，都只能解释部分现象，都不能包打天下。</li>
+<li><b>第二</b>客观世界是极为复杂的，况且在不断发展变化。而人们对客观世界的认识，至今仍少而又少；因此，在研究过程中会不断遇到新问题，不断发现新现象，要求研究者去解决，去解释。</li>
+<li><b>第三</b>对于新发现的问题，对于新发现的现象，常常是原有的理论方法不能有效地加以解决或解释。</li>
+</ul>
+
+<p>由于上述三方面的因素，在研究进程中，常常会逼着研究者要不断寻求新的研究理论与分析方法。新理论、新方法的不断产生，体现了研究的不断发展，而不是简单地替代——不是说新的理论方法产生后原有的理论方法就可以抛弃不用了。不同的理论方法之间常常表现为一种互相补充的关系<sup class="cite" data-cite="s-theory-complement-not-replace">出处</sup>。</p>
+
+<p>汉语语法研究的状况也是如此。因此我们在语法研究过程中必须具有这样一种意识：要不断寻求新的研究视角。关于这一点，胡裕树先生早在 1994 年发表的《汉语语法研究的回顾与展望》一文中就这样告诫我们<sup class="cite" data-cite="s-hu-yushu-1994">出处</sup>：</p>
+
+<blockquote>「三个平面理论的提出，给人们带来了一种语法观念甚至语言观念上的变化。这种观念上的改变，将促使人们运用新的思路和方法对汉语语法规律和现象作全方位、多角度的观察、描写和解释。」<sup class="cite" data-cite="s-hu-yushu-1994">出处</sup></blockquote>
+
+<p>这段话也指明了「三个平面」理论的精神实质之所在。上面所举的例（1）的语法现象，难以运用已有的理论方法去解释，就需要探寻新的理论方法。语言信息结构理论就为我们语法研究提供了一种新的分析视角<sup class="cite" data-cite="s-zhumin-2012">出处</sup>。</p>
+
+<div class="kicker">12.2 对语言的再认识</div>
+
+<p>什么是语言信息结构？要回答这个问题，需要对语言有进一步的认识。关于语言，最重要的是要认识语言的功能和语言的本体性质。说到语言的功能，我们都会背诵那老三句：语言是人类最重要的交际工具，语言是思维的物质外壳，语言是民族乃至人类记录、传承文化的主要载体<sup class="cite" data-cite="s-language-basic-function-is-information">出处</sup>。</p>
+
+<blockquote>「这说法没有错，但要知道，语言最本质的功能是传递信息。」<sup class="cite" data-cite="s-language-basic-function-is-information">出处</sup></blockquote>
+
+<p>在言谈交际中，我们常常会听到这样一句话：「这我（们）早知道了。」此话的意思就是「你（们）所说的对我（们）来说已不属于新信息」。那「老三句」所说的语言功能，其实是「传递信息」这一语言最本质的功能的延伸。而就语言本体的性质而言，我们常说的一句话是：「语言是一个声音和意义相结合的符号系统。」这也不错，但我们更需深刻认识到，语言这个音义结合的符号系统可不是一个简单的系统，而是一个具有层级性的声音和意义相结合的复杂的符号系统——在语音层面，有音位、音节、音节群等不同层级；在音义结合的符号层面更有语素、词、短语、小句、句子、句群，句子还分单句、复句等不同层级<sup class="cite" data-cite="s-language-hierarchical">出处</sup>。</p>
+
+<p>而语言结构系统之所以是一个具有层级性的音义结合的复杂的符号系统，在很大程度上，也正是由语言的「传递信息」这一本质功能所决定的。这又该如何理解呢？我们知道，人凭借语言所传递的信息，就是说话者对客观事物或现象的种种多姿多彩、错综复杂的感知所得。说话人要将自己对客观事物或现象的种种感知所得传递给听话人，中间会进行两次复杂的加工<sup class="cite" data-cite="s-language-hierarchical">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>第一次加工</b>说话者在自己认知域内所进行的加工，主要是将自己通过某些感觉器官所感知形成的直感形象或直觉以及由此形成的意象图式，运用内在语言将其进一步加工为概念结构、概念框架。</li>
+<li><b>第二次加工</b>说话者根据自身的交际意图、言谈交际环境、听话人情况等的不同或变化，将自己在认知域中已形成的概念结构、概念框架运用外在语言转化为所要传递的信息。</li>
+</ul>
+
+<p>言语表达的基本单位是句子。句子是由词「组合而成」的，所以人们常说「词是句子的建筑材料」。要运用语言系统中的动态单位句子来传递说话者想要传递的信息，得解决好两个问题：第一个问题是，作为句子的建筑材料的词如何组合成句来为传递信息服务？第二个问题是，如何确保信息传递的清晰性、连贯性、稳定性、顺畅性？我们知道，传递一个复杂的信息，往往需要用到十几个乃至更多的词。假如只是孤立地列出一个一个的词，一方面孤立的词义不能形成关联语义，更无法生成句义，另一方面就量上而言也会受到「人的认知域的记忆功能 7±2」的受限程度的制约（Miller，1956）<sup class="cite" data-cite="s-miller-1956">出处</sup>。因此，借以传递信息的句子，其内部所包含的若干个词，必须依据所传递的信息的复杂程度，进行层层打包组块，最好还能给个标记<sup class="cite" data-cite="s-miller-1956">出处</sup>。</p>
+
+<p>不妨举个例子来说明一下——譬如，我们要传递一个「存在」事件。说到「存在」，必然有个存在物，也必然有个存在的处所，还需要将存在物与存在处所相联系的链接成分。现代汉语里最典型的存在句是「处所成分＋有＋（数量）名」成分那样的存在句，填入具体的词语便产生一个个存在句。那动词「有」实际起着连接的作用<sup class="cite" data-cite="s-existential-abc">出处</sup>：</p>
+
+<blockquote>（1）床上有病人。<br>（2）床上有被子。<sup class="cite" data-cite="s-existential-abc">出处</sup></blockquote>
+
+<p>这就是说，按汉族人的民族心理，要传递一个存在事件的信息，习惯于将存在处所作为话题，将存在物作为传递给他人的主要信息，也就是一般所说的「信息焦点」。我们将例（1）、例（2）存在句记为甲类存在句。如果要同时表明那存在物以何种状态或方式存在着，现代汉语里就将那链接成分换为「动词＋着」，即「V 着」<sup class="cite" data-cite="s-existential-abc">出处</sup>：</p>
+
+<blockquote>（3）床上躺着病人。<br>（4）床上叠着被子。<sup class="cite" data-cite="s-existential-abc">出处</sup></blockquote>
+
+<p>那「V 着」实际同时起着连接作用。我们将例（3）、例（4）存在句记为乙类存在句。上述存在句可表示为下表<sup class="cite" data-cite="s-existential-abc">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表一（转制）：甲类、乙类存在句的三段配置<sup class="cite" data-cite="s-existential-abc">出处</sup></caption>
+<thead><tr><th>类别</th><th>存在处所</th><th>链接</th><th>存在物</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">甲类<br><span class="small muted">NP<sub>L</sub>＋有＋NP</span></td><td>NP<sub>L</sub></td><td>有</td><td>NP</td></tr>
+<tr><td>床上</td><td>有</td><td>病人。</td></tr>
+<tr><td>床上</td><td>有</td><td>被子。</td></tr>
+<tr><td rowspan="3">乙类<br><span class="small muted">NP<sub>L</sub>＋V着＋NP</span></td><td>NP<sub>L</sub></td><td>V 着</td><td>NP</td></tr>
+<tr><td>床上</td><td>躺着</td><td>病人。</td></tr>
+<tr><td>床上</td><td>叠着</td><td>被子。</td></tr>
+</tbody>
+</table>
+
+<p>链接部分的语形长度是有限的，可是表示存在处所和存在物的语形长度可以因为「要求指示得尽可能清楚明白」而很长<sup class="cite" data-cite="s-existential-abc">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表二（转制）：超长成分的存在句，仍保持三块<sup class="cite" data-cite="s-existential-abc">出处</sup></caption>
+<thead><tr><th>类别</th><th>存在处所</th><th>链接</th><th>存在物</th></tr></thead>
+<tbody>
+<tr><td>甲</td><td>张三前天刚从王府井买的床上</td><td>有</td><td>一个发着高烧的病人。<sup class="cite" data-cite="s-existential-abc">出处</sup></td></tr>
+<tr><td>甲</td><td>张三前天刚从王府井买的床上</td><td>有</td><td>三床红锦缎被面的新被子。</td></tr>
+<tr><td>乙</td><td>张三前天刚从王府井买的床上</td><td>躺着</td><td>一个发着高烧的病人。<sup class="cite" data-cite="s-existential-abc">出处</sup></td></tr>
+<tr><td>乙</td><td>张三前天刚从王府井买的床上</td><td>叠着</td><td>三床红锦缎被面的新被子。<sup class="cite" data-cite="s-existential-abc">出处</sup></td></tr>
+</tbody>
+</table>
+
+<blockquote>「然而，再怎么长也始终会将指明存在处所的词语打成一个包，将指明存在物的词语打成一个包，始终让句子保持『存在处所—链接—存在物』这样一个词语链，这样就便于信息接受者解码理解。」<sup class="cite" data-cite="s-packing-three-blocks">出处</sup></blockquote>
+
+<p>这里有个问题：为什么词语再多还是能保持三块呢？那是因为有标记在那里指示。什么标记？就是「有」和「V 着」——只要在「有」或「V 着」这标记之前是个处所成分，在这标记之后又有个表示事物的成分，就只能是传递「存在」事件的信息流。学界有「标记」论之说，这大家都知道。一般将标记视为一种语言现象。事实上，表面看是语言现象，实质上还是特殊的「信息传递标记」，服务于信息传递<sup class="cite" data-cite="s-packing-three-blocks">出处</sup>。因此说，语言之所以是一个具有层级性的复杂的符号系统，就是由「传递信息」这一语言的最本质的功能所决定的。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 330" role="img" aria-label="存在处所链接存在物三块打包示意图">
+<rect x="0" y="0" width="680" height="330" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">存在句的三块打包：存在处所—链接—存在物</text>
+<g font-family="KaiTi,serif" font-size="14" text-anchor="middle">
+<rect x="20" y="44" width="250" height="44" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="145" y="72" fill="#29241d">床上</text>
+<rect x="285" y="44" width="110" height="44" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="340" y="72" fill="#29241d">有</text>
+<rect x="410" y="44" width="250" height="44" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="535" y="72" fill="#29241d">病人。</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" text-anchor="middle">
+<text x="145" y="106" fill="#3d5a6c">甲类：存在处所＝话题</text><text x="340" y="106" fill="#a87f24">标记</text><text x="535" y="106" fill="#9d4938">存在物＝信息焦点</text>
+<path d="M145 114 L145 132" stroke="#dcd2bd" stroke-width="1.2"/><path d="M535 114 L535 132" stroke="#dcd2bd" stroke-width="1.2"/>
+<text x="340" y="150" fill="#6f675a">成分再长，也还是这三块——</text>
+</g>
+<g font-family="KaiTi,serif" font-size="12" text-anchor="middle">
+<rect x="20" y="162" width="330" height="48" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="185" y="191" fill="#29241d">张三前天刚从王府井买的床上</text>
+<rect x="360" y="162" width="70" height="48" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="395" y="191" fill="#29241d">躺着</text>
+<rect x="440" y="162" width="220" height="48" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="550" y="191" fill="#29241d">一个发着高烧的病人。</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" text-anchor="middle">
+<text x="185" y="228" fill="#3d5a6c">存在处所（一个包）</text><text x="395" y="228" fill="#a87f24">V着＝标记</text><text x="550" y="228" fill="#9d4938">存在物（一个包）</text>
+<rect x="20" y="246" width="640" height="34" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="268" fill="#6f675a">「有」与「V着」都是信息传递标记：标记前是处所、标记后是事物，句子一定传递「存在」信息流</text>
+<text x="340" y="300" fill="#6f675a">打包组块的动因：人的认知域记忆功能有限（7±2，Miller 1956），必须层层打包才能顺利解码</text>
+<text x="340" y="322" fill="#6f675a">汉语按民族心理，习惯以存在处所为话题、以存在物为信息焦点</text>
+</g>
+</svg>
+<figcaption>图一（示意，转绘），非原书插图。三块配置与标记据底本第十二节 12.2 表一、表二及标记论述转绘<sup class="cite" data-cite="s-packing-three-blocks">出处</sup>。</figcaption>
+</figure>
+
+<div class="kicker">12.3 句子传递的信息 ≠ 句子表示的意义</div>
+
+<p>上面说了，语言是载体，语言最本质的功能是传递信息。在语言层面上，能用来传递信息的只能是句子、句群、篇章等这样一些动态单位。句子这一动态单位是信息传递的基本单位。句子所传递的信息有时会跟句子本身表示的意义几乎相等。如下面对话中的答话<sup class="cite" data-cite="s-info-equal-meaning">出处</sup>：</p>
+
+<blockquote>（1）「现在几点了？」「现在是 8 点 20 分。」<sup class="cite" data-cite="s-info-equal-meaning">出处</sup></blockquote>
+
+<blockquote>「但在大多数情况下，句子所传递的信息不等于句子本身的意义，大多都要大于句子本身表示的意义。」<sup class="cite" data-cite="s-information-greater-than-meaning">出处</sup></blockquote>
+
+<p>例如<sup class="cite" data-cite="s-ba-dian-le">出处</sup>：</p>
+
+<blockquote>（2）「八点了，都！」<sup class="cite" data-cite="s-ba-dian-le">出处</sup></blockquote>
+
+<p>例（2）在不同的语境中所传递的信息不同：有时可能表示「该起床了」，有时可能表示「该上班了」，有时可能表示「该开会了」，等等。再如<sup class="cite" data-cite="s-youqianma">出处</sup>：</p>
+
+<blockquote>（3）「你有钱吗？」<sup class="cite" data-cite="s-youqianma">出处</sup></blockquote>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「你有钱吗？」这个句子的意义很明确——询问对方有没有钱。可下面四种场合里，它实际传递的信息分别是什么？</p>
+<div class="opts">
+<button data-ans="0">四种场合传递的信息都一样，就是「问对方有没有钱」</button>
+<button data-ans="1">场合不同，传递的信息大不相同——借钱、主动借给、说「你买不起」、甚至可能意味着要打劫</button>
+</div>
+<div class="why">答案：b。在有的言谈交际语境中，是传递「问话人要向听话人借钱」的信息；在有的语境中，是问话人向听话人传递「如果你没有钱，我可以借些给你」的信息；在有的语境中，是传递「问话人对听话人想买什么东西持否定态度」这样的信息（意思是「你买不起」）；而在有的语境中，譬如在黑夜有人跑上来突然这样问你，这可能意味着要打劫<sup class="cite" data-cite="s-youqianma">出处</sup>。</div>
+</div>
+
+<p>例（3）是个问句，这个句子的意义十分明确：说话人询问对方有没有钱。可是这句问话，在不同的场合，即在不同的言谈交际的语境中所传递的信息会大不相同。上述情况说明，「句子本身的意义」和「句子所传递的信息」是两个截然不同的概念。从某个角度说，句子所传递的信息是由句子的意义融入一定的言谈交际的语境并且二者加以融合而产生的交际效果。句子所能出现的言谈交际的语境，从理论上来说是无限的；这也就是说，一个句子它能在多少不同的言谈交际语境中出现，它就能传递多少种各不相同的信息（陆俭明，1987）<sup class="cite" data-cite="s-lujianming-1987">出处</sup>。显然，句子所传递的信息除了包含句子本身的意义所提供的信息外，还包括「言谈交际的语境」所提供的信息；而这两方面的信息不是简单地相加，而是进行某种奇妙的融合。这里所说的「言谈交际的语境」，包含了说话人的表达意图、说话人和听话人都可能具有的知识背景、言谈双方对言谈交际现实环境的认识等。下面的对话清楚地表明了这一点<sup class="cite" data-cite="s-lajiche">出处</sup>：</p>
+
+<blockquote>（4）甲：现在几点了？<br>乙：收垃圾的车刚过去。<sup class="cite" data-cite="s-lajiche">出处</sup></blockquote>
+
+<p>在不处于现实语境里的人看来，那例（4）的答话简直是答非所问；但问话人已从对方答话中了解了现在大致的时间，那是因为答话人与问话人具有共同的知识背景——每天收垃圾的车都是 7 点半从这里经过。下面是屈承熹（2003）在文章中举的例子——一位患有膝盖关节炎的病人「笔者」去看医师，一见面的对话如下<sup class="cite" data-cite="s-quchengxi-2003">出处</sup>：</p>
+
+<blockquote>（5）医师：今天膝[膝盖]怎么样？<br>笔者：喔，我膝盖，教堂没有开会。<sup class="cite" data-cite="s-quchengxi-2003">出处</sup></blockquote>
+
+<p>例（5）「笔者」的答话，让人觉得文不对题，有点莫名其妙。可是医师明白。为什么？因为上一次「笔者」去看医师时，曾有过这样的对话<sup class="cite" data-cite="s-quchengxi-2003">出处</sup>：</p>
+
+<blockquote>（6）医师：今天膝[膝盖]怎么样？<br>笔者：膝[膝盖]还是有点儿痛，因为今天早上教堂开了个很长的会，会议室的冷气冷得不得了。<sup class="cite" data-cite="s-quchengxi-2003">出处</sup></blockquote>
+
+<p>很明显，例（5）的答话隐含着一个没在句子表面出现的背景信息，即例（6）答话所说的内容。为什么句子的意义碰到不同的语境就会传递不同的信息呢？原来，在人的认知域里，一个认知域可以投射并激活新的认知域，这也就是一般所说的基于「靠近性」的「概念隐喻」机制在起作用；另外，同一个认知域中不同要素之间也可以投射并产生联想，这也就是一般所说的基于「靠近性」的「概念转喻」机制在起作用。这些都是大家已经熟知而且已为认知心理学实验证明了的。还有，根据斯波伯（D. Sperber）和威尔逊（D. Wilson）所建立的「关联理论」（relevance theory），言语交际本身是一种动态性的认知活动，人与人之间一进入言语交际就随即会以认知为取向，将认知与交际紧密结合起来，使语言交际成为一种必须依靠推理思维来进行的认知过程；为确保交际取得最佳效果，说话者也好，听话者也好，会在认知上建立起「明示-推理」模式，以获取句子意义和语境之间的最佳关联效果（Sperber &amp; Wilson 1995）<sup class="cite" data-cite="s-relevance-theory">出处</sup>。显然，关联原则也是言语交际和话语过程中所追求和必须遵循的原则<sup class="cite" data-cite="s-relevance-theory">出处</sup>。</p>
+
+<p>句子所传递的信息不等于句子本身所表示的意义，但是，句子本身所表示的意义是整个句子所传递的信息的基础。因此，说话人要做到准确传递信息，就要求所说的句子不仅无误，而且力求意思明确、简洁；而听话者在言谈交际中，首先得准确无误地理解说话者所说句子的意义，在此基础上才能准确获得说话者每句话所要传递的信息。言语交际的事实告诉我们，交际之所以成为可能，首先就在于交际双方对句子的意义取得一致的理解，这是人们进行有效交际的必要条件；但这不是充分条件。对有效交际来说，还要求交际双方对言谈交际语境有相同的了解与认识，这样说话者通过「编码」组成的句子所传递的信息才能为听话者通过「解码」而获得正确接受与理解。句子的意义所提供的信息属于<b>基础信息</b>，由言谈交际语境所提供的信息属于<b>辅助信息</b>，在言谈交际中实际所传递的信息就是由句子的意义所提供的基础信息和言谈交际语境所提供的辅助信息互相奇妙融合而成的。至于二者具体如何奇妙融合，也是一个值得探究的问题<sup class="cite" data-cite="s-base-aux-info">出处</sup>。</p>
+
+<div class="kicker">12.4 关于语言信息结构</div>
+
+<p>人与人之间信息的传递可以凭借多种手段，语言则是最重要的一种手段。语言信息结构，粗略地说，就是指凭借语言符号这一载体传递信息所形成的信息结构。凭借语言符号这一载体传递信息何以也能形成一个结构呢？需知凭借语言的句子、句群等动态单位所传递的信息会形成一个像流水那样的「信息流」（information flow）。在这信息流中，会包含多少、哪些不同的信息元素？这还是需要深入探究的问题。就目前的认识而言，我们认为，在信息流中，一般会包含如下的信息元素<sup class="cite" data-cite="s-info-elements">出处</sup>：</p>
+
+<ul>
+<li>a. 说话人所要谈论的话题；</li>
+<li>b. 说话人所传递的对听话人（即接受信息者）来说是属于已知的信息；</li>
+<li>c. 说话人最想要传递的对听话人来说是未知的新信息；</li>
+<li>d. 为使听话人便于了解与明白所传递的信息而附加的某些背景信息；</li>
+<li>e. 为表明人际关系等而附加的情态信息；</li>
+<li>f. 为确保所传递的信息前后能衔接而附加的衔接性的信息；</li>
+<li>g. 某些标记性信息元素。</li>
+</ul>
+
+<p>显然，在信息流中众多的信息元素不会共处在一个层面上。这样，信息流中这众多的信息元素也必然要加以组合，以便使信息流具有结构的性质，从而确保信息传递的顺畅性、清晰性、稳定性。至此，我们大致可以给「语言信息结构」下一个比较充实的定义<sup class="cite" data-cite="s-information-structure-definition">出处</sup>：</p>
+
+<blockquote>「语言信息结构是指在人与人之间进行言语交际时凭借语言这一载体传递信息所形成的由不在一个层面上的种种信息元素所组合成的以信息流形态呈现的一种结构。」<sup class="cite" data-cite="s-information-structure-definition">出处</sup></blockquote>
+
+<p>不言而喻，语言信息结构如同语言一样，也会有它自己的结构系统和内在规律。最早谈论语言信息结构问题的是布拉格学派创始人马泰修斯（Vilém Mathesius，1929，转引自刘润清，1995）。当初马泰修斯设想的「句子信息结构」模式是<sup class="cite" data-cite="s-mathesius-1929">出处</sup>：</p>
+
+<blockquote>主位（theme）—过渡（transition）—述位（rheme）<sup class="cite" data-cite="s-mathesius-1929">出处</sup></blockquote>
+
+<p>主位是「话语的出发点」，是「所谈论的对象」，属于「已知信息」；「述位」是「话语的核心」，是「说话人对主位要讲的话，或与主位有关的话」，也是说话人要传递给听话人的主要信息，属于「未知信息」；「过渡」是属于「非主位的但又负载最小交际能力的成分」<sup class="cite" data-cite="s-mathesius-1929">出处</sup>。例如：</p>
+
+<blockquote>（1）He has fallen ill.（他病了。）<sup class="cite" data-cite="s-mathesius-1929">出处</sup></blockquote>
+
+<p>该句子的信息结构，马泰修斯设想为主位 he、过渡 has fallen、述位 ill。而后国外不断有人研究，主要如 Chafe（1976，1994）、Prince（1981）、Halliday（1994）、Lambrecht（1994）等。如今基本都采取二分法，认为一个「句子信息结构」由两大部分组成。不过，这两大部分该如何命名？目前学界又有几种不同的设想与说法<sup class="cite" data-cite="s-two-part-naming">出处</sup>：</p>
+
+<table class="matrix">
+<caption class="small muted">表三（转制）：句子信息结构两大部分的四种命名<sup class="cite" data-cite="s-two-part-naming">出处</sup></caption>
+<thead><tr><th>说法</th><th>名称</th><th>本书取舍</th></tr></thead>
+<tbody>
+<tr><td>（一）</td><td>主位—述位（theme-rheme / thematic-rhematic）</td><td>基本继承马泰修斯；其中「人际主位」「篇章主位」不如看作背景信息或衔接性信息元素</td></tr>
+<tr><td>（二）</td><td>话题—评述（topic-comment）</td><td><b>本书倾向采纳</b></td></tr>
+<tr><td>（三）</td><td>话题—自然聚焦点（topic-focus）</td><td>一般句子确实如此，但一问一答的答话有时不符合</td></tr>
+<tr><td>（四）</td><td>已知信息—未知信息（given-new information）</td><td>已知信息未必一定在未知信息之前，答话中尤然</td></tr>
+</tbody>
+</table>
+
+<p>按「主位」的不同性质还可细分为三小类（包括实例都转引自张伯江、方梅，1996）<sup class="cite" data-cite="s-theme-three-types">出处</sup>：</p>
+
+<ul class="rows">
+<li><b>话题主位</b>主位指明说话的话题。如「我们女人哪就是倔。」「那场大火啊，幸亏消防队来得早！」</li>
+<li><b>人际主位</b>主位是表明说话人语气、态度的单元成分。如「最好啊，谁也别欠谁的情。」「我觉得吧，你特有才气！」「不如啊，开个会商量商量。」</li>
+<li><b>篇章主位</b>主位属于句子信息结构，但起着在篇章中前后或者说上下连接的作用。如「其实呀，他并不傻。」「一上这小楼啊，特舒心！」</li>
+</ul>
+
+<p>Halliday（1994）论述了「主位-述位」结构，并明确指出，「『已知信息＋新信息』结构同『主位＋述位』结构并不是一回事」；「『主位＋述位』是以说话人为准，『已知信息＋新信息』则是以听话人为准」。Halliday 的看法完全正确。上述话题主位可认为与一般人所说的「话题—评述」的句子信息结构相当，而人际主位、篇章主位不如看作句子信息结构中为前景信息提供「背景信息」或「衔接性信息」的某种信息元素<sup class="cite" data-cite="s-halliday-1994">出处</sup>。</p>
+
+<p>至于「话题—自然聚焦点」的说法，一般句子信息结构确实是如此，但也并不都是如此，如一问一答的答话，有时就不符合「话题—自然聚焦点」的分析<sup class="cite" data-cite="s-answer-focus">出处</sup>：</p>
+
+<blockquote>（11）问：「谁去杭州了？」答：「<u>小张</u>去杭州了。」<sup class="cite" data-cite="s-answer-focus">出处</sup></blockquote>
+
+<p>例（11）答话的信息焦点就在「小张」上；「去杭州了」虽处于句子后部，但并不是答话的「自然聚焦点」。（四）「已知信息—未知信息」的说法，情况跟（三）类似，实际上已知信息未必一定在未知信息之前，特别是在答话中——问话中已说了「去杭州了」，在答话中当然就成为已知信息了，未知信息「小张」反而居于已知信息之前<sup class="cite" data-cite="s-answer-focus">出处</sup>。基于上述认识，所以关于「信息结构」的两大部分，我们倾向于采用「话题—评述」的说法。</p>
+
+<p>在我国，最早意识到语言信息结构问题是吕叔湘先生。吕先生在上个世纪 40 年代，就有「已知」「新知」即「已知信息」和「未知信息」的意识。吕叔湘先生在《从主语、宾语的分别谈国语句子的分析》第三部分「分析」中谈到主语、宾语和施事、受事位置关系时说到（吕叔湘，1946）<sup class="cite" data-cite="s-lvshuxiang-1946">出处</sup>：</p>
+
+<blockquote>「由『熟』而及『生』是我们说话的一般的趋势。这不完全是为了听者的便利，说话的人心里也是已知的先浮现（也可以说是由上文遗留下来），新知的跟着来。大多数句子都是施事者是已知的部分，所施事是新知的部分，例如『大鱼吃小鱼，小鱼吃虾米，虾米拱起背』……」<sup class="cite" data-cite="s-lvshuxiang-1946">出处</sup></blockquote>
+
+<p>吕先生这段话里新旧信息的意识十分明显。遗憾的是，吕先生后来没有再从这个视角去分析汉语语法现象，更没有能将这种意识深化为理论，这是非常可惜的。20 世纪 80 年代以来，我国学者从语言传递信息这一观念来分析汉语一些语法现象的研究成果，虽还是比较零散的，但也逐渐多起来了，如文炼（1984）、陆俭明（1987、2016、2017）、沈家煊（1989）、陆丙甫（1993）、张伯江和方梅（1996）、张斌（1998）、徐烈炯和刘丹青（1998、2003）、方梅（2005）、刘丹青（2008）、朱敏（2012）等。不过，讨论得比较多的集中于「话题」与「焦点」这两大问题上；而语言信息结构所需探讨的问题还有很多很多<sup class="cite" data-cite="s-domestic-research">出处</sup>。</p>
+
+<p>语言信息结构包含句子信息结构、篇章信息结构。句子信息结构是语言信息结构中最基本的结构；句子信息结构以上的大小信息结构统称为篇章信息结构，这是一种跨句的信息结构，跟句群、段落、篇章相对应。鉴于我们研究语言信息结构的目的是为了给汉语语法研究提供一种新的视角，因此本书只谈句子信息结构问题，至于篇章信息结构不准备在这里展开谈<sup class="cite" data-cite="s-sentence-vs-text">出处</sup>。</p>
+
+<div class="kicker">12.5 句子结构和句子信息结构的关系</div>
+
+<p>在语言结构系统里，存在「句子结构」；在语言信息结构系统里，存在「句子信息结构」。那么这二者彼此该是一种什么关系呢？目前国内外有这样一种看法：信息结构是语法结构的组成部分（Lambrecht, 1994:5；Halliday, 1994；周士宏，2016：绪论）。按此说，语言结构与语言信息结构彼此是一种包含关系。我们不这样认为。语言事实将会告诉我们<sup class="cite" data-cite="s-two-parallel-structures">出处</sup>：</p>
+
+<blockquote>「语言结构与语言信息结构，具体到句子结构与句子信息结构，彼此不是包含关系，彼此是平行的两套结构；当然，彼此会互有影响。」<sup class="cite" data-cite="s-two-parallel-structures">出处</sup></blockquote>
+
+<p>由于语言最本质的功能是传递信息，所以任何语言的句子结构必然要受信息传递的影响与制约。譬如，就目前所知的语言来说，在一般情况下，都是会将传递已知信息的语言成分放在传递未知信息的语言成分之前，这可以认为是人类语言信息结构的共性之一。但根据我们的观察与分析，汉语的句子结构受句子信息结构的影响跟印欧语（如英语）的句子结构受句子信息结构的影响有明显差别<sup class="cite" data-cite="s-known-before-new">出处</sup>。</p>
+
+<p class="tag">实例一</p>
+<p>假如要传递这样一个事件信息：那窗户玻璃打破了，打破那窗户玻璃的人是小王。在传递这一事件信息时，如果规定说话者要拿听话人也知晓的「那窗户玻璃」作为话题，那么传递这一事件信息所形成的信息流中，作为话题的「那窗户玻璃」，会居信息流的最端；「打破了」是说话人要传递的最主要的未知信息，是信息焦点；「小王」是专有名词，虽也属于未知信息，但信息单元的未知信息量显然大大小于「打破了」，所以不可能居于「打破了」之后。凭借汉语来传递那信息，句子内词语的先后排列次序就会完全按照信息结构的常规——作为话题的「那窗户玻璃」居于句首，作为信息焦点的「打破了」居于句尾，「小王」居于中间，说成<sup class="cite" data-cite="s-windowpane">出处</sup>：</p>
+
+<blockquote>（1）那窗户玻璃（被／给）小王打破了。<sup class="cite" data-cite="s-windowpane">出处</sup></blockquote>
+
+<p>英语虽然也会将作为话题的 the windowpane（那窗户玻璃）置于句首，但是，居于句尾的则是 by Xiaowang（小王），而非 break（打破），这跟汉语就不一样。整个句子说成<sup class="cite" data-cite="s-windowpane">出处</sup>：</p>
+
+<blockquote>（2）The windowpane was broken by Xiaowang.<sup class="cite" data-cite="s-windowpane">出处</sup></blockquote>
+
+<p>那是因为按英语句法规则，前置词结构（by Xiaowang）得置于谓语动词的后面。</p>
+
+<p class="tag">实例二</p>
+<p>当我们要传递一个抢劫事件的信息，要传递一个偷窃事件的信息，这在汉语里运用相同的句子结构——双宾结构。请看<sup class="cite" data-cite="s-rob-steal">出处</sup>：</p>
+
+<blockquote>（3）杰西抢了约翰所有的钱。<br>（4）杰西偷了约翰一些钱。<sup class="cite" data-cite="s-rob-steal">出处</sup></blockquote>
+
+<p>可是，这在英语里运用不同的句子结构。请看<sup class="cite" data-cite="s-rob-steal">出处</sup>：</p>
+
+<blockquote>（5）Jesse robbed John of all his money.（直译：杰西抢了约翰所有的钱。）<br>（6）Jesse stole some money from John.（直译：杰西偷了一些钱从约翰那里。）<sup class="cite" data-cite="s-rob-steal">出处</sup></blockquote>
+
+<p>两相比较，不难发现，汉语，无论是传递抢劫事件的信息还是传递偷窃事件的信息，都按照信息传递规则来排列句子的词序——词语所表示的未知信息量越大，越往后排。而英语得照顾民族心理——说到「抢劫」（rob）事件，人们关注的目标是「被抢者」，所以让作为目标的被抢者成分作动词的直接宾语，被抢的钱财物用前置词引出；而说到「偷窃」（steal）事件，人们关注的目标是「被偷的钱财物」，而非「被偷者」，所以让被偷的钱财物成分作宾语，被偷者则用前置词引出。这说明，有时信息的传递要受到民族心理的制约，进而影响句子结构<sup class="cite" data-cite="s-rob-steal">出处</sup>。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 320" role="img" aria-label="平行的两套结构与汉英词序对比示意图">
+<rect x="0" y="0" width="680" height="320" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">平行的两套结构：同一事件，汉语按信息流排，英语按句法规则排</text>
+<text x="20" y="56" font-size="12.5" fill="#3d5a6c" font-weight="700" font-family="-apple-system,PingFang SC,sans-serif">汉语：词序跟着信息流走</text>
+<g font-family="KaiTi,serif" font-size="14" text-anchor="middle">
+<rect x="20" y="68" width="180" height="42" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="110" y="95" fill="#29241d">那窗户玻璃</text>
+<rect x="212" y="68" width="130" height="42" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="277" y="95" fill="#29241d">小王</text>
+<rect x="354" y="68" width="150" height="42" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="429" y="95" fill="#9d4938" font-weight="700">打破了</text>
+<rect x="516" y="68" width="144" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/><text x="588" y="95" fill="#6f675a">（被／给）</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" text-anchor="middle">
+<text x="110" y="128" fill="#3d5a6c">话题·已知</text><text x="277" y="128" fill="#a87f24">未知（量小）</text><text x="429" y="128" fill="#9d4938">信息焦点·居句尾</text>
+<text x="588" y="128" fill="#6f675a">介词标记</text>
+<path d="M110 136 L110 152" stroke="#dcd2bd" stroke-width="1.2"/><path d="M429 136 L429 152" stroke="#dcd2bd" stroke-width="1.2"/>
+</g>
+<text x="20" y="176" font-size="12.5" fill="#c0392b" font-weight="700" font-family="-apple-system,PingFang SC,sans-serif">英语：词序受句法规则约束</text>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="13" text-anchor="middle">
+<rect x="20" y="188" width="200" height="42" rx="8" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.5"/><text x="120" y="215" fill="#29241d">The windowpane</text>
+<rect x="232" y="188" width="150" height="42" rx="8" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.5"/><text x="307" y="215" fill="#29241d">was broken</text>
+<rect x="394" y="188" width="180" height="42" rx="8" fill="#f5e3de" stroke="#9d4938" stroke-width="1.5"/><text x="484" y="215" fill="#29241d">by Xiaowang</text>
+<rect x="586" y="188" width="74" height="42" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/><text x="623" y="215" fill="#6f675a">句尾</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" text-anchor="middle">
+<text x="120" y="248" fill="#3d5a6c">话题（同样前置）</text><text x="307" y="248" fill="#a87f24">谓语</text><text x="484" y="248" fill="#9d4938">前置词结构必须居动词后</text>
+<text x="623" y="248" fill="#6f675a">—</text>
+</g>
+<rect x="20" y="264" width="640" height="40" rx="8" fill="none" stroke="#dcd2bd" stroke-dasharray="5 4"/>
+<text x="340" y="281" fill="#6f675a">汉语把信息焦点「打破了」放句尾；英语却只能把 by Xiaowang 放句尾——</text>
+<text x="340" y="298" fill="#6f675a">句子结构与句子信息结构是平行的两套结构，汉语词序更接近信息传递的需求</text>
+</svg>
+<figcaption>图二（示意，转绘），非原书插图。汉英对比据底本第十二节 12.5【实例一】转绘<sup class="cite" data-cite="s-windowpane">出处</sup>。</figcaption>
+</figure>
+
+<p>上面两个实例足以表明，各个民族其语言结构系统里的句子结构跟其相应的语言信息结构系统里的句子信息结构，二者的关系并不完全相同。更值得注意的是，在汉语里，话题句特别多；如果用印欧语的眼光看，汉语里的话题句简直多到了喧宾夺主的程度<sup class="cite" data-cite="s-topic-sentences-numerous">出处</sup>。</p>
+
+<p>在英语里，居于句首作主语的词语只能是名词性词语，而且只能是主格（主动句主格为施事，被动句主格为受事）；行为动作义、性状义或表事件的词语要作主语都得名词化（或加某种词缀变成名词，或采用名词性的动词不定式或动名词）。汉语作主语的则除了名词性词语外，还可以是各种谓词性词语，而在形式上无需进行名词化加工；而名词性词语作主语时，除了施事、受事外，表示时间、处所、工具、属格形式或原因等的词语都可以作主语，而且古今汉语一贯。譬如，有这样一个事件结构：我打篮球了，是和李洪军一起打篮球，时间是昨天。在汉语里，我们当然可以拿「我」作话题，可以拿「李洪军」作话题，但也可以拿「昨天」这一时点作话题，也可以拿「我和李洪军打篮球」这一事件作话题。拿什么作话题就将什么置于句首，而且无需进行名词化加工，直接说成<sup class="cite" data-cite="s-zuotian">出处</sup>：</p>
+
+<blockquote>（7）昨天我和李洪军打篮球了。<br>（8）我和李洪军打篮球是昨天。<sup class="cite" data-cite="s-zuotian">出处</sup></blockquote>
+
+<p>可是英语就不行。例（7）翻译成英语一般说成 I played basketball with Li Hongjun yesterday. 或者采用「准分裂句」（pseudo-cleft sentence）的说法，说成 The time I played basketball with Li Hongjun was yesterday.——反正「昨天」（yesterday）不能居于句首。现在在美式英语口语里有时也可以说成 Yesterday I played basketball with Li Hongjun. 不过这不是一种很常见的正规说法。例（8）翻译成英语要说成 It was yesterday that I played basketball with Li Hongjun.<sup class="cite" data-cite="s-zuotian">出处</sup></p>
+
+<p>关于汉语里的话题句特别多这一点，一百多年前的德国著名语言学家、汉学家甲柏连孜（Gabelentz）就注意到了，他在 1881 年出版的系统描述古汉语语法的《汉文经纬》（Chinesische Grammatik）里就设立了「心理主语」这一术语，与「语法主语」相对待；那「心理主语」就是「说话人言及的主要对象」，「言语的直接对象是心理主语，但心理主语并不总是等同于语法主语（也即英语的主格），而是可以由其他句子成分充当，如表示时间或处所的成分、语法宾格及其属格形式等。这类充当心理主语的词必须从句法联合体中挣脱出来，获得绝对独立的地位」（Gabelentz，1881：260）<sup class="cite" data-cite="s-gabelentz-1881">出处</sup>。而上个世纪后半叶开始，赵元任先生（1968）就认为汉语句子的主语可看作是话题；朱德熙先生（1982，1985）同意并接受这一观点；吕叔湘先生（1979）则更是风趣地认为，汉语的主语实际是动词的各种补词轮流坐庄的庄家；Charles Li &amp; Sandra Thompson（1981）则进一步从语言类型学的角度径直确认汉语为话题型语言<sup class="cite" data-cite="s-topic-type-language">出处</sup>。</p>
+
+<p>汉语和英语之所以不同，就在于英语属于形态语言，它在句子平面上更多地要受句法规则的制约——不仅词形要受句法规则的制约，词序也要受句法规则的制约。汉语则属于「非形态语言」，就句子平面的词序而言，汉语句子内部词语的排列次序相对于英语来说，比较接近句子信息传递的需求。当然，这一看法还是经验性的，还需进一步搜集语料，考虑不同语体的情况，进行深入的比较分析，而且最好能做到用统计数字说话<sup class="cite" data-cite="s-non-morphological">出处</sup>。</p>
+
+<div class="kicker">12.6 汉语句子信息结构遵循的准则</div>
+
+<p>根据我们的观察与分析，汉语句子信息结构似需遵循以下八条准则<sup class="cite" data-cite="s-eight-criteria">出处</sup>：</p>
+
+<div class="lab">
+<h3>准则一：句子信息结构必定含话题与评述两部分</h3>
+<p class="note">二者形成「话题—评述（陈述）」信息结构。在通常情况下，话题表示已知信息，评述表示未知信息<sup class="cite" data-cite="s-criterion-1">出处</sup>。</p>
+<div class="sent">张三｜去上海了。</div>
+<p class="note">话题＝张三（已知信息）；评述＝去上海了（未知信息）。</p>
+</div>
+
+<div class="lab">
+<h3>准则二：已知信息成分可以省去，未知信息成分不能省去</h3>
+<p class="note">例如（张伯江、方梅，1996 例）<sup class="cite" data-cite="s-criterion-2">出处</sup>：</p>
+<blockquote>老师：好哇，你考上浙江大学了！萧云考上哪个大学啦？<br>王平：∅[萧云]考上北京大学了。<sup class="cite" data-cite="s-criterion-2">出处</sup></blockquote>
+<p class="note">「萧云」属于已知信息，省去了；「北京大学」是未知信息，不能省。</p>
+</div>
+
+<div class="lab">
+<h3>准则三：未知信息单元一般在已知信息单元之后作常规焦点；挪前必须有标记</h3>
+<p class="note">例（3）作为新信息成分的标记是重音（底本以「′」表示），例（4）的标记是「是」；易位形式也可以视为标记<sup class="cite" data-cite="s-criterion-3">出处</sup>：</p>
+<blockquote>′萧云昨天在王府井花两千元买了件大衣。｜萧云′昨天在王府井花两千元买了件大衣。<br>是萧云昨天在王府井花两千元买了件大衣。｜萧云昨天是在王府井花两千元买了件大衣。<br>问：你喝点儿什么？答：啤酒吧，我就。【易位句，易位成分之前的成分一定是新信息】<sup class="cite" data-cite="s-criterion-3">出处</sup></blockquote>
+</div>
+
+<div class="lab">
+<h3>准则四：核心动词后多个信息单元，未知程度高的排在未知程度低的之后</h3>
+<p class="note">「小红」是人名，未知程度当然比数量短语「三回」要低<sup class="cite" data-cite="s-criterion-4">出处</sup>：</p>
+<blockquote>a. 我教了小红三回。｜*我教了三回小红。<br>a. 我给了那个人一条鱼。｜*我给了一个人那条鱼。<sup class="cite" data-cite="s-criterion-4">出处</sup></blockquote>
+</div>
+
+<div class="lab">
+<h3>准则五：核心动词前多个信息单元，已知程度高的排在已知程度低的之前</h3>
+<p class="note">「汪萍」是专有名词，已知程度必然高；「昨天」的对比项有限（今天、明天、后天），而「超市」的对比项可以许多，相对来说已知程度必然低于「昨天」<sup class="cite" data-cite="s-criterion-5">出处</sup>：</p>
+<blockquote>a. 汪萍昨天在超市买了一件上装。【最常说】<br>b. 昨天汪萍在超市买了一件上装。【也说，以「昨天」为话题】<br>c. *汪萍在超市昨天买了一件上装。【不能接受】<sup class="cite" data-cite="s-criterion-5">出处</sup></blockquote>
+</div>
+
+<div class="lab">
+<h3>准则六：背景信息居于前景信息之前</h3>
+<p class="note">前景信息用来直接描述事件的进展，通常传递未知信息；背景信息围绕事件的主干进行铺排、衬托或评价，通常传递已知信息（方梅，2005）。因此，二者如果并存在一个句子信息结构中，通常是背景信息居于前景信息之前<sup class="cite" data-cite="s-criterion-6">出处</sup>：</p>
+<blockquote>（打电话）「你下了课来一下。」｜「下了课你来一下。」<br>他明天骑车去天津。【「去天津」是前景】｜她去天津买自行车。【「去天津」是背景】<sup class="cite" data-cite="s-criterion-6">出处</sup></blockquote>
+</div>
+
+<div class="lab">
+<h3>准则七：陈述句的信息结构，在信息量的占有上，说者大于听者</h3>
+<p class="note">陈述的交际功能是说话者「给予」听话者「信息」；陈述时必须提供足量的信息，否则一个陈述是没有意义的（朱敏，2012）<sup class="cite" data-cite="s-criterion-7">出处</sup>：</p>
+<blockquote>我看见小芳了。【能说】｜他很聪明。【能说】｜*你很冷。【不能说】<sup class="cite" data-cite="s-criterion-7">出处</sup></blockquote>
+</div>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：同是形容词直接作谓语的陈述句，为什么「我很冷。」「他很冷。」都能说，独独「*你很冷。」不能说？</p>
+<div class="opts">
+<button data-ans="0">因为「冷」这个词本身有特殊性，不能用于第二人称</button>
+<button data-ans="1">因为违反了准则七——陈述句信息量的占有上必须是说者大于听者，「你很冷」说的是听者自己的感知，对听者不构成新信息</button>
+</div>
+<div class="why">答案：b。朱敏（2012）从信息传递角度解释：陈述的目的是说话者「给予」听话者「信息」，陈述时必须提供足量的信息，否则一个陈述是没有意义——「说者＞听者」就是陈述句的信息流向；如果传递的是听者已知的信息，那么陈述无效。「你很冷」说的是听者自身的感知，听者当然知道，所以不能说（除非处于被包含状态，如「我以为你很冷」「你很冷的时候会身子发抖吗」）<sup class="cite" data-cite="s-zhumin-2012">出处</sup>。</div>
+</div>
+
+<div class="lab">
+<h3>准则八：问句答话的信息焦点与问话的疑问点在句中位置相一致</h3>
+<p class="note">例如<sup class="cite" data-cite="s-criterion-8">出处</sup>：</p>
+<blockquote>问：<u>谁</u>告诉你的？答：<u>姐姐</u>告诉我的。<br>问：你想吃<u>什么</u>？答：我想吃<u>饺子</u>。<br>问：你<u>什么</u>时候回去？答：我<u>明天</u>回去。<sup class="cite" data-cite="s-criterion-8">出处</sup></blockquote>
+</div>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：问「你刚才喝什么了？」下面两个答话，哪个自然、哪个让人感到答非所问？——a. 我刚才喝了杯咖啡。｜b. 咖啡我刚才喝了。</p>
+<div class="opts">
+<button data-ans="0">a 自然，b 答非所问</button>
+<button data-ans="1">b 自然，a 答非所问</button>
+</div>
+<div class="why">答案：a 自然，b 答非所问。b 句把「咖啡」提到了句首作话题，信息焦点位置与问话的疑问点「什么」在句中的位置不一致，违反了准则八——问句答话的信息焦点必须与问话的疑问点在句中位置相一致<sup class="cite" data-cite="s-criterion-8">出处</sup>。</div>
+</div>
+
+<p>上面说了八条准则，不一定仅限于这八条准则，还可能会总结、概括出别的什么准则。以上所说的信息传递所遵循的准则是就汉语而言的，所以可以说是「汉语句子信息结构准则」。其他语言如何？也还需进一步探索<sup class="cite" data-cite="s-eight-criteria">出处</sup>。</p>
+
+<div class="kicker">12.7 语言信息结构研究的效应</div>
+
+<p>汉语研究成果已初步表明，从汉语信息结构的视角考虑，会对某些句法现象获得新的认识。下面不妨略举几个例子<sup class="cite" data-cite="s-effect-ba">出处</sup>。</p>
+
+<p class="tag">实例一</p>
+<p><b>「把」字句的新认识。</b>从汉语信息结构的视角来研究「把」字句，让我们了解了<sup class="cite" data-cite="s-effect-ba">出处</sup>：</p>
+
+<ul>
+<li>（一）表示「处置」义并非「把」字句的专利；</li>
+<li>（二）「把」字句跟其他诸如「主—谓—宾」句、主谓谓语句、受事主语句等在表达上的差异实际就是在信息传递上的差异；</li>
+<li>（三）「把」字句（以表示「处置」义的「把」字句为例）的特点在于：（a）要让「处置者」为话题；（b）要让「处置结果」作为信息焦点，以起到凸显传递并认定「处置结果」这一信息的作用；（c）运用介词「把」，以便自由地将「处置对象」引入句子内——「把」成了「处置对象」的标记，进而成为「把」字句的标记（详细参看陆俭明，2016）<sup class="cite" data-cite="s-effect-ba">出处</sup>。</li>
+</ul>
+
+<p class="tag">实例二</p>
+<p><b>双宾结构内部词序问题。</b>从语言信息结构的视角，解释了带指人宾语和时量准宾语的双宾结构内部不同词序的问题——请看例句（张伯江、方梅，1996）<sup class="cite" data-cite="s-effect-shuangbin">出处</sup>：</p>
+
+<blockquote>a. 我教了三年外国人。【可接受】｜？我教了外国人三年。【单独成句不可接受】<br>a. *我教了三年他们。【根本不可接受】｜b. 我教了他们三年。【可接受】<sup class="cite" data-cite="s-effect-shuangbin">出处</sup></blockquote>
+
+<p>「外国人」和「他们」都用来指人，而且都处于焦点位置上，但在例（1）、例（2）里词序不同，原因是，人称代词，其已知信息量要远远大于名词语「外国人」，而按传递信息所需遵循的准则四——「在句子信息结构中，核心动词后如果出现多个信息单元，信息未知程度高的居于信息未知程度低的之后」<sup class="cite" data-cite="s-effect-shuangbin">出处</sup>。</p>
+
+<p class="tag">实例三</p>
+<p><b>修辞现象的解释。</b>某些修辞现象，也得到了满意的解释，如上文 12.3 小节所举的例（5）「我膝盖，教堂没有开会」那样的答话<sup class="cite" data-cite="s-quchengxi-2003">出处</sup>。</p>
+
+<p class="tag">实例四</p>
+<p><b>「环环相扣」的修辞现象。</b>语言信息结构理论也很好地解释了书面语中那种「环环相扣」的修辞现象，如杏林子《生命 生命》开头一段：作者用了许多修饰成分，但无论定语、状语都用得十分用心、贴切，而且十分注意前后照应，做到了环环相扣，起到了凸显主题的作用。要体会这段文字修饰语运用之妙，可以思考这样一些问题：「在灯下」这个状语能否不用？「不断地」能否删去？「我原想弄死它」里的「原」起什么作用？「极力地」删去怎么样？两处「在我手中」有什么作用？「那样强烈！那样鲜明！」里的「那样」是否可以换成「十分」？为什么说到飞蛾时后面要用「小小的」来形容？最后一句能否改为「我就放了它」？「忍不住」起什么作用<sup class="cite" data-cite="s-effect-huanhuan">出处</sup>？</p>
+
+<p class="tag">实例五</p>
+<p><b>不为人注意的语言现象。</b>有些不为人注意的语言现象，正是从语言信息结构视角切入观察而得到揭示、获得解释的。例（3）都是形容词谓语句，都是形容词性词语直接作谓语，其主语只能用第一、第三人称，不能是第二人称，除非所形成的主谓短语不是单独成句，而是处于被包含状态（如：「我以为你很冷。」「你很冷，这我知道。」「你很冷的时候会身子发抖吗？」）这一现象是朱敏（2012）从信息传递角度思考而获得的。她曾专门对使用频率较高的「高兴」一词进行了个案调查，在 500 多万字的语料中，没找到任何以「你（们）」作主语、「高兴」单独作谓语的独立陈述句，出现的都是「非独立句」<sup class="cite" data-cite="s-zhumin-2012">出处</sup>。</p>
+
+<p class="tag">实例六</p>
+<p><b>「X 是 X」让步句。</b>现代汉语里有一种表示让步转折的句式：「那衣服漂亮，买吧。」「漂亮是漂亮，就是太贵了。」「那文章看了吗？」「看是看了，但我没有看懂。」「漂亮是漂亮」「看是看了」，其中并无表示让步的词语，为什么能表示让步的意思？过去百思不得其解。现在语言信息结构理论为我们提供了解释的理据——那「X 是 X（了）」小句里边，前面那个 X 承前面的句子而来，在「X 是 X（了）」小句里已成为已知信息，实际是一个话题。按语言信息结构理论，既然「X」（如「漂亮」「看」）作了话题，后面的陈述应提供新信息，可是「是 X」所提供的并不是新信息，只是重复了话题所说的内容。从信息传递的角度说，这等于是「在原地踏步」；而「在原地踏步」意味着「让步／容让」（此例是张伯江先生口头提供的）<sup class="cite" data-cite="s-effect-xshi">出处</sup>。</p>
+
+<p class="tag">实例七</p>
+<p><b>病句的新分析。</b>以往作为病句或偏误句来分析的一些例子，从信息结构角度看有了新解释。例如「生产衬衫有两道工序……三厂上袖口的技术比四厂差，而四厂上领子的技术没有三厂高」，以往说是「随意变换叙述角度」的修辞病例；从信息结构看，这段话明显存在两处有碍信息流顺畅的毛病——上文既然说两个厂「各有所长」，下文理应各自从长处说，现在却从短处说，信息流受到阻断；且「X 比 Y 差」与「X 没有 Y 高」两种说法句式不同、含义也有差异，相邻并排使用也容易使信息流受到阻断。又如「洪水是退了，但是眼前是一片不好的景象：洪水把村舍的房屋冲倒了一大半……」——以往分析说应用表示遭受义的「被」字句、不宜用「把」字句；从信息结构看，这个问题出在有违汉语篇章信息结构的要求：上文说「眼前是一片不好的景象」，下文得让遭受洪水之害的事物来作话题，采用「被」字句正可以增强遭受不幸的意味<sup class="cite" data-cite="s-effect-bingju">出处</sup>。</p>
+
+<p>我们相信，今后的研究还会进一步显示，许多语法现象，许多修辞手段的运用，许多词语的语法化问题，语言的变异，特别是如刘大为所说的「修辞构式」的产生与固化（刘大为，2010），都是由语言传递信息这一语言的本质功能决定的。而像形式语法学常常讨论的各种移位的动因问题，诸如被动句的生成所涉及的动词的域内论元（宾语论元）移位至句首的动因等，其实根本上是信息传递的需要，或者说都是在信息结构驱动下实现的<sup class="cite" data-cite="s-effect-summary">出处</sup>。</p>
+
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、句子结构和句子信息结构之间是什么关系？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">包含关系——信息结构是语法结构的组成部分</button>
+      <button data-v="b">平行的两套结构——彼此不是包含关系，但会互有影响</button>
+      <button data-v="c">毫无关系——各是各，谁也不影响谁</button>
+    </div>
+    <div class="why">答案：b。国内外有一种看法认为信息结构是语法结构的组成部分（Lambrecht, 1994:5；Halliday, 1994），本书不这样认为：「语言结构与语言信息结构，具体到句子结构与句子信息结构，彼此不是包含关系，彼此是平行的两套结构；当然，彼此会互有影响。」见 12.5，底本 L9127。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、「*你很冷。」不能说，从语言信息结构看是因为什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">违反了准则一——句子缺少评述部分</button>
+      <button data-v="b">违反了准则七——陈述句信息量的占有上必须是说者大于听者</button>
+      <button data-v="c">违反了准则八——答话的信息焦点与疑问点位置不一致</button>
+    </div>
+    <div class="why">答案：b。陈述的交际功能是说话者「给予」听话者「信息」，陈述时必须提供足量的信息，否则一个陈述是没有意义——「你很冷」传递的是听者自身的感知，对听者不构成新信息，所以说者必须大于听者（朱敏，2012）。见 12.6 准则七，底本 L9249。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、问「你刚才喝什么了？」答「咖啡我刚才喝了。」为什么让人感到答非所问？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">违反了准则二——已知信息成分不能省去而省去了</button>
+      <button data-v="b">违反了准则八——答话的信息焦点与问话的疑问点在句中位置不一致</button>
+      <button data-v="c">违反了准则五——动词前多个信息单元的排列次序不对</button>
+    </div>
+    <div class="why">答案：b。b 句把「咖啡」提到句首作话题，信息焦点的位置与问话疑问点「什么」在句中的位置不一致，违反了「问句答话的信息焦点与问话的疑问点在句中位置相一致」这一准则。见 12.6 准则八，底本 L9301—L9305。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」；原书外链插图（马泰修斯句子信息结构图）只登记、未入页。</li>
+    <li>未入页：第十二节 12.4 所引 Chafe、Prince、Halliday、Lambrecht 等国外研究的详细介绍，以及 12.7 实例四《生命 生命》的完整原文与八个思考题的展开分析<sup class="cite" data-cite="s-two-part-naming">出处</sup>。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-language-iceberg": { page:"第十二节 12.1 · 底本 L8911", quote:"中外语言研究的历史虽有2000多年之久，但至今我们对语言可能还是只看到了它冰山的一角。对语法的复杂性远未认识清楚。在本节之前有关语法分析的理论方法已经介绍了20余种，但是有些语法现象我们运用前面介绍的分析方法还难以解释。", zh:"对语言的认识还只是冰山的一角；已有 20 余种分析方法仍难解释全部语法现象。" },
+  "s-zhumin-2012": { page:"第十二节 12.1 · 底本 L8915", quote:"表感知的形容词词语，如“累、疼、冷”等，在陈述句中如果直接作谓语，要受到限制——不接受第二人称主语（朱敏，2012）。例如：（1）a.我很累。|他很累。|*你很累。……这为什么？怎么解释？", zh:"朱敏（2012）：表感知形容词直接作谓语不接受第二人称主语，需寻求新的理论方法解释。" },
+  "s-new-theory-three-reasons": { page:"第十二节 12.1 · 底本 L8917—L8927", quote:"新理论、新方法的产生，都有其内在原因。这可以从三方面来认识（陆俭明，2010）：第一，就科学领域说，不存在放之四海、放之古今而皆准的理论方法……第二，客观世界是极为复杂的，况且在不断发展变化……第三，对于新发现的问题，对于新发现的现象，常常是原有的理论方法不能有效地加以解决或解释。", zh:"新理论产生的三方面原因：无万能理论／客观世界复杂且在变／新问题旧法不能解。" },
+  "s-theory-complement-not-replace": { page:"第十二节 12.1 · 底本 L8929", quote:"新理论、新方法的不断产生，体现了研究的不断发展，而不是简单地替代——不是说新的理论方法产生后原有的理论方法就可以抛弃不用了。不同的理论方法之间常常表现为一种互相补充的关系。", zh:"新理论体现研究发展而非简单替代；不同理论方法常常互相补充。" },
+  "s-hu-yushu-1994": { page:"第十二节 12.1 · 底本 L8933—L8935", quote:"胡裕树先生早在1994年发表的《汉语语法研究的回顾与展望》一文中就这样告诫我们：三个平面理论的提出，给人们带来了一种语法观念甚至语言观念上的变化。这种观念上的改变，将促使人们运用新的思路和方法对汉语语法规律和现象作全方位、多角度的观察、描写和解释。", zh:"胡裕树（1994）：三个平面理论带来语法观念乃至语言观念的变化。" },
+  "s-language-basic-function-is-information": { page:"第十二节 12.2 · 底本 L8943—L8945", quote:"说到语言的功能，我们都会背诵那老三句：语言是人类最重要的交际工具，语言是思维的物质外壳，语言是民族乃至人类记录、传承文化的主要载体。这说法没有错，但要知道，语言最本质的功能是传递信息。", zh:"老三句没错，但语言最本质的功能是传递信息；「这我早知道了」即「已不属于新信息」。" },
+  "s-language-hierarchical": { page:"第十二节 12.2 · 底本 L8947—L8949", quote:"语言这个音义结合的符号系统可不是一个简单的系统，而是一个具有层级性的声音和意义相结合的复杂的符号系统。譬如说，在语音层面，有音位、音节、音节群等不同层级；在音义结合的符号层面更有语素、词、短语、小句、句子、句群，句子还分单句、复句等不同层级。", zh:"语言是具有层级性的复杂符号系统；说话人向听话人传递信息要经过两次复杂加工。" },
+  "s-miller-1956": { page:"第十二节 12.2 · 底本 L8951", quote:"传递一个复杂的信息，往往需要用到十几个乃至更多的词。假如只是孤立地列出一个一个的词，一方面孤立的词义不能形成关联语义，更无法生成句义，另一方面就量上而言也会受到“人的认知域的记忆功能7±2”的受限程度的制约（Miller，1956）。因此，借以传递信息的句子，其内部所包含的若干个词，必须依据所传递的信息的复杂程度，进行层层打包组块，最好还能给个标记。", zh:"米勒（1956）7±2：孤立列词不可行，句子必须层层打包组块并给标记。" },
+  "s-existential-abc": { page:"第十二节 12.2 · 底本 L8953—L8975", quote:"譬如，我们要传递一个“存在”事件。说到“存在”，必然有个存在物，也必然有个存在的处所，还需要将存在物与存在处所相联系的链接成分。……我们将例（1）、例（2）存在句记为甲类存在句。……我们将例（3）、例（4）存在句记为乙类存在句。", zh:"甲类「有」字存在句与乙类「V 着」存在句；存在处所作话题，存在物是信息焦点；本页转制为表一、表二。" },
+  "s-packing-three-blocks": { page:"第十二节 12.2 · 底本 L8977", quote:"然而，再怎么长也始终会将指明存在处所的词语打成一个包，将指明存在物的词语打成一个包，始终让句子保持“存在处所—链接—存在物”这样一个词语链，这样就便于信息接受者解码理解。……只要在“有”或“V着”这标记之前是个处所成分，在这标记之后又有个表示事物的成分，就只能是传递“存在”事件的信息流。", zh:"「有」「V 着」是信息传递标记：标记前处所、标记后事物，句子一定传递存在信息流。" },
+  "s-info-equal-meaning": { page:"第十二节 12.3 · 底本 L8983—L8985", quote:"句子所传递的信息有时会跟句子本身表示的意义几乎相等。如下面对话中的答话：（1）“现在几点了？”“现在是8点20分。”", zh:"有时信息与句子意义几乎相等；但这是少数情形。" },
+  "s-information-greater-than-meaning": { page:"第十二节 12.3 · 底本 L8987", quote:"但在大多数情况下，句子所传递的信息不等于句子本身的意义，大多都要大于句子本身表示的意义。", zh:"核心论断：句子传递的信息大多大于句子本身表示的意义。" },
+  "s-ba-dian-le": { page:"第十二节 12.3 · 底本 L8989", quote:"例（2）在不同的语境中所传递的信息不同：有时可能表示“该起床了”，有时可能表示“该上班了”，有时可能表示“该开会了”，等等。", zh:"「八点了，都！」在不同语境中可表示该起床、该上班、该开会。" },
+  "s-youqianma": { page:"第十二节 12.3 · 底本 L8993—L8995", quote:"例（3）是个问句，这个句子的意义十分明确：说话人询问对方有没有钱。可是这句问话，在不同的场合……是传递“问话人要向听话人借钱”的信息……是问话人向听话人传递“如果你没有钱，我可以借些给你”的信息……是传递“问话人对听话人想买什么东西持否定态度”这样的信息（意思是“你买不起”）……这可能意味着要打劫。", zh:"「你有钱吗？」：问话人要借钱／主动借给／「你买不起」／可能意味着要打劫。" },
+  "s-lujianming-1987": { page:"第十二节 12.3 · 底本 L8995", quote:"句子所能出现的言谈交际的语境，从理论上来说是无限的；这也就是说，一个句子它能在多少不同的言谈交际的语境中出现，它就能传递多少种各不相同的信息（陆俭明，1987）。", zh:"语境理论上是无限的，一个句子能出现于多少语境就能传递多少种信息。" },
+  "s-lajiche": { page:"第十二节 12.3 · 底本 L8999", quote:"（4）甲：现在几点了？乙：收垃圾的车刚过去。在不处于现实语境里的人看来，那例（4）的答话简直是答非所问；但问话人已从对方答话中了解了现在大致的时间，那是因为答话人与问话人具有共同的知识背景——每天收垃圾的车都是7点半从这里经过。", zh:"「收垃圾的车刚过去」：共同知识背景使答非所问变成有效回答。" },
+  "s-quchengxi-2003": { page:"第十二节 12.3 · 底本 L9003—L9011", quote:"（5）医师：今天膝[膝盖]怎么样？笔者：喔，我膝盖，教堂没有开会。……因为上一次“笔者”去看医师时，曾有过这样的对话：（6）医师：今天膝[膝盖]怎么样？笔者：膝[膝盖]还是有点儿痛，因为今天早上教堂开了个很长的会，会议室的冷气冷得不得了。", zh:"屈承熹（2003）「膝盖—教堂」例：答话隐含未出现的背景信息（转引自底本）。" },
+  "s-relevance-theory": { page:"第十二节 12.3 · 底本 L9013", quote:"根据斯波伯（D.Sperber）和威尔逊（D.Wilson）所建立的“关联理论”（relevance theory），言语交际本身是一种动态性的认知活动……会在认知上建立起“明示-推理”模式，以获取句子意义和语境之间的最佳关联效果（Sperber&Wilson 1995）。", zh:"关联理论：交际是以认知为取向的动态活动，说话人与听话人建立「明示-推理」模式。" },
+  "s-base-aux-info": { page:"第十二节 12.3 · 底本 L9015", quote:"句子的意义所提供的信息属于基础信息，由言谈交际语境所提供的信息属于辅助信息，在言谈交际中实际所传递的信息就是由句子的意义所提供的基础信息和言谈交际语境所提供的辅助信息互相奇妙融合而成的。", zh:"基础信息（句子意义）＋辅助信息（语境）奇妙融合，不是简单相加。" },
+  "s-info-elements": { page:"第十二节 12.4 · 底本 L9017", quote:"凭借语言的句子、句群等动态单位所传递的信息会形成一个像流水那样的“信息流”（information flow）。……一般会包含如下的信息元素：a.说话人所要谈论的话题；b.……已知的信息；c.……未知的新信息；d.……背景信息；e.……情态信息；f.……衔接性的信息；g.某些标记性信息元素。", zh:"信息流中的七类信息元素：话题、已知、新知、背景、情态、衔接、标记。" },
+  "s-information-structure-definition": { page:"第十二节 12.4 · 底本 L9019", quote:"语言信息结构是指在人与人之间进行言语交际时凭借语言这一载体传递信息所形成的由不在一个层面上的种种信息元素所组合成的以信息流形态呈现的一种结构。", zh:"语言信息结构的定义：不在一个层面上的信息元素组合成信息流形态的结构。" },
+  "s-mathesius-1929": { page:"第十二节 12.4 · 底本 L9021—L9029", quote:"最早谈论语言信息结构问题的是布拉格学派创始人马泰修斯（Vilém Mathesius，1929，转引自刘润清，1995）。当初马泰修斯设想的“句子信息结构”模式是：主位（theme）—过渡（transition）—述位（rheme）。……例如：（1）He has fallen ill.（他病了。）", zh:"马泰修斯（1929）三分：主位（已知）、过渡（最小交际能力）、述位（未知·话语核心）。" },
+  "s-two-part-naming": { page:"第十二节 12.4 · 底本 L9031—L9047", quote:"如今基本都采取二分法……这两大部分该如何命名？目前学界又有几种不同的设想与说法：（一）主位—述位……（二）话题一评述……（三）话题—自然聚焦点……（四）已知信息—未知信息。我们比较倾向于采纳（二）“话题—评述”的说法。", zh:"四种命名；本书倾向「话题—评述」，本页转制为表三。" },
+  "s-theme-three-types": { page:"第十二节 12.4 · 底本 L9049—L9065", quote:"按“主位”的不同性质还可细分为三小类（包括实例都转引自张伯江、方梅，1996）：a.话题主位。主位指明说话的话题。……b.人际主位。主位是表明说话人语气、态度的单元成分。……c.篇章主位。主位属于句子信息结构，但起着在篇章中前后或者说上下连接的作用。", zh:"主位三小类：话题主位、人际主位、篇章主位（张伯江、方梅，1996）。" },
+  "s-halliday-1994": { page:"第十二节 12.4 · 底本 L9067", quote:"Halliday（1994）论述了“主位-述位”结构，并明确指出，“‘已知信息+新信息’结构同‘主位+述位’结构并不是一回事”；“‘主位+述位’是以说话人为准，‘已知信息+新信息’则是以听话人为准”。", zh:"Halliday：主位—述位以说话人为准，已知—新信息以听话人为准，二者不是一回事。" },
+  "s-answer-focus": { page:"第十二节 12.4 · 底本 L9069—L9077", quote:"（11）“谁去杭州了？”“小张去杭州了。”例（11）答话的信息焦点就在“小张”上；“去杭州了”虽处于句子后部，但并不是答话的“自然聚焦点”。", zh:"答话的信息焦点未必是「自然聚焦点」，也未必在已知信息之后。" },
+  "s-lvshuxiang-1946": { page:"第十二节 12.4 · 底本 L9081—L9085", quote:"由“熟”而及“生”是我们说话的一般的趋势。这不完全是为了听者的便利，说话的人心里也是已知的先浮现（也可以说是由上文遗留下来），新知的跟着来。（吕叔湘，1946）", zh:"吕叔湘（1946）「由熟而生」：国内最早的新旧信息意识。" },
+  "s-domestic-research": { page:"第十二节 12.4 · 底本 L9087—L9095", quote:"20世纪80年代以来，我国学者从语言传递信息这一观念来分析汉语一些语法现象的研究成果，虽还是比较零散的，但也逐渐多起来了，如文炼（即张斌，1984），陆俭明（1987、2016、2017），沈家煊（1989），陆丙甫（1993），张伯江、方梅（1996）……", zh:"20 世纪 80 年代以来国内研究谱系；讨论多集中于「话题」与「焦点」两大问题。" },
+  "s-sentence-vs-text": { page:"第十二节 12.4 · 底本 L9097", quote:"语言信息结构包含句子信息结构、篇章信息结构。句子信息结构是语言信息结构中最基本的结构；句子信息结构以上的大小信息结构统称为篇章信息结构。……因此本书只谈句子信息结构问题。", zh:"本书只谈句子信息结构，篇章信息结构不在本节展开。" },
+  "s-two-parallel-structures": { page:"第十二节 12.5 · 底本 L9125—L9127", quote:"目前国内外有这样一种看法：信息结构是语法结构的组成部分（Lambrecht, 1994:5；Halliday, 1994；周士宏, 2016：绪论）。按此说，语言结构与语言信息结构彼此是一种包含关系。我们不这样认为。……语言结构与语言信息结构，具体到句子结构与句子信息结构，彼此不是包含关系，彼此是平行的两套结构；当然，彼此会互有影响。", zh:"本书观点：两套结构平行而非包含，彼此互有影响。" },
+  "s-known-before-new": { page:"第十二节 12.5 · 底本 L9129—L9131", quote:"就目前所知的语言来说，在一般情况下，都是会将传递已知信息的语言成分放在传递未知信息的语言成分之前，这可以认为是人类语言信息结构的共性之一。", zh:"已知信息成分一般在未知信息成分之前，可视为人类语言信息结构的共性之一。" },
+  "s-windowpane": { page:"第十二节 12.5 · 底本 L9135—L9147", quote:"（1）那窗户玻璃（被/给）小王打破了。英语虽然也会将作为话题的the windowpane（那窗户玻璃）置于句首，但是，居于句尾的则是by Xiaowang（小王），而非break（打破），这跟汉语就不一样。（2）The windowpane was broken by Xiaowang.那是因为按英语句法规则，前置词结构（by Xiaowang）得置于谓语动词的后面。", zh:"实例一：汉语把信息焦点「打破了」放句尾，英语只能把 by Xiaowang 放句尾。" },
+  "s-rob-steal": { page:"第十二节 12.5 · 底本 L9149—L9163", quote:"（3）杰西抢了约翰所有的钱。（4）杰西偷了约翰一些钱。可是，这在英语里运用不同的句子结构。（5）Jesse robbed John of all his money.（6）Jesse stole some money from John.", zh:"实例二：抢劫、偷窃汉语同用双宾结构，英语用不同结构；信息传递有时受民族心理制约。" },
+  "s-topic-sentences-numerous": { page:"第十二节 12.5 · 底本 L9165", quote:"更值得注意的是，在汉语里，话题句特别多；如果用印欧语的眼光看，汉语里的话题句简直多到了喧宾夺主的程度。", zh:"汉语话题句特别多，用印欧语眼光看简直喧宾夺主。" },
+  "s-zuotian": { page:"第十二节 12.5 · 底本 L9167—L9177", quote:"（7）昨天我和李洪军打篮球了。（8）我和李洪军打篮球是昨天。可是英语就不行。……反正“昨天”（yesterday）不能居于句首。", zh:"汉语可拿时间、事件作话题且无需名词化；英语不能把 yesterday 置于句首。" },
+  "s-gabelentz-1881": { page:"第十二节 12.5 · 底本 L9179—L9183", quote:"甲柏连孜（Gabelentz）就注意到了，他在1881年出版的系统描述古汉语语法的《汉文经纬》（Chinesische Grammatik）里就设立了“心理主语”这一术语，与“语法主语”相对待。（Gabelentz，1881：260）", zh:"甲柏连孜（1881）「心理主语」：说话人言及的主要对象，可由时间、处所等成分充当。" },
+  "s-topic-type-language": { page:"第十二节 12.5 · 底本 L9185—L9189", quote:"赵元任先生（1968）就认为汉语句子的主语可看作是话题；朱德熙先生（1982，1985）同意并接受这一观点；吕叔湘先生（1979）则更是风趣地认为，汉语的主语实际是动词的各种补词轮流坐庄的庄家；Charles Li&Sandra Thompson（1981）则进一步从语言类型学的角度径直确认汉语为话题型语言。", zh:"赵元任（1968）主语即话题；吕叔湘（1979）「轮流坐庄」；Li & Thompson（1981）汉语为话题型语言。" },
+  "s-non-morphological": { page:"第十二节 12.5 · 底本 L9191", quote:"英语属于形态语言，它在句子平面上更多地要受句法规则的制约……汉语则属于“非形态语言”。就句子平面的词序而言，汉语句子内部词语的排列次序相对于英语来说，比较接近句子信息传递的需求。", zh:"英语受句法规则制约多，汉语词序更接近信息传递需求（经验性看法，需语料统计验证）。" },
+  "s-eight-criteria": { page:"第十二节 12.6 · 底本 L9199—L9255", quote:"根据我们的观察与分析，汉语句子信息结构似需遵循以下一些准则：【准则一】……【准则八】问句答话的信息焦点与问话的疑问点在句中位置相一致。……上面说了八条准则，不一定仅限于这八条准则……以上所说的信息传递所遵循的准则是就汉语而言的，所以可以说是“汉语句子信息结构准则”。", zh:"汉语句子信息结构八条准则；准则就汉语而言，其他语言还需探索。" },
+  "s-criterion-1": { page:"第十二节 12.6 · 底本 L9201", quote:"【准则一】作为一个句子信息结构，必定含话题与评述（陈述）两部分；二者形成“话题-评述（陈述）”信息结构。在通常情况下，话题表示已知信息，评述表示未知信息。例如：（1）张三去上海了。", zh:"准则一：句子信息结构必含话题与评述；话题通常表已知信息，评述表未知信息。" },
+  "s-criterion-2": { page:"第十二节 12.6 · 底本 L9205", quote:"【准则二】在句子信息结构中，已知信息成分可以省去，但未知信息成分不能省去。例如：（2）老师：好哇，你考上浙江大学了！萧云考上哪个大学啦？王平：∅[萧云]考上北京大学了。", zh:"准则二：已知信息可省，未知信息不可省。" },
+  "s-criterion-3": { page:"第十二节 12.6 · 底本 L9209—L9227", quote:"【准则三】在句子信息结构中，未知信息单元一般位于已知信息单元之后成为信息结构的常规焦点；如果位于已知信息单元之前，必须有标记。……例（3）作为新信息成分的标记是重音……例（4）作为新信息成分的标记是“是”。易位形式也可以视为标记。", zh:"准则三：常规焦点在已知信息之后；前移须有标记（重音、「是」、易位）。" },
+  "s-criterion-4": { page:"第十二节 12.6 · 底本 L9229—L9237", quote:"【准则四】在句子信息结构中，核心动词后如果出现多个信息单元，信息未知程度高的居于信息未知程度低的之后。例如：（8）a.我教了小红三回。b.*我教了三回小红。（9）a.我给了那个人一条鱼。b.*我给了一个人那条鱼。", zh:"准则四：动词后多个信息单元，未知程度高的排在未知程度低的之后。" },
+  "s-criterion-5": { page:"第十二节 12.6 · 底本 L9239—L9245", quote:"【准则五】在句子信息结构中，核心动词前如果出现多个信息单元，信息已知程度高的居于信息已知程度低的之前。例如：（10）a.汪萍昨天在超市买了一件上装。b.昨天汪萍在超市买了一件上装。c.*汪萍在超市昨天买了一件上装。", zh:"准则五：动词前多个信息单元，已知程度高的排在已知程度低的之前。" },
+  "s-criterion-6": { page:"第十二节 12.6 · 底本 L9247", quote:"【准则六】在句子信息结构中，背景信息居于前景信息之前。前景信息用来直接描述事件的进展，通常传递的是未知信息；背景信息是围绕事件的主干进行铺排、衬托或评价，通常传递的是已知信息。（方梅，2005）", zh:"准则六：背景信息居前景信息之前（方梅，2005）。" },
+  "s-criterion-7": { page:"第十二节 12.6 · 底本 L9249", quote:"【准则七】陈述句的信息结构，在信息量的占有上，说者大于听者。例如：（15）我看见小芳了。（16）他很聪明。（17）*你很冷。", zh:"准则七：陈述句信息量的占有上说者大于听者（参看朱敏，2012）。" },
+  "s-criterion-8": { page:"第十二节 12.6 · 底本 L9251—L9305", quote:"【准则八】问句答话的信息焦点与问话的疑问点在句中位置相一致。例如：（18）问：谁告诉你的？答：姐姐告诉我的。（19）问：你想吃什么？答：我想吃饺子。（20）问：你什么时候回去？答：我明天回去。……（21）答：a.我刚才喝了杯咖啡。b.*咖啡我刚才喝了。", zh:"准则八：答话信息焦点与问话疑问点位置一致；「咖啡我刚才喝了」答非所问。" },
+  "s-effect-ba": { page:"第十二节 12.7 · 底本 L9313—L9319", quote:"【实例一】从汉语信息结构的视角来研究“把”字句，获得了对“把”字句的新认识……（二）“把”字句跟其他诸如“主—谓—宾”句、主谓谓语句、受事主语句等在表达上的差异实际就是在信息传递上的差异。", zh:"「把」字句新认识：处置义非其专利；与其他句式的差异即信息传递的差异；处置者为话题、处置结果为焦点（陆俭明，2016）。" },
+  "s-effect-shuangbin": { page:"第十二节 12.7 · 底本 L9321—L9331", quote:"（1）a.我教了三年外国人。b.？我教了外国人三年。（2）a.*我教了三年他们。b.我教了他们三年。……人称代词，其已知信息量要远远大于名词语“外国人”，而按传递信息所需遵循的准则四……", zh:"双宾结构词序：人称代词已知信息量大，须排在未知程度高的时量之后（张伯江、方梅，1996）。" },
+  "s-effect-huanhuan": { page:"第十二节 12.7 · 底本 L9335—L9359", quote:"【实例四】语言信息结构理论也很好地解释了书面语中那种“环环相扣”的修辞现象，如杏林子《生命生命》开头一段……这一段文字所用的修饰语没有什么华丽的词语……其原因就在于作者所用修饰语能做到环环相扣。", zh:"杏林子《生命 生命》修饰语「环环相扣」：从信息结构视角挖掘分析。" },
+  "s-effect-xshi": { page:"第十二节 12.7 · 底本 L9371—L9377", quote:"“漂亮是漂亮”“看是看了”，其中并无表示让步的词语，为什么能表示让步的意思？……前面那个X承前面的句子而来……实际是一个话题。……从信息传递的角度说，这等于是“在原地踏步”；而“在原地踏步”意味着“让步/容让”。（此例是张伯江先生口头提供的）", zh:"「X 是 X」让步句：后一个 X 只重复话题内容，等于「在原地踏步」，故表让步。" },
+  "s-effect-bingju": { page:"第十二节 12.7 · 底本 L9379—L9395", quote:"（6）*生产衬衫有两道工序……（7）*洪水是退了，但是眼前是一片不好的景象……如今从语言信息结构的视角看，这段话明显地在表述上存在两处有碍信息流顺畅的毛病……其实从语言信息结构的视角看，这个句子的问题也出在有违汉语篇章信息结构的要求。", zh:"病句新解：从信息流顺畅性与篇章信息结构看「叙述角度不统一」类病例。" },
+  "s-effect-summary": { page:"第十二节 12.7 · 底本 L9397", quote:"我们相信，今后的研究还会进一步显示，许多语法现象，许多修辞手段的运用，许多词语的语法化问题，语言的变异……都是由语言传递信息这一语言的本质功能决定的。而像形式语法学常常讨论的各种移位的动因问题……其实根本上是信息传递的需要，或者说都是在信息结构驱动下实现的。", zh:"总结：移位的动因等根本上是信息传递的需要，即在信息结构驱动下实现。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

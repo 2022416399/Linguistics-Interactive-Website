@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第五节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第五节 交互研读</p>
+  <h1>配价分析：动词能拉住几个名词</h1>
+  <p class="lead">配价借自化学：原子能拉住几个别的原子，是数得出来的。语言学里，配价指动词跟名词性成分发生联系的能力；最实用的工具是歧义指数公式与省略测试。形容词、名词，也各有其价。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html" class="cur">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>配价</b>借自化学</li><li>行动元</li><li>P=n−m</li><li>省略测试</li><li>名词的价</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>配价分析：数一数动词拉住几个成分</h2>
+<p>换了角度：不再问切分与变换，而是数成分——动词能拉住几个必有的名词性成分。从动词到形容词再到名词，「价」的观念一路推广；一条公式 P=n−m，简洁得惊人，也有它管不了的三类例外。</p>
+
+<article class="chapter" data-chapter="5">
+<h3>第五节｜汉语语法研究的配价分析</h3>
+
+<p>配价分析借自化学。水是H₂O，氧是二价，铁可以是二价也可以是三价——原子能拉住几个别的原子，是可以数得出来的。</p>
+
+<blockquote>所谓"配价"，是指动词跟名词性成分发生联系的能力。<sup class="cite" data-cite="s-peijia-dingyi">出处</sup></blockquote>
+
+<p>把这一思想引进语言学的是法国语言学家特思尼耶尔（L. Tesni&egrave;re）。他从化学借来"价"这个词，建立"从属关系语法"，认为句子是有生命的组织，而联系各部分的枢纽正是动词。</p>
+
+<blockquote>关联是句子的生命线。<sup class="cite" data-cite="s-guanlian">出处</sup></blockquote>
+
+<p>动词能拉住的必有的名词性成分，称为"行动元"。</p>
+
+<blockquote>行动元不超过三个。<sup class="cite" data-cite="s-xingdongyuan">出处</sup></blockquote>
+
+<p>为什么"放"是二价动词，而"飞"是一价？请看这组对比。</p>
+
+<details>
+<summary>二价与一价的分界</summary>
+<p class="q">"他放了两个苹果"能说，省略成"他放了"也能说（意为"他去放了"），但"两个苹果"作为受事不能省——可见"放"要拉住两个成分：施事与受事，所以是二价。<sup class="cite" data-cite="s-fang-shi-yijia">出处</sup></p>
+<p class="q">"鸟飞了"只需一个"鸟"，说"鸟飞了树林"反而别扭——可见"飞"只需拉住一个成分，所以是一价。<sup class="cite" data-cite="s-fang-shi-yijia">出处</sup></p>
+</details>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："他对这业务很熟悉"里的"熟悉"，是几价形容词？</p>
+<div class="opts">
+<button data-ans="0">一价</button>
+<button data-ans="1">二价</button>
+<button data-ans="0">零价</button>
+</div>
+<div class="why"><b>二价。</b>"熟悉"要关联两个对象——"他"和"这业务"，所以是二价形容词；"勤奋""认真"只关联一个主体，是一价。二价形容词常能受"对……"介词结构修饰，这正是它跟一价形容词的分界<sup class="cite" data-cite="s-erjia-xingrongci">出处</sup>。</div>
+</div>
+
+<p>形容词也有价。学界一般把形容词分为一价与二价两类。</p>
+
+<details>
+<summary>形容词的价</summary>
+<p class="q">一价形容词只要求一个主体，如"勤奋""认真"——"他很勤奋"，只涉及"他"。<sup class="cite" data-cite="s-yijia-xingrongci">出处</sup></p>
+<p class="q">二价形容词要涉及两个对象，如"熟悉""热情"——"他熟悉这业务"，既涉及"他"，又涉及"这业务"。<sup class="cite" data-cite="s-erjia-xingrongci">出处</sup></p>
+</details>
+
+<details>
+<summary>二价形容词的四类与"熟"的变价</summary>
+<p class="q">二价形容词按意义分四类：情感态度类（好、严、气愤、恐惧、友好、热情、冷淡、客气、耐心），经验认知类（内行、在行、精通、熟悉、陌生），有用无益类（有用、有害、有利、有效、有益），公平平等类（公平、不公、平等）。<sup class="cite" data-cite="s-erjia-silei">出处</sup></p>
+<p class="q">同一个词意义不同，价也不同："熟"表果实长成（"西瓜已经熟了"）或食物加热到可食（"饭熟了"）时只关联一种名词，是一价；表因常见常用而知道得清楚（"这条路我很熟"）时要求两种名词，是二价，所以能说"他对这一带地形很熟"。<sup class="cite" data-cite="s-shu-yiyi">出处</sup></p>
+</details>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 250" role="img" aria-label="一价与二价形容词配置式示意图">
+<rect x="0" y="0" width="680" height="250" fill="#fdfaf1"/>
+<text x="340" y="26" text-anchor="middle" font-size="14.5" fill="#29241d" font-family="-apple-system,PingFang SC,sans-serif">形容词的价：一价与二价的语义配置式</text>
+<rect x="30" y="48" width="290" height="150" rx="10" fill="#e8eef2" stroke="#3d5a6c" stroke-width="1.8"/>
+<text x="175" y="80" text-anchor="middle" font-size="17" fill="#29241d" font-family="KaiTi,serif">一价形容词 A¹</text>
+<text x="175" y="108" text-anchor="middle" font-size="13" fill="#29241d" font-family="KaiTi,serif">他很勤奋</text>
+<text x="175" y="134" text-anchor="middle" font-size="12" fill="#6f675a" font-family="-apple-system,PingFang SC,sans-serif">只关联一个主体：大、漂亮、聪明</text>
+<text x="175" y="156" text-anchor="middle" font-size="12" fill="#6f675a" font-family="-apple-system,PingFang SC,sans-serif">可恶、伟大……</text>
+<rect x="360" y="48" width="290" height="150" rx="10" fill="#f5ecd8" stroke="#a87f24" stroke-width="1.8"/>
+<text x="505" y="80" text-anchor="middle" font-size="17" fill="#29241d" font-family="KaiTi,serif">二价形容词 A²</text>
+<text x="505" y="108" text-anchor="middle" font-size="13" fill="#29241d" font-family="KaiTi,serif">他对这业务很熟悉</text>
+<text x="505" y="134" text-anchor="middle" font-size="12" fill="#6f675a" font-family="-apple-system,PingFang SC,sans-serif">关联主体与对象：热情、熟、严</text>
+<text x="505" y="156" text-anchor="middle" font-size="12" fill="#6f675a" font-family="-apple-system,PingFang SC,sans-serif">耐心、友好、热心……可受“对……”修饰</text>
+<line x1="320" y1="123" x2="360" y2="123" stroke="#dcd2bd" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="340" y="228" text-anchor="middle" font-size="11.5" fill="#6f675a" font-family="-apple-system,PingFang SC,sans-serif">“对……”介词结构所能修饰的形容词正是二价形容词——二者在语义上正好相吻合</text>
+</svg>
+<figcaption>图六（示意，编者绘制），非原书插图。一价与二价形容词的配置式据底本第五节第五小节转绘<sup class="cite" data-cite="s-yijia-xingrongci">出处</sup>。</figcaption>
+</figure>
+
+<p>配价分析最实用的工具，是下面这条"省略测试"：</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："喝啤酒的学生"能省成"喝啤酒的"，"喝啤酒的方式"也能照着这样省吗？</p>
+<div class="opts">
+<button data-ans="0">能，中心语都能省</button>
+<button data-ans="1">不能，"方式"不是"喝"的配价成分</button>
+<button data-ans="0">两者都不能省</button>
+</div>
+<div class="why"><b>不能。</b>省略测试的规矩是：中心语能省略，当且仅当它是动词的配价成分。"学生"是"喝"的施事，属配价成分，可以省；"方式"不是，"喝啤酒的方式"里的中心语就不能那样省<sup class="cite" data-cite="s-zhongxinyu">出处</sup>。</div>
+</div>
+
+<blockquote>中心语能省略，当且仅当它是动词的配价成分。<sup class="cite" data-cite="s-zhongxinyu">出处</sup></blockquote>
+
+<details>
+<summary>例：喝啤酒的学生</summary>
+<p class="q">"喝啤酒的学生"可以说成"喝啤酒的"，却不能换成"喝啤酒的方式"所隐含的"喝啤酒的"那种省略——因为"学生"是"喝"的施事，属配价成分，可以省；"方式"不是"喝"的配价成分，中心语不能那样省。<sup class="cite" data-cite="s-zhongxinyu">出处</sup></p>
+</details>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 320" role="img" aria-label="动词配价阶梯示意图">
+<rect x="0" y="0" width="680" height="320" fill="#fdfaf1"/>
+<line x1="70" y1="280" x2="610" y2="280" stroke="#c0392b" stroke-width="1.4"/>
+<polygon points="610,280 600,275 600,285" fill="#c0392b"/>
+<text x="340" y="302" text-anchor="middle" fill="#29241d">配价 n（行动元数目）</text>
+<text x="70" y="264" text-anchor="middle" fill="#29241d">0</text>
+<text x="200" y="264" text-anchor="middle" fill="#29241d">1</text>
+<text x="340" y="264" text-anchor="middle" fill="#29241d">2</text>
+<text x="480" y="264" text-anchor="middle" fill="#29241d">3</text>
+<circle cx="200" cy="200" r="7" fill="#c0392b"/><circle cx="340" cy="200" r="7" fill="#c0392b"/><circle cx="480" cy="200" r="7" fill="#c0392b"/>
+<line x1="200" y1="200" x2="200" y2="270" stroke="#c0392b" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="340" y1="200" x2="340" y2="270" stroke="#c0392b" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="480" y1="200" x2="480" y2="270" stroke="#c0392b" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="200" y="182" text-anchor="middle" fill="#29241d">一价</text>
+<text x="340" y="182" text-anchor="middle" fill="#29241d">二价</text>
+<text x="480" y="182" text-anchor="middle" fill="#29241d">三价</text>
+<text x="200" y="146" text-anchor="middle" fill="#6f675a">他笑了</text>
+<text x="340" y="146" text-anchor="middle" fill="#6f675a">他吃饭</text>
+<text x="480" y="146" text-anchor="middle" fill="#6f675a">我给他一本书</text>
+<rect x="60" y="40" width="560" height="56" rx="6" fill="none" stroke="#c0392b" stroke-width="1.2"/>
+<text x="340" y="64" text-anchor="middle" fill="#29241d">P = n − m</text>
+<text x="340" y="86" text-anchor="middle" fill="#6f675a">P：动词的配价；n：行动元总数；m：介词引导的必有名词语</text>
+<text x="60" y="120" text-anchor="middle" fill="#6f675a">预测：</text>
+<text x="170" y="120" text-anchor="middle" fill="#6f675a">P=0 不能指称</text>
+<text x="330" y="120" text-anchor="middle" fill="#6f675a">P=1 能指称、无歧义</text>
+<text x="510" y="120" text-anchor="middle" fill="#6f675a">P≥2 有歧义</text>
+</svg>
+<figcaption>图五（示意）：动词配价阶梯。n=1 时只拉一个行动元（"他笑了"）；n=2 时拉两个（"他吃饭"）；n=3 时拉三个（"我给他一本书"）。右下公式框给出计算办法与三档预测。示意图，非原书插图。<sup class="cite" data-cite="s-qiyi-zhishu">出处</sup></figcaption>
+</figure>
+
+<details>
+<summary>"放了一只鸽子"和"飞了一只鸽子"的区别</summary>
+<p class="q">两组短语词类序列相同、构造层次相同，都能变"把"字句，其实有区别："放"是二价动词，"飞"是一价动词。"放了一只鸽子"是省略主语（由"放"的施事充任）所构成的格式；"飞了一只鸽子"则是动词"飞"的施事位于动词之后所造成的格式。<sup class="cite" data-cite="s-fang-shi-yijia">出处</sup></p>
+<p class="q">两个"把"字句的语法意义也不同："把（一）只鸽子放了"表处置，"把（一）只鸽子飞了"表使动；"飞了一只鸽子"还不能变"被"字句——"*鸽子被我飞了"不成话。<sup class="cite" data-cite="s-fang-bei">出处</sup></p>
+</details>
+
+<p>光看公式不过瘾，请读者亲手调一调这个实验室。</p>
+
+<div class="lab">
+<h3>小实验：给动词数配价</h3>
+<p class="note">选定动词的配价 n（它拉住的行动元总数），再选定句中必有名词语的数目 m，程序会按公式 P=n−m 算出动词的价，并给出相应的歧义预测。<sup class="cite" data-cite="s-qiyi-zhishu">出处</sup> <sup class="cite" data-cite="s-p-zhi">出处</sup></p>
+<ul class="rows">
+<li><b>动词配价 n</b>
+<div class="opts" id="labN">
+<button data-v="1">一价</button>
+<button data-v="2" class="cur">二价</button>
+<button data-v="3">三价</button>
+</div></li>
+<li><b>必有名词语 m</b>
+<div class="opts" id="labM">
+<button data-v="0" class="cur">零</button>
+<button data-v="1">一</button>
+<button data-v="2">二</button>
+<button data-v="3">三</button>
+</div></li>
+</ul>
+<p class="splitout" id="labOut">选定动词的配价 n 与句中必有名词语的数目 m，公式当即算出 P 值，并给出相应的歧义预测。</p>
+</div>
+
+<p>三类例外要牢记：惯用语、兼语式、动介组合，都不能用这条公式硬套<sup class="cite" data-cite="s-exception">出处</sup>。</p>
+
+<p>名词有没有价？也有。朱德熙在《"的"字结构和判断句》（《中国语文》1978年第1、2期）里指出，"的"字结构指称人或事物的歧义，跟名词的价直接相关。<sup class="cite" data-cite="s-jiaoshi-laoshi">出处</sup></p>
+
+<details>
+<summary>名词的价</summary>
+<p class="q">"他是王刚的老师"能说，"他是王刚的教师"却别扭——"老师"是一价名词（须关联一个对象），"教师"是零价名词，不要求关联。<sup class="cite" data-cite="s-jiaoshi-laoshi">出处</sup></p>
+<p class="q">袁毓林1992年进一步讨论一价名词的语义配置式；李小荣2000年又从名词的价解释"的"字结构的歧义指数。<sup class="cite" data-cite="s-yijia-mingci-xiushi">出处</sup></p>
+</details>
+
+<details>
+<summary>名词的价与"对……"的修饰范围</summary>
+<p class="q">名词也配价：不要求与别的名词构成依存关系的是零价名词（大海、天空、空气）；只要求与一种性质的名词关联的是一价名词（哥哥、弟弟、叔叔、爸爸、质量、脾气、脚、锅盖）；要求与两种不同性质的名词关联的是二价名词（意见、兴趣、态度、害处），都是抽象名词。至今未发现三价名词。<sup class="cite" data-cite="s-mingci-jia">出处</sup></p>
+<p class="q">能受"对……"修饰的正是二价名词——"意见"必涉及持有者与针对者，"感情"必涉及具有者与针对者，"害处"必涉及产生者与波及者。二价名词分四类：情感态度类（感情、兴趣、同情心、戒心），见解论点类（看法、见解、偏见、结论），作用意义类（作用、疗效、意义、吸引力），方针政策类（方针、优惠政策）。<sup class="cite" data-cite="s-yijia-mingci-xiushi">出处</sup></p>
+<p class="q">语音上也受制约：单音节抽象名词虽属二价，也不能受"对……"修饰——不说"对黑社会的仇""对家乡的情"，得说成"对黑社会的仇恨""对家乡的感情"。<sup class="cite" data-cite="s-danyin-jie">出处</sup></p>
+</details>
+
+<details>
+<summary>为什么"对校长的意见"有歧义</summary>
+<p class="q">"对校长的意见"有两种理解：意见由校长提出，或意见是针对校长的，结构上可作两种层次切分。配价解释：介词"对"的宾语若可任意理解为"的"字后二价名词的任何一个配价成分，整个结构就有歧义——"对儿子的感情""对这篇文章的看法""对这部电影的吸引力""对美国的政策"都是这样。<sup class="cite" data-cite="s-dui-xiaozhang">出处</sup></p>
+<p class="q">可"对上帝的敬意"只允许一种切分，"对上帝的同情心"只允许另一种——"敬意""同情心"无疑都是二价名词，为什么不都有歧义？请读者自己思考，并想想还能举出什么类似的例子。<sup class="cite" data-cite="s-dui-shangdi">出处</sup></p>
+</details>
+
+<p>配价分析的不足也应当点明：它的"价"数受研究者对动词意义的理解影响，边界情形时有争议。</p>
+
+<blockquote>配价分析也有局限，一个动词算几价，不同的人可能有不同的看法。<sup class="cite" data-cite="s-peijia-juxian">出处</sup></blockquote>
+
+<details>
+<summary>"老师"与"教师"：一价与零价之别</summary>
+<p class="q">"教师"只是职称，不反映有依存关系的人际关系，是零价名词；"老师"相对于"学生"而言，是学习者对教给自己知识的人的尊称，反映社会上一种有依存关系的人际关系，是一价名词。所以"老师"能接受带姓、带名的指人名词或单数人称代词修饰（"张三的老师""我的老师"），"教师"不能（不说"张三的教师""我的教师"）。<sup class="cite" data-cite="s-jiaoshi-laoshi">出处</sup></p>
+<p class="q">那为什么又能说"他是王刚的家庭教师"，却不说"他是王刚的家庭老师"？请读者自己思考，作出较为合理的解释。<sup class="cite" data-cite="s-jiating-jiaoshi">出处</sup></p>
+</details>
+
+<details>
+<summary>配价分析管不了的两类语义现象</summary>
+<p class="q">一是"砍坏了"的补语"坏"在"别把身子骨给砍坏了""将旁边的小椅子给砍坏了""那刀都给砍坏了"里，分别说明"砍"的施事、受事、工具——这种语义现象就不是配价分析法所能解释的。<sup class="cite" data-cite="s-kanhuaile">出处</sup></p>
+<p class="q">二是"洗"和"晾"都是二价三系及物动词，表面看似无区别，但"洗"联系施事、受事、工具（"洗热水"），"晾"联系施事、受事、处所（"晾竹竿上"）——这种细微差异，配价语法理论也无法解释。<sup class="cite" data-cite="s-xi-liang">出处</sup></p>
+</details>
+
+<p class="small muted">下一节，语义指向分析将换个角度：不再数成分的多少，而看某个成分在语义上"指向"谁。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">「配价」指的是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">动词后名词的数量</button>
+      <button data-v="b">动词跟名词性成分发生联系的能力</button>
+      <button data-v="c">句子的长度</button>
+    </div>
+    <div class="why">答案：b。配价借自化学；行动元不超过三个。见本节，底本 L3876、L3888。</div>
+  </div>
+  <div class="item">
+    <p class="q">朱德熙建立的歧义指数公式是？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">P=n＋m</button>
+      <button data-v="b">P=n−m</button>
+      <button data-v="c">P=n×m</button>
+    </div>
+    <div class="why">答案：b。P 为歧义指数，n 为动词配价数，m 为已出现配价成分数。见本节，底本 L4094。</div>
+  </div>
+  <div class="item">
+    <p class="q">为什么「他是王刚的老师」能说，「他是王刚的教师」却说不得？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">「教师」是书面语</button>
+      <button data-v="b">「老师」是一价名词，「教师」是零价名词</button>
+      <button data-v="c">音节数目不同</button>
+    </div>
+    <div class="why">答案：b。一价名词须关联一个对象，零价名词不要求关联。见本节，底本 L4478。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：二价形容词的四类细分、二价名词四种类型的完整列举。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-exception": { page:"第五节 5.3 · 底本 L4104", quote:"「我喝药的」是那个杯子。", zh:"三类例外：P 为零却指称工具或与事，P 为一却指称领有物。语义因素会压过形式计算。" },
+  "s-peijia-dingyi": { page:"第五节 5.1 · 底本 L3876", quote:"“配价”这一概念借自化学。化学中提出“价”（valence，亦称“原子价”“化合价”）这一概念为的是说明在分子结构中各元素原子数目间的比例关系。", zh:"配价借自化学；语言学中指动词跟名词性成分发生联系的能力。" },
+  "s-guanlian": { page:"第五节 5.1 · 底本 L3884", quote:"是词与词之间的“关联”（connexion），它是句子的生命线。", zh:"特思尼耶尔：关联是句子的生命线。" },
+  "s-xingdongyuan": { page:"第五节 5.1 · 底本 L3888", quote:"直接受动词支配的有名词词组和副词词组，其中名词词组形成“行动元”（actant），副词词组形成“状态元”（circonstant）。从理论上说，状态元是无限的，而行动元不得超过三个。", zh:"行动元不超过三个：主语、宾语1、宾语2。" },
+  "s-fang-shi-yijia": { page:"第五节 5.4 · 底本 L4118", quote:"“放了一只鸽子”和“飞了一只鸽子”在语法上有什么区别吗？", zh:"“放”是二价（施事＋受事），“飞”是一价（施事）。" },
+  "s-yijia-xingrongci": { page:"第五节 5.5 · 底本 L4184", quote:"一般形容词都是一价形容词，因为一般形容词在语义上都只要求有一种性质的名词性词语（一般看作主体）与它相关联……像“大、漂亮、聪明、可恶、伟大”等，就都是一价形容词。", zh:"一价形容词只关联一个主体。" },
+  "s-erjia-xingrongci": { page:"第五节 5.5 · 底本 L4184", quote:"也有少数形容词在语义上要求必须有两种不同性质的名词性词语与它相关联，这种形容词就称之为二价形容词……像“热情、熟、严、耐心、友好、热心”等就都属于二价形容词。", zh:"二价形容词关联主体与对象，可受“对……”修饰。" },
+  "s-zhongxinyu": { page:"第五节 5.2 · 底本 L3918", quote:"a例的中心语“学生”有时可以省略，例如“喝啤酒的学生请举手”，在一定语言环境下可以说成……而b例的中心语“方式”，则在任何情况下都不能省略。", zh:"省略测试：中心语能省略，当且仅当它是动词的配价成分。" },
+  "s-qiyi-zhishu": { page:"第五节 5.3 · 底本 L4098", quote:"P代表由动词性词语带“的”形成的“的”字结构的歧义指数，指的是这种“的”字结构能不能指称事物，会不会有歧义；n代表动词的配价数，m代表在“的”字结构里出现的动词配价成分的数目。", zh:"歧义指数公式 P=n−m 及三档预测。" },
+  "s-p-zhi": { page:"第五节 5.3 · 底本 L4094", quote:"已故著名语法学家朱德熙先生，正是根据上述情况，概括并建立了一个有关由动词性词语带“的”形成的“的”字结构的歧义指数公式。", zh:"歧义指数公式的建立（朱德熙）。" },
+  "s-jiaoshi-laoshi": { page:"第五节 5.7 · 底本 L4478", quote:"“汉语老师”可以说成“汉语教师”，可是“他是王刚的老师”，却不能说成“他是王刚的教师”，这为什么？", zh:"“老师”是一价名词，“教师”是零价名词。" },
+  "s-yijia-mingci-xiushi": { page:"第五节 5.6 · 底本 L4344", quote:"据袁毓林（1992）、李小荣（2000）考察，二价名词从语义上看，主要有以下四种类型。", zh:"袁毓林1992、李小荣2000：二价名词的四种类型。" },
+  "s-peijia-juxian": { page:"第五节 5.8 · 底本 L4514", quote:"这个公式具有创新性，能解释不少语法现象，但会碰到某些例外。那些例外也不是配价语法理论所能解决的。", zh:"配价分析的局限：价数受对动词意义理解影响，例外难解。" },
+  "s-erjia-silei": { page:"第五节 5.5 · 底本 L4220", quote:"二价形容词，根据其具体意义的不同，大致可分为以下四类：", zh:"二价形容词四类：情感态度、经验认知、有用无益、公平平等。" },
+  "s-shu-yiyi": { page:"第五节 5.5 · 底本 L4272", quote:"有的形容词能表示多种意思，它的价也会因意义不同而有所不同。", zh:"“熟”三义：果实长成／食物可食为一价，因常见常用而知道得清楚为二价。" },
+  "s-fang-bei": { page:"第五节 5.4 · 底本 L4138", quote:"最明显的是，“放了一只鸽子”可以变换为“被”字句，而“飞了一只鸽子”不能变换为“被”字句。", zh:"都能变“把”字句（一为处置义、一为使动义），但“飞”不能变“被”字句。" },
+  "s-mingci-jia": { page:"第五节 5.6 · 底本 L4336", quote:"一个名词，如果不要求与另外的名词在语义上构成依存关系，这样的名词，称为零价名词，把它记为N。", zh:"零价／一价／二价名词之分；至今未发现三价名词。" },
+  "s-danyin-jie": { page:"第五节 5.6 · 底本 L4314", quote:"表示抽象事物的单音节名词也不能受“对……”这一介词结构的修饰。", zh:"单音节抽象名词虽属二价，也不能受“对……”修饰。" },
+  "s-dui-xiaozhang": { page:"第五节 5.6 · 底本 L4420", quote:"现在再说第二个问题，为什么“对校长的意见”会有歧义。", zh:"“对”的宾语可解作“的”字后二价名词的任一配价成分，故有歧义。" },
+  "s-dui-shangdi": { page:"第五节 5.6 · 底本 L4454", quote:"（19）对上帝的敬意（20）对上帝的同情心", zh:"同为二价名词却各只允许一种切分——留待读者思考。" },
+  "s-jiating-jiaoshi": { page:"第五节 5.7 · 底本 L4486", quote:"至于为什么又可以说“他是王刚的家庭教师”，请各位读者自己好好思考一下，然后作出一个较为合理的回答与解释。", zh:"“家庭教师”之谜留待读者思考。" },
+  "s-kanhuaile": { page:"第五节 5.8 · 底本 L4492", quote:"譬如说“砍坏了”，补语“坏”在下面三个句子里所说明的对象各异", zh:"“砍坏了”补语分别指向施事／受事／工具，配价分析无法解释。" },
+  "s-xi-liang": { page:"第五节 5.8 · 底本 L4512", quote:"动词“洗”所联系的三系是“施事”、“受事”、“工具”，而动词“晾”所联系的三系是“施事”、“受事”、“处所”。", zh:"“洗”“晾”同为二价三系，其细微差异配价理论也无法解释。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 配价小实验 ---------- */
+const labN = $("#labN"), labM = $("#labM"), labOut = $("#labOut");
+let curN = 2, curM = 0;
+function labRun(){
+  const P = curN - curM;
+  let txt;
+  if(P <= 0) txt = "P = " + curN + " − " + curM + " = " + P + "：这个「的」字结构一般不能作主语指称事物。";
+  else if(P === 1) txt = "P = " + curN + " − " + curM + " = " + P + "：可以指称事物，一般没有歧义。";
+  else txt = "P = " + curN + " − " + curM + " = " + P + "：可以指称事物，而且会有歧义。";
+  txt += "（原书另有三类例外，语义因素会压过这个计算。）";
+  labOut.innerHTML = txt;
+  labOut.classList.add("on");
+}
+function bindLab(box, isN){
+  $$("button", box).forEach(b => b.onclick = () => {
+    $$("button", box).forEach(x => x.classList.remove("cur"));
+    b.classList.add("cur");
+    if(isN) curN = parseInt(b.dataset.v, 10); else curM = parseInt(b.dataset.v, 10);
+    labRun();
+  });
+}
+if(labN){ bindLab(labN, true); bindLab(labM, false); labRun(); }
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

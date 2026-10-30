@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>整句的意思，不是词义加起来 —— 《构式语法与汉语构式》第一章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.verbs{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0 1em}
+.verbs button{min-height:44px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.verbs button[aria-pressed="true"]{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 14%,var(--card));font-weight:700}
+.verbs button small{display:block;font-size:.72rem;color:var(--muted);font-weight:400;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.4rem;margin:.2em 0 .5em}
+.rows{display:grid;grid-template-columns:6.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.pair{grid-template-columns:1fr}}
+.pair .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.pair .card.a{border-top:4px solid var(--red)}
+.pair .card.b{border-top:4px solid var(--blue)}
+.pair .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.pair .card.b .sent u{text-decoration-color:var(--blue)}
+table.matrix{border-collapse:collapse;margin:12px 0;width:100%;max-width:560px}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:.5em .7em;text-align:center;font-size:.95rem}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+table.matrix td{background:var(--card);cursor:pointer}
+table.matrix td.ba,table.matrix td.dong{color:var(--red);font-weight:700}
+table.matrix td.dong{cursor:default}
+table.matrix td.ba:hover{background:var(--soft)}
+table.matrix td.on{background:color-mix(in srgb,var(--red) 12%,var(--card))}
+.sortrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.sortbox{flex:1;min-width:200px;border:2px dashed var(--line);border-radius:12px;padding:10px 12px;background:var(--paper)}
+.sortbox h4{margin:0 0 .4em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--muted)}
+.sortbox .items{display:flex;flex-direction:column;gap:6px}
+.sortbox .items button{width:100%;text-align:left;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem;min-height:44px}
+.sortbox .items button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 10%,var(--card));font-weight:700}
+.sortbox .items button.wrong{border-color:var(--muted);color:var(--muted)}
+.sortbox .why{font-size:.82rem;color:var(--muted);margin:.3em 0 0}
+.sortbox .why[hidden]{display:none}
+.scale{position:relative;margin:18px 0 6px}
+.scale svg{width:100%;height:auto;display:block}
+.chipsrow{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.chipsrow button{min-height:44px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.chipsrow button[aria-pressed="true"]{outline:2px solid var(--ink)}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · 什么是构式语法<small>《构式语法与汉语构式》吴为善 ｜ 第一章</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="30" font-family="KaiTi,STKaiti,serif" fill="#9d4938">构</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第一章「绪论」 ｜ 单节深读页</p>
+  <h1>整句的意思，不是词义加起来</h1>
+  <p class="lead">英语说 kick the bucket 是「死」，可无论怎么算，kick、the、bucket 三个词也拼不出这个意思<sup class="cite" data-cite="fillmore-idiom"></sup>。Goldberg 由此断言：<strong>句子本身就是一个「形式—意义」的配对体</strong>，它带着自己的意思，独立于句中的词<sup class="cite" data-cite="g95-def"></sup>。从「爸爸叫他小三儿」到「连大气也不出」，汉语里最出彩的句式，都靠这条道理讲通。</p>
+  <ul class="chips">
+    <li><b>1995 定义</b>　意思算不出来的形式，才是构式</li>
+    <li><b>2006 修正</b>　算得出来但高频出现，也是构式</li>
+    <li><b>全书方法</b>　描写 → 多义变体 → 提炼义 → 话语功能 → 理据</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 360" role="img" aria-label="示意图：两种语言观的对比">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <text x="160" y="34" text-anchor="middle" font-size="15" fill="#6f675a">「词汇＋规则」的模块观</text>
+        <text x="520" y="34" text-anchor="middle" font-size="15" fill="#6f675a">构式观</text>
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="60" y="60" width="86" height="52" rx="9"/>
+          <rect x="158" y="60" width="70" height="52" rx="9"/>
+          <rect x="240" y="60" width="86" height="52" rx="9"/>
+        </g>
+        <g font-size="19" font-family="KaiTi,STKaiti,serif" fill="#29241d" text-anchor="middle">
+          <text x="103" y="94">kick</text><text x="193" y="94">the</text><text x="283" y="94">bucket</text>
+        </g>
+        <text x="160" y="140" text-anchor="middle" font-size="13.5" fill="#9d4938">词义＋规则拼合</text>
+        <text x="160" y="162" text-anchor="middle" font-size="13.5" fill="#9d4938">拼不出「死」→ 视为例外</text>
+        <path d="M300 86 H 380" stroke="#6f675a" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+        <path d="M372 78 l 12 8 -12 8" fill="none" stroke="#6f675a" stroke-width="2" stroke-linecap="round"/>
+        <g stroke="#3d5a6c" stroke-width="2.6" fill="none">
+          <rect x="420" y="52" width="200" height="120" rx="14"/>
+        </g>
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="440" y="72" width="72" height="44" rx="8"/>
+          <rect x="524" y="72" width="72" height="44" rx="8"/>
+        </g>
+        <g font-size="17" font-family="KaiTi,STKaiti,serif" fill="#29241d" text-anchor="middle">
+          <text x="476" y="101">kick</text><text x="560" y="101">bucket</text>
+        </g>
+        <path d="M500 116 q 20 22 0 34" fill="none" stroke="#3d5a6c" stroke-width="2.2"/>
+        <text x="570" y="140" font-size="14" fill="#3d5a6c">整体浮现新义</text>
+        <text x="520" y="196" text-anchor="middle" font-size="14" fill="#3d5a6c">「死」</text>
+        <text x="160" y="240" text-anchor="middle" font-size="13" fill="#a87f24">左图为示意，非原书插图</text>
+        <text x="160" y="262" text-anchor="middle" font-size="12.5" fill="#6f675a">Fillmore（1988）：模块观解释不了习语</text>
+        <text x="520" y="240" text-anchor="middle" font-size="13" fill="#a87f24">构式＝形式与意义的配对</text>
+        <text x="520" y="262" text-anchor="middle" font-size="12.5" fill="#6f675a">意思由整体带来，与词义无关</text>
+        <path d="M160 288 H 520" stroke="#dcd2bd" stroke-width="1.4"/>
+        <text x="340" y="316" text-anchor="middle" font-size="13.5" fill="#6f675a">构式语法要研究的，正是那些「算不出来」的句式</text>
+      </g>
+    </svg>
+    <figcaption>图 1（示意）：同一个 kick the bucket，模块观视为例外，构式观视为语言的基本单位。</figcaption>
+  </figure>
+  <p class="small muted">约 8 分钟读完；文中例句、年份、结论均可点红色角标回研读底本核对原句。</p>
+</section>
+
+<!-- ============ 场景一：习语的难题 ============ -->
+<section data-scene="1" class="scene">
+  <p class="kicker">问题 → 直觉</p>
+  <h2>一、一个习语，难倒了整个学派</h2>
+  <p>转换生成语法把语言知识切成语音、句法、语义几个模块，词进模块、规则组合，句子意思等于词义之和——这就是「词汇＋规则」模式。Fillmore 1988 年发问：那 kick the bucket 怎么办<sup class="cite" data-cite="fillmore-idiom"></sup>？三个词明明都认识，意思却对不上；硬要说它是「例外」，可习语遍地都是。Lakoff 的格式塔语法给出另一种思路：<strong>句式是整体模板，不是零件拼装</strong>；Langacker 干脆定义：构式就是语言表达式，或其抽象图式<sup class="cite" data-cite="langacker-def"></sup>。</p>
+  <p>Goldberg 1995 年把话说到底：<strong>基本句子就是一种构式，独立于具体动词而存在</strong>——当且仅当 C 的形式或意义的某些方面，不能从它的构成成分或已确立的构式中精确推导出来，C 就是构式<sup class="cite" data-cite="g95-def"></sup>。</p>
+  <div class="guess" data-guess>
+    <p class="q">下面四句话，整句的意思能不能从字面「算」出来？</p>
+    <div class="opts">
+      <button data-ans="1">都算得出来</button>
+      <button data-ans="0">有算不出来的</button>
+    </div>
+    <p class="reveal" hidden>四句里至少三句算不出来：① kick the bucket＝「死」<sup class="cite" data-cite="fillmore-idiom"></sup>；②「爸爸叫他小三儿」里「叫」没有给予义，<strong>「给予一个名字」是句式带来的</strong><sup class="cite" data-cite="ditrans-verbs"></sup>；③「他把大门的钥匙丢了」并没有真的「处置」什么，是<strong>说话人主观认定</strong><sup class="cite" data-cite="shen-4"></sup>；④「连大气也不出」根本找不到一个「比大气更可能不出」的东西来撑起等级尺度<sup class="cite" data-cite="lian-atypical"></sup>。这些「算不出来」，就是构式的领地。</p>
+  </div>
+</section>
+
+<!-- ============ 场景二：双及物 ============ -->
+<section data-scene="2" class="scene">
+  <p class="kicker">范式一 · 能产性阐释</p>
+  <h2>二、双及物构式：句式自带「给予」义</h2>
+  <p>传统语法管「V＋N₁＋N₂」叫双宾语句，按位置定义，收进十余种语义类型，却找不到一条大家公认的句法特征。张伯江（1999）换个问法：把句式当整体看，它的核心构式义是<strong>「有意的给予性转移」</strong><sup class="cite" data-cite="zhangbj"></sup>——「张三卖给邻居一套旧家具」，最自然的解释就是张三有意把家具转让给邻居。</p>
+  <div class="guess" data-guess>
+    <p class="q">「爸爸叫他小三儿」——「叫」这个动词，本身有「给予」的意思吗？</p>
+    <div class="opts">
+      <button data-ans="1">有，「叫」就是给</button>
+      <button data-ans="0">没有，给予义是句式带来的</button>
+    </div>
+    <p class="reveal" hidden>「叫」毫无给予义，可一进「V＋N₁＋N₂」，读出来就是「给予一个名字」——这个意义不在任何一个动词里，在句式里<sup class="cite" data-cite="ditrans-verbs"></sup>。能进这个句式的动词，一大半自己并没有给予义：给予义是句式赋予的。</p>
+  </div>
+  <div class="lab" id="ditransLab">
+    <h3>动词准入实验室：换个动词，看句式怎么「赋义」</h3>
+    <p class="small muted">选一个动词，观察它进入双及物构式后的浮现义，以及它能不能变换成「A 给 R＋VP」（给字短语前置）。</p>
+    <div class="verbs" id="verbBtns"></div>
+    <div class="result" id="verbResult" hidden>
+      <p class="sent" id="verbSent"></p>
+      <dl class="rows">
+        <dt>浮现义</dt><dd id="verbEmergent"></dd>
+        <dt>变换测试</dt><dd id="verbTransform"></dd>
+        <dt>类特征</dt><dd id="verbNote"></dd>
+      </dl>
+      <p class="small muted" id="verbCite"></p>
+    </div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 400" role="img" aria-label="示意图：双及物构式隐喻扩展放射图">
+      <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+        <ellipse cx="340" cy="200" rx="86" ry="46"/>
+      </g>
+      <g text-anchor="middle" font-family="KaiTi,STKaiti,serif">
+        <text x="340" y="194" font-size="19" fill="#9d4938">有意的</text>
+        <text x="340" y="218" font-size="19" fill="#9d4938">给予性转移</text>
+      </g>
+      <text x="340" y="164" text-anchor="middle" font-size="12" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">构式义（整体）</text>
+      <g stroke="#9d4938" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round" fill="none">
+        <path d="M412 172 C 470 140, 500 110, 540 84"/>
+        <path d="M424 200 C 500 190, 550 180, 596 176"/>
+        <path d="M418 228 C 480 262, 520 292, 556 318"/>
+        <path d="M340 250 C 320 300, 300 330, 262 352"/>
+        <path d="M262 148 C 220 120, 190 96, 158 74"/>
+        <path d="M256 252 C 210 282, 170 300, 128 312"/>
+      </g>
+      <g font-family="KaiTi,STKaiti,serif" text-anchor="middle">
+        <circle cx="546" cy="78" r="5" fill="#9d4938"/><text x="546" y="58" font-size="15.5" fill="#9d4938">现场给予</text>
+        <text x="546" y="98" font-size="12" fill="#6f675a">给 送 赔 还</text>
+        <circle cx="600" cy="176" r="5" fill="#9d4938"/><text x="600" y="156" font-size="15.5" fill="#9d4938">瞬时抛物</text>
+        <text x="600" y="196" font-size="12" fill="#6f675a">扔 抛 甩 塞</text>
+        <circle cx="562" cy="324" r="5" fill="#9d4938"/><text x="562" y="304" font-size="15.5" fill="#9d4938">远程给予</text>
+        <text x="562" y="344" font-size="12" fill="#6f675a">寄 邮 汇 传</text>
+        <circle cx="256" cy="360" r="5" fill="#9d4938"/><text x="256" y="340" font-size="15.5" fill="#9d4938">允诺指派</text>
+        <text x="256" y="380" font-size="12" fill="#6f675a">答应 拨 分 准</text>
+        <circle cx="152" cy="68" r="5" fill="#9d4938"/><text x="152" y="48" font-size="15.5" fill="#9d4938">传达信息</text>
+        <text x="152" y="88" font-size="12" fill="#6f675a">告诉 报告 回答</text>
+        <circle cx="122" cy="312" r="5" fill="#9d4938"/><text x="122" y="292" font-size="15.5" fill="#9d4938">命名</text>
+        <text x="122" y="332" font-size="12" fill="#6f675a">称 叫 骂</text>
+      </g>
+      <text x="340" y="392" text-anchor="middle" font-size="12.5" fill="#a87f24">六类动词呈放射状引申：现场→非现场，物质空间→话语空间（示意）</text>
+    </svg>
+    <figcaption>图 2（示意）：双及物构式的隐喻扩展网络。五类引申都从「现场给予」放射而出，靠两条隐喻映射——现场到非现场、物质空间到话语空间<sup class="cite" data-cite="meta-map"></sup>。</figcaption>
+  </figure>
+  <p>构式语法的研究价值正在这儿：动词五花八门，句式只有一个；抓住「有意的给予性转移」这条构式义，六类动词的准入差异就有了统一的解释。这也是全书的第一个研究范式——<strong>在原型解析的基础上，梳理基于同构的多义变体</strong><sup class="cite" data-cite="steps"></sup>。</p>
+</section>
+
+<!-- ============ 场景三：双谓词 ============ -->
+<section data-scene="3" class="scene">
+  <p class="kicker">范式二 · 理据性承继</p>
+  <h2>三、双谓词构式：连动句也有三六九等</h2>
+  <p>连动式「(S)＋VP₁＋VP₂」争议了几十年，谁也划不清边界。高增霞（2006）的办法是范畴观：连动式是个<strong>典型范畴</strong>，成员按「先后顺序」临摹的层面分成三档<sup class="cite" data-cite="gao"></sup>——临摹客观时间轴的，最典型；临摹逻辑关系的，次之；只临摹认知背景的，最边缘。</p>
+  <div class="sortrow" id="sortGame">
+    <div class="sortbox">
+      <h4>典型连动式 · 客观层面</h4>
+      <div class="items" data-box="0"></div>
+      <p class="why" data-why="0" hidden>临摹时间轴上的先后，可放进「先……后……」框架；V₁ 有界性强，几个分离动作。</p>
+    </div>
+    <div class="sortbox">
+      <h4>非典型连动式 · 逻辑层面</h4>
+      <div class="items" data-box="1"></div>
+      <p class="why" data-why="1" hidden>临摹「现象＋意义」，时间轴上只实现一个动作；V₂ 多为抽象动词或否定形式。</p>
+    </div>
+    <div class="sortbox">
+      <h4>边缘连动式 · 认知层面</h4>
+      <div class="items" data-box="2"></div>
+      <p class="why" data-why="2" hidden>临摹「背景＋目标」，几个动作只对应时间轴上一个点；V₁ 无界性强，一个整体动作。</p>
+    </div>
+  </div>
+  <p class="small muted">↑ 点句子，把它送进你认为的那一档。全部归位后显示各档理由。</p>
+  <div class="pair">
+    <div class="card a">
+      <p class="sent">下午吃了饭看电影<sup class="cite" data-cite="lianxi"></sup></p>
+      <p class="small muted">「吃了饭」只说明「看电影」的时间，可放进「……接着就……」框架，是最有原型性的连动式。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">鼓掌表示欢迎<sup class="cite" data-cite="lianxi"></sup></p>
+      <p class="small muted">不能理解成「先鼓掌后表示欢迎」——时间轴上只有一个动作，「欢迎」是「鼓掌」的含义所在。</p>
+    </div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 250" role="img" aria-label="示意图：连动式典型性连续统">
+      <g stroke="#29241d" stroke-width="2.4" stroke-linecap="round">
+        <path d="M70 130 H 610"/>
+        <path d="M590 118 l 20 12 -20 12" fill="none"/>
+      </g>
+      <g font-family="KaiTi,STKaiti,serif" text-anchor="middle">
+        <circle cx="130" cy="130" r="7" fill="#9d4938"/><text x="130" y="106" font-size="17" fill="#9d4938">典型连动式</text>
+        <text x="130" y="162" font-size="12.5" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">客观层面 · 〔先后〕</text>
+        <circle cx="340" cy="130" r="7" fill="#a87f24"/><text x="340" y="106" font-size="17" fill="#a87f24">非典型连动式</text>
+        <text x="340" y="162" font-size="12.5" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">逻辑层面 · 〔目的性〕〔同时〕</text>
+        <circle cx="550" cy="130" r="7" fill="#3d5a6c"/><text x="550" y="106" font-size="17" fill="#3d5a6c">边缘连动式</text>
+        <text x="550" y="162" font-size="12.5" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">认知层面 · 〔同时〕</text>
+      </g>
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="12.5" fill="#6f675a">
+        <text x="130" y="196">运动视点 · 分离动作 · V₁有界性强</text>
+        <text x="340" y="196">—</text>
+        <text x="550" y="196">静止视点 · 整体动作 · V₁无界性强</text>
+        <text x="340" y="226" text-anchor="middle" fill="#a87f24">非离散的连续统：时序作用的层面越高，语法化程度越高（示意）</text>
+      </g>
+    </svg>
+    <figcaption>图 3（示意）：连动式典型性连续统与两极变量。范畴成员非离散，边缘与典型之间是渐变<sup class="cite" data-cite="continuum"></sup>。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景四：处置义 ============ -->
+<section data-scene="4" class="scene">
+  <p class="kicker">范式三 · 主观性印记</p>
+  <h2>四、「把」字句：处置不处置，说话人说了算</h2>
+  <p>王力（1945）最早把「把」字句叫「处置式」<sup class="cite" data-cite="wangli"></sup>，可总有人质疑：有的「把」字句根本没处置什么。沈家煊（2002）一刀切开：有<strong>客观处置</strong>（甲有意识地对乙作实在处置），也有<strong>主观处置</strong>（说话人认定甲对乙作某种处置，未必有意识、未必实在）<sup class="cite" data-cite="shen-subj"></sup>。「把」字句用的是哪把尺？——说话人的认定。核心就四个字：<strong>「说话人认定」</strong><sup class="cite" data-cite="shen-core"></sup>。主客观搭不搭，共四种情形：</p>
+  <table class="matrix" id="baMatrix">
+    <tr><th></th><th>主观上认定处置</th><th>主观上未认定</th></tr>
+    <tr><th>客观上处置了</th><td class="ba" data-ex="他把那碗酒喝了。">他把那碗酒喝了。</td><td class="ba" data-ex="他喝了一碗酒。">他喝了一碗酒。</td></tr>
+    <tr><th>客观上未处置</th><td class="ba" data-ex="他把大门的钥匙丢了。">他把大门的钥匙丢了。</td><td class="ba" data-ex="他丢了大门的钥匙。">他丢了大门的钥匙。</td></tr>
+  </table>
+  <p class="small muted" id="baNote">点开任一格：只要说话人「认定」，就用「把」字句（红格示例）；不认定，就用动宾句。</p>
+  <p>Lyons（1977）说，主观性是话语中说话人「自我」的表现成分，体现在情感、视角、认识三个方面<sup class="cite" data-cite="lyons"></sup>。「把」字句三样全占：</p>
+  <details>
+    <summary>▸ 情感：移情——受事是说话人同情、钟情或厌恶的对象</summary>
+    <ul>
+      <li>「把首饰当了」说得，「*把首饰赎了」说不得——人寄情于得到了而又失去的东西<sup class="cite" data-cite="empathy"></sup>。</li>
+      <li>「他把汤都喝了」≠「他都喝了汤了」：前者汤全受损，是移情对象；「都」管辖的受事必须进「把」字句。</li>
+    </ul>
+  </details>
+  <details>
+    <summary>▸ 视角：量的主观估价与「了／过」的体</summary>
+    <ul>
+      <li>「把几个零钱使完了」——「几个」是描写性的小量，相当于英语的 few<sup class="cite" data-cite="perspective"></sup>。</li>
+      <li>「把嘴张得大大的」自由，「把嘴张大」黏着——状态形容词的主观性比性质形容词强。</li>
+      <li>「我把野菜吃了」说得，「*我把野菜吃过」说不得——「V了」锚定现在，「V过」只客观报道。</li>
+    </ul>
+  </details>
+  <details>
+    <summary>▸ 认识：出乎意料——无定宾语 + 「把」</summary>
+    <ul>
+      <li>「我要向他借支钢笔，他却把一支铅笔递给了我」——出乎意外，是一种「意外的行动」<sup class="cite" data-cite="epistemic"></sup>。</li>
+      <li>「偏偏又把个老王病倒了」：老王是专名，加「（一）个」只因说话人没想到——主观性决定了不定指标的增添。</li>
+    </ul>
+  </details>
+</section>
+
+<!-- ============ 场景五：强调义 ============ -->
+<section data-scene="5" class="scene">
+  <p class="kicker">范式四 · 非典型变异</p>
+  <h2>五、「连」字句：越不像，越是构式</h2>
+  <p>「连 XP 都／也＋VP/AP」是汉语表达强调义的典型句式。学界共识是：它包含一个<strong>主观预设</strong>——XP 处在可能性等级尺度的<strong>低端</strong>；字面断言却说这个最不可能的行为<strong>出乎意料地为真</strong>；两下一碰，言外之意是「其他的更不在话下」<sup class="cite" data-cite="lian-presup"></sup>。刘丹青（2005）补了关键一刀：构式一旦规约化，成分就会泛化，出现从典型到非典型的变异，<strong>而非典型成分的参与反而使构式更具典型意义</strong><sup class="cite" data-cite="liu05"></sup>。</p>
+  <div class="lab" id="lianLab">
+    <h3>等级尺度实验台：把 XP 放上可能性滑轨</h3>
+    <p class="small muted">选一个 XP，看它落在尺度的哪一端，预设与断言的反差如何制造强调义。</p>
+    <div class="chipsrow" id="lianChips"></div>
+    <div class="scale" id="lianScale"></div>
+    <div class="result" id="lianResult" hidden>
+      <dl class="rows">
+        <dt>句子</dt><dd id="lianSent" style="font-family:Kaiti,STKaiti,serif;font-size:1.25rem"></dd>
+        <dt>预设</dt><dd id="lianPresup"></dd>
+        <dt>断言反差</dt><dd id="lianContrast"></dd>
+        <dt>言外之意</dt><dd id="lianImplic"></dd>
+      </dl>
+    </div>
+  </div>
+  <p>可有些「连」字句压根找不到等级尺度的成员集合：「他吵，小福子连大气也不出」——不存在比「大气」更可能「不出」的东西<sup class="cite" data-cite="lian-atypical"></sup>。缺口在谓语核心：「连 XP」要求后面有谓词述题，谓语核心没法被「连」标示，于是句式各显神通——实义 VP 话题化（「他连骑自行车都不会」）、虚义动词（「他们连亲人都干」）、重复动词（「我连坐都坐不下去」）、离合词前移（「连吵架都不爱跟我吵了」）、宾语沾名词话题化的光（「连门都不敲就进来了」）<sup class="cite" data-cite="lian-mech"></sup>。结论意味深长：<strong>这些不可分析的句子，反而更凸显构式的整体义，是更典型的构式</strong><sup class="cite" data-cite="lian-concl"></sup>。</p>
+</section>
+
+<!-- ============ 场景六：收束 ============ -->
+<section data-scene="6" class="scene">
+  <p class="kicker">理论升华 → 全书地图</p>
+  <h2>六、从「不可预测」到「形式—功能」</h2>
+  <p>2006 年《运作中的构式》出版，Goldberg 修正了定义：<strong>任何语言结构，只要在形式或功能的某个方面不能从其组成部分或其他已知构式中严格预测出来，就可视为构式；即使是能被完全预测的结构，只要有足够的出现频率，也可视为构式</strong><sup class="cite" data-cite="g06-def"></sup>。「不可预测性」不再是门槛，「所见即所得」——用得多，就是构式。定义随之从「形式—意义」匹配延伸到「形式—功能」匹配，功能涵盖语义、语用和认知；她也把这套理论重新命名为<strong>认知构式语法</strong>（CCG）<sup class="cite" data-cite="g06-func"></sup>。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 190" role="img" aria-label="示意图：汉语构式研究五步骤">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif" font-size="13" text-anchor="middle" fill="#6f675a">
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="20" y="60" width="112" height="64" rx="10"/>
+          <rect x="152" y="60" width="112" height="64" rx="10"/>
+          <rect x="284" y="60" width="112" height="64" rx="10"/>
+          <rect x="416" y="60" width="112" height="64" rx="10"/>
+          <rect x="548" y="60" width="112" height="64" rx="10"/>
+        </g>
+        <g fill="#29241d">
+          <text x="76" y="86">① 精确描写</text><text x="76" y="108">句法语义属性</text>
+          <text x="208" y="86">② 原型解析</text><text x="208" y="108">发现同构多义变体</text>
+          <text x="340" y="86">③ 提炼构式义</text><text x="340" y="108">立足事实描写</text>
+          <text x="472" y="86">④ 分析话语功能</text><text x="472" y="108">语境适切度</text>
+          <text x="604" y="86">⑤ 解释承继理据</text><text x="604" y="108">基于认知心理</text>
+        </g>
+        <g stroke="#9d4938" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M136 92 h 12"/><path d="M268 92 h 12"/><path d="M400 92 h 12"/><path d="M532 92 h 12"/>
+        </g>
+        <text x="340" y="36" font-size="14" fill="#9d4938">笔者总结的汉语构式研究范式，本书各章均循此推进</text>
+        <text x="340" y="164" font-size="12.5" fill="#a87f24">示意图，据底本 L608–L618 研究步骤绘制</text>
+      </g>
+    </svg>
+    <figcaption>图 4（示意）：构式研究五步骤。本书后续各章就是这套流程的反复演练。</figcaption>
+  </figure>
+  <p>顺着这条流程，全书铺开一张地图：第二、三章讲整合与承继，第四至六章讲同构、赋义与语用，第七、八章收束于变异与结论。词与句、语义与语用的边界，在构式这里都不再牢不可破<sup class="cite" data-cite="g95-three"></sup>。</p>
+  <div class="series">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a class="cur" href="构式语法与汉语构式-01深读-构式语法入门.html">01 绪论</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </div>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section data-quiz class="quiz">
+  <h2>带走三题</h2>
+  <p class="q">1. 按 Goldberg 1995 年的定义，下面哪种结构<strong>不</strong>是构式？</p>
+  <div class="opts" data-k="1">
+    <button data-v="a">kick the bucket（字面算不出「死」）</button>
+    <button data-v="b">一个意思完全能从词义推出的常用短句</button>
+    <button data-v="c">「爸爸叫他小三儿」（给予义来自句式）</button>
+  </div>
+  <p class="why" hidden>1995 年定义以「不可精确推导」为门槛，意思完全可预测的结构当时不算构式。注意 2006 年修正后，只要出现频率足够，可预测结构也可算构式<sup class="cite" data-cite="g06-def"></sup>。</p>
+  <p class="q">2. 「老师回答我一个问题」属于双及物构式的哪一类引申？</p>
+  <div class="opts" data-k="2">
+    <button data-v="a">现场给予类</button>
+    <button data-v="b">传达信息类（物质空间投射到话语空间）</button>
+    <button data-v="c">命名类</button>
+  </div>
+  <p class="why" hidden>「回答」给出的是信息不是实物，是把物质空间的给予投射到话语空间；这类动词不能与「给」相伴（*老师给我回答一个问题）<sup class="cite" data-cite="ditrans-verbs"></sup>。</p>
+  <p class="q">3. 「他吵，小福子连大气也不出」为什么被称作「非典型」连字句？</p>
+  <div class="opts" data-k="3">
+    <button data-v="a">因为「连」后必须是名词</button>
+    <button data-v="b">因为找不到构成等级尺度的成员集合，预设解释失效</button>
+    <button data-v="c">因为它不表达强调义</button>
+  </div>
+  <p class="why" hidden>「连」字句的主观预设要求 XP 处在可能性等级低端，但不存在比「大气」更可能「不出」的东西；它仍表强调义，靠的是构式整体表义，反而更典型<sup class="cite" data-cite="lian-atypical"></sup><sup class="cite" data-cite="lian-concl"></sup>。</p>
+</section>
+
+<footer>
+  <p>本页范围：底本第一章「绪论」（L472–L987）。底本为 OCR 转录，无原书页码，「底本 Lx」指底本行号；关键结论请点角标核对原句。</p>
+  <p>未覆盖：第一章第二节的详细文献脉络；第二至八章见系列深读页。原书：《构式语法与汉语构式》，吴为善著。</p>
+</footer>
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本（原文位置 + 原句 + 转述） ================= */
+const SOURCES = {
+  "fillmore-idiom": { page:"底本 L500", quote:"Fillmore(1988)认为，这一模式只能解释语言中常规的现象，但不能解释语言中的习语。比如kick the bucket这个习语，模块式语法观无法解释kick、the、buthe这三个词如何根据语音、句法、语义的规则组成这个习语的形式，构成它的意义。", zh:"Fillmore（1988）：模块观解释不了 kick the bucket 这类习语。" },
+  "langacker-def":  { page:"底本 L506", quote:"构式是一个语言表达式(可以是任何大小)，或者是一个从许多语言表达式中抽象出来的图式，该图式能够代表这些语言表达的共性（以详略度而言，该图式可详可略）。", zh:"Langacker（2007）构式定义：语言表达式，或抽象出的图式。" },
+  "g95-three":     { page:"底本 L518-522", quote:"（1）在构式语法中，词库和句法之间不存在严格的分界线……（2）在构式语法中，语义和语用之间也不存在严格的分界线……（3）构式语法是生成性的而非转换性的。", zh:"Goldberg 1995 三特征：词库—句法无界、语义—语用无界、生成性非转换性。" },
+  "g95-def":       { page:"底本 L526-530", quote:"本书的一个中心观点认为基本句子就是一种构式，即形式——意义的对应体，它们独立于具体的动词而存在……当且仅当 C 作为形式与意义的结合体，Fi 的某些方面或 Si 的某些方面不能从 C 的构成成分或从已经确立的构式中精确地推导出来时，C 就是一个构式。", zh:"Goldberg 1995：基本句子就是独立于动词的构式；不可精确推导者为构式。" },
+  "g95-five":      { page:"底本 L536-564", quote:"她立足英语事实，认为论元结构构式包括以下基本类型：1. 双及物构式 2. 致使—移动构式 3. 动结构式 4. 不及物移动构式 5. 及物构式。", zh:"五种论元结构构式：双及物、致使—移动、动结、不及物移动、及物。" },
+  "g06-def":       { page:"底本 L581", quote:"任何语言结构，只要在形式或功能的某个方面不能从其组成部分或其他已知构式中严格预测出来，就可视为构式。即使是能够被完全预测出来的语言结构，只要有足够的出现频率，也可被视为构式。", zh:"Goldberg 2006 修正定义：不可预测不再是必要条件；高频可预测结构也是构式。" },
+  "g06-func":      { page:"底本 L579-583", quote:"在该专著中，Goldberg强调构式是“形式和功能”的匹配体……构式就是形式与语义或话语功能的匹配体……重新命名为“认知构式语法”（Cognitive Construction Grammar，简称 CCG）。", zh:"2006 年起构式是形式—功能匹配体，覆盖语素、词、习语到句式；更名 CCG。" },
+  "wangli":        { page:"底本 L588", quote:"早在 20 世纪 40 年代王力（1945）就将“把”字句称为“处置式”，认为该句式表示处置义，这实际上概括的就是“NP[施事] + 把 + NP[受事] + VP[结果]”这个“把”字句构式的构式义。", zh:"王力（1945）称「把」字句为「处置式」，即对构式义的早期概括。" },
+  "zhuxi":         { page:"底本 L590", quote:"朱德熙（1982）认为“NP[处所] + V着 + NP”是个多义句式，可以分化为 C1 和 C2 两式。C1 式表示存在，表静态，如“墙上贴着标语”；C2 式表示活动，表动态，如“台上唱着戏”。", zh:"朱德熙（1982）：「NP处所＋V着＋NP」分化 C1 存在／C2 活动，是隐喻承继。" },
+  "steps":         { page:"底本 L608-618", quote:"1. 对构式及其组配构件进行句法语义属性的精确描写；2. 在原型构式解析的基础上发现、梳理同构多义变体；3. 在事实描写的基础上对构式整体的构式义加以提炼；4. 在语境中分析、论证构式的话语功能及其语境适切度；5. 基于认知心理对构式及其变体的承继理据加以解释。", zh:"构式研究五步骤：描写→多义变体→提炼义→话语功能→理据。" },
+  "zhangbj":       { page:"底本 L640", quote:"张伯江按照构式语法的主张，提出汉语里存在着一个叫作双及物的语法结构式，其结构形式为 V+N1+N2，其核心构式义为“有意的给予性转移”。", zh:"张伯江（1999）：双及物构式核心义＝有意的给予性转移。" },
+  "ditrans-verbs": { page:"底本 L650-696", quote:"（1）现场给予类：给、借、租、让、奖、送、赔、还……不能变换成“A给R+VP”式……（2）瞬时抛物类：扔、抛、丢、甩、拽、塞、捅、射、吐、喂等……（4）传达信息类：报告、答复、奉承、告诉、回答……→ *侦察员给团长报告一件事。", zh:"六类动词与变换测试：现场给予（*）、瞬时抛物（?）、远程给予（✓）、传达信息（*）、允诺指派（?）、命名（*）。" },
+  "meta-map":      { page:"底本 L698", quote:"其中最为主要的是两点：一是从现场给予到非现场给予的隐喻映射，二是从物质空间到话语空间的隐喻映射。这两种方式共同作用导致上述种种引申途径。", zh:"两条隐喻映射：现场→非现场；物质空间→话语空间。" },
+  "gao":           { page:"底本 L708-714", quote:"高增霞（2006）对汉语连动式进行了重新审视，指出连动式也是一个典型范畴……客观层面的先后顺序：典型的连动式；逻辑层面的先后顺序：非典型的连动式；认知层面的先后顺序：边缘的连动式。", zh:"高增霞（2006）：连动式三层面——客观（典型）、逻辑（非典型）、认知（边缘）。" },
+  "lianxi":        { page:"底本 L721-769", quote:"先后序列动作：下午吃了饭看电影……工具—动作：借把起子用一下……“表示”类：鼓掌表示欢迎向群众挥手致意……“V1着+V2”：大妈端着一盘炒鸡蛋送上桌。", zh:"原文例句：先后序列、工具—动作、表示类、想/要类、肯否联结、V1着＋V2。" },
+  "continuum":     { page:"底本 L771-782", quote:"事实表明：时序作用的层面越高，语法化的程度也越高，所以连动式在典型性上表现出非离散性的连续统……典型连动式〔先后〕……边缘连动式〔同时〕。", zh:"连动式是非离散连续统；变量两极：运动/静止视点、分离/整体动作、V₁有界/无界。" },
+  "shen-subj":     { page:"底本 L790-792", quote:"客观处置：甲（施事）有意识地对乙（受事）作某种实在的处置。主观处置：说话人认定甲（不一定是施事）对乙（不一定是受事）作某种处置（不一定是有意识的和实在的）。", zh:"沈家煊（2002）：客观处置 vs 主观处置；后者核心是「说话人认定」。" },
+  "shen-4":        { page:"底本 L796-810", quote:"（2）客观上甲处置了乙，说话人主观上也认定甲处置乙：他把那碗酒喝了。（3）客观上甲未处置乙，而说话人主观上认定甲处置乙：他把大门的钥匙丢了。", zh:"四种主客观组合：认定与否决定用「把」字句还是动宾句。" },
+  "shen-core":     { page:"底本 L812", quote:"不管客观上甲是否处置了乙，只要说话人是这么认定的，就用把字句(2)和(3)；说话人不这么认定，就用动宾句(1)和(4)。“主观处置”的核心是“说话人认定”。", zh:"句式选择取决于说话人是否「认定」；动宾句主观性弱于对应「把」字句。" },
+  "lyons":         { page:"底本 L814", quote:"按照 Lyons(1977),“主观性”(subjectivity)是指语言的这样一种特性，即在话语中多多少少总是带有说话人“自我”的表现成分……主要表现在三个方面：说话人的情感，说话人的视角，说话人的认识。", zh:"Lyons（1977）：主观性三方面——情感、视角、认识。" },
+  "empathy":       { page:"底本 L827-849", quote:"吴葆棠(1987)收集“把NV了”句式的例句62个，其中61个的动词是表示违愿或丧失义的……同情、钟情、厌恶这三种情感都跟主观认定的“受损”有关。", zh:"移情三态：同情（X已受损）、钟情（不愿X受损）、厌恶（愿X受损）。" },
+  "perspective":   { page:"底本 L854-892", quote:"吕叔湘(1948)指出，这几句中“把”字宾语里的“些”和“几”不是偏称性的，而是描写性的……“V 过”只是客观地报道曾经发生一个事件，用了完成体的“了”，在叙述一个过去事件的同时还表示出说话人的视角。", zh:"视角主观性：主观小量/大量；状态形容词强于性质形容词；「V了」强于「V过」。" },
+  "epistemic":     { page:"底本 L898-918", quote:"马真（1985）和王还（1985）都指出，“把”字宾语为无定名词的句子“都含有出乎意外的意思”……偏偏又把个老王病倒了。", zh:"认识主观性：无定宾语＋「把」表出乎意料；「（一）个」的增删由主观性决定。" },
+  "liu05":         { page:"底本 L925", quote:"刘丹青（2005）指出：构式的语法价值在于，构式一旦被规约化，参与构式的成分就会泛化，出现从典型到非典型的趋势，导致构式变异，而非典型成分的参与反而使构式更具典型意义。", zh:"刘丹青（2005）：构式规约化→成分泛化→非典型变异，反而更凸显构式义。" },
+  "lian-presup":   { page:"底本 L936-938", quote:"（1）“连”字句都包含一个说话人的主观预设：进入该句式的“连 NP”里的 NP 都处在一个可能性（可预期性）等级尺度的低端……（2）句式的字面义所讲的事实却是这一可能性最低的行为或属性倒（出乎料地）为真。", zh:"预设（低端）＋断言（出乎料地为真）→反差→强调义＋言外含意。" },
+  "lian-atypical": { page:"底本 L942-950", quote:"a. 他吵，小福子连大气也不出……在 a 句中，不存在比“大气”更可能“不出”的东西；在 b 句中，没有比“路”更走不了的东西。", zh:"非典型连字句：找不到等级尺度成员集合，预设解释失效。" },
+  "lian-mech":     { page:"底本 L957-983", quote:"假如需要突出的预设中等级低端性的谓语是助动词带实义 VP……用“连”构成同一性话题，即让谓语动词用在“连”后，同时在后面再重复那个动词……连门都不敲就进来了。", zh:"五种变异机制：助动词语块话题化、虚义动词、同一性话题、离合词前移、宾语沾光话题化。" },
+  "lian-concl":    { page:"底本 L985", quote:"因此，非典型“连”字句的强调义来自整个构式的表义作用，具有不可分析性，因而是更典型的构式。", zh:"不可分析的非典型形式，反而更典型——构式整体表义。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch{ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch{} }
+};
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* 字号 */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* 明暗 */
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"),
+      popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"),
+      popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+
+/* 回跳 */
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 双及物：动词准入实验室 ================= */
+const VERBS = [
+  { v:"卖", cls:"现场给予类", sent:"老王卖给邻居一套旧家具。", emer:"「卖」本身不含给予方向；句式赋予「有意的给予性转移」。", tr:"*老王给邻居卖了一套旧家具。", mark:"*", note:"现场给予：语义上要求明确的方向和目的，不必事先规定目的物。", key:"ditrans-verbs" },
+  { v:"扔", cls:"瞬时抛物类", sent:"他扔给我一个纸团儿。", emer:"「扔」本无接受者；句式借其方向性赋予给予义。", tr:"?他给我扔了一个纸团儿。", mark:"?", note:"瞬时抛物：固有方向性使目的性明确，短时性使现场性必然。", key:"ditrans-verbs" },
+  { v:"寄", cls:"远程给予类", sent:"爸爸寄给我一封信。", emer:"「寄」表远距离间接交予；句式给予义弱于现场类。", tr:"✓ 爸爸给我寄了一封信。", mark:"✓", note:"远程给予：目标性弱化，句法上可加前置「给」短语。", key:"ditrans-verbs" },
+  { v:"告诉", cls:"传达信息类", sent:"老师告诉我一个消息。", emer:"给予物是信息——物质空间的给予投射到话语空间。", tr:"*老师给我告诉一个消息。", mark:"*", note:"传达信息：给予不「实」，一般不能与「给」相伴。", key:"ditrans-verbs" },
+  { v:"答应", cls:"允诺指派类", sent:"老王答应我两张电影票。", emer:"交予在不久的将来实现；句式义覆盖未兑现的允诺。", tr:"?老王答应两张电影票给我。", mark:"?", note:"允诺指派：变换为结果目标式要受一定限制。", key:"ditrans-verbs" },
+  { v:"叫", cls:"命名类", sent:"爸爸叫他小三儿。", emer:"给予物是一个「名称」；动词毫无给予义，全靠句式。", tr:"*爸爸给他叫小三儿。", mark:"*", note:"命名：给予意义完全由句式带来，不能以任何形式与「给」相伴。", key:"ditrans-verbs" }
+];
+const verbBtns = document.getElementById("verbBtns");
+VERBS.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.innerHTML = d.v + "<small>" + d.cls + "</small>";
+  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  b.onclick = () => {
+    verbBtns.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", "false"));
+    b.setAttribute("aria-pressed", "true");
+    renderVerb(d);
+  };
+  verbBtns.appendChild(b);
+});
+function renderVerb(d){
+  document.getElementById("verbResult").hidden = false;
+  document.getElementById("verbSent").textContent = d.sent;
+  document.getElementById("verbEmergent").textContent = d.emer;
+  const markCls = d.mark === "*" ? "no" : (d.mark === "?" ? "qm" : "ok");
+  document.getElementById("verbTransform").innerHTML = '<span class="' + markCls + '">' + d.mark + '</span> ' + d.tr.slice(1).trim();
+  document.getElementById("verbNote").textContent = d.note;
+  document.getElementById("verbCite").innerHTML = '原文详见 <sup class="cite" data-cite="' + d.key + '" style="cursor:pointer">角标</sup> 「双及物构式及其隐喻扩展类型」。';
+}
+renderVerb(VERBS[0]);
+
+/* ================= 连动式分类游戏 ================= */
+const SENTENCES = [
+  { s:"下午吃了饭看电影", box:0 },
+  { s:"回到家发现门开着", box:0 },
+  { s:"借把起子用一下", box:0 },
+  { s:"鼓掌表示欢迎", box:1 },
+  { s:"叫着想挣开", box:1 },
+  { s:"坐着不动", box:1 },
+  { s:"大妈端着一盘炒鸡蛋送上桌", box:2 },
+  { s:"刘志彬端着脸盆出去洗漱", box:2 }
+];
+const sortGame = document.getElementById("sortGame");
+const boxes = sortGame.querySelectorAll(".items");
+const pending = [...SENTENCES].sort(() => Math.random() - .5);
+const pool = document.createElement("div");
+pool.className = "sortbox";
+pool.style.borderStyle = "solid";
+pool.innerHTML = '<h4>待分类（点句子送位）</h4><div class="items" data-box="-1"></div>';
+sortGame.prepend(pool);
+const poolBox = pool.querySelector(".items");
+function makeBtn(d){
+  const b = document.createElement("button");
+  b.textContent = d.s;
+  b.dataset.box = d.box;
+  b.onclick = () => {
+    const target = boxes[d.box];
+    if (b.parentElement === target) return;
+    target.appendChild(b);
+    b.classList.remove("right","wrong");
+    checkSort();
+  };
+  return b;
+}
+pending.forEach(d => poolBox.appendChild(makeBtn(d)));
+function checkSort(){
+  let allDone = true;
+  boxes.forEach((box, i) => {
+    const kids = [...box.children];
+    kids.forEach(k => {
+      if (String(k.dataset.box) === String(i)) k.classList.add("right"); else k.classList.add("wrong");
+    });
+    if (kids.length === 0) allDone = false;
+  });
+  if (allDone){
+    sortGame.querySelectorAll(".why").forEach(w => w.hidden = false);
+    if (poolBox.children.length === 0) pool.querySelector("h4").textContent = "全部分类完成 ✓";
+  }
+}
+
+/* ================= 把字句矩阵 ================= */
+document.querySelectorAll("#baMatrix td.ba").forEach(td => {
+  td.onclick = () => {
+    document.querySelectorAll("#baMatrix td.ba").forEach(x => x.classList.remove("on"));
+    td.classList.add("on");
+    document.getElementById("baNote").innerHTML = "「<b>" + td.dataset.ex + "</b>」——" + (td.cellIndex === 1 ? "主观上认定处置 → 「把」字句；主观处置不必实在、不必有意识。" : "主观上未认定 → 动宾句；同样的客观事件，说话立场不同，句式就不同。") + "<sup class='cite' data-cite='shen-4'></sup>";
+  };
+});
+
+/* ================= 连字句等级尺度 ================= */
+const LIAN = [
+  { xp:"老王", sent:"连老王都敢吃老鼠肉。", pos:"低端", presup:"预设：「老王」是这群人里最不可能敢吃老鼠肉的一位。", contrast:"断言：老王却（出乎意料地）敢吃老鼠肉。", implic:"言外之意：其他人更敢吃。", fit:"典型" },
+  { xp:"老鼠肉", sent:"老王连老鼠肉都敢吃。", pos:"低端", presup:"预设：「老鼠肉」是食物集合里最不可能被吃的东西。", contrast:"断言：老王却敢吃老鼠肉。", implic:"言外之意：别的东西更不在话下。", fit:"典型" },
+  { xp:"大象", sent:"他连大象也拉得动。", pos:"低端", presup:"预设：大象是动物重量集合的顶端，拉得动是可能性最低的行为。", contrast:"断言：他却拉得动大象。", implic:"言外之意：别的动物更拉得动。", fit:"典型" },
+  { xp:"大气", sent:"他吵，小福子连大气也不出。", pos:"无端可放", presup:"找不到成员集合：不存在比「大气」更可能「不出」的东西。", contrast:"仍表强调：靠构式整体表义，不经由等级反差。", implic:"强调「完全不出声」——不可分析，反而更典型。", fit:"非典型" }
+];
+const lianChips = document.getElementById("lianChips");
+const lianScale = document.getElementById("lianScale");
+function drawScale(pos){
+  if (pos === "无端可放"){
+    lianScale.innerHTML = '<svg viewBox="0 0 680 96" role="img" aria-label="等级尺度缺失示意"><g stroke="#29241d" stroke-width="2.4" stroke-linecap="round"><path d="M70 52 H 610"/></g><text x="70" y="34" font-size="13" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">可能性高端</text><text x="610" y="34" font-size="13" text-anchor="end" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">可能性低端</text><text x="340" y="80" text-anchor="middle" font-size="13.5" fill="#9d4938" font-family="KaiTi,STKaiti,serif">「大气」找不到可比成员 —— 等级尺度在此缺失（示意）</text></svg>';
+    return;
+  }
+  const x = pos === "低端" ? 566 : 120;
+  lianScale.innerHTML = '<svg viewBox="0 0 680 96" role="img" aria-label="可能性等级尺度"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3d5a6c"/><stop offset="1" stop-color="#9d4938"/></linearGradient></defs><rect x="70" y="46" width="540" height="12" rx="6" fill="url(#lg)"/><text x="70" y="34" font-size="13" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">可能性高端（更可能）</text><text x="610" y="34" font-size="13" text-anchor="end" fill="#6f675a" font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">可能性低端（最不可能）</text><circle cx="' + x + '" cy="52" r="9" fill="#f6f1e5" stroke="#29241d" stroke-width="2.4"/><text x="' + x + '" y="86" font-size="14" text-anchor="middle" fill="#9d4938" font-family="KaiTi,STKaiti,serif">XP 落点</text></svg>';
+}
+LIAN.forEach((d, i) => {
+  const b = document.createElement("button");
+  b.textContent = "连" + d.xp;
+  b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+  b.onclick = () => {
+    lianChips.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    document.getElementById("lianResult").hidden = false;
+    document.getElementById("lianSent").textContent = d.sent;
+    document.getElementById("lianPresup").textContent = d.presup;
+    document.getElementById("lianContrast").textContent = d.contrast;
+    document.getElementById("lianImplic").textContent = d.implic;
+    drawScale(d.pos);
+  };
+  lianChips.appendChild(b);
+});
+drawScale("低端");
+document.getElementById("lianResult").hidden = false;
+document.getElementById("lianSent").textContent = LIAN[0].sent;
+document.getElementById("lianPresup").textContent = LIAN[0].presup;
+document.getElementById("lianContrast").textContent = LIAN[0].contrast;
+document.getElementById("lianImplic").textContent = LIAN[0].implic;
+
+/* ================= 自测 ================= */
+const ANSWERS = { 1:"b", 2:"b", 3:"b" };
+document.querySelectorAll(".quiz .opts").forEach(group => {
+  const k = group.dataset.k;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.v === ANSWERS[k]) x.classList.add("right"); });
+      if (b.dataset.v !== ANSWERS[k]) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第二节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第二节 交互研读</p>
+  <h1>层次分析：切分与定性</h1>
+  <p class="lead">层次分析是汉语语法研究中使用最久、最基础的一种句法分析方法。它要回答的问题很朴素：线性语符串，内部究竟是怎样一层套一层地组织起来的。操作概括成两个词——切分与定性；最见功力之处，是分化歧义句式。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html" class="cur">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>切分</b>与<b>定性</b></li><li>IC 分析法</li><li>五条注意</li><li>歧义句式</li><li>发现新规律</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>层次分析：一层套一层的形式构造</h2>
+<p>从本节起，本书连续介绍六种渐次深入的分析方法。层次分析是六种方法的地基：它只关心「一层套一层」的形式构造，能分化层次造成的歧义，却解释不了歧义的成因——这个缺口，等着下一节的变换分析来补。</p>
+
+<article class="chapter" data-chapter="2">
+<h3>第二节｜汉语语法研究的层次分析法</h3>
+
+<p>层次分析是汉语语法研究中使用最久、最基础的一种句法分析方法。它要回答的问题很朴素：线性语符串，内部究竟是怎样一层套一层地组织起来的。</p>
+
+<blockquote>所谓"句法分析"，是指从句法的角度来解释说明种种语言现象。<sup class="cite" data-cite="s-jufa-fenxi-dingyi">出处</sup></blockquote>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：黎锦熙当年用的"成分分析法"，只标主语、谓语、宾语，独独不直接显示什么？</p>
+<div class="opts">
+<button data-ans="0">词语的词类</button>
+<button data-ans="1">成分之间的结构层次</button>
+<button data-ans="0">句子的语气</button>
+</div>
+<div class="why"><b>结构层次。</b>成分分析法照顾到了句子的层次性，但只标记句法成分，不直接显示成分之间的结构层次——层次分析的提出，正是要把这层关系明明白白地画出来。<sup class="cite" data-cite="s-cengci-shuxing">出处</sup></div>
+</div>
+
+<p>早在1924年，黎锦熙在《新著国语文法》里就已经使用了类似层次分析的做法——先把句子拆出主语、谓语、宾语等成分，再在成分内部逐层细分，这种方法当时称为"成分分析法"或"中心词分析法"<sup class="cite" data-cite="s-cengci-shuxing">出处</sup>。它照顾到了句子的层次性，但也有明显的短板：只标记句法成分，不直接显示成分之间的结构层次。</p>
+
+<p>正因为"语言单位的层次性"是客观存在的，完全无视层次就会出错。请读者先看两个经典例子：</p>
+
+<details>
+<summary>例一：歧义从何而来</summary>
+<p class="q">"咬死了猎人的狗"有两个意思：一是"把猎人的狗咬死了"，二是"把那只咬死了猎人的狗（怎么样）"。<sup class="cite" data-cite="s-bukaolv-yiyi">出处</sup></p>
+<p class="q">"这张照片放大了一点儿"也有两个意思：一是"这张照片被放大了一点儿"，二是"比这张照片再放大一点儿的那张（照片）"。<sup class="cite" data-cite="s-bukaolv-yiyi">出处</sup></p>
+</details>
+
+<p>两例说明：如果只看一串词语的表面顺序，而不看它们组合时的层次，很多现象就无法解释。传统分析法的毛病，就在于它只考虑意义、不考虑结构形式，把句子看成一堆成分的简单加合。</p>
+
+<blockquote>层次是句法结构本身固有的属性，分析一个句法结构时，必须把它内部的层次关系显示出来。<sup class="cite" data-cite="s-cengci-shuxing">出处</sup></blockquote>
+
+<details>
+<summary>展开：句子成分分析法的四个问题（2.2）</summary>
+<p class="q">句子成分分析法也称"中心词分析法"，好处是让人一下子把握句子的脉络，分析长单句尤其见优，所以至今仍用于外语教学和汉语初级语法教学。但从语法研究的角度说，它有较大的局限性，集中表现为四个问题。<sup class="cite" data-cite="s-jucheng-fenxi">出处</sup></p>
+<p class="q">问题一，离了枝叶，主干不成立或站不住：他贪图安逸→他贪图；封建思想必须清除→思想清除；鲸鱼属于哺乳动物→鲸鱼属于。问题二，主干虽能成立，意思完全变了：他死了爷爷≠他死了；这些举措方便了群众≠举措方便；不合格的党员清除了≠党员清除了。问题三，分化歧义的能力差：有的歧义句它能分化（我们五个人一组），更多的就无能为力（这张照片放大了一点儿，"大了"和"一点儿"都只能看作补语，两种意思没法分化）。问题四，不利于发现某些词语的用法特点：副词"白白"只能修饰复杂的动词性成分，这一特点就不可能依据句子成分分析法来揭示。<sup class="cite" data-cite="s-jucheng-wenti">出处</sup></p>
+<p>根源只有一条：句子成分分析法在分析过程中不大关注语法结构的层次性。</p>
+</details>
+
+<details>
+<summary>展开：层次性是隐性的（2.3）</summary>
+<p class="q">句法构造的层次性对句法结构来说是隐性的，不是显性的，从句法结构表面看不出来。试比较："发现了敌人"与"发现过敌人"的意义区别由含不同的词呈现，"这篇文章不很好"与"这篇文章很不好"由词序不同呈现，都是显性的；而"发现敌人的哨兵回营房了"一解为"那哨兵是敌方的哨兵"，一解为"那哨兵是我方的哨兵"，区别由内部构造层次不同造成，不分析就看不出来。另外，一个句法结构所包含的词目大于二，一般就会存在构造层次性的问题。<sup class="cite" data-cite="s-cengci-yinxing">出处</sup></p>
+</details>
+
+<p>层次分析的操作可以概括成两个词：<b>切分</b>与<b>定性</b>。切分是解决"从哪里切开"的问题，定性是解决"切出的两段是什么结构关系"的问题。</p>
+
+<blockquote>层次分析，实际包含两部分内容，一是切分，一是定性。<sup class="cite" data-cite="s-qiefen-dingxing">出处</sup></blockquote>
+
+<details>
+<summary>补充：IC 分析法</summary>
+<p class="q">IC 是"直接成分"（Immediate Constituents）的缩写，由美国结构主义学派布龙菲尔德等人提出，是层次分析在描写语言学里的名称。<sup class="cite" data-cite="s-ic-fenxifa">出处</sup></p>
+</details>
+
+<details>
+<summary>展开：切分五注意的实例（2.5）</summary>
+<p class="q">第一，切分不能只根据语感，因为语感不可捉摸、因人而异。"张教授写的一篇文章"有三种可能的切分，各自都能说出道理，只有"张教授写的／一篇文章"是可取的。第二，也不能只根据语音停顿，语音停顿跟语法成分的界线不是一对应的——"我昨天买了一件最新潮的外套"可以有五种停顿，只有主语"我"后的停顿与切分一致。第三，若能证明"ab/c"优于"a/bc"就取前者："很有办法"中"有办法"能在别类结构再现（有办法的人、他有办法），"很有"只能在"很有……"中出现，故取"很／有办法"；"睡它三天三夜"是带虚指宾语的双宾结构，一般将双宾结构分析为述宾结构带宾语，故宜取"睡它／三天三夜"。第四，每个层面切分所得直接成分的组合规则必须具有普遍性："张三喝啤酒"切为"张三／喝啤酒"意味着述宾结构可以作谓语，这在现代汉语有普遍性；若切为"张三喝／啤酒"则意味着主谓结构可以带宾语，就不具普遍性——"他属于白种人"只能取前一种切分，因为"属于"是黏宾动词。第五，各直接成分组合起来的意义必须跟原结构相等："我最好的朋友"若把"最好的"切成说明"我"的，就不合原结构的意义。<sup class="cite" data-cite="s-qiefen-wuzhu">出处</sup></p>
+</details>
+
+<p>下面这张示意图把两种切分的对比画了出来。左边"他刚来"按主谓切开，"刚来"再按状中切开；右边"张教授写的一篇文章"如果从 b 处切开，"的"字结构就会被拆散，因此只能从 a 处切成定中关系。</p>
+
+<figure class="figure">
+<svg viewBox="0 0 680 300" role="img" aria-label="层次分析切分对比示意图">
+<rect x="0" y="0" width="680" height="300" fill="#fdfaf1"/>
+<defs>
+<marker id="ah2a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.2"/></marker>
+<marker id="ah2b" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#c0392b" stroke-width="1.2"/></marker>
+</defs>
+<line x1="60" y1="46" x2="60" y2="86" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="60" y1="46" x2="250" y2="86" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="60" y1="46" x2="500" y2="86" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="60" y1="86" x2="250" y2="126" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="60" y1="86" x2="500" y2="126" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="500" y1="86" x2="500" y2="126" stroke="#c0392b" stroke-width="1.4"/>
+<text x="60" y="40" text-anchor="middle" fill="#29241d">他刚来</text>
+<text x="155" y="78" text-anchor="middle" fill="#6f675a">主谓</text>
+<text x="370" y="78" text-anchor="middle" fill="#6f675a">主谓</text>
+<text x="155" y="120" text-anchor="middle" fill="#29241d">他</text>
+<text x="370" y="120" text-anchor="middle" fill="#29241d">张教授写的</text>
+<line x1="500" y1="126" x2="500" y2="166" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="500" y1="126" x2="640" y2="166" stroke="#c0392b" stroke-width="1.4"/>
+<text x="570" y="160" text-anchor="middle" fill="#6f675a">定中</text>
+<text x="500" y="196" text-anchor="middle" fill="#29241d">张教授</text>
+<text x="640" y="196" text-anchor="middle" fill="#29241d">写的</text>
+<line x1="60" y1="126" x2="60" y2="166" stroke="#c0392b" stroke-width="1.4"/>
+<line x1="60" y1="126" x2="220" y2="166" stroke="#c0392b" stroke-width="1.4"/>
+<text x="140" y="160" text-anchor="middle" fill="#6f675a">状中</text>
+<text x="140" y="200" text-anchor="middle" fill="#29241d">刚</text>
+<text x="60" y="240" text-anchor="middle" fill="#29241d">来</text>
+<text x="250" y="232" text-anchor="middle" fill="#29241d">张教授</text>
+<line x1="250" y1="126" x2="250" y2="216" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="252" y="252" text-anchor="middle" fill="#29241d">写</text>
+<text x="390" y="252" text-anchor="middle" fill="#29241d">一篇</text>
+<text x="640" y="236" text-anchor="middle" fill="#29241d">文章</text>
+<line x1="500" y1="166" x2="500" y2="216" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="500" y1="166" x2="640" y2="216" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="60" y="276" text-anchor="middle" fill="#6f675a">a 切分</text>
+<text x="500" y="276" text-anchor="middle" fill="#6f675a">b 切分（不成立）</text>
+</svg>
+<figcaption>图四（示意）：同一串"张教授写的一篇文章"，从 a 处切分成"张教授写的／一篇文章"层次井然；若从 b 处切开，则"的"字结构被拦腰斩断，层次全乱。示意图，非原书插图。<sup class="cite" data-cite="s-qiefen-dingxing">出处</sup></figcaption>
+</figure>
+
+<p>切分不是凭语感随手下刀，本书为层次切分归纳了五条必须注意的事项：切出的两段都必须是合法的语言单位；切分要符合意义；切分要照顾结构关系；不能把介词结构从动词上硬切下来；切分要一贯到底<sup class="cite" data-cite="s-qiefen-dingxing">出处</sup>。下面把要点展开。</p>
+
+<details>
+<summary>层次切分的五个注意</summary>
+<p class="q">一、切出的两段都得是能成立的语言单位；二、切分要符合原结构的意义；三、切分要符合原结构的结构关系；四、介宾结构不能跟后面的动词切开；五、切分要能一贯到底，不能中途换标准。<sup class="cite" data-cite="s-qiefen-dingxing">出处</sup></p>
+</details>
+
+<p>层次分析最见功力之处，是区分<b>歧义句式</b>。</p>
+
+<blockquote>歧义句式，是指同一个句式可以表示多种意义的句式。<sup class="cite" data-cite="s-qiyi-jushi">出处</sup></blockquote>
+
+<p>歧义句式靠层次分化，但分化之后"为什么会歧义"，层次分析本身回答不了。请读者自己先试一试下面这道题。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜："我们五人一组"有两种层次切分，哪一种表示"我们这五人组成一组"？</p>
+<div class="opts">
+<button data-ans="0">我们／五人一组</button>
+<button data-ans="1">我们五人／一组</button>
+</div>
+<div class="why">表示"我们这五人组成一组"的是后一种切分——"我们五人"先构成一个整体，再同"一组"组成主谓关系；前一种切分则表示"我们，每五人为一组"。这正是层次的魔力：词语一个没多没少，只换了切分点，意思就跟着变<sup class="cite" data-cite="s-cengci-shuxing">出处</sup>。</div>
+</div>
+
+<p>层次分析的价值不止于分化歧义。它还<b>帮助我们发现新的语法规律</b>。</p>
+
+<blockquote>层次分析不仅能分化歧义句式，还能帮助我们发现新的语法规律，揭示新的语法现象。<sup class="cite" data-cite="s-faxian-xin-guilv">出处</sup></blockquote>
+
+<details>
+<summary>延伸：不能单独作谓语的动词</summary>
+<p class="q">有大约50%的动词不能单独作谓语，一定要跟别的成分配合才能作谓语，如"从事""显得""显得出""企图""趋于""敢情""不屑""挨""挨着"。<sup class="cite" data-cite="s-wushiwu-dongci">出处</sup></p>
+<p>这个比例是朱德熙通过逐层切分、逐类统计得出的。若不做层次分析，只凭"动词都能作谓语"的常识，这类事实就会被整片漏掉。</p>
+</details>
+
+<details>
+<summary>展开：层次分析的适用面有多广（2.6）</summary>
+<p class="q">层次分析的适用面相当广：就语法范围说，上至复句、下至合成词，要作内部结构分析都得用到它。鲁迅《孔乙己》"掌柜是一副凶脸孔，教人活泼不得；只有孔乙己到店，才可以笑几声，所以至今还记得"这个多重复句，第一刀该切在"所以……"之前，而不是分号处——否则不符合句子原意。合成词如"武花脸"应分析为两层修饰关系。再往上是音节结构分析（"小"分析为音段成分与超音段成分、声母与韵母、韵头与韵部、韵腹与韵尾）和句群、篇章结构分析。<sup class="cite" data-cite="s-cengci-shiying">出处</sup></p>
+<p class="q">层次分析更大的作用在于有利于发现新的语法现象、揭示新的语法规律。"父亲的父亲的父亲"该在哪儿切分？有人说两种切分都可以，理由是"父亲的父亲"是"祖父"，两种切分都指曾祖。但考虑到"大哥的岳母的儿子""老师的孩子的同学"这类实例只能取左向切分，就该全面考察由指人的名词自相组合造成的偏正结构——其内部有极强的规律性，"父亲的父亲的父亲"只是特例。两种切分意义等值纯属巧合，就像算式里碰巧不守运算次序也得了正确结果。<sup class="cite" data-cite="s-fuqin-de-fuqin">出处</sup></p>
+</details>
+
+<p>当然，层次分析也有它的边界。它只能说明"一层套一层"的形式构造，却难以解释结构背后的语义动因，也难以回答"为什么这个句式有这样的变换可能"。</p>
+
+<blockquote>层次分析法只是句法分析的基础，它不能解释造成歧义的原因，也说明不了句式之间的变换关系。<sup class="cite" data-cite="s-juxian-yi">出处</sup></blockquote>
+
+<details>
+<summary>展开：局限的两个方面（2.7）</summary>
+<p class="q">其一，层次分析只能揭示句法结构的构造层次和直接组成成分之间显性的语法结构关系，不能揭示句法结构内部隐含的语义结构关系。"我写了一封信"的层次和结构关系可以标明，但"我"和"写"、"写"和"信"之间语义上是什么关系，它不管也无力揭示。所以"咬死了猎人的狗"有歧义而"咬死了猎人的鸡"没有，层次分析只能说明前者可作两种切分、后者只有一种，回答不了"为什么"——须知狗既可以是"咬"的受事也可以是施事，鸡只可能是受事。由此，由于语义结构关系不同而造成的歧义句式（如"我在屋顶上发现了小偷"）就不能用层次分析法来分化。</p>
+<p class="q">其二，层次分析完全是一种静态的分析，有些现象它解释不了。"木头桌子质量"与"羊皮领子大衣"构造层次和内部结构关系完全一样，但前者去掉"木头"，"桌子质量"仍成立；后者去掉"羊皮"，"领子大衣"就不成立。"北大数学老师"与"土壤钾盐含量"也是这样。要解释这种差异，需了解扩展问题——详见第八节。<sup class="cite" data-cite="s-juxian-liang">出处</sup></p>
+</details>
+
+<p>要跨过这一步，就需要变换分析法登场。</p>
+
+<p class="small muted">下一节，我们将看到：当层次分析在歧义面前停步时，变换分析如何接过"解释"的任务。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">层次分析的两部分内容是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">切分与变换</button>
+      <button data-v="b">切分与定性</button>
+      <button data-v="c">归类与对比</button>
+    </div>
+    <div class="why">答案：b。切分解决从哪里切开，定性解决两段是什么结构关系。见本节，底本 L1975。</div>
+  </div>
+  <div class="item">
+    <p class="q">「我们五人一组」表示「我们这五人组成一组」的切分是？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">我们／五人一组</button>
+      <button data-v="b">我们五人／一组</button>
+      <button data-v="c">两种切分都行</button>
+    </div>
+    <div class="why">答案：b。「我们五人」先构成整体，再同「一组」组成主谓关系。见本节先猜一，底本 L2212。</div>
+  </div>
+  <div class="item">
+    <p class="q">层次分析回答不了的问题是？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">从哪里切开</button>
+      <button data-v="b">切出的两段是什么关系</button>
+      <button data-v="c">造成歧义的原因</button>
+    </div>
+    <div class="why">答案：b。语义结构关系不同造成的歧义，层次分析无法分化。见本节，底本 L2332。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：句子成分分析法的完整图解、层次切分实例的更多细节。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-jufa-fenxi-dingyi": { page:"第二节 2.1 · 底本 L1821", quote:"所谓“句法分析”，是指从句法的角度来解释说明种种语言现象。", zh:"句法分析＝从句法角度解释说明语言现象。" },
+  "s-cengci-shuxing": { page:"第二节 2.1 · 底本 L1938、L1829", quote:"句子或者说句法结构所具有的这种构造特性，一般就称之为“句法构造的层次性”。", zh:"层次性是句法结构的基本属性；黎锦熙《新著国语文法》（1924）已用类似做法，句子成分分析法又称中心词分析法。" },
+  "s-bukaolv-yiyi": { page:"第二节 2.2 · 底本 L1897", quote:"（12）这张照片放大了一点儿。", zh:"歧义例：照片放大了一点儿（被放大了一点儿／再放大一点儿的那张）。" },
+  "s-qiefen-dingxing": { page:"第二节 2.3 · 底本 L1975", quote:"层次分析，实际包含两部分内容，一是切分，一是定性。切分，是解决一个结构的直接组成成分到底是哪些……定性，是解决切分所得的直接组成成分之间是什么句法关系。", zh:"切分解决从哪里切开；定性解决两段是什么结构关系。" },
+  "s-ic-fenxifa": { page:"第二节 2.3 · 底本 L1973", quote:"在国际上将这种句法分析法称为“直接组成成分分析法”，直接组成成分的英文是“immediate constituents”，所以层次分析法也简称为“IC分析法”。", zh:"IC 分析法＝直接组成成分分析法，源于美国结构主义。" },
+  "s-qiyi-jushi": { page:"第二节 2.5 · 底本 L2212", quote:"一个具体的句子或句法结构，能表示多种不同的意思，而这并不是由句法结构中某个词的多义现象造成的，这种句子或句法结构统称为“歧义句式”。", zh:"歧义句式的定义。" },
+  "s-faxian-xin-guilv": { page:"第二节 2.6 · 底本 L2266", quote:"第二，有助于发现新的语法现象，揭示新的语法规律。", zh:"层次分析还能帮助发现新的语法规律。" },
+  "s-wushiwu-dongci": { page:"第二节 2.6 · 底本 L2268", quote:"有大约50%的动词不能单独作谓语，像“姓”“逗”“企图”“责怪”等就都不能单独作谓语。", zh:"约五成动词不能单独作谓语——层次分析揭示的事实。" },
+  "s-jucheng-fenxi": { page:"第二节 2.2 · 底本 L1827", quote:"这种分析法的要点大致如下：1. 分析的对象是单句。2. 认定一个句子有六大句子成分……", zh:"句子成分分析法又称中心词分析法的要点。" },
+  "s-jucheng-wenti": { page:"第二节 2.2 · 底本 L1855", quote:"问题一，离了枝叶，主干不成立或站不住……问题四，不利于发现某些词语的用法特点。", zh:"句子成分分析法的四个问题。" },
+  "s-cengci-yinxing": { page:"第二节 2.3 · 底本 L1934", quote:"句法构造的层次性对句法结构来说是隐性的，不是显性的，从句法结构表面是看不出来。", zh:"层次性是隐性的；词数大于二即有层次问题。" },
+  "s-qiefen-wuzhu": { page:"第二节 2.5 · 底本 L2063", quote:"为确保层次切分能符合句法结构本身内部构造的实际情况，在切分时，需注意这样几个问题", zh:"切分五注意及其实例。" },
+  "s-cengci-shiying": { page:"第二节 2.6 · 底本 L2163", quote:"层次分析法的适用面相当广。就语法范围内说，上至复句，下至合成词，要作内部结构分析，都得用到它。", zh:"层次分析适用于复句、合成词、音节、句群。" },
+  "s-fuqin-de-fuqin": { page:"第二节 2.6 · 底本 L2262", quote:"由指人的名词自相组合造成的偏正结构内部有极强的规律性……而两种切分在意义上等值，其实这完全是一种偶然的巧合。", zh:"父亲的父亲的父亲：切分与巧合。" },
+  "s-juxian-liang": { page:"第二节 2.7 · 底本 L2314", quote:"层次分析完全是一种静态的分析，因此有些现象它解释不了。", zh:"局限：不揭示语义关系；纯静态。" },
+  "s-juxian-yi": { page:"第二节 2.8 · 底本 L2332", quote:"由于语义结构关系的不同而造成的歧义句式就不能用层次分析法来加以分化。", zh:"层次分析的边界：语义结构关系造成的歧义无法分化。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

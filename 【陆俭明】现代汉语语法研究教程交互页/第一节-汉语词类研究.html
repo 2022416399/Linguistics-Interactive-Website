@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第一节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第一节 交互研读</p>
+  <h1>词类研究：拿什么作划分依据</h1>
+  <p class="lead">词类问题的核心是划分依据。本书的回答很干脆：词类是<b>概括词</b>的分类，划分依据是词的<b>全部语法功能</b>，不是意义，也不是形态——形态不过是功能的外在标志。本节还要处理名物化之争、兼类词的界定，以及沈家煊的「名动包含」说。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html" class="cur">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>功能</b>依据</li><li>层级系统</li><li>名物化之争</li><li>兼类词</li><li>名动包含</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第一篇 · 总论与词类</p>
+<h2>词类是概括词的分类</h2>
+<p>承接绪论的立场，这一节处理最基础的分类问题。核心结论有三：划分依据是语法功能而非意义或形态；词类系统是多次划分累积而成的层级系统；对兼类词与名物化之争，本书都有明确取舍。</p>
+
+  <article class="chapter" data-chapter="1">
+    <h3>第一节｜汉语词类研究</h3>
+    <p>词类问题的核心是：拿什么作划分依据。本书的回答很干脆——词类是<strong>概括词</strong>的分类，划分依据是词的<strong>全部语法功能</strong>，不是意义，也不是形态。</p>
+    <blockquote>总之，我们能够根据形态划分词类，是因为形态反映了功能。形态不过是功能的标志。<sup class="cite" data-cite="s-xingtai-fanying-gongneng">出处</sup></blockquote>
+    <p>这是朱德熙 1985 年的论断。形态只是功能的外在标志，能划类终究是因为功能。汉语没有形态可用，正应该直接诉诸功能。<sup class="cite" data-cite="s-qubu-yufa-gongneng">出处</sup></p>
+    <details>
+      <summary>展开：词类为什么是老大难（1.1）</summary>
+      <p>汉语学术界在20世纪曾就词类问题有过三次大讨论，逐步统一到「词类是词的语法分类」的认识，但老大难的疑团久久未解。本书归纳了三条原因：其一，对词类的最初认识来自印欧语，印欧语有形态标志和形态变化、词类与句子成分基本一一对应，汉语则一对多，凭句子成分分类就伤透了脑筋；其二，任何语言共时平面上的词都存在不同历史层次和领域层次，汉语词无形态，这种层次差异在用法上暴露无遗（「金」在日常用语中只能作定语或构成「的」字结构，该划区别词；在无机化学专业书刊里却能作主宾语、受数量词修饰，该划名词）；其三，以往讨论只举典型例子，没有人真正一个一个地实际考察现代汉语千千万万个词的使用情况。<sup class="cite" data-cite="s-laoda-nan">出处</sup></p>
+      <p>另有一个重要原因：许多人没有深刻认识到，词类是<b>概括词</b>的分类，而不是个体词的分类。个体词是具体语言片段里占据一定位置的一个一个的词；概括词则是由个体词通过同一性抽象后所得到的词。由个体词抽象为概括词，遵循「同音同义」原则——四个「研究」同音同义，概括为一个概括词；两个「花」（花费／鲜花）不同义，概括为两个不同的词。<sup class="cite" data-cite="s-geti-gaikuo">出处</sup></p>
+    </details>
+    <p>词类系统不是一张平面表，而是<strong>层级系统</strong>——词经多次划分、逐层归类才得到各个类，各家分类数目不同，只是因为细分程度不同。只要「够用、好用」，分多少类不说死。</p>
+    <details>
+      <summary>展开：层级系统的完整表述与「够用好用」</summary>
+      <p class="q">一个事物划分所得到的各个类，从表面看，似乎在一个平面上，实际不在一个平面上，实际所得到的分类系统是个层级系统。<sup class="cite" data-cite="s-cengji-xitong">出处</sup></p>
+      <p>詹卫东的说法更直白：「如果所作的分类，能满足『够用、好用』的要求，就行了。」<sup class="cite" data-cite="s-gouyong-haoyong">出处</sup></p>
+    </details>
+    <details>
+      <summary>展开：划分词类的三种依据（1.3）</summary>
+      <p><b>一、形态。</b>对印欧语非常可行，但不适合汉语——汉语的词没有形态标志和形态变化。这就像古代可以按穿着判断身份，现代人的穿着跟身份不「挂钩」了，不能再依穿着判身份。<sup class="cite" data-cite="s-genju-xingtai">出处</sup></p>
+      <p><b>二、语法意义。</b>理论上似乎可行（名词表示事物、动词表示行为动作、形容词表示事物性状），但语法意义有不同层面，难以操作。单是「事物」就有三个层面：名词表示的「事物1」、「什么」所问的「事物2」（外延更大，动词性、形容词性词语也能回答「什么」）、主宾语所表示的「事物3」（外延最大）。「突然」与「忽然」、「经常」与「常常」语法意义难辨，误将它们归成一类，就是只看语法意义的教训。<sup class="cite" data-cite="s-shiwu-cengmian">出处</sup></p>
+      <p><b>三、语法功能。</b>本书取此为最佳依据，理由有四：划分词类为的是讲语法的方便，而句法格式实质都是词类的序列；词与词之间存在组合关系与聚合关系二维关系，词类正是聚合关系的产物；依据形态分类实质仍是依据功能分类，因为形态反映了功能；功能划出的类，意义上也一定有共同点。<sup class="cite" data-cite="s-zuhe-juhe">出处</sup></p>
+    </details>
+    <figure class="figure">
+      <svg viewBox="0 0 680 300" role="img" aria-label="词类层级系统树示意图">
+        <rect x="0" y="0" width="680" height="300" fill="#fdfaf1"/>
+        <g stroke="#29241d" stroke-width="1.3" fill="#f1e6d2">
+          <rect x="280" y="24" width="120" height="44" rx="8"/>
+          <rect x="150" y="96" width="120" height="44" rx="8"/>
+          <rect x="410" y="96" width="120" height="44" rx="8"/>
+          <rect x="40" y="168" width="104" height="40" rx="8"/>
+          <rect x="168" y="168" width="104" height="40" rx="8"/>
+          <rect x="296" y="168" width="104" height="40" rx="8"/>
+          <rect x="424" y="168" width="104" height="40" rx="8"/>
+          <rect x="552" y="168" width="104" height="40" rx="8"/>
+        </g>
+        <g font-family="KaiTi,serif" font-size="15" fill="#9d4938" text-anchor="middle">
+          <text x="340" y="51">词</text><text x="210" y="123">实词</text><text x="470" y="123">虚词</text>
+          <text x="92" y="192">名词</text><text x="220" y="192">动词</text><text x="348" y="192">形容词</text><text x="476" y="192">数词·量词</text><text x="604" y="192">虚词各类</text>
+        </g>
+        <g stroke="#3d5a6c" stroke-width="1.1" fill="none">
+          <path d="M340 70 L340 84 L210 84 L210 94 M340 84 L470 84 L470 94"/>
+          <path d="M210 142 L210 156 L92 156 L92 166 M210 156 L220 156 L220 166 M210 156 L348 156 L348 166"/>
+          <path d="M470 142 L470 156 L476 156 L476 166 M470 156 L604 156 L604 166"/>
+        </g>
+        <g font-family="-apple-system,PingFang SC,sans-serif" font-size="11.5" fill="#6f675a">
+          <text x="20" y="26">每下一层，依据增加一条；归类由多次划分累积而成</text>
+          <text x="20" y="248">各家分类数目不同，不是谁对谁错，而是细分程度不同——</text>
+          <text x="20" y="268">「够用、好用」即可，数目不说死。</text>
+        </g>
+        <text x="20" y="288" font-family="-apple-system,PingFang SC,sans-serif" font-size="10.5" fill="#a87f24">示意图，非原书插图；层级与归类依通行处理</text>
+      </svg>
+      <figcaption>图三（示意）：词类层级系统。分类不是一次完成，而是逐层加条件的结果。<sup class="cite" data-cite="s-cengji-xitong">出处</sup></figcaption>
+    </figure>
+    <div class="guess" data-guess>
+      <p class="q">在「动词、形容词能不能作主语」这个问题上，本书的观点是什么？</p>
+      <div class="opts">
+        <button data-ans="0">汉语的特点正在动词、形容词能作主语</button>
+        <button data-ans="1">汉语的特点不在这上头，而在大量的零派生和大量的省略上</button>
+        <button data-ans="0">动词、形容词根本不能作主语</button>
+      </div>
+      <div class="why"><b>不在这上头。</b>朱德熙认为，汉语的特点不表现在动词、形容词能作主语这一点上，而是表现在大量的零派生和大量的省略上——所以不必搬出「名物化」来救场。<sup class="cite" data-cite="s-lingpaisheng-yu-shenglve">出处</sup></div>
+    </div>
+    <p>名物化之争是这一节的重头。动词、形容词能不能作主语？本书的回答是：汉语的特点根本不在「动词形容词能不能作主语」上——</p>
+    <blockquote>汉语的特点不表现在动词、形容词能作主语这一点上，而是表现在大量的零派生和大量的省略上。<sup class="cite" data-cite="s-lingpaisheng-yu-shenglve">出处</sup></blockquote>
+    <details>
+      <summary>展开：名物化之争三家的说法</summary>
+      <p><b>黎锦熙</b> 1924《新著国语文法》主张「依句辨品，离句无品」——按句子成分定词类，本书认为这条路有误。<sup class="cite" data-cite="s-yiju-bianpin">出处</sup></p>
+      <p><b>高名凯</b>说「汉语的词并没有词类的分别」——本书不取。<sup class="cite" data-cite="s-hanyu-wu-cilei">出处</sup></p>
+      <p><b>沈家煊</b> 2009a 主张「名动包含」，认为「采用『名动包含』的观点，汉语语法中过去有许多不好解决的老大难问题就可以得到合理的解决」。本书则用大圆、中圆、小圆层层包含之后所剩的 R1、R2 圆环反驳：三类词实为分立，不是层层包含。<sup class="cite" data-cite="s-mingdong-baohan">出处</sup></p>
+    </details>
+    <details>
+      <summary>展开：名物化的甲、乙两种情况（1.6）</summary>
+      <p>本书认为，对主语位置上的动词、形容词不能简单地采用A观点（名词化）或B观点（依然是动词形容词），得细分为两种情况。<b>情况甲</b>：名词化了。「游泳对身体有好处」的「游泳」不指具体的动态行为，而指一种活动项目、一种行为或事件的名称；「谦虚是一种美德」的「谦虚」也已不指某种性质，而指人的一种美德。二者属于零派生的名词化。<b>情况乙</b>：还是动词、形容词。「干有什么好处？不干有什么害处」本质是小句作主语，只因省略，表面只剩动词；「谦虚才能赢得人们的尊重」的「谦虚」前有一个潜主语（态度谦虚），是小句作主语的省略形式。<sup class="cite" data-cite="s-mingwuhua-jiayi">出处</sup></p>
+      <p>英语也是这样：动词转自指名词或用派生词缀，或零派生（play／work）；类似情况甲的要用动名词或不定式，类似情况乙的小句作主语要用 that／whether 等使之名词化。所以动词形容词作主语不是汉语的特点，汉语的特点在大量的零派生和大量的省略上。<sup class="cite" data-cite="s-lingpaisheng">出处</sup></p>
+    </details>
+    <p>到底什么是兼类词？本书采用本体研究的定义：</p>
+    <blockquote>指同一个概括词兼有两种词类特性的词，即指同音同义而词性不同的词。<sup class="cite" data-cite="s-benti-yanjiu-dingyi">出处</sup></blockquote>
+    <details>
+      <summary>展开：三组词的功能比较与「如实说」</summary>
+      <table class="matrix">
+        <tr><th>组</th><th>作定语</th><th>作谓语</th><th>受「很」修饰</th><th>功能走向</th></tr>
+        <tr><td>虚心</td><td>虚心的人</td><td>他很虚心</td><td>很虚心</td><td>形容词</td></tr>
+        <tr><td>煞白</td><td>煞白的脸</td><td>* 他很煞白</td><td>* 很煞白</td><td>状态词</td></tr>
+        <tr><td>微型</td><td>微型汽车</td><td>* 很微型</td><td>* 很微型</td><td>区别词</td></tr>
+      </table>
+      <p>「微型」不能作谓语、不受「很」修饰，与「虚心」「煞白」功能走向不同——词类之分正在这些成片的功能差异上。</p>
+      <p>「正式」的两个意思也走两条路：正式₁（正式的会议）能作定语，正式₂（正式开幕）能作状语、能形成「的」字结构，功能对立，按本体研究定义可处理为兼类。至于「很／极」「一起／一块儿」「开」「见方」这些难处理的现象，本书的态度是「如实说」：「对于这些例外或难处理的现象，我们只能采取『如实说』的老实态度。」<sup class="cite" data-cite="s-rushi-shuo">出处</sup></p>
+    </details>
+    <div class="guess" data-guess>
+      <p class="q">锁、代表、报告、死、白、方便、正式、研究——这几个词里，按「同音同义而词性不同」的定义，哪几个能处理为兼类词？</p>
+      <div class="opts">
+        <button data-ans="0">八个全是</button>
+        <button data-ans="1">只有方便、正式两项</button>
+        <button data-ans="0">一个都不是</button>
+      </div>
+      <div class="why"><b>只有方便、正式。</b>锁₁（锁门）与锁₂（一把锁）、代表₁与代表₂、死₁与死₂……意义各不相同，只是同音，按本体研究定义不算兼类。方便₁（方便顾客＝使顾客方便）与方便₂同音同义，正式₁与正式₂功能对立，才是兼类。<sup class="cite" data-cite="s-benti-yanjiu-dingyi">出处</sup></div>
+    </div>
+    <details>
+      <summary>展开：兼类词的三种定义（1.9）</summary>
+      <p>「兼类词」可以根据研究和运用的不同需要下不同的定义。<b>本体研究</b>：同一个概括词兼有两种词类特性，即同音同义而词性不同的词——按此定义，前述八种现象里只有方便、正式（和研究）有可能处理为兼类。<b>汉语教学</b>：同字形、同音且意义上有极为密切关系而词性不同的词——锁₁锁₂、代表₁代表₂这样由本义派生的词，教学中处理为兼类更有利于学习，八种里除「研究」外都可处理为兼类。<b>中文信息处理</b>：同字形、同音而意义不同或词性不同的词——现阶段中文信息处理还不怎么能处理语义信息，故定义最宽，八种现象全是，连「花钱」的「花」和「一朵花」的「花」也得算。<sup class="cite" data-cite="s-jianlei-sanzhong">出处</sup></p>
+      <p>由此也可体会：分类有一定的相对性，划分词类也有一定的相对性。<sup class="cite" data-cite="s-jianlei-xiangduixing">出处</sup></p>
+    </details>
+    <p class="small muted">本节之后，全书进入分析方法的正面展开：先看句子内部的构造层次。</p>
+  </article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">本书认为划分词类的根本依据是什么？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">词的意义</button>
+      <button data-v="b">词的语法功能——形态只是功能的外在标志</button>
+      <button data-v="c">词在句子中充当的成分</button>
+    </div>
+    <div class="why">答案：b。朱德熙（1985）：能根据形态划分词类，是因为形态反映了功能。见本节，底本 L1290。</div>
+  </div>
+  <div class="item">
+    <p class="q">各家划分出的词类数目不同，根本原因是什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">有人分错了</button>
+      <button data-v="b">细分程度不同——词类系统是层级系统</button>
+      <button data-v="c">所据材料不同</button>
+    </div>
+    <div class="why">答案：b。「够用、好用」即可，数目不说死。见本节，底本 L1348、L1447。</div>
+  </div>
+  <div class="item">
+    <p class="q">按本书采用的「本体研究」定义，下列哪组能处理为兼类词？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">锁₁（锁门）与锁₂（一把锁）</button>
+      <button data-v="b">方便、正式</button>
+      <button data-v="c">代表₁与代表₂</button>
+    </div>
+    <div class="why">答案：b。兼类词须同音同义而词性不同；锁₁锁₂只是同音。见本节，底本 L1653。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：「名动包含」说的图示细节、各家词类数目的完整对照。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-xingtai-fanying-gongneng": { page:"第一节 1.2 · 底本 L1290", quote:"正如朱德熙先生（1985）所指出的：“总之，我们能够根据形态划分词类，是因为形态反映了功能。形态不过是功能的标志。”", zh:"形态是功能的外在标志；划分词类终究依据功能。" },
+  "s-qubu-yufa-gongneng": { page:"第一节 1.2 · 底本 L1290、L1228", quote:"而依据词的语法功能划分出来的词类，在意义上也一定有共同点。……这个依据虽好，但不适合于汉语，因为汉语的词没有形态标志和形态变化。", zh:"汉语没有形态，应直接诉诸语法功能。" },
+  "s-cengji-xitong": { page:"第一节 1.3 · 底本 L1348", quote:"一个事物划分所得到的各个类，从表面看，似乎在一个平面上，实际不在一个平面上，实际所得到的分类系统是个层级系统。", zh:"词类系统是层级系统，不是平面表。" },
+  "s-gouyong-haoyong": { page:"第一节 1.3 · 底本 L1447", quote:"我们赞成北京大学詹卫东教授的看法：“如果所作的分类，能满足‘够用、好用’的要求，就行了。”", zh:"“够用、好用”即可，分类数目不说死。" },
+  "s-lingpaisheng-yu-shenglve": { page:"第一节 1.6 · 底本 L1491", quote:"汉语的特点不表现在动词、形容词能作主语这一点上，而是表现在大量的零派生和大量的省略上。", zh:"汉语特点在零派生与大量省略，不在动词形容词能否作主语。" },
+  "s-yiju-bianpin": { page:"第一节 1.5 · 底本 L1218", quote:"于是黎锦熙先生就得出了有名的“依句辨品，离句无品”的说法。", zh:"黎锦熙：依句辨品，离句无品——按句子成分定词类。" },
+  "s-hanyu-wu-cilei": { page:"第一节 1.5 · 底本 L1495", quote:"就一个个词来说，“汉语的词并没有词类的分别”。", zh:"高名凯的汉语无词类论。" },
+  "s-mingdong-baohan": { page:"第一节 1.8 · 底本 L1517", quote:"汉语的名词、动词、形容词彼此是层层包含关系——汉语的形容词也是动词，汉语的动词也是名词……沈先生简称之为“名动包含”。", zh:"沈家煊“名动包含”说。" },
+  "s-benti-yanjiu-dingyi": { page:"第一节 1.9 · 底本 L1653", quote:"从本体研究的需要出发，宜将“兼类词”定义为：指同一个概括词兼有两种词类特性的词，即指同音同义而词性不同的词。", zh:"兼类词＝同一概括词兼有两种词类特性（同音同义而词性不同）。" },
+  "s-laoda-nan": { page:"第一节 1.1 · 底本 L1152", quote:"汉语学术界在20世纪曾经就汉语词类问题有过三次大的讨论……不过，虽然大家对汉语词类问题有了这样一个共识，但汉语词类问题至今仍被认为是一个老大难的问题。", zh:"三次大讨论后仍是老大难；三条原因。" },
+  "s-geti-gaikuo": { page:"第一节 1.2 · 底本 L1176", quote:"“概括词”和“个体词”这一对概念，在汉语学界最早是由朱德熙先生明确提出来的。", zh:"词类是概括词的分类；同一性原则是同音同义。" },
+  "s-genju-xingtai": { page:"第一节 1.3 · 底本 L1220", quote:"采用第一种依据，那就是根据词的形态进行词的语法分类……可是，这个依据虽好，但不适合于汉语，因为汉语的词没有形态标志和形态变化。", zh:"形态依据不适合汉语。" },
+  "s-shiwu-cengmian": { page:"第一节 1.3 · 底本 L1264", quote:"上述三种“事物”都属于语法意义的范围，就外延的大小看，“事物1”的外延最小，“事物3”的外延最大", zh:"事物1＜事物2＜事物3：语法意义有层面。" },
+  "s-zuhe-juhe": { page:"第一节 1.3 · 底本 L1272", quote:"任何语言里的词和词之间总存在着二维关系——词的组合关系和词的聚合关系……词类就是词的聚合关系的产物。", zh:"组合关系与聚合关系；词类是聚合关系的产物。" },
+  "s-mingwuhua-jiayi": { page:"第一节 1.6 · 底本 L1483", quote:"对于汉语里出现在主语位置上的动词、形容词，现在我们觉得不能简单地采用A观点，也不能简单地采用B观点。实际上还得细分为甲、乙两种情况", zh:"名物化分甲（零派生名词化）乙（小句省略）两种情况。" },
+  "s-lingpaisheng": { page:"第一节 1.6 · 底本 L1487", quote:"汉语的特点不表现在动词、形容词能作主语这一点上，而是表现在大量的零派生和大量的省略上。", zh:"汉语的真正特点：大量零派生与大量省略。" },
+  "s-jianlei-sanzhong": { page:"第一节 1.9 · 底本 L1731", quote:"从汉语教学的现实情况看……不妨将“兼类词”定义为：指同字形、同音且意义上有极为密切关系而词性不同的词。", zh:"兼类词三种定义：本体研究、汉语教学、中文信息处理。" },
+  "s-jianlei-xiangduixing": { page:"第一节 1.9 · 底本 L1745", quote:"从对兼类词的分析讨论中，我们也可以体会到这样一点，那就是分类有一定的相对性，划分词类也有一定的相对性。", zh:"分类与划类都有相对性。" },
+  "s-rushi-shuo": { page:"第一节 1.10 · 底本 L1791", quote:"对于这些例外或难处理的现象，我们只能采取“如实说”的老实态度。", zh:"对例外与难处理现象取“如实说”的老实态度。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

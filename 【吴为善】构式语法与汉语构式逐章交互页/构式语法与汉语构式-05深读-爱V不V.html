@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>爱V不V：任凭你选，但我很不满 —— 《构式语法与汉语构式》第五章深读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;color:var(--red);font-size:1.02rem}
+.brand small{color:var(--muted);font-family:inherit;font-weight:400;margin-left:.5em}
+.tools{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button{font:inherit;min-height:44px;padding:.35rem .7rem;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--red)}
+.tools button{min-height:36px;padding:.2rem .55rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+#resumeBtn{display:none;color:var(--red);border-color:var(--red)}
+main{padding:26px 0 80px}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.18;margin:.3em 0 .45em;letter-spacing:.01em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(1.35rem,3.4vw,1.7rem);margin:0 0 .5em;color:var(--red)}
+h3{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:1.02rem;margin:1.4em 0 .4em}
+p{margin:.7em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.86rem;letter-spacing:.06em}
+.lead{font-size:1.1rem;max-width:46em}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.32em .95em;font-size:.92rem}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;top:34px;right:6px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;margin:20px 0;box-shadow:0 8px 26px #4a3f2814}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{color:var(--muted);font-size:.85rem;padding:6px 4px 4px;border-top:1px dashed var(--line);margin-top:8px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;margin:24px 0;box-shadow:0 8px 26px #4a3f2814}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;color:var(--gold);letter-spacing:.14em;margin-bottom:.35em}
+sup.cite{color:var(--red);cursor:pointer;font-size:.72em;padding:0 .12em;border-radius:3px;text-decoration:underline dotted}
+sup.cite:hover{background:var(--soft)}
+sup.cite:focus-visible{outline:2px solid var(--red);outline-offset:1px}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;line-height:1;padding:.28em .55em;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--paper);vertical-align:.12em;margin-left:.35em;white-space:nowrap}
+details{border:1px dashed var(--line);border-radius:10px;padding:.55em .9em;margin:1em 0;background:var(--paper)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.9rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details[open] summary{margin-bottom:.5em}
+details ul{margin:.3em 0 .3em;padding-left:1.3em}
+details li{margin:.25em 0}
+.guess{border:1px solid var(--gold);background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 7%,var(--card)),var(--card));border-radius:12px;padding:14px 16px;margin:16px 0}
+.guess .q{font-weight:700;margin:.1em 0 .6em}
+.guess .q::before{content:"先猜 ｜ ";color:var(--gold);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.85rem}
+.guess .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.4em 0}
+.guess .opts button{min-height:44px}
+.guess .reveal{margin:.6em 0 .1em}
+.guess .reveal[hidden]{display:none}
+.lab{border:1px solid var(--blue);border-radius:14px;padding:16px;margin:14px 0;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 6%,var(--card)),var(--card))}
+.lab h3{margin-top:0;color:var(--blue)}
+.result{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px;margin-top:12px}
+.result .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.45rem;margin:.2em 0 .5em}
+.result .sent em{font-style:normal;color:var(--red)}
+.rows{display:grid;grid-template-columns:5.5em 1fr;gap:.28em .8em;margin:.6em 0;font-size:.95rem}
+.rows dt{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--muted);font-size:.85rem;padding-top:.15em}
+.rows dd{margin:0}
+.ok{color:var(--red);font-weight:700}
+.no{color:var(--blue);font-weight:700}
+.qm{color:var(--gold);font-weight:700}
+.wordpool{display:flex;gap:7px;flex-wrap:wrap;margin:.3em 0}
+.wordpool button{min-height:40px;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.02rem}
+.wordpool button[aria-pressed="true"]{outline:2px solid var(--red)}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+@media(max-width:720px){.ladder{grid-template-columns:repeat(2,1fr)}}
+.ladder .rung{border:1px solid var(--line);border-radius:12px;padding:10px 11px;background:var(--paper);cursor:pointer;text-align:left}
+.ladder .rung b{display:block;font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem}
+.ladder .rung small{display:block;color:var(--muted);font-size:.78rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;margin-top:.2em}
+.ladder .rung[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 9%,var(--card))}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+@media(max-width:640px){.vs{grid-template-columns:1fr}}
+.vs .card{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--paper)}
+.vs .card.a{border-top:4px solid var(--blue)}
+.vs .card.b{border-top:4px solid var(--red)}
+.vs .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;margin:.1em 0 .4em}
+.quiz{border:2px solid var(--red);border-radius:16px;padding:22px;margin:26px 0;background:var(--card)}
+.quiz h2{margin-top:0}
+.quiz .q{margin:1.1em 0 .3em;font-weight:700}
+.quiz .opts{display:flex;gap:8px;flex-wrap:wrap;margin:.3em 0}
+.quiz .opts button{min-height:44px}
+.quiz .opts button.right{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--card));font-weight:700}
+.quiz .opts button.wrong{border-color:var(--muted);color:var(--muted)}
+.quiz .why{margin:.3em 0 .8em;font-size:.93rem}
+.quiz .why[hidden]{display:none}
+.series{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.series a{border:1px solid var(--line);border-radius:999px;padding:.28em .9em;font-size:.85rem;color:var(--blue);text-decoration:none;background:var(--card)}
+.series a:hover{border-color:var(--red);color:var(--red)}
+.series a.cur{border-color:var(--red);color:var(--red);font-weight:700;background:color-mix(in srgb,var(--red) 8%,var(--card))}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 40px;color:var(--muted);font-size:.85rem}
+.pop{position:absolute;z-index:60;max-width:min(430px,92vw);background:var(--card);border:1px solid var(--red);border-radius:12px;padding:14px 16px;box-shadow:0 14px 40px #0003;font-size:.9rem}
+.pop[hidden]{display:none}
+.pop .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:.7em;margin:.3em 0 .5em}
+.pop .meta{color:var(--muted);font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.pop .zh{margin:.5em 0 .2em}
+.pop .x{position:absolute;top:6px;right:8px;border:none;background:none;font-size:1.1rem;color:var(--muted);min-height:36px}
+#backBtn{position:fixed;right:16px;bottom:18px;z-index:50;border-color:var(--red);color:var(--red);background:var(--card);box-shadow:0 6px 18px #0002}
+#backBtn[hidden]{display:none}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;max-width:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <div class="brand">构式深读 · 爱V不V<small>《构式语法与汉语构式》吴为善 ｜ 第五章第三节之一</small></div>
+  <div class="tools">
+    <button id="resumeBtn" title="回到上次读到的位置">↩ 接着读</button>
+    <button id="fontDown" aria-label="缩小字号">A−</button>
+    <button id="fontUp" aria-label="放大字号">A+</button>
+    <button id="themeBtn" aria-label="切换明暗">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<!-- ============ 首屏：30 秒版 ============ -->
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><rect x="3" y="3" width="54" height="54" rx="9" fill="none" stroke="#9d4938" stroke-width="4"/><text x="30" y="41" text-anchor="middle" font-size="26" font-family="KaiTi,STKaiti,serif" fill="#9d4938">任凭</text></svg>
+  <p class="eyebrow">《构式语法与汉语构式》吴为善 著 ｜ 第五章「构式赋义与话语功能」第三节之一 ｜ 单节深读页</p>
+  <h1>爱V不V：任凭你选，但我很不满</h1>
+  <p class="lead">「你爱听不听」不是「爱听」加「不听」——听和不听逻辑上不可能同时成立，构式却把它们摆在一起，意思是<strong>任凭你选</strong>，同时递过去一句潜台词：<strong>我对你有意见了</strong><sup class="cite" data-cite="cgmean"></sup>。这种语义和功能没法从组成成分推知，正是典型构式。它的身世分三步：从「爱吃就吃，不爱吃就别吃」<strong>截搭</strong>压缩而来，再<strong>类推</strong>放开动词准入，最后靠高频使用<strong>固化</strong>成「爱理不理」这样的熟语<sup class="cite" data-cite="three"></sup>。</p>
+  <ul class="chips">
+    <li><b>构式义</b>　任凭选择 ＋ 说话人不满</li>
+    <li><b>三步</b>　截搭整合 → 构式类推 → 构式固化</li>
+    <li><b>来源</b>　江蓝生（2007）紧缩说 · 李文浩（2009）考察</li>
+  </ul>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 330" role="img" aria-label="示意图：从爱吃就吃不爱吃别吃到爱吃不吃的五步紧缩">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="46" y="30" width="180" height="64" rx="11"/>
+          <rect x="250" y="30" width="180" height="64" rx="11"/>
+          <rect x="454" y="30" width="180" height="64" rx="11"/>
+        </g>
+        <text x="136" y="56" text-anchor="middle" font-size="13.5" fill="#29241d">爱吃就吃，</text>
+        <text x="136" y="76" text-anchor="middle" font-size="13.5" fill="#29241d">不爱吃就别吃了</text>
+        <text x="340" y="56" text-anchor="middle" font-size="13.5" fill="#29241d">爱吃吃，</text>
+        <text x="340" y="76" text-anchor="middle" font-size="13.5" fill="#29241d">不吃拉倒</text>
+        <text x="544" y="56" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#9d4938">爱吃不吃</text>
+        <text x="544" y="76" text-anchor="middle" font-size="11.5" fill="#9d4938">四字格 · 语气极生硬</text>
+        <text x="136" y="118" text-anchor="middle" font-size="11" fill="#3d5a6c">a · 语气缓和，态度客观</text>
+        <text x="340" y="118" text-anchor="middle" font-size="11" fill="#a87f24">d · 语气很生硬，态度很不满</text>
+        <text x="544" y="118" text-anchor="middle" font-size="11" fill="#9d4938">e · 语气极生硬，态度极不满</text>
+        <path d="M230 62 L246 62 M434 62 L450 62" stroke="#a87f24" stroke-width="2" marker-end="url(#arr9)"/>
+        <defs><marker id="arr9" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <text x="136" y="150" text-anchor="middle" font-size="11" fill="#6f675a">正反并列双小句</text>
+        <text x="340" y="150" text-anchor="middle" font-size="11" fill="#6f675a">省略与紧缩</text>
+        <text x="544" y="150" text-anchor="middle" font-size="11" fill="#6f675a">截搭成构式</text>
+        <path d="M340 168 L340 196" stroke="#9d4938" stroke-width="2" marker-end="url(#arr9)"/>
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="150" y="204" width="380" height="58" rx="12"/>
+        </g>
+        <text x="340" y="230" text-anchor="middle" font-size="16" font-family="KaiTi,STKaiti,serif" fill="#29241d">任凭听话人选择 V ／ 不 V</text>
+        <text x="340" y="252" text-anchor="middle" font-size="11.5" fill="#6f675a">同时传递说话人的不满——两者都推不出来，只能靠构式</text>
+        <text x="340" y="300" text-anchor="middle" font-size="11.5" fill="#6f675a">江蓝生（2007）：a→e 五步显示从正反并列双小句到四字格短语的整合过程</text>
+      </g>
+    </svg>
+    <figcaption>主视觉一（示意，非原文原图）：a 到 e 语气递增五步（中间 b、c 两步见场景一），终点是「爱吃不吃」式的四字格构式。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景一：五步紧缩 ============ -->
+<section class="scene" data-scene="1">
+  <p class="kicker">场景 1 ｜ 截搭整合</p>
+  <h2>五步，一步比一步不耐烦</h2>
+  <p>江蓝生（2007）推断「爱V不V」从「爱V就V，不爱V别V」紧缩而来，以「爱吃不吃」为例列出共时平面上五种表达，从 a 到 e 语气逐级升级<sup class="cite" data-cite="jiang"></sup>。从概念整合看，成形第一步是<strong>截搭式</strong>整合：分别截取两个并列小句的一部分「爱V」和「不V」，拼成「爱V不V」<sup class="cite" data-cite="zheda"></sup>。点一步看语气：</p>
+  <div class="ladder" id="stepLadder">
+    <button class="rung" data-s="0" aria-pressed="true"><b>a</b><small>原式双小句</small></button>
+    <button class="rung" data-s="1" aria-pressed="false"><b>b</b><small>去掉「就不要」</small></button>
+    <button class="rung" data-s="2" aria-pressed="false"><b>c</b><small>换成「拉倒」</small></button>
+    <button class="rung" data-s="3" aria-pressed="false"><b>d</b><small>再截前半</small></button>
+  </div>
+  <div class="result" id="stepOut">
+    <p class="sent" id="stepSent"></p>
+    <dl class="rows">
+      <dt>语气</dt><dd id="stepTone"></dd>
+      <dt>态度</dt><dd id="stepAtt"></dd>
+    </dl>
+  </div>
+  <p class="small muted">终点 e「爱吃不吃」：语气极生硬，态度极不满——已入首屏图。检验方法：能否还原为「爱V就V，不爱V别V」，大都可以；不能还原的，是下一步类推进来的。</p>
+</section>
+
+<!-- ============ 场景二：动词准入实验室 ============ -->
+<section class="scene" data-scene="2">
+  <p class="kicker">场景 2 ｜ 构式类推</p>
+  <h2>动词准入实验室</h2>
+  <div class="guess" data-guess>
+    <p class="q">「爱死不死」是从「爱死就死，不爱死别死」紧缩来的吗？</p>
+    <div class="opts">
+      <button data-ans="a">是，同一来源</button>
+      <button data-ans="b">不是，是构式类推的结果</button>
+    </div>
+    <p class="reveal" hidden>不是。使役动词（爱让不让）、心理动词（爱恨不恨）、消现动词（爱死不死）都<strong>不能</strong>还原为「爱V就V，不爱V别V」——它们不是直接来源于那个并列小句，而是「爱V不V」构式成形后的<strong>类推</strong>结果，也正是构式进一步成型的标志<sup class="cite" data-cite="leitui"></sup>。</p>
+  </div>
+  <p>能直接进入的主要是<strong>单音节行为动作动词</strong>；类推则把使役、心理、消现动词也放了进来。点一个动词，看它走的是哪条路：</p>
+  <div class="lab" id="vLab">
+    <h3>V 的准入检验</h3>
+    <div class="wordpool" id="vPool">
+      <button data-v="0">吃</button>
+      <button data-v="1">听</button>
+      <button data-v="2">信</button>
+      <button data-v="3">卖</button>
+      <button data-v="4">丢</button>
+      <button data-v="5">让</button>
+      <button data-v="6">恨</button>
+      <button data-v="7">死</button>
+      <button data-v="8">理</button>
+    </div>
+    <div class="result" id="vOut">
+      <p class="sent" id="vSent"></p>
+      <dl class="rows">
+        <dt>类别</dt><dd id="vType"></dd>
+        <dt>来历</dt><dd id="vSrc"></dd>
+        <dt>还原</dt><dd id="vBack"></dd>
+      </dl>
+    </div>
+  </div>
+  <p class="small muted">非典型的成员反而是更典型的构式成员——它们进不了老格式，却进得来新构式，显示这个框架的「同化力」与「能产性」<sup class="cite" data-cite="leitui"></sup>。</p>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 260" role="img" aria-label="示意图：爱V不V动词准入的三条路径">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <g stroke="#29241d" stroke-width="2" fill="#f1e6d2">
+          <rect x="220" y="24" width="240" height="52" rx="11"/>
+        </g>
+        <text x="340" y="46" text-anchor="middle" font-size="14" fill="#29241d">爱V就V，不爱V别V</text>
+        <text x="340" y="64" text-anchor="middle" font-size="11" fill="#6f675a">选择性并列小句</text>
+        <path d="M340 80 L160 132 M340 80 L340 132 M340 80 L520 132" stroke="#a87f24" stroke-width="1.8" fill="none" marker-end="url(#arrA)"/>
+        <defs><marker id="arrA" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="30" y="140" width="200" height="80" rx="11"/>
+          <rect x="240" y="140" width="200" height="80" rx="11"/>
+          <rect x="450" y="140" width="200" height="80" rx="11"/>
+        </g>
+        <text x="130" y="166" text-anchor="middle" font-size="13.5" fill="#29241d">单音节行为动词</text>
+        <text x="130" y="188" text-anchor="middle" font-size="11" fill="#6f675a">吃 · 听 · 信 · 卖 · 丢</text>
+        <text x="130" y="206" text-anchor="middle" font-size="11" fill="#3d5a6c">截搭直接来源 · 可还原</text>
+        <text x="340" y="166" text-anchor="middle" font-size="13.5" fill="#29241d">使役 · 心理 · 消现</text>
+        <text x="340" y="188" text-anchor="middle" font-size="11" fill="#6f675a">让 · 恨 · 死</text>
+        <text x="340" y="206" text-anchor="middle" font-size="11" fill="#a87f24">构式类推 · 不能还原</text>
+        <text x="550" y="166" text-anchor="middle" font-size="13.5" fill="#29241d">高频用例「理」</text>
+        <text x="550" y="188" text-anchor="middle" font-size="11" fill="#6f675a">爱理不理</text>
+        <text x="550" y="206" text-anchor="middle" font-size="11" fill="#9d4938">构式固化 · 熟语化</text>
+      </g>
+    </svg>
+    <figcaption>主视觉二（示意，非原文原图）：动词进入「爱V不V」的三条路径——直接来源、类推进入、高频固化。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 场景三：极性对立 ============ -->
+<section class="scene" data-scene="3">
+  <p class="kicker">场景 3 ｜ 构式义</p>
+  <h2>既听又不听，怎么做到的</h2>
+  <p>看《蜕》里这一幕：桂秋对桂枝「挖个防空壕」的建议不置可否，桂枝「生了气」，甩出一句「你爱听不听」<sup class="cite" data-cite="guiju"></sup>。</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">逻辑上</p>
+      <p class="small muted">「听」（听从建议挖壕）与「不听」（不接受建议）呈<strong>极性对立</strong>，不可能同时成立——所以「爱听不听」绝不是让桂秋既听又不听。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">语用上</p>
+      <p class="small muted">共现条件是<strong>选择性语境</strong>：听与不听任凭听话人自己选。而说话人本意其实希望「听」，只是奈何对方不置可否，于是把不满藏进了这句甩下的话。</p>
+    </div>
+  </div>
+  <p>两句合起来才是完整构式义：<strong>任凭选择的语义</strong>＋<strong>不满的语用信息</strong>。这两样从「爱」「听」「不」任何一个成分里都推不出来，也没法用常规语法规则、语义规则解释——语义与功能上的不可预测性，正是它作为典型构式的身份证<sup class="cite" data-cite="cgmean"></sup>。</p>
+</section>
+
+<!-- ============ 场景四：固化连续统 ============ -->
+<section class="scene" data-scene="4">
+  <p class="kicker">场景 4 ｜ 构式固化</p>
+  <h2>「爱理不理」：一个用例的熟语之路</h2>
+  <div class="guess" data-guess>
+    <p class="q">「爱理不理」里的「理」，能换成「睬」说成「爱睬不睬」吗？</p>
+    <div class="opts">
+      <button data-ans="a">能，跟一般爱V不V一样自由替换</button>
+      <button data-ans="b">不能，它已固化，组成成分不可替换</button>
+    </div>
+    <p class="reveal" hidden>不能。「爱理不理」高频使用，形义结合高度固化，已具熟语化倾向，<strong>组成成分不可替换</strong>——事实上它已被《现代汉语词典》收录，这是其他「爱V不V」构式所不及的<sup class="cite" data-cite="ailili"></sup>。</p>
+  </div>
+  <p>李文浩把「爱理不理」当特殊用例：它能做谓语，还能做定语、状语（「我爱理不理地回答他」），而一般「爱V不V」很少出现在后两种位置；功能上它是<strong>描写性</strong>的，相当于一个状态形容词<sup class="cite" data-cite="ailili"></sup>。《现汉》释义「像是理睬又不理睬，形容对人冷淡、怠慢」——「像是」二字，正是说话人对被描述者态度的不满<sup class="cite" data-cite="xiandai"></sup>。从偏「理」到完全「不理」是个连续统，点一个看它在哪：</p>
+  <div class="wordpool" id="liPool">
+    <button data-l="0">爱理不理地说</button>
+    <button data-l="1">冷漠地说</button>
+    <button data-l="2">应一声</button>
+    <button data-l="3">点点头应酬</button>
+    <button data-l="4">抬头看看又埋头</button>
+    <button data-l="5">斜瞟一眼</button>
+    <button data-l="6">面无表情</button>
+  </div>
+  <div class="result" id="liOut" hidden>
+    <p class="sent" id="liSent"></p>
+    <dl class="rows">
+      <dt>梯度</dt><dd id="liDeg"></dd>
+      <dt>回应</dt><dd id="liKind"></dd>
+    </dl>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 200" role="img" aria-label="示意图：从理到不理的连续统">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <defs><marker id="arrB" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#9d4938"/></marker></defs>
+        <line x1="70" y1="100" x2="612" y2="100" stroke="#a87f24" stroke-width="2" marker-end="url(#arrB)"/>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <circle cx="120" cy="100" r="34"/>
+          <circle cx="300" cy="100" r="34"/>
+          <circle cx="480" cy="100" r="34"/>
+          <circle cx="600" cy="100" r="34"/>
+        </g>
+        <text x="120" y="97" text-anchor="middle" font-size="12" fill="#29241d">言语</text>
+        <text x="120" y="113" text-anchor="middle" font-size="10" fill="#6f675a">理的程度高</text>
+        <text x="300" y="97" text-anchor="middle" font-size="12" fill="#29241d">表情</text>
+        <text x="300" y="113" text-anchor="middle" font-size="10" fill="#6f675a">介于理与不理</text>
+        <text x="480" y="97" text-anchor="middle" font-size="12" fill="#29241d">斜瞟一眼</text>
+        <text x="480" y="113" text-anchor="middle" font-size="10" fill="#6f675a">程度更低</text>
+        <text x="600" y="97" text-anchor="middle" font-size="12" fill="#9d4938">不回应</text>
+        <text x="600" y="113" text-anchor="middle" font-size="10" fill="#9d4938">其实就是不理</text>
+        <text x="340" y="166" text-anchor="middle" font-size="11.5" fill="#6f675a">同类回应内部还可逐级细分：言语有内容冷漠与量近乎零之别，表情有点头、抬头看看、斜瞟之别</text>
+      </g>
+    </svg>
+    <figcaption>主视觉三（示意，非原文原图）：例(12)—(14) 从偏「理」到完全「不理」构成连续统，「理」的程度逐个降低。</figcaption>
+  </figure>
+  <p>「爱理不理」是成形的第三步——<strong>构式固化（熟语化）</strong>：整合度比一般「爱V不V」更高，功能从「对听话人反馈表示不满」转化为描写性的状态形容。共时平面上还能看到中间态：「爱听不听」「爱管不管」也露出固化迹象，作者推测高频用例终将向「爱理不理」靠拢，终极目标是语义和形式的熟语化<sup class="cite" data-cite="trend"></sup>。</p>
+</section>
+
+<!-- ============ 场景五：消极义家族 ============ -->
+<section class="scene" data-scene="5">
+  <p class="kicker">场景 5 ｜ 消极义评价</p>
+  <h2>不止一个句式在表达不高兴</h2>
+  <p>评述性言语行为要有<strong>发活动因</strong>：事件处于正常状态没什么可评，一旦非正常，人们才产生评述冲动，而此类评述往往趋于消极性——与<strong>移情</strong>效应相关。Kuno（1987）说，移情就是说话人将自己认同于句子所描写的事件或状态中的一个参与者<sup class="cite" data-cite="kuno"></sup>。汉语里表达消极义评价的句式是一家人：</p>
+  <div class="vs">
+    <div class="card a">
+      <p class="sent">把字句</p>
+      <p class="small muted">吴葆棠（1987）收集「把N+V了」（V为光杆动词）62 例，其中 61 例动词表违愿或丧失义：「把首饰当了」／<span class="no">*把首饰赎了</span>；「把钢笔丢了」／<span class="no">*把钢笔拾了</span>。沈家煊（2002）概括为「主观处置义」——说话人移情于「把」引进的成分，寄予同情<sup class="cite" data-cite="wubao"></sup><sup class="cite" data-cite="shen"></sup>。</p>
+    </div>
+    <div class="card b">
+      <p class="sent">被字句</p>
+      <p class="small muted">王力（1945）早就指出，「被」字句叙述的是对主语不如意或不企望的事：「老太太也被风吹病了」（《红楼梦》42 回）。准确地说，是说话人移情于主语成分而生不如意之感；张洪明（Zhang 1994）从历时角度证明「被」字句正是移情过程的产物<sup class="cite" data-cite="wangli"></sup><sup class="cite" data-cite="zhang"></sup>。</p>
+    </div>
+  </div>
+  <figure class="figure" data-figure>
+    <svg viewBox="0 0 680 210" role="img" aria-label="示意图：爱V不V构式成形的三步">
+      <g font-family="-apple-system,PingFang SC,Microsoft YaHei,sans-serif">
+        <defs><marker id="arrC" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#a87f24"/></marker></defs>
+        <g stroke="#3d5a6c" stroke-width="2" fill="#eef3f6">
+          <rect x="30" y="52" width="180" height="88" rx="12"/>
+          <rect x="250" y="52" width="180" height="88" rx="12"/>
+          <rect x="470" y="52" width="180" height="88" rx="12"/>
+        </g>
+        <text x="120" y="80" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">第一步 · 截搭整合</text>
+        <text x="120" y="104" text-anchor="middle" font-size="11" fill="#6f675a">截取「爱V」与「不V」</text>
+        <text x="120" y="122" text-anchor="middle" font-size="11" fill="#6f675a">压缩并列小句</text>
+        <text x="340" y="80" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#29241d">第二步 · 构式类推</text>
+        <text x="340" y="104" text-anchor="middle" font-size="11" fill="#6f675a">使役 · 心理 · 消现动词</text>
+        <text x="340" y="122" text-anchor="middle" font-size="11" fill="#6f675a">进入，不能还原</text>
+        <text x="560" y="80" text-anchor="middle" font-size="14.5" font-family="KaiTi,STKaiti,serif" fill="#9d4938">第三步 · 构式固化</text>
+        <text x="560" y="104" text-anchor="middle" font-size="11" fill="#6f675a">爱理不理高频化</text>
+        <text x="560" y="122" text-anchor="middle" font-size="11" fill="#6f675a">熟语化 · 成分不可替换</text>
+        <path d="M214 96 L246 96 M434 96 L466 96" stroke="#a87f24" stroke-width="2" marker-end="url(#arrC)"/>
+        <text x="340" y="176" text-anchor="middle" font-size="11.5" fill="#6f675a">语言经济原则驱动：省略与紧缩产生句法创新，框架显示同化力与能产性</text>
+      </g>
+    </svg>
+    <figcaption>主视觉四（示意，非原文原图）：截搭整合 → 构式类推 → 构式固化，「爱V不V」的三步成形。</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 自测 ============ -->
+<section class="quiz" data-quiz>
+  <h2>交卷前三题</h2>
+  <p class="q">1. 「爱V不V」的构式义由哪两部分构成？</p>
+  <div class="opts">
+    <button data-ans="a">「爱V」与「不V」的字面义相加</button>
+    <button data-ans="b">任凭听话人选择的语义 ＋ 说话人不满的语用信息</button>
+  </div>
+  <p class="why" hidden>是后者。「听凭选择」的语义和「不满」的语用信息仅从表达式自身的组成成分无法推知，也无法用常规语法规则和语义规则解释<sup class="cite" data-cite="cgmean"></sup>。</p>
+  <p class="q">2. 使役、心理、消现动词（如「爱让不让」「爱恨不恨」「爱死不死」）为什么不能还原为「爱V就V，不爱V别V」？</p>
+  <div class="opts">
+    <button data-ans="a">因为它们是病句</button>
+    <button data-ans="b">因为它们不是直接来源于该并列小句，是构式类推的结果</button>
+  </div>
+  <p class="why" hidden>是类推的结果。它们不能还原，说明不是直接来源于那个并列小句，而是「爱V不V」构式成形后的类推——这也是该构式进一步成型的标志<sup class="cite" data-cite="leitui"></sup>。</p>
+  <p class="q">3. 「爱理不理」与一般「爱V不V」的关键差别是什么？</p>
+  <div class="opts">
+    <button data-ans="a">前者表不满，后者表赞扬</button>
+    <button data-ans="b">前者因高频使用而高度固化、熟语化：成分不可替换，功能转为描写性</button>
+  </div>
+  <p class="why" hidden>是固化。「爱理不理」可作谓语、定语、状语，功能描写性（相当于状态形容词），组成成分不可替换，已被《现代汉语词典》收录；一般「爱V不V」主要功能是表示不满，往往以小句形式出现<sup class="cite" data-cite="ailili"></sup>。</p>
+</section>
+
+<section class="scene">
+  <p class="kicker">边界与延伸</p>
+  <h2>这一页讲了什么、没讲什么</h2>
+  <p><strong>讲了</strong>：第五章第三节之一「“爱V不V”构式解析」（底本 L4244–L4353）——消极义评价的语用前提（发活动因、移情）、构式义与概念整合（a→e 五步、截搭、类推）、消极义与构式固化（爱理不理的熟语化与「理」的程度连续统）。</p>
+  <p><strong>没讲</strong>：第五章第一节「主观量评价表述」（「A不到哪里去」、「NP(受)+VP(t)+QM」的主观量）、第二节「感受性评价表述」（「NP+VR」自致使义、「V起来」话题义的话语功能）、第三节之二「V₁一量 V₂一量」的消极义；第四、六至八章内容见系列深读页。这些都可按同规格续做深读页。</p>
+  <p class="small muted">底本为 PaddleOCR 转录的电子书文本，无原书页码；角标中的「底本 Lx」指该内容在研读底本中的行号。例句编号沿用底本原文编号，文学例证出处随文标注。引用关键数字与结论前，请点开角标核对原句。</p>
+  <nav class="series" style="align-items:center">
+    <span class="small muted" style="align-self:center">系列深读页：</span>
+    <a href="index.html">↖ 索引</a>
+    <a href="构式语法与汉语构式-01深读-构式语法入门.html">01 绪论</a>
+    <a href="构式语法与汉语构式-02深读-框架标记构式.html">02 框架标记构式</a>
+    <a href="构式语法与汉语构式-03深读-V起来话题义.html">03 V起来话题义</a>
+    <a href="构式语法与汉语构式-04深读-数量同构.html">04 数量同构</a>
+    <a class="cur" href="构式语法与汉语构式-05深读-爱V不V.html">05 爱V不V</a>
+    <a href="构式语法与汉语构式-06深读-都NP了.html">06 都NP了</a>
+    <a href="构式语法与汉语构式-07深读-有字构式.html">07 有字构式</a>
+    <a href="构式语法与汉语构式-08深读-结语和思考.html">08 结语和思考</a>
+  </nav>
+</section>
+
+</main>
+
+<div class="pop" id="pop" hidden role="dialog" aria-modal="true" aria-label="出处">
+  <button class="x" id="popClose" aria-label="关闭">✕</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到刚才的位置</button>
+
+<script>
+/* ================= 事实账本 ================= */
+const SOURCES = {
+  "guiju":       { page:"底本 L4287-4289", quote:"例(5)……对于桂枝“挖个防空壕”的建议，桂秋不作明确回应，于是桂枝说“你爱听不听”。“听”即听从桂枝的建议挖防空壕，“不听”即不接受桂枝的建议，两者呈现了极性对立的语义关系，在逻辑上不可能同时成立……在语用功能上也传递了说话人对听话人的不满情绪。", zh:"例(5)：桂秋不置可否，桂枝「生了气」甩出「你爱听不听」；听与不听极性对立、逻辑上不可能同时成立，共现条件是选择性语境。" },
+  "kuno":        { page:"底本 L4246-4248", quote:"这种语用功能与移情效应相关，Kuno（1987）指出“移情”(empathy)就是说话人将自己认同于句子所描写的事件或状态中的一个参与者。大量语言事实表明，就语义倾向来说，此类评述往往趋于消极性，表现了说话人对所述事件、现象的不解或不满。", zh:"Kuno 1987：移情＝说话人将自己认同于事件/状态中的一个参与者；此类评述趋于消极性。" },
+  "cgmean":      { page:"底本 L4289", quote:"从上面的分析可以看出，“爱V不V”的“听凭选择”的语义和说话人“不满”的语用信息仅从“爱V不V”表达式自身的组成成分无法推知，也无法用常规的语法规则和语义规则来解释。这体现了该表达式在语义和功能上的不可预测性，属于典型的构式。", zh:"构式义＝听凭选择＋不满；两者推不出来，语义功能不可预测，是典型构式。" },
+  "jiang":       { page:"底本 L4291-4301", quote:"江蓝生（2007）认为“爱 V 不 V”应该是从“爱 V 就 V，不爱 V 就别 V”紧缩而来的……下面例句从 a 到 e 显示了从正反并列双小句到四字格短语的整合过程：a. 爱吃就吃，不爱吃就不要吃了。(语气缓和，态度客观) b. 爱吃就吃，不爱吃别吃。(语气较生硬，态度较冷漠) c. 爱吃就吃，不爱吃拉倒。(语气生硬，态度不满) d. 爱吃吃，不吃拉倒。(语气很生硬，态度很不满) e. 爱吃不吃。(语气极生硬，态度极不满)", zh:"江蓝生 2007 紧缩说：a→e 五步，从正反并列双小句整合为四字格，语气逐级升级。" },
+  "zheda":       { page:"底本 L4305", quote:"从概念整合的角度来分析，“爱V不V”构式成形的第一步是对于“爱V就V，不爱V别V”这个选择性的并列小句的压缩，是一种“截搭式”的整合过程，即分别截取两个并列小句的一部分“爱V”和“不V”，截搭成“爱V不V”构式。", zh:"截搭式整合：截取「爱V」与「不V」两部分拼成构式；语用驱动是对语气程度递增构式的选择。" },
+  "leitui":      { page:"底本 L4303-4305", quote:"少数例外，如使役动词（例：爱让不让）、心理动词（例：爱恨不恨）、消现动词（例：爱死不死）等不能还原，她认为这是“爱V不V”格式形成后的类推结果……它们不能还原为“爱V就V，不爱V别V”，说明他们不是直接来源于这个并列小句，是“爱V不V”构式类推的结果，也是该构式进一步成型的标志。事实表明，非典型的构式往往是更典型的构式，这显示了该构式框架的“同化力”和“能产性”。", zh:"类推：使役/心理/消现动词进入且不能还原；非典型成员更典型，显示框架同化力与能产性。" },
+  "ailili":      { page:"底本 L4322-4324", quote:"从句法分布来看，“爱理不理”除了可以充当谓语……还可以用作定语、状语……而一般的“爱V不V”构式很少出现在后者的位置。由此他认为“爱理不理”由于高频使用，它的形义结合高度固化，已具熟语化倾向，其组成成分不可替换。事实上“爱理不理”已经被收录进《现代汉语词典》，这是其他“爱V不V”构式所不及的。", zh:"爱理不理：高频使用致形义高度固化、熟语化，成分不可替换；已入《现汉》，功能转为描写性。" },
+  "xiandai":     { page:"底本 L4326", quote:"《现代汉语词典》对“爱理不理”释义为：“像是理睬又不理睬，形容对人冷淡、怠慢。”其中的“像是”一词说明这是说话人对被描述者的情感和态度的不满，这种不满还体现在被描述者情感和态度的“冷淡、怠慢”的程度上。", zh:"《现汉》释义「像是理睬又不理睬」；「像是」透出说话人不满，体现在冷淡、怠慢的程度上。" },
+  "trend":       { page:"底本 L4352", quote:"而且我们可以推测，演变结果是某些使用频率高的“爱V不V”构式（如“爱听不听”、“爱管不管”）将会越来越向“爱理不理”靠拢，终极目标是语义和形式的熟语化。", zh:"中间态（爱听不听、爱管不管）是继续固化的证明；高频用例终将熟语化。" },
+  "wubao":       { page:"底本 L4250-4254", quote:"比如吴葆棠(1987)收集“把N+V了”(V为光杆动词)句式的例句62个，其中61个的动词是表示违愿或丧失义的，而相反的表述不成立。如他所举实例：把首饰当了。*把首饰赎了。把钢笔丢了。*把钢笔拾了。", zh:"吴葆棠 1987：「把N+V了」62 例中 61 例动词表违愿或丧失义，相反表述不成立。" },
+  "shen":        { page:"底本 L4256", quote:"这就是沈家煊（2002）概括的汉语“把”字句体现一种“主观处置义”，其中表现之一就是说话人的“移情”，对“把”字引进的成分寄予一种“同情”。", zh:"沈家煊 2002：把字句的「主观处置义」；说话人移情，对「把」引进成分寄予同情。" },
+  "wangli":      { page:"底本 L4256-4261", quote:"又如王力（1945）早就指出，汉语“被”字句所叙述的，对主语而言是不如意或不企望的事。如他所举《红楼梦》的实例：老太太也被风吹病了。（42回）史妹妹这样一个人，又被他叔叔硬压着配人了。（106回）", zh:"王力 1945：被字句叙述对主语不如意或不企望的事（《红楼梦》42 回、106 回例）。" },
+  "zhang":       { page:"底本 L4263", quote:"张洪明（Zhang 1994）曾从历时的角度证明汉语“被”字句确实是说话人“移情”过程的产物。", zh:"张洪明 Zhang 1994：历时证明被字句是说话人移情过程的产物。" },
+  "three":       { page:"底本 L4305-4344", quote:"“爱V不V”构式成形的第一步是……“截搭式”的整合过程……“爱V不V”构式成形的第二步是构式类推……笔者认为……“爱理不理”实际上是“爱V不V”构式成形的第三步，即构式的固化（熟语化）。", zh:"三步成形：截搭整合 → 构式类推 → 构式固化（熟语化）。" }
+};
+
+/* ================= 读者设置 ================= */
+const store = { get(k){ try{ return localStorage.getItem(k); }catch{ return null; } }, set(k,v){ try{ localStorage.setItem(k,v); }catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+document.getElementById("fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+document.getElementById("fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+const THEMES = ["auto","light","dark"];
+let thIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[thIdx]; store.set("you-theme", THEMES[thIdx]); }
+applyTheme();
+document.getElementById("themeBtn").onclick = () => { thIdx = (thIdx+1)%THEMES.length; applyTheme(); };
+
+/* ================= 出处弹层与回跳 ================= */
+const pop = document.getElementById("pop"), popQuote = document.getElementById("popQuote"),
+      popMeta = document.getElementById("popMeta"), popZh = document.getElementById("popZh");
+let lastCite = null;
+function openPop(id, anchor){
+  const s = SOURCES[id]; if(!s) return;
+  lastCite = anchor;
+  popQuote.textContent = "「" + s.quote + "」";
+  popMeta.textContent = "出处：" + s.page + "（《构式语法与汉语构式》研读底本）";
+  popZh.textContent = "转述：" + s.zh;
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  if (innerWidth > 640){
+    pop.style.top = (scrollY + r.bottom + 8) + "px";
+    pop.style.left = Math.min(scrollX + r.left - 160, scrollX + innerWidth - 450) + "px";
+  } else { pop.style.top = ""; pop.style.left = ""; }
+}
+function closePop(){ pop.hidden = true; }
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if (c){ openPop(c.dataset.cite, c); e.stopPropagation(); return; }
+  if (!e.target.closest("#pop")) closePop();
+});
+document.getElementById("popClose").onclick = closePop;
+const backStack = [], backBtn = document.getElementById("backBtn");
+function jumpTo(id){
+  backStack.push(scrollY);
+  history.pushState({ y: scrollY }, "");
+  const el = document.getElementById(id);
+  (el.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" }));
+  backBtn.hidden = backStack.length === 0;
+}
+addEventListener("popstate", e => { if (e.state && e.state.y != null){ backStack.pop(); scrollTo(0, e.state.y); backBtn.hidden = backStack.length === 0; } });
+backBtn.onclick = () => { const y = backStack.pop(); if (y != null) scrollTo({ top: y, behavior: motionOK() ? "smooth" : "auto" }); backBtn.hidden = backStack.length === 0; };
+
+/* ================= 先猜 ================= */
+document.querySelectorAll(".guess .opts").forEach(group => {
+  const correct = group.querySelector("button").dataset.ans;
+  group.querySelectorAll("button").forEach(b => {
+    b.onclick = () => {
+      group.querySelectorAll("button").forEach(x => { x.disabled = true; if (x.dataset.ans === correct) x.classList.add("right"); });
+      if (b.dataset.ans !== correct) b.classList.add("wrong");
+      group.nextElementSibling.hidden = false;
+    };
+  });
+});
+
+/* ================= 场景一：五步紧缩 ================= */
+const STEPS = [
+  { sent:"爱吃就吃，不爱吃就别吃了。", tone:"语气缓和", att:"态度客观" },
+  { sent:"爱吃就吃，不爱吃别吃。", tone:"语气较生硬", att:"态度较冷漠" },
+  { sent:"爱吃就吃，不爱吃拉倒。", tone:"语气生硬", att:"态度不满" },
+  { sent:"爱吃吃，不吃拉倒。", tone:"语气很生硬", att:"态度很不满" }
+];
+const stepSent = document.getElementById("stepSent"), stepTone = document.getElementById("stepTone"), stepAtt = document.getElementById("stepAtt");
+function stepShow(i){
+  [...document.querySelectorAll("#stepLadder .rung")].forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  const s = STEPS[i];
+  stepSent.textContent = s.sent;
+  stepTone.textContent = s.tone;
+  stepAtt.textContent = s.att;
+}
+document.querySelectorAll("#stepLadder .rung").forEach(b => { b.onclick = () => stepShow(+b.dataset.s); });
+stepShow(0);
+
+/* ================= 场景二：动词准入 ================= */
+const VERBS = [
+  { v:"吃", type:"单音节行为动作动词", src:"截搭整合的直接来源（典型成员）", back:"可还原：爱吃就吃，不爱吃就别吃" },
+  { v:"听", type:"单音节行为动作动词", src:"截搭整合的直接来源（典型成员）", back:"可还原（例1「你爱听不听」，老舍《蜕》）" },
+  { v:"信", type:"单音节行为动作动词", src:"截搭整合的直接来源（典型成员）", back:"可还原（例3「你爱信不信」，王朔《橡皮人》）" },
+  { v:"卖", type:"单音节行为动作动词", src:"截搭整合的直接来源（典型成员）", back:"可还原（例4「爱卖不卖，一个子儿也不添」）" },
+  { v:"丢", type:"单音节行为动作动词", src:"截搭整合的直接来源（典型成员）", back:"可还原（例2「你爱丢不丢，与我何干！」）" },
+  { v:"让", type:"使役动词", src:"构式类推进入（非直接来源）", back:"不能还原为「爱让就让，不爱让别让」" },
+  { v:"恨", type:"心理动词", src:"构式类推进入（非直接来源）", back:"不能还原为「爱恨就恨，不爱恨别恨」" },
+  { v:"死", type:"消现动词", src:"构式类推进入（非直接来源）", back:"不能还原为「爱死就死，不爱死别死」" },
+  { v:"理", type:"高频用例「理」（爱理不理）", src:"构式固化的产物——已具熟语化倾向", back:"不谈还原：成分不可替换，《现代汉语词典》已收录" }
+];
+const vSent = document.getElementById("vSent"), vType = document.getElementById("vType"),
+      vSrc = document.getElementById("vSrc"), vBack = document.getElementById("vBack");
+function vShow(i){
+  const d = VERBS[i];
+  document.querySelectorAll("#vPool button").forEach((x, k) => x.setAttribute("aria-pressed", String(k === i)));
+  vSent.textContent = (i === 3 || i === 8) ? ("爱" + d.v + "不" + d.v + "。") : ("你爱" + d.v + "不" + d.v + "。");
+  vType.textContent = d.type;
+  vSrc.textContent = d.src;
+  vBack.textContent = d.back;
+}
+document.querySelectorAll("#vPool button").forEach(b => { b.onclick = () => vShow(+b.dataset.v); });
+vShow(0);
+
+/* ================= 场景四：理的连续统 ================= */
+const LIS = [
+  { sent:"周炳爱理不理地说：“我找这里的校长！”", deg:"偏「理」· 言语回应（例12a）", kind:"理的程度较高——用言语回应" },
+  { sent:"那小贩……爱理不理地说：“不愿花钱自己去摘就是！”", deg:"偏「理」· 言语回应（例12b）", kind:"言语内容比较冷漠，理的程度低于上一例" },
+  { sent:"孙太太爱理不理地应一声。", deg:"偏「理」· 言语回应（例12c）", kind:"言语的量几乎等于零，程度更低" },
+  { sent:"杜长海爱理不理地点点头应酬着……", deg:"居中 · 表情回应（例13a）", kind:"介于「理」和「不理」之间" },
+  { sent:"“茅茅”……爱理不理地看看他，又埋下了头。", deg:"偏「不理」· 表情回应（例13b）", kind:"抬头、看看、又埋头——程度低于点头" },
+  { sent:"那人……爱理不理地又要往前走。", deg:"偏「不理」· 表情回应（例13c）", kind:"斜瞟一眼——三类表情回应中程度最低" },
+  { sent:"很多时候遇到的是爱理不理，面无表情。", deg:"完全「不理」（例14）", kind:"不作回应——其实就是「不理」了" }
+];
+const liOut = document.getElementById("liOut"), liSent = document.getElementById("liSent"),
+      liDeg = document.getElementById("liDeg"), liKind = document.getElementById("liKind");
+document.querySelectorAll("#liPool button").forEach(b => {
+  b.onclick = () => {
+    const d = LIS[+b.dataset.l];
+    document.querySelectorAll("#liPool button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    liOut.hidden = false;
+    liSent.textContent = d.sent;
+    liDeg.textContent = d.deg;
+    liKind.textContent = d.kind;
+  };
+});
+
+/* ================= 阅读进度 ================= */
+let t = null;
+addEventListener("scroll", () => {
+  if (t) return;
+  t = setTimeout(() => { t = null; store.set("you-scroll", String(scrollY)); }, 400);
+}, { passive:true });
+const resumeBtn = document.getElementById("resumeBtn");
+const savedY = parseInt(store.get("you-scroll") || "0", 10);
+if (savedY > 240){
+  resumeBtn.style.display = "inline-block";
+  resumeBtn.onclick = () => scrollTo({ top: savedY, behavior: motionOK() ? "smooth" : "auto" });
+}
+
+/* ================= 键盘 ================= */
+addEventListener("keydown", e => {
+  if (e.key === "Escape") closePop();
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft"){
+    const scenes = [...document.querySelectorAll("[data-scene],[data-hero],[data-quiz]")];
+    const cur = scenes.findIndex(s => s.getBoundingClientRect().top > -80);
+    const idx = cur === -1 ? scenes.length - 1 : cur;
+    const next = scenes[Math.min(scenes.length-1, Math.max(0, idx + (e.key === "ArrowRight" ? 1 : -1)))];
+    if (next) next.scrollIntoView({ behavior: motionOK() ? "smooth" : "auto", block:"start" });
+  }
+});
+</script>
+</body>
+</html>

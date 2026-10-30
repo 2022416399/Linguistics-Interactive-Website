@@ -1,0 +1,5 @@
+# 本地与工作区文件，勿入仓库
+.workbuddy/
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第八节 · 形式学派 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:#fffdf8;border:1px solid #ded8cc;border-radius:10px;box-shadow:0 1px 0 #ded8cc,0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed #ded8cc;font-size:.84rem;color:#706b62;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.figure figcaption sup.cite{color:#a84432;border-bottom:1px dashed #a84432;background:transparent}
+.figure figcaption sup.cite:hover{background:#fbf3e4}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:6.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第八节 交互研读</p>
+  <h1>形式学派：从「是什么」到「为什么」</h1>
+  <p class="lead">形式学派的「形式」，不是跟「意义」相对，而是跟「功能」「认知」相对<sup class="cite" data-cite="s-form-word">出处</sup>。这一节先看结构主义描写派怎么用切分、等同、分类、组合四手续和分布分析法把语言的形式摸清楚，再看乔姆斯基如何用中心词理论与轻动词理论，回过头来解释汉语里那些「不合规矩」的结构。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a><a href="第一节-汉语词类研究.html">第一节 词类</a><a href="第二节-层次分析法.html">第二节 层次</a><a href="第三节-变换分析法.html">第三节 变换</a><a href="第四节-语义特征分析法.html">第四节 语义特征</a><a href="第五节-配价分析法.html">第五节 配价</a><a href="第六节-语义指向分析法.html">第六节 语义指向</a><a href="第七节-语义范畴分析法.html">第七节 语义范畴</a><a href="第八节-形式学派.html" class="cur">第八节 形式学派</a><a href="第九节-功能学派.html">第九节 功能学派</a><a href="第十节-认知学派.html">第十节 认知学派</a><a href="第十一节-构式语法.html">第十一节 构式语法</a><a href="第十二节-语言信息结构.html">第十二节 信息结构</a><a href="第十三节-虚词研究.html">第十三节 虚词</a><a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>三</b>支派</li><li>四手续与<b>分布</b></li><li>替换与<b>扩展</b></li><li>充分性三级</li><li>中心词理论</li><li>轻动词 <b>vP</b></li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第三篇 · 理论流派 · 第八节</p>
+<h2>形式学派语法分析思路：描写的基本功，解释的雄心</h2>
+<p>20 世纪有两部带革命性的语言学著作：德·索绪尔《普通语言学教程》（1916）开创了结构主义语言学的新天地，乔姆斯基《句法结构》（1957）改变了语言研究的航向、开创了探索人类语言共性的新天地<sup class="cite" data-cite="s-liangbu-zhuzuo">出处</sup>。两派曾被视为对立，其实都注重高度抽象的语言形式，所不同的是：布龙菲尔德一支着眼于某个具体语言的结构系统的考察、分析与描写，乔姆斯基一支着眼于探求人类语言的生成机制与普遍规则；自 20 世纪 60 年代中后期以后，逐渐形成形式语言学、功能语言学和认知语言学三足鼎立的局面<sup class="cite" data-cite="s-liangbu-zhuzuo">出处</sup>。</p>
+<p>传统结构主义语言学重在<b>描写</b>，帮助研究者弄清楚「是什么」；以生成语言学为代表的形式语言学和后起的功能语言学、认知语言学重在<b>解释</b>，解决「为什么」。有了描写的基础，才能解决好解释的问题<sup class="cite" data-cite="s-miaoshu-yujieshi">出处</sup>。</p>
+
+<article class="chapter" data-chapter="8">
+<h3>第八节｜汉语语法研究的形式学派分析思路</h3>
+
+<div class="kicker">8.1 关于形式语言学派</div>
+
+<p>一提到形式学派，人们先想到乔姆斯基。但本书先把范围划清楚：这里所说的形式语言学派远不止生成语法一支。不过要先提醒一句——这里所说的「形式语言学派」的「形式」，不是跟「意义」相对而言的，而是跟「功能」「认知」相对而言的；因此，不要以为形式语言学派只研究形式，不研究意义<sup class="cite" data-cite="s-form-word">出处</sup>。</p>
+
+<blockquote>无论从历史发展的角度看，还是从研究的侧重点看，形式语言学派至少可以包括三个支派：<sup class="cite" data-cite="s-san-zhipai">出处</sup></blockquote>
+
+<table class="matrix">
+<caption class="small muted">表一（转制）：形式语言学派三支派</caption>
+<thead><tr><th>支派</th><th>理论依托与目标</th><th>特点</th></tr></thead>
+<tbody>
+<tr><td>第一支<br>结构主义形式学派</td><td>以德·索绪尔的理论为指导；内部分美国描写语言学派、布拉格学派、哥本哈根学派，其中以美国描写语言学派影响最大、成果也最显著<sup class="cite" data-cite="s-san-zhipai">出处</sup></td><td>哲学基础是逻辑实证主义，心理学基础是行为主义——把语言看作人受刺激后作出反应的一种结果</td></tr>
+<tr><td>第二支<br>乔姆斯基形式学派</td><td>上世纪五十年代中期兴起，以探求人类语言机制、人类语言的普遍语法为研究目标<sup class="cite" data-cite="s-san-zhipai">出处</sup></td><td>哲学基础是笛卡儿的唯理主义；主张恢复洪堡特（1767—1835）「语言是以有限的手段作无限的运用」的传统，认为语法应有限、能预言无限数目的句子、且是纯形式的<sup class="cite" data-cite="s-san-zhipai">出处</sup></td></tr>
+<tr><td>第三支<br>非乔姆斯基形式学派</td><td>乔姆斯基学说产生以后出现的、或作为其对立面、或另立新说的学派<sup class="cite" data-cite="s-san-zhipai">出处</sup></td><td>词汇功能语法（LFG）、广义短语结构语法（GPSG）、中心词驱动短语结构语法（HPSG）等；不用规则而采用复杂特征来描写语言，规则隐含在特征之中</td></tr>
+</tbody>
+</table>
+
+<p>上述诸多形式学派中，对各国语言研究（包括汉语研究）产生重大影响的是美国描写语言学派和乔姆斯基生成学派，本节只介绍这两大学派的研究思路<sup class="cite" data-cite="s-san-zhipai">出处</sup>。</p>
+
+<div class="kicker">8.2 美国结构主义形式学派的分析思路</div>
+
+<p>被誉为现代语言学鼻祖的德·索绪尔主张区分语言（langue）和言语（parole），区分共时语言学与历时语言学，而他更强调语言、强调语言的共时研究——研究同质的、抽象的语言形式，而不是异质的、五花八门的话语<sup class="cite" data-cite="s-suoshuier">出处</sup>。美国结构主义语言学正是依据索绪尔的语言理论，从调查、分析、描写共时平面的美洲印第安人语言的实践中发展起来的，因此又称美国描写语言学。布龙菲尔德（1887—1949）被认为是其代表人物，代表作是《语言论》（1933）<sup class="cite" data-cite="s-suoshuier">出处</sup>。</p>
+
+<p>早期，美国描写语言学派专心于从形式入手分析语言，以致受到质疑。美国学者卡洛尔（J. B. Carroll）的概括一语中的：</p>
+
+<blockquote>许多美国语言学家今天所运用的描写语言学方法论的总的特点是，想不考虑意义来分析语言的结构。<sup class="cite" data-cite="s-bloomfield">出处</sup></blockquote>
+
+<p>其实布龙菲尔德他们不是没有看到意义的重要——《语言论》（1933）第二章「语言的用途」就指出「在人类的语言里，不同的声音具有不同的意义」，第九章「意义」更是专门谈论意义；但他认为「意义单凭语言科学是无法加以界说的」<sup class="cite" data-cite="s-bloomfield">出处</sup>。在他们看来意义太复杂、难以驾驭，只能暂时先不考虑意义。如今回头看，以布龙菲尔德为代表的美国结构主义语言学派当初幸好暂不考虑意义，从而创造了一整套分析、描写语言结构的手续和方法；他们到后期也开始并越来越注意意义问题——威尔斯（1947）对歧义现象的关注、海里斯（1957）提出「变换」（transformation）问题，都说明了这一点<sup class="cite" data-cite="s-bloomfield">出处</sup>。</p>
+
+<div class="kicker">8.3 关于切分、等同、分类、组合</div>
+
+<p>美国结构主义语言学派面对未知语言的大量材料，主要做五步研究分析工作：用国际音标如实记音，尽可能记录大批语言资料；分析成片段的资料，通过切分、等同获得各个层面上的单位；为每个层面的单位开清单并考察其分布；根据分布给每个层面的单位分类；考察不同层面单位各自的组合规则<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。</p>
+
+<p>除了记音之外，重要的手续是四样：<b>切分</b>（segmentation）、<b>等同</b>（identification，即语言单位同一性的认定）、<b>分类</b>（classification）和<b>组合</b>（syntagmatic）；而所运用的基本研究方法是替换分析法、对比分析法、分布分析法、直接组成成分分析法等<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。</p>
+
+<p>做好切分和等同，一要靠替换分析法，二要遵守「同音同义」的同一性原则，同时要善于运用比较的方法。一个经典演示是英语形容词三级形式：ugly／uglier／ugliest、pretty／prettier／prettiest、tall／taller／tallest——反复出现的 -er 在任何一组里都增添「更加」的意思，-est 都增添「最」的意思，且都不单独出现，由此可认定 tall、-er、-est 各是一个语素<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。</p>
+
+<details>
+<summary>例：英语形容词三级形式里的语素认定</summary>
+<p class="q">（a）-er 出现在任何一组语音组合中都增添了「更加」的意思，-est 出现在任何一组语音组合中都增添了「最」的意思。</p>
+<p class="q">（b）-er 和 -est 都不单独出现来表示「更加」「最」的意思。</p>
+<p class="q">（c）基于（a）和（b），在 tall｜taller｜tallest 这一组里，tall、-er、-est 都分别是语素。</p>
+<p class="q">（d）ugly 和 pretty 后面有了 -er 或 -est，那 y 都有规则地变成 i，这是语流音变造成的；ugly（另有 ugli 这一条件变体）、-er、-est 各是语素，pretty 亦然。</p>
+<p class="q">（e）最后认定：ugly、pretty、tall 是词根语素；-er 是黏着语素、形态成分，含「更加」的意思；-est 是黏着语素、形态成分，含「最」的意思。<sup class="cite" data-cite="s-wubu-shouxu">出处</sup></p>
+</details>
+
+<p><b>替换</b>（substitution）是描写语言学里最基本的一种分析方法：在一个语言组合里，一个语言项目被另一个语言项目替代的过程。替换首先在语音研究中成为确定音位最简便、有效的方法——英语 [pin]（大头针）里的 [p] 换成 [t] 变成 [tin]（锡），意思有别，证明 [p] 与 [t] 有区别意义的作用，是独立的音位<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。汉语里送气与不送气有别，同理可证<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。</p>
+
+<p>划分词类，从某个角度说，也运用替换分析法：能出现在「很＋（）」框架里、又不能出现在「很＋（）＋宾语」框架里的词，都属于形容词——表面看用的是框架，实际用的是替换，在上述框架里彼此能互相替换的词就都属于形容词<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。</p>
+
+<p>至于<b>分类</b>，美国结构主义认为分类的根本依据是语言单位的分布；<b>组合</b>则指小的音义结合体组合成大的音义结合体——由语素组成词，由词组成句法结构，由句法结构组成更复杂的句法结构，由小句组成复句<sup class="cite" data-cite="s-wubu-shouxu">出处</sup>。关于组合，本书引述朱德熙的话：</p>
+
+<blockquote>任何句法结构都可以从两个不同的方面来观察：第一是把它当作一个复杂的组合来看它的内部构造，第二是把它当作一个整体来看它的语法功能。……第一种分类的依据是内部构造，第二种分类的依据是语法功能。<sup class="cite" data-cite="s-wubu-shouxu">出处</sup></blockquote>
+
+<div class="kicker">8.4 关于分布分析法</div>
+
+<p>「分布」是美国描写语言学里一个有特别含义的术语，最早在语音研究中运用，上世纪 40 年代明确运用到语法研究。它的定义是：<sup class="cite" data-cite="s-fenbu-dingyi">出处</sup></p>
+
+<blockquote>语法学里的「分布」是指某个语言成分（如语素、词、词组等）能或者不能在哪个位置上出现，或者说能或者不能在哪个环境里出现；也可以指某个语言成分所能出现或所不能出现的位置或者说环境的总和。<sup class="cite" data-cite="s-fenbu-dingyi">出处</sup></blockquote>
+
+<p>换句话说，在句法中某个词的全部语法功能，也就是这个词的语法分布——「根据词的语法功能给词分类」与「根据词的语法分布给词分类」是等价的两种说法，只是说话环境不同<sup class="cite" data-cite="s-fenbu-dingyi">出处</sup>。分布的作用有两个：一是作为分类的依据，二是作为确定语言单位同一性的依据。</p>
+
+<p>「突然」和「忽然」是最好的入口。二者意思似乎一样，而且都能作状语（「他突然／忽然回来了」），其实分属不同词类。请先猜一笔。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「他突然／忽然回来了」两样都通，凭什么说「突然」是形容词、「忽然」是副词？</p>
+<div class="opts">
+<button data-ans="0">凭意义——「突然」侧重意外，「忽然」侧重时间短促，意义有别就得分类</button>
+<button data-ans="1">凭分布——「忽然」只能作状语，「突然」还能作谓语中心、宾语、补语、定语，还能受「很」修饰</button>
+</div>
+<div class="why">分类靠分布，不靠语感上的意义。逐项对比句法功能就会发现：「突然」七项全能，「忽然」只有作状语一项。分布不同，词类就不同——这正是「分布定词类」的硬道理<sup class="cite" data-cite="s-turan-huran">出处</sup>。</div>
+</div>
+
+<table class="matrix">
+<caption class="small muted">表二（转制）：「突然／忽然」句法功能对比（＋具备，－不具备）</caption>
+<thead><tr><th></th><th>作状语</th><th>作谓语中心</th><th>作宾语</th><th>作补语</th><th>作定语</th><th>很～</th><th>并不～</th></tr></thead>
+<tbody>
+<tr><td>突然</td><td>＋</td><td>＋</td><td>＋</td><td>＋</td><td>＋</td><td>＋</td><td>＋</td></tr>
+<tr><td>忽然</td><td>＋</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td><td>－</td></tr>
+</tbody>
+</table>
+
+<p>按它们的分布，「忽然」是副词，因为它只能作状语；「突然」是形容词<sup class="cite" data-cite="s-turan-huran">出处</sup>。同一把尺子还能量出「区别词」：荤、温、野生、国营、急性、慢性、微型这些词，如今语法学界几乎一致同意从形容词里分出来单立一类，就因为它们跟大、甜、绿、勤快、认真、虚心等在分布上形成明显对立——「虚心」能作主语、谓语、补语，能带补语，能很～、不～；「微型」这些只在作定语这一点上相同，其余全部对立<sup class="cite" data-cite="s-fenbu-dingyi">出处</sup>。</p>
+
+<p>绪论里提过一个问题：都是表示颜色的「红」「粉」「通红」，属于同一个词类吗？用分布分析一眼就能看出不属于——「红」七项俱全，「粉」只能作定语，「通红」能作谓语中心、补语，作定语一般还得带上「的」<sup class="cite" data-cite="s-fenbu-dingyi">出处</sup>。</p>
+
+<p>分布还是处理「同音同义」难题的裁断。先看「白」的分合。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「白1」像霜或雪的颜色，「白2」没有效果、徒然，「白3」无代价、无报偿。按「同音同义」原则似应一分为三，为什么一般只分成两个词？<sup class="cite" data-cite="s-bai1-bai2">出处</sup></p>
+<div class="opts">
+<button data-ans="0">因为白2、白3在口语里已经读得完全一样，语音同一就不分</button>
+<button data-ans="1">因为白2、白3语法分布一致（只能作状语），白1与它们明显对立，分布裁定归并</button>
+</div>
+<div class="why">裁断权在分布，不在意义，也不在语音。白2、白3都只能作状语，分布一致，合并为一个副词；白1能受「很／不」修饰、能作谓语、定语，能形成「的」字结构，与前两者明显对立，独立为形容词。死抠意义会分出三个词，分布一刀切下去只剩两个<sup class="cite" data-cite="s-bai1-bai2">出处</sup>。</div>
+</div>
+
+<table class="matrix">
+<caption class="small muted">表三（转制）：「白1」与「白2／白3」的分布对立<sup class="cite" data-cite="s-bai1-bai2">出处</sup></caption>
+<thead><tr><th></th><th>白<sub>1</sub>（颜色）<sup class="cite" data-cite="s-bai1-bai2">出处</sup></th><th>白<sub>2</sub>／白<sub>3</sub>（徒然／无代价）<sup class="cite" data-cite="s-bai1-bai2">出处</sup></th></tr></thead>
+<tbody>
+<tr><td>受「很／不」修饰</td><td>＋（很白）</td><td>－</td></tr>
+<tr><td>作谓语</td><td>＋（那衬衣很白）</td><td>－</td></tr>
+<tr><td>作定语</td><td>＋</td><td>－</td></tr>
+<tr><td>形成「的」字结构</td><td>＋</td><td>－</td></tr>
+<tr><td>作状语</td><td>－</td><td>＋（白干了一天／白吃你的）</td></tr>
+</tbody>
+</table>
+
+<div class="kicker">8.5 关于替换分析法与扩展分析法</div>
+
+<p>替换实际有两种情形。一种是<b>等量替换</b>，不改变结构的长度：「看书」用「报」替换「书」成「看报」，「很干净」用「大方」替换「干净」成「很大方」<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup>。另一种是<b>不等量替换</b>，一定改变结构的长度：「看电影」用词组「中国电影」替换「电影」，是超量替换，造成句法结构的<b>扩展</b>；「喜欢看电影」用词「看」替换词组「看电影」，是差量替换，造成句法结构的<b>紧缩</b><sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup>。</p>
+
+<p>语法学里的<b>扩展</b>（expansion），指一个句法结构由简单变为复杂：原先简单的结构叫「模型」，变复杂后的结构叫「扩展式」。合理的扩展得满足三个条件：<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup></p>
+
+<blockquote>A. 扩展式在长度上超过模型。B. 扩展式与模型相对应的某一位置上成分之间有替换关系，而且语法性质基本不变……C. 模型包含在扩展式中。<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup></blockquote>
+
+<p>「买房子」换成「买一所房子」就是合理扩展：长度超过模型，宾语位置上「房子」与「一所房子」有替换关系且语法性质不变，模型包含在扩展式中。而「他爱干净」换成「他爱干净的孩子」、「吃面包」换成「吃面包的皮」都不合要求，不能算合理扩展<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup>。</p>
+
+<p>句法结构的扩展有三种类型：<b>更迭性扩展</b>——模型里某个序列被一个包含该序列但长度超过它的新序列代替，如「老师的衣服」换成「（我的老师）的衣服」；<b>组合性扩展</b>——模型作为整体跟另一个词的序列组合，如「去」扩展为「（我）去」；<b>插入性扩展</b>——在原模型中间插入一个词的序列，如「看完」插入「得／不」成「看得／不完」<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup>。有的结构可以无限扩展（「小王知道他来了＞小王知道小李知道他来了＞……」），有的只能有限扩展（「吃饱→吃不饱→吃不太饱→※」）<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup>。</p>
+
+<details>
+<summary>例：一个句子是一路扩展出来的</summary>
+<p class="q">吃＞（我）吃【组合性扩展】＞（我）（吃（苹果））【更迭性扩展】＞（我）（吃）（那个）苹果＞（我）（吃）（那个）（红）苹果＞（我）（吃）（那个）（买的）（红）苹果＞（我）（吃（完））（那个）（（刚）买的）（红）苹果＞（我）吃〈不〉完……【插入性扩展】<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup></p>
+<p>任何一个复杂的句法结构，都可以看作由一个简单的句法结构通过扩展而形成——了解了替换与扩展，就很容易理解句法构造的层次性。<sup class="cite" data-cite="s-kuozhan-tiaojian">出处</sup></p>
+</details>
+<details>
+<summary>向心结构的扩展问题：A 类、B 类与四种类型</summary>
+<p>第二节留下过一个悬念：「木头桌子质量」与「羊皮领子大衣」层次构造和内部结构关系完全一样，但前者去掉「木头」，「桌子质量」仍然成立；后者去掉「羊皮」，「领子大衣」就不成立。「北大数学老师」与「土壤钾盐含量」也是这样。层次分析回答不了这个问题，要回答它，需了解向心结构的扩展问题<sup class="cite" data-cite="s-xiangxin-jiegou">出处</sup>。</p>
+<p>一个包含三个词、两层主从关系的向心结构，假设格式为「XYZ」，用静态的眼光看，实际有两种切分法：有的切分为「XY/Z」，不妨称之为 A 类向心句法结构，如「出租汽车司机｜吃完饭｜不吃苹果｜（这可以）更快通过｜中国同学多｜给他书」；有的切分为「X/YZ」，称之为 B 类向心句法结构，如「新的木头桌子｜已经先吃了｜唱得很好｜看了一个电影｜同意他参加｜他们不去」<sup class="cite" data-cite="s-xiangxin-jiegou">出处</sup>。</p>
+<p>一般人以为，A 类结构既然（XY）与 Z 是主从关系、X 与 Y 也是主从关系，那么「（XY）Z」一定是由「YZ」扩展来的；B 类结构既然 X 与（YZ）是主从关系、Y 与 Z 也是主从关系，那么「X（YZ）」一定是由「XZ」扩展来的。其实并不完全如此。其中的奥妙在于：那是用静态的眼光分析所得的认识；如果用动态的眼光，即联系扩展来观察，就会发现其中实际存在着<b>两种层次构造、四种类型</b><sup class="cite" data-cite="s-xiangxin-jiegou">出处</sup>：</p>
+<blockquote>桌子质量 ——「木头桌子」替换「桌子」——＞【木头桌子／质量】<br>北大老师 ——「数学老师」替换「老师」——＞【北大／数学老师】<br>羊皮领子大衣 ——「大衣」与「羊皮领子」组合 ——＞【羊皮领子／大衣】<br>土壤钾盐含量 ——「钾盐含量」与「土壤」组合 ——＞【土壤／钾盐含量】</blockquote>
+<p>由此可见，复杂的「定-中」偏正结构不一定都是通过更迭性扩展造成的，也有的（如「羊皮领子大衣」「土壤钾盐含量」）是通过组合性扩展造成的，而且也只能理解为通过组合性扩展造成的。不只「定-中」偏正结构如此，有些复杂的主谓结构、述宾结构、述补结构、「状-中」偏正结构，也只能理解为是通过组合性扩展造成的<sup class="cite" data-cite="s-xiangxin-jiegou">出处</sup>：</p>
+<blockquote>主谓：（不合格产品）不准出厂 ≠ 产品不准出厂｜他（对我好）≠ 他好<br>述宾：批判（康德学说）≠ 批判学说｜（哭肿了）眼睛 ≠ 哭眼睛｜（走大了）脚 ≠ 走脚<br>述补：急得（掉眼泪）≠ 急得掉｜笑得（直不起腰）≠ 笑得直｜忙个（不停）≠ 忙个停<br>状中：很（说明问题）≠ 很说明｜只（看了三页）≠ 只看｜非常（有本事）≠ 非常有<sup class="cite" data-cite="s-xiangxin-jiegou">出处</sup></blockquote>
+</details>
+<details>
+<summary>扩展法的用处与麻烦</summary>
+<p>扩展法对语法研究是有用的：一是帮助我们对语法构造的层次性有较为清晰而深刻的认识；二是有助于发现、挖掘新的语法现象和语法规律，如「羊皮领子大衣」「土壤钾盐含量」这类特殊现象；此外，在区分词组和合成词方面，更迭性扩展法还是一个比较奏效的方法<sup class="cite" data-cite="s-kuozhanfa-zuoyong">出处</sup>。</p>
+<p>比如「白马」能扩展为「白的马」，是词组；「白菜」「白药」不能扩展，是合成词。「红头发」能扩展，是词组；「红花」「红领巾」不能扩展，是合成词。当然也会遇到难以处理的情况：不能因为「鸡蛋」有「鸡的蛋」这样的扩展式、「鸭蛋」没有「鸭的蛋」那样的扩展式，就断定「鸡蛋」是词组、「鸭蛋」是词；也不能根据「帮忙」有「帮她的忙」这样的扩展式就断定「帮忙」是词组；反过来，也不能根据「很丑」「很脏」「很下贱」绝对不能进行更迭性扩展，就断言它们都该看作词<sup class="cite" data-cite="s-jidan-yadan">出处</sup>。</p>
+<p>造成上述难处有深层次的原因。第一，某事物某种序列不一定都是「1+1」那样的序列，会有「你中有我，我中有你」的状况。就以英语说，复数一般都是在名词后加表复数的 -s（book+s→books），可牙齿 tooth→teeth、妇女 woman→women、耗子 mouse→mice 就不能这样分离。美国结构主义语言学派后期代表人物霍凯特因此提出语言构造的两种模型：「项目和排列」（item and arrangement，简称 IA 模型）与「项目和手续」（item and process，简称 IP 模型）——一般典型的属 IA 模型，非典型的属 IP 模型<sup class="cite" data-cite="s-ia-ip-moxing">出处</sup>。</p>
+<p>第二，事物的不同类别往往是个连续统，类与类之间都有中间地带，难以用一种办法或一种标准截然分清。词和词组也是个连续统，所谓离合词就是词和词组的中间地带。因此，研究中首先要抓住典型成员，将不同类的典型成员区分开；同时要致力于发现那些中间地带，而这就不能只靠一种分析方法，需要多角度、多层面、多方位地去思考<sup class="cite" data-cite="s-lianxutu">出处</sup>。</p>
+</details>
+
+<div class="kicker">8.6 乔姆斯基形式学派的研究思路</div>
+
+<p>乔姆斯基《句法结构》（1957）改变语言研究的航向<sup class="cite" data-cite="s-liangbu-zhuzuo">出处</sup>。他对语言提出三大假设：人生来就有一个语言获得装置，语言是人脑心智的重要组成部分；人类语言千差万别，但遵循共同的组合原则，差异只是参数的不同，形成「原则与参数」理论；人类语言共同遵循的组合原则应该是极为简明的<sup class="cite" data-cite="s-hypotheses">出处</sup>。语言研究领域由此出现形式语言学、功能语言学、认知语言学三足鼎立的局面<sup class="cite" data-cite="s-hypotheses">出处</sup>。</p>
+
+<p>乔姆斯基还提出了研究追求的阶梯——研究语言不能只满足于观察的充分性与描写的充分性：</p>
+
+<blockquote>研究语言不能只满足于达到观察的充分性（observatory adequacy）和描写的充分性（descriptive adequacy），更要求达到解释的充分性（explanatory adequacy）。<sup class="cite" data-cite="s-sange-chongfen">出处</sup></blockquote>
+
+<div class="kicker">8.7 用「中心词」理论重新分析「名词+的+谓词」结构</div>
+
+<p>「中心词」有三种彼此不同的概念，先分清再使用。传统句法学的中心语，指修饰性偏正结构里受修饰语修饰的那个成分（「高大的建筑物」的「建筑物」），跟修饰语相对；布龙菲尔德向心结构理论里的中心词，指包含在某个句法结构里、决定整个结构语法性质且与整体语法功能基本一致的那个成分，「讲故事」「说完（了）」也算向心结构<sup class="cite" data-cite="s-zhongxinci">出处</sup>。乔姆斯基的中心词则是：</p>
+
+<blockquote>有一个短语结构 XP，如果其中所含的句法成分 X 的语法特性决定了整个 XP 的语法特性，那么 X 就被看作 XP 的中心词（head，也译为「中心语」）。<sup class="cite" data-cite="s-zhongxinci">出处</sup></blockquote>
+
+<p>这把尺子能量出两个惊人结论。其一，「吃的」「红的」按向心结构理论是没有中心的离心结构，按乔姆斯基理论却有中心——那个后附的「的」就是中心词，正是它使整个结构具有名词性，这一点朱德熙早就论证过<sup class="cite" data-cite="s-zhongxinci">出处</sup>。其二，「三个苹果」「五条狗」这类结构，中心词不是名词，而是前面的数量词——因为它们都是具有「量项」语法特性的量化短语，量项特性正是由数量词传递和决定的<sup class="cite" data-cite="s-zhongxinci">出处</sup>。</p>
+
+<p>把这把尺子用到「这本书的出版」「长城的伟大」一类「名词＋的＋谓词」结构上，本书提出新的认识：</p>
+
+<blockquote>「名词+的+谓词」（NP+的+VP）结构是名词性结构，但不是偏正结构，而是由名词性标记成分「的」插入「名词+谓词」（NP+VP）这种主谓词组中间所构成的另一类「的」字结构。<sup class="cite" data-cite="s-xin-renshi">出处</sup></blockquote>
+
+<table class="matrix">
+<caption class="small muted">表四（转制）：「这本书的出版」传统分析与新认识对照</caption>
+<thead><tr><th></th><th>传统的看法</th><th>现在的看法</th></tr></thead>
+<tbody>
+<tr><td>整个结构性质</td><td>名词性</td><td>名词性</td></tr>
+<tr><td>内部结构关系</td><td>偏正结构（定－中）</td><td>「的」字结构</td></tr>
+<tr><td>中心词</td><td>后面的谓词（出版／伟大）</td><td>名词性标记成分「的」</td></tr>
+<tr><td>「的」的性质</td><td>名词性单位的后附成分</td><td>名词性单位的标记成分，既可后附，也可「嵌中」</td></tr>
+</tbody>
+</table>
+
+<p>新认识一口气消解了两个老矛盾：整个结构性质（名词性）与作中心语的词语性质（动词性或形容词性）之间的矛盾，以及这类结构的「特殊性」与向心结构理论之间的矛盾<sup class="cite" data-cite="s-xin-renshi">出处</sup>。吕叔湘、朱德熙在《语法修辞讲话》（1952）里就把「中国的解放」「态度的坦白」看作「主谓短语」，与此一脉相承<sup class="cite" data-cite="s-xin-renshi">出处</sup>。</p>
+
+<p>按此分析，现代汉语里主谓结构跟结构助词「的」构成的名词性「的」字结构可以有两类：</p>
+
+<blockquote>甲类：「的」字后附在主谓词组的后边，如「张三写的」「个儿高的」；乙类：「的」字出现在主谓词组的中间，如「这本书的出版」「长城的伟大」。<sup class="cite" data-cite="s-jia-yi-liang-lei">出处</sup></blockquote>
+
+<p>两类都是名词性、都有指称功能，但区别很大。从表述功能和语法意义看，甲类可以表示转指，也可以表示自指——「张三写的是诗歌」里转指写的东西，「张三写的时候」里表示自指；乙类在任何情况下都只能自指，不能转指<sup class="cite" data-cite="s-jia-lei-zhuanzhi">出处</sup>。从语法功能看，甲类能作主语、宾语、定语、中心语、谓语；乙类只能作主宾语<sup class="cite" data-cite="s-jia-lei-zhuanzhi">出处</sup>。此外，甲类经常用来提取谓词的论元：「张大夫用中草药治疗肺气肿」里动词「治疗」有三个论元——施事「张大夫」、受事「肺气肿」、凭借「中草药」，要提取其中任何一个，可以而且只能用甲类「的」字结构<sup class="cite" data-cite="s-jia-lei-tiqu">出处</sup>；乙类不能用来提取谓词的任何论元<sup class="cite" data-cite="s-jia-lei-tiqu">出处</sup>。</p>
+
+<details>
+<summary>补：渗透性原则、离心结构与「所」的先例</summary>
+<p>中心词的语类特点会<b>渗透</b>到其所在的母节点 XP：知道某一个中心词能使母节点具有名词性语类的语法特点（标记为 [+N]），就可推知其所在的母节点一定属于名词性语类，这就是中心词的<b>渗透性原则</b>（percolation principle，R. A. Hudson，1987）。「干净的」「吃的」里的「的」本身不是名词，但它能使整个结构具有名词性语类特点<sup class="cite" data-cite="s-shentouxing">出处</sup>。</p>
+<p>布龙菲尔德向心结构理论里，还存在与向心结构相对的<b>离心结构</b>：「吃的」「红的」「木头似的」就属于离心结构——「吃的」「红的」是名词性「的」字结构，整体的语法功能既与「吃」（动词性）、「红」（形容词性）不相一致，也与助词「的」不相一致；「木头似的」是谓词性的，整个结构的语法功能既不同于名词「木头」，也不同于助词「似的」<sup class="cite" data-cite="s-lixin-jiegou">出处</sup>。</p>
+<p>这个新认识跟朱德熙（1982）、陆俭明（1989）关于「所」的分析相一致。他们认为，「他所反对的」该另有切分（原书以树形图展示），其要义与乙类「的」字结构相通：名词性标记成分嵌在主语与谓词性成分之间，决定整个结构的名词性<sup class="cite" data-cite="s-suo-qianli">出处</sup>。</p>
+<p>另外，这类结构还类似于古汉语的「主之谓」，而「主之谓」其实就是「主谓」<span class="tag">课堂笔记补充</span>。</p>
+</details>
+
+<div class="kicker">8.8 关于轻动词理论分析</div>
+
+<p>先看一个句子：「那件事激动得张三流出了眼泪。」按层次分析法它不难分析——那件事｜激动得｜张三｜流出了眼泪，依次是主谓关系、述补关系、主谓关系<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。但问题来了：<b>「张三」是「激动」的施事，怎么出现在动词「激动」之后了？</b>要作出较满意的回答，得运用生成语法学的轻动词理论，而这得从双宾结构的切分说起。</p>
+
+<p>按传统分析法，「约翰给玛丽一本书」这样切分不符合生成语法学「标杆」（X-bar）理论（也称 X 阶理论、中节理论）严格要求的「两分叉结构」（binary branching structure）分析原则；朱德熙（1982）改用「述宾结构带宾语」的切分，克服了传统切分的弊病，但从约束、统制理论看又有新问题——树形图上是「NP2（一本书）」约束、统制「NP1（玛丽）」，而按该理论应该是「NP1（玛丽）」约束、统制「NP2（一本书）」<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：「约翰 给 玛丽 一本书。」三种切分摆在你面前——传统切分、朱德熙（1982）切分、拉森（1988）双层嵌套。按生成语法学，前两种各栽在哪儿？<sup class="cite" data-cite="s-kongke-jiegou">出处</sup></p>
+<div class="opts">
+<button data-ans="0">传统切分栽在「不符合两分叉」，朱德熙切分栽在「玛丽」和「一本书」谁也管不着谁</button>
+<button data-ans="1">传统切分栽在「不符合两分叉」，朱德熙切分栽在「一本书」统制「玛丽」——方向正好相反</button>
+</div>
+<div class="why">传统的切分让动词「给」一下抓住两个宾语，不是两分叉；朱德熙的切分虽是两分叉，但「一本书」约束、统制「玛丽」，与约束、统制理论要求的方向相反。拉森（1988）的双层动词短语嵌套结构，「既符合标杆理论要求，也符合约束、统制理论的要求」<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。</div>
+</div>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 380" role="img" aria-label="轻动词理论 vP 双层嵌套树形图">
+<rect x="0" y="0" width="680" height="380" fill="#fdfaf1"/>
+<g stroke="#c0392b" stroke-width="1.3" fill="none">
+<path d="M240 50 L110 96"/><path d="M240 50 L380 96"/>
+<path d="M380 96 L305 152"/><path d="M380 96 L470 152"/>
+<path d="M470 152 L405 208"/><path d="M470 152 L545 208"/>
+<path d="M545 208 L500 264"/><path d="M545 208 L600 264"/>
+</g>
+<g font-family="KaiTi,serif" font-size="13.5" text-anchor="middle">
+<text x="240" y="46" fill="#29241d">vP</text>
+<text x="110" y="118" fill="#29241d">NP：那件事</text>
+<text x="380" y="118" fill="#a87f24">v′</text>
+<text x="305" y="174" fill="#a87f24">v：使</text>
+<text x="470" y="174" fill="#3d5a6c">VP</text>
+<text x="405" y="230" fill="#29241d">NP：张三</text>
+<text x="545" y="230" fill="#29241d">V′</text>
+<text x="500" y="286" fill="#29241d">V：激动得</text>
+<text x="600" y="286" fill="#29241d">结果：流出了眼泪</text>
+</g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="10.5" fill="#6f675a" text-anchor="middle">
+<text x="110" y="136">致事（域外论元）</text>
+<text x="405" y="248">施事</text>
+</g>
+<rect x="30" y="316" width="620" height="52" rx="8" fill="none" stroke="#a87f24" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="340" y="336" font-family="-apple-system,PingFang SC,sans-serif" font-size="11" fill="#a87f24" text-anchor="middle">金色＝上层空壳结构（轻动词层）：v 有语义内容而无语音形式，动词语须提升到轻动词位置与之并合</text>
+<text x="340" y="354" font-family="-apple-system,PingFang SC,sans-serif" font-size="11" fill="#6f675a" text-anchor="middle">蓝色起＝下层实义 VP 核心结构。「那件事激动得张三流出了眼泪」＝那件事[vP(使)][vP 张三 激动得流出了眼泪]</text>
+</svg>
+<figcaption>图一（示意）：轻动词理论的 vP 双层嵌套。下层是实义 VP 核心结构，上面还有一个以空动词 v 为核心的空壳结构；乔姆斯基借叶斯柏森的术语称之为「轻动词」。示意图据底本 L6746、L6759、L6762 重绘，非原书插图。<sup class="cite" data-cite="s-kongke-jiegou">出处</sup></figcaption>
+</figure>
+
+<p>拉森（R. Larson，1988）为双宾结构设计了双层动词短语嵌套的结构：下层是实义 VP 核心结构，上面还有一个以空动词（empty verb，v）为核心的空壳（shell）结构，这个模式叫「空壳动词结构」（VP-shell structure，vP）<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。乔姆斯基采纳了这一分析，只是把「空动词」改称为叶斯柏森用过的「轻动词」（light verb），用「轻动词结构」代替「空壳动词结构」<sup class="cite" data-cite="s-qingdongci">出处</sup>。轻动词的性质很特别：</p>
+
+<blockquote>轻动词是有语义内容而无语音形式的成分，它有很强的特点：必须黏附在一个实义动词语的身上，以便在音韵层面得到实现。为了满足这个要求，后面的动词语需要提升到轻动词的位置与之并合。这也就是为什么乔姆斯基会把轻动词看成是引导动词语的成分。<sup class="cite" data-cite="s-qingdongci">出处</sup></blockquote>
+
+<p>乔姆斯基把轻动词看成是引导动词短语的成分，是每个有域外论元动词的动词结构的必有成分——任何一个单句都可以假设为：实义动词结构之前都有一个轻动词，实义动词结构作轻动词的补足语<sup class="cite" data-cite="s-qingdongci">出处</sup>。按此理论，「那件事激动得张三流出了眼泪」可分析为「那件事 [vP（使）][vP 张三 激动得流出了眼泪]」：动词结构前还有一个表示致使义的轻动词结构，「张三」这个施事原来就在下层 VP 里，位置一点都不别扭<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。「那黑影吓了我一跳」「这条公路方便了山里的群众」同属此列<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。</p>
+
+<figure class="figure" data-figure>
+<svg viewBox="0 0 680 350" role="img" aria-label="约翰给玛丽一本书的三种切分对比">
+<rect x="0" y="0" width="680" height="350" fill="#fdfaf1"/>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="12.5" fill="#29241d" text-anchor="middle">
+<text x="116" y="22">① 传统切分</text><text x="342" y="22">② 朱德熙（1982）切分</text><text x="568" y="22">③ 拉森（1988）vP</text>
+</g>
+<g stroke="#c0392b" stroke-width="1.2" fill="none">
+<path d="M116 44 L58 76"/><path d="M116 44 L174 76"/>
+<path d="M174 76 L96 110"/><path d="M174 76 L150 110"/><path d="M174 76 L204 110"/>
+<path d="M342 44 L282 76"/><path d="M342 44 L402 76"/>
+<path d="M402 76 L362 110"/><path d="M402 76 L436 110"/>
+<path d="M362 110 L338 144"/><path d="M362 110 L386 144"/>
+<path d="M568 44 L508 76"/><path d="M568 44 L624 76"/>
+<path d="M624 76 L570 110"/><path d="M624 76 L664 110"/>
+<path d="M664 110 L630 144"/><path d="M664 110 L672 144"/>
+<path d="M672 144 L648 176"/>
+</g>
+<g font-family="KaiTi,serif" font-size="11.5" fill="#29241d" text-anchor="middle">
+<text x="116" y="40">约翰 给 玛丽 一本书</text>
+<text x="58" y="90">约翰</text><text x="174" y="90">VP</text>
+<text x="96" y="124">给</text><text x="150" y="124">玛丽</text><text x="204" y="124">一本书</text>
+<text x="342" y="40">约翰 给 玛丽 一本书</text>
+<text x="282" y="90">约翰</text><text x="402" y="90">给玛丽一本书</text>
+<text x="362" y="124">给玛丽</text><text x="436" y="124">一本书</text>
+<text x="338" y="158">给</text><text x="386" y="158">玛丽</text>
+<text x="568" y="40">约翰 给 玛丽 一本书</text>
+<text x="508" y="90">约翰</text><text x="624" y="90">v′</text>
+<text x="570" y="124">v：给</text><text x="664" y="124">VP</text>
+<text x="630" y="158">玛丽</text><text x="672" y="158" text-anchor="end">V′</text>
+<text x="676" y="190" text-anchor="end">t＋一本书</text>
+</g>
+<g stroke="#dcd2bd" stroke-width="1"><line x1="240" y1="30" x2="240" y2="246"/><line x1="480" y1="30" x2="480" y2="246"/></g>
+<g font-family="-apple-system,PingFang SC,sans-serif" font-size="10.5" text-anchor="middle">
+<text x="116" y="216" fill="#9d4938">「给」同时抓住两个宾语</text>
+<text x="116" y="232" fill="#9d4938">三分叉，不合两分叉原则</text>
+<text x="342" y="216" fill="#9d4938">两分叉有了，但「一本书」</text>
+<text x="342" y="232" fill="#9d4938">统制「玛丽」，方向相反</text>
+<text x="568" y="216" fill="#2f6b3a">两分叉，且「玛丽」统制</text>
+<text x="568" y="232" fill="#2f6b3a">「一本书」，两条都合</text>
+</g>
+<rect x="30" y="252" width="620" height="76" rx="8" fill="none" stroke="#a87f24" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="340" y="274" font-family="-apple-system,PingFang SC,sans-serif" font-size="11" fill="#a87f24" text-anchor="middle">标杆理论要求两分叉；约束、统制理论要求近宾语「玛丽」管得住远宾语「一本书」</text>
+<text x="340" y="294" font-family="-apple-system,PingFang SC,sans-serif" font-size="11" fill="#6f675a" text-anchor="middle">拉森方案：下层 VP 里「玛丽」居主、「一本书」居宾，轻动词「给」上位引导——两类要求一并满足</text>
+<text x="340" y="316" font-family="-apple-system,PingFang SC,sans-serif" font-size="10" fill="#6f675a" text-anchor="middle">示意图据底本 L6720—L6751 重绘，非原书插图</text>
+</svg>
+<figcaption>图二（示意）：「约翰 给 玛丽 一本书。」的三种切分。传统切分不合两分叉原则；朱德熙（1982）切分克服了弊病，但统制方向与约束、统制理论相反；拉森（1988）双层动词短语嵌套「既符合标杆理论要求，也符合约束、统制理论的要求」<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。</figcaption>
+</figure>
+
+<p>轻动词理论的解释力很快溢出双宾句。它可用来解释<b>致使结构</b>（causative constructions）：「那黑影吓了我一跳」「这条公路方便了山里的群众」，动词结构前都有一个表示致使义的轻动词结构<sup class="cite" data-cite="s-kongke-jiegou">出处</sup>。它可用来解释<b>存现宾语</b>：</p>
+
+<blockquote>轻动词理论可以帮我们做出解释：在这些句子的动词结构前还有一个表示「存／现」义的轻动词结构。<sup class="cite" data-cite="s-cunxian-ju">出处</sup></blockquote>
+
+<p>「台上坐着主席团」「床上躺着病人」「门口站着许多孩子」这类句子，动词前都有一个表「存／现」的轻动词，存在处所与存在物各就其位<sup class="cite" data-cite="s-cunxian-ju">出处</sup>。它还可用来解释<b>非受事宾语</b>：汉语跟英语相比有一个明显特点，宾语的语义类型特别多，除了受事（含结果）宾语外，还有施事宾语、目的宾语、工具宾语等等，轻动词理论为这类现象提供了统一的解释框架<sup class="cite" data-cite="s-feishoushi-binyu">出处</sup>。</p>
+
+<p class="small muted">下一节转向功能学派：如果说形式学派问「语法为什么是这样的」并到人脑里找答案，功能学派则到语言外部、到交际功能里找答案。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">本节自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">一、本书所说形式学派的「形式」，是跟什么相对而言？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">跟「意义」相对而言</button>
+      <button data-v="b">跟「功能」「认知」相对而言</button>
+      <button data-v="c">跟「口语」「书面」相对而言</button>
+    </div>
+    <div class="why">答案：b。这里所说的「形式语言学派」的「形式」，不是跟「意义」相对而言的，而是跟「功能」「认知」相对而言的；不要以为形式语言学派只研究形式，不研究意义。见 8.1，底本 L6074。</div>
+  </div>
+  <div class="item">
+    <p class="q">二、美国描写派给语言单位分类、定词类的根本依据是什么？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">词的意义实在不实在</button>
+      <button data-v="b">语言单位的语法分布</button>
+      <button data-v="c">音节的多少与轻重</button>
+    </div>
+    <div class="why">答案：b。分类的根本依据是分布；「根据词的语法功能给词分类」与「根据词的语法分布给词分类」是等价的两种说法。见 8.4，底本 L6261 附近。</div>
+  </div>
+  <div class="item">
+    <p class="q">三、按乔姆斯基的中心词理论，「三个苹果」这类量化短语的中心词是谁？<sup class="cite" data-cite="s-zhongxinci">出处</sup></p>
+    <div class="opts" data-k="3">
+      <button data-v="a">后面的名词「苹果」</button>
+      <button data-v="b">前面的数量词「三个」</button>
+      <button data-v="c">整个结构没有中心</button>
+    </div>
+    <div class="why">答案：b。这类结构属于具有「量项」语法特性的量化短语，量项特性由数量词传递和决定，所以中心词是「三个」而不是「苹果」。见 8.7，底本 L6687 附近。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」；原书外链插图一律未入页。</li>
+    <li>未入页：各小节更多的方言与英语实例、存现句与非受事宾语的全部例句展开，以及原书脚注。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>↩ 回到原处</button>
+<script>
+const SOURCES = {
+  "s-liangbu-zhuzuo": { page:"第八节导言 · 底本 L6065", quote:"20世纪初和20世纪中叶，有两部重要的语言学著作问世，一部是德·索绪尔（F. de Saussure，1857—1913）的《普通语言学教程》（1916），它开创了结构主义语言学的新天地；一部是乔姆斯基（N. Chomsky）的《句法结构》（1957），它改变了语言研究的航向，开创了探索人类语言共性的新天地。", zh:"两部划时代著作：索绪尔开创结构主义语言学，乔姆斯基开创探索人类语言共性的新天地。" },
+  "s-miaoshu-yujieshi": { page:"第八节导言 · 底本 L6081", quote:"传统结构主义语言学重在描写，而以生成语言学为代表的形式语言学和后起的功能语言学和认知语言学重在解释。传统结构主义语言学理论的价值在于能帮助语言研究者弄清楚“是什么”的问题，有了这样的基础，才能进而解决好“为什么”的问题。", zh:"描写与解释的分工：先弄清是什么，才能解决为什么。" },
+  "s-form-word": { page:"第八节导言 · 底本 L6074", quote:"这里所说的“形式语言学派”的“形式”，不是跟“意义”相对而言的，而是跟“功能”“认知”相对而言的；因此，不要以为形式语言学派只研究形式，不研究意义。", zh:"形式学派并不排斥意义研究，只是研究视角不同。" },
+  "s-san-zhipai": { page:"第八节 8.1 · 底本 L6099", quote:"无论从历史发展的角度看，还是从研究的侧重点看，形式语言学派至少可以包括三个支派：第一支是结构主义形式学派，以德·索绪尔的理论为指导……第二支是乔姆斯基形式语言学派，上个世纪50年代中期兴起，以探求人类语言机制、人类语言的普遍语法为研究目标……第三支是非乔姆斯基形式学派。", zh:"三支：结构主义形式学派、乔姆斯基生成语法、以及 LFG／GPSG／HPSG 等非乔姆斯基形式学派。" },
+  "s-suoshuier": { page:"第八节 8.2 · 底本 L6090", quote:"被誉为现代语言学鼻祖的瑞士语言学家德·索绪尔主张区分语言（langue）和言语（parole），区分共时语言学（synchronic linguistics）与历时语言学（diachronic linguistics），而他更强调语言，强调语言的共时研究。", zh:"索绪尔的两组区分；美国描写语言学据此只研究同质的、抽象的语言形式。" },
+  "s-bloomfield": { page:"第八节 8.2 · 底本 L6096", quote:"许多美国语言学家今天所运用的描写语言学方法论的总的特点是，想不考虑意义来分析语言的结构。", zh:"卡洛尔对美国描写派的概括；布龙菲尔德《语言论》（1933）并非不重意义，只是觉得意义太难驾驭；后期威尔斯（1947）关注歧义、海里斯（1957）提出「变换」。" },
+  "s-wubu-shouxu": { page:"第八节 8.2—8.3 · 底本 L6132", quote:"美国结构主义语言学派，面对未知语言的大量的语言材料，他们主要做以下五步研究分析工作……重要的手续是：切分（segmentation）、等同（identification）、分类（classification）和组合（syntagmatic）；而所运用的基本的研究方法是替换分析法、对比分析法、分布分析法、直接组成成分分析法等。", zh:"五步研究工作；四手续与四种基本方法；替换是描写语言学里最基本的分析方法。" },
+  "s-fenbu-dingyi": { page:"第八节 8.4 · 底本 L6261", quote:"语法学里的“分布”是指某个语言成分（如语素、词、词组等）能或者不能在哪个位置上出现，或者说能或者不能在哪个环境里出现；也可以指某个语言成分所能出现或所不能出现的位置或者说环境的总和。", zh:"分布的定义；在句法中词的语法功能与语法分布是同义词语，分类的根本依据是分布。" },
+  "s-turan-huran": { page:"第八节 8.4 · 底本 L6281", quote:"按它们的分布，“忽然”是副词，因为它只能作状语；“突然”是形容词。", zh:"分布定词类：忽然与突然意思似乎一样、都能作状语，词类却不同。" },
+  "s-bai1-bai2": { page:"第八节 8.4 · 底本 L6339", quote:"真要死抠意义，按“同音同义”的同一性原则，“白1”“白2”“白3”得分为三个不同的词……可是一般将“白1”单独看作一个词（形容词），而将“白2”和“白3”合在一起看作一个词（副词）。", zh:"白2、白3 语法分布一致，合并为一个副词；分布是归并的裁断。" },
+  "s-kuozhan-tiaojian": { page:"第八节 8.5 · 底本 L6371", quote:"合理的扩展得满足三个条件：A. 扩展式在长度上超过模型。B. 扩展式与模型相对应的某一位置上成分之间有替换关系，而且语法性质基本不变……C. 模型包含在扩展式中。", zh:"扩展三条件；扩展分更迭性、组合性、插入性三种类型。" },
+  "s-hypotheses": { page:"绪论 0.7 · 底本 L935", quote:"乔姆斯基对语言提出了三大假设：一是人生来就有一个语言获得装置（language acquisition device），语言是人脑心智的重要组成部分；二是人类语言千差万别，但遵循共同的组合原则，差异只是参数的不同，从而形成了「原则与参数」（principles and parameters）的理论；三是人类语言共同遵循的组合原则应该是极为简明的。", zh:"乔姆斯基革命改变了语言研究的航向，语言研究领域由此出现形式语言学、功能语言学、认知语言学三足鼎立的局面。" },
+  "s-sange-chongfen": { page:"第八节 8.6 · 底本 L6629", quote:"因此，研究语言不能只满足于达到观察的充分性（observatory adequacy）和描写的充分性（descriptive adequacy），更要求达到解释的充分性（explanatory adequacy）。", zh:"三个充分性：观察、描写、解释，一级比一级高。" },
+  "s-zhongxinci": { page:"第八节 8.7 · 底本 L6687", quote:"中心词构建理论，其核心观点是：有一个短语结构XP，如果其中所含的句法成分X的语法特性决定了整个XP的语法特性，那么X就被看作XP的中心词（head，也译为“中心语”）。", zh:"乔姆斯基的中心词不同于传统中心语，也不同于向心结构理论的中心词；「三个苹果」的中心词是数量词。" },
+  "s-xin-renshi": { page:"第八节 8.7 · 底本 L6729", quote:"我们觉得可以提出如下新的认识：“名词+的+谓词”（NP+的+VP）结构是名词性结构，但不是偏正结构，而是由名词性标记成分“的”插入“名词+谓词”（NP+VP）这种主谓词组中间所构成的另一类“的”字结构。", zh:"「名词+的+谓词」是「的」字嵌中构成的名词性结构，消解了老分析的两个矛盾。" },
+  "s-jia-yi-liang-lei": { page:"第八节 8.7 · 底本 L6658", quote:"按上述新的分析与认识，现代汉语里主谓结构跟结构助词“的”构成的名词性“的”字结构可以有两类：甲类“的”字后附在主谓词组的后边……乙类“的”字出现在主谓词组的中间。", zh:"甲类后附（张三写的），乙类嵌中（这本书的出版）。" },
+  "s-jia-lei-zhuanzhi": { page:"第八节 8.7 · 底本 L6666", quote:"从表述功能和语法意义看，甲类“的”字结构可以表示转指，也可以表示自指。", zh:"甲类可转指可自指，乙类只能自指；甲类可作主宾定心谓，乙类只能作主宾语。" },
+  "s-jia-lei-tiqu": { page:"第八节 8.7 · 底本 L6684", quote:"此外，甲类“的”字结构经常用来提取谓词的论元，例如“张大夫用中草药治疗肺气肿”，这句话里动词“治疗”的论元有三个——施事论元“张大夫”，受事论元“肺气肿”，凭借论元“中草药”，当我们要提取其中的任何一个论元时，可以而且只能用甲类“的”字结构。", zh:"甲类专擅提取论元，乙类不能提取任何论元。" },
+  "s-kongke-jiegou": { page:"第八节 8.8 · 底本 L6746", quote:"为克服这一弊病，于是，美国一位语言学家拉森（R.Larson，1988）给双宾结构设计了一个双层动词短语嵌套的结构：下层是实义VP核心结构，上面还有一个以空动词（empty verb，v）为核心的空壳（shell）结构；这个模式就叫作“空壳动词结构”（VP-shell structure，vP）。", zh:"拉森 1988 年的双层 VP 嵌套；既符合标杆理论的两分叉要求，也符合约束、统制理论。" },
+  "s-qingdongci": { page:"第八节 8.8 · 底本 L6762", quote:"轻动词是有语义内容而无语音形式的成分，它有很强的特点：必须黏附在一个实义动词语的身上，以便在音韵层面得到实现。为了满足这个要求，后面的动词语需要提升到轻动词的位置与之并合。这也就是为什么乔姆斯基会把轻动词看成是引导动词语的成分。", zh:"乔姆斯基借叶斯柏森术语，以「轻动词」代拉森的「空动词」；轻动词是每个有域外论元动词的动词结构的必有成分。" },
+  "s-cunxian-ju": { page:"第八节 8.8 · 底本 L6825", quote:"轻动词理论可以帮我们做出解释：在这些句子的动词结构前还有一个表示「存/现」义的轻动词结构。", zh:"存现句动词结构前有表存现义的轻动词。" },
+  "s-feishoushi-binyu": { page:"第八节 8.8 · 底本 L6846", quote:"这一理论也可用来解释汉语里的非受事宾语。我们知道，汉语跟英语相比较，有一个明显的特点：宾语的语义类型特别多，除了受事（含结果）宾语外，还有诸如施事宾语、目的宾语、工具宾语等。", zh:"汉语宾语语义类型特别多，轻动词理论提供统一解释框架。" },
+  "s-xiangxin-jiegou": { page:"第八节 8.5 · 底本 L6505", quote:"一个包含三个词、两层主从关系的向心结构，假设格式为“XYZ”，实际有两种结构类型……如果用动态的眼光，即联系扩展来观察、分析这些包含三个词、两层主从关系的向心结构的话，那我们就会发现，其中实际存在着两种层次构造、四种类型。……由此可见，复杂的“定-中”偏正结构不一定都是通过更迭性扩展造成的。", zh:"XYZ 两类切分（A 类 XY/Z、B 类 X/YZ）；动态眼光下实为两种层次构造、四种类型；有的复杂定-中结构只能理解为组合性扩展。" },
+  "s-kuozhanfa-zuoyong": { page:"第八节 8.5 · 底本 L6565", quote:"扩展法对语法研究是有用的。其主要作用一是可以帮助我们对语法构造的层次性有较为清晰而深刻的认识；二是有助于发现、挖掘新的语法现象和语法规律……此外，一般说来，在区分词组和合成词方面，更迭性扩展法还是一个比较奏效的方法。", zh:"扩展法三作用；更迭性扩展法区分词组与合成词：白马、红头发可扩展是词组，白菜／白药、红花／红领巾不可扩展是合成词。" },
+  "s-jidan-yadan": { page:"第八节 8.5 · 底本 L6565", quote:"当然会遇到难以处理的情况，譬如“鸡蛋”和“鸭蛋”，如果只是根据因为“鸡蛋”有“鸡的蛋”这样的扩展式，“鸭蛋”没有“鸭的蛋”那样的扩展式，就断定“鸡蛋”是词组，“鸭蛋”是词，一般都难以接受。还有，我们也不能根据“帮忙”有“帮她的忙”这样的扩展式就断定“帮忙”是词组；反之，我们也不能根据“很丑”“很脏”“很下贱”绝对不能进行更迭性扩展，就断言它们都该看作词。", zh:"扩展法难题：鸡蛋／鸭蛋、帮忙、很丑／很脏／很下贱——不能单凭能否扩展判定词与词组。" },
+  "s-ia-ip-moxing": { page:"第八节 8.5 · 底本 L6567", quote:"第一，某事物某种序列不一定都是“1+1+1+1+1”那样的序列，会有“你中有我，我中有你”的状况。……美国结构主义语言学派后期代表人物霍凯特就提出过语言构造的两种模型的看法。那两种模型是：“项目和排列”（item and arrangement，简称IA模型）与“项目和手续”（item and process，简称IP模型）。", zh:"难处之一：序列不一定是 1+1；霍凯特的 IA 模型与 IP 模型（tooth→teeth 等非典型复数）。" },
+  "s-lianxutu": { page:"第八节 8.5 · 底本 L6575", quote:"第二，事物的不同类别往往是个连续统，事物的不同类别之间都有中间地带，难以用一种办法或一种标准截然分清。词和词组也是个连续统，它们之间也有中间地带，所谓离合词就是词和词组的中间地带。……首先要抓住典型成员，将不同类的典型成员区分开；同时要致力于发现那些中间地带。", zh:"难处之二：词与词组是连续统，离合词属中间地带；抓典型成员、发现中间地带，需多角度、多层面、多方位。" },
+  "s-shentouxing": { page:"第八节 8.7 · 底本 L6619", quote:"中心词的语类特点会渗透到其所在的母节点XP.因此，如果我们知道某一个中心词能使母节点具有名词性语类的语法特点（标记为[+N]），那么就可推知，其所在的母节点一定属于名词性语类（[+N]）。这就是中心词的渗透性原则（percolation principle）。（R.A.Hudson，1987）", zh:"渗透性原则（R. A. Hudson，1987）：中心词的语类特点渗透到母节点 XP。" },
+  "s-lixin-jiegou": { page:"第八节 8.7 · 底本 L6625", quote:"此外，还存在与向心结构相对的离心结构。譬如，“吃的”“红的”和“木头似的”这些一般所说的助词结构，就属于离心结构，因为像“吃的”“红的”是名词性“的”字结构，这种结构整体的语法功能既与“吃”（动词性）、“红”（形容词性）不相一致，也与助词“的”不相一致；同样，“木头似的”是谓词性的，整个结构的语法功能既不同于名词“木头”，也不同于助词“似的”。", zh:"离心结构：吃的、红的、木头似的——整体语法功能与各组成成分都不一致。" },
+  "s-suo-qianli": { page:"第八节 8.7 · 底本 L6694", quote:"上述新的分析与认识，跟朱德熙（1982）、陆俭明（1989）关于“所”的分析相一致，他们认为，“他所反对的”，作如下的切分比较合理：", zh:"新认识与朱德熙（1982）、陆俭明（1989）对「所」的分析一致；「他所反对的」原书以树形图展示切分。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+</script>
+</body>
+</html>

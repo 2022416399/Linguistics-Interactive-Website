@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>第六节 · 陆俭明《现代汉语语法研究教程》交互研读</title>
+<style>
+:root{--paper:#f6f1e5;--card:#fffdf6;--ink:#29241d;--muted:#6f675a;--line:#dcd2bd;--red:#9d4938;--blue:#3d5a6c;--gold:#a87f24;--soft:#f0e8d6;font-size:16.5px}
+html[data-theme="dark"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}
+@media (prefers-color-scheme:dark){html[data-theme="auto"]{--paper:#17140f;--card:#211d16;--ink:#eae3d3;--muted:#a79d89;--line:#3b3427;--red:#c9715a;--blue:#7fa3b6;--gold:#d3a94f;--soft:#2a251c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",SimSun,serif;line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1020px;margin:0 auto;padding:0 18px}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap}
+.brand{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-weight:700;font-size:1.15rem;color:var(--red);letter-spacing:.04em;margin-right:auto;display:flex;align-items:baseline;gap:8px}
+.brand small{font-size:.62rem;color:var(--muted);letter-spacing:.14em;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tools button{font:inherit;font-size:.82rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tools button:hover{border-color:var(--red);color:var(--red)}
+button{min-height:44px;font:inherit}
+h1{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:clamp(2rem,5.6vw,3.2rem);line-height:1.25;margin:.2em 0 .35em;letter-spacing:.02em}
+h2{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-size:1.55rem;margin:.1em 0 .5em;line-height:1.3}
+h3{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.12rem;margin:1.2em 0 .3em}
+p{margin:.55em 0}
+.eyebrow{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.22em;color:var(--gold);margin:0}
+.lead{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hero{padding:44px 0 8px;position:relative}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0 18px}
+.chips li{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 13px;color:var(--muted)}
+.chips li b{color:var(--red);font-weight:700}
+.seal{position:absolute;right:6px;top:38px;width:58px;height:58px;opacity:.9}
+@media(max-width:720px){.seal{display:none}}
+.figure{margin:18px 0;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(41,36,29,.5)}
+.figure svg{width:100%;height:auto;display:block}
+.figure figcaption{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:.84rem;color:var(--muted);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.scene{margin:26px 0;padding:22px 20px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 14px 30px -22px rgba(41,36,29,.5)}
+.kicker{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.75rem;letter-spacing:.16em;color:var(--gold);margin:0 0 .2em}
+sup.cite{font-size:.68em;color:var(--red);cursor:pointer;border-bottom:1px dashed var(--red);padding:0 1px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+sup.cite:hover{background:var(--soft)}
+.tag{display:inline-block;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.7rem;letter-spacing:.06em;border:1px solid var(--gold);color:var(--gold);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle}
+details{margin:12px 0;border:1px dashed var(--line);border-radius:8px;padding:8px 14px;background:color-mix(in srgb,var(--soft) 55%,transparent)}
+details summary{cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.86rem;color:var(--blue);min-height:32px;display:flex;align-items:center}
+details p,details li{font-size:.9rem;color:var(--muted)}
+details .q{margin:8px 0;padding-left:12px;border-left:2px solid var(--line);font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--ink)}
+.guess{margin:14px 0;padding:14px 16px;border:1px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--gold) 9%,transparent),transparent)}
+.guess .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.06rem;margin:0 0 .2em}
+.guess .q::before{content:"先猜 ｜ ";font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.opts button{font:inherit;font-size:.92rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.opts button:hover{border-color:var(--red)}
+.opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.opts button.wrong{border-color:var(--line);color:var(--muted)}
+.why{margin-top:10px;font-size:.9rem;color:var(--ink);display:none}
+.why.on{display:block}
+.why b{color:var(--red)}
+.lab{margin:14px 0;padding:14px 16px;border:1px solid var(--blue);border-radius:10px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 8%,transparent),transparent)}
+.lab h3{margin:0 0 .3em;color:var(--blue);font-size:1.02rem}
+.lab .note{font-size:.84rem;color:var(--muted);margin:0}
+.rows{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px}
+.rows li{display:grid;grid-template-columns:7.5em 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.rows li b{font-family:"Kaiti SC","STKaiti",KaiTi,serif;color:var(--red);font-weight:700}
+@media(max-width:560px){.rows li{grid-template-columns:1fr}}
+.split{margin:14px 0;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:color-mix(in srgb,var(--soft) 45%,transparent)}
+.split .sent{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.2rem;display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.split .sent span{border-bottom:2px solid var(--line);padding:2px 8px;cursor:pointer;border-radius:6px 6px 0 0}
+.split .sent span:hover{border-color:var(--blue)}
+.split .sent span.on{background:var(--soft);border-color:var(--blue);color:var(--blue)}
+.splitout{font-size:.92rem;min-height:2.6em}
+.splitout b{color:var(--blue)}
+.splitout .ok{color:var(--red);font-weight:700}
+.de{margin:14px 0}
+.opts button.cur{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.deout{margin-top:10px;font-size:.95rem;display:none}
+.deout.on{display:block}
+.deout .ok{color:var(--red);font-weight:700}
+.deout .no{color:var(--blue);font-weight:700}
+table.matrix{width:100%;border-collapse:collapse;font-size:.86rem;margin:10px 0}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.matrix th{background:var(--soft);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-weight:600}
+.quiz{margin:26px 0;padding:22px 20px;background:var(--card);border:2px solid var(--red);border-radius:12px}
+.quiz .item{margin:14px 0 0}
+.quiz .q{font-family:"Kaiti SC","STKaiti",KaiTi,serif;font-size:1.05rem;margin:0 0 .35em}
+.quiz .q::before{content:"问 ";color:var(--red);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.78rem;letter-spacing:.1em}
+.quiz .opts button.right{border-color:var(--red);background:var(--red);color:#fff}
+.quiz .opts button.wrong{border-color:var(--line);color:var(--muted)}
+.quiz .why{font-size:.88rem;color:var(--muted)}
+footer{padding:26px 0 60px;color:var(--muted);font-size:.84rem}
+footer h3{color:var(--ink);font-size:1rem;margin:0 0 .4em}
+footer ul{padding-left:1.2em;margin:.3em 0}
+.pop{position:absolute;z-index:60;width:min(430px,calc(100vw - 32px));background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);padding:16px 18px}
+.pop[hidden]{display:none}
+.pop .x{position:absolute;right:8px;top:8px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:6px;min-height:32px;padding:0 10px;cursor:pointer;font-size:.8rem}
+.pop .q{margin:0 26px 8px 0;font-family:"Kaiti SC","STKaiti",KaiTi,serif;border-left:3px solid var(--red);padding-left:10px}
+.pop .meta{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.72rem;letter-spacing:.08em;color:var(--gold);margin:0 0 6px}
+.meta{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+.pop .zh{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:640px){.pop{position:fixed;left:12px;right:12px;bottom:12px;top:auto;width:auto}}
+#backBtn{position:fixed;right:16px;bottom:16px;z-index:50;border:2px solid var(--red);background:var(--card);color:var(--red);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.84rem;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+#backBtn[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>
+.navchips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 4px}
+.navchips a{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:.76rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:3px 11px;color:var(--muted);text-decoration:none}
+.navchips a:hover{border-color:var(--red);color:var(--red)}
+.navchips a.cur{border-color:var(--red);color:var(--red);font-weight:700}
+.jumpbtn{font:inherit;font-size:.8rem;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;min-height:34px;padding:0 13px;border-radius:999px;border:1px solid var(--red);background:var(--card);color:var(--red);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <span class="brand">语法研究教程 · 交互研读<small>LU JIANMING</small></span>
+  <div class="tools">
+    <button id="resumeBtn" hidden>↩ 接着读</button>
+    <button id="fontDown">A−</button>
+    <button id="fontUp">A+</button>
+    <button id="themeBtn">◐ 明暗</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+
+<section data-hero class="hero">
+  <svg class="seal" viewBox="0 0 60 60" role="img" aria-label="印章：语法"><rect x="3" y="3" width="54" height="54" rx="8" fill="none" stroke="#9d4938" stroke-width="3"/><text x="30" y="27" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">语</text><text x="30" y="48" text-anchor="middle" font-size="20" fill="#9d4938" font-family="KaiTi,serif">法</text></svg>
+  <p class="eyebrow">陆俭明《现代汉语语法研究教程》· 第五版 · 第六节 交互研读</p>
+  <h1>语义指向：成分在语义上「指向」谁</h1>
+  <p class="lead">前五种方法都在形式里打转，语义指向分析第一次正面触及更根本的矛盾——成分在句法上是一家人，在语义上却未必同心。「才」的四句、「只」的隐现、「究竟」的移位，都因指向而不同。</p>
+  <ul class="navchips">
+    <a href="绪论.html">绪论</a>
+    <a href="第一节-汉语词类研究.html">第一节 词类</a>
+    <a href="第二节-层次分析法.html">第二节 层次</a>
+    <a href="第三节-变换分析法.html">第三节 变换</a>
+    <a href="第四节-语义特征分析法.html">第四节 语义特征</a>
+    <a href="第五节-配价分析法.html">第五节 配价</a>
+    <a href="第六节-语义指向分析法.html" class="cur">第六节 语义指向</a>
+    <a href="第七节-语义范畴分析法.html">第七节 语义范畴</a>
+    <a href="第八节-形式学派.html">第八节 形式学派</a>
+    <a href="第九节-功能学派.html">第九节 功能学派</a>
+    <a href="第十节-认知学派.html">第十节 认知学派</a>
+    <a href="第十一节-构式语法.html">第十一节 构式语法</a>
+    <a href="第十二节-语言信息结构.html">第十二节 信息结构</a>
+    <a href="第十三节-虚词研究.html">第十三节 虚词</a>
+    <a href="结束语.html">结束语</a>
+  </ul>
+  <ul class="chips">
+    <li><b>指向</b></li><li>「才」四句</li><li>「一」的隐现</li><li>「究竟」两戒</li><li>双宾新证</li>
+  </ul>
+  <p class="small muted">读法：点角标看原句与出处；「先猜」先答再看；结尾三道自测附出处。　<button class="jumpbtn" onclick="jumpTo('.quiz')">直达本节自测 ↓</button></p>
+</section>
+
+<section class="scene" data-scene="1">
+<p class="kicker">第二篇 · 分析方法</p>
+<h2>语义指向：句法是一家人，语义未必同心</h2>
+<p>六种分析法里最早正面碰「意义」的。它承认前提：句法结构关系与语义结构关系并存，却不存在一对一对应。于是「才」指向谁、「只」指向谁、「究竟」能挪到哪儿，全都成了可分析的对象。</p>
+
+<article class="chapter" data-chapter="6">
+<h3>第六节｜汉语语法研究的语义指向分析法</h3>
+
+<p>前五种方法都在"形式"里打转：切分、变换、特征、数价。语义指向分析第一次正面触及更根本的矛盾——成分在句法上是一家人，在语义上却未必同心。</p>
+
+<blockquote>语义指向分析揭示了句法成分在句法上和语义上的矛盾现象，指明了句法成分之间，特别是间接的句法成分之间语义上的种种联系，从而可以比较合理地解释句法结构和语义结构之间复杂的对应关系。<sup class="cite" data-cite="s-zhixiang-shiyi">出处</sup></blockquote>
+
+<p>"指向"这个词进入汉语语法研究，始于吕叔湘《汉语语法分析问题》<sup class="cite" data-cite="s-point">出处</sup>。此书提出了语法研究的一系列根本问题，其中"语义指向"的观察成为后来一种独立分析法的源头<sup class="cite" data-cite="s-zhixiang-shiyi">出处</sup>。</p>
+
+<blockquote>语义指向分析法为分化歧义句式又提供了一种新的方法。如果说层次切分法的切分和定性，以及变换分析法是属于形式方面的分析方法，那么语义指向分析法则是属于意义方面的分析方法，二者互为补充。<sup class="cite" data-cite="s-fenlei-fangfa">出处</sup></blockquote>
+
+<p>先看"才"这个副词。四句话形式一模一样，状语的"才"却各指各的。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：下面四句都由"才"作状语，各句的"才"分别指向什么？</p>
+<div class="opts">
+<button data-ans="0">四句都指向后面的谓词</button>
+<button data-ans="1">有的指向谓词，有的指向受事，有的指向数量成分</button>
+<button data-ans="0">都指向句首的时间词</button>
+</div>
+<div class="why"><b>各不相同。</b>四句都是由副词"才"作状语，而且都是指后的，但各句作为状语的"才"，语义指向并不一样：a句"才"指向谓词"做"；b句"才"指向"做"的受事名词性成分"第二道题"；c句"才"指向数量成分"三道"；d句"才"指向表示行为动作的结果的谓词"完"<sup class="cite" data-cite="s-cai-zhixiang">出处</sup>。</div>
+</div>
+
+<details>
+<summary>例：「才」作状语的四句，指向各不相同</summary>
+<p class="q">例（7）a、b、c、d各句都是由副词"才"作状语，而且都是指后的，但各句作为状语的"才"，语义指向各不相同——a句"才"指向谓词"做"；b句"才"指向"做"的受事名词性成分"第二道题"；c句"才"指向数量成分"三道"；d句"才"指向表示行为动作的结果的谓词"完"。<sup class="cite" data-cite="s-cai-zhixiang">出处</sup></p>
+</details>
+
+<details>
+<summary>哪些成分最值得考察：补语、修饰语、谓语</summary>
+<p class="q">理论上每个句法成分都有语义指向问题，实际最值得考察的是三种"说明性成分"。补语如"砍"字系列："砍光了"的"光"指向受事，"砍累了"的"累"指向施事，"砍钝了"的"钝"指向工具，"砍快了"的"快"指向动作本身，"砍疼了"的"疼"可能指向受事也可能指向施事的隶属部分，"砍坏了"的"坏"则可能指向受事、工具或施事的隶属部分。<sup class="cite" data-cite="s-sanzhong-chengfen">出处</sup></p>
+<p class="q">修饰语如"两位大学的教授""两所大学的教授""两个大学的教授"表面同形，构造层次其实不同——"两位"指向"教授"，"两所"指向"大学"，"两个"则两种指向都可能，差别正由定语数量成分的语义指向造成。<sup class="cite" data-cite="s-dingshu-zhixiang">出处</sup></p>
+<p class="q">谓语也能指向句外："我很好"的"很好"指向句内主语"我"；"去年很好，今年又不太好"里的"很好"则指向没有在句中出现的"我"。<sup class="cite" data-cite="s-weiyu-zhixiang">出处</sup></p>
+</details>
+
+<p>指向还要看性质。"都"字同形，可以说"我们都去了"，也可以说"这些书我们都看过了"——被指的成分有的是施事，有的是受事。</p>
+
+<blockquote>如果某个句法成分是指向某个名词性成分的，那还得考虑那个句法成分是指向施事，还是受事，还是工具，还是处所，还是别的什么。<sup class="cite" data-cite="s-zhixiang-shishou">出处</sup></blockquote>
+
+<details>
+<summary>考察指向的四组问题</summary>
+<p class="q">一指前还是指后（渡边丽玲1991）：副词"一律"只能指前，指向"所有……不平等条约"；"只"指后，指向数量"两个"；"分别"则两可——"我和他分别去广州"指前，"我分别去过广州和福州"指后，两句合并则兼有两解。<sup class="cite" data-cite="s-zhiqian-zhihou">出处</sup></p>
+<p class="q">二指向句内还是句外："别喝醉了"的"醉"指向句外喝酒的施事，"罢工代表被客客气气地引进了客厅"的"客客气气地"指向句外"引进"的施事，"那孩子就稀里糊涂地判给了男方"的"稀里糊涂地"指向句外判案子的法官。<sup class="cite" data-cite="s-juwai">出处</sup></p>
+<p class="q">三指向名词性成分、谓词性成分还是数量成分："已经"是多指向的——"他已经去广州了"可省成"他已经去了"而不能说"*他已经广州了"，证明指向谓词"去"；"已经到南京了"可省成"已经南京了"而"*已经到了"不成立，证明指向名词"南京"；"已经吃了五个面包了"里"五个"绝不能省，证明指向数量成分。删除法就是证明指向的试纸。<sup class="cite" data-cite="s-shanchufa">出处</sup></p>
+<p class="q">状态词作状语也各有指向（张力军1990）："早早地、慢慢地、仔仔细细地、重重地"只能指向谓词性成分，"喜滋滋地、客客气气地、脆脆地、红红地"只能指向名词性成分，"清清楚楚地"则两可——或指向"'忍'字"，或指向数量"五个"。<sup class="cite" data-cite="s-zhuangtaici">出处</sup></p>
+</details>
+
+<p>最能显出指向分析威力的，是"一"的隐现。同一范围副词"只"，在两个语境里表现截然相反。</p>
+
+<details>
+<summary>例：「只吃了一个面包」的两种语境</summary>
+<p class="q">例（1）「他没吃什么，只吃了一个面包。」→可以说「只吃了个面包。」「只吃了面包。」不能说「*只吃了一个。」<sup class="cite" data-cite="s-yinyinxian">出处</sup></p>
+<p class="q">例（2）「他面包吃得不多，只吃了一个面包。」→可以说「只吃了一个。」「只一个。」不能说「*只吃了个面包。」<sup class="cite" data-cite="s-yinyinxian">出处</sup></p>
+</details>
+
+<p>为什么前一例里"一"可省、"面包"不可省，后一例里恰好相反？答案在"只"的指向上。</p>
+
+<blockquote>例（1）范围副词"只"指向名词性成分"面包"，所以"面包"不能删除，别的可以删除，数词"一"当然也就可以删除了。例（2）里的范围副词"只"则指向数量，所以别的成分可以省略，而"一"是绝对不能省略的。<sup class="cite" data-cite="s-yinyinxian">出处</sup></blockquote>
+
+<p>"究竟"的移位也受指向支配。它有两戒：</p>
+
+<blockquote>第一，它只能指向一个具体的疑问形式，换句话说，疑问句里一定要有一个具体的疑问形式。<sup class="cite" data-cite="s-jiujing-yiwen">出处</sup></blockquote>
+
+<blockquote>第二，它只能指后，换句话说，"究竟"所指向的具体的疑问形式一定得位于它之后，不能位于它之前。<sup class="cite" data-cite="s-jiujing-liangdian">出处</sup></blockquote>
+
+<p>于是"究竟他捐了多少钱？"可以移位为"他究竟捐了多少钱？"，而"究竟谁捐了那么多钱？"却绝不能说成"*谁究竟捐了那么多钱？"——因为"究竟"只能指后<sup class="cite" data-cite="s-jiujing-liangdian">出处</sup>。</p>
+
+<p>"究竟"的两戒还能当试纸，用来检验"吃了他仨苹果"的内部结构。请读者先判断一句。</p>
+
+<div class="guess" data-guess>
+<p class="q">先猜一猜：为什么"总共／一共"只能放在数量结构前头，不能插在形容词与数量结构之间？</p>
+<div class="opts">
+<button data-ans="0">"三个红的苹果"内部是数量短语在前、形容词在后的固定语序</button>
+<button data-ans="1">"三个苹果"是一个整体，"红"只能加在整个数量短语之前，可见"总共／一共"修饰的是"三个苹果"而非"苹果"</button>
+</div>
+<div class="why">"总共／一共"要求后面跟一个数量结构。"三个红的苹果"里"三个"直接管"苹果"，"红的"是修饰整个数量名结构的，所以副词能加在"三个"之前；一旦说成"红的三个苹果"，"红的"就只管"三个苹果"，副词被挡在数量结构之外，句子就垮了。这把试纸接着用到"吃了他三个苹果"上，就能证明"他"和"三个苹果"之间没有直接的句法关系<sup class="cite" data-cite="s-shuangbin-shuojiao">出处</sup>。</div>
+</div>
+
+<details>
+<summary>"总共"在指向上的四个特点</summary>
+<p class="q">"总共"有四戒：只能指后；只能指向数量成分，所以"总共"之后必须有数量成分跟它同现；只能指向有明确范围的数量成分——"一百名""十五六本"都明确，"很多/许多""一点儿"没有明确范围，故"*他总共买了很多/许多书""*他总共只买了一点儿苹果"都不能说；那数量成分不能再受限制性定语修饰——"*他总共买了青的三斤苹果"须说成"他总共买了三斤青的苹果"。"一共"的情况与"总共"相同。<sup class="cite" data-cite="s-zonggong-sidian">出处</sup></p>
+</details>
+
+<p>顺着这条线，本节对双宾说提出了新的论证角度。</p>
+
+<blockquote>如果"他"和"三个苹果"之间真有直接的句法关系，作为偏正结构的"他三个苹果"之前就不可能再受副词"总共/一共"的修饰。可见，"吃了他三个苹果"有理由分析为双宾结构。<sup class="cite" data-cite="s-shuangbin-shuojiao">出处</sup></blockquote>
+
+<p>指向分析之所以能派上这些用场，是因为它承认前提：</p>
+
+<blockquote>实词性词语之间总是同时并存着两种结构关系——语法结构关系和语义结构关系，而这两种结构关系之间，并不存在一对一的对应关系。<sup class="cite" data-cite="s-jiegou-guanxi">出处</sup></blockquote>
+
+<p>有些述宾结构看着自由，其实黏着。"我真想睡它三天三夜"里的"它"是"睡"的虚指宾语。</p>
+
+<blockquote>句中的"吃了他"……能，只是这种述宾结构是黏着的，不是自由的。<sup class="cite" data-cite="s-nianzhuo">出处</sup></blockquote>
+
+<p>"睡它三天三夜"之妙，在于"它"不指任何实物，却让句子顿时口语化、有了强调的意味<sup class="cite" data-cite="s-nianzhuo">出处</sup>。</p>
+
+<p>补语指向也是富矿。"洗净了"和"洗累了"句法上一模一样，句式变化却完全不同。</p>
+
+<blockquote>相同的句法结构，为什么会有不同的句式变化？语义指向分析可以帮我们作出解释。那就是因为二者补语的语义指向不同——"洗净了"里的补语"净"在语义上指向"洗"这个动作的受事，而"洗累了"里的补语"累"在语义上指向"洗"这个动作的施事，正是这种补语语义指向上的差异，造成了它们在句式变化上的差异。（施春宏2003）<sup class="cite" data-cite="s-xijing-lei">出处</sup></blockquote>
+
+<p>"洗净了"可以换成"洗得净"、"洗不净"，"洗累了"却不能说成"*洗得累"——因为"累"指向施事，不在补语的结果位置<sup class="cite" data-cite="s-xijing-lei">出处</sup>。</p>
+
+<blockquote>我们看重语义指向分析还在于它能为我们提出一些新的研究课题，引起我们思考，从而有助于开阔语法研究的思路，将语法研究引向深入。<sup class="cite" data-cite="s-xinketi">出处</sup></blockquote>
+
+<p>不过也要提醒一句：指向判断不能只看句内。</p>
+
+<blockquote>真要运用语义指向分析法来解读句子意思，还一定得关注前后左右词语的意义。<sup class="cite" data-cite="s-guazhu-zhouwei">出处</sup></blockquote>
+
+<blockquote>以上也还都是举例性的，毫无疑义，这些研究都可以引发我们去进一步思考许多问题，都将会把汉语语法研究引向深入，而且很可能会帮助我们揭示出一些意想不到的语法规律来。<sup class="cite" data-cite="s-jinniuyiju">出处</sup></blockquote>
+
+<p class="small muted">下一节，语义范畴分析将把"指向"再抽象一层：不是看个别成分指谁，而是看数量、领属、自主、顺序这些范畴如何整体地制约句法。</p>
+</article>
+</section>
+
+<section class="quiz" data-quiz>
+  <p class="kicker">结尾自测</p>
+  <h2>三道题，附出处</h2>
+  <div class="item">
+    <p class="q">语义指向分析属于哪个方面的分析方法？</p>
+    <div class="opts" data-k="1">
+      <button data-v="a">形式方面</button>
+      <button data-v="b">意义方面</button>
+      <button data-v="c">语音方面</button>
+    </div>
+    <div class="why">答案：b。与层次、变换等形式方法互为补充。见本节，底本 L4982。</div>
+  </div>
+  <div class="item">
+    <p class="q">「他没吃什么，只吃了面包」里，为何数量词可省、「面包」不可省？</p>
+    <div class="opts" data-k="2">
+      <button data-v="a">「只」指向数量</button>
+      <button data-v="b">「只」指向名词性成分「面包」</button>
+      <button data-v="c">是习惯说法，没有理据</button>
+    </div>
+    <div class="why">答案：b。指向「面包」则「面包」不能删，「一」自然可省。见本节，底本 L4816。</div>
+  </div>
+  <div class="item">
+    <p class="q">「究竟」在语义指向上的特点是？</p>
+    <div class="opts" data-k="3">
+      <button data-v="a">只能指前</button>
+      <button data-v="b">只能指后，且须指向一个具体的疑问形式</button>
+      <button data-v="c">位置自由，没有限制</button>
+    </div>
+    <div class="why">答案：b。所以「他究竟捐了多少钱」能挪，「究竟谁捐了那么多钱」不能。见本节，底本 L4864、L4876。</div>
+  </div>
+</section>
+
+<footer>
+  <h3>关于本页</h3>
+  <ul>
+    <li>底本：陆俭明《现代汉语语法研究教程》（第五版，北京大学出版社）研读底本 md，无页码，角标一律写「节次 + 底本行号」。</li>
+    <li>引文照录原书；转述与图示为编者所作，凡示意图均在图下注明「非原书插图」。</li>
+    <li>未入页：「才」字句四例的完整句例、渡边丽玲等研究的更多细节。</li>
+    <li>全页单文件、零外部依赖，可离线；明暗与字号选择会记住。</li>
+  </ul>
+</footer>
+</main>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-label="出处">
+  <button class="x" id="popClose">关闭</button>
+  <p class="q" id="popQuote"></p>
+  <p class="meta" id="popMeta"></p>
+  <p class="zh" id="popZh"></p>
+</div>
+<button id="backBtn" hidden>&#8617; 回到原处</button>
+<script>
+const SOURCES = {
+  "s-point": { page:"第六节 6.1 · 底本 L4584", quote:"也有这种情形：论结构关系，A应该属于B，但是在语义上A指向C。", zh:"吕叔湘《汉语语法分析问题》（1979）最早用「指向」；张斌 1960 年已用「说明」提到同类现象。" },
+  "s-zhixiang-shiyi": { page:"第六节 6.1 · 底本 L4950", quote:"语义指向分析揭示了句法成分在句法上和语义上的矛盾现象，指明了句法成分之间，特别是间接的句法成分之间语义上的种种联系，从而可以比较合理地解释句法结构和语义结构之间复杂的对应关系。", zh:"语义指向分析的作用：揭示句法语义矛盾。" },
+  "s-fenlei-fangfa": { page:"第六节 6.9 · 底本 L4982", quote:"总之，语义指向分析法为分化歧义句式又提供了一种新的方法。如果说层次切分法的切分和定性，以及变换分析法是属于形式方面的分析方法，那么语义指向分析法则是属于意义方面的分析方法，二者互为补充。", zh:"语义指向分析是意义方面的分析方法，与形式方法互补。" },
+  "s-cai-zhixiang": { page:"第六节 6.2 · 底本 L4734", quote:"例（7）a、b、c、d各句都是由副词“才”作状语，而且都是指后的，但各句作为状语的“才”，语义指向各不相同——a句“才”指向谓词“做”；b句“才”指向“做”的受事名词性成分“第二道题”；c句“才”指向数量成分“三道”；d句“才”指向表示行为动作的结果的谓词“完”。", zh:"“才”四句指向各异：谓词、受事、数量、结果补语。" },
+  "s-zhixiang-shishou": { page:"第六节 6.4 · 底本 L4774", quote:"如果某个句法成分是指向某个名词性成分的，那还得考虑那个句法成分是指向施事，还是受事，还是工具，还是处所，还是别的什么。", zh:"指向还要看性质：施事、受事、工具、处所。" },
+  "s-yinyinxian": { page:"第六节 6.5 · 底本 L4816", quote:"例（1）、（2）里都有“只吃了一个面包”，但是，例（1）里的“一”在一定的上下文里可以省去不说，“面包”则绝对不能省略。", zh:"“只”指向“面包”则“一”可省；指向数量则“一”不可省。" },
+  "s-jiujing-yiwen": { page:"第六节 6.6 · 底本 L4864", quote:"第一，它只能指向一个具体的疑问形式，换句话说，疑问句里一定要有一个具体的疑问形式。", zh:"“究竟”第一戒：须指向具体疑问形式。" },
+  "s-jiujing-liangdian": { page:"第六节 6.6 · 底本 L4876", quote:"第二，它只能指后，换句话说，“究竟”所指向的具体的疑问形式一定得位于它之后，不能位于它之前。", zh:"“究竟”第二戒：只能指后。" },
+  "s-shuangbin-shuojiao": { page:"第六节 6.7 · 底本 L4922", quote:"“他”和“三个苹果”之间真有直接的句法关系，作为偏正结构的“他三个苹果”之前就不可能再受副词“总共/一共”的修饰。可见，“吃了他三个苹果”有理由分析为双宾结构。", zh:"用“总共/一共”的指向证明双宾结构。" },
+  "s-jiegou-guanxi": { page:"第六节 6.7 · 底本 L4924", quote:"实词性词语之间总是同时并存着两种结构关系——语法结构关系和语义结构关系，而这两种结构关系之间，并不存在一对一的对应关系。", zh:"语法结构关系与语义结构关系并存，但不一一对应。" },
+  "s-nianzhuo": { page:"第六节 6.8 · 底本 L4946", quote:"句中的“吃了他”……能，只是这种述宾结构是黏着的，不是自由的。", zh:"“睡它三天三夜”：“它”是虚指宾语；黏着述宾结构。" },
+  "s-xijing-lei": { page:"第六节 6.10 · 底本 L5012", quote:"那就是因为二者补语的语义指向不同——“洗净了”里的补语“净”在语义上指向“洗”这个动作的受事，而“洗累了”里的补语“累”在语义上指向“洗”这个动作的施事……（施春宏2003）", zh:"补语指向决定句式变化：洗净了↔洗得净；洗累了≠*洗得累。" },
+  "s-xinketi": { page:"第六节 6.11 · 底本 L5014", quote:"我们看重语义指向分析还在于它能为我们提出一些新的研究课题，引起我们思考，从而有助于开阔语法研究的思路，将语法研究引向深入。", zh:"语义指向分析提出新课题、开阔思路。" },
+  "s-guazhu-zhouwei": { page:"第六节 6.12 · 底本 L5082", quote:"真要运用语义指向分析法来解读句子意思，还一定得关注前后左右词语的意义。", zh:"指向判断不能只看句内，还要关注前后左右词语的意义。" },
+  "s-jinniuyiju": { page:"第六节 6.13 · 底本 L5094", quote:"以上也还都是举例性的，毫无疑义，这些研究都可以引发我们去进一步思考许多问题，都将会把汉语语法研究引向深入。", zh:"举例性提醒：研究将引向深入。" },
+  "s-sanzhong-chengfen": { page:"第六节 6.2 · 底本 L4596", quote:"根据语法研究的需要，下列三种句法成分，其语义指向很值得我们考察：一是补语。", zh:"最值得考察的是补语、修饰语、谓语三种说明性成分。" },
+  "s-dingshu-zhixiang": { page:"第六节 6.2 · 底本 L4646", quote:"造成差别的原因就在于作定语的数量成分的语义指向各不相同：", zh:"两位/两所/两个“大学的教授”层次差异源于定语指向不同。" },
+  "s-weiyu-zhixiang": { page:"第六节 6.2 · 底本 L4662", quote:"a句谓语“很好”指向句内的主语“我”。b句谓语“很好”不是指向句内某个成分，而是指向没有在句中出现的“我”。", zh:"谓语可指向句外成分。" },
+  "s-zhiqian-zhihou": { page:"第六节 6.3 · 底本 L4680", quote:"拿副词来说，根据渡边丽玲（1991）的研究，副词的语义指向，有的只能指前，有的只能指后，也有的则既可以指前也可以指后。", zh:"“一律”指前、“只”指后、“分别”两可（渡边丽玲1991）。" },
+  "s-juwai": { page:"第六节 6.3 · 底本 L4714", quote:"（4）别喝醉了！（5）罢工代表被客客气气地引进了客厅。（6）当时，那孩子就稀里糊涂地判给了男方。", zh:"补语、状语都可能指向句外成分。" },
+  "s-shanchufa": { page:"第六节 6.3 · 底本 L4742", quote:"“已经”在例（8）里指向谓词性成分“去”，在例（9）里，指向名词性成分“南京”，而在例（10）里，则指向数量成分“五个”。怎么证明呢？可用删除法证明。", zh:"“已经”三指；删除法是证明指向的试纸。" },
+  "s-zhuangtaici": { page:"第六节 6.3 · 底本 L4764", quote:"状态词可以作状语。根据张力军（1990）的研究，各种状态词作状语时，其语义指向并不相同", zh:"状态词状语指向各异（张力军1990）。" },
+  "s-zonggong-sidian": { page:"第六节 6.4 · 底本 L4794", quote:"细细体会，我们不难发现，副词“总共”在语义指向上有这样四个特点：", zh:"“总共”四特点：指后、指向数量、范围明确、不受限制性定语修饰。" }
+};
+const store = { get(k){ try{ return localStorage.getItem(k);}catch{return null;} }, set(k,v){ try{ localStorage.setItem(k,v);}catch{} } };
+const motionOK = () => !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+
+/* ---------- 字号 ---------- */
+const SIZES = ["15px","16.5px","18px"];
+let sizeIdx = Math.max(0, SIZES.indexOf(store.get("you-font") || "16.5px"));
+function applySize(){ document.documentElement.style.fontSize = SIZES[sizeIdx]; store.set("you-font", SIZES[sizeIdx]); }
+applySize();
+$("#fontDown").onclick = () => { sizeIdx = Math.max(0, sizeIdx-1); applySize(); };
+$("#fontUp").onclick = () => { sizeIdx = Math.min(SIZES.length-1, sizeIdx+1); applySize(); };
+
+/* ---------- 明暗 ---------- */
+const THEMES = ["auto","light","dark"];
+let themeIdx = Math.max(0, THEMES.indexOf(store.get("you-theme") || "auto"));
+function applyTheme(){ document.documentElement.dataset.theme = THEMES[themeIdx]; store.set("you-theme", THEMES[themeIdx]); }
+applyTheme();
+$("#themeBtn").onclick = () => { themeIdx = (themeIdx+1) % THEMES.length; applyTheme(); };
+
+/* ---------- 出处弹层 ---------- */
+const pop = $("#pop");
+function closePop(){ pop.hidden = true; }
+function openPop(id){
+  const s = SOURCES[id]; if(!s) return;
+  $("#popQuote").textContent = s.quote;
+  $("#popMeta").textContent = s.page;
+  $("#popZh").textContent = s.zh;
+  pop.hidden = false;
+  const el = document.activeElement;
+  if(el && el.getBoundingClientRect){
+    const b = el.getBoundingClientRect();
+    const top = scrollY + b.bottom + 8;
+    const left = Math.min(scrollX + b.left - 160, scrollY + innerWidth - 460);
+    pop.style.top = Math.max(8, top) + "px";
+    pop.style.left = Math.max(8, left) + "px";
+  }
+  $("#popClose").focus();
+}
+document.addEventListener("click", e => {
+  const c = e.target.closest("sup.cite");
+  if(c){ e.preventDefault(); openPop(c.dataset.cite); return; }
+  if(!e.target.closest("#pop")) closePop();
+});
+$("#popClose").onclick = closePop;
+
+/* ---------- 回原处 ---------- */
+const backBtn = $("#backBtn");
+let backStack = [];
+function jumpTo(sel){
+  const el = $(sel); if(!el) return;
+  backStack.push(scrollY);
+  el.scrollIntoView({behavior: motionOK() ? "smooth" : "auto", block:"start"});
+  history.pushState({scene: sel}, "", "#" + sel.replace(/[^a-zA-Z0-9_-]/g,""));
+  backBtn.hidden = false;
+}
+backBtn.onclick = () => {
+  const y = backStack.pop();
+  if(typeof y === "number") scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+  if(!backStack.length) backBtn.hidden = true;
+};
+window.addEventListener("popstate", () => { if(backStack.length) backBtn.onclick(); });
+
+/* ---------- 阅读进度 ---------- */
+let scrollTimer = null;
+addEventListener("scroll", () => {
+  if(scrollTimer) return;
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null;
+    store.set("you-scroll", String(Math.round(scrollY)));
+    $("#resumeBtn").hidden = !(scrollY > 240);
+  }, 400);
+}, {passive:true});
+$("#resumeBtn").onclick = () => {
+  const y = parseInt(store.get("you-scroll") || "0", 10);
+  if(y > 0) scrollTo({top:y, behavior: motionOK() ? "smooth" : "auto"});
+};
+
+/* ---------- 先猜 ---------- */
+$$("[data-guess]").forEach(g => {
+  const btns = $$("button[data-ans]", g);
+  const why = $(".why", g);
+  btns.forEach(b => b.onclick = () => {
+    const right = b.dataset.ans === "1";
+    btns.forEach(x => { x.disabled = true; if(x.dataset.ans === "1") x.classList.add("right"); else if(x === b) x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 自测 ---------- */
+const ANSWERS = {1:"b", 2:"b", 3:"b"};
+$$(".quiz .opts").forEach(group => {
+  const k = group.dataset.k, why = group.nextElementSibling;
+  $$("button", group).forEach(b => b.onclick = () => {
+    $$("button", group).forEach(x => { x.disabled = true; if(x.dataset.v === ANSWERS[k]) x.classList.add("right"); else x === b && x.classList.add("wrong"); });
+    why.classList.add("on");
+  });
+});
+
+/* ---------- 键盘 ---------- */
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closePop();
+  const list = $$("[data-scene],[data-hero],[data-quiz]");
+  const cur = list.findIndex(el => el.getBoundingClientRect().top > -innerHeight * 0.5 && el.getBoundingClientRect().top < innerHeight * 0.5);
+  if(e.key === "ArrowRight" && cur < list.length - 1) list[cur+1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+  if(e.key === "ArrowLeft" && cur > 0) list[cur-1].scrollIntoView({behavior: motionOK() ? "smooth" : "auto"});
+});
+
+</script>
+</body>
+</html>

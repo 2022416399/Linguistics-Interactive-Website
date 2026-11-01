@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>语言学工具书 · 术语与理论</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1c1a17;--muted:#6b645c;--line:#e2ddd4;--card:#fff;
+ --accent:#8a5a2b;--soft:#f2e7d8;--mark:#ffe9a8;--green:#2f6b5a;--gsoft:#e6f0ec}
+html[data-theme="dark"]{--bg:#16151a;--fg:#ece8e1;--muted:#9a938a;--line:#2e2c33;--card:#1e1d23;
+ --accent:#d3a06a;--soft:#2b2318;--mark:#5a4a1d;--green:#6bbfa2;--gsoft:#1e2a26}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+ font:15.5px/1.8 "Georgia","Songti SC","Source Han Serif SC",-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+ padding:10px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.brand{font-weight:600}.brand small{color:var(--muted);font-weight:400;margin-left:8px;font-size:12px}
+nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+nav button{background:none;border:1px solid transparent;color:var(--muted);padding:5px 12px;
+ border-radius:999px;cursor:pointer;font:inherit;font-size:14px}
+nav button.on{background:var(--soft);color:var(--accent);border-color:var(--soft)}
+main{max-width:1080px;margin:0 auto;padding:18px}
+.searchbar input{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:10px;
+ background:var(--card);color:var(--fg);font:inherit;font-size:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:4px 12px;
+ border-radius:999px;cursor:pointer;font-size:13px}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.hint{color:var(--muted);font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.card h3{margin:0 0 6px;font-size:16px}
+.card h3 .en{color:var(--muted);font-weight:400;font-size:13px;margin-left:6px}
+.meta{color:var(--muted);font-size:12.5px;display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.pg{font-variant-numeric:tabular-nums}
+.tag{display:inline-block;padding:1px 7px;border-radius:6px;font-size:11.5px;background:var(--soft);color:var(--accent);margin-left:6px}
+.tag.g{background:var(--gsoft);color:var(--green)}
+mark{background:var(--mark);color:inherit}
+.sec-title{font-size:14px;color:var(--green);margin:22px 0 6px;padding-bottom:4px;border-bottom:2px solid var(--gsoft)}
+.block{margin:18px 0 0;padding-top:10px;border-top:1px dashed var(--line)}
+.block h4{margin:0 0 8px;font-size:14px;color:var(--accent)}
+.quote{margin:0 0 10px;padding-left:12px;border-left:3px solid var(--soft)}
+.quote p{margin:0}
+.cite{color:var(--muted);font-size:12px;margin-top:4px}
+.tl-item{position:relative;padding:0 0 16px 20px;border-left:2px solid var(--line)}
+.tl-dot{position:absolute;left:-6px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.act{background:var(--card);border:1px solid var(--line);color:var(--fg);border-radius:8px;
+ padding:3px 10px;cursor:pointer;font-size:12.5px;text-decoration:none;display:inline-block}
+
+.clipbox{position:relative;max-height:12.5em;overflow:hidden}
+.clipbox:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3em;
+ background:linear-gradient(transparent,var(--card))}
+.clipmore{margin-top:6px}
+.editrow{display:flex;gap:8px;align-items:center;margin:6px 0}
+.editrow label{width:56px;color:var(--muted);font-size:12.5px}
+.editrow input,.editrow textarea{flex:1;padding:6px 8px;border:1px solid var(--line);border-radius:8px;
+ background:var(--bg);color:var(--fg);font:inherit;font-size:14px}
+.editrow textarea{min-height:5em;resize:vertical}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 10px;
+ padding:8px 12px;border:1px dashed var(--accent);border-radius:10px;background:var(--soft)}
+</style></head><body>
+<header>
+  <div class="brand">语言学工具书 <small>术语 · 论述 · 理论</small></div>
+  <nav>
+    <button data-tab="search" class="on">术语检索</button>
+    <button data-tab="theory">理论索引</button>
+    <button data-tab="people">人物</button>
+    <button data-tab="books">书目</button>
+    <button id="themeBtn">◐</button>
+  </nav>
+</header>
+<main id="app"></main>
+<script src="data.js"></script>
+<script>
+const P=window.__PAYLOAD__, E=P.entries, PS=P.passages, TH=P.theories, B=P.books;
+const state={q:'', scope:'all', src:'all', book:'all', edits:{}, editId:null, openText:null};
+try{const uq=new URLSearchParams(location.search).get('q'); if(uq) state.q=uq;}catch(e){}
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function hl(s,q){ const i=(s||'').toLowerCase().indexOf((q||'').toLowerCase()); if(i<0) return esc(s);
+  return esc(s.slice(0,i))+'<mark>'+esc(s.slice(i,i+q.length))+'</mark>'+esc(s.slice(i+q.length)); }
+function bookTitle(s){return (B[s]||{}).title||s;}
+function bookShort(s){return (B[s]||{}).short||s;}
+
+function renderSearch(){
+  const q=state.q.trim().toLowerCase();
+  let h=`<div class="searchbar"><input id="q" placeholder="搜术语 / 英文 / 论述……（音位 / phoneme / 语素 / 层次分析）" value="${esc(state.q)}"></div>`;
+  h+=`<div class="chips">`+
+     `<span class="chip ${state.scope==='all'?'on':''}" data-scope="all">全部</span>`+
+     `<span class="chip ${state.scope==='dict'?'on':''}" data-scope="dict">只看词典定义</span>`+
+     `<span class="chip ${state.scope==='book'?'on':''}" data-scope="book">只看专著论述</span></div>`;
+  h+=`<div class="chips" style="margin-top:-4px">`+
+     [['all','全部来源'],['oxford','牛津'],['crystal','现代'],['meidemin','百科'],['crystal_index','汉英对照']]
+     .map(([k,lab])=>`<span class="chip ${state.src===k?'on':''}" data-src="${k}">${lab}</span>`).join('')+`</div>`;
+  if(!q){ h+=`<p class="hint">词典 ${E.length.toLocaleString()} 条（含汉英对照 ${(B.crystal_index?E.filter(r=>r[3]==='crystal_index').length:0).toLocaleString()} 条） · 专著论述 ${PS.length.toLocaleString()} 段 · ${Object.keys(B).length} 本书</p>`; return h; }
+
+  if(state.scope!=='book'){
+    const scored=[];
+    for(const r of E){
+      if(state.src!=='all' && r[3]!==state.src) continue;
+      const tm=r[0].toLowerCase(), sb=(r[1]||'').toLowerCase(), tx=r[2].toLowerCase();
+      let sc=0;
+      if(tm===q) sc=100; else if(tm.startsWith(q)) sc=80;
+      else if(tm.includes(q)) sc=70; else if(sb===q) sc=60; else if(sb.includes(q)) sc=50;
+      else if(tx.includes(q)) sc=20; else continue;
+      scored.push([sc,r]);
+    }
+    scored.sort((a,b)=>b[0]-a[0]||a[1][0].localeCompare(b[1][0]));
+    const hit=scored.slice(0,60).map(x=>x[1]);
+    if(hit.length){
+      h+=`<div class="sec-title">词典定义（${hit.length} 条${hit.length>=60?'，仅显示前 60':''}）</div>`;
+      for(const r of hit){
+        h+=`<div class="card" style="cursor:pointer" onclick="go('#/e/${r[6]}')"><h3>${hl(r[0],q)}${r[1]?`<span class="en">${hl(r[1],q)}</span>`:''}</h3>
+          <p style="margin:6px 0 0">${hl(r[2].slice(0,220),q)}${r[2].length>220?'…':''}</p>
+          <div class="meta"><span>${bookTitle(r[3])}</span><span class="pg">p.${r[4]||'—'}</span>
+          <span>${r[5]==='确认'?'页码已核对':r[5]==='推定'?'页码推定':'页码待核'}</span></div></div>`;
+      }
+    }
+  }
+  if(state.scope!=='dict'){
+    const ph=PS.filter(p=>p[3].toLowerCase().includes(q));
+    if(ph.length){
+      h+=`<div class="sec-title">专著论述（${ph.length} 段${ph.length>80?'，仅显示前 80':''}）</div>`;
+      for(const p of ph.slice(0,80)){
+        h+=`<div class="card" style="padding:10px 14px"><p style="margin:0">${hl(p[3].slice(0,240),q)}${p[3].length>240?'…':''}</p>
+          <div class="meta"><span class="tag g">${bookShort(p[0])}</span><span>${esc(p[1]||'')}</span>
+          <span class="pg">${p[2]?('p.'+p[2]):'页码待补'}</span></div></div>`;
+      }
+    }
+  }
+  if(!h.includes('card')) h+=`<p class="hint">没有命中「${esc(state.q)}」。</p>`;
+  return h;
+}
+
+const COLLAPSE=420;
+function renderEntry(id){
+  const r=E.find(x=>x[6]===id);
+  if(!r) return '<p>没有这条词条。</p>';
+  const ed=state.edits[id]||{};
+  const term=ed.term!==undefined?ed.term:r[0];
+  const sub=ed.sub!==undefined?ed.sub:r[1];
+  const text=ed.text!==undefined?ed.text:r[2];
+  const page=ed.page!==undefined?ed.page:r[4];
+  const changed=!!state.edits[id];
+  const long=text.length>COLLAPSE, open=state.openText===id, editing=state.editId===id;
+
+  let body;
+  if(editing){
+    body=`<div class="editrow"><label>词目</label><input value="${esc(term)}"
+        oninput="setEdit('${id}','term',this.value)"></div>
+      <div class="editrow"><label>英文/副</label><input value="${esc(sub||'')}"
+        oninput="setEdit('${id}','sub',this.value)"></div>
+      <div class="editrow"><label>页码</label><input type="number" value="${page||''}"
+        oninput="setEdit('${id}','page',+this.value)"></div>
+      <div class="editrow"><label>释义</label><textarea
+        oninput="setEdit('${id}','text',this.value)">${esc(text)}</textarea></div>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="act" onclick="state.editId=null;render()">完成</button>
+        <button class="act" onclick="delEdit('${id}')">撤销这条修改</button>
+        <button class="act" onclick="exportEdits()">导出修改 JSON</button>
+      </div>`;
+  } else {
+    body = long && !open
+      ? `<div class="clipbox"><p style="margin-top:10px;white-space:pre-wrap">${esc(text)}</p></div>
+         <button class="act clipmore" onclick="state.openText='${id}';render()">展开全文（${text.length} 字）</button>`
+      : `<p style="margin-top:10px;white-space:pre-wrap">${esc(text)}</p>`+
+        (long?`<button class="act clipmore" onclick="state.openText=null;render()">收起</button>`:'');
+  }
+
+  let h=`<button class="act" onclick="history.back()">← 返回</button>
+   <div class="card"><h3>${esc(term)}${sub?`<span class="en">${esc(sub)}</span>`:''}
+     ${changed?'<span class="tag">已修改</span>':''}</h3>
+   <div class="meta"><span>${esc(bookTitle(r[3]))}</span><span class="pg">p.${page||'—'}</span>
+   <span>${r[5]==='确认'?'页码已核对':r[5]==='推定'?'页码推定':r[5]==='旧版'?'旧版估算':'页码待核'}</span></div>
+   ${body}
+   <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+     <button class="act" onclick="copyCite(this)" data-cite="${esc(term)}（${esc(bookTitle(r[3]))} p.${page}）">复制引用</button>
+     <button class="act" onclick="state.editId='${id}';render()">编辑</button>
+     <button class="act" onclick="exportEdits()">导出修改 JSON</button>
+     <a class="act" href="../03：教材对比阅读/index.html?q=${encodeURIComponent(term)}" target="_blank" rel="noopener">在教材站里查「${esc(term)}」→</a>
+   </div></div>`;
+  return h;
+}
+function setEdit(id,k,v){ (state.edits[id] ||= {})[k]=v; }
+function delEdit(id){ delete state.edits[id]; state.editId=null; render(); }
+function exportEdits(){
+  const rows=Object.entries(state.edits||{}).map(([id,v])=>({id,...v}));
+  if(!rows.length){ alert('还没有修改'); return; }
+  const blob=new Blob([JSON.stringify({exported:new Date().toISOString(), count:rows.length, edits:rows},null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='术语修改_'+(new Date().toISOString().slice(0,10))+'.json';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+function copyCite(btn){ navigator.clipboard && navigator.clipboard.writeText(btn.dataset.cite);
+  const old=btn.textContent; btn.textContent='已复制'; setTimeout(()=>btn.textContent=old,1500); }
+
+function renderTheoryIndex(){
+  const refined=TH.filter(t=>t.kind==='refined'), auto=TH.filter(t=>t.kind!=='refined');
+  let h=`<p class="hint">共 ${TH.length} 个理论页：其中 <b>${refined.length}</b> 个是**六块精修页**（人物/概念/本土化/应用/出处齐全），其余 ${auto.length} 个是章级自动整理（只有核心主张有原话+页码）。</p>`;
+  if(refined.length){
+    h+=`<div class="sec-title">精修页（六块齐全）</div>`;
+    for(const t of refined){
+      h+=`<div class="card" style="padding:10px 14px"><a href="#/theory/${t.id}" style="color:inherit;text-decoration:none">
+        <b>${esc(t.name)}</b><span class="tag">精修</span><span class="tag">${esc(t.era||'')}</span></a></div>`;
+    }
+  }
+  const cats={};
+  for(const t of auto){ (cats[bookShort(t.book)] ||= []).push(t); }
+  for(const [bk, arr] of Object.entries(cats)){
+    h+=`<div class="sec-title">${esc(bk)}（${arr.length} 章）</div>`;
+    for(const t of arr){
+      h+=`<div class="card" style="padding:10px 14px"><a href="#/theory/${t.id}" style="color:inherit;text-decoration:none">
+        <b>${esc(t.name)}</b><span class="tag">${t.page_from?('p.'+t.page_from+(t.page_to&&t.page_to!==t.page_from?('–'+t.page_to):'')):'页码待补'}</span>
+        <span class="tag">${t.sections.length} 节</span></a></div>`;
+    }
+  }
+  return h;
+}
+function citeOf(s){ if(!s) return ''; const b=bookTitle(s.book); const pg=s.page?('p.'+s.page):'页码待补';
+  return `${b} · ${s.chapter||''} · ${pg}${s.page_note?('（'+s.page_note+'）'):''}`; }
+function renderTheory(id){
+  const t=TH.find(x=>x.id===id); if(!t) return '<p>没有这一页。</p>';
+  if(t.kind==='refined'){
+    const b=t.blocks||{};
+    const q=(arr)=>arr.map(x=>`<div class="quote"><p>${esc(x.text||'')}</p><div class="cite">— ${esc(citeOf(x.src))}</div></div>`).join('');
+    let h=`<button class="act" onclick="go('#/theory')">← 理论索引</button>
+     <h2 style="margin:14px 0 4px">${esc(t.name)}</h2>
+     <div class="meta"><span class="tag">精修</span><span>${esc(t.era||'')}</span><span>${esc(t.origin||'')}</span></div>`;
+    h+=`<div class="block"><h4>一 · 核心主张</h4>${q(b.core||[])}</div>`;
+    h+=`<div class="block"><h4>二 · 代表人物</h4>`+((b.figures||[]).map(f=>`<div class="quote"><p><b>${esc(f.name)}</b>${f.years?`（${esc(f.years)}）`:''} — ${esc(f.note||'')}</p><div class="cite">— ${esc(citeOf(f.src))}</div></div>`).join(''))+`</div>`;
+    h+=`<div class="block"><h4>三 · 关键概念</h4><div class="chips">`+((b.concepts||[]).map(c=>`<span class="chip">${esc(c.term)}</span>`).join(''))+`</div></div>`;
+    h+=`<div class="block"><h4>四 · 中国本土化改造</h4>${(b.sinicization||[]).length?q(b.sinicization):'<div class="hint">待补</div>'}</div>`;
+    h+=`<div class="block"><h4>五 · 中国的具体应用</h4>${(b.applications||[]).length?q(b.applications):'<div class="hint">待补</div>'}</div>`;
+    h+=`<div class="block"><h4>六 · 出处一览</h4>`+((b.sources||[]).map(s=>`<div class="cite">· ${esc(citeOf(s))}</div>`).join(''))+`</div>`;
+    return h;
+  }
+  let h=`<button class="act" onclick="go('#/theory')">← 理论索引</button>
+   <h2 style="margin:14px 0 4px">${esc(t.name)}</h2>
+   <div class="meta"><span>${esc(bookTitle(t.book))}</span><span>${esc(t.chapter)}</span>
+   <span class="pg">${t.page_from?('p.'+t.page_from+(t.page_to?('–'+t.page_to):'')):'页码待补'}</span>
+   <span class="tag">${esc(t.status)}</span></div>`;
+  h+=`<div class="block"><h4>一 · 核心主张（原文摘录）</h4>`;
+  for(const c of t.core){
+    h+=`<div class="quote"><p>${esc(c.text)}</p><div class="cite">— ${esc(bookTitle(t.book))} · ${esc(t.chapter)} · ${c.page?('p.'+c.page):'页码待补'}</div></div>`;
+  }
+  h+=`</div>`;
+  if(t.sections.length){
+    h+=`<div class="block"><h4>二 · 分节导读</h4><div class="chips">`+
+      t.sections.map(s=>`<span class="chip">${esc(s.title)}${s.page?(' · p.'+s.page):''}</span>`).join('')+`</div></div>`;
+  }
+  h+=`<div class="block"><h4>三 · 代表人物 / 关键概念 / 中国本土化 / 中国应用</h4>
+      <div class="hint">这一页目前是「章级自动整理」，只保证核心主张有原文与页码；
+      其余四块要从书中逐段取值后再补，标注为待精修。</div></div>`;
+  return h;
+}
+
+function renderPeople(){
+  let h=`<div class="searchbar"><input id="pq" placeholder="搜人物：赵元任 / 布龙菲尔德 / 王力" value=""></div>`;
+  h+=`<p class="hint">共 ${P.people.length} 位，来自《语言学与应用语言学百科全书》人物志。</p>`;
+  for(const p of P.people.slice(0,200)){
+    h+=`<div class="card" style="padding:10px 14px"><b>${esc(p[0])}</b>${p[1]?`<span class="en">（${esc(p[1])}）</span>`:''}
+      <p style="margin:6px 0 0">${esc((p[4]||'').slice(0,180))}${(p[4]||'').length>180?'…':''}</p>
+      <div class="meta"><span class="pg">p.${p[2]||'—'}</span></div></div>`;
+  }
+  return h;
+}
+
+function renderBooks(){
+  let h=`<div class="sec-title">术语站收录 ${Object.keys(B).length} 本</div>`;
+  for(const [slug,b] of Object.entries(B)){
+    h+=`<div class="card" style="padding:10px 14px"><b>${esc(b.title)}</b><span class="tag">${esc(b.cat)}</span>
+      <div class="meta"><span>${esc(b.author||'')}</span><span class="pg">${esc(b.pages||'')}</span></div></div>`;
+  }
+  return h;
+}
+
+function go(h){location.hash=h;}
+function render(){
+  const h=location.hash||'#/';
+  const app=document.getElementById('app');
+  const tab=h.startsWith('#/theory')?'theory':h.startsWith('#/people')?'people':h.startsWith('#/books')?'books':'search';
+  document.querySelectorAll('nav button[data-tab]').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  if(h.startsWith('#/e/')) app.innerHTML=renderEntry(h.slice(4));
+  else if(h.startsWith('#/theory/')) app.innerHTML=renderTheory(h.slice(9));
+  else if(h==='#/theory') app.innerHTML=renderTheoryIndex();
+  else if(h==='#/people') app.innerHTML=renderPeople();
+  else if(h==='#/books') app.innerHTML=renderBooks();
+  else app.innerHTML=renderSearch();
+  const q=document.getElementById('q');
+  if(q) q.oninput=e=>{state.q=e.target.value;const p=e.target.selectionStart;render();
+    const q2=document.getElementById('q');q2.focus();q2.setSelectionRange(p,p);};
+  document.querySelectorAll('.chip[data-scope]').forEach(c=>c.onclick=()=>{state.scope=c.dataset.scope;render();});
+  document.querySelectorAll('.chip[data-src]').forEach(c=>c.onclick=()=>{state.src=c.dataset.src;render();});
+}
+document.querySelectorAll('nav button[data-tab]').forEach(b=>b.onclick=()=>{
+  const t=b.dataset.tab; go(t==='theory'?'#/theory':t==='people'?'#/people':t==='books'?'#/books':'#/');});
+document.getElementById('themeBtn').onclick=()=>{const d=document.documentElement;
+  d.dataset.theme=d.dataset.theme==='dark'?'light':'dark';localStorage.setItem('th3',d.dataset.theme);};
+document.documentElement.dataset.theme=localStorage.getItem('th3')||'light';
+
+document.addEventListener('keydown',e=>{
+  const typing=/^(INPUT|TEXTAREA)$/.test(e.target.tagName);
+  if(e.key==='/' && !typing){ e.preventDefault(); const q=document.getElementById('q'); if(q) q.focus(); }
+  if(e.key==='Escape'){
+    if(state.editId){ state.editId=null; render(); return; }
+    if(typing) e.target.blur();
+    state.q=''; state.scope='all'; state.src='all'; state.edits=state.edits||{};
+    if(location.hash!=='#/') location.hash='#/'; else render();
+  }
+});
+window.addEventListener('hashchange',render);
+render();
+</script>
+</body></html>

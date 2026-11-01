@@ -1,0 +1,47 @@
+{
+  "batch_id": "1bbcc16e-dc10-4d55-949c-28f8cfe0aa21",
+  "jobs": [
+    {
+      "name": "meidemin_part1.pdf",
+      "key": "meidemin_p1"
+    },
+    {
+      "name": "meidemin_part2.pdf",
+      "key": "meidemin_p2"
+    },
+    {
+      "name": "meidemin_part3.pdf",
+      "key": "meidemin_p3"
+    },
+    {
+      "name": "meidemin_part4.pdf",
+      "key": "meidemin_p4"
+    }
+  ],
+  "parts": [
+    {
+      "file": "D:\\WorkBuddy工作区\\术语查询站\\raw\\meidemin_part1.pdf",
+      "start": 1,
+      "end": 350,
+      "mb": 87.9
+    },
+    {
+      "file": "D:\\WorkBuddy工作区\\术语查询站\\raw\\meidemin_part2.pdf",
+      "start": 351,
+      "end": 700,
+      "mb": 90.2
+    },
+    {
+      "file": "D:\\WorkBuddy工作区\\术语查询站\\raw\\meidemin_part3.pdf",
+      "start": 701,
+      "end": 1050,
+      "mb": 93.2
+    },
+    {
+      "file": "D:\\WorkBuddy工作区\\术语查询站\\raw\\meidemin_part4.pdf",
+      "start": 1051,
+      "end": 1363,
+      "mb": 77.8
+    }
+  ]
+}

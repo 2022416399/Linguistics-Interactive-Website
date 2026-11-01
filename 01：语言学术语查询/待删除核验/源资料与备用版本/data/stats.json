@@ -1,0 +1,23 @@
+[
+  {
+    "book": "oxford",
+    "title": "牛津语言学词典",
+    "paras": 4342,
+    "entries": 3248,
+    "avg_len": 297
+  },
+  {
+    "book": "crystal",
+    "title": "现代语言学词典",
+    "paras": 2769,
+    "entries": 1783,
+    "avg_len": 243
+  },
+  {
+    "book": "meidemin",
+    "title": "语言学与应用语言学百科全书",
+    "paras": 15359,
+    "entries": 8310,
+    "avg_len": 350
+  }
+]

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教材对比 · 语言学工具书</title>
+<style>
+:root{
+  --bg:#faf8f4; --fg:#22201d; --muted:#7a736a; --line:#e6e0d6; --card:#fff;
+  --accent:#a0522d; --soft:#f3ece2; --mark:#ffe9a8;
+  --fs:17px; --lh:1.95; --readw:40em;
+}
+html[data-theme="dark"]{
+  --bg:#1d1b19; --fg:#e8e3da; --muted:#9c948a; --line:#35312c; --card:#26231f;
+  --accent:#d59a6a; --soft:#2b2722; --mark:#5a4a1e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",serif;
+  font-size:var(--fs);line-height:var(--lh);}
+a{color:var(--accent);text-decoration:none}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;
+  padding:10px 18px;background:var(--bg);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{font-weight:700;letter-spacing:.5px}
+.nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nav a,.nav button{font:inherit;font-size:14px;padding:5px 11px;border-radius:999px;
+  border:1px solid transparent;background:transparent;color:var(--muted);cursor:pointer}
+.nav .on{background:var(--soft);color:var(--fg);border-color:var(--line)}
+.progress{position:fixed;left:0;top:0;height:3px;background:var(--accent);width:0;z-index:40}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 18px 80px}
+.crumbs{color:var(--muted);font-size:13.5px;margin:6px 0 14px}
+.crumbs a{color:var(--muted)}
+h1{font-size:24px;margin:16px 0 10px}
+h2{font-size:20px;margin:34px 0 10px;padding-top:12px;border-top:1px solid var(--line)}
+h3{font-size:17.5px;margin:26px 0 8px;color:var(--accent)}
+p{margin:0 0 1.05em;text-align:justify;text-justify:inter-ideograph}
+blockquote{margin:12px 0;padding:8px 14px;background:var(--soft);border-left:3px solid var(--accent);
+  color:var(--muted);border-radius:0 8px 8px 0;font-size:15px}
+table{border-collapse:collapse;margin:14px 0;font-size:15px;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:6px 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.meta{color:var(--muted);font-size:13px}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;
+  background:var(--soft);color:var(--muted);margin-left:6px}
+input[type=search],input[type=text]{width:100%;padding:11px 14px;font:inherit;font-size:16px;
+  border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)}
+.btn{font:inherit;font-size:14px;padding:6px 13px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--card);color:var(--fg)}
+.btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+/* 阅读布局 */
+.reader{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;align-items:start}
+.side{position:sticky;top:64px;max-height:calc(100vh - 90px);overflow:auto;
+  border-right:1px solid var(--line);padding-right:12px;font-size:14px}
+.side a{display:block;padding:3px 8px;border-radius:6px;color:var(--muted);line-height:1.5}
+.side a.l2{font-weight:600;color:var(--fg);margin-top:8px}
+.side a.l3{padding-left:20px}
+.side a.cur{background:var(--soft);color:var(--accent)}
+.body{max-width:var(--readw);margin:0 auto;width:100%}
+@media(max-width:860px){.reader{grid-template-columns:1fr}.side{display:none}}
+.fsbtns{display:flex;gap:4px}
+.fsbtns button{padding:2px 8px;font-size:13px}
+.totop{position:fixed;right:22px;bottom:26px;z-index:35;border-radius:999px;width:44px;height:44px;
+  font-size:18px;display:none;place-items:center;border:1px solid var(--line);background:var(--card);cursor:pointer}
+/* 对比 */
+.cmp{display:grid;gap:12px}
+.cmp.two{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.cmp.two{grid-template-columns:1fr}}
+.ex{font-size:15.5px;line-height:1.85}
+.hl{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
+.ex .ctx{color:var(--muted)}
+mark{background:var(--mark);color:inherit;padding:0 1px}
+.cmplayout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:22px;align-items:start}
+.ctree{position:sticky;top:120px;font-size:14px;border-right:1px solid var(--line);padding-right:10px}
+.ctree .tn{display:flex;justify-content:space-between;padding:5px 8px;border-radius:7px;color:var(--muted);cursor:pointer}
+.ctree .tn:hover{background:var(--soft)}
+.ctree .tn.on{background:var(--soft);color:var(--accent);font-weight:600}
+.ctree .tn i{font-style:normal;font-size:12px;color:var(--muted)}
+.ctree .subs{margin:0 0 6px 10px;border-left:1px solid var(--line);padding-left:6px}
+.ctree .l2{font-size:13px}
+@media(max-width:860px){.cmplayout{grid-template-columns:1fr}.ctree{position:static;border:none;display:flex;flex-wrap:wrap;gap:4px}}
+.idxbar{position:sticky;top:52px;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:8px 0;margin-bottom:8px}
+.idxbar .row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:4px 0;font-size:13px}
+.idxbar .lb{color:var(--muted);min-width:36px}
+.idxbar .btn{padding:3px 9px;font-size:13px;flex:0 0 auto}
+.hscroll{flex-wrap:nowrap!important;overflow-x:auto;white-space:nowrap;padding-bottom:6px}
+.hscroll::-webkit-scrollbar{height:6px}
+.hscroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
+.big{font-size:34px;font-weight:700;margin-top:4px;color:var(--accent)}
+.row2{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:14px}
+.row2 .lb{min-width:84px;color:var(--muted)}
+.row2 .num{min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:10px;background:var(--soft);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:999px}
+.candlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px;margin-top:10px}
+.crow{display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);
+  border-radius:9px;background:var(--card);cursor:pointer;font-size:14.5px}
+.crow.in{opacity:.45}
+.crow b{font-weight:600}
+.crow .meta{margin-left:auto;font-size:12px}
+.badge{font-size:11px;padding:1px 6px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.badge.y{background:var(--accent);color:#fff}
+.badge.n{opacity:.55}
+.pgmark{display:block;font-size:12px;color:var(--muted);margin:18px 0 6px;
+  padding-left:8px;border-left:2px solid var(--line);letter-spacing:.5px}
+.hidden{display:none}
+.grp{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.dots{display:flex;gap:3px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--accent)}
+</style></head><body>
+<div class="progress" id="prog"></div>
+<div class="top">
+  <span class="brand">语言学工具书</span>
+  <span class="meta" id="crumbTop">教材对比</span>
+  <nav class="nav">
+    <a href="#/" id="navHome">书目</a>
+    <a href="#/compare" id="navCmp">概念对比</a>
+    <a href="#/search" id="navSearch">全文检索</a>
+    <a href="#/board" id="navBoard">看板</a>
+    <a href="#/cand" id="navCand">候选</a>
+    <button id="fsS" class="fsbtns">小</button>
+    <button id="fsM" class="fsbtns">中</button>
+    <button id="fsL" class="fsbtns">大</button>
+    <button id="theme">◐</button>
+  </nav>
+</div>
+<div class="wrap" id="app"></div>
+<button class="totop" id="totop">↑</button>
+<script src="data.js"></script>
+<script>
+const P=window.__PAYLOAD__;
+const B=P.books, C=P.compare||[], AL=P.aliases||[];
+const bookBy={}; B.forEach(b=>bookBy[b.slug]=b);
+const state={q:'',dom:'全部',minb:0,first:'',two:false,hide:new Set(),cmpBook:null,custom:[]};
+/* ---------- 工具 ---------- */
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>(s||'').replace(/\s+/g,'');
+const paras=b=>b.md.split("\n\n");
+function pageArr(b){
+  if(b._pg) return b._pg;
+  const ps=paras(b); let cur=0; const arr=[];
+  ps.forEach(p=>{ const m=/<!--\s*p\.(\d+)\s*-->/.exec(p); if(m) cur=+m[1]; arr.push(cur); });
+  b._pg=arr; return arr;
+}
+function pageOf(b, idx){ const a=pageArr(b); const v=a[idx]||0; return v; }
+const h=id=>document.getElementById(id);
+function fs(level){document.documentElement.style.setProperty('--fs',level==='s'?'15.5px':level==='l'?'19px':'17px');
+  document.documentElement.style.setProperty('--lh',level==='s'?'1.8':level==='l'?'2.05':'1.95');
+  localStorage.setItem('dsh_fs',level);}
+h('fsS').onclick=()=>fs('s');h('fsM').onclick=()=>fs('m');h('fsL').onclick=()=>fs('l');
+fs(localStorage.getItem('dsh_fs')||'m');
+h('theme').onclick=()=>{const d=document.documentElement.dataset.theme==='dark';
+  document.documentElement.dataset.theme=d?'':'dark';localStorage.setItem('dsh_th',d?'':'dark');};
+if(localStorage.getItem('dsh_th')==='dark')document.documentElement.dataset.theme='dark';
+h('totop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+addEventListener('scroll',()=>{
+  const st=scrollY,hh=document.body.scrollHeight-innerHeight;
+  h('prog').style.width=(hh>0?(st/hh*100):0)+'%';
+  h('totop').style.display=st>600?'grid':'none';
+});
+/* ---------- Markdown → HTML（够用即可）---------- */
+function mdToHtml(md, opt){
+  opt=opt||{};
+  md=md.replace(/<!--[\s\S]*?-->/g,'');
+  const lines=md.split("\n"); let out=[], toc=[], hi=0, inToc=false, body=false;
+  let buf=[];
+  const flush=()=>{ if(buf.length){ out.push('<p>'+inline(buf.join(' '))+'</p>'); buf=[]; } };
+  for(let i=0;i<lines.length;i++){
+    const ln=lines[i], t=ln.trim();
+    if(!t){ flush(); continue; }
+    if(t.startsWith('#')){
+      const m=/^(#{1,6})\s*(.*)$/.exec(t); if(!m){buf.push(t);continue;}
+      flush();
+      const lv=m[1].length, title=m[2].trim();
+      if(/目录/.test(title)&&lv<=2){ inToc=true; }
+      else if(inToc&&lv<=2){ inToc=false; }
+      if(inToc){ continue; }
+      if(lv===1){ out.push('<h1>'+inline(title)+'</h1>'); continue; }
+      hi++;
+      const id='h'+hi;
+      toc.push({id,lvl:lv,title});
+      out.push(`<h${lv} id="${id}">${inline(title)}</h${lv}>`);
+      body=true; continue;
+    }
+    if(inToc) continue;
+    const pm=/^<!--\s*p\.(\d+)\s*-->$/.exec(t);
+    if(pm){ flush(); out.push(`<span class="pgmark" id="p${pm[1]}">第 ${pm[1]} 页</span>`); continue; }
+    if(t.startsWith('>')){ flush(); out.push('<blockquote>'+inline(t.replace(/^>\s*/,''))+'</blockquote>'); continue; }
+    if(t.startsWith('- ')||t.startsWith('* ')){ buf.push('· '+t.slice(2)); continue; }
+    if(t.startsWith('<table')){ flush(); out.push(t); continue; }
+    buf.push(t);
+  }
+  flush();
+  return {html:out.join("\n"), toc};
+}
+function inline(s){
+  s=esc(s);
+  s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  return s;
+}
+/* ---------- 首页：书目 ---------- */
+function renderHome(){
+  h('navHome').classList.add('on');
+  const cards=B.map(b=>`<div class="card">
+    <div class="grp"><b>${esc(b.title)}</b><span class="tag">${esc(b.cat.split('-')[1]||b.cat)}</span></div>
+    <div class="meta">${esc(b.author)} · ${b.kind==='textbook'?'教材':'专著'} · ${esc(b.pages||'页码待补')} · ${(b.chars/10000).toFixed(1)} 万字</div>
+    <div style="margin-top:8px"><a class="btn" href="#/read/${b.slug}">阅读</a></div>
+  </div>`).join('');
+  h('app').innerHTML=`<h1>书目 · ${B.length} 本</h1>
+    <p class="meta">对比阅读目前覆盖 6 本现代汉语教材；其余为专著与参考资料，可正常阅读。</p>
+    <div class="grid">${cards}</div>`;
+  h('crumbTop').textContent='教材对比';
+}
+/* ---------- 阅读 ---------- */
+let curSpy=null;
+function renderRead(slug, anchor){
+  h('navHome').classList.add('on');
+  const b=bookBy[slug]; if(!b){location.hash='#/';return;}
+  const {html,toc}=mdToHtml(b.md);
+  const side=toc.map(t=>`<a class="l${t.lvl}" data-id="${t.id}" href="#/read/${slug}?at=${t.id}">${esc(t.title)}</a>`).join('');
+  h('app').innerHTML=`<div class="crumbs"><a href="#/">书目</a> › ${esc(b.title)}</div>
+  <div class="reader">
+    <aside class="side" id="side">${side}</aside>
+    <div class="body" id="body">${html}</div>
+  </div>`;
+  h('crumbTop').textContent=b.title;
+  if(anchor){
+    if(anchor[0]==='i'){ const k=+anchor.slice(1);
+      const ps=[...document.querySelectorAll('#body p')]; const el=ps[Math.min(k,ps.length-1)];
+      if(el) setTimeout(()=>el.scrollIntoView({block:'center'}),80);
+    } else { const el=h(anchor); if(el) setTimeout(()=>el.scrollIntoView({block:'start'}),60); }
+  }
+  if(curSpy) curSpy.disconnect();
+  const links=[...document.querySelectorAll('#side a')];
+  const map={}; links.forEach(a=>map[a.dataset.id]=a);
+  curSpy=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ links.forEach(a=>a.classList.remove('cur'));
+      const a=map[e.target.id]; if(a){ a.classList.add('cur'); a.scrollIntoView({block:'nearest'});
+        h('crumbTop').textContent=b.title+' › '+e.target.textContent; } } });
+  },{rootMargin:'-70px 0px -70% 0px'});
+  [...document.querySelectorAll('#body h2,#body h3')].forEach(el=>curSpy.observe(el));
+}
+/* ---------- 对比列表 ---------- */
+function domOf(t){ for(const [d,ks] of DOMAINS) if(ks.some(k=>t.includes(k))) return d; return '其他'; }
+const DOMAINS=[["语音",["音","声","调","韵","母","辅","元"]],["文字",["字","文","笔"]],
+ ["词汇",["词","语素","义","熟语","成语"]],["语法",["句","语法","成分","语","短语","词类","宾语","主语","谓语"]],
+ ["修辞",["修辞","喻","格","体","风格"]],["概论",["语言","方言","规范","汉语"]]];
+function renderCompare(){
+  h('navCmp').classList.add('on');
+  const q=state.q.trim();
+  const ALL=C.concat(state.custom);
+  let list=ALL.filter(g=>!state.hide.has(g.t));
+  if(q) list=list.filter(g=>g.t.includes(q)||g.v.some(v=>v.includes(q)));
+  if(state.dom!=='全部') list=list.filter(g=>g.d===state.dom);
+  if(state.sub) list=list.filter(g=>g.s===state.sub);
+  if(state.minb) list=list.filter(g=>Object.keys(g.b).length===state.minb);
+  if(state.first) list=list.filter(g=>g.l===state.first);
+
+  // 左侧树
+  const tree={};
+  ALL.filter(g=>!state.hide.has(g.t)).forEach(g=>{
+    tree[g.d]=tree[g.d]||{n:0, subs:{}};
+    tree[g.d].n++;
+    tree[g.d].subs[g.s]=(tree[g.d].subs[g.s]||0)+1;
+  });
+  const dorder=["语音","文字","词汇","语法","修辞","概论","自定义"];
+  const treeHtml=['<a class="tn '+(state.dom==='全部'?'on':'')+'" onclick="state.dom=\'全部\';state.sub=\'\';renderCompare()">全部 <i>'+ALL.length+'</i></a>']
+    .concat(dorder.filter(d=>tree[d]).map(d=>{
+      const open = state.dom===d;
+      const subs = Object.keys(tree[d].subs).sort().map(s0=>
+        `<a class="tn l2 ${state.sub===s0&&open?'on':''}" onclick="state.dom='${d}';state.sub='${s0}';renderCompare()">${s0} <i>${tree[d].subs[s0]}</i></a>`).join('');
+      return `<a class="tn ${open?'on':''}" onclick="state.dom=${open?"'全部'":"'"+d+"'"};state.sub='';renderCompare()">${d} <i>${tree[d].n}</i></a>`
+        + (open?`<div class="subs">${subs}</div>`:'');
+    })).join('');
+
+  // 拼音字母条（换行排列，不横向滚动）
+  const letters=[...new Set(ALL.filter(g=>!state.hide.has(g.t)).map(g=>g.l))].sort();
+  const letterBar=letters.map(c=>`<button class="btn ${state.first===c?'on':''}" onclick="state.first='${state.first===c?'':c}';renderCompare()">${c}</button>`).join('');
+
+  const blocks=list.map(g=>{
+    const names=Object.keys(g.b).map(s=>bookBy[s]?(bookBy[s].short||bookBy[s].title):s);
+    return `<a class="card" href="#/cmp/${encodeURIComponent(g.t)}" id="g_${encodeURIComponent(g.t)}" style="display:block">
+      <div class="grp"><b>${esc(g.t)}</b><span class="meta">${esc(g.s)}</span></div>
+      <div class="meta">${names.map(esc).join(' · ')}</div></a>`;}).join('');
+
+  h('app').innerHTML=`<h1>概念对比 <span class="meta">共 ${ALL.length} 组${list.length!==ALL.length?'，当前 '+list.length:''}</span></h1>
+    <input id="cq" type="search" placeholder="搜概念，例如：语素、述宾结构、音位" value="${esc(q)}">
+    <div class="idxbar">
+      <div class="row"><span class="lb">拼音</span>${letterBar}<button class="btn ${state.first===''?'on':''}" onclick="state.first='';renderCompare()">全部</button>
+        <button class="btn" onclick="addCustom()" title="发现漏掉的概念就补进来">＋ 补一条</button>
+        ${state.custom.length?`<button class="btn" onclick="exportCustom()">导出补录（${state.custom.length}）</button>`:''}</div>
+    </div>
+    <div class="cmplayout">
+      <aside class="ctree">${treeHtml}</aside>
+      <div class="cbody">${blocks?`<div class="grid">${blocks}</div>`:'<p class="meta">没有匹配的概念。</p>'}</div>
+    </div>`;
+  h('crumbTop').textContent='概念对比';
+  const inp=h('cq'); inp.oninput=()=>{state.q=inp.value;const v=inp.value;renderCompare();const e2=h('cq');e2.focus();e2.setSelectionRange(v.length,v.length);};
+}
+/* ---------- 候选清单 ---------- */
+function renderCand(){
+  h('navCand').classList.add('on');
+  state.candSel=state.candSel||new Set();
+  const q=(state.cq||'').trim();
+  let list=P.candidates||[];
+  if(q) list=list.filter(x=>x.t.includes(q));
+  if(state.cmin) list=list.filter(x=>x.books>=state.cmin);
+  if(state.crec) list=list.filter(x=>(x.rec||'')===state.crec);
+  const inTable=new Set(C.map(g=>g.t));
+  const rows=list.slice(0,400).map(x=>{
+    const picked=state.candSel.has(x.t)||inTable.has(x.t);
+    const badge=x.rec==='y'?'<span class="badge y">建议补</span>':(x.rec==='n'?'<span class="badge n">不建议</span>':'<span class="badge">待定</span>');
+    return `<label class="crow ${inTable.has(x.t)?'in':''}">
+      <input type="checkbox" ${picked?'checked disabled':''} onchange="toggleCand('${x.t}')">
+      <b>${esc(x.t)}</b>${badge}<span class="meta">${x.books}本·${x.freq}次</span></label>`;
+  }).join('');
+  h('app').innerHTML=`<h1>高频候选 <span class="meta">六本教材里高频、但还没进对比表的 ${(P.candidates||[]).length} 条</span></h1>
+   <p class="meta">勾选你认为该补进对比表的概念，然后点「导出勾选」发给我；也可以点「直接加入」当场生效。</p>
+   <input id="cq2" type="search" placeholder="筛选候选，例如：句" value="${esc(q)}">
+   <div class="chips" style="margin:10px 0">
+     <span class="lb meta">书数</span>
+     ${[[0,"全部"],[6,"6 本"],[5,"5 本"],[4,"4 本"],[3,"3 本"]].map(([k,l])=>
+       `<button class="btn ${state.cmin===k?'on':''}" onclick="state.cmin=${k};renderCand()">${l}</button>`).join('')}
+     ${[["","全部"],["y","我建议补"],["n","我建议不加"],["","待定"]].map(()=>'').join('')}
+     <button class="btn ${!state.crec?'on':''}" onclick="state.crec='';renderCand()">全部</button>
+     <button class="btn ${state.crec==='y'?'on':''}" onclick="state.crec='y';renderCand()">我建议补</button>
+     <button class="btn ${state.crec==='n'?'on':''}" onclick="state.crec='n';renderCand()">我建议不加</button>
+     <button class="btn" onclick="pickYes()">全选建议补</button>
+     <button class="btn" onclick="exportCand()">导出勾选（${state.candSel.size}）</button>
+     <button class="btn" onclick="addCandNow()">直接加入</button>
+   </div>
+   <div class="candlist">${rows}</div>`;
+  h('crumbTop').textContent='候选清单';
+  const inp=h('cq2');
+  inp.oninput=()=>{state.cq=inp.value;const v=inp.value;renderCand();const e2=h('cq2');e2.focus();e2.setSelectionRange(v.length,v.length);};
+}
+function toggleCand(t){
+  state.candSel=state.candSel||new Set();
+  if(state.candSel.has(t)) state.candSel.delete(t); else state.candSel.add(t);
+  renderCand();
+}
+function pickYes(){
+  state.candSel=state.candSel||new Set();
+  (P.candidates||[]).forEach(x=>{ if(x.rec==='y') state.candSel.add(x.t); });
+  renderCand();
+}
+function exportCand(){
+  if(!state.candSel.size){ alert('还没勾选'); return; }
+  const blob=new Blob([JSON.stringify([...state.candSel],null,1)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='候选勾选.json'; a.click();
+}
+function addCandNow(){
+  let n=0;
+  [...(state.candSel||[])].forEach(t=>{
+    if(C.some(g=>g.t===t)||state.custom.some(g=>g.t===t)) return;
+    const g=buildCustom(t); if(g){ state.custom.push(g); n++; }
+  });
+  saveCustom();
+  alert('已加入 '+n+' 条（在“自定义”领域下）');
+  location.hash='#/compare';
+}
+/* ---------- 看板 ---------- */
+function renderBoard(){
+  h('navBoard').classList.add('on');
+  const live=C.concat(state.custom).filter(g=>!state.hide.has(g.t));
+  const byN={}; live.forEach(g=>{const n=Object.keys(g.b).length; byN[n]=(byN[n]||0)+1;});
+  const byDom={}; live.forEach(g=>{const d=domOf(g.t); byDom[d]=(byDom[d]||0)+1;});
+  const perBook={}; B.filter(b=>['beida','huyushu','qihuyang','shaojm','shaojm_up','zhangbin'].includes(b.slug))
+    .forEach(b=>perBook[b.slug]=0);
+  live.forEach(g=>Object.keys(g.b).forEach(s=>{ if(s in perBook) perBook[s]++; }));
+  const maxB=Math.max(1,...Object.values(perBook));
+  const top=live.filter(g=>Object.keys(g.b).length>=5).slice(0,30);
+  const rare=live.filter(g=>Object.keys(g.b).length===2).slice(0,20);
+  const bar=(n,m)=>`<div class="bar"><i style="width:${(n/m*100).toFixed(1)}%"></i></div>`;
+  h('app').innerHTML=`<h1>看板</h1>
+    <p class="meta">基于 ${live.length} 组概念（已隐藏 ${C.length+state.custom.length-live.length} 组）</p>
+    <div class="grid">
+      <div class="card"><div class="meta">概念总数</div><div class="big">${live.length}</div></div>
+      <div class="card"><div class="meta">6 本教材共识</div><div class="big">${byN[6]||0}</div></div>
+      <div class="card"><div class="meta">5 本提及</div><div class="big">${byN[5]||0}</div></div>
+      <div class="card"><div class="meta">仅 2 本提及</div><div class="big">${byN[2]||0}</div></div>
+    </div>
+    <h2>覆盖分布</h2>
+    ${[6,5,4,3,2].map(n=>`<div class="row2"><span class="lb">${n} 本</span>${bar(byN[n]||0,Math.max(...Object.values(byN)))}<span class="num">${byN[n]||0}</span></div>`).join('')}
+    <h2>各教材贡献</h2>
+    ${B.filter(b=>b.slug in perBook).map(b=>`<div class="row2"><span class="lb">${esc(b.short||b.title)}</span>${bar(perBook[b.slug],maxB)}<span class="num">${perBook[b.slug]}</span></div>`).join('')}
+    <h2>领域分布</h2>
+    ${["语音","文字","词汇","语法","修辞","概论","其他"].filter(d=>byDom[d]).map(d=>`<div class="row2"><span class="lb">${d}</span>${bar(byDom[d],Math.max(...Object.values(byDom)))}<span class="num">${byDom[d]}</span></div>`).join('')}
+    <h2>共识度最高（≥5 本）</h2>
+    <div class="grid">${top.map(g=>`<a class="card" href="#/cmp/${encodeURIComponent(g.t)}"><b>${esc(g.t)}</b><div class="meta">${Object.keys(g.b).length} 本</div></a>`).join('')}</div>
+    <h2>只有 2 本提及（可能是分歧点）</h2>
+    <div class="grid">${rare.map(g=>`<a class="card" href="#/cmp/${encodeURIComponent(g.t)}"><b>${esc(g.t)}</b><div class="meta">${Object.keys(g.b).map(s=>bookBy[s]?esc(bookBy[s].short||''):'').join('、')}</div></a>`).join('')}</div>`;
+  h('crumbTop').textContent='看板';
+}
+/* ---------- 对比详情 ---------- */
+function paraIndex(b){ if(!b._p) b._p=paras(b); return b._p; }
+function chapterOf(b, idx){
+  const ps=paraIndex(b); let ch='';
+  for(let i=idx;i>=0;i--){ const t=ps[i].trim(); if(t.startsWith('## ')||t.startsWith('### ')){ ch=t.replace(/^#+\s*/,''); break; } }
+  return ch;
+}
+function cleanPara(s){
+  s=(s||'').replace(/<!--[\s\S]*?-->/g,'').trim();
+  if(/^#{1,6}\s/.test(s)) return '';
+  if(/^(-\s|\*\s)/.test(s) && (s.match(/第[一二三四五六七八九十]+节/g)||[]).length>=2) return '';
+  return s;
+}
+function excerpt(b, idx){
+  const ps=paraIndex(b);
+  const out=[];
+  for(let i=Math.max(0,idx-1); i<=Math.min(ps.length-1,idx+1); i++){
+    const c=cleanPara(ps[i]); if(c) out.push(c);
+  }
+  if(!out.length){ const c=cleanPara(ps[idx]); if(c) out.push(c); }
+  return out.join("\n\n");
+}
+function hl(text, variants){
+  let s=esc(text);
+  variants.forEach(v=>{ if(v.length>=2) s=s.split(esc(v)).join('<span class="hl">'+esc(v)+'</span>'); });
+  return s.replace(/\n\n/g,'</p><p class="ctx">').replace(/^/,'').replace(/<span class="hl"><\/span>/g,'');
+}
+function renderCompareTerm(term){
+  h('navCmp').classList.add('on');
+  const g=C.find(x=>x.t===term); if(!g){location.hash='#/compare';return;}
+  const slugs=Object.keys(g.b);
+  const cards=slugs.map(sl=>{
+    const b=bookBy[sl]; if(!b) return '';
+    const idx=g.b[sl][0]; const ch=chapterOf(b,idx);
+    const body=excerpt(b,idx).split("\n\n").map(p=>'<p>'+hl(p,g.v)+'</p>').join('');
+    const pgno=pageOf(b,idx);
+    const loc=(pgno?('第 '+pgno+' 页'):'页待补')+' · '+(ch||'正文');
+    return `<div class="card"><div class="grp"><b>${esc(b.title)}</b>
+      <span class="meta">${esc(b.author)} · ${esc(loc)}</span></div>${body}
+      <div style="margin-top:8px"><button class="btn" onclick="copyCite('${sl}','${esc(g.t)}')">复制引用</button>
+      <a class="btn" href="#/read/${sl}">进原文</a></div></div>`;
+  }).join('');
+  h('app').innerHTML=`<div class="crumbs"><a href="#/">书目</a> › <a href="#/compare">概念对比</a> › ${esc(g.t)}</div>
+   <h1>${esc(g.t)} <span class="meta">${slugs.length} 本教材</span></h1>
+   <div class="meta">别名：${g.v.map(v=>`<span class="tag">${esc(v)}</span>`).join(' ')}</div>
+   <div class="chips">
+     <button class="btn ${state.two?'on':''}" onclick="state.two=!state.two;renderCompareTerm('${esc(g.t)}')">双栏对照</button>
+     <button class="btn" onclick="exportMd('${esc(g.t)}')">导出 Markdown</button>
+     <button class="btn" onclick="hideGroup('${esc(g.t)}')">隐藏这组（不合适）</button>
+   </div>
+   <div class="cmp ${state.two?'two':''}">${cards}</div>
+   <h2>出现位置索引</h2>
+   <div class="grid">${slugs.map(sl=>{const b=bookBy[sl];
+     const items=g.b[sl].map(i=>{const pg=pageOf(b,i);
+       return `<a class="btn" href="#/read/${sl}?at=${pg?'p'+pg:'i'+i}">${pg?'p.'+pg:'第'+(i+1)+'段'}</a>`;}).join(' ');
+     return `<div class="card"><b>${esc(b.short||b.title)}</b><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${items}</div></div>`;
+   }).join('')}</div>`;
+  h('crumbTop').textContent='对比 · '+g.t;
+}
+function hideGroup(t){ state.hide.add(t); localStorage.setItem('dsh_hide',JSON.stringify([...state.hide])); location.hash='#/compare'; }
+function copyCite(sl,term){ const b=bookBy[sl];
+  const s=`${term}（${b.title}）`; navigator.clipboard&&navigator.clipboard.writeText(s); alert('已复制：'+s); }
+function exportMd(term){
+  const g=C.find(x=>x.t===term); const out=[`# ${term} · 教材对比`,''];
+  Object.keys(g.b).forEach(sl=>{ const b=bookBy[sl]; const idx=g.b[sl][0];
+    out.push(`## ${b.title}（${chapterOf(b,idx)||'正文'}）`,'', excerpt(b,idx),''); });
+  const blob=new Blob([out.join("\n")],{type:'text/markdown'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=term+'-对比.md'; a.click();
+}
+/* ---------- 全文检索 ---------- */
+function renderSearch(q){
+  h('navSearch').classList.add('on');
+  const kw=(q||'').trim();
+  let res='';
+  if(kw.length>=2){
+    const all=[];
+    B.forEach(b=>{ const ps=paraIndex(b);
+      ps.forEach((p,i)=>{ if(p.includes(kw)) all.push({b,i,p}); }); });
+    res=`<p class="meta">命中 ${all.length} 段</p>`+all.slice(0,200).map(r=>{
+      const k=r.p.indexOf(kw); const seg=r.p.slice(Math.max(0,k-60), k+120);
+      return `<div class="card"><div class="meta">${esc(r.b.title)} · ${esc(chapterOf(r.b,r.i))}</div>
+        <p>${esc(seg).replace(esc(kw),'<mark>'+esc(kw)+'</mark>')}</p>
+        <a class="btn" href="#/read/${r.b.slug}">定位</a></div>`;}).join('');
+  }
+  h('app').innerHTML=`<h1>全文检索</h1>
+    <input id="sq" type="search" placeholder="输入至少两个字，例如：语素" value="${esc(kw)}">
+    <div style="height:14px"></div>${res}`;
+  h('crumbTop').textContent='全文检索';
+  const inp=h('sq'); inp.oninput=()=>{const v=inp.value;state.q=v;renderSearch(v);const e2=h('sq');e2.focus();e2.setSelectionRange(v.length,v.length);};
+}
+/* ---------- 路由 ---------- */
+function route(){
+  const hsh=location.hash||'#/';
+  const [path,qs]=hsh.split('?');
+  const params=new URLSearchParams(qs||'');
+  ['navHome','navCmp','navSearch','navBoard','navCand'].forEach(id=>{const e=h(id); if(e) e.classList.remove('on');});
+  if(path.startsWith('#/read/')){ renderRead(path.slice(7), params.get('at')); }
+  else if(path.startsWith('#/cmp/')){ renderCompareTerm(decodeURIComponent(path.slice(6))); }
+  else if(path.startsWith('#/compare')){ renderCompare(); }
+  else if(path.startsWith('#/board')){ renderBoard(); }
+  else if(path.startsWith('#/cand')){ renderCand(); }
+  else if(path.startsWith('#/search')){ renderSearch(state.q); }
+  else renderHome();
+  window.scrollTo({top:0});
+}
+try{const hh=JSON.parse(localStorage.getItem('dsh_hide')||'[]');state.hide=new Set(hh);}catch(e){}
+try{state.custom=JSON.parse(localStorage.getItem('dsh_custom')||'[]');}catch(e){state.custom=[]}
+function saveCustom(){localStorage.setItem('dsh_custom',JSON.stringify(state.custom));}
+const TB=['beida','huyushu','qihuyang','shaojm','shaojm_up','zhangbin'];
+function buildCustom(term){
+  const b={};
+  TB.forEach(sl=>{const bk=bookBy[sl]; if(!bk) return;
+    const ps=paraIndex(bk); const hit=[];
+    ps.forEach((p,i)=>{ if(p.includes(term)&&hit.length<6) hit.push(i); });
+    if(hit.length) b[sl]=hit;});
+  if(Object.keys(b).length<2) return null;
+  return {t:term,v:[term],b:b,d:'自定义',s:'补录',l:'#',k:'zzzz'};
+}
+function addCustom(){
+  const v=(prompt('输入要补进对比的概念（须在 2 本以上教材出现过）')||'').trim();
+  if(!v) return;
+  if(C.some(g=>g.t===v)||state.custom.some(g=>g.t===v)){ alert('已经在表里了'); return; }
+  const g=buildCustom(v);
+  if(!g){ alert('这个词在 2 本以上教材里没找到，确认写法是否正确'); return; }
+  state.custom.push(g); saveCustom(); renderCompare();
+}
+function exportCustom(){
+  if(!state.custom.length){ alert('还没有手动补录的概念'); return; }
+  const blob=new Blob([JSON.stringify(state.custom.map(g=>g.t),null,1)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='补录概念.json'; a.click();
+}
+addEventListener('hashchange',route); route();
+</script></body></html>

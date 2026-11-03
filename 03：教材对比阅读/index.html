@@ -40,7 +40,7 @@ td,th{border:1px solid var(--line);padding:6px 10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .meta{color:var(--muted);font-size:13px}
 .tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;
-  background:var(--soft);color:var(--muted);margin-left:6px}
+  background:var(--soft);color:var(--muted);margin-left:6px;white-space:nowrap}
 input[type=search],input[type=text]{width:100%;padding:11px 14px;font:inherit;font-size:16px;
   border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)}
 .btn{font:inherit;font-size:14px;padding:6px 13px;border-radius:8px;cursor:pointer;
@@ -55,8 +55,38 @@ input[type=search],input[type=text]{width:100%;padding:11px 14px;font:inherit;fo
 .side a.l2{font-weight:600;color:var(--fg);margin-top:8px}
 .side a.l3{padding-left:20px}
 .side a.cur{background:var(--soft);color:var(--accent)}
+.reader-tools{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.reader-tools button{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);cursor:pointer}
 .body{max-width:var(--readw);margin:0 auto;width:100%}
-@media(max-width:860px){.reader{grid-template-columns:1fr}.side{display:none}}
+.body p{font-size:1rem;line-height:1.95;margin:0 0 1.15em;text-indent:2em;overflow-wrap:anywhere}
+.body p.mb{text-indent:0;line-height:1.75;font-size:.97em}
+.body .dtable{margin:1em 0;padding:8px 12px;border-left:3px solid var(--line);
+  background:var(--card);font-size:.94em;line-height:1.78;text-indent:0;overflow-wrap:anywhere}
+.body .ex{margin:.85em 0 1.05em;padding-left:2em}
+.body .ex p{margin:0;text-indent:0;line-height:1.9}
+.body p:has(+ .ex){margin-bottom:.25em}
+.body h1,.body h2,.body h3{line-height:1.5;overflow-wrap:anywhere;scroll-margin-top:74px}
+.body h1{font-size:1.45em;margin-top:0}
+.body h2{font-size:1.22em;margin-top:2em}
+.body h3{font-size:1.08em;margin-top:1.5em}
+.body blockquote{font-size:.94em;line-height:1.8}
+.body table{max-width:100%;font-size:.92em}
+.body code{white-space:normal;overflow-wrap:anywhere}
+.body sup,.body sub{font-size:.76em;line-height:0}
+.body sup{vertical-align:baseline;position:relative;top:-.42em}
+.body sub{vertical-align:baseline;position:relative;bottom:-.16em}
+.search-hit{outline:3px solid var(--mark);background:var(--soft);border-radius:6px;transition:background .25s}
+.home-chapters{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.home-chapters a{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 8px;color:var(--muted)}
+.home-chapters a:hover{color:var(--accent);border-color:var(--accent)}
+#tocToggle{display:none}
+@media(max-width:860px){
+  .reader{grid-template-columns:1fr}
+  .side{display:none;position:static;max-height:50vh;overflow:auto;border-right:none;
+    border-bottom:1px solid var(--line);padding:0 0 10px;margin-bottom:14px}
+  .reader.toc-open .side{display:block}
+  #tocToggle{display:inline-block}
+}
 .fsbtns{display:flex;gap:4px}
 .fsbtns button{padding:2px 8px;font-size:13px}
 .totop{position:fixed;right:22px;bottom:26px;z-index:35;border-radius:999px;width:44px;height:44px;
@@ -102,7 +132,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px}
 .badge.y{background:var(--accent);color:#fff}
 .badge.n{opacity:.55}
 .pgmark{display:block;font-size:12px;color:var(--muted);margin:18px 0 6px;
-  padding-left:8px;border-left:2px solid var(--line);letter-spacing:.5px}
+  padding-left:8px;border-left:2px solid var(--line);letter-spacing:.5px;scroll-margin-top:74px}
 .hidden{display:none}
 .grp{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .dots{display:flex;gap:3px}
@@ -145,6 +175,14 @@ function pageArr(b){
 }
 function pageOf(b, idx){ const a=pageArr(b); const v=a[idx]||0; return v; }
 const h=id=>document.getElementById(id);
+function safeText(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function getBookmarks(slug){try{return JSON.parse(localStorage.getItem('dsh_bookmarks_'+slug)||'[]')}catch(e){return []}}
+function saveBookmark(slug,id,title){
+  if(!id)return;
+  const items=getBookmarks(slug).filter(x=>x.id!==id);
+  items.unshift({id,title,updated:Date.now()});
+  localStorage.setItem('dsh_bookmarks_'+slug,JSON.stringify(items.slice(0,30)));
+}
 function fs(level){document.documentElement.style.setProperty('--fs',level==='s'?'15.5px':level==='l'?'19px':'17px');
   document.documentElement.style.setProperty('--lh',level==='s'?'1.8':level==='l'?'2.05':'1.95');
   localStorage.setItem('dsh_fs',level);}
@@ -162,20 +200,57 @@ addEventListener('scroll',()=>{
 /* ---------- Markdown → HTML（够用即可）---------- */
 function mdToHtml(md, opt){
   opt=opt||{};
-  md=md.replace(/<!--[\s\S]*?-->/g,'');
+  md=md.replace(/<!--(?!\s*p\.\d+\s*-->)[\s\S]*?-->/g,'');
   const lines=md.split("\n"); let out=[], toc=[], hi=0, inToc=false, body=false;
+  const seen=new Set();
   let buf=[];
-  const flush=()=>{ if(buf.length){ out.push('<p>'+inline(buf.join(' '))+'</p>'); buf=[]; } };
+  let exRun=[];
+  const isEx=t=>{
+    const latin=(t.match(/[A-Za-z]/g)||[]).length;
+    if(t.length>(latin>=8?90:46)) return false;                    // 英文例句放宽长度
+    if(/^[0-9]+(\.[0-9]+)+\s/.test(t)) return false;              // 4.8.1 这类节号
+    if(/^[（(]\s*\d{1,2}\s*[）)]/.test(t) || /^[①-⑳]/.test(t)) return true;  // 编号例句
+    if(/[\[\]<>]/.test(t) || /[＋=]/.test(t) || (latin && /\d/.test(t))) return true; // 记音/特征矩阵
+    if(/^[（(]/.test(t)) return true;                              // 括注/译文行
+    if(/[。？！]$/.test(t)) return t.length<=10;
+    if(/[，；：]/.test(t) && !/[）)\]]$/.test(t)) return false;
+    return true;
+  };
+  // 被压平的表格/数据串：长、无句读、空格多
+  const isTableRun=t=>t.length>=120 && (t.match(/ /g)||[]).length>=12 && !/[。！？，；：]/.test(t);
+  const wrapTokens=(t,width)=>{
+    const toks=t.split(' '); const lines=[]; let cur='';
+    for(const w of toks){
+      if(cur && (cur+' '+w).length>width){ lines.push(cur); cur=w; }
+      else cur=cur?cur+' '+w:w;
+    }
+    if(cur) lines.push(cur);
+    return lines.join('<br>');
+  };
+  const flushEx=()=>{ if(!exRun.length) return;
+    if(exRun.length===1) out.push('<p>'+inline(exRun[0])+'</p>');
+    else out.push('<div class="ex">'+exRun.map(l=>'<p>'+inline(l)+'</p>').join('')+'</div>');
+    exRun=[]; };
+  const flush=()=>{ if(buf.length){
+      if(buf.length===1 && isTableRun(buf[0])){
+        flushEx();
+        out.push('<div class="dtable">'+wrapTokens(buf[0],44).split('<br>').map(l=>inline(l)).join('<br>')+'</div>');
+      }
+      else if(buf.length===1 && isEx(buf[0])) exRun.push(buf[0]);
+      else { flushEx(); out.push('<p'+(buf.length>1?' class="mb"':'')+'>'+buf.map(l=>inline(l)).join('<br>')+'</p>'); }
+      buf=[]; } };
+  const flushAll=()=>{ flush(); flushEx(); };
   for(let i=0;i<lines.length;i++){
     const ln=lines[i], t=ln.trim();
     if(!t){ flush(); continue; }
     if(t.startsWith('#')){
       const m=/^(#{1,6})\s*(.*)$/.exec(t); if(!m){buf.push(t);continue;}
-      flush();
-      const lv=m[1].length, title=m[2].trim();
-      if(/目录/.test(title)&&lv<=2){ inToc=true; }
-      else if(inToc&&lv<=2){ inToc=false; }
+      flushAll();
+      const lv=m[1].length, raw=m[2].trim();
+      if(lv<=2){ if(/^目\s*录$/.test(raw)){ inToc=true; continue; } if(/^正文$/.test(raw)){ inToc=false; continue; } }
+      if(inToc&&lv<=2){ inToc=false; }
       if(inToc){ continue; }
+      const title=raw;
       if(lv===1){ out.push('<h1>'+inline(title)+'</h1>'); continue; }
       hi++;
       const id='h'+hi;
@@ -185,29 +260,41 @@ function mdToHtml(md, opt){
     }
     if(inToc) continue;
     const pm=/^<!--\s*p\.(\d+)\s*-->$/.exec(t);
-    if(pm){ flush(); out.push(`<span class="pgmark" id="p${pm[1]}">第 ${pm[1]} 页</span>`); continue; }
-    if(t.startsWith('>')){ flush(); out.push('<blockquote>'+inline(t.replace(/^>\s*/,''))+'</blockquote>'); continue; }
-    if(t.startsWith('- ')||t.startsWith('* ')){ buf.push('· '+t.slice(2)); continue; }
-    if(t.startsWith('<table')){ flush(); out.push(t); continue; }
+    if(pm){ flushAll(); let pid='p'+pm[1], k=2;
+      while(seen.has(pid)){ pid='p'+pm[1]+'-'+(k++); }
+      seen.add(pid);
+      out.push(`<span class="pgmark" id="${pid}">第 ${pm[1]} 页</span>`); continue; }
+    if(t.startsWith('>')){ flushAll(); out.push('<blockquote>'+inline(t.replace(/^>\s*/,''))+'</blockquote>'); continue; }
+    if(t.startsWith('- ')||t.startsWith('* ')){ flushAll(); out.push('<p class="list-line">· '+inline(t.slice(2))+'</p>'); continue; }
+    if(t.startsWith('<table')){ flushAll(); out.push(t); continue; }
     buf.push(t);
   }
-  flush();
+  flushAll();
   return {html:out.join("\n"), toc};
 }
 function inline(s){
   s=esc(s);
   s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
   s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s=s.replace(/&lt;(su[bp])&gt;/g,'<$1>').replace(/&lt;\/(su[bp])&gt;/g,'</$1>');
   return s;
 }
 /* ---------- 首页：书目 ---------- */
 function renderHome(){
   h('navHome').classList.add('on');
-  const cards=B.map(b=>`<div class="card">
+  const cards=B.map(b=>{
+    const chapters=mdToHtml(b.md).toc.filter(t=>t.lvl<=3).slice(0,12);
+    const chapterLinks=chapters.map(t=>`<a href="#/read/${b.slug}?at=${t.id}">${esc(t.title)}</a>`).join('');
+    const saved=getBookmarks(b.slug);
+    const savedLinks=saved.map(x=>`<a href="#/read/${b.slug}?at=${encodeURIComponent(x.id)}">${esc(x.title||'已保存书签')}</a>`).join('');
+    const pgTxt=(b.pages&&!/无页码|待补|—/.test(b.pages))?b.pages:'无页码';
+    return `<div class="card">
     <div class="grp"><b>${esc(b.title)}</b><span class="tag">${esc(b.cat.split('-')[1]||b.cat)}</span></div>
-    <div class="meta">${esc(b.author)} · ${b.kind==='textbook'?'教材':'专著'} · ${esc(b.pages||'页码待补')} · ${(b.chars/10000).toFixed(1)} 万字</div>
+    <div class="meta">${esc(b.author)} · ${b.kind==='textbook'?'教材':'专著'} · 页码 ${esc(pgTxt)} · ${(b.chars/10000).toFixed(1)} 万字</div>
     <div style="margin-top:8px"><a class="btn" href="#/read/${b.slug}">阅读</a></div>
-  </div>`).join('');
+    ${chapterLinks?`<div class="meta" style="margin-top:10px">章节直达</div><div class="home-chapters">${chapterLinks}</div>`:''}
+    ${savedLinks?`<div class="meta" style="margin-top:10px">我的书签</div><div class="home-chapters">${savedLinks}</div>`:''}
+  </div>`}).join('');
   h('app').innerHTML=`<h1>书目 · ${B.length} 本</h1>
     <p class="meta">对比阅读目前覆盖 6 本现代汉语教材；其余为专著与参考资料，可正常阅读。</p>
     <div class="grid">${cards}</div>`;
@@ -221,17 +308,50 @@ function renderRead(slug, anchor){
   const {html,toc}=mdToHtml(b.md);
   const side=toc.map(t=>`<a class="l${t.lvl}" data-id="${t.id}" href="#/read/${slug}?at=${t.id}">${esc(t.title)}</a>`).join('');
   h('app').innerHTML=`<div class="crumbs"><a href="#/">书目</a> › ${esc(b.title)}</div>
+  <div class="reader-tools"><button id="tocToggle" type="button">☰ 目录</button><button id="saveBookmark" type="button">☆ 保存当前位置</button><button id="showBookmarks" type="button">查看本书书签 (${getBookmarks(slug).length})</button></div>
   <div class="reader">
     <aside class="side" id="side">${side}</aside>
     <div class="body" id="body">${html}</div>
   </div>`;
   h('crumbTop').textContent=b.title;
+  h('tocToggle').onclick=()=>{ document.querySelector('.reader').classList.toggle('toc-open'); };
+  const jumpTo=(el,block)=>{
+    if(!el) return;
+    const go=()=>el.scrollIntoView({block:block||'start'});
+    go();
+    requestAnimationFrame(()=>{ go(); requestAnimationFrame(go); });
+    setTimeout(go,250);
+  };
   if(anchor){
-    if(anchor[0]==='i'){ const k=+anchor.slice(1);
-      const ps=[...document.querySelectorAll('#body p')]; const el=ps[Math.min(k,ps.length-1)];
-      if(el) setTimeout(()=>el.scrollIntoView({block:'center'}),80);
-    } else { const el=h(anchor); if(el) setTimeout(()=>el.scrollIntoView({block:'start'}),60); }
+    if(anchor==='top'){ window.scrollTo({top:0}); setTimeout(()=>window.scrollTo({top:0}),120); }
+    else if(anchor[0]==='i'){ const k=+anchor.slice(1);
+      const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+      const src=norm((paraIndex(b)[k]||'').replace(/<!--[^]*?-->/g,'').replace(/<[^>]+>/g,'').replace(/^#{1,6}\s*/gm,''));
+      const needle=src.slice(0,24), short=src.slice(0,12);
+      const nodes=[...document.querySelectorAll('#body p,#body h1,#body h2,#body h3')];
+      const el=nodes.find(p=>needle.length>6&&norm(p.textContent).includes(needle))
+             ||nodes.find(p=>short.length>4&&norm(p.textContent).includes(short));
+      if(el){ jumpTo(el,'center'); el.classList.add('search-hit'); setTimeout(()=>el.classList.remove('search-hit'),2600); }
+    } else if(anchor[0]==='p'){
+      const el=h(anchor); if(el) jumpTo(el);
+    } else { jumpTo(h(anchor)); }
   }
+  h('saveBookmark').onclick=()=>{
+    const headings=[...document.querySelectorAll('#body h2,#body h3')];
+    const visible=headings.filter(el=>el.getBoundingClientRect().top<innerHeight*.55).pop()||headings[0];
+    const target=visible||document.querySelector('#body h1');
+    const id=target?.id||'top', title=target?.textContent?.trim()||'正文开头';
+    saveBookmark(slug,id,title);
+    h('showBookmarks').textContent='查看本书书签 ('+getBookmarks(slug).length+')';
+    alert('已保存书签：'+title);
+  };
+  h('showBookmarks').onclick=()=>{
+    const items=getBookmarks(slug);
+    if(!items.length){alert('本书还没有保存的书签');return;}
+    const chosen=prompt('输入序号跳转：\\n'+items.map((x,i)=>`${i+1}. ${x.title}`).join('\\n'));
+    const item=items[Number(chosen)-1];
+    if(item)location.hash=`#/read/${slug}?at=${encodeURIComponent(item.id)}`;
+  };
   if(curSpy) curSpy.disconnect();
   const links=[...document.querySelectorAll('#side a')];
   const map={}; links.forEach(a=>map[a.dataset.id]=a);
@@ -419,7 +539,8 @@ function excerpt(b, idx){
 function hl(text, variants){
   let s=esc(text);
   variants.forEach(v=>{ if(v.length>=2) s=s.split(esc(v)).join('<span class="hl">'+esc(v)+'</span>'); });
-  return s.replace(/\n\n/g,'</p><p class="ctx">').replace(/^/,'').replace(/<span class="hl"><\/span>/g,'');
+  s=s.replace(/&lt;(su[bp])&gt;/g,'<$1>').replace(/&lt;\/(su[bp])&gt;/g,'</$1>');
+  return s.replace(/\n\n/g,'</p><p class="ctx">').replace(/\n/g,'<br>').replace(/^/,'').replace(/<span class="hl"><\/span>/g,'');
 }
 function renderCompareTerm(term){
   h('navCmp').classList.add('on');
@@ -474,10 +595,10 @@ function renderSearch(q){
     B.forEach(b=>{ const ps=paraIndex(b);
       ps.forEach((p,i)=>{ if(p.includes(kw)) all.push({b,i,p}); }); });
     res=`<p class="meta">命中 ${all.length} 段</p>`+all.slice(0,200).map(r=>{
-      const k=r.p.indexOf(kw); const seg=r.p.slice(Math.max(0,k-60), k+120);
-      return `<div class="card"><div class="meta">${esc(r.b.title)} · ${esc(chapterOf(r.b,r.i))}</div>
-        <p>${esc(seg).replace(esc(kw),'<mark>'+esc(kw)+'</mark>')}</p>
-        <a class="btn" href="#/read/${r.b.slug}">定位</a></div>`;}).join('');
+      const k=r.p.indexOf(kw); const seg=r.p.slice(Math.max(0,k-60), k+120).replace(/<\/?su[bp]>/g,'');
+      return `<div class="card"><div class="meta">${esc(r.b.title)} · ${esc(chapterOf(r.b,r.i))||'正文'}</div>
+        <p>${safeText(seg).replace(safeText(kw),'<mark>'+safeText(kw)+'</mark>')}</p>
+        <a class="btn" href="#/read/${r.b.slug}?at=i${r.i}">定位到命中段落</a></div>`;}).join('');
   }
   h('app').innerHTML=`<h1>全文检索</h1>
     <input id="sq" type="search" placeholder="输入至少两个字，例如：语素" value="${esc(kw)}">

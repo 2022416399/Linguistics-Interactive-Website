@@ -1,17 +1,15 @@
-# Large source archives and binary corpus files kept locally
-术语查询站/raw/
-术语查询站/result/
-术语查询站/**/*.zip
-术语查询站/*.zip
-术语查询站/下载/
-术语查询站/downloaded.json
-术语查询站/batch_big.json
-术语查询站/batch_small.json
-术语查询站/submit_state.json
+# 原始 OCR 与中间产物（体积大，不进仓库）
+新的md文件/
+raw/
+result/
+离线单文件/
+*.zip
+# 系统文件
+Thumbs.db
+.DS_Store
 
-# Generated/local runtime artifacts
-术语查询站/**/node_modules/
-术语查询站/**/__pycache__/
-术语查询站/**/*.pyc
-术语查询站/**/.cache/
-术语查询站/git_write_test.txt
+# 本地工作区与临时产物
+.workbuddy/
+*.genie
+03：教材对比阅读/_备份_20261103/
+03：教材对比阅读/待删除核验/
